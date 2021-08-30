@@ -3,8 +3,6 @@
  */
 $(function(){
 	var inputId = $('input[name="inputId"]').val();
-	var inputPw = $('input[name="inputPw"]').val();
-	var inputPwConfirm = $('input[name="inputPwConfirm"]').val();
 	var inputName = $('input[name="inputName"]').val();
 	var inputAge = $('input[name="inputAge"]').val();
 	var inputSex = $('input:radio[name="inputSex"]').is(':checked');
@@ -81,27 +79,99 @@ $(function(){
 		}
 	})
 	
+	//휴대폰번호 유효성검사
+	$('input[name="inputPhone"]').mouseout(function(){
+		var patternPhone = /01[016789]-[^0][0-9]{2,3}-[0-9]{3,4}/;
+		var result = patternPhone.exec($(this).val());
+		if(result == null && result == undefined){
+			$('.phoneValidationMsg').text('휴대폰 번호를 정확하게 입력해주세요');
+			$('input[name="phoneCheck"]').val('unusable');
+		}else{
+			$('.phoneValidationMsg').text('');
+			$('input[name="phoneCheck"]').val('usable');
+		}
 
+	})
+	
 	//다음페이지 버튼 클릭 시 입력사항들 확인
 	$('.nextPageBtn').click(function(){
 		var submitFlag = true;
-		if(inputId == '' || inputId == undefined){
+		
+		if($('input[name="inputId"]').val() == '' || $('input[name="inputId"]').val() == undefined){
 			alert('아이디를 입력해주세요');
 			$('input[name="inputId"]').focus();
-			return;
+			submitFlag = false;
+			return submitFlag;
 		}else if($('input[name="idDupCheck"]').val() == 'idDupUncheck'){
 			alert('아이디 중복체크를 해주세요');
 			$('input[name="inputId"]').focus();
-			return;
+			submitFlag = false;
+			return submitFlag;
 		}
 		
-		if(inputPw == '' || inputPw == undefined){
+		if($('input[name="inputPw"]').val() == '' || $('input[name="inputPw"]').val() == undefined){
 			alert('비밀번호를 입력해주세요');
 			$('input[name="inputPw"]').focus();
-			return;
+			submitFlag = false;
+			return submitFlag;
+		}else if($('input[name="pWCheck"]').val() == 'unusable'){
+			alert('비밀번호를 영어대소문자, 숫자, 특수문자를 하나 이상 포함하여 8-18자리로 입력해주세요');
+			$('input[name="inputPw"]').focus();
+			submitFlag = false;
+			return submitFlag;
 		}
 		
-		$('#memberJoinForm').submit();
+		if($('input[name="inputPwConfirm"]').val() == '' || $('input[name="inputPwConfirm"]').val() == undefined){
+			alert('비밀번호 확인을 입력해주세요');
+			$('input[name="inputPwConfirm"]').focus();
+			submitFlag = false;
+			return submitFlag;
+		}else if($('input[name="pWConfirmCheck"]').val() == 'unusable'){
+			alert('비밀번호 확인과 비밀번호가 일치하지 않습니다');
+			$('input[name="inputPwConfirm"]').focus();
+			submitFlag = false;
+			return submitFlag;
+		}
+		
+		if($('input[name="inputName"]').val() == '' || $('input[name="inputName"]').val() == undefined){
+			alert('이름을 입력해주세요');
+			$('input[name="inputName"]').focus();
+			submitFlag = false;
+			return submitFlag;
+		}else if($('input[name="nameCheck"]').val() == 'unusable'){
+			alert('닉네임은 한글으로만 입력해주세요');
+			$('input[name="inputName"]').focus();
+			submitFlag = false;
+			return submitFlag;
+		}
+		
+		if($('input[name="inputAge"]').val() == '' || $('input[name="inputAge"]').val() == undefined){
+			alert('나이를 입력해주세요');
+			$('input[name="inputAge"]').focus();
+			submitFlag = false;
+			return submitFlag;
+		}
+		
+		if(!$('input:radio[name="inputSex"]').is(':checked')){
+			alert('성별을 입력해주세요');
+			submitFlag = false;
+			return submitFlag;
+		}
+		
+		
+		if($('input[name="inputPhone"]').val() == '' || $('input[name="inputPhone"]').val() == undefined){
+			alert('휴대폰 번호를 입력해주세요');
+			$('input[name="inputPhone"]').focus();
+			submitFlag = false;
+			return submitFlag;
+		}else if($('input[name="phoneCheck"]').val() == 'unusable'){
+			alert('휴대폰 번호를 정확하게 입력해주세요');
+			$('input[name="inputPhone"]').focus();
+			submitFlag = false;
+			return submitFlag;
+		}
+		
+		if(submitFlag) $('#memberJoinForm').submit();
 	
 	});
 	

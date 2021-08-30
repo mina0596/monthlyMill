@@ -28,7 +28,7 @@
 
       <!-- 2단계 -->
       <div class="join_cont">
-        <form method="post" id="memberJoinForm" class="formTerms">
+        <form method="post" id="memberJoinForm" class="formTerms" th:action="@{/join/join_basic}">
           <div class="join_box">
             <!--필수 정보-->
             <h3 class="h3_title">필수정보 입력</h3>
@@ -107,9 +107,15 @@
                 <tr>
                   <th><span>본인인증</span></th>
                   <td>
-                    <input type="tel" placeholder="휴대폰번호" />
+                  <!-- type이 tel 인데 왜 하이픈이 없이 적힐까요? -->
+                    <input type="tel" placeholder="휴대폰번호" name="inputPhone"/>
+                    <input type="hidden" name="phoneCheck" value="unusable"/>
                     <button>인증하기</button>
                   </td>
+                </tr>
+                <tr>
+                	<!-- 휴대폰번호 입력란 바로 아래에 작게 나오게 해주세요! -->
+                	<td class="phoneValidationMsg"></td>
                 </tr>
               </tbody>
             </table>
@@ -125,7 +131,7 @@
       <!--넘어가는 버튼-->
       <div class="button_box">
         <a href="#" id="btn_prev" class="btn common">이전</a>
-        <a th:href="@{/join/join_additory}" id="btn_next" class="btn nextPageBtn">다음</a>
+        <button id="btn_next" class="btn nextPageBtn" type="submit">다음</button>
       </div>
     </section>
   </body>
