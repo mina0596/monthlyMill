@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -28,7 +28,7 @@
 
       <!-- 2단계 -->
       <div class="join_cont">
-        <form method="post" id="memberJoin" class="formTerms">
+        <form method="post" id="memberJoinForm" class="formTerms">
           <div class="join_box">
             <!--필수 정보-->
             <h3 class="h3_title">필수정보 입력</h3>
@@ -43,7 +43,7 @@
                   <th><span>아이디</span></th>
                   <td>
                     <input type="text" name="inputId" />
-                    <button type="button" id="idCheck">중복조회</button>
+                    <button type="button" class="idCheck">중복조회</button>
                   </td>
                 </tr>
                 <tr>
@@ -88,7 +88,12 @@
           </div>
         </form>
       </div>
-
+      
+      <!-- js 파일 -->
+      <script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+      <script type="text/javascript" th:src="@{/js/memberJoin.js}"></script>
+      
+		
       <!--넘어가는 버튼-->
       <div class="button_box">
         <a href="#" id="btn_prev" class="btn common">이전</a>
