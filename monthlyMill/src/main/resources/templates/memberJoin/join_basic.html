@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="style.css" />
+    <title>월간방앗간</title>
+  </head>
+  <body>
+    <section class="content_box">
+      <div class="join_order">
+        <ol>
+          <li class="icon">
+            <span>약관동의</span>
+          </li>
+          <li class="icon">
+            <span>기본정보</span>
+          </li>
+          <li class="icon">
+            <span>추가정보</span>
+          </li>
+          <li class="icon">
+            <span>가입완료</span>
+          </li>
+        </ol>
+      </div>
+
+      <!-- 2단계 -->
+      <div class="join_cont">
+        <form method="post" id="memberJoin" class="formTerms">
+          <div class="join_box">
+            <!--필수 정보-->
+            <h3 class="h3_title">필수정보 입력</h3>
+            <span class="desc">반드시 입력하셔야 하는 항목들입니다.</span>
+            <table>
+              <colgroup>
+                <col width="25%" />
+                <col width="75%" />
+              </colgroup>
+              <tbody>
+                <tr>
+                  <th><span>아이디</span></th>
+                  <td>
+                    <input type="text" name="inputId" />
+                    <button type="button" id="idCheck">중복조회</button>
+                  </td>
+                </tr>
+                <tr>
+                  <th><span>비밀번호</span></th>
+                  <td><input type="password" /></td>
+                </tr>
+                <tr>
+                  <th><span>비밀번호 확인</span></th>
+                  <td><input type="password" /></td>
+                </tr>
+                <tr>
+                  <th><span>닉네임</span></th>
+                  <td><input type="text" /></td>
+                </tr>
+                <tr>
+                  <th><span>나이</span></th>
+                  <td><input type="number" /></td>
+                </tr>
+                <tr>
+                  <th><span>성별</span></th>
+                  <td>
+                    <input type="radio" id="sex_male" name="sex" value="male" />
+                    <label for="sex_male">남</label>
+                    <input
+                      type="radio"
+                      id="sex_female"
+                      name="sex"
+                      value="female"
+                    />
+                    <label for="sex_female">여</label>
+                  </td>
+                </tr>
+                <tr>
+                  <th><span>본인인증</span></th>
+                  <td>
+                    <input type="tel" placeholder="휴대폰번호" />
+                    <button>인증하기</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </div>
+
+      <!--넘어가는 버튼-->
+      <div class="button_box">
+        <a href="#" id="btn_prev" class="btn common">이전</a>
+        <a href="join_additory.html" id="btn_next" class="btn emp">다음</a>
+      </div>
+    </section>
+  </body>
+</html>

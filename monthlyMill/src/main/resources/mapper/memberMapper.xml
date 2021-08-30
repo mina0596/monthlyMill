@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project.monthlyMill.dao.MemberMapper">
+	<resultMap type="Member"				id="memberResultMap">
+		<result property="memberId" 		column="member_id"/>
+		<result property="memberPw" 		column="member_pw"/>
+		<result property="memberCateNum" 	column="member_cate_num"/>
+		<result property="memberName" 		column="member_name"/>
+		<result property="memberAge" 		column="member_age"/>
+		<result property="memberGender" 		column="member_gender"/>
+		<result property="memberPhone" 		column="member_phone"/>
+		<result property="memberAge" 		column="identity_check"/>
+		<result property="memberAge" 		column="member_age"/>
+	</resultMap>
+	
+</mapper>
