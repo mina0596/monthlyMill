@@ -1,0 +1,62 @@
+/*회원가입*/
+.content_box {
+  width: 100%;
+}
+.join_cont {
+  margin: 50px auto;
+  padding: 3px;
+  width: 650px;
+}
+.join_box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+.join_box.sns {
+  margin: 50px 0;
+}
+
+.join_order ol {
+  display: flex;
+}
+.join_order ol li {
+  margin-right: 10px;
+}
+
+.h3_title {
+  padding-bottom: 10px;
+  font-size: 20px;
+  letter-spacing: -1px;
+  font-weight: 600;
+  border-bottom: 2px solid gray;
+}
+.desc {
+  padding: 15px 0;
+  color: var(--desc-color);
+  font-size: 15px;
+  letter-spacing: -1px;
+}
+
+.tap_box {
+  padding-top: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+.button_box {
+  display: flex;
+  padding-top: 20px;
+}
+.button_box.sns {
+  margin-top: 20px;
+  justify-content: space-around;
+}
+.btn_sns {
+  display: block;
+  width: 90px;
+  height: 90px;
+  padding: 10px 0;
+  background-color: yellowgreen;
+  font-size: 15px;
+}
+
+/**/

@@ -1,10 +1,78 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<a th:href="@{/join/join_basic}">회원가입</a>
-</body>
+<html xmlns:th="http://www.thymeleaf.org"></html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <title>월간방앗간</title>
+  </head>
+  <body>
+    <header>
+      <div class="gnb_util">
+        <ul>
+          <li>
+            <a href="#" class="gnb_util__join">회원가입</a>
+          </li>
+          <li><a href="#" class="gnb_util__login">로그인</a></li>
+          <li><a href="#">my찜</a></li>
+          <li><a href="#">주문현황</a></li>
+          <li><a href="#">더보기</a></li>
+        </ul>
+      </div>
+      <div class="gnb_box">
+        <div class="logo">로고 이미지</div>
+        <ul>
+          <li><a href="#">월간방앗간 소개</a></li>
+          <li><a href="#">나만의 떡 찾기</a></li>
+          <li><a href="#">월간방앗간 MENU</a></li>
+          <li><a href="#">이벤트</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <section class="content_box">
+      <!-- 메인-->
+      <div class="main_wrap banner">
+        <div class="main_slider">
+          <ul class="slider_list">
+            <li class="slider_list__slide">슬라이드</li>
+            <li class="slider_list__slide">슬라이드</li>
+          </ul>
+        </div>
+      </div>
+      <div class="main_wrap bottom">
+        <div class="main_box">
+          <div class="text_box">
+            <p>내용1</p>
+            <p>내용2</p>
+          </div>
+          <a href="#">나만의 간식 찾으러 가기</a>
+        </div>
+        <div class="main_box">
+          <div class="search_box">
+            <div class="search_input">
+              <input
+                type="text"
+                class="search_box__bar"
+                placeholder="#해시태그 살펴볼까요?"
+              />
+            </div>
+            <div class="search_blur">
+              <div class="textbox">
+                <span>회원가입 후 확인이 가능해요!</span>
+                <a th:href="@{/join/join_basic}">회원가입하러 가기</a>
+              </div>
+            </div>
+            <!-- 비회원 상태시 hidden-->
+            <div class="search_tag hidden">
+              <span class="tag">#추천키워드</span>
+              <span class="tag">#추천키워드</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>

@@ -1,0 +1,60 @@
+header {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.gnb_util {
+  display: flex;
+  justify-content: flex-end;
+  padding: 7px 30px;
+  background-color: var(--header-dark-color);
+}
+.gnb_util ul {
+  display: flex;
+  padding-right: 40px;
+}
+.gnb_util li:last-child {
+  margin-right: 0;
+}
+.gnb_util ul li {
+  margin-right: 10px;
+}
+
+.gnb_util ul li a {
+  color: white;
+  font-size: 13px;
+}
+.gnb_util ul li a:hover {
+  font-weight: 600;
+}
+
+.gnb_box {
+  padding: 0 30px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.gnb_box .logo {
+  display: inline-block;
+  padding-right: 80px;
+}
+.gnb_box ul {
+  display: flex;
+}
+.gnb_box li:last-child {
+  margin-right: 0;
+}
+.gnb_box ul li {
+  margin-right: 25px;
+}
+.gnb_box ul li a {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -2px;
+  color: var(--header-dark-color);
+}
+.gnb_box ul li a:hover {
+  color: var(--btn-emp-color);
+}

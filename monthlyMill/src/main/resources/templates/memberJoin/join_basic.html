@@ -43,29 +43,99 @@
                   <th><span>아이디</span></th>
                   <td>
                     <input type="text" name="inputId" />
+                    <input
+                      type="hidden"
+                      name="idDupCheck"
+                      value="idDupUncheck"
+                    />
                     <button type="button" id="idCheck">중복조회</button>
+                    <div class="idDupMsg desc_s">아이디 체크 메시지</div>
                   </td>
                 </tr>
                 <tr>
                   <th><span>비밀번호</span></th>
-                  <td><input type="password" /></td>
+                  <td>
+                    <input type="password" name="inputPw" />
+                    <input type="hidden" name="pWCheck" value="unusable" />
+                    <div class="pwValidationMsg desc_s">
+                      비밀번호 체크 메시지
+                    </div>
+                  </td>
                 </tr>
                 <tr>
                   <th><span>비밀번호 확인</span></th>
-                  <td><input type="password" /></td>
+                  <td>
+                    <input type="password" name="inputPwConfirm" />
+                    <input
+                      type="hidden"
+                      name="pWConfirmCheck"
+                      value="unusable"
+                    />
+                    <div class="inputPwConfirmMsg desc_s">
+                      비밀번호 일치 체크 메시지
+                    </div>
+                  </td>
                 </tr>
                 <tr>
                   <th><span>닉네임</span></th>
-                  <td><input type="text" /></td>
+                  <td>
+                    <input type="text" name="inputName" />
+                    <input type="hidden" name="nameCheck" value="unusable" />
+                    <div class="nameValidationMsg desc_s">
+                      닉네임 체크 메시지
+                    </div>
+                  </td>
                 </tr>
                 <tr>
+                  <!--년/월/일 칸 세개로 나눴습니다! (yyyy-mm-dd )-->
                   <th><span>나이</span></th>
-                  <td><input type="number" /></td>
+                  <td>
+                    <div class="birth_yy">
+                      <input
+                        type="number"
+                        id="yyyy"
+                        maxlength="4"
+                        placeholder="년"
+                        name="inputAge"
+                      />
+                    </div>
+                    <div class="birth_mm">
+                      <select id="mm">
+                        <option>월</option>
+                        <option value="01">1</option>
+                        <option value="02">2</option>
+                        <option value="03">3</option>
+                        <option value="04">4</option>
+                        <option value="05">5</option>
+                        <option value="06">6</option>
+                        <option value="07">7</option>
+                        <option value="08">8</option>
+                        <option value="09">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                      </select>
+                    </div>
+                    <div class="birth_dd">
+                      <input
+                        type="number"
+                        id="dd"
+                        maxlength="2"
+                        placeholder="일"
+                      />
+                    </div>
+                    <input type="number" />
+                  </td>
                 </tr>
                 <tr>
                   <th><span>성별</span></th>
                   <td>
-                    <input type="radio" id="sex_male" name="sex" value="male" />
+                    <input
+                      type="radio"
+                      id="sex_male"
+                      name="inputSex"
+                      value="male"
+                    />
                     <label for="sex_male">남</label>
                     <input
                       type="radio"
@@ -88,6 +158,10 @@
           </div>
         </form>
       </div>
+
+      <!-- js 파일 -->
+      <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+      <script type="text/javascript" th:src="@{/js/memberJoin.js}"></script>
 
       <!--넘어가는 버튼-->
       <div class="button_box">

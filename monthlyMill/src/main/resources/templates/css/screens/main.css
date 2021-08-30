@@ -1,0 +1,12 @@
+.main_wrap {
+  width: 100%;
+  display: flex;
+  border: 1px solid gray;
+}
+.main_slider {
+}
+
+.main_box {
+  width: 50%;
+  border: 1px solid gray;
+}
