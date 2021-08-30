@@ -25,12 +25,15 @@ public class JoinController {
 		this.joinService = joinService;
 	}
 	
-	//회원가입
+	//기본정보 입력창 (전부 필수입력란)
 	@GetMapping("/join_basic")
-	public String memberJoin() {
+	public String memberJoinBasic() {
 		return "/memberJoin/join_basic";
 	}
 	
+	
+	
+	//아이디 중복 확인
 	@PostMapping("/memberIdCheck")
 	@ResponseBody
 	public boolean getMemberIdCheckResult(@RequestParam (name = "inputId", required = false) String inputId) {
@@ -38,6 +41,12 @@ public class JoinController {
 		boolean idCheckResult = joinService.getMemberInfoById(inputId);
 		log.info("아이디 중복 확인: {}", idCheckResult);
 		return idCheckResult;
+	}
+	
+	//추가정보 입력창 (전부 선택입력란)
+	@GetMapping("/join_additory")
+	public String memberJoinAdditory() {
+		return "/memberJoin/join_additory";
 	}
 
 }
