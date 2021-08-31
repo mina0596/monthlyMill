@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link type="text/css" rel="stylesheet" href="style.css" />
+    <link type="text/css" rel="stylesheet" href="../css/style.css" />
     <title>월간방앗간</title>
   </head>
   <body>
@@ -47,42 +47,47 @@
                       type="hidden"
                       name="idDupCheck"
                       value="idDupUncheck"
+                      required
                     />
                     <button type="button" id="idCheck">중복조회</button>
-                    <div class="idDupMsg desc_s">아이디 체크 메시지</div>
+                    <div class="desc_s">
+                      <span class="idDupMsg">아이디 체크 메시지</span>
+                    </div>
                   </td>
                 </tr>
                 <tr>
                   <th><span>비밀번호</span></th>
                   <td>
-                    <input type="password" name="inputPw" />
+                    <input type="password" name="inputPw" required />
                     <input type="hidden" name="pWCheck" value="unusable" />
-                    <div class="pwValidationMsg desc_s">
-                      비밀번호 체크 메시지
+                    <div class="desc_s">
+                      <span class="pwValidationMsg">비밀번호 체크 메시지</span>
                     </div>
                   </td>
                 </tr>
                 <tr>
                   <th><span>비밀번호 확인</span></th>
                   <td>
-                    <input type="password" name="inputPwConfirm" />
+                    <input type="password" name="inputPwConfirm" required />
                     <input
                       type="hidden"
                       name="pWConfirmCheck"
                       value="unusable"
                     />
-                    <div class="inputPwConfirmMsg desc_s">
-                      비밀번호 일치 체크 메시지
+                    <div class="desc_s">
+                      <span class="inputPwConfirmMsg"
+                        >비밀번호 일치 체크 메시지</span
+                      >
                     </div>
                   </td>
                 </tr>
                 <tr>
                   <th><span>닉네임</span></th>
                   <td>
-                    <input type="text" name="inputName" />
+                    <input type="text" name="inputName" required />
                     <input type="hidden" name="nameCheck" value="unusable" />
-                    <div class="nameValidationMsg desc_s">
-                      닉네임 체크 메시지
+                    <div class="desc_s">
+                      <span class="nameValidationMsg">닉네임 체크 메시지</span>
                     </div>
                   </td>
                 </tr>
@@ -124,7 +129,9 @@
                         placeholder="일"
                       />
                     </div>
-                    <input type="number" />
+                    <div class="desc_s">
+                      <span></span>
+                    </div>
                   </td>
                 </tr>
                 <tr>
@@ -140,7 +147,7 @@
                     <input
                       type="radio"
                       id="sex_female"
-                      name="sex"
+                      name="inputSex"
                       value="female"
                     />
                     <label for="sex_female">여</label>
@@ -149,8 +156,20 @@
                 <tr>
                   <th><span>본인인증</span></th>
                   <td>
-                    <input type="tel" placeholder="휴대폰번호" />
-                    <button>인증하기</button>
+                    <input
+                      type="tel"
+                      id="phoneNum"
+                      placeholder="휴대폰번호"
+                      maxlength="13"
+                      pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
+                      required
+                    />
+                    <button class="btn_identify" id="identifyBtn">
+                      인증하기
+                    </button>
+                    <div class="desc_s">
+                      <span class="phoneValidationMsg">본인인증 메시지</span>
+                    </div>
                   </td>
                 </tr>
               </tbody>
@@ -160,13 +179,19 @@
       </div>
 
       <!-- js 파일 -->
+      <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script
+        type="text/javascript"
+        src="../../static/js/memberJoin.js"
+      ></script>
+      <!--
       <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
       <script type="text/javascript" th:src="@{/js/memberJoin.js}"></script>
-
+      -->
       <!--넘어가는 버튼-->
       <div class="button_box">
         <a href="#" id="btn_prev" class="btn common">이전</a>
-        <a href="join_additory.html" id="btn_next" class="btn emp">다음</a>
+        <input type="submit" id="btn_next" class="btn emp" value="다음" />
       </div>
     </section>
   </body>

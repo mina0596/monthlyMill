@@ -1,7 +1,13 @@
 /*회원가입*/
 .content_box {
+  display: flex;
+  flex-direction: column;
   width: 100%;
 }
+.join_order {
+  margin: 30px auto 0;
+}
+
 .join_cont {
   margin: 50px auto;
   padding: 3px;
@@ -21,6 +27,15 @@
 }
 .join_order ol li {
   margin-right: 10px;
+}
+
+/*테이블*/
+.join_box table th,
+td {
+  padding: 5px 0;
+}
+.join_box table th {
+  text-align: left;
 }
 
 .h3_title {
