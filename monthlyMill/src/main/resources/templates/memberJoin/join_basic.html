@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link type="text/css" rel="stylesheet" href="style.css" />
+    <link type="text/css" rel="stylesheet" href="../css/style.css" />
     <title>월간방앗간</title>
   </head>
   <body>
@@ -28,7 +28,7 @@
 
       <!-- 2단계 -->
       <div class="join_cont">
-        <form method="post" id="memberJoinForm" class="formTerms" th:action="@{/join/join_basic}">
+        <form method="post" id="memberJoin" class="formTerms">
           <div class="join_box">
             <!--필수 정보-->
             <h3 class="h3_title">필수정보 입력</h3>
@@ -43,57 +43,106 @@
                   <th><span>아이디</span></th>
                   <td>
                     <input type="text" name="inputId" />
-                    <input type="hidden" name="idDupCheck" value="idDupUncheck"/>
-                    <button type="button" class="idCheck">중복조회</button>
+                    <input
+                      type="hidden"
+                      name="idDupCheck"
+                      value="idDupUncheck"
+                      required
+                    />
+                    <button type="button" id="idCheck">중복조회</button>
+                    <div class="desc_s">
+                      <span class="idDupMsg">아이디 체크 메시지</span>
+                    </div>
                   </td>
-                </tr>
-                <tr>
-                	<!-- 아이디 입력란 바로 아래에 작게 나오게 해주세요! -->
-                	<td class="idDupMsg"></td>
                 </tr>
                 <tr>
                   <th><span>비밀번호</span></th>
                   <td>
-                  	<input type="password" name="inputPw"/>
-                  	<input type="hidden" name="pWCheck" value="unusable"/>
+                    <input type="password" name="inputPw" required />
+                    <input type="hidden" name="pWCheck" value="unusable" />
+                    <div class="desc_s">
+                      <span class="pwValidationMsg">비밀번호 체크 메시지</span>
+                    </div>
                   </td>
-                </tr>
-                <tr>
-                	<!-- 비밀번호 입력란 바로 아래에 작게 나오게 해주세요! -->
-                	<td class="pwValidationMsg"></td>
                 </tr>
                 <tr>
                   <th><span>비밀번호 확인</span></th>
                   <td>
-                  	<input type="password" name="inputPwConfirm"/>
-                  	<input type="hidden" name="pWConfirmCheck" value="unusable"/>
+                    <input type="password" name="inputPwConfirm" required />
+                    <input
+                      type="hidden"
+                      name="pWConfirmCheck"
+                      value="unusable"
+                    />
+                    <div class="desc_s">
+                      <span class="inputPwConfirmMsg"
+                        >비밀번호 일치 체크 메시지</span
+                      >
+                    </div>
                   </td>
                 </tr>
                 <tr>
-                	<!-- 비밀번호 확인 입력란 바로 아래에 작게 나오게 해주세요! -->
-                	<td class="inputPwConfirmMsg"></td>
-                </tr>
-                <tr>
-                <!-- 일단 유효성검사는 이름으로 설정해놓음  -->
                   <th><span>닉네임</span></th>
                   <td>
-                  	<input type="text" name="inputName"/>
-                  	<input type="hidden" name="nameCheck" value="unusable"/>
+                    <input type="text" name="inputName" required />
+                    <input type="hidden" name="nameCheck" value="unusable" />
+                    <div class="desc_s">
+                      <span class="nameValidationMsg">닉네임 체크 메시지</span>
+                    </div>
                   </td>
                 </tr>
                 <tr>
-                	<!-- 닉네임 입력란 바로 아래에 작게 나오게 해주세요! -->
-                	<td class="nameValidationMsg"></td>
-                </tr>
-                <tr>
+                  <!--년/월/일 칸 세개로 나눴습니다! (yyyy-mm-dd )-->
                   <th><span>나이</span></th>
-                  <!-- 날짜를 입력하게 수정해주세요! -->
-                  <td><input type="number" name="inputAge"/></td>
+                  <td>
+                    <div class="birth_yy">
+                      <input
+                        type="number"
+                        id="yyyy"
+                        maxlength="4"
+                        placeholder="년"
+                        name="inputAge"
+                      />
+                    </div>
+                    <div class="birth_mm">
+                      <select id="mm">
+                        <option>월</option>
+                        <option value="01">1</option>
+                        <option value="02">2</option>
+                        <option value="03">3</option>
+                        <option value="04">4</option>
+                        <option value="05">5</option>
+                        <option value="06">6</option>
+                        <option value="07">7</option>
+                        <option value="08">8</option>
+                        <option value="09">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                      </select>
+                    </div>
+                    <div class="birth_dd">
+                      <input
+                        type="number"
+                        id="dd"
+                        maxlength="2"
+                        placeholder="일"
+                      />
+                    </div>
+                    <div class="desc_s">
+                      <span></span>
+                    </div>
+                  </td>
                 </tr>
                 <tr>
                   <th><span>성별</span></th>
                   <td>
-                    <input type="radio" id="sex_male" name="inputSex" value="male" />
+                    <input
+                      type="radio"
+                      id="sex_male"
+                      name="inputSex"
+                      value="male"
+                    />
                     <label for="sex_male">남</label>
                     <input
                       type="radio"
@@ -107,31 +156,42 @@
                 <tr>
                   <th><span>본인인증</span></th>
                   <td>
-                  <!-- type이 tel 인데 왜 하이픈이 없이 적힐까요? -->
-                    <input type="tel" placeholder="휴대폰번호" name="inputPhone"/>
-                    <input type="hidden" name="phoneCheck" value="unusable"/>
-                    <button>인증하기</button>
+                    <input
+                      type="tel"
+                      id="phoneNum"
+                      placeholder="휴대폰번호"
+                      maxlength="13"
+                      pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
+                      required
+                    />
+                    <button class="btn_identify" id="identifyBtn">
+                      인증하기
+                    </button>
+                    <div class="desc_s">
+                      <span class="phoneValidationMsg">본인인증 메시지</span>
+                    </div>
                   </td>
-                </tr>
-                <tr>
-                	<!-- 휴대폰번호 입력란 바로 아래에 작게 나오게 해주세요! -->
-                	<td class="phoneValidationMsg"></td>
                 </tr>
               </tbody>
             </table>
           </div>
         </form>
       </div>
-      
-      <!-- js 파일 -->
+
+      <!-- js 파일이 아래쪽 링크는 제쪽에서 안먹어서 테스트용으로 바꿔놨음! 이쪽 script들 주석처리하거나 삭제하고 다시 쓰시면 됩니다 (아래쪽이 원래 민아씨가 쓰시던 거에요) -->
+      <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script
+        type="text/javascript"
+        src="../../static/js/memberJoin.js"
+      ></script>
+      <!--
       <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
       <script type="text/javascript" th:src="@{/js/memberJoin.js}"></script>
-      
-		
+      -->
       <!--넘어가는 버튼-->
       <div class="button_box">
         <a href="#" id="btn_prev" class="btn common">이전</a>
-        <button id="btn_next" class="btn nextPageBtn" type="submit">다음</button>
+        <input type="submit" id="btn_next" class="btn emp" value="다음" />
       </div>
     </section>
   </body>

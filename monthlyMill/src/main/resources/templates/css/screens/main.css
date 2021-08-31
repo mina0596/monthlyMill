@@ -1,0 +1,73 @@
+:root {
+  --slider-width: 640px;
+}
+.main_wrap {
+  width: 100%;
+  display: flex;
+  border: 1px solid gray;
+}
+
+.slider {
+  position: relative;
+  margin: 0 auto;
+  width: var(--slider-width);
+  overflow: hidden;
+}
+.slider_arrows {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 3;
+  color: white;
+}
+.slider_button {
+  margin: 0 10px;
+}
+.slider_pager {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  z-index: 3;
+  display: block;
+  padding: 15px 30px;
+  border-radius: 10px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.slider_list {
+  display: flex;
+}
+.slider_list__slide img {
+  width: 640px;
+}
+
+/* 일정 width값 이하면 box 하나 아래로 이동되도록  */
+.main_box {
+  position: relative;
+  flex-grow: 1;
+  height: 8em;
+  border: 1px solid gray;
+  padding: 7px;
+}
+
+.search_input {
+  display: flex;
+}
+.search_icon {
+  width: 10%;
+}
+.search_bar {
+  width: 90%;
+  height: 2.5em;
+}
+.search_blur {
+  width: 50%;
+  background-color: thistle;
+}
+.search_textbox {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,14 @@
+/*로그인*/
+
+.login_button_box ul {
+  display: flex;
+  justify-content: center;
+}
+.login_button_box ul {
+  position: relative;
+}
+.login_button_box ul li a {
+  padding: 0 5px;
+  color: #adadad;
+  font-size: 14px;
+}

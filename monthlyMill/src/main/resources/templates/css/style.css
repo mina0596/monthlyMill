@@ -1,0 +1,51 @@
+@import "reset.css";
+
+/* Common Component */
+@import "components/header.css";
+
+/* Screens */
+@import "screens/main.css";
+@import "screens/login.css";
+@import "screens/join.css";
+
+:root {
+  --desc-color: rgb(147, 148, 147);
+
+  --header-dark-color: #101010;
+
+  --btn-common-color: #919191;
+  --btn-emp-color: #308034;
+  --btn-sub-color: #101010;
+}
+
+.btn {
+  background-color: var(--btn-common-color);
+  color: white;
+  border: none;
+  text-align: center;
+}
+.btn.sub {
+  background-color: var(--btn-sub-color);
+}
+.btn.emp {
+  background-color: var(--btn-emp-color);
+}
+.btn.mid {
+  width: 47%;
+  padding: 15px 0;
+  border-radius: 30px;
+  font-size: 15px;
+}
+.btn.big {
+  width: 100%;
+  padding: 25px;
+  border-radius: 40px;
+  font-size: 18px;
+}
+.hidden {
+  display: none;
+}
+.desc_s {
+  font-size: 12px;
+  color: var(--desc-color);
+}
