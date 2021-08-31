@@ -33,6 +33,9 @@ $(function(){
 })
 
 
+
+/* 프론트 파트 */
+
 // 본인인증 번호입력 시 하이픈 자동추가
 let autoHypenPhone = function(str){
 	str = str.replace(/[^0-9]/g, '');
