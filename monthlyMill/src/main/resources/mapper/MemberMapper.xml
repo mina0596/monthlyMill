@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project.monthlyMill.dao.MemberMapper">
+	<resultMap type="Member"				id="memberResultMap">
+		<result property="memberId" 				column="member_id"/>
+		<result property="memberPw" 				column="member_pw"/>
+		<result property="memberCateNum" 			column="member_cate_num"/>
+		<result property="memberName" 				column="member_name"/>
+		<result property="memberAge" 				column="member_age"/>
+		<result property="memberGender" 			column="member_gender"/>
+		<result property="memberPhone" 				column="member_phone"/>
+		<result property="memberIdentityCheck" 		column="identity_check"/>
+		<result property="memberAllergy" 			column="member_allergy"/>
+		<result property="memberDisease" 			column="member_disease"/>
+		<result property="businessReg" 				column="memberInfoRegDate"/>
+		<result property="businessDoc" 				column="business_doc"/>
+		<result property="businessWeb" 				column="business_web"/>
+		<result property="memberInfoModifyDate" 	column="member_info_modify_date"/>
+		<result property="memberInfoRegDate" 		column="member_info_reg_date"/>
+	</resultMap>
+	
+	<select id="getMemberInfoById" parameterType="String" resultMap="memberResultMap">
+		SELECT member_id, member_pw, member_cate_num, member_name, member_age, member_gender, member_phone, identity_check, member_allergy, member_disease, business_reg, business_doc, business_web, member_info_modify_date, member_info_reg_date
+		FROM member_info
+		WHERE member_id = #{inputId};
+	</select>
+	
+</mapper>

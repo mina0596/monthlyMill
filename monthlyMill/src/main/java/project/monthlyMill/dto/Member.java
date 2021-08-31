@@ -5,7 +5,7 @@ public class Member {
 	private String memberPw;
 	private int memberCateNum;
 	private String memberName;
-	private String memberAge;
+	private int memberAge;
 	private char memberGender;
 	private String memberPhone;
 	private char memberIdentityCheck;
@@ -41,10 +41,10 @@ public class Member {
 	public void setMemberName(String memberName) {
 		this.memberName = memberName;
 	}
-	public String getMemberAge() {
+	public int getMemberAge() {
 		return memberAge;
 	}
-	public void setMemberAge(String memberAge) {
+	public void setMemberAge(int memberAge) {
 		this.memberAge = memberAge;
 	}
 	public char getMemberGender() {
