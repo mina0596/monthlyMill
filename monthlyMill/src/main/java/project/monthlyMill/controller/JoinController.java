@@ -1,5 +1,10 @@
 package project.monthlyMill.controller;
 
+import javax.servlet.http.HttpSession;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -7,21 +12,50 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import project.monthlyMill.dto.Member;
+import project.monthlyMill.service.JoinService;
+
 @Controller
 @RequestMapping("/join")
 public class JoinController {
 	
-	//회원가입
+	private static final Logger log = LoggerFactory.getLogger(JoinController.class);
+	
+	private final JoinService joinService;
+	
+	@Autowired
+	public JoinController(JoinService joinService) {
+		this.joinService = joinService;
+	}
+	
+	//기본정보 입력창 (전부 필수입력란)
 	@GetMapping("/join_basic")
-	public String memberJoin() {
+	public String memberJoinBasic() {
 		return "/memberJoin/join_basic";
 	}
 	
+	//아이디 중복 확인
 	@PostMapping("/memberIdCheck")
 	@ResponseBody
-	public Boolean getMemberIdCheckResult(@RequestParam (value = "inputId") String inputId) {
-		
-		return true;
+	public boolean getMemberIdCheckResult(@RequestParam (name = "inputId", required = false) String inputId) {
+		log.info("입력된 아이디 확인: {}", inputId);
+		boolean idCheckResult = joinService.getMemberInfoById(inputId);
+		log.info("아이디 중복 확인: {}", idCheckResult);
+		return idCheckResult;
+	}
+	
+	//기본정보 입력창 (전부 필수입력란) 세션에 저장
+	@PostMapping("/join_basic")
+	public String getJoinBasicInfo(Member member, HttpSession session) {
+		log.info("member 기본정보란 확인:{}", member);
+		session.setAttribute("joinInfo", member);
+		return "/memberJoin/join_additory";
+	}
+	
+	//추가정보 입력창 (전부 선택입력란)
+	@GetMapping("/join_additory")
+	public String memberJoinAdditory() {
+		return "/memberJoin/join_additory";
 	}
 
 }
