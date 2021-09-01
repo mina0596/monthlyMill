@@ -6,7 +6,8 @@ public class Member {
 	private int memberCateNum;
 	private String memberName;
 	private int memberAge;
-	private char memberGender;
+	private String memberBday;
+	private String memberGender;
 	private String memberPhone;
 	private char memberIdentityCheck;
 	private String memberAllergy;
@@ -47,10 +48,16 @@ public class Member {
 	public void setMemberAge(int memberAge) {
 		this.memberAge = memberAge;
 	}
-	public char getMemberGender() {
+	public String getMemberBday() {
+		return memberBday;
+	}
+	public void setMemberBday(String memberBday) {
+		this.memberBday = memberBday;
+	}
+	public String getMemberGender() {
 		return memberGender;
 	}
-	public void setMemberGender(char memberGender) {
+	public void setMemberGender(String memberGender) {
 		this.memberGender = memberGender;
 	}
 	public String getMemberPhone() {
@@ -107,16 +114,17 @@ public class Member {
 	public void setMemberInfoRegDate(String memberInfoRegDate) {
 		this.memberInfoRegDate = memberInfoRegDate;
 	}
-	
 	@Override
 	public String toString() {
 		return "Member [memberId=" + memberId + ", memberPw=" + memberPw + ", memberCateNum=" + memberCateNum
-				+ ", memberName=" + memberName + ", memberAge=" + memberAge + ", memberGender=" + memberGender
-				+ ", memberPhone=" + memberPhone + ", memberIdentityCheck=" + memberIdentityCheck + ", memberAllergy="
-				+ memberAllergy + ", memberDisease=" + memberDisease + ", businessReg=" + businessReg + ", businessDoc="
-				+ businessDoc + ", businessWeb=" + businessWeb + ", memberInfoModifyDate=" + memberInfoModifyDate
-				+ ", memberInfoRegDate=" + memberInfoRegDate + "]";
+				+ ", memberName=" + memberName + ", memberAge=" + memberAge + ", memberBday=" + memberBday
+				+ ", memberGender=" + memberGender + ", memberPhone=" + memberPhone + ", memberIdentityCheck="
+				+ memberIdentityCheck + ", memberAllergy=" + memberAllergy + ", memberDisease=" + memberDisease
+				+ ", businessReg=" + businessReg + ", businessDoc=" + businessDoc + ", businessWeb=" + businessWeb
+				+ ", memberInfoModifyDate=" + memberInfoModifyDate + ", memberInfoRegDate=" + memberInfoRegDate + "]";
 	}
+	
+	
 	
 	
 	
