@@ -11,7 +11,7 @@ $(function(){
 	$('input[name="inputId"]').keyup(function(){
 		$('input[name="idDupCheck"]').val('idDupUncheck');
 	});
-	$('.idCheck').click(function(){
+	$('#idCheck').click(function(){
 		var regex = /^[a-z][a-z\d]{4,11}$/;
 		inputId = $('input[name="inputId"]').val();
 		var result = regex.exec(inputId);
@@ -95,6 +95,7 @@ $(function(){
 	
 	//다음페이지 버튼 클릭 시 입력사항들 확인
 	$('.nextPageBtn').click(function(){
+		console.log('뭐지?')
 		var submitFlag = true;
 		
 		if($('input[name="inputId"]').val() == '' || $('input[name="inputId"]').val() == undefined){
@@ -171,7 +172,7 @@ $(function(){
 			return submitFlag;
 		}
 		
-		if(submitFlag) $('#memberJoinForm').submit();
+		if(submitFlag) $('#memberJoin').submit();
 	
 	});
 	
