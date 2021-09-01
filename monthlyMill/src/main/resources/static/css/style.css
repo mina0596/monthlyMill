@@ -9,6 +9,7 @@
 @import "screens/join.css";
 
 :root {
+  --font: "ChosunGu";
   --desc-color: rgb(147, 148, 147);
 
   --header-dark-color: #101010;
@@ -16,6 +17,17 @@
   --btn-common-color: #919191;
   --btn-emp-color: #308034;
   --btn-sub-color: #101010;
+}
+
+h1,
+h2,
+h3,
+p,
+span,
+button,
+input,
+div {
+  font-family: var(--font);
 }
 
 .btn {
@@ -30,8 +42,16 @@
 .btn.emp {
   background-color: var(--btn-emp-color);
 }
+.btn_text {
+  background-color: transparent;
+  border: none;
+  color: var(--btn-emp-color);
+  padding: 1px;
+  border-bottom: 1px solid var(--btn-emp-color);
+}
 .btn.mid {
-  width: 47%;
+  margin: 0 10px;
+  width: 50%;
   padding: 15px 0;
   border-radius: 30px;
   font-size: 15px;
@@ -48,4 +68,13 @@
 .desc_s {
   font-size: 12px;
   color: var(--desc-color);
+}
+
+/* font */
+@font-face {
+  font-family: "ChosunGu";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
 }

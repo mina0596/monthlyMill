@@ -20,10 +20,16 @@
   justify-content: space-between;
   width: 100%;
   z-index: 3;
-  color: white;
 }
 .slider_button {
   margin: 0 10px;
+  width: 24px;
+  height: 24px;
+  font-size: 0px;
+  color: transparent;
+  background: url(../../img/icon_arrow.svg);
+  fill: #fff;
+  cursor: pointer;
 }
 .slider_pager {
   position: absolute;
