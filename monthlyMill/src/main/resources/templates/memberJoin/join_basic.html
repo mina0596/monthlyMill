@@ -39,8 +39,6 @@
                 <col width="75%" />
               </colgroup>
               <tbody>
-                <!--이거 이메일 양식으로 바꾸고 년월일부분 css수정-->
-                <!--버튼 사이즈 class추가-->
                 <tr>
                   <th><span>아이디(이메일)</span></th>
                   <td>
@@ -50,7 +48,7 @@
                       name="idDupCheck"
                       value="idDupUncheck"
                     />
-                    <button type="button" id="idCheck">중복조회</button>
+                    <button type="button" class="idCheck">중복조회</button>
                     <div class="desc_s">
                       <span class="idDupMsg"> </span>
                     </div>
@@ -95,10 +93,10 @@
                   <th><span>생년월일</span></th>
                   <td>
                     <div class="birth_box">
-                      <div class="birth_yy">
+                      <div>
                         <input
                           type="number"
-                          id="yyyy"
+                          class="birthYear"
                           maxlength="4"
                           placeholder="년(4자리)"
                           name="inputAge"
@@ -106,8 +104,8 @@
                           required
                         />
                       </div>
-                      <div class="birth_mm">
-                        <select id="mm" required>
+                      <div>
+                        <select class="birthMonth" required>
                           <option>월</option>
                           <option value="01">1월</option>
                           <option value="02">2월</option>
@@ -123,8 +121,8 @@
                           <option value="12">12월</option>
                         </select>
                       </div>
-                      <div class="birth_dd">
-                        <select id="dd" required>
+                      <div>
+                        <select class="birthDay" required>
                           <option>일</option>
                           <option value="01">1일</option>
                           <option value="02">2일</option>
@@ -172,14 +170,14 @@
                       type="radio"
                       id="sex_male"
                       name="inputSex"
-                      value="male"
+                      value="남"
                     />
                     <label for="sex_male">남</label>
                     <input
                       type="radio"
                       id="sex_female"
                       name="inputSex"
-                      value="female"
+                      value="여"
                     />
                     <label for="sex_female">여</label>
                   </td>
@@ -195,9 +193,7 @@
                       pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
                       required
                     />
-                    <button class="btn_identify" id="identifyBtn">
-                      인증하기
-                    </button>
+                    <button type="button" class="identifyBtn">인증하기</button>
                     <div class="desc_s">
                       <span class="phoneValidationMsg">본인인증 메시지</span>
                     </div>
@@ -208,13 +204,8 @@
           </div>
           <!--넘어가는 버튼-->
           <div class="button_box">
-            <a href="#" id="btn_prev" class="btn common mid">이전</a>
-            <input
-              type="submit"
-              id="btn_next"
-              class="btn emp mid"
-              value="다음"
-            />
+            <a href="#" class="prevPageBtn btn common mid">이전</a>
+            <input type="submit" class="nextPageBtn btn emp mid" value="다음" />
           </div>
         </form>
       </div>
