@@ -37,6 +37,16 @@ td {
 .join_box table th {
   text-align: left;
 }
+.birth_box {
+  display: flex;
+}
+.birth_box input,
+select {
+  width: 80px;
+}
+.join_cont .desc_s {
+  margin-top: 3px;
+}
 
 .h3_title {
   padding-bottom: 10px;
