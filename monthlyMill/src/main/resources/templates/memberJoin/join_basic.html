@@ -39,19 +39,20 @@
                 <col width="75%" />
               </colgroup>
               <tbody>
+                <!--이거 이메일 양식으로 바꾸고 년월일부분 css수정-->
+                <!--버튼 사이즈 class추가-->
                 <tr>
-                  <th><span>아이디</span></th>
+                  <th><span>아이디(이메일)</span></th>
                   <td>
-                    <input type="text" name="inputId" />
+                    <input type="email" name="inputId" required />
                     <input
                       type="hidden"
                       name="idDupCheck"
                       value="idDupUncheck"
-                      required
                     />
                     <button type="button" id="idCheck">중복조회</button>
                     <div class="desc_s">
-                      <span class="idDupMsg">아이디 체크 메시지</span>
+                      <span class="idDupMsg"> </span>
                     </div>
                   </td>
                 </tr>
@@ -61,7 +62,7 @@
                     <input type="password" name="inputPw" required />
                     <input type="hidden" name="pWCheck" value="unusable" />
                     <div class="desc_s">
-                      <span class="pwValidationMsg">비밀번호 체크 메시지</span>
+                      <span class="pwValidationMsg"> </span>
                     </div>
                   </td>
                 </tr>
@@ -75,9 +76,7 @@
                       value="unusable"
                     />
                     <div class="desc_s">
-                      <span class="inputPwConfirmMsg"
-                        >비밀번호 일치 체크 메시지</span
-                      >
+                      <span class="inputPwConfirmMsg"> </span>
                     </div>
                   </td>
                 </tr>
@@ -87,47 +86,79 @@
                     <input type="text" name="inputName" required />
                     <input type="hidden" name="nameCheck" value="unusable" />
                     <div class="desc_s">
-                      <span class="nameValidationMsg">닉네임 체크 메시지</span>
+                      <span class="nameValidationMsg"> </span>
                     </div>
                   </td>
                 </tr>
                 <tr>
                   <!--년/월/일 칸 세개로 나눴습니다! (yyyy-mm-dd )-->
-                  <th><span>나이</span></th>
+                  <th><span>생년월일</span></th>
                   <td>
-                    <div class="birth_yy">
-                      <input
-                        type="number"
-                        id="yyyy"
-                        maxlength="4"
-                        placeholder="년"
-                        name="inputAge"
-                      />
-                    </div>
-                    <div class="birth_mm">
-                      <select id="mm">
-                        <option>월</option>
-                        <option value="01">1</option>
-                        <option value="02">2</option>
-                        <option value="03">3</option>
-                        <option value="04">4</option>
-                        <option value="05">5</option>
-                        <option value="06">6</option>
-                        <option value="07">7</option>
-                        <option value="08">8</option>
-                        <option value="09">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                      </select>
-                    </div>
-                    <div class="birth_dd">
-                      <input
-                        type="number"
-                        id="dd"
-                        maxlength="2"
-                        placeholder="일"
-                      />
+                    <div class="birth_box">
+                      <div class="birth_yy">
+                        <input
+                          type="number"
+                          id="yyyy"
+                          maxlength="4"
+                          placeholder="년(4자리)"
+                          name="inputAge"
+                          pattern="[0-9]{4}"
+                          required
+                        />
+                      </div>
+                      <div class="birth_mm">
+                        <select id="mm" required>
+                          <option>월</option>
+                          <option value="01">1월</option>
+                          <option value="02">2월</option>
+                          <option value="03">3월</option>
+                          <option value="04">4월</option>
+                          <option value="05">5월</option>
+                          <option value="06">6월</option>
+                          <option value="07">7월</option>
+                          <option value="08">8월</option>
+                          <option value="09">9월</option>
+                          <option value="10">10월</option>
+                          <option value="11">11월</option>
+                          <option value="12">12월</option>
+                        </select>
+                      </div>
+                      <div class="birth_dd">
+                        <select id="dd" required>
+                          <option>일</option>
+                          <option value="01">1일</option>
+                          <option value="02">2일</option>
+                          <option value="03">3일</option>
+                          <option value="04">4일</option>
+                          <option value="05">5일</option>
+                          <option value="06">6일</option>
+                          <option value="07">7일</option>
+                          <option value="08">8일</option>
+                          <option value="09">9일</option>
+                          <option value="10">10일</option>
+                          <option value="11">11일</option>
+                          <option value="12">12일</option>
+                          <option value="13">13일</option>
+                          <option value="14">14일</option>
+                          <option value="15">15일</option>
+                          <option value="16">16일</option>
+                          <option value="17">17일</option>
+                          <option value="18">18일</option>
+                          <option value="19">19일</option>
+                          <option value="20">20일</option>
+                          <option value="21">21일</option>
+                          <option value="22">22일</option>
+                          <option value="23">23일</option>
+                          <option value="24">24일</option>
+                          <option value="25">25일</option>
+                          <option value="26">26일</option>
+                          <option value="27">27일</option>
+                          <option value="28">28일</option>
+                          <option value="29">29일</option>
+                          <option value="30">30일</option>
+                          <option value="31">31일</option>
+                        </select>
+                      </div>
                     </div>
                     <div class="desc_s">
                       <span></span>
@@ -175,6 +206,16 @@
               </tbody>
             </table>
           </div>
+          <!--넘어가는 버튼-->
+          <div class="button_box">
+            <a href="#" id="btn_prev" class="btn common mid">이전</a>
+            <input
+              type="submit"
+              id="btn_next"
+              class="btn emp mid"
+              value="다음"
+            />
+          </div>
         </form>
       </div>
 
@@ -188,11 +229,6 @@
       <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
       <script type="text/javascript" th:src="@{/js/memberJoin.js}"></script>
       -->
-      <!--넘어가는 버튼-->
-      <div class="button_box">
-        <a href="#" id="btn_prev" class="btn common">이전</a>
-        <input type="submit" id="btn_next" class="btn emp" value="다음" />
-      </div>
     </section>
   </body>
 </html>
