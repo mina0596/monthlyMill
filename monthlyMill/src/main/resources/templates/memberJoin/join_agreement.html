@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link type="text/css" rel="stylesheet" href="style.css" />
+    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
     <title>월간방앗간</title>
   </head>
   <body>
@@ -12,7 +12,7 @@
       <div class="join_order">
         <ol>
           <li class="icon">
-            <span>약관동의</span>
+            <span class="text emp">약관동의</span>
           </li>
           <li class="icon">
             <span>기본정보</span>
@@ -28,36 +28,103 @@
 
       <!-- 회원가입-->
       <div class="join_cont">
-        <h3 class="h3_title">약관동의</h3>
-        <div class="join_box">
-          <div class="agreement_all">
-            <!-- 약관동의 체크박스 잘 보이게 구현-->
-            <input type="checkbox" id="allAgree" />
-            <label class="check_off" for="allAgree"
-              >월간방앗간의 모든 약관을 확인하고 전부 동의합니다.</label
-            >
-          </div>
-          <div class="agreement_box">
-            <input type="checkbox" id="termAgree" />
-            <label class="check_off" for="allAgree"
-              >(필수)이용약관에 동의합니다.</label\
-            >
-            <span><a href="#"> 전체보기 </a></span>
-          </div>
-          <div class="agreement_box">
-            <input type="checkbox" id="termAgree" />
-            <label class="check_off" for="allAgree"
-              >(필수)개인정보 수집 및 이용에 동의합니다.</label
-            >
-            <span><a href="#"> 전체보기 </a></span>
-          </div>
-        </div>
-      </div>
+        <form method="post" id="memberJoin" class="formTerms">
+          <h3 class="h3_title">약관동의</h3>
+          <div class="join_box">
+            <div class="agreement_all">
+              <input type="checkbox" id="allAgree" class="checkAll checkbox" />
+              <label class="check_off" for="allAgree"
+                >월간방앗간의 모든 약관을 확인하고 전부 동의합니다.</label
+              >
+            </div>
 
-      <div class="button_box">
-        <a href="#" id="btn_prev" class="btn common">이전</a>
-        <a href="join_basic.html" id="btn_next" class="btn emp">다음</a>
+            <div class="agreement_box">
+              <div class="agreement_column">
+                <input
+                  type="checkbox"
+                  id="termAgree"
+                  class="checkRequired checkbox"
+                />
+                <label class="check_off" for="termAgree"
+                  >(필수)이용약관에 동의합니다.</label
+                >
+              </div>
+              <div class="agreement_column">
+                <button type="button" class="readDetail btn_text">
+                  전체보기
+                </button>
+              </div>
+            </div>
+            <div class="agreement_box">
+              <div class="agreement_column">
+                <input
+                  type="checkbox"
+                  id="infoAgree"
+                  class="checkRequired checkbox"
+                />
+                <label class="check_off" for="infoAgree"
+                  >(필수)개인정보 수집 및 이용에 동의합니다.</label
+                >
+              </div>
+              <div class="agreement_column">
+                <button type="button" class="readDetail btn_text">
+                  전체보기
+                </button>
+              </div>
+            </div>
+            <div class="agreement_box">
+              <div class="agreement_column">
+                <input
+                  type="checkbox"
+                  id="locationAgree"
+                  class="checkRequired checkbox"
+                />
+                <label class="check_off" for="locationAgree"
+                  >(필수)위치기반 서비스 이용에 동의합니다.</label
+                >
+              </div>
+              <div class="agreement_column">
+                <button type="button" class="readDetail btn_text">
+                  전체보기
+                </button>
+              </div>
+            </div>
+            <div class="agreement_box">
+              <div class="agreement_column">
+                <input
+                  type="checkbox"
+                  id="newsAgree"
+                  class="checkSelective checkbox"
+                />
+                <label class="check_off" for="newsAgree"
+                  >(선택)SMS, 이메일 정보수신에 동의합니다.</label
+                >
+              </div>
+              <div class="agreement_column">
+                <button type="button" class="readDetail btn_text">
+                  전체보기
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="button_box">
+            <a href="join_method.html" id="btn_prev" class="btn common mid"
+              >이전</a
+            >
+            <a href="join_basic.html" id="btn_next" class="btn emp mid">다음</a>
+          </div>
+        </form>
       </div>
     </section>
+
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script
+      type="text/javascript"
+      src="../../static/js/memberJoin_front.js"
+    ></script>
   </body>
 </html>

@@ -5,8 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link type="text/css" rel="stylesheet" href="css/style.css" />
-    <script defer src="../static/js/mainPage.js"></script>
+    <link type="text/css" rel="stylesheet" href="../static/css/style.css" />
     <title>월간방앗간</title>
   </head>
   <body>
@@ -38,37 +37,51 @@
       <div class="main_wrap banner">
         <div class="slider">
           <div class="slider_arrows">
-            <div class="slider_button prev" id="slidePrev">prev</div>
-            <div class="slider_button next" id="slideNext">next</div>
+            <div class="slider_button prev" id="slidePrev">
+              <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="slider_button next" id="slideNext">
+              <i class="fas fa-chevron-right"></i>
+            </div>
           </div>
           <div class="slider_pager">
             <span class="slider_pager__number">1/5</span>
           </div>
           <ul class="slider_list">
             <li class="slider_list__slide">
-              <img src="img/slide_1.jpg" alt="" srcset="" />
+              <img src="../static/img/slide_1.jpg" alt="" srcset="" />
             </li>
             <li class="slider_list__slide">
-              <img src="img/slide_2.jpg" alt="" srcset="" />
+              <img src="../static/img/slide_2.jpg" alt="" srcset="" />
             </li>
             <li class="slider_list__slide">
-              <img src="img/slide_3.jpg" alt="" srcset="" />
+              <img src="../static/img/slide_3.jpg" alt="" srcset="" />
             </li>
           </ul>
         </div>
       </div>
       <div class="main_wrap bottom">
-        <div class="main_box">
+        <div class="main_box main_box_text">
           <div class="text_box">
-            <p>내용1</p>
-            <p>내용2</p>
+            <div class="text_box_column top">
+              <p>
+                월간방앗간이 추천드리는 <br />
+                <span class="text emp">#나만의 떡</span> <br />
+                같이 선택하러 가봐요.
+              </p>
+            </div>
+            <a class="text_box_column bottom" href="#"
+              >나만의 떡 찾으러 가기
+              <i class="fas fa-chevron-right"></i>
+            </a>
           </div>
-          <a href="#">나만의 간식 찾으러 가기</a>
         </div>
-        <div class="main_box">
+        <div class="main_box main_box_search">
           <div class="search_box">
             <div class="search_input">
-              <div class="search_icon">아이콘</div>
+              <div class="search_icon">
+                <i class="fas fa-search"></i>
+              </div>
               <input
                 type="text"
                 class="search_bar"
@@ -89,5 +102,15 @@
         </div>
       </div>
     </section>
+
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script
+      type="text/javascript"
+      src="../static/js/mainPage_front.js"
+    ></script>
   </body>
 </html>
