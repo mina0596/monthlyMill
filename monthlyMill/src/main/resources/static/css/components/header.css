@@ -52,7 +52,7 @@ header {
 .gnb_box ul li a {
   font-size: 18px;
   font-weight: 600;
-  letter-spacing: -2px;
+  letter-spacing: -1px;
   color: var(--header-dark-color);
 }
 .gnb_box ul li a:hover {
