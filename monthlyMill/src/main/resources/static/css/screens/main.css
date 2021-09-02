@@ -1,5 +1,6 @@
 :root {
   --slider-width: 640px;
+  --slider-height: 400px;
 }
 .main_wrap {
   width: 100%;
@@ -7,10 +8,11 @@
   border: 1px solid gray;
 }
 
+/*상단 슬라이더 영역*/
 .slider {
   position: relative;
   margin: 0 auto;
-  width: var(--slider-width);
+  height: var(--slider-height);
   overflow: hidden;
 }
 .slider_arrows {
@@ -23,12 +25,8 @@
 }
 .slider_button {
   margin: 0 10px;
-  width: 24px;
-  height: 24px;
-  font-size: 0px;
-  color: transparent;
-  background: url(../../img/icon_arrow.svg);
-  fill: #fff;
+  font-size: 2em;
+  color: #fff;
   cursor: pointer;
 }
 .slider_pager {
@@ -37,7 +35,7 @@
   bottom: 10px;
   z-index: 3;
   display: block;
-  padding: 15px 30px;
+  padding: 10px 30px;
   border-radius: 10px;
   color: white;
   background-color: rgba(0, 0, 0, 0.6);
@@ -45,22 +43,55 @@
 
 .slider_list {
   display: flex;
+  width: 100%;
 }
 .slider_list__slide img {
-  width: 640px;
+  object-fit: contain;
 }
 
-/* 일정 width값 이하면 box 하나 아래로 이동되도록  */
+/*메인박스 영역*/
 .main_box {
+  display: flex;
+  flex-direction: column;
   position: relative;
   flex-grow: 1;
   height: 8em;
   border: 1px solid gray;
   padding: 7px;
 }
+.main_box_text {
+  min-height: 200px;
+  background: url(../../img/main_text_bg.jpg);
+  background-size: cover;
+  background-position: center center;
+}
 
+/*좌측 영역*/
+.text_box {
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto;
+  text-align: center;
+}
+.text_box_column {
+  margin-top: 15px;
+}
+.text_box_column.top {
+}
+.text_box_column.bottom {
+  padding: 8px 10px;
+}
+.text_box_column.bottom i {
+  font-size: 0.8em;
+}
+.text_box a {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+/*우측 검색 영역*/
 .search_input {
   display: flex;
+  align-items: center;
 }
 .search_icon {
   width: 10%;
