@@ -1,7 +1,7 @@
 /**
  * 
  */
-$(function(){
+ $(function(){
 	var inputId = $('input[name="inputId"]').val();
 	var inputName = $('input[name="inputName"]').val();
 	var inputAge = $('input[name="inputAge"]').val();
