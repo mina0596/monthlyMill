@@ -8,7 +8,8 @@ import project.monthlyMill.dto.Member;
 
 @Service
 public class JoinService {
-	
+
+	//의존성 주입
 	private final MemberMapper memberMapper;
 	
 	@Autowired
@@ -16,6 +17,7 @@ public class JoinService {
 		this.memberMapper = memberMapper;
 	}
 	
+	//==================================서비스 로직 시작=============================
 	public boolean getMemberInfoById(String inputId) {
 		Member memberInfoByIdResult = memberMapper.getMemberInfoById(inputId);
 		if(memberInfoByIdResult != null) {
@@ -24,4 +26,6 @@ public class JoinService {
 			return true;
 		}
 	}
+	
+	
 }
