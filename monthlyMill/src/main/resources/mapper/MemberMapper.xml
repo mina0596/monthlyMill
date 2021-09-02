@@ -8,6 +8,7 @@
 		<result property="memberCateNum" 			column="member_cate_num"/>
 		<result property="memberName" 				column="member_name"/>
 		<result property="memberAge" 				column="member_age"/>
+		<result property="memberBday" 				column="member_bday"/>
 		<result property="memberGender" 			column="member_gender"/>
 		<result property="memberPhone" 				column="member_phone"/>
 		<result property="memberIdentityCheck" 		column="identity_check"/>
@@ -16,12 +17,13 @@
 		<result property="businessReg" 				column="memberInfoRegDate"/>
 		<result property="businessDoc" 				column="business_doc"/>
 		<result property="businessWeb" 				column="business_web"/>
+		<result property="refundAccount" 			column="refund_account"/>
 		<result property="memberInfoModifyDate" 	column="member_info_modify_date"/>
 		<result property="memberInfoRegDate" 		column="member_info_reg_date"/>
 	</resultMap>
 	
 	<select id="getMemberInfoById" parameterType="String" resultMap="memberResultMap">
-		SELECT member_id, member_pw, member_cate_num, member_name, member_age, member_gender, member_phone, identity_check, member_allergy, member_disease, business_reg, business_doc, business_web, member_info_modify_date, member_info_reg_date
+		SELECT member_id, member_pw, member_cate_num, member_name, member_age, member_bday, member_gender, member_phone, identity_check, member_allergy, member_disease, business_reg, business_doc, business_web, refund_account, member_info_modify_date, member_info_reg_date
 		FROM member_info
 		WHERE member_id = #{inputId};
 	</select>

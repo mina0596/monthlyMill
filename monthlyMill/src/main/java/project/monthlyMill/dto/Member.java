@@ -15,6 +15,7 @@ public class Member {
 	private String businessReg;
 	private String businessDoc;
 	private String businessWeb;
+	private String refundAccount;
 	private String memberInfoModifyDate;
 	private String memberInfoRegDate;
 	
@@ -102,6 +103,12 @@ public class Member {
 	public void setBusinessWeb(String businessWeb) {
 		this.businessWeb = businessWeb;
 	}
+	public String getRefundAccount() {
+		return refundAccount;
+	}
+	public void setRefundAccount(String refundAccount) {
+		this.refundAccount = refundAccount;
+	}
 	public String getMemberInfoModifyDate() {
 		return memberInfoModifyDate;
 	}
@@ -121,12 +128,9 @@ public class Member {
 				+ ", memberGender=" + memberGender + ", memberPhone=" + memberPhone + ", memberIdentityCheck="
 				+ memberIdentityCheck + ", memberAllergy=" + memberAllergy + ", memberDisease=" + memberDisease
 				+ ", businessReg=" + businessReg + ", businessDoc=" + businessDoc + ", businessWeb=" + businessWeb
-				+ ", memberInfoModifyDate=" + memberInfoModifyDate + ", memberInfoRegDate=" + memberInfoRegDate + "]";
-	}
-	
-	
-	
-	
+				+ ", refundAccount=" + refundAccount + ", memberInfoModifyDate=" + memberInfoModifyDate
+				+ ", memberInfoRegDate=" + memberInfoRegDate + "]";
+	}	
 	
 	
 }
