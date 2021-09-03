@@ -6,6 +6,7 @@
 /* Screens */
 @import "screens/main.css";
 @import "screens/findItem.css";
+@import "screens/cart.css";
 @import "screens/login.css";
 @import "screens/join.css";
 
@@ -82,6 +83,9 @@ div {
 .text.emp {
   color: var(--text-emp-color);
   font-weight: 600;
+}
+.text.big {
+  font-size: 2em;
 }
 .hash {
   background-color: var(--btn-common-color);
