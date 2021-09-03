@@ -1,0 +1,46 @@
+.find_wrap {
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.category_box {
+  margin: 0 auto;
+  display: flex;
+}
+
+.hash_box {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid gray;
+}
+.hash_column {
+  display: block;
+  margin-right: 30px;
+}
+.hash_column:last-child {
+  margin-right: 0px;
+}
+.hash_box__title {
+  display: block;
+  margin: 5px auto;
+  padding: 3px 0;
+  text-align: center;
+  border: 1px solid var(--btn-emp-color);
+  border-radius: 5px;
+}
+.hash_box .button_box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border: 1px solid gray;
+}
+.result_hash_list {
+  display: flex;
+  margin-bottom: 20px;
+}
+.result_hash_list li {
+  margin-right: 5px;
+}
+.result_table {
+  width: 100%;
+}

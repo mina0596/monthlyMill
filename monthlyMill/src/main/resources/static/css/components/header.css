@@ -3,16 +3,16 @@ header {
   display: flex;
   flex-direction: column;
 }
-
+/*헤더 윗단*/
 .gnb_util {
   display: flex;
   justify-content: flex-end;
-  padding: 7px 30px;
+  padding: 7px;
   background-color: var(--header-dark-color);
 }
 .gnb_util ul {
   display: flex;
-  padding-right: 40px;
+  margin-right: 20px;
 }
 .gnb_util li:last-child {
   margin-right: 0;
@@ -29,16 +29,19 @@ header {
   font-weight: 600;
 }
 
+/*헤더 아랫단*/
 .gnb_box {
   padding: 0 30px;
   height: 80px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .gnb_box .logo {
   display: inline-block;
-  padding-right: 80px;
+  margin-right: 80px;
+  border: 1px solid gray;
 }
 .gnb_box ul {
   display: flex;
@@ -53,8 +56,13 @@ header {
   font-size: 18px;
   font-weight: 600;
   letter-spacing: -1px;
-  color: var(--header-dark-color);
 }
 .gnb_box ul li a:hover {
   color: var(--btn-emp-color);
+}
+.gnb_customer li a {
+  color: var(--header-dark-color);
+}
+.gnb_makers li a {
+  color: var(--desc-color);
 }

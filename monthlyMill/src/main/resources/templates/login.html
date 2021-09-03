@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <link type="text/css" rel="stylesheet" href="../static/css/style.css" />
     <title>월간방앗간</title>
   </head>
   <body>
@@ -37,8 +37,10 @@
           <div class="logo">로고이미지</div>
           <div class="tap_box">
           <!-- 둘중 하나를 선택하면 값을 가져올 수 있게 input형식으로 해주시면 좋을 것같아요!  input인데 버튼으로 생긴 -->
-            <button id="btn_memberJoin" class="btn sub mid" name="member">고객</button>
-            <button id="btn_makersJoin" class="btn common mid" name="makers">메이커스</button>
+            <input type="radio" id="btn_memberJoin" class="btn sub mid" name="joinType"></input>
+            <label for="btn_memberJoin">고객</label>
+            <input type="radio" id="btn_makersJoin" class="btn common mid" name="joinType"></input>
+            <label for="btn_makersJoin">메이커스</label>
           </div>
           <div class="join_box">
             <input type="text" placeholder="아이디" name="memberId"/>
@@ -47,6 +49,7 @@
 
           <div class="id_check">
             <span>
+              <!--아이디 저장은 프론트에서 쿠키로 처리할것-->
               <input type="checkbox" name="saveId" id="idSaveCheck" />
               <label for="saveId">아이디 저장</label>
             </span>
