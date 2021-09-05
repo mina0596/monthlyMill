@@ -11,7 +11,7 @@
 	$('input[name="inputId"]').keyup(function(){
 		$('input[name="idDupCheck"]').val('idDupUncheck');
 	});
-	$('#idCheck').click(function(){
+	$('.idCheck').click(function(){
 		var regex = /^[a-z][a-z\d]{4,11}$/;
 		inputId = $('input[name="inputId"]').val();
 		var result = regex.exec(inputId);
@@ -95,7 +95,6 @@
 	
 	//다음페이지 버튼 클릭 시 입력사항들 확인
 	$('.nextPageBtn').click(function(){
-		console.log('뭐지?')
 		var submitFlag = true;
 		
 		if($('input[name="inputId"]').val() == '' || $('input[name="inputId"]').val() == undefined){
@@ -176,8 +175,26 @@
 	
 	});
 	
+	
+	
 })
 
+//약관동의 페이지 js
+$(function(){
+	$('.joinAgreementNextBtn').click(function(){
+		var submitFlag = true;
+		if(!$('#termAgree').is(':checked') || !$('#infoAgree').is(':checked') || !$('#locationAgree').is(':checked')){
+			alert('필수항목에 모두 동의해주세요');
+			submitFlag = false;
+			return submitFlag;
+		}
+		if($('#newsAgree').is(':checked')){
+			$(this).val('checked');
+		}
+		if(submitFlag) $(this).click();
+	})
+	
+})
 
 
 /* 프론트 파트 */
