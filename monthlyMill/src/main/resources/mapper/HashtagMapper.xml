@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project.monthlyMill.dao.HashtagMapper">
+	<resultMap type="Hashtag"	id="hashtagResultMap">
+		<result property="hashtagNum"			column="hashtag_num"/>
+		<result property="hashtagHighClass"		column="hashtag_high_class"/>
+		<result property="hashtagMidClass"		column="hashtag_mid_class"/>
+		<result property="hashtagName"			column="hashtag_name"/>
+		<result property="hashtagRegDate"			column="hashtag_reg_date"/>
+	</resultMap>
+	
+	<select id="getHashtag" resultMap="hashtagResultMap">
+		SELECT hashtag_num, hashtag_high_class, hashtag_mid_class, hashtag_name, hashtag_reg_date
+		FROM hashtag_type
+	</select>
+</mapper>

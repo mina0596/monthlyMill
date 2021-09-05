@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import project.monthlyMill.dto.Member;
+import project.monthlyMill.dto.MemberAgreementInfo;
 import project.monthlyMill.service.JoinService;
 
 @Controller
@@ -36,8 +37,19 @@ public class JoinController {
 	
 	//약관동의
 	@GetMapping("/join_agreement")
-	public String memberJoinAgreement() {
+	public String getMemberJoinAgreement() {
 		return "/memberJoin/join_agreement";
+	}
+	
+	//약관동의 후 처리과정
+	@PostMapping("/join_agreement")
+	public String memberJoinAgreement(@RequestParam (name = "newsAgree", required = false) String newsAgree
+									, HttpSession session) {
+		log.info("newsAgree 체크했는지의 여부 :{}", newsAgree);
+		
+		MemberAgreementInfo agreeCheck;
+		
+		return "/memberJoin/join_basic";
 	}
 	
 	//기본정보 입력창 (전부 필수입력란)
@@ -83,5 +95,6 @@ public class JoinController {
 		log.info("session에 잘 저장되는지 확인:{}", session.getAttribute("joinInfo"));
 		return "/memberJoin/join_additory";
 	}
+	
 
 }
