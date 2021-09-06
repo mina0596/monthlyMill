@@ -36,11 +36,10 @@
 
     <section class="content_box">
       <div class="cart_wrap">
-        <h3 class="h3_title">장바구니</h3>
-
+        <h1 class="h1_title text big">장바구니</h1>
         <div class="main_box result_box cart_box">
           <div class="result_list_box">
-            <div class="result_summary">
+            <div class="result_summary h3_title">
               <span class="itmeNumberTotal">(개수합산)</span>
               <button type="button" class="deleteItemAllBtn">전체삭제</button>
             </div>
@@ -48,11 +47,22 @@
               <colgroup>
                 <col width="10%" />
                 <col width="20%" />
-                <col width="40%" />
+                <col width="30%" />
                 <col width="15%" />
+                <col width="10%" />
                 <col width="15%" />
               </colgroup>
-              <tbody>
+              <thead class="hidden">
+                <tr class="result_head">
+                  <th>번호</th>
+                  <th>제품사진</th>
+                  <th>제품명</th>
+                  <th>배송방식</th>
+                  <th>개수</th>
+                  <th>가격</th>
+                </tr>
+              </thead>
+              <tbody class="result_itemList">
                 <tr class="result_item">
                   <td>
                     <span class="result_item num">1</span>
@@ -65,12 +75,14 @@
                       <span class="result_item title">제품이름</span>
                       <div>
                         <span class="result_item price_number">(가격)</span>
-                        <span
-                          class="result_item price_number price_origin desc_s"
-                          >(할인 시 기존 가격)</span
-                        >
                       </div>
                     </div>
+                  </td>
+                  <td>
+                    <select class="result_delivery">
+                      <option value="택배배송">택배배송</option>
+                      <option value="퀵배송">퀵배송</option>
+                    </select>
                   </td>
                   <td>
                     <button type="button" class="itemMinusBtn">
@@ -85,7 +97,45 @@
                     <span class="result_item price_number">(최종가격)</span>
                   </td>
                   <td>
-                    <!--버튼 클릭 시 해당 아이템 삭제-->
+                    <button type="button" class="result_item deleteItemBtn">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr class="result_item">
+                  <td>
+                    <span class="result_item num">1</span>
+                  </td>
+                  <td>
+                    <img src="" alt="제품이미지" class="result_item img" />
+                  </td>
+                  <td>
+                    <div class="result_item info">
+                      <span class="result_item title">제품이름</span>
+                      <div>
+                        <span class="result_item price_number">(가격)</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <select class="result_delivery">
+                      <option value="택배배송">택배배송</option>
+                      <option value="퀵배송">퀵배송</option>
+                    </select>
+                  </td>
+                  <td>
+                    <button type="button" class="itemMinusBtn">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <span class="result_item itemNumber">개수</span>
+                    <button type="button" class="itemPlusBtn">
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </td>
+                  <td>
+                    <span class="result_item price_number">(최종가격)</span>
+                  </td>
+                  <td>
                     <button type="button" class="result_item deleteItemBtn">
                       <i class="fas fa-times"></i>
                     </button>
@@ -100,13 +150,6 @@
           <div class="payment_box">
             <div class="price_box">
               <span class="price_title">총 상품금액</span>
-              <span class="price_number text big">(가격)</span>
-            </div>
-            <div>
-              <i class="fas fa-minus"></i>
-            </div>
-            <div class="price_box">
-              <span class="price_title">총 할인금액</span>
               <span class="price_number text big">(가격)</span>
             </div>
             <div>
@@ -126,7 +169,7 @@
           </div>
           <div class="button_box">
             <!--누르면 결제창으로-->
-            <button type="" class="btn big emp">결제하기</button>
+            <button type="" class="btn big emp gotoPaymentBtn">결제하기</button>
           </div>
         </div>
       </div>
@@ -137,5 +180,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/customer/cart_front.js"></script>
   </body>
 </html>

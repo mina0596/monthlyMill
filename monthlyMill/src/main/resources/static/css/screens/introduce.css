@@ -1,0 +1,46 @@
+.main_story_box {
+  display: flex;
+  flex-direction: row;
+}
+
+/*세로 박스*/
+.main_column {
+  margin: 1em;
+}
+.main_column.intro_box {
+  flex-grow: 2;
+}
+.main_column.img_box {
+  flex-grow: 1;
+  width: 100%;
+  min-width: 300px;
+  min-height: 200px;
+  background: url("../../img/intro_img.jpg");
+  background-size: cover;
+  border-radius: 1em;5
+}
+
+/*소개 설명글*/
+.main_story_box .text_box {
+  text-align: left;
+}
+.main_story_box .text_box p {
+  margin-bottom: 1em;
+}
+/*아랫단 특징 설명 박스*/
+.story_box {
+  display: flex;
+}
+.story_box .story_item {
+  flex-grow: 1;
+  flex-basis: 200px;
+  min-width: 180px;
+  min-height: 180px;
+  margin-right: 1em;
+  background-color: var(--compo-common-color);
+  border-radius: 1em;
+}
+.story_box .story_item p {
+  display: block;
+  text-align: center;
+}

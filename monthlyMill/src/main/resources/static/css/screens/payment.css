@@ -1,0 +1,31 @@
+.payment_wrap {
+  margin: 1em;
+}
+
+.payment_wrap .h3_title {
+  margin-bottom: 0.5em;
+}
+.address_inputBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.payment_type_box {
+  margin-bottom: 1em;
+}
+label .agreement_column {
+  margin-left: 1.6em;
+  display: flex;
+  justify-content: space-between;
+}
+.payment_receipt_box {
+  display: flex;
+}
+.receipt_box {
+  display: flex;
+  flex-direction: column;
+  margin-right: 2em;
+}
+.receipt_box select {
+  width: 10em;
+}

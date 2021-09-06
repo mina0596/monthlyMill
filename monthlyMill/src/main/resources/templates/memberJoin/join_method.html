@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ko"
-	  xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}">
+    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
     <title>월간방앗간</title>
   </head>
   <body>
@@ -36,11 +36,12 @@
         <div class="join_box">
           <h3 class="h3_title">회원가입</h3>
           <p class="desc">회원가입하신 후 다양한 소식을 만나보세요.</p>
-          <!-- 고객/메이커스 중에 하나 선택될 수 있게 해주세요! radio형식으로 하면 좋을것같아요 -->
           <div class="tap_box">
-            <button id="btn_memberJoin" class="btn emp mid">고객</button>
-            <button id="btn_makersJoin" class="btn common mid">메이커스</button>
-          </div>
+              <input type="radio" id="btn_memberJoin" name="joinType"></input>
+              <label for="btn_memberJoin" class="btn emp mid">고객</label>
+              <input type="radio" id="btn_makersJoin" name="joinType"></input>
+              <label for="btn_makersJoin" class="btn common mid">메이커스</label>
+            </div>
           <div class="button_box">
             <a href="/join/join_agreement" id="btn_join" class="btn emp big"
               >회원가입</a
@@ -62,12 +63,12 @@
         </div>
       </div>
       <!-- js 파일이 아래쪽 링크는 제쪽에서 안먹어서 테스트용으로 바꿔놨음! 이쪽 script들 주석처리하거나 삭제하고 다시 쓰시면 됩니다 (아래쪽이 원래 민아씨가 쓰시던 거에요) -->
-     <!--  <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+      <!--  <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
       <script
         type="text/javascript"
         src="../../static/js/memberJoin.js"
       ></script> -->
-      
+
       <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
       <script type="text/javascript" th:src="@{/js/memberJoin.js}"></script>
     </section>
