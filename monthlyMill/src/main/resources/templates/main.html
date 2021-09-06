@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"></html>
-<html lang="ko">
+<html lang="ko"
+	  xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link type="text/css" rel="stylesheet" href="../static/css/style.css" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
     <title>월간방앗간</title>
   </head>
   <body>
@@ -13,17 +14,19 @@
       <div class="gnb_util">
         <ul>
           <li>
-            <a href="#" class="gnb_util__join">회원가입</a>
+            <a th:if="${session.SID == null}" th:href="@{/join/join_method}" class="gnb_util__join">회원가입</a>
+            <a th:if="${session.SID != null}" class="gnb_util__join">[[${session.SNAME}]]님 환영합니다</a>
           </li>
-          <li><a href="#" class="gnb_util__login">로그인</a></li>
-          <li><a href="#">장바구니</a></li>
+          <li><a th:if="${session.SID == null}" th:href="@{/login}" class="gnb_util__login">로그인</a></li>
+          <li><a th:if="${session.SID != null}" th:href="@{/logout}" class="gnb_util__login">로그아웃</a></li>
+          <li><a th:href="@{/customer/cart}">장바구니</a></li>
         </ul>
       </div>
       <div class="gnb_box">
         <ul class="gnb_customer">
           <div class="logo">로고 이미지</div>
-          <li><a href="#">월간방앗간 소개</a></li>
-          <li><a th:href="@{/findItem}">나만의 떡 찾기</a></li>
+          <li><a th:href="@{/introduce}">월간방앗간 소개</a></li>
+          <li><a th:href="@{/recommend/findItem}">나만의 떡 찾기</a></li>
           <li><a href="#">이벤트</a></li>
           <li><a href="#">리뷰</a></li>
         </ul>
@@ -71,7 +74,7 @@
                 같이 선택하러 가봐요.
               </p>
             </div>
-            <a class="text_box_column bottom" href="#"
+            <a class="text_box_column bottom" th:href="@{/recommend/findItem}"
               >나만의 떡 찾으러 가기
               <i class="fas fa-chevron-right"></i>
             </a>
@@ -92,7 +95,7 @@
             <div class="search_blur">
               <div class="search_textbox">
                 <span>회원가입 후 확인이 가능해요!</span>
-                <a th:href="@{/join/join_basic}">회원가입하러 가기</a>
+                <a th:href="@{/join/join_method}">회원가입하러 가기</a>
               </div>
             </div>
             <div class="search_tag_blur">
@@ -133,7 +136,7 @@
           <div class="intro_box_column">떡이미지</div>
         </div>
     </section>
-
+<!-- 
     <script
       src="https://kit.fontawesome.com/7161175c87.js"
       crossorigin="anonymous"
@@ -143,5 +146,8 @@
       type="text/javascript"
       src="../static/js/mainPage_front.js"
     ></script>
+     -->
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/memberJoin.js}"></script>
   </body>
 </html>

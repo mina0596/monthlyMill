@@ -6,14 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link type="text/css" rel="stylesheet" href="../static/css/style.css" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
     <title>월간방앗간</title>
   </head>
   <body>
     <header>
       <div class="gnb_util">
         <ul>
-          <li><a href="#" class="gnb_util__join">회원가입</a></li>
-          <li><a href="#" class="gnb_util__login">로그인</a></li>
+          <li><a th:href="@{memberJoin/join_method}" class="gnb_util__join">회원가입</a></li>
+          <li><a th:href="@{/login}" class="gnb_util__login">로그인</a></li>
           <li><a href="#">my찜</a></li>
           <li><a href="#">주문현황</a></li>
           <li><a href="#">더보기</a></li>
@@ -23,7 +24,7 @@
         <div class="logo">로고 이미지</div>
         <ul>
           <li><a href="#">월간방앗간 소개</a></li>
-          <li><a href="#">나만의 떡 찾기</a></li>
+          <li><a th:href="@{/findItem}">나만의 떡 찾기</a></li>
           <li><a href="#">월간방앗간 MENU</a></li>
           <li><a href="#">이벤트</a></li>
         </ul>
@@ -36,10 +37,9 @@
         <form method="post" id="login" class="formLogin" th:action="@{/login}">
           <div class="logo">로고이미지</div>
           <div class="tap_box">
-          <!-- 둘중 하나를 선택하면 값을 가져올 수 있게 input형식으로 해주시면 좋을 것같아요!  input인데 버튼으로 생긴 -->
-            <input type="radio" id="btn_memberJoin" class="btn sub mid" name="joinType"></input>
+            <input type="radio" id="btn_memberJoin" class="btn sub mid" name="loginType" value="2"></input>
             <label for="btn_memberJoin">고객</label>
-            <input type="radio" id="btn_makersJoin" class="btn common mid" name="joinType"></input>
+            <input type="radio" id="btn_makersJoin" class="btn common mid" name="loginType" value="3"></input>
             <label for="btn_makersJoin">메이커스</label>
           </div>
           <div class="join_box">
@@ -86,5 +86,7 @@
       <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
       <script type="text/javascript" th:scr="@{/js/login.js}"></script>
     </section>
+
+
   </body>
 </html>

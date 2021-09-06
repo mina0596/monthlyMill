@@ -2,6 +2,28 @@
  * 
  */
  $(function(){
+	//(만)나이 계산하는 함수
+	function calcAge(birth){
+		var date = new Date();
+		var year = date.getFullYear();
+		var month = (date.getMonth() + 1);
+		var day = date.getDate();
+		
+		if(month < 10) month = '0' + month;
+		if(day < 10) day = '0' + day;
+		
+		var monthDay = month + day;
+		birth = birth.replace('-', '').replace('-', '');
+		
+		var birthdayy = birth.substr(0, 4);
+		var birthdaymd = birth.substr(4, 4);
+		var age = monthDay < birthdaymd ? year - birthdayy - 1 : year - birthdayy;
+		
+		return age;
+		
+	}
+	
+	// **************** 기본사항 입력***********************
 	var inputId = $('input[name="inputId"]').val();
 	var inputName = $('input[name="inputName"]').val();
 	var inputAge = $('input[name="inputAge"]').val();
@@ -94,7 +116,7 @@
 	})
 	
 	//다음페이지 버튼 클릭 시 입력사항들 확인
-	$('.nextPageBtn').click(function(){
+	$('.joinBasicNextBtn').click(function(){
 		var submitFlag = true;
 		
 		if($('input[name="inputId"]').val() == '' || $('input[name="inputId"]').val() == undefined){
@@ -145,9 +167,14 @@
 			return submitFlag;
 		}
 		
-		if($('input[name="inputAge"]').val() == '' || $('input[name="inputAge"]').val() == undefined){
-			alert('나이를 입력해주세요');
-			$('input[name="inputAge"]').focus();
+		if($('input[name="inputBYear"]').val() == '' 
+		|| $('input[name="inputBYear"]').val() == undefined
+		|| $('select[name="inputBMonth"]').val() == ''
+		|| $('select[name="inputBMonth"]').val() == undefined
+		|| $('select[name="inputBDay"]').val() == ''
+		|| $('select[name="inputBDay"]').val() == undefined){
+			alert('생년월일를 입력해주세요');
+			$('input[name="inputBYear"]').focus();
 			submitFlag = false;
 			return submitFlag;
 		}
@@ -171,16 +198,17 @@
 			return submitFlag;
 		}
 		
-		if(submitFlag) $('#memberJoin').submit();
+		$('.inputBday').val($('input[name="inputBYear"]').val() + '-' + $('select[name="inputBMonth"]').val() 
+		+ '-' + $('select[name="inputBDay"]').val());
+		
+		
+		$('.inputAge').val(calcAge($('.inputBday').val()));
+		
+		if(submitFlag) $('#joinBasic').submit();
 	
 	});
 	
-	
-	
-})
-
-//약관동의 페이지 js
-$(function(){
+	// **************** 약관동의 페이지 ***********************
 	$('.joinAgreementNextBtn').click(function(){
 		var submitFlag = true;
 		if(!$('#termAgree').is(':checked') || !$('#infoAgree').is(':checked') || !$('#locationAgree').is(':checked')){
@@ -188,10 +216,13 @@ $(function(){
 			submitFlag = false;
 			return submitFlag;
 		}
-		if($('#newsAgree').is(':checked')){
-			$(this).val('checked');
-		}
-		if(submitFlag) $(this).click();
+		if(submitFlag) $('#joinTerms').submit();
+	})
+	
+	// **************** 추가입력 페이지 ***********************
+	$('.getCouponBtn').click(function(){
+		alert('할인쿠폰이 제공되었습니다🤘🎫🤘🎫');
+		$('#joinAddInfo').submit();
 	})
 	
 })

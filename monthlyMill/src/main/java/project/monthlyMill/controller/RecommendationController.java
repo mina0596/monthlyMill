@@ -9,11 +9,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import project.monthlyMill.dto.Hashtag;
 import project.monthlyMill.service.RecommendationService;
 
 @Controller
+@RequestMapping("/recommend")
 public class RecommendationController {
 	
 	private static final Logger log = LoggerFactory.getLogger(RecommendationController.class);

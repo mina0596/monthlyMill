@@ -36,16 +36,15 @@ public class LoginController {
 	}
 	
 	@PostMapping("/login")
-	public String memberLogin(@RequestParam(name = "member", required = false) String memberCate
-							, @RequestParam(name = "makers", required = false) String makersCate
+	public String memberLogin(@RequestParam(name = "loginType", required = false) int loginType
 							, @RequestParam(name = "memberId", required = false) String loginId
 							, @RequestParam(name = "memberPw", required = false) String loginPw
 							, HttpSession session, HttpServletResponse response, RedirectAttributes reAttr) {
 		//로그인할때 권한에 대한 설정 넣어야함
 		//비밀번호 암호화 넣어야함
-		int loginMemberCate = 1;
 		Member loginWithId = loginService.loginCheck(loginId);
-		if(loginWithId == null || !loginWithId.getMemberPw().equals(loginPw) || loginWithId.getMemberCateNum() != loginMemberCate){
+		log.info("로그인정보확인해보자 :{}", loginType);
+		if(loginWithId == null || !loginWithId.getMemberPw().equals(loginPw) || loginWithId.getMemberCateNum() != loginType){
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out;
 			try {
@@ -56,11 +55,17 @@ public class LoginController {
 				e.printStackTrace();
 			}
 			
-		}else if(loginWithId.getMemberPw().equals(loginPw) && loginWithId.getMemberCateNum() == loginMemberCate) {
+		}else if(loginWithId.getMemberPw().equals(loginPw) && loginWithId.getMemberCateNum() == loginType) {
 			session.setAttribute("SID", loginId);
 			session.setAttribute("SNAME", loginWithId.getMemberName());
 			session.setAttribute("SLEVEL", loginWithId.getMemberCateNum());
 		}
+		return "main";
+	}
+	
+	@GetMapping("/logout")
+	public String memberlogout(HttpSession session) {
+		session.invalidate();
 		return "/main";
 	}
 }

@@ -35,6 +35,14 @@ public class JoinController {
 		return "/memberJoin/join_method";
 	}
 	
+	@PostMapping("/join_method")
+	public String memberJoinCate(@RequestParam(name = "joinType", required = false) int memberCate
+								,HttpSession session) {
+		session.setAttribute("JCate", memberCate);
+		log.info("joinType 잘 데려오는지 확인:{}", memberCate);
+		return "redirect:/join/join_agreement";
+	}
+	
 	//약관동의
 	@GetMapping("/join_agreement")
 	public String getMemberJoinAgreement() {
@@ -47,9 +55,9 @@ public class JoinController {
 									, HttpSession session) {
 		log.info("newsAgree 체크했는지의 여부 :{}", newsAgree);
 		
-		MemberAgreementInfo agreeCheck;
+		session.setAttribute("JAgree", newsAgree);
 		
-		return "/memberJoin/join_basic";
+		return "redirect:/join/join_basic";
 	}
 	
 	//기본정보 입력창 (전부 필수입력란)
@@ -73,20 +81,22 @@ public class JoinController {
 	public String getJoinBasicInfo(@RequestParam(name = "inputId", required = false) String memberId
 								 , @RequestParam(name = "inputPw", required = false) String memberPw
 								 , @RequestParam(name = "inputName", required = false) String memberName
-								 , @RequestParam(name = "inputAge", required = false) int memberAge
 								 , @RequestParam(name = "inputSex", required = false) String memberGender
 								 , @RequestParam(name = "inputPhone", required = false) String memberPhone
+								 , @RequestParam(name = "inputBday", required = false) String memberBday
+								 , @RequestParam(name = "inputAge", required = false) int memberAge
 								 , HttpSession session) {
 		Member inputInfo = new Member();
-		inputInfo.setMemberAge(memberAge);
 		inputInfo.setMemberId(memberId);
 		inputInfo.setMemberPw(memberPw);
-		inputInfo.setMemberGender(memberGender);
 		inputInfo.setMemberName(memberName);
+		inputInfo.setMemberGender(memberGender);
 		inputInfo.setMemberPhone(memberPhone);
+		inputInfo.setMemberBday(memberBday);
+		inputInfo.setMemberAge(memberAge);
 		log.info("member 기본정보란 확인:{}", inputInfo);
-		session.setAttribute("joinInfo", inputInfo);
-		return "/memberJoin/join_additory";
+		session.setAttribute("JInfo", inputInfo);
+		return "redirect:/join/join_additory";
 	}
 	
 	//추가정보 입력창 (전부 선택입력란)
@@ -94,6 +104,16 @@ public class JoinController {
 	public String memberJoinAdditory(HttpSession session) {
 		log.info("session에 잘 저장되는지 확인:{}", session.getAttribute("joinInfo"));
 		return "/memberJoin/join_additory";
+	}
+	
+	@PostMapping("/join_additory")
+	public String memberJoinAdd() {
+		return "redirect:/join/join_finish";
+	}
+	
+	@GetMapping("/join_finish")
+	public String memberJoinFinish() {
+		return "/memberJoin/join_finish";
 	}
 	
 

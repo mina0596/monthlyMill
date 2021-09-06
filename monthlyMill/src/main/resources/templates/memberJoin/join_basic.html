@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link type="text/css" rel="stylesheet" href="../css/style.css" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
     <title>월간방앗간</title>
   </head>
   <body>
@@ -29,7 +30,7 @@
 
       <!-- 2단계 -->
       <div class="join_cont">
-        <form method="post" id="memberJoin" class="formTerms">
+        <form method="post" id="joinBasic" class="formTerms" th:action="@{/join/join_basic}">
           <div class="join_box">
             <!--필수 정보-->
             <h3 class="h3_title">필수정보 입력</h3>
@@ -100,13 +101,15 @@
                           class="birthYear"
                           maxlength="4"
                           placeholder="년(4자리)"
-                          name="inputAge"
+                          name="inputBYear"
                           pattern="[0-9]{4}"
                           required
                         />
+                        <input type="hidden" name="inputBday" class="inputBday">
+                        <input type="hidden" name="inputAge" class="inputAge">
                       </div>
                       <div>
-                        <select class="birthMonth" required>
+                        <select class="birthMonth" name="inputBMonth" required>
                           <option>월</option>
                           <option value="01">1월</option>
                           <option value="02">2월</option>
@@ -123,7 +126,7 @@
                         </select>
                       </div>
                       <div>
-                        <select class="birthDay" required>
+                        <select class="birthDay" name="inputBDay" required>
                           <option>일</option>
                           <option value="01">1일</option>
                           <option value="02">2일</option>
@@ -207,7 +210,7 @@
           <!--넘어가는 버튼-->
           <div class="button_box">
             <a href="#" class="prevPageBtn btn common mid">이전</a>
-            <input type="submit" class="nextPageBtn btn emp mid" value="다음" />
+            <input type="submit" class="joinBasicNextBtn btn emp mid" value="다음" />
           </div>
         </form>
       </div>
