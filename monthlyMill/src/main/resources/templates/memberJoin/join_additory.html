@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko"
+	  xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link type="text/css" rel="stylesheet" href="style.css" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
     <title>월간방앗간</title>
   </head>
   <body>
@@ -29,7 +31,7 @@
       <!-- 3단계 -->
       <!--추가 정보 항목개수 변동가능성 있음-->
       <div class="join_cont">
-        <form method="post" id="memberJoin" class="formTerms">
+        <form method="post" id="joinAddInfo" class="formTerms" th:action="@{/join/join_additory}">
           <div class="join_box">
             <h3 class="h3_title">추가정보 입력</h3>
             <table>
@@ -90,13 +92,24 @@
           <!--버튼-->
           <!--쿠폰받기 버튼은 추가정보 전부 입력시에만 활성화-->
           <div class="button_box">
-            <a href="join_finish.html" id="btn_next" class="btn common mid">
+            <a th:href="@{/join/join_finish}" id="btn_next" class="btn common mid">
               넘어가기
             </a>
-            <a href="#" id="btn_coupon" class="btn emp mid">쿠폰받기</a>
+            <input type="button" id="btn_coupon" class="btn emp mid getCouponBtn" value="쿠폰받기" />
           </div>
         </form>
       </div>
+      
+      <!-- js 파일이 아래쪽 링크는 제쪽에서 안먹어서 테스트용으로 바꿔놨음! 이쪽 script들 주석처리하거나 삭제하고 다시 쓰시면 됩니다 (아래쪽이 원래 민아씨가 쓰시던 거에요) -->
+      <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script
+        type="text/javascript"
+        src="../../static/js/memberJoin.js"
+      ></script>
+      
+      <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+      <script type="text/javascript" th:src="@{/js/memberJoin.js}"></script>
+      
     </section>
   </body>
 </html>
