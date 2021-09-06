@@ -1,0 +1,70 @@
+/*가격 표기 공통*/
+.price_number::after {
+  content: "원";
+}
+
+.cart_wrap {
+  margin: 1em;
+}
+
+/*장바구니 리스트 요약*/
+.result_summary {
+  display: flex;
+  justify-content: space-between;
+}
+.result_summary .itmeNumberTotal::before {
+  content: "총 ";
+}
+.result_summary .itmeNumberTotal::after {
+  content: "개";
+}
+
+/*장바구니 제품 리스트 테이블*/
+.result_table td {
+  padding: 1em 0;
+}
+tr.result_item {
+  border-bottom: 1px solid var(--btn-common-color);
+}
+tr.result_item:last-child {
+  border-bottom: 0;
+}
+.result_item td {
+  vertical-align: middle;
+}
+.result_item.price_origin {
+  text-decoration: line-through;
+}
+.result_item.deleteItemBtn {
+  float: right;
+}
+.result_text {
+  margin-top: 1.5em;
+  text-align: center;
+}
+
+/*가격 책정 박스*/
+.main_payment_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.payment_box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.price_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.price_box .price_title {
+  margin-bottom: 10px;
+}
+
+.main_payment_box .button_box {
+  width: 50%;
+  margin: 20px auto;
+}

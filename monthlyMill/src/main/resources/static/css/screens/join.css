@@ -1,0 +1,175 @@
+/*회원가입*/
+.content_box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.join_order {
+  margin: 30px auto 0;
+}
+
+.join_cont {
+  margin: 50px auto;
+  padding: 3px;
+  width: 650px;
+}
+.join_box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+.join_box.sns {
+  margin: 50px 0;
+}
+
+.join_order ol {
+  display: flex;
+}
+.join_order ol li {
+  margin-right: 10px;
+}
+
+/*약관 체크박스*/
+.agreement_box {
+  margin: 10px 10px 0;
+  display: flex;
+  justify-content: space-between;
+}
+.agreement_all {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid var(--btn-common-color);
+  border-radius: 20px;
+}
+.checkbox {
+  display: none;
+}
+.checkbox + label::before {
+  content: "\f111";
+  color: var(--btn-common-color);
+  font-family: FontAwesome;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.checkbox:checked + label::before {
+  content: "\f058";
+  color: var(--btn-emp-color);
+}
+
+/*약관 모달창*/
+.modalWrap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.modal {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  z-index: 10;
+  width: 60vw;
+  height: 60vh;
+  min-width: 400px;
+  max-width: 700px;
+  min-height: 300px;
+  max-height: 550px;
+  padding: 10px 0;
+  background-color: #fff;
+  border-radius: 1em;
+}
+.modal_box {
+  margin: 1.2em;
+  display: flex;
+  justify-content: center;
+}
+.modal_title {
+  font-size: 18px;
+  font-weight: 700;
+}
+.modal_box.content {
+  margin: 0 1.6em;
+  height: 35vh;
+  min-height: 150px;
+  border: 1px solid var(--desc-color);
+  border-radius: 1em;
+}
+.modal_content {
+  margin: 1em;
+  overflow-y: auto;
+}
+.modal_content::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent;
+}
+.modal_content::-webkit-scrollbar-thumb {
+  background-color: var(--compo-common-color);
+  border-radius: 5px;
+}
+.modal_box.button_box {
+  position: absolute;
+  margin: 1.2em auto;
+  padding-top: 0;
+  width: 100%;
+  bottom: 0;
+}
+
+/*테이블*/
+.join_box table th,
+td {
+  padding: 5px 0;
+}
+.join_box table th {
+  text-align: left;
+}
+.birth_box {
+  display: flex;
+}
+.birth_box input,
+select {
+  width: 80px;
+}
+.join_cont .desc_s {
+  margin-top: 3px;
+}
+
+.h3_title {
+  padding-bottom: 10px;
+  font-size: 22px;
+  letter-spacing: -1px;
+  font-weight: 600;
+  border-bottom: 2px solid gray;
+}
+.desc {
+  padding: 15px 0;
+  color: var(--desc-color);
+  font-size: 15px;
+  letter-spacing: -1px;
+}
+
+.tap_box {
+  padding-top: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+.button_box {
+  display: flex;
+  padding-top: 20px;
+}
+.button_box.sns {
+  margin-top: 20px;
+  justify-content: space-around;
+}
+.btn_sns {
+  display: block;
+  width: 90px;
+  height: 90px;
+  padding: 10px 0;
+  background-color: yellowgreen;
+  font-size: 15px;
+}
+
+/**/

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko"
+	  xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="../static/css/style.css" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+    <title>월간방앗간</title>
+  </head>
+  <body>
+    <header>
+      <div class="gnb_util">
+        <ul>
+          <li><a th:href="@{memberJoin/join_method}" class="gnb_util__join">회원가입</a></li>
+          <li><a th:href="@{/login}" class="gnb_util__login">로그인</a></li>
+          <li><a href="#">my찜</a></li>
+          <li><a href="#">주문현황</a></li>
+          <li><a href="#">더보기</a></li>
+        </ul>
+      </div>
+      <div class="gnb_box">
+        <div class="logo">로고 이미지</div>
+        <ul>
+          <li><a href="#">월간방앗간 소개</a></li>
+          <li><a th:href="@{/findItem}">나만의 떡 찾기</a></li>
+          <li><a href="#">월간방앗간 MENU</a></li>
+          <li><a href="#">이벤트</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <section class="content_box">
+      <!--일반 로그인-->
+      <div class="join_cont">
+        <form method="post" id="login" class="formLogin" th:action="@{/login}">
+          <div class="logo">로고이미지</div>
+          <div class="tap_box">
+            <input type="radio" id="btn_memberJoin" class="btn sub mid" name="loginType" value="2"></input>
+            <label for="btn_memberJoin">고객</label>
+            <input type="radio" id="btn_makersJoin" class="btn common mid" name="loginType" value="3"></input>
+            <label for="btn_makersJoin">메이커스</label>
+          </div>
+          <div class="join_box">
+            <input type="text" placeholder="아이디" name="memberId"/>
+            <input type="password" placeholder="비밀번호" name="memberPw"/>
+          </div>
+
+          <div class="id_check">
+            <span>
+              <!--아이디 저장은 프론트에서 쿠키로 처리할것-->
+              <input type="checkbox" name="saveId" id="idSaveCheck" />
+              <label for="saveId">아이디 저장</label>
+            </span>
+            <span>
+              <input type="checkbox" name="autoLogin" id="" />
+              <label for="autoLogin">자동 로그인</label>
+            </span>
+          </div>
+          <div class="button_box">
+            <input type="submit" id="btn_next" class="btn emp big loginBtn" value="로그인">
+          </div>
+          <div class="login_button_box">
+            <ul>
+              <li><a href="/join/join_method">회원가입</a></li>
+              <li><a href="#">아이디 찾기</a></li>
+              <li><a href="#">비밀번호 찾기</a></li>
+            </ul>
+          </div>
+          <div class="join_box sns" id="sns_join_box">
+            <h3 class="h3_title">SNS계정으로 로그인하기</h3>
+            <div class="button_box sns">
+              <a class="btn_sns">sns버튼 페북</a>
+              <a class="btn_sns">sns버튼 네이버</a>
+              <a class="btn_sns">sns버튼 카카오</a>
+              <a class="btn_sns">sns버튼 구글</a>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!--SNS로그인-->
+      
+      
+      <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+      <script type="text/javascript" th:scr="@{/js/login.js}"></script>
+    </section>
+
+
+  </body>
+</html>

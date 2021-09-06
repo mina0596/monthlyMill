@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko"
+	  xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+    <title>월간방앗간</title>
+  </head>
+  <body>
+    <header>
+      <div class="gnb_util">
+        <ul>
+          <li>
+            <a href="#" class="gnb_util__join">회원가입</a>
+          </li>
+          <li><a href="#" class="gnb_util__login">로그인</a></li>
+          <li><a href="#">장바구니</a></li>
+        </ul>
+      </div>
+      <div class="gnb_box">
+        <ul class="gnb_customer">
+          <div class="logo">로고 이미지</div>
+          <li><a href="#">월간방앗간 소개</a></li>
+          <li><a href="#">나만의 떡 찾기</a></li>
+          <li><a href="#">이벤트</a></li>
+          <li><a href="#">리뷰</a></li>
+        </ul>
+        <ul class="gnb_makers">
+          <li><a href="#">메이커스</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <section class="content_box">
+      <div class="find_wrap top">
+        <div class="main_box">
+          <div class="text_box">
+            <div class="text_box_column top">
+              <p>
+                월간방앗간이 추천해주는 <br />
+                <span class="text emp">나만의 떡</span>을 함께 알아볼까요?
+              </p>
+            </div>
+          </div>
+          <ul class="category_box" th:if="${#lists.size(highClassList) > 0}" th:each="hl : ${highClassList}">
+            <li class="category_title">종류</li>
+            <li class="category_item" th:text="'#' + ${hl}"></li>
+        </ul>
+        </div>
+        
+        <div class="main_box">
+            <div class="hash_box">
+                <ul class="hash_column" th:if="${#lists.size(midClassList) > 0 && #lists.size(hashtagList) > 0}" th:each="ml : ${midClassList}">
+                    <li><span class="hash_box__title" th:text="${ml}"></span></li>
+                    <li><input type="checkbox" name="purpose" class="hashCheck" th:each="l : ${hashtagList}" th:if="${ml} == ${l.hashtagMidClass}" th:text="'#' + ${l.hashtagName}"></input></li>
+                    <li><input type="hidden" th:each="l : ${hashtagList}" th:if="${ml} == ${l.hashtagMidClass}" th:value="'#' + ${l.hashtagNum}"></input></li>
+                </ul>
+            </div>
+            <div class="button_box">
+            <!-- 버튼이 왜 안눌릴까요.....? -->
+                <button type="button" class="btn emp small" id="resultBtn">결과보기</button>
+            </div>   
+        </div>
+        <!-- 데이터없이 고정값으로만 있는 -->
+        <!-- 
+        <div class="main_box">
+            <div class="hash_box">
+                <ul class="hash_column">
+                    <li><span class="hash_box__title">구매목적</span></li>
+                    <li><input type="checkbox" name="purpose" class="hashCheck">#선물용</input></li>
+                    <li><input type="checkbox" name="purpose" class="hashCheck">#행사용</input></li>
+                    <li><input type="checkbox" name="purpose" class="hashCheck">#식사대용</input></li>
+                    <li><input type="checkbox" name="purpose" class="hashCheck">#데일리용</input></li>
+                </ul>
+                <ul class="hash_column">
+                    <li><span class="hash_box__title">맛</span></li>
+                    <li><input type="checkbox" name="purpose" class="hashCheck">#1</input></li>
+                    <li><input type="checkbox" name="purpose" class="hashCheck">#2</input></li>
+                    <li><input type="checkbox" name="purpose" class="hashCheck">#3</input></li>
+                    <li><input type="checkbox" name="purpose" class="hashCheck">#4</input></li>
+                </ul> 
+            </div> 
+            <div class="button_box">
+                <button class="btn emp small">결과보기</button>
+            </div>   
+        </div> 
+         -->   
+      </div>
+
+      <div class="find_wrap bottom">
+        <div class="main_box result_box">
+          <span class="result_beforeText">결과를 보려면 키워드를 선택해주세요.(결과보기 클릭 시 hidden 또는 텍스트 내용 변경)</span>
+
+          <div class="result_list_box">
+            <div class="result_hash">
+              <ol class="result_hash_list">
+                <li class="hash">#선택한태그</li>
+                <li class="hash">#선택한태그</li>
+                <li class="hash">#선택한태그</li>
+              </ol>
+            </div>
+            <table class="result_table">
+              <colgroup>
+                <col width="10%" />
+                <col width="20%" />
+                <col width="40%" />
+                <col width="15%" />
+                <col width="15%" />
+              </colgroup>
+              <tbody>
+                <tr class="result_item">
+                  <td>
+                    <span class="result_item__num">1</span>
+                  </td>
+                  <td>
+                    <img src="" alt="제품이미지" class="result_item__img">
+                  </td>
+                  <td>
+                    <span class="result_item__title">제품이름</span>
+                  </td>
+                  <td >
+                    <span class="result_item__price">가격</span>
+                  </td>
+                  <td>
+                    <!--버튼 클릭 시 장바구니에 추가-->
+                    <button type="button" class="result_item__btnCart">장바구니</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script type="text/javascript" th:scr="@{/js/customer/findItem.js}"></script>
+  </body>
+</html>

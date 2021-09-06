@@ -5,8 +5,9 @@ public class Member {
 	private String memberPw;
 	private int memberCateNum;
 	private String memberName;
-	private String memberAge;
-	private char memberGender;
+	private int memberAge;
+	private String memberBday;
+	private String memberGender;
 	private String memberPhone;
 	private char memberIdentityCheck;
 	private String memberAllergy;
@@ -14,6 +15,7 @@ public class Member {
 	private String businessReg;
 	private String businessDoc;
 	private String businessWeb;
+	private String refundAccount;
 	private String memberInfoModifyDate;
 	private String memberInfoRegDate;
 	
@@ -41,16 +43,22 @@ public class Member {
 	public void setMemberName(String memberName) {
 		this.memberName = memberName;
 	}
-	public String getMemberAge() {
+	public int getMemberAge() {
 		return memberAge;
 	}
-	public void setMemberAge(String memberAge) {
+	public void setMemberAge(int memberAge) {
 		this.memberAge = memberAge;
 	}
-	public char getMemberGender() {
+	public String getMemberBday() {
+		return memberBday;
+	}
+	public void setMemberBday(String memberBday) {
+		this.memberBday = memberBday;
+	}
+	public String getMemberGender() {
 		return memberGender;
 	}
-	public void setMemberGender(char memberGender) {
+	public void setMemberGender(String memberGender) {
 		this.memberGender = memberGender;
 	}
 	public String getMemberPhone() {
@@ -95,6 +103,12 @@ public class Member {
 	public void setBusinessWeb(String businessWeb) {
 		this.businessWeb = businessWeb;
 	}
+	public String getRefundAccount() {
+		return refundAccount;
+	}
+	public void setRefundAccount(String refundAccount) {
+		this.refundAccount = refundAccount;
+	}
 	public String getMemberInfoModifyDate() {
 		return memberInfoModifyDate;
 	}
@@ -107,18 +121,16 @@ public class Member {
 	public void setMemberInfoRegDate(String memberInfoRegDate) {
 		this.memberInfoRegDate = memberInfoRegDate;
 	}
-	
 	@Override
 	public String toString() {
 		return "Member [memberId=" + memberId + ", memberPw=" + memberPw + ", memberCateNum=" + memberCateNum
-				+ ", memberName=" + memberName + ", memberAge=" + memberAge + ", memberGender=" + memberGender
-				+ ", memberPhone=" + memberPhone + ", memberIdentityCheck=" + memberIdentityCheck + ", memberAllergy="
-				+ memberAllergy + ", memberDisease=" + memberDisease + ", businessReg=" + businessReg + ", businessDoc="
-				+ businessDoc + ", businessWeb=" + businessWeb + ", memberInfoModifyDate=" + memberInfoModifyDate
+				+ ", memberName=" + memberName + ", memberAge=" + memberAge + ", memberBday=" + memberBday
+				+ ", memberGender=" + memberGender + ", memberPhone=" + memberPhone + ", memberIdentityCheck="
+				+ memberIdentityCheck + ", memberAllergy=" + memberAllergy + ", memberDisease=" + memberDisease
+				+ ", businessReg=" + businessReg + ", businessDoc=" + businessDoc + ", businessWeb=" + businessWeb
+				+ ", refundAccount=" + refundAccount + ", memberInfoModifyDate=" + memberInfoModifyDate
 				+ ", memberInfoRegDate=" + memberInfoRegDate + "]";
-	}
-	
-	
+	}	
 	
 	
 }
