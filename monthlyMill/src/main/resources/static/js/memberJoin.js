@@ -173,7 +173,7 @@
 		|| $('select[name="inputBMonth"]').val() == undefined
 		|| $('select[name="inputBDay"]').val() == ''
 		|| $('select[name="inputBDay"]').val() == undefined){
-			alert('생년월일를 입력해주세요');
+			alert('생년월일을 입력해주세요');
 			$('input[name="inputBYear"]').focus();
 			submitFlag = false;
 			return submitFlag;
@@ -260,6 +260,6 @@ let autoHypenPhone = function(str){
         
 }
 
-$(document).on("keyup", "#phoneNum", function(){
+$(document).on("keyup", ".phoneNum", function(){
 	this.value = autoHypenPhone(this.value);
 });

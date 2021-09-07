@@ -4,13 +4,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link type="text/css" rel="stylesheet" href="style.css" />
+    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
     <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
     <title>월간방앗간</title>
   </head>
   <body>
     <section class="content_box">
       <div class="join_order">
+        <div class="logo"></div>
         <ol>
           <li class="icon">
             <span>약관동의</span>
@@ -19,7 +24,7 @@
             <span>기본정보</span>
           </li>
           <li class="icon">
-            <span>추가정보</span>
+            <span class="text emp">추가정보</span>
           </li>
           <li class="icon">
             <span>가입완료</span>
@@ -38,6 +43,8 @@
         >
           <div class="join_box">
             <h3 class="h3_title">추가정보 입력</h3>
+            <p class="text">개인별 맞춤 추천을 위한 추가정보입력을 해주세요!</p>
+            <!--
             <table>
               <colgroup></colgroup>
               <tbody>
@@ -58,7 +65,6 @@
                       value="yes"
                     />
                     <label for="allergie_yes">있음</label>
-                    <!--있음 체크되어있을 때만 활성화되도록-->
                     <select name="allergie_kind" id="">
                       <option value="">옵션1</option>
                       <option value="">옵션2</option>
@@ -91,10 +97,29 @@
                   </td>
                 </tr>
               </tbody>
-            </table>
+            </table>-->
           </div>
-          <!--버튼-->
           <!--쿠폰받기 버튼은 추가정보 전부 입력시에만 활성화-->
+          <h4 class="h4_title">#해시태그</h4>
+          <p class="text">관심있는 해시태그를 5개 이상 선택해주세요.</p>
+          <div class="hash_box">
+            <ol class="hash_list">
+              <li class="hash">#태그</li>
+              <li class="hash">#태그</li>
+              <li class="hash">#태그</li>
+            </ol>
+            <ol class="hash_list">
+              <li class="hash">#태그</li>
+              <li class="hash">#태그</li>
+              <li class="hash">#태그</li>
+            </ol>
+            <ol class="hash_list">
+              <li class="hash">#태그</li>
+              <li class="hash">#태그</li>
+              <li class="hash">#태그</li>
+            </ol>
+          </div>
+
           <div class="button_box">
             <a
               th:href="@{/join/join_finish}"
@@ -113,7 +138,6 @@
         </form>
       </div>
 
-      <!-- js 파일이 아래쪽 링크는 제쪽에서 안먹어서 테스트용으로 바꿔놨음! 이쪽 script들 주석처리하거나 삭제하고 다시 쓰시면 됩니다 (아래쪽이 원래 민아씨가 쓰시던 거에요) -->
       <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
       <script
         type="text/javascript"

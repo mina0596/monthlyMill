@@ -1,4 +1,4 @@
-/* --- 약관동의 --- */
+/* ------------ 약관동의 ------------ */
 
 //약관 전체 체크
 function checkAllAgreement(checkAll){
@@ -38,7 +38,7 @@ function closeDetailModal(){
 	$(".modalWrap").remove();
 }
 
-//약관동의 페이지 이벤트 리스너
+//이벤트 리스너
 $(document).on("click", ".checkAll", function(){
 	checkAllAgreement(this);
 });
@@ -48,4 +48,3 @@ $(document).on("click", ".readDetail", function(){
 $(document).on("click", ".closeModalBtn", function(){
 	closeDetailModal();
 });
-
