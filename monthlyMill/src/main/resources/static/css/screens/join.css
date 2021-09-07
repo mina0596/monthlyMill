@@ -147,7 +147,7 @@ select {
   padding: 15px 0;
   color: var(--desc-color);
   font-size: 15px;
-  letter-spacing: -1px;
+  line-height: 120%;
 }
 
 .tap_box {
