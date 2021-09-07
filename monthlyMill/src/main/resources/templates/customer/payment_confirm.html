@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"></html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>월간방앗간</title>
+  </head>
+  <body>
+    <header>
+      <div class="gnb_util">
+        <ul>
+          <li>
+            <a href="#" class="gnb_util__join">회원가입</a>
+          </li>
+          <li><a href="#" class="gnb_util__login">로그인</a></li>
+          <li><a href="#">장바구니</a></li>
+        </ul>
+      </div>
+      <div class="gnb_box">
+        <ul class="gnb_customer">
+          <div class="logo">로고 이미지</div>
+          <li><a href="#">월간방앗간 소개</a></li>
+          <li><a href="#">나만의 떡 찾기</a></li>
+          <li><a href="#">이벤트</a></li>
+          <li><a href="#">리뷰</a></li>
+        </ul>
+        <ul class="gnb_makers">
+          <li><a href="#">메이커스</a></li>
+        </ul>
+      </div>
+    </header>
+    <section class="content_box">
+      <div class="main_box payment_confirm_box">
+        <h3 class="h3_title">입금내역 확인</h3>
+        <div class="main_column">
+          <p>입금내역이 확인되었습니다.</p>
+          <p class="text indent">
+                - 배송일 변경/배송지 변경을 원하실 경우 주문취소 후 새로 주문을 진행해주셔야 합니다. </br>
+                - 매칭완료 후에는 당일 취소는 불가하며, 변경은 2일전까지 가능합니다.</br>
+                - 부득이 당일 취소를 하실 경우 고객의 귀책사유로 주문금액이 산정되어 환불될 예정입니다. 
+          </p>
+        </div>
+        <div class="main_column match_desc_box">
+            <div class="match_desc_column up grid_box">
+                <span class="text boxborder">결제완료</span>
+                <span class="text boxborder">입찰완료</span>
+                <span class="text boxborder">재료준비</span>
+                <span class="text boxborder">배송중</span>
+            </div>
+            <div class="match_desc_column bottom grid_box">                
+                <div>100% 환불</div>
+                <div>50% 환불</div>
+                <div>환불불가</div>                
+            </div>
+        </div>
+        <div class="button_box">
+            <!--찾는 시간동안 매칭화면 보여주기-->
+            <a href="#" class="btn mid emp" >매칭하기</a>
+        </div>
+      </div>
+    </section>
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/customer/payment_front.js"></script>
+  </body>
+</html>

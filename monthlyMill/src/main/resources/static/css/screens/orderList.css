@@ -1,0 +1,8 @@
+.asideMenu {
+  width: 20%;
+  min-width: 8em;
+  border-right: 1px solid var(--btn-common-color);
+}
+.content_box.withAside {
+  width: 80%;
+}

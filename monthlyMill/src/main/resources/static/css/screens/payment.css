@@ -29,3 +29,30 @@ label .agreement_column {
 .receipt_box select {
   width: 10em;
 }
+
+/*입금내역 확인*/
+.match_desc_box {
+  width: 50%;
+}
+.match_desc_column {
+  text-align: center;
+  column-gap: 0.25em;
+}
+.match_desc_column.grid_box.up {
+  grid-template-columns: 4fr 4fr 4fr 3fr;
+  align-items: center;
+  margin-bottom: 0.5em;
+}
+.match_desc_column.grid_box.bottom {
+  grid-row: unset;
+  grid-template-columns: 8fr 4fr 3fr;
+  /*grid-template-columns:
+  4fr minmax(5em, 8fr) 4fr 2fr minmax(4em, 4fr) 2fr 1fr minmax(4em, 4fr)
+  1fr;*/
+}
+.match_desc_column.grid_box.bottom div {
+  border-left: 1px solid var(--btn-common-color);
+}
+.match_desc_column.grid_box.bottom div:first-child {
+  border-left: none;
+}
