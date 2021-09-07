@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="ko"
-	  xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link type="text/css" rel="stylesheet" href="../../static/css/style.css" /> -->
+    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
     <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
     <title>월간방앗간</title>
   </head>
   <body>
     <section class="content_box">
       <div class="join_order">
+        <div class="logo"></div>
         <ol>
           <li class="icon">
             <span class="text emp">약관동의</span>
@@ -30,7 +30,12 @@
 
       <!-- 회원가입-->
       <div class="join_cont">
-        <form method="post" id="joinTerms" class="formTerms" th:action="@{/join/join_agreement}">
+        <form
+          method="post"
+          id="joinTerms"
+          class="formTerms"
+          th:action="@{/join/join_agreement}"
+        >
           <h3 class="h3_title">약관동의</h3>
           <div class="join_box">
             <div class="agreement_all">
@@ -115,7 +120,12 @@
             <a href="join_method.html" id="btn_prev" class="btn common mid"
               >이전</a
             >
-            <input type="submit" id="btn_coupon" class="btn emp mid joinAgreementNextBtn" value="다음" />
+            <input
+              type="submit"
+              id="btn_coupon"
+              class="btn emp mid joinAgreementNextBtn"
+              value="다음"
+            />
           </div>
         </form>
       </div>
@@ -126,7 +136,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-   <!--  <script
+    <!--  <script
       type="text/javascript"
       src="../../static/js/memberJoin_front.js"
     ></script> -->

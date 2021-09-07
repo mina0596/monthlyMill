@@ -118,6 +118,9 @@ p {
 
 /*기타*/
 .hash {
+  margin: 2px;
+  padding: 0.25em 0.5em;
+  border-radius: 0.25em;
   background-color: var(--btn-emp-color);
   color: white;
 }
@@ -129,6 +132,15 @@ p {
   /*margin-left: 0.5em;*/
   background-color: var(--btn-common-color);
   transform: translateY(1.25em);
+}
+.logo {
+  display: inline-block;
+  width: 200px;
+  height: 50px;
+  font-size: 0;
+  background: url("../img/logo_monthlyMill.png");
+  background-size: cover;
+  background-position: center;
 }
 
 /*grid box*/
