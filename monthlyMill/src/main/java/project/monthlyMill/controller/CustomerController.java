@@ -16,4 +16,9 @@ public class CustomerController {
 	public String cartList() {
 		return "/customer/cart";
 	}
+	
+	@GetMapping("/payment")
+	public String payment() {
+		return "/customer/payment";
+	}
 }	
