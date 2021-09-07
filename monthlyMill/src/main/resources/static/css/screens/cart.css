@@ -2,6 +2,10 @@
 .price_number::after {
   content: "원";
 }
+.item_number::after {
+  content: "개";
+}
+/*cart.html:: .itmeNumberTotal에 .item_number추가*/
 
 .cart_wrap {
   margin: 1em;
@@ -14,9 +18,6 @@
 }
 .result_summary .itmeNumberTotal::before {
   content: "총 ";
-}
-.result_summary .itmeNumberTotal::after {
-  content: "개";
 }
 
 /*장바구니 제품 리스트 테이블*/

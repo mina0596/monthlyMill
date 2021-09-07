@@ -9,6 +9,7 @@
 @import "screens/findItem.css";
 @import "screens/cart.css";
 @import "screens/payment.css";
+@import "screens/orderList.css";
 @import "screens/login.css";
 @import "screens/join.css";
 
@@ -34,10 +35,15 @@ span,
 button,
 input,
 div,
-select {
+select,
+li {
   font-family: var(--font);
 }
+p {
+  line-height: 120%;
+}
 
+/* 버튼 */
 .btn {
   background-color: var(--btn-common-color);
   color: white;
@@ -79,8 +85,13 @@ select {
 .hidden {
   display: none;
 }
+/* 텍스트 */
 .h1_title {
   margin-bottom: 0.75em;
+}
+.h4_title {
+  font-weight: 600;
+  margin-bottom: 0.5em;
 }
 .desc_s {
   font-size: 12px;
@@ -96,9 +107,33 @@ select {
 .text.mid {
   font-size: 1.5em;
 }
+.text.indent {
+  margin-left: 0.4em;
+}
+.text.boxborder {
+  padding: 0.5em;
+  border: 1px solid var(--btn-common-color);
+  border-radius: 0.25em;
+}
+
+/*기타*/
 .hash {
-  background-color: var(--btn-common-color);
+  background-color: var(--btn-emp-color);
   color: white;
+}
+.cutLine {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 3em;
+  /*margin-left: 0.5em;*/
+  background-color: var(--btn-common-color);
+  transform: translateY(1.25em);
+}
+
+/*grid box*/
+.grid_box {
+  display: grid;
 }
 
 /* font */
