@@ -90,7 +90,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <th><span>닉네임</span></th>
+                  <th><span>이름</span></th>
                   <td>
                     <input type="text" name="inputName" required />
                     <input type="hidden" name="nameCheck" value="unusable" />
@@ -225,16 +225,22 @@
                         type="text"
                         placeholder="우편번호"
                         class="postCode"
+                        readonly="readonly"
+                        id="postCode"
+                        name="inputPostCode"
                       />
                       <button type="button" class="getPostNumber">
                         우편번호 찾기
                       </button>
                     </div>
-                    <input type="text" placeholder="주소" class="Address" />
+                    <input type="text" placeholder="주소" id="address" name="address" class="address" readonly="readonly"/>
+                    <input type="hidden" name="inputAddr" />
                     <input
                       type="text"
                       placeholder="상세주소"
-                      class="AddressDetail"
+                      class="addressDetail"
+                      id="addressDetail"
+                      name="addressDetail"
                     />
                   </td>
                 </tr>
@@ -270,7 +276,8 @@
                       </select>
                       <input
                         type="text"
-                        class="accountOwenr"
+                        class="accountOwner"
+                        name="inputAccountOwner"
                         placeholder="예금주"
                         required
                       />
@@ -279,6 +286,7 @@
                       <input
                         type="number"
                         class="accountNumber"
+                        name="inputAccountNumber"
                         placeholder="계좌번호"
                         required
                       />
@@ -305,7 +313,8 @@
         type="text/javascript"
         src="../../static/js/memberJoin.js"
       ></script>
-
+      <!-- 우편번호 팝업창 -->
+      <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
       <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
       <script type="text/javascript" th:src="@{/js/memberJoin.js}"></script>
     </section>

@@ -103,20 +103,8 @@
           <h4 class="h4_title">#해시태그</h4>
           <p class="text">관심있는 해시태그를 5개 이상 선택해주세요.</p>
           <div class="hash_box">
-            <ol class="hash_list">
-              <li class="hash">#태그</li>
-              <li class="hash">#태그</li>
-              <li class="hash">#태그</li>
-            </ol>
-            <ol class="hash_list">
-              <li class="hash">#태그</li>
-              <li class="hash">#태그</li>
-              <li class="hash">#태그</li>
-            </ol>
-            <ol class="hash_list">
-              <li class="hash">#태그</li>
-              <li class="hash">#태그</li>
-              <li class="hash">#태그</li>
+            <ol class="hash_list" th:each="ml : ${midClassList}">
+              <li class="hash" th:each="l : ${tagNames}" th:if="${ml} == ${l.hashtagMidClass}"  th:text="'#' + ${l.hashtagName}"></li>
             </ol>
           </div>
 
