@@ -7,11 +7,12 @@
 		<result property="hashtagHighClass"		column="hashtag_high_class"/>
 		<result property="hashtagMidClass"		column="hashtag_mid_class"/>
 		<result property="hashtagName"			column="hashtag_name"/>
-		<result property="hashtagRegDate"			column="hashtag_reg_date"/>
+		<result property="hashtagRegDate"		column="hashtag_reg_date"/>
 	</resultMap>
 	
 	<select id="getHashtag" resultMap="hashtagResultMap">
-		SELECT hashtag_num, hashtag_high_class, hashtag_mid_class, hashtag_name, hashtag_reg_date
+		SELECT hashtag_num, hashtag_high_class, hashtag_mid_class, hashtag_name, add_member_num, hashtag_reg_date
 		FROM hashtag_type
 	</select>
+	
 </mapper>

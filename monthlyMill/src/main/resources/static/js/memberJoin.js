@@ -1,7 +1,54 @@
 /**
  * 
  */
+
+function sample6_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('postCode').value = data.zonecode;
+                document.getElementById("address").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("addressDetail").focus();
+            }
+        }).open();
+    }
+
  $(function(){
+	
 	//(만)나이 계산하는 함수
 	function calcAge(birth){
 		var date = new Date();
@@ -25,14 +72,16 @@
 	
 	// **************** 기본사항 입력***********************
 	var inputId = $('input[name="inputId"]').val();
-	var inputName = $('input[name="inputName"]').val();
-	var inputAge = $('input[name="inputAge"]').val();
-	var inputSex = $('input:radio[name="inputSex"]').is(':checked');
 	
 	//아이디 중복 체크 + 아이디 유효성검사
 	$('input[name="inputId"]').keyup(function(){
 		$('input[name="idDupCheck"]').val('idDupUncheck');
 	});
+	
+	$('.getPostNumber').click(function(){
+		sample6_execDaumPostcode();
+	})
+	
 	$('.idCheck').click(function(){
 		var regex = /^[a-z][a-z\d]{4,11}$/;
 		inputId = $('input[name="inputId"]').val();
@@ -198,15 +247,48 @@
 			return submitFlag;
 		}
 		
+		if($('.postCode').val() == '' || $('.postCode').val() == undefined){
+			alert('우편번호를 입력해주세요');
+			$('.getPostNumber').focus();
+			submitFlag = false;
+			return submitFlag;
+		}else if($('.addressDetail').val() == '' || $('.addressDetail').val() == undefined){
+			alert('상세주소를 입력해주세요');
+			$('.addressDetail').focus();
+			submitFlag = false;
+			return submitFlag;
+		}
+		
+		if($('select[name="inputBank"]').val() == '' || $('select[name="inputBank"]').val() == undefined){
+			alert('환불계좌 은행을 선택해주세요');
+			$('select[name="inputBank"]').focus();
+			submitFlag = false;
+			return submitFlag;
+		}else if($('.accountOwner').val() == '' || $('.accountOwner').val() == undefined){
+			alert('예금주를 입력해주세요');
+			$('.accountOwner').focus();
+			submitFlag = false;
+			return submitFlag;
+		}else if($('.accountNumber').val() == '' || $('.accountNumber').val() == undefined){
+			alert('계좌번호를 입력해주세요');
+			$('.accountNumber').focus();
+			submitFlag = false;
+			return submitFlag;
+		}
+		
 		$('.inputBday').val($('input[name="inputBYear"]').val() + '-' + $('select[name="inputBMonth"]').val() 
 		+ '-' + $('select[name="inputBDay"]').val());
 		
 		
 		$('.inputAge').val(calcAge($('.inputBday').val()));
 		
+		$('input[name="inputAddr"]').val($('.address').val() + $('.addressDetail').val());
+		
 		if(submitFlag) $('#joinBasic').submit();
 	
 	});
+	
+	
 	
 	// **************** 약관동의 페이지 ***********************
 	$('.joinAgreementNextBtn').click(function(){
@@ -219,11 +301,14 @@
 		if(submitFlag) $('#joinTerms').submit();
 	})
 	
+	
 	// **************** 추가입력 페이지 ***********************
 	$('.getCouponBtn').click(function(){
 		alert('할인쿠폰이 제공되었습니다🤘🎫🤘🎫');
 		$('#joinAddInfo').submit();
 	})
+	
+	
 	
 })
 

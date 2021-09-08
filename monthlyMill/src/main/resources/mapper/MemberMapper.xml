@@ -23,7 +23,7 @@
 	</resultMap>
 	
 	<select id="getMemberInfoById" parameterType="String" resultMap="memberResultMap">
-		SELECT member_num, member_id, member_pw, member_cate_num, member_name, member_age, member_bday, member_email, member_gender, member_phone, identity_check, refund_account, refund_account_bank, refund_name, member_info_modify_date, member_info_reg_date
+		SELECT member_num, member_id, member_pw, member_cate_num, member_name, member_age, member_bday, member_email, member_gender, member_addr, member_postalCode, member_phone, identity_check, refund_account, refund_account_bank, refund_name, member_info_modify_date, member_info_reg_date
 		FROM member_info
 		WHERE member_id = #{inputId};
 	</select>

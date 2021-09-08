@@ -1,17 +1,23 @@
 package project.monthlyMill.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import project.monthlyMill.dto.Hashtag;
 import project.monthlyMill.dto.Member;
 import project.monthlyMill.dto.MemberAgreementInfo;
 import project.monthlyMill.service.JoinService;
@@ -85,6 +91,11 @@ public class JoinController {
 								 , @RequestParam(name = "inputPhone", required = false) String memberPhone
 								 , @RequestParam(name = "inputBday", required = false) String memberBday
 								 , @RequestParam(name = "inputAge", required = false) int memberAge
+								 , @RequestParam(name = "inputAddr", required = false) String memberAddr
+								 , @RequestParam(name = "inputPostCode", required = false) String memberPostalCode
+								 , @RequestParam(name = "inputBank", required = false) String refundAccountBank
+								 , @RequestParam(name = "inputAccountOwner", required = false) String refundName
+								 , @RequestParam(name = "inputAccountNumber", required = false) String refundAccount
 								 , HttpSession session) {
 		Member inputInfo = new Member();
 		inputInfo.setMemberId(memberId);
@@ -101,8 +112,18 @@ public class JoinController {
 	
 	//추가정보 입력창 (전부 선택입력란)
 	@GetMapping("/join_additory")
-	public String memberJoinAdditory(HttpSession session) {
+	public String memberJoinAdditory(HttpSession session, Model model) {
 		log.info("session에 잘 저장되는지 확인:{}", session.getAttribute("joinInfo"));
+		
+		//해시태그 제일 하위분류에서는 이름이 겹치는게 없다는 가정하에 만들었음
+		List<Hashtag> tagNames = joinService.getTagNames();
+		List<String> midClassList = new ArrayList<String>();
+		for(int i=0; i<tagNames.size(); i++) {
+			midClassList.add(tagNames.get(i).getHashtagMidClass());
+		}
+		midClassList = midClassList.stream().distinct().collect(Collectors.toList());
+		model.addAttribute("tagNames", tagNames);
+		model.addAttribute("midClassList", midClassList);
 		return "/memberJoin/join_additory";
 	}
 	
