@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="ko"
-	  xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
     <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
     <title>월간방앗간</title>
   </head>
   <body>
@@ -40,7 +43,7 @@
         <div class="main_box result_box cart_box">
           <div class="result_list_box">
             <div class="result_summary h3_title">
-              <span class="itmeNumberTotal">(개수합산)</span>
+              <span class="itmeNumberTotal item_number">(개수합산)</span>
               <button type="button" class="deleteItemAllBtn">전체삭제</button>
             </div>
             <table class="result_table">
@@ -74,12 +77,14 @@
                     <div class="result_item info">
                       <span class="result_item title">제품이름</span>
                       <div>
-                        <span class="result_item price_number">(가격)</span>
+                        <span class="result_item price_number itemPrice"
+                          >3000</span
+                        >
                       </div>
                     </div>
                   </td>
                   <td>
-                    <select class="result_delivery">
+                    <select class="result_delivery mid">
                       <option value="택배배송">택배배송</option>
                       <option value="퀵배송">퀵배송</option>
                     </select>
@@ -88,13 +93,15 @@
                     <button type="button" class="itemMinusBtn">
                       <i class="fas fa-minus"></i>
                     </button>
-                    <span class="result_item itemNumber">개수</span>
+                    <span class="result_item itemQuantity">1</span>
                     <button type="button" class="itemPlusBtn">
                       <i class="fas fa-plus"></i>
                     </button>
                   </td>
                   <td>
-                    <span class="result_item price_number">(최종가격)</span>
+                    <span class="result_item price_number itemSumPrice"
+                      >(최종가격)</span
+                    >
                   </td>
                   <td>
                     <button type="button" class="result_item deleteItemBtn">
@@ -113,7 +120,9 @@
                     <div class="result_item info">
                       <span class="result_item title">제품이름</span>
                       <div>
-                        <span class="result_item price_number">(가격)</span>
+                        <span class="result_item price_number itemPrice"
+                          >5000</span
+                        >
                       </div>
                     </div>
                   </td>
@@ -127,13 +136,15 @@
                     <button type="button" class="itemMinusBtn">
                       <i class="fas fa-minus"></i>
                     </button>
-                    <span class="result_item itemNumber">개수</span>
+                    <span class="result_item itemQuantity">2</span>
                     <button type="button" class="itemPlusBtn">
                       <i class="fas fa-plus"></i>
                     </button>
                   </td>
                   <td>
-                    <span class="result_item price_number">(최종가격)</span>
+                    <span class="result_item price_number itemSumPrice"
+                      >(최종가격)</span
+                    >
                   </td>
                   <td>
                     <button type="button" class="result_item deleteItemBtn">
@@ -150,21 +161,23 @@
           <div class="payment_box">
             <div class="price_box">
               <span class="price_title">총 상품금액</span>
-              <span class="price_number text big">(가격)</span>
+              <span class="price_number text big itemTotalPrice">10000</span>
             </div>
             <div>
               <i class="fas fa-plus"></i>
             </div>
             <div class="price_box">
               <span class="price_title">총 배송비</span>
-              <span class="price_number text big">(가격)</span>
+              <span class="price_number text big deliveryTotalPrice">2000</span>
             </div>
             <div>
               <i class="fas fa-equals"></i>
             </div>
             <div class="price_box">
               <span class="price_title">총 결제예정금액</span>
-              <span class="price_number text big emp">(가격)</span>
+              <span class="price_number text big emp paymentTotalPrice"
+                >(가격)</span
+              >
             </div>
           </div>
           <div class="button_box">
@@ -175,13 +188,13 @@
       </div>
     </section>
 
-    <script
-      src="https://kit.fontawesome.com/7161175c87.js"
-      crossorigin="anonymous"
-    ></script>
-    <!-- <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="../../static/js/customer/cart_front.js"></script>  -->
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/customer/cart_front.js"></script>
+
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
-    <script type="text/javascript" th:src="@{/js/customer/cart_front.js}"></script>
+    <script
+      type="text/javascript"
+      th:src="@{/js/customer/cart_front.js}"
+    ></script>
   </body>
 </html>

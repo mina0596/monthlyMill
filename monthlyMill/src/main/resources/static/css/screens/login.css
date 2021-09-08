@@ -1,8 +1,30 @@
 /*로그인*/
+.login_cont .tap_box {
+  margin: 1em 0;
+}
+.login_cont .logo_box {
+  display: flex;
+  justify-content: center;
+}
+.tap_box input[type="radio"]:checked + label {
+  background-color: var(--btn-sub-color);
+}
+
+.login_convenience {
+  display: flex;
+  justify-content: center;
+}
+.login_convenience span {
+  margin-right: 1em;
+}
+.login_convenience span:last-child {
+  margin-right: 0;
+}
 
 .login_button_box ul {
   display: flex;
   justify-content: center;
+  margin-top: 1em;
 }
 .login_button_box ul {
   position: relative;

@@ -38,6 +38,11 @@ function closeDetailModal(){
 	$(".modalWrap").remove();
 }
 
+/* ------------ 기본정보 입력 ------------ */
+//계좌번호 하이픈 입력 안되게 처리
+//html에 아이디랑 이메일 분리 
+
+
 //이벤트 리스너
 $(document).on("click", ".checkAll", function(){
 	checkAllAgreement(this);
