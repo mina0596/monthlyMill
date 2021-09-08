@@ -152,10 +152,33 @@ td {
 }
 .birth_box input,
 select {
-  width: 80px;
+  width: 5em;
 }
 .join_cont .desc_s {
   margin-top: 3px;
+}
+
+/*입력칸*/
+.join_box input {
+  height: 2em;
+  border: none;
+  border-bottom: 1px solid var(--btn-common-color);
+}
+.join_box input[type="radio"] {
+  transform: translateY(0.5em);
+}
+.join_box input:focus {
+  outline: none;
+  border-bottom: 2px solid var(--btn-emp-color);
+}
+.join_box select {
+  height: 2em;
+}
+.join_box select.bank {
+  width: 8em;
+}
+.join_box input.accountNumber {
+  width: 50%;
 }
 
 .h3_title {

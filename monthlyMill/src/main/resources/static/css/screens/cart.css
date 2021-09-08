@@ -5,8 +5,6 @@
 .item_number::after {
   content: "개";
 }
-/*cart.html:: .itmeNumberTotal에 .item_number추가*/
-
 .cart_wrap {
   margin: 1em;
 }
