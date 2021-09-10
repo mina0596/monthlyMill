@@ -102,9 +102,46 @@
           <!--쿠폰받기 버튼은 추가정보 전부 입력시에만 활성화-->
           <h4 class="h4_title">#해시태그</h4>
           <p class="text">관심있는 해시태그를 5개 이상 선택해주세요.</p>
-          <div class="hash_box">
+          <div class="hash_box hash_join_select">
+            <h4 class="h4_title text boxborder">분류 소제목</h4>
             <ol class="hash_list" th:each="ml : ${midClassList}">
-              <li class="hash" th:each="l : ${tagNames}" th:if="${ml} == ${l.hashtagMidClass}"  th:text="'#' + ${l.hashtagName}"></li>
+              <li
+                class="hash"
+                th:each="l : ${tagNames}"
+                th:if="${ml} == ${l.hashtagMidClass}"
+                th:text="${l.hashtagName}"
+              ></li>
+            </ol>
+
+            <h4 class="h4_title text boxborder">분류 소제목</h4>
+            <ol class="hash_list">
+              <li class="checkHash">
+                <input
+                  type="checkbox"
+                  class="hidden"
+                  name="purpose"
+                  id="hash_aaa"
+                />
+                <label for="hash_aaa">aaa</label>
+              </li>
+              <li class="checkHash">
+                <input
+                  type="checkbox"
+                  class="hidden"
+                  name="purpose"
+                  id="hash_bbb"
+                />
+                <label for="hash_bbb">bbb</label>
+              </li>
+              <li class="checkHash">
+                <input
+                  type="checkbox"
+                  class="hidden"
+                  name="purpose"
+                  id="hash_cccc"
+                />
+                <label for="hash_cccc">cccc</label>
+              </li>
             </ol>
           </div>
 

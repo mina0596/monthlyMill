@@ -93,6 +93,8 @@ function init(){
         calculateItemSumPrice(item);
     });
     changeitemTotalNumber();
+
+    //이벤트 리스너
     $(document).on("click", ".itemMinusBtn", function(){
         minusCartItem(this);
         calculateItemSumPrice(this.parentNode.parentNode);
