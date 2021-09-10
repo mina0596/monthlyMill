@@ -55,12 +55,15 @@
             <div class="hash_box">
                 <ul class="hash_column" th:if="${#lists.size(midClassList) > 0 && #lists.size(hashtagList) > 0}" th:each="ml : ${midClassList}">
                     <li><span class="hash_box__title" th:text="${ml}"></span></li>
-                    <li><input type="checkbox" name="purpose" class="hashCheck" th:each="l : ${hashtagList}" th:if="${ml} == ${l.hashtagMidClass}" th:text="'#' + ${l.hashtagName}"></input></li>
-                    <li><input type="hidden" th:each="l : ${hashtagList}" th:if="${ml} == ${l.hashtagMidClass}" th:value="'#' + ${l.hashtagNum}"></input></li>
+                    <li>
+                    	<input type="checkbox" class="hashCheck" 
+                    		   th:each="l : ${hashtagList}" th:if="${ml} == ${l.hashtagMidClass}" 
+                    		   th:text="'#' + ${l.hashtagName}" th:value="${l.hashtagNum}" th:name="${l.hashtagName}"></input>
+                    	<input type="hidden" class="midClassName" th:value="${ml}">
+                    </li>
                 </ul>
             </div>
             <div class="button_box">
-            <!-- 버튼이 왜 안눌릴까요.....? -->
                 <button type="button" class="btn emp small" id="resultBtn">결과보기</button>
             </div>   
         </div>
@@ -138,6 +141,6 @@
 
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
-    <script type="text/javascript" th:scr="@{/js/customer/findItem.js}"></script>
+    <script type="text/javascript" th:src="@{/js/customer/findItem.js}"></script>
   </body>
 </html>

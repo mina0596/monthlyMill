@@ -1,7 +1,9 @@
 package project.monthlyMill.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -9,7 +11,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import project.monthlyMill.dto.Hashtag;
 import project.monthlyMill.service.RecommendationService;
@@ -49,5 +54,31 @@ public class RecommendationController {
 		model.addAttribute("midClassList", midClassList);
 		model.addAttribute("hashtagList", allHashtag);
 		return "/customer/findItem";
+	}
+	
+	@PostMapping("/sendSelectedTags")
+	@ResponseBody
+	public List<Map<String,String>> getSelectedTags(@RequestBody Map<String,Object> selectedTags) {
+		List<String> selectedTagsList = (List<String>) selectedTags.get("selectedTagsList");
+		List<String> selectedMidClass = (List<String>) selectedTags.get("selectedMidClassList");
+		log.info("태그코드 넘어오는거 확인해보자: {}", selectedTagsList);
+		log.info("태그 중카테고리값 넘어오는거 확인해보자: {}", selectedMidClass);
+		
+		List<Map<String,String>> selectedTagsInfo = new ArrayList<Map<String,String>>();
+		Map<String,String> selectedTagsMap = null;
+		for(int j=0; j<selectedTagsList.size(); j++) {
+			selectedTagsMap = new HashMap<String,String>();
+			selectedTagsMap.put("hashtagMidClass", selectedMidClass.get(j));
+			selectedTagsMap.put("hashtagNum", selectedTagsList.get(j));
+			log.info("{}", j, "번쨰 list확인:{}", selectedTagsInfo);
+			if(!selectedTagsInfo.contains(selectedTagsMap)) {
+				selectedTagsInfo.add(selectedTagsMap);
+			}
+		}
+		
+		log.info("키와 값으로 만들어놓은 태그정보 확인해보자: {}", selectedTagsInfo);
+		
+		
+		return null;
 	}
 }

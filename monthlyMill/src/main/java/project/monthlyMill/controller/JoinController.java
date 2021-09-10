@@ -87,7 +87,7 @@ public class JoinController {
 	public String getJoinBasicInfo(@RequestParam(name = "inputId", required = false) String memberId
 								 , @RequestParam(name = "inputPw", required = false) String memberPw
 								 , @RequestParam(name = "inputName", required = false) String memberName
-								 , @RequestParam(name = "inputSex", required = false) String memberGender
+								 , @RequestParam(name = "inputSex", required = false) char memberGender
 								 , @RequestParam(name = "inputPhone", required = false) String memberPhone
 								 , @RequestParam(name = "inputBday", required = false) String memberBday
 								 , @RequestParam(name = "inputAge", required = false) int memberAge

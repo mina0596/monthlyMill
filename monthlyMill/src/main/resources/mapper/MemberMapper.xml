@@ -3,27 +3,28 @@
 
 <mapper namespace="project.monthlyMill.dao.MemberMapper">
 	<resultMap type="Member"				id="memberResultMap">
+		<result property="memberNum" 				column="member_num"/>
 		<result property="memberId" 				column="member_id"/>
 		<result property="memberPw" 				column="member_pw"/>
 		<result property="memberCateNum" 			column="member_cate_num"/>
 		<result property="memberName" 				column="member_name"/>
 		<result property="memberAge" 				column="member_age"/>
 		<result property="memberBday" 				column="member_bday"/>
+		<result property="memberEmail" 				column="member_email"/>
 		<result property="memberGender" 			column="member_gender"/>
+		<result property="memberAddr" 				column="member_addr"/>
+		<result property="memberPostalCode" 		column="member_postal_code"/>
 		<result property="memberPhone" 				column="member_phone"/>
 		<result property="memberIdentityCheck" 		column="identity_check"/>
-		<result property="memberAllergy" 			column="member_allergy"/>
-		<result property="memberDisease" 			column="member_disease"/>
-		<result property="businessReg" 				column="memberInfoRegDate"/>
-		<result property="businessDoc" 				column="business_doc"/>
-		<result property="businessWeb" 				column="business_web"/>
 		<result property="refundAccount" 			column="refund_account"/>
+		<result property="refundAccountBank" 		column="refund_account_bank"/>
+		<result property="refundName" 				column="refund_name"/>
 		<result property="memberInfoModifyDate" 	column="member_info_modify_date"/>
 		<result property="memberInfoRegDate" 		column="member_info_reg_date"/>
 	</resultMap>
 	
 	<select id="getMemberInfoById" parameterType="String" resultMap="memberResultMap">
-		SELECT member_num, member_id, member_pw, member_cate_num, member_name, member_age, member_bday, member_email, member_gender, member_addr, member_postalCode, member_phone, identity_check, refund_account, refund_account_bank, refund_name, member_info_modify_date, member_info_reg_date
+		SELECT member_num, member_id, member_pw, member_cate_num, member_name, member_age, member_bday, member_email, member_gender, member_addr, member_postal_code, member_phone, identity_check, refund_account, refund_account_bank, refund_name, member_info_modify_date, member_info_reg_date
 		FROM member_info
 		WHERE member_id = #{inputId};
 	</select>
