@@ -38,11 +38,6 @@ function closeDetailModal(){
 	$(".modalWrap").remove();
 }
 
-/* ------------ 기본정보 입력 ------------ */
-//계좌번호 하이픈 입력 안되게 처리
-//html에 아이디랑 이메일 분리 
-
-
 //이벤트 리스너
 $(document).on("click", ".checkAll", function(){
 	checkAllAgreement(this);
@@ -52,4 +47,10 @@ $(document).on("click", ".readDetail", function(){
 });
 $(document).on("click", ".closeModalBtn", function(){
 	closeDetailModal();
+});
+
+/* ------------ 기본정보 입력 ------------ */
+//계좌번호 입력란에 숫자만 입력되게 처리
+$(document).on("keyup", ".numberOnly", function() {
+	$(this).val($(this).val().replace(/[^0-9]/g,""));
 });

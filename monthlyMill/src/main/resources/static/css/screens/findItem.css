@@ -23,17 +23,52 @@
 .hash_box__title {
   display: block;
   margin: 5px auto;
-  padding: 3px 0;
   text-align: center;
-  border: 1px solid var(--btn-emp-color);
-  border-radius: 5px;
+  font-weight: 600;
+  /*
+  padding: 3px 0;
+  border: 1px solid var(--btn-common-color);
+  border-radius: 5px;*/
 }
-.hash_box .button_box {
+/*
+.hash_column .checkHash {
+  color: var(--btn-sub-color);
+}
+.hash_column:nth-child(5n) .checkHash {
+  background-color: rgb(255, 212, 219);
+}
+.hash_column:nth-child(5n + 1) .checkHash {
+  background-color: rgb(210, 243, 238);
+}
+.hash_column:nth-child(5n + 2) .checkHash {
+  background-color: lightgray;
+}
+.hash_column:nth-child(5n + 3) .checkHash {
+  background-color: rgb(198, 233, 255);
+}
+.hash_column:nth-child(5n + 4) .checkHash {
+  background-color: rgb(250, 243, 210);
+}
+*/
+.checkRange {
+  text-align: center;
+}
+.checkRange input {
+  text-align: center;
+}
+
+.button_box.find_result_button {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   border: 1px solid gray;
 }
+
+/* 결과박스 */
+.result_beforeText {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
 .result_hash_list {
   display: flex;
   margin-bottom: 20px;
@@ -43,4 +78,23 @@
 }
 .result_table {
   width: 100%;
+}
+.result_table th,
+.result_table td {
+  padding: 1em 0;
+}
+
+.result_table thead {
+  border-bottom: 2px solid var(--btn-common-color);
+}
+.result_table th {
+  text-align: left;
+  font-weight: 600;
+}
+.td_column {
+  display: flex;
+  justify-content: space-between;
+}
+.result_item__nutrient {
+  margin-right: 1em;
 }

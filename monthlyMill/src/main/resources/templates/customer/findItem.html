@@ -46,8 +46,8 @@
             </div>
           </div>
           <ul class="category_box" th:if="${#lists.size(highClassList) > 0}" th:each="hl : ${highClassList}">
-            <li class="category_title">종류</li>
-            <li class="category_item" th:text="'#' + ${hl}"></li>
+            <li class="category_title boxborder">종류</li>
+            <li class="category_item hash" th:text="${hl}"></li>
         </ul>
         </div>
         
@@ -62,35 +62,63 @@
                     	<input type="hidden" class="midClassName" th:value="${ml}">
                     </li>
                 </ul>
-            </div>
-            <div class="button_box">
-                <button type="button" class="btn emp small" id="resultBtn">결과보기</button>
-            </div>   
-        </div>
-        <!-- 데이터없이 고정값으로만 있는 -->
-        <!-- 
-        <div class="main_box">
-            <div class="hash_box">
+                <!-- (input 체크박스 id ) = ( label for 이름 ) -->
                 <ul class="hash_column">
-                    <li><span class="hash_box__title">구매목적</span></li>
-                    <li><input type="checkbox" name="purpose" class="hashCheck">#선물용</input></li>
-                    <li><input type="checkbox" name="purpose" class="hashCheck">#행사용</input></li>
-                    <li><input type="checkbox" name="purpose" class="hashCheck">#식사대용</input></li>
-                    <li><input type="checkbox" name="purpose" class="hashCheck">#데일리용</input></li>
+                  <li>
+                    <span class="hash_box__title boxborder">title제목</span>
+                  </li>
+                  <li class="checkHash">
+                    <input type="checkbox" name="" id="hash_aaa" class="hidden">
+                    <label for="hash_aaa">aaa</label>
+                  </li>
+                  <li class="checkHash">
+                    <input type="checkbox" name="" id="hash_bbb" class="hidden">
+                    <label for="hash_bbb">bbb</label>
+                  </li>
+                  <li class="checkHash">
+                    <input type="checkbox" name="" id="hash_ccccc" class="hidden">
+                    <label for="hash_ccccc">ccccc</label>
+                  </li>
+                </ul>
+                <!-- 범위 해시 -->
+                <ul class="hash_column">
+                  <li>
+                    <span class="hash_box__title boxborder">title제목</span>
+                  </li>
+                  <li class="checkRange">
+                    <input type="number" name="" class="small noSpin minPrice" placeholder="최소가격">
+                    <label for="">원</label>
+                  </li>
+                  <li class="checkRange">
+                    <span class="text vertical">~</span>
+                  </li>
+                  <li class="checkRange">
+                    <input type="number" name="" class="small noSpin maxPrice" placeholder="최대가격">
+                    <label for="">원</label>
+                  </li>
                 </ul>
                 <ul class="hash_column">
-                    <li><span class="hash_box__title">맛</span></li>
-                    <li><input type="checkbox" name="purpose" class="hashCheck">#1</input></li>
-                    <li><input type="checkbox" name="purpose" class="hashCheck">#2</input></li>
-                    <li><input type="checkbox" name="purpose" class="hashCheck">#3</input></li>
-                    <li><input type="checkbox" name="purpose" class="hashCheck">#4</input></li>
-                </ul> 
-            </div> 
-            <div class="button_box">
-                <button class="btn emp small">결과보기</button>
+                  <li>
+                    <span class="hash_box__title boxborder">title제목</span>
+                  </li>
+                  <li class="checkRange">
+                    <input type="number" name="" class="small noSpin minKcal" placeholder="최소칼로리">
+                    <label for="">kcal</label>
+                  </li>
+                  <li class="checkRange">
+                    <span class="text vertical">~</span>
+                  </li>
+                  <li class="checkRange">
+                    <input type="number" name="" class="small noSpin maxKcal" placeholder="최대칼로리">
+                    <label for="">kcal</label>
+                  </li>
+                </ul>
+                <!--여기까지 테스트 데이터-->
+            </div>
+            <div class="button_box find_result_button">
+                <button type="button" class="btn emp small" id="resultBtn">결과보기</button>
             </div>   
-        </div> 
-         -->   
+        </div>  
       </div>
 
       <div class="find_wrap bottom">
@@ -100,9 +128,9 @@
           <div class="result_list_box">
             <div class="result_hash">
               <ol class="result_hash_list">
-                <li class="hash">#선택한태그</li>
-                <li class="hash">#선택한태그</li>
-                <li class="hash">#선택한태그</li>
+                <li class="hash">선택한태그</li>
+                <li class="hash">선택한태그</li>
+                <li class="hash">선택한태그</li>
               </ol>
             </div>
             <table class="result_table">
@@ -113,6 +141,13 @@
                 <col width="15%" />
                 <col width="15%" />
               </colgroup>
+              <thead>
+                <th>순위</th>
+                <th class="transparent_text">상품이미지</th>
+                <th>상품명</th>
+                <th>가격</th>
+                <th class="transparent_text">장바구니</th>
+              </thead>
               <tbody>
                 <tr class="result_item">
                   <td>
@@ -122,7 +157,11 @@
                     <img src="" alt="제품이미지" class="result_item__img">
                   </td>
                   <td>
-                    <span class="result_item__title">제품이름</span>
+                    <div class="td_column">
+                      
+                      <span class="result_item__title">제품이름</span>
+                      <button class="result_item__nutrient">영양정보</button>
+                    </div>
                   </td>
                   <td >
                     <span class="result_item__price">가격</span>

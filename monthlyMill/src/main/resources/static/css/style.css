@@ -5,13 +5,13 @@
 
 /* Screens */
 @import "screens/main.css";
+@import "screens/join.css";
+@import "screens/login.css";
 @import "screens/introduce.css";
 @import "screens/findItem.css";
 @import "screens/cart.css";
 @import "screens/payment.css";
 @import "screens/orderList.css";
-@import "screens/login.css";
-@import "screens/join.css";
 
 :root {
   --font: "ChosunGu";
@@ -113,20 +113,54 @@ p {
 .text.indent {
   margin-left: 0.4em;
 }
-.text.boxborder {
+.text.vertical {
+  writing-mode: vertical-rl;
+}
+.text.required::after {
+  content: "*";
+}
+.transparent_text {
+  color: transparent;
+}
+.boxborder {
   padding: 0.5em;
   border: 1px solid var(--btn-common-color);
   border-radius: 0.25em;
 }
+.boxColor {
+  padding: 0.5em;
+  background-color: var(--btn-common-color);
+  color: #fff;
+}
 
 /*기타*/
-.hash {
+.hash,
+.checkHash {
   margin: 2px;
   padding: 0.25em 0.5em;
   border-radius: 0.25em;
   background-color: var(--btn-emp-color);
   color: white;
 }
+.hash::before,
+.checkHash label::before {
+  content: "#";
+}
+
+.checkHash input[type="checkbox"]:checked + label {
+  font-weight: 600;
+}
+
+/*input number 화살표 삭제*/
+input[type="number"].noSpin::-webkit-outer-spin-button,
+input[type="number"].noSpin::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input.small {
+  width: 6em;
+}
+
 .cutLine {
   content: "";
   display: inline-block;

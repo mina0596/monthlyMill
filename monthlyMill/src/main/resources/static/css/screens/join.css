@@ -51,6 +51,7 @@
   content: none;
 }
 
+/*------- 약관동의 -------*/
 /*약관 체크박스*/
 .agreement_box {
   margin: 10px 10px 0;
@@ -139,6 +140,7 @@
   bottom: 0;
 }
 
+/* ------- 기본정보 ------- */
 /*테이블*/
 .join_box table th,
 td {
@@ -165,7 +167,7 @@ select {
   border-bottom: 1px solid var(--btn-common-color);
 }
 .join_box input[type="radio"] {
-  transform: translateY(0.5em);
+  height: auto;
 }
 .join_box input:focus {
   outline: none;
@@ -217,12 +219,34 @@ select {
   font-size: 15px;
 }
 
-/*추가정보창*/
-.hash_box {
+/* ------- 추가정보 입력창 ------- */
+.hash_box.hash_join_select {
   display: flex;
   flex-direction: column;
+  margin: 1em 0;
+}
+.hash_box .h4_title {
+  width: fit-content;
 }
 .hash_list {
   display: flex;
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
+}
+.hash_list .checkHash {
+  color: var(--btn-sub-color);
+}
+.hash_list:nth-child(5n) .checkHash {
+  background-color: rgb(255, 212, 219);
+}
+.hash_list:nth-child(5n + 1) .checkHash {
+  background-color: rgb(210, 243, 238);
+}
+.hash_list:nth-child(5n + 2) .checkHash {
+  background-color: lightgray;
+}
+.hash_list:nth-child(5n + 3) .checkHash {
+  background-color: rgb(198, 233, 255);
+}
+.hash_list:nth-child(5n + 4) .checkHash {
+  background-color: rgb(250, 243, 210);
 }

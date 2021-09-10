@@ -19,9 +19,6 @@
 }
 
 /*장바구니 제품 리스트 테이블*/
-.result_table td {
-  padding: 1em 0;
-}
 tr.result_item {
   border-bottom: 1px solid var(--btn-common-color);
 }
