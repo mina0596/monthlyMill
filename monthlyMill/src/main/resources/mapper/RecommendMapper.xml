@@ -17,7 +17,31 @@
 		SELECT product_code, product_name, product_price, product_ingredient, product_nutrition, product_prefer_age, product_main_usage, product_texture, product_taste
 		FROM product_info
 			WHERE
+			<trim suffixOverrides="AND">
+				<foreach item="item" index="key" collection="list" separator="">
+					<if test="item.pPreferAge != null and item.pPreferAge != ''.toString()">
+						product_prefer_age LIKE concat ('%', #{item.pPreferAge}, '%') AND
+					</if>
+					<if test="item.pMainUsage != null and item.pMainUsage != ''.toString()">
+						product_main_usage LIKE concat ('%', #{item.pMainUsage}, '%') AND
+					</if>
+					<if test="item.pTexture != null and item.pTexture != ''.toString()">
+						product_texture LIKE concat ('%', #{item.pTexture}, '%') AND
+					</if>
+					<if test="item.pTaste != null and item.pTaste != ''.toString()">
+						product_taste LIKE concat ('%', #{item.pTaste}, '%') AND
+					</if>
+				</foreach>
+			</trim>
+	</select>
+	
+	
+	<!-- <select id="getRcmdProductInfo" parameterType="map" resultMap="productResultMap">
+		SELECT product_code, product_name, product_price, product_ingredient, product_nutrition, product_prefer_age, product_main_usage, product_texture, product_taste
+		FROM product_info
+			WHERE
 			<trim prefix="AND">
+	
 				<if test="pPreferAge != null and pPreferAge != ''.toString()">
 					product_prefer_age LIKE concat ('%', #{pPreferAge}, '%')
 				</if>
@@ -31,5 +55,5 @@
 					product_taste LIKE concat ('%', #{pTaste}, '%')
 				</if>
 			</trim>
-	</select>
+	</select> -->
 </mapper>
