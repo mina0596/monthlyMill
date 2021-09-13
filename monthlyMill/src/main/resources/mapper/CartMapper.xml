@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project.monthlyMill.dao.CartMapper">
+	<resultMap type="Cart"	id="cartResultMap">
+		<result property="cartNum"			column="cart_num"/>
+		<result property="memberNum"		column="member_num"/>
+		<result property="pCode"			column="product_code"/>
+		<result property="pAmount"			column="amount"/>
+		<result property="cartRegDate"		column="cart_reg_date"/>
+	</resultMap>
+	
+	<insert id="addItem" parameterType="map">
+		INSERT INTO member_cart
+		(cart_num, member_num, product_code, amount, cart_reg_date)
+		VALUES (0, #{memberNum}, #{pCode}, 1, NOW());
+	</insert>
+</mapper>

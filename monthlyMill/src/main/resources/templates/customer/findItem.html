@@ -14,10 +14,12 @@
       <div class="gnb_util">
         <ul>
           <li>
-            <a href="#" class="gnb_util__join">회원가입</a>
+            <a th:if="${session.SID == null}" th:href="@{/join/join_method}" class="gnb_util__join">회원가입</a>
+            <a th:if="${session.SID != null}" class="gnb_util__join">[[${session.SNAME}]]님 환영합니다</a>
           </li>
-          <li><a href="#" class="gnb_util__login">로그인</a></li>
-          <li><a href="#">장바구니</a></li>
+          <li><a th:if="${session.SID == null}" th:href="@{/login}" class="gnb_util__login">로그인</a></li>
+          <li><a th:if="${session.SID != null}" th:href="@{/logout}" class="gnb_util__login">로그아웃</a></li>
+          <li><a th:href="@{/customer/cart}">장바구니</a></li>
         </ul>
       </div>
       <div class="gnb_box">
@@ -119,7 +121,7 @@
 
       <div class="find_wrap bottom">
         <div class="main_box result_box">
-          <span class="result_beforeText">결과를 보려면 키워드를 선택해주세요.(결과보기 클릭 시 hidden 또는 텍스트 내용 변경)</span>
+          <span class="result_beforeText">결과를 보려면 키워드를 선택해주세요.</span>
 
           <div class="result_list_box">
             <div class="result_hash">
@@ -129,6 +131,7 @@
                 <li class="hash">선택한태그</li>
               </ol>
             </div>
+            <form target="param" method="get" action="/customer/cart/addItem">
             <table class="result_table">
               <colgroup>
                 <col width="10%" />
@@ -144,8 +147,8 @@
                 <th>가격</th>
                 <th class="transparent_text">장바구니</th>
               </thead>
-              <tbody>
-                <tr class="result_item">
+              <tbody class="result_table_body">
+                <!-- <tr class="result_item">
                   <td>
                     <span class="result_item__num">1</span>
                   </td>
@@ -154,21 +157,22 @@
                   </td>
                   <td>
                     <div class="td_column">
-                      
                       <span class="result_item__title">제품이름</span>
                       <button class="result_item__nutrient">영양정보</button>
                     </div>
                   </td>
-                  <td >
+                  <td>
                     <span class="result_item__price">가격</span>
                   </td>
                   <td>
-                    <!--버튼 클릭 시 장바구니에 추가-->
+                    버튼 클릭 시 장바구니에 추가
                     <button type="button" class="result_item__btnCart">장바구니</button>
                   </td>
-                </tr>
+                </tr> -->
               </tbody>
             </table>
+            </form>
+            <iframe id="if" name="param" width='0' height='0' frameborder='0'></iframe>
           </div>
         </div>
       </div>
