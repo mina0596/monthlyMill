@@ -2,6 +2,7 @@
 
 /* Common Component */
 @import "components/header.css";
+@import "components/footer.css";
 
 /* Screens */
 @import "screens/main.css";
@@ -12,6 +13,7 @@
 @import "screens/cart.css";
 @import "screens/payment.css";
 @import "screens/orderList.css";
+@import "screens/loading.css";
 
 :root {
   --font: "ChosunGu";
@@ -25,6 +27,22 @@
   --btn-sub-color: #101010;
 
   --compo-common-color: #c4c4c4;
+  --mobile-width: 412px;
+}
+
+html {
+  font-size: 16px;
+}
+@media screen and (max-width: 412px) {
+  html {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: var(--mobile-width)) {
+  html {
+    font-size: 12px;
+    background-color: yellow;
+  }
 }
 
 h1,
@@ -44,17 +62,40 @@ p {
 }
 
 /* 버튼 */
+button {
+  padding: 0.5em 0.75em;
+  color: var(--btn-sub-color);
+  background-color: #fff;
+  border: 1px solid var(--btn-common-color);
+  border-radius: 0.25em;
+}
+button:active {
+  color: #fff;
+  background-color: var(--btn-common-color);
+}
+button.noborder {
+  border: none;
+}
 .btn {
   background-color: var(--btn-common-color);
   color: white;
   border: none;
   text-align: center;
 }
+.btn:active {
+  background-color: var(--btn-sub-color);
+}
 .btn.sub {
   background-color: var(--btn-sub-color);
 }
 .btn.emp {
   background-color: var(--btn-emp-color);
+}
+.btn.emp:disabled {
+  background-color: var(--compo-common-color);
+}
+.btn.emp:active {
+  background-color: var(--text-emp-color);
 }
 .btn_text {
   background-color: transparent;
@@ -63,15 +104,21 @@ p {
   padding: 1px;
   border-bottom: 1px solid var(--btn-emp-color);
 }
+.btn_text:active {
+  background-color: transparent;
+  color: var(--text-emp-color);
+}
 .btn.mid {
   margin: 0 10px;
   width: 50%;
+  max-width: 300px;
   padding: 15px 0;
   border-radius: 30px;
   font-size: 15px;
 }
 .btn.big {
   width: 100%;
+  max-width: 500px;
   padding: 25px;
   border-radius: 40px;
   font-size: 18px;
@@ -82,6 +129,17 @@ p {
   padding: 10px 0;
   border-radius: 20px;
 }
+.btn.square {
+  padding: 0.5em 1em;
+  border: 1px solid var(--btn-common-color);
+  background-color: #fff;
+  color: var(--btn-sub-color);
+}
+input[type="radio"]:checked + label.btn.square {
+  background-color: var(--btn-common-color);
+  color: #fff;
+}
+
 .hidden {
   display: none;
 }
@@ -93,6 +151,11 @@ p {
   font-weight: 600;
   margin-bottom: 0.5em;
 }
+.underbar {
+  padding-bottom: 0.25em;
+  border-bottom: 2px solid var(--btn-common-color);
+}
+
 .desc_s {
   font-size: 12px;
   color: var(--desc-color);
@@ -110,6 +173,9 @@ p {
 .text.sm {
   font-size: 1.25em;
 }
+.text.ss {
+  font-size: 0.85em;
+}
 .text.indent {
   margin-left: 0.4em;
 }
@@ -118,6 +184,9 @@ p {
 }
 .text.required::after {
   content: "*";
+  color: var(--btn-emp-color);
+  font-size: 0.75em;
+  vertical-align: super;
 }
 .transparent_text {
   color: transparent;
@@ -150,7 +219,10 @@ p {
 .checkHash input[type="checkbox"]:checked + label {
   font-weight: 600;
 }
-
+input,
+select {
+  font-size: 1em;
+}
 /*input number 화살표 삭제*/
 input[type="number"].noSpin::-webkit-outer-spin-button,
 input[type="number"].noSpin::-webkit-inner-spin-button {
@@ -182,6 +254,18 @@ input.small {
 .logo.big {
   width: 300px;
   height: 75px;
+}
+.logo_jyg {
+  display: inline-block;
+  width: 180px;
+  height: 120px;
+  font-size: 0;
+  background: url("../img/logo_natureHouse.png");
+  background-size: cover;
+  background-position: center;
+}
+.noScroll {
+  overflow: hidden;
 }
 
 /*grid box*/

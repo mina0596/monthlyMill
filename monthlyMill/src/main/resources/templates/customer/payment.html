@@ -10,29 +10,7 @@
     <title>월간방앗간</title>
   </head>
   <body>
-    <header>
-      <div class="gnb_util">
-        <ul>
-          <li>
-            <a href="#" class="gnb_util__join">회원가입</a>
-          </li>
-          <li><a href="#" class="gnb_util__login">로그인</a></li>
-          <li><a href="#">장바구니</a></li>
-        </ul>
-      </div>
-      <div class="gnb_box">
-        <ul class="gnb_customer">
-          <div class="logo">로고 이미지</div>
-          <li><a href="#">월간방앗간 소개</a></li>
-          <li><a href="#">나만의 떡 찾기</a></li>
-          <li><a href="#">이벤트</a></li>
-          <li><a href="#">리뷰</a></li>
-        </ul>
-        <ul class="gnb_makers">
-          <li><a href="#">메이커스</a></li>
-        </ul>
-      </div>
-    </header>
+    <header></header>
 
     <section class="content_box">
       <form action="">
@@ -42,8 +20,12 @@
             <h3 class="h3_title">주문자</h3>
             <!-- 여기 value에 로그인한 유저 이름, 휴대폰 정보 자동으로 가져오기 -->
             <table class="orderer_form">
+              <colgroup>
+                <col width="25%" />
+                <col width="75%" />
+              </colgroup>
               <tr>
-                <th>이름</th>
+                <th><span class="text required">이름</span></th>
                 <td>
                   <input
                     type="text"
@@ -53,7 +35,7 @@
                 </td>
               </tr>
               <tr>
-                <th>휴대폰</th>
+                <th><span class="text required">휴대폰번호</span></th>
                 <td>
                   <input
                     type="tel"
@@ -123,18 +105,31 @@
           <div class="main_box deliveryInfo_box">
             <h3 class="h3_title">배송정보</h3>
             <table class="deliveryInfo_form">
+              <colgroup>
+                <col width="25%" />
+                <col width="75%" />
+              </colgroup>
               <tr>
-                <th>받는분</th>
-                <td>
+                <th><span class="text required">받는분</span></th>
+                <td class="table_column_box">
                   <input
                     type="text"
                     placeholder="받는분 이름"
                     class="inputReceiverName"
                   />
+                  <div class="table_column">
+                    <!--체크 시 주문자 정보 가져오기-->
+                    <input
+                      type="checkbox"
+                      class="checkbox"
+                      id="sameWithOrder"
+                    />
+                    <label for="sameWithOrder" class="">주문자와 동일</label>
+                  </div>
                 </td>
               </tr>
               <tr>
-                <th>휴대폰</th>
+                <th><span class="text required">휴대폰</span></th>
                 <td>
                   <input
                     type="tel"
@@ -156,7 +151,7 @@
                 </td>
               </tr>
               <tr>
-                <th>배송주소</th>
+                <th><span class="text required"> 배송주소</span></th>
                 <td class="address_inputBox">
                   <div class="address_column">
                     <input
@@ -164,7 +159,9 @@
                       placeholder="주소"
                       class="inputReceiverAdress"
                     />
-                    <button class="getPostNumber">우편번호 찾기</button>
+                    <button class="getPostNumber" type="button">
+                      우편번호 찾기
+                    </button>
                   </div>
                   <input
                     type="text"
@@ -221,31 +218,39 @@
             </div>
             <!--현금영수증 발행-->
             <div class="payment_column payment_receipt_box">
-              <div class="receipt_box">
-                <span>현금영수증</span>
-                <div>
-                  <select name="" class="receiptApplyType">
-                    <option value="personalDeduction">개인소득공제용</option>
-                    <option value="businessExpense">사업자지출증빙용</option>
-                    <option value="none">신청안함</option>
-                  </select>
-                  <select name="" class="receiptNumberType">
-                    <option value="phoneNum">휴대폰번호</option>
-                    <option value="cashReceiptNum">현금영수증번호</option>
-                  </select>
-                </div>
-              </div>
-              <!--선택안함일 때는 안뜨게-->
-              <div class="receipt_box">
-                <span>휴대폰번호</span>
-                <input
-                  type="tel"
-                  class="phoneNum inputReceiptApplicantPhoneNum"
-                  placeholder="휴대폰번호"
-                  maxlength="13"
-                  pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
-                />
-              </div>
+              <table class="receipt_form">
+                <colgroup>
+                  <col width="25%" />
+                  <col width="75%" />
+                </colgroup>
+                <tr class="receipt_box">
+                  <th><span>현금영수증</span></th>
+                  <td>
+                    <select name="" class="receiptApplyType">
+                      <option value="personalDeduction">개인소득공제용</option>
+                      <option value="businessExpense">사업자지출증빙용</option>
+                      <option value="none">신청안함</option>
+                    </select>
+                    <select name="" class="receiptNumberType">
+                      <option value="phoneNum">휴대폰번호</option>
+                      <option value="cashReceiptNum">현금영수증번호</option>
+                    </select>
+                  </td>
+                </tr>
+                <!--선택안함일 때는 안뜨게-->
+                <tr class="receipt_box">
+                  <th><span>휴대폰번호</span></th>
+                  <td>
+                    <input
+                      type="tel"
+                      class="phoneNum inputReceiptApplicantPhoneNum"
+                      placeholder="휴대폰번호"
+                      maxlength="13"
+                      pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
+                    />
+                  </td>
+                </tr>
+              </table>
             </div>
             <!--약관 동의-->
             <div class="payment_column payment_agreement_box">
@@ -335,12 +340,15 @@
         </div>
       </form>
     </section>
+    <footer></footer>
 
     <script
       src="https://kit.fontawesome.com/7161175c87.js"
       crossorigin="anonymous"
     ></script>
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/layout_front.js"></script>
+    <script src="../../static/js/memberJoin_front.js"></script>
     <script src="../../static/js/customer/payment_front.js"></script>
   </body>
 </html>
