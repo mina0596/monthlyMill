@@ -15,4 +15,10 @@
 		(cart_num, member_num, product_code, amount, cart_reg_date)
 		VALUES (0, #{memberNum}, #{pCode}, 1, NOW());
 	</insert>
+	
+	<select id="getCartList" parameterType="String" resultMap="cartResultMap">
+		SELECT cart_num, member_num, product_code, amount, cart_reg_date
+		FROM member_cart
+		WHERE member_num = #{memberNum}
+	</select>
 </mapper>

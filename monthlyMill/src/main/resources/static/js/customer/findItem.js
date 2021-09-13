@@ -8,6 +8,7 @@ $(function(){
 	var html = '';
 	var resultHtml = '';
 	
+	
 	$('#resultBtn').click(function(){
 		$('.result_hash_list').remove();
 		$('.result_beforeText').remove();
@@ -75,14 +76,13 @@ $(function(){
 		
 		
 		//*********************************** 장바구니******************************
-/*		$(document).on('click', '.result_item__btnCart', function(){
-			var cartAddPCode = $(this).parent().parent().children().find('.result_item_code').val();
-			console.log('????');
+		$(document).on('click', '.result_item__btnCart', function(){
+			alert('장바구니에 ' + $(this).parent().parent().children().find('.result_item__title').text() + '를 추가하였습니다.');
 	
 			
 			
 			
-		});*/
+		});
 	})
 	
 	

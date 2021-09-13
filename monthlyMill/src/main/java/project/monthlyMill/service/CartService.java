@@ -15,7 +15,7 @@ public class CartService {
 		this.cartMapper = cartMapper;
 	}
 	
-	public int addItem(Map<String,String> cartInfo) {
+	public int addItem(Map<String,Object> cartInfo) {
 		
 		return cartMapper.addItem(cartInfo);
 	}

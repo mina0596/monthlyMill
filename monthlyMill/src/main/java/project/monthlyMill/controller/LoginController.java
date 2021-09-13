@@ -56,6 +56,7 @@ public class LoginController {
 			}
 			
 		}else if(loginWithId.getMemberPw().equals(loginPw) && loginWithId.getMemberCateNum() == loginType) {
+			session.setAttribute("SMNUM", loginWithId.getMemberNum());
 			session.setAttribute("SID", loginId);
 			session.setAttribute("SNAME", loginWithId.getMemberName());
 			session.setAttribute("SLEVEL", loginWithId.getMemberCateNum());
