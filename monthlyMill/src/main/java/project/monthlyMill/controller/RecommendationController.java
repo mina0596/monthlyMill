@@ -78,7 +78,7 @@ public class RecommendationController {
 		
 		log.info("키와 값으로 만들어놓은 태그정보 확인해보자: {}", selectedTagsInfo);
 		
-		
-		return null;
+		//rcmdService.getRcmdProductInfo(selectedTagsInfo);
+		return selectedTagsInfo;
 	}
 }
