@@ -17,10 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import project.monthlyMill.dto.Hashtag;
+import project.monthlyMill.dto.Product;
 import project.monthlyMill.service.RecommendationService;
 
 @Controller
-@RequestMapping("/recommend")
+@RequestMapping("/customer/recommend")
 public class RecommendationController {
 	
 	private static final Logger log = LoggerFactory.getLogger(RecommendationController.class);
@@ -56,9 +57,10 @@ public class RecommendationController {
 		return "/customer/findItem";
 	}
 	
+	//선택된 태그에 해당되는 상품들 데이터
 	@PostMapping("/sendSelectedTags")
 	@ResponseBody
-	public List<Map<String,String>> getSelectedTags(@RequestBody Map<String,Object> selectedTags) {
+	public List<Product> getSelectedTags(@RequestBody Map<String,Object> selectedTags, Model model) {
 		List<String> selectedTagsList = (List<String>) selectedTags.get("selectedTagsList");
 		List<String> selectedMidClass = (List<String>) selectedTags.get("selectedMidClassList");
 		log.info("태그코드 넘어오는거 확인해보자: {}", selectedTagsList);
@@ -78,7 +80,12 @@ public class RecommendationController {
 		
 		log.info("키와 값으로 만들어놓은 태그정보 확인해보자: {}", selectedTagsInfo);
 		
-		//rcmdService.getRcmdProductInfo(selectedTagsInfo);
-		return selectedTagsInfo;
+		List<Product> rcmdResult = rcmdService.getRcmdProductInfo(selectedTagsInfo);
+		log.info("service단에서 가녀오는거 확인:{}", rcmdResult);
+		model.addAttribute("rcmdResult", rcmdResult);
+		return rcmdResult;
 	}
+	
+	
+	
 }
