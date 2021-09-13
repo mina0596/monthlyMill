@@ -1,10 +1,3 @@
-/* ------------ 약관동의 ------------ */
-
-//약관 전체 체크
-function checkAllAgreement(checkAll){
-	$(".checkbox").prop('checked', checkAll.checked);
-}
-
 //약관동의 전체내용 모달창 띄우기
 function openDetailModal(){
 	let modalWrap = document.createElement("div");
@@ -30,38 +23,7 @@ function openDetailModal(){
 		</div>
 	`;
 
-	$("body").prepend(modalWrap);
-	scrollDisable();
+	document.querySelector("body").prepend(modalWrap);
 }
 
-//모달창 닫기
-function closeDetailModal(){
-	$(".modalWrap").remove();
-	scrollAble();
-}
-
-//스크롤 막기
-function scrollDisable(){
-	$("html").addClass("noScroll");
-}
-//스크롤 막기 해제
-function scrollAble(){
-	$("html").removeClass("noScroll");
-}
-
-//이벤트 리스너
-$(document).on("click", ".checkAll", function(){
-	checkAllAgreement(this);
-});
-$(document).on("click", ".readDetail", function(){
-	openDetailModal();
-});
-$(document).on("click", ".closeModalBtn", function(){
-	closeDetailModal();
-});
-
-/* ------------ 기본정보 입력 ------------ */
-//계좌번호 입력란에 숫자만 입력되게 처리
-$(document).on("keyup", ".numberOnly", function() {
-	$(this).val($(this).val().replace(/[^0-9]/g,""));
-});
+export {openDetailModal};

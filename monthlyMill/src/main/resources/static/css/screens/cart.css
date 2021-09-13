@@ -19,6 +19,9 @@
 }
 
 /*장바구니 제품 리스트 테이블*/
+.result_table {
+  margin: : 0.5em;
+}
 tr.result_item {
   border-bottom: 1px solid var(--btn-common-color);
 }
@@ -28,14 +31,31 @@ tr.result_item:last-child {
 .result_item td {
   vertical-align: middle;
 }
+.result_item.num {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.result_item.img {
+  display: block;
+  margin-left: 1em;
+  width: 6em;
+  height: 4em;
+  object-fit: cover;
+  background-color: aliceblue;
+}
 .result_item.price_origin {
   text-decoration: line-through;
+}
+.result_item.itemSumPrice {
+  display: block;
+  text-align: center;
 }
 .result_item.deleteItemBtn {
   float: right;
 }
 .result_text {
-  margin-top: 1.5em;
+  margin: 1.5em 0;
   text-align: center;
 }
 

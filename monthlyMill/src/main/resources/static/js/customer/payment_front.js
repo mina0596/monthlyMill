@@ -1,4 +1,3 @@
-
 // 번호입력 시 하이픈 자동추가
 let autoHypenPhone = function(str){
 	str = str.replace(/[^0-9]/g, '');
@@ -29,11 +28,6 @@ let autoHypenPhone = function(str){
         
 }
 
-//약관 전체 체크
-function checkAllAgreement(checkAll){
-	$(".checkbox").prop('checked', checkAll.checked);
-}
-
 //세부약관 토글
 function toggleBoxFunc(){
     const toggleBox = document.querySelector(".toggleBox");
@@ -50,10 +44,6 @@ function toggleBoxFunc(){
 
 $(document).on("keyup", ".phoneNum", function(){
 	this.value = autoHypenPhone(this.value);
-});
-
-$(document).on("click", ".checkAll", function(){
-	checkAllAgreement(this);
 });
 
 $(document).on("click", ".toggleBtn", function(){

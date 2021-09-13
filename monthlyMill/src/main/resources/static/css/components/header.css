@@ -7,7 +7,7 @@ header {
 .gnb_util {
   display: flex;
   justify-content: flex-end;
-  padding: 7px;
+  padding: 0.5675em;
   background-color: var(--header-dark-color);
 }
 .gnb_util ul {
@@ -23,7 +23,7 @@ header {
 
 .gnb_util ul li a {
   color: white;
-  font-size: 13px;
+  font-size: 0.825rem;
 }
 .gnb_util ul li a:hover {
   font-weight: 600;
@@ -36,6 +36,7 @@ header {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  min-width: 730px;
 }
 
 .gnb_box .logo {
@@ -48,10 +49,10 @@ header {
   margin-right: 0;
 }
 .gnb_box ul li {
-  margin: auto 25px auto 0;
+  margin: auto 1.5em auto 0;
 }
 .gnb_box ul li a {
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 600;
   letter-spacing: -1px;
 }
@@ -66,4 +67,13 @@ header {
 }
 .gnb_makers li a {
   color: var(--desc-color);
+}
+/* 모바일: 메뉴 아이콘 추가됨 */
+@media screen and (max-width: var(--mobile-width)) {
+  /*
+  .gnb_box:after {
+    content: "f0c9";
+    font: fontawesome;
+  }
+  */
 }

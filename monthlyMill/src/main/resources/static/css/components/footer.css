@@ -1,0 +1,30 @@
+footer {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  margin-top: 2em;
+  padding: 1em 0;
+  background-color: #000;
+  color: white;
+}
+.footer_column {
+  margin: 1em 1em 0;
+}
+.footer_gnb {
+  display: flex;
+}
+.footer_gnb > li {
+  margin-right: 2em;
+}
+.footer_gnb a {
+  color: #fff;
+}
+.footer_desc {
+  margin-top: 1em;
+}
+.footer_desc span {
+  font-size: 0.9em;
+}
+.footer_customerCenter {
+  display: flex;
+  justify-content: center;
+}
