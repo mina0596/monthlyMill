@@ -6,13 +6,16 @@ $(function(){
 	var selectedTags = [];
 	var selectedMidClass = [];
 	var html = '';
+	
 	$('#resultBtn').click(function(){
 		$('.result_hash_list').remove();
+		$('.result_beforeText').remove();
+		
 		$('.hashCheck').each(function(){
 			if($(this).is(':checked')){
-				selectedTagsName.push($(this).attr('name'));
+				selectedTagsName.push($(this).attr('id'));
 				selectedTags.push($(this).val());
-				selectedMidClass.push($(this).parent().children('.midClassName').val());
+				selectedMidClass.push($(this).parent().parent().children('.midClassName').val());
 			}
 		});
 		var params = {
@@ -33,17 +36,18 @@ $(function(){
 			if(selectedTagsName.length != 0){
 				html = '<ol class="result_hash_list">';
 				for(var i=0; i<selectedTagsName.length; i++){
-					html += '<li class="hash">#' + selectedTagsName[i] + '</li>';
+					html += '<li class="hash">' + selectedTagsName[i] + '</li>';
 				}
-				$()
 			}else{
 				html += '<li class="hash">태그를 선택해주세요</li>';
 			}
-			$('.')
+			$('.result_hash').append(html);
 		});
 		
 		request.fail(function( jqXHR, textStatus ) {
 	 		alert( "관리자에게 문의해주세요 " + textStatus );
 		});
 	})
+	
+	
 });

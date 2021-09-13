@@ -2,4 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="project.monthlyMill.dao.RecommendMapper">
+	<resultMap type="Product" 		id="productResultMap">
+		<result property="pCode" 			column="product_code"/>
+		<result property="pName" 			column="product_name"/>
+		<result property="pPrice" 			column="product_price"/>
+		<result property="pIngredient" 		column="product_ingredient"/>
+		<result property="pNutrition" 		column="product_nutrition"/>
+		<result property="pPreferAge" 		column="product_prefer_age"/>
+		<result property="pMainUsage" 		column="product_main_usage"/>
+		<result property="pTexture" 		column="product_texture"/>
+		<result property="pTaste" 			column="product_taste"/>
+	</resultMap>
+	<select id="getRcmdProductInfo" parameterType="map" resultMap="productResultMap">
+		SELECT product_code, product_name, product_price, product_ingredient, product_nutrition, product_prefer_age, product_main_usage, product_texture, product_taste
+		FROM product_info
+			WHERE
+			<trim prefix="AND">
+				<if test="pPreferAge != null and pPreferAge != ''.toString()">
+					product_prefer_age LIKE concat ('%', #{pPreferAge}, '%')
+				</if>
+				<if test="pMainUsage != null and pMainUsage != ''.toString()">
+					product_main_usage LIKE concat ('%', #{pMainUsage}, '%')
+				</if>
+				<if test="pTexture != null and pTexture != ''.toString()">
+					product_texture LIKE concat ('%', #{pTexture}, '%')
+				</if>
+				<if test="pTaste != null and pTaste != ''.toString()">
+					product_taste LIKE concat ('%', #{pTaste}, '%')
+				</if>
+			</trim>
+	</select>
 </mapper>

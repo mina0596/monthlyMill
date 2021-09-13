@@ -46,14 +46,14 @@
             </div>
           </div>
           <ul class="category_box" th:if="${#lists.size(highClassList) > 0}" th:each="hl : ${highClassList}">
-            <li class="category_title boxborder">종류</li>
-            <li class="category_item hash" th:text="${hl}"></li>
+            <li class="category_title boxborder" th:text="${hl}"></li>
+            <!-- <li class="category_item hash" th:text="${hl}"></li> -->
         </ul>
         </div>
         
         <div class="main_box">
             <div class="hash_box">
-                <ul class="hash_column" th:if="${#lists.size(midClassList) > 0 && #lists.size(hashtagList) > 0}" th:each="ml : ${midClassList}">
+                <!-- <ul class="hash_column" th:if="${#lists.size(midClassList) > 0 && #lists.size(hashtagList) > 0}" th:each="ml : ${midClassList}">
                     <li><span class="hash_box__title" th:text="${ml}"></span></li>
                     <li>
                     	<input type="checkbox" class="hashCheck" 
@@ -61,24 +61,20 @@
                     		   th:text="'#' + ${l.hashtagName}" th:value="${l.hashtagNum}" th:name="${l.hashtagName}"></input>
                     	<input type="hidden" class="midClassName" th:value="${ml}">
                     </li>
-                </ul>
+                </ul> -->
                 <!-- (input 체크박스 id ) = ( label for 이름 ) -->
-                <ul class="hash_column">
+                <ul class="hash_column" th:if="${#lists.size(midClassList) > 0 && #lists.size(hashtagList) > 0}" th:each="ml : ${midClassList}">
                   <li>
-                    <span class="hash_box__title boxborder">title제목</span>
+                    <span class="hash_box__title midClassName" th:text="${ml}"></span>
                   </li>
-                  <li class="checkHash">
-                    <input type="checkbox" name="" id="hash_aaa" class="hidden">
-                    <label for="hash_aaa">aaa</label>
+                  <li class="checkHash" th:each="l : ${hashtagList}" th:if="${ml} == ${l.hashtagMidClass}">
+                    <input type="checkbox" th:id="${l.hashtagName}" class="hidden hashCheck" th:value="${l.hashtagNum}">
+                    <label class="labelClass" th:for="${l.hashtagName}" th:text="${l.hashtagName}"></label>
                   </li>
-                  <li class="checkHash">
-                    <input type="checkbox" name="" id="hash_bbb" class="hidden">
-                    <label for="hash_bbb">bbb</label>
-                  </li>
-                  <li class="checkHash">
+                  <!-- <li class="checkHash">
                     <input type="checkbox" name="" id="hash_ccccc" class="hidden">
                     <label for="hash_ccccc">ccccc</label>
-                  </li>
+                  </li> -->
                 </ul>
                 <!-- 범위 해시 -->
                 <ul class="hash_column">
