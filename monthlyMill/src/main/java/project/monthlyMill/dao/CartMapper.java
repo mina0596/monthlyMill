@@ -6,5 +6,5 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface CartMapper {
-	public int addItem(Map<String,String> cartInfo);
+	public int addItem(Map<String,Object> cartInfo);
 }
