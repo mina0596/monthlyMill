@@ -61,6 +61,10 @@ p {
   line-height: 120%;
 }
 
+.content_box {
+  min-height: 65vh;
+}
+
 /* 버튼 */
 button {
   padding: 0.5em 0.75em;
@@ -111,7 +115,8 @@ button.noborder {
 .btn.mid {
   margin: 0 10px;
   width: 50%;
-  max-width: 300px;
+  max-width: 240px;
+  max-width: 16em;
   padding: 15px 0;
   border-radius: 30px;
   font-size: 15px;
@@ -119,6 +124,7 @@ button.noborder {
 .btn.big {
   width: 100%;
   max-width: 500px;
+  max-width: 28em;
   padding: 25px;
   border-radius: 40px;
   font-size: 18px;
