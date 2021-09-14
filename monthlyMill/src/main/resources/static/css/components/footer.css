@@ -9,6 +9,7 @@ footer {
 .footer_column {
   margin: 1em 1em 0;
 }
+
 .footer_gnb {
   display: flex;
 }
@@ -18,12 +19,27 @@ footer {
 .footer_gnb a {
   color: #fff;
 }
+
 .footer_desc {
   margin-top: 1em;
 }
-.footer_desc span {
+.footer_desc_row span {
   font-size: 0.9em;
+  padding-right: 0.25em;
 }
+.footer_desc_row span::after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 0.75em;
+  margin-left: 0.5em;
+  transform: translateY(0.05em);
+  background-color: var(--desc-color);
+}
+.footer_desc_row span:last-child::after {
+  display: none;
+}
+
 .footer_customerCenter {
   display: flex;
   justify-content: center;

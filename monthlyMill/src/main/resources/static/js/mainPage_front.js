@@ -14,6 +14,8 @@ window.onload = function(){
 }
 
 
+/* 슬라이드 */
+
 //슬라이드 애니메이션 
 function slideImage(){
     console.log("slide");
@@ -37,6 +39,8 @@ function showSearchTags(){
     document.querySelector(".search_box").appendChild(serchTag);
 
 }
+
+/* 하단 메인 */
 
 function hideSearchTextbox(){
     //로그인 시 가려지도록

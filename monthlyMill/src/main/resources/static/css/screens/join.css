@@ -162,7 +162,7 @@ select {
 }
 
 /*입력칸*/
-.join_box input {
+.join_box input:not(.btn) {
   height: 2em;
   border: none;
   border-bottom: 1px solid var(--btn-common-color);
@@ -185,23 +185,22 @@ select {
 }
 
 .h3_title {
-  padding-bottom: 10px;
+  padding-bottom: 0.5em;
   font-size: 22px;
   letter-spacing: -1px;
   font-weight: 600;
   border-bottom: 2px solid gray;
 }
 .desc {
-  padding: 15px 0;
+  padding: 1em 0;
   color: var(--desc-color);
-  font-size: 15px;
   line-height: 120%;
 }
 
 .tap_box {
-  padding-top: 25px;
+  padding-top: 1.5em;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 .button_box {
   display: flex;
@@ -251,4 +250,8 @@ select {
 }
 .hash_list:nth-child(5n + 4) .checkHash {
   background-color: rgb(250, 243, 210);
+}
+
+.text_box.pad {
+  margin: 2em 0;
 }
