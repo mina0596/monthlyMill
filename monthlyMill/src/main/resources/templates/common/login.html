@@ -5,34 +5,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link type="text/css" rel="stylesheet" href="../static/css/style.css" />
+    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
     <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
     <script
       src="https://kit.fontawesome.com/7161175c87.js"
       crossorigin="anonymous"
     ></script>
+    
     <title>월간방앗간</title>
   </head>
   <body>
     <header>
-      <div class="gnb_util">
-        <ul>
-          <li><a th:href="@{memberJoin/join_method}" class="gnb_util__join">회원가입</a></li>
-          <li><a th:href="@{/login}" class="gnb_util__login">로그인</a></li>
-          <li><a href="#">my찜</a></li>
-          <li><a href="#">주문현황</a></li>
-          <li><a href="#">더보기</a></li>
-        </ul>
-      </div>
-      <div class="gnb_box">
-        <div class="logo">로고 이미지</div>
-        <ul>
-          <li><a href="#">월간방앗간 소개</a></li>
-          <li><a th:href="@{/findItem}">나만의 떡 찾기</a></li>
-          <li><a href="#">월간방앗간 MENU</a></li>
-          <li><a href="#">이벤트</a></li>
-        </ul>
-      </div>
     </header>
 
     <section class="content_box">
@@ -55,7 +38,6 @@
 
           <div class="login_convenience">
             <span>
-              <!--아이디 저장은 프론트에서 쿠키로 처리할것-->
               <input type="checkbox" name="saveId" id="idSaveCheck" class="checkbox"/>
               <label for="idSaveCheck" >아이디 저장</label>
             </span>
@@ -87,12 +69,16 @@
           -->
         </form>
       </div>
-      
-      <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
-      <script type="text/javascript" th:scr="@{/js/login.js}"></script>
-      <script src="../static/js/login_front.js"></script>
     </section>
 
+    <footer></footer>
+    
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script defer src="../../static/js/layout_front.js"></script>
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script type="text/javascript" th:scr="@{/js/login.js}"></script>
+    <script src="../../static/js/login_front.js"></script>
+    
 
   </body>
 </html>

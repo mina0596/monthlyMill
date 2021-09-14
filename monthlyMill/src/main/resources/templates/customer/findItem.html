@@ -32,7 +32,7 @@
           </ul>
         </div>
 
-        <div class="main_box">
+        <div class="main_box borderBox findItem_box">
           <div class="hash_box">
             <!-- <ul class="hash_column" th:if="${#lists.size(midClassList) > 0 && #lists.size(hashtagList) > 0}" th:each="ml : ${midClassList}">
                     <li><span class="hash_box__title" th:text="${ml}"></span></li>
@@ -80,7 +80,7 @@
             <!-- 범위 해시 -->
             <ul class="hash_column">
               <li>
-                <span class="hash_box__title boxborder">title제목</span>
+                <span class="hash_box__title boxborder">가격대</span>
               </li>
               <li class="checkRange">
                 <input
@@ -106,7 +106,7 @@
             </ul>
             <ul class="hash_column">
               <li>
-                <span class="hash_box__title boxborder">title제목</span>
+                <span class="hash_box__title boxborder">열량</span>
               </li>
               <li class="checkRange">
                 <input
@@ -133,7 +133,7 @@
             <!--여기까지 테스트 데이터-->
           </div>
           <div class="button_box find_result_button">
-            <button type="button" class="btn emp small" id="resultBtn">
+            <button type="button" class="btn emp mid" id="resultBtn">
               결과보기
             </button>
           </div>
@@ -141,10 +141,12 @@
       </div>
 
       <div class="find_wrap bottom">
-        <div class="main_box result_box">
-          <span class="result_beforeText"
-            >결과를 보려면 키워드를 선택해주세요.</span
-          >
+        <div class="main_box result_box borderBox">
+          <div class="text_box">
+            <span class="result_beforeText"
+              >결과를 보려면 키워드를 선택해주세요.</span
+            >
+          </div>
 
           <div class="result_list_box">
             <div class="result_hash">
@@ -214,6 +216,7 @@
 
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../../static/js/layout_front.js"></script>
+    <script src="../../static/js/module/modal.js"></script>
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script
       type="text/javascript"

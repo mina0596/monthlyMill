@@ -9,9 +9,15 @@
 }
 
 .join_cont {
-  margin: 50px auto;
-  padding: 3px;
+  margin: 3em auto;
+  padding: 0.25em;
   width: 650px;
+}
+@media screen and (max-width: 412px) {
+  .join_cont {
+    width: 100vw;
+    padding: 2em;
+  }
 }
 .join_box {
   display: flex;
@@ -205,7 +211,7 @@ select {
 .button_box {
   display: flex;
   justify-content: center;
-  padding-top: 20px;
+  padding-top: 1em;
 }
 .button_box.sns {
   margin-top: 20px;
