@@ -46,6 +46,12 @@ function sample6_execDaumPostcode() {
             }
         }).open();
     }
+// 이메일 정규식표현 이용한 유효성검사 함수
+function email_check(inputEmail){
+	var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/; 
+	return (inputEmail != '' && inputEmail != 'undefined' && regex.test(inputEmail));
+
+}
 
  $(function(){
 	
@@ -151,7 +157,7 @@ function sample6_execDaumPostcode() {
 	})
 	
 	//휴대폰번호 유효성검사
-	$('input[name="inputPhone"]').mouseout(function(){
+	$('input[name="inputPhone"]').blur(function(){
 		var patternPhone = /01[016789]-[^0][0-9]{2,3}-[0-9]{3,4}/;
 		var result = patternPhone.exec($(this).val());
 		if(result == null && result == undefined){
@@ -162,6 +168,17 @@ function sample6_execDaumPostcode() {
 			$('input[name="phoneCheck"]').val('usable');
 		}
 
+	})
+	
+	$('input[name="inputEmail"]').blur(function(){
+		var inputEmail = $(this).val();
+		if(inputEmail == '' || inputEmail == 'undefined'){
+			$('.emailValidationMsg').text('이메일 주소를 정확하게 입력해주세요');
+			$('.emailCheck').val('unusable');
+		}else{
+			$('.emailValidationMsg').text('');
+			$('.emailCheck').val('usable');
+		}
 	})
 	
 	//다음페이지 버튼 클릭 시 입력사항들 확인
@@ -255,6 +272,13 @@ function sample6_execDaumPostcode() {
 		}else if($('.addressDetail').val() == '' || $('.addressDetail').val() == undefined){
 			alert('상세주소를 입력해주세요');
 			$('.addressDetail').focus();
+			submitFlag = false;
+			return submitFlag;
+		}
+		
+		if($('.emailCheck').val() == 'unusable' || !email_check($('.emailCheck').val())){
+			alert('이메일 주소를 다시 입력해주세요');
+			$('.emailCheck').focus();
 			submitFlag = false;
 			return submitFlag;
 		}
