@@ -16,9 +16,32 @@
 		VALUES (0, #{memberNum}, #{pCode}, 1, NOW());
 	</insert>
 	
-	<select id="getCartList" parameterType="String" resultMap="cartResultMap">
-		SELECT cart_num, member_num, product_code, amount, cart_reg_date
-		FROM member_cart
+	<select id="getCartListByMemberId" parameterType="String" resultType="map">
+		SELECT
+			mCart.cart_num as cartNum,
+			mCart.product_code as pCode, 
+			mCart.amount as pAmount, 
+			pInfo.product_name as pName, 
+			pInfo.product_price as pPrice
+		FROM 
+			member_cart AS mCart
+		INNER JOIN 
+			product_info AS pInfo
+		ON 
+			mCart.product_code = pInfo.product_code
+		LEFT JOIN
+			order_info AS oInfo
+		on
+			mCart.cart_num = oInfo.cart_num
 		WHERE member_num = #{memberNum}
+		ORDER BY cartNum ASC;
 	</select>
+	
+	<update id="updateCartByCartNum" parameterType="map">
+		UPDATE member_cart
+		SET
+			amount=#{pAmount}
+		WHERE cart_num=#{cartNum}
+	</update>
+	
 </mapper>

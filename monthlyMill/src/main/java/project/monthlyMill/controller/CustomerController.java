@@ -14,10 +14,6 @@ public class CustomerController {
 	
 	private static final Logger log = LoggerFactory.getLogger(CustomerController.class);
 	
-	@GetMapping("/payment")
-	public String payment() {
-		return "/customer/payment";
-	}
 	
 	@GetMapping("/loading")
 	public String matchLoading() {
@@ -29,13 +25,4 @@ public class CustomerController {
 		return "/customer/orderList";
 	}
 	
-	@GetMapping("/payment_deposit")
-	public String getPaymentDeposit() {
-		return "/customer/payment_deposit";
-	}
-	
-	@GetMapping("/payment_confirm")
-	public String confirmPayment() {
-		return "/customer/payment_confirm";
-	}
 }	
