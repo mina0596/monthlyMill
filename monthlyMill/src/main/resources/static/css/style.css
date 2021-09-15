@@ -14,6 +14,7 @@
 @import "screens/payment.css";
 @import "screens/orderList.css";
 @import "screens/loading.css";
+@import "screens/orderCancel.css";
 
 :root {
   --font: "ChosunGu";
@@ -47,7 +48,8 @@ button,
 input,
 div,
 select,
-li {
+li,
+textarea {
   font-family: var(--font);
 }
 p {
@@ -124,7 +126,7 @@ button.noborder {
   max-width: 16em;
   padding: 15px 0;
   border-radius: 30px;
-  font-size: 15px;
+  font-size: 1em;
 }
 .btn.big {
   width: 100%;
