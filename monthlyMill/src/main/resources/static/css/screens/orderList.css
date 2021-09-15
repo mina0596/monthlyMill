@@ -9,6 +9,12 @@
   padding-right: 0.5em;
   border-right: 1px solid var(--btn-common-color);
 }
+.asideMenu h1 {
+  margin-bottom: 0.5em;
+  color: #fff;
+  background-color: var(--btn-sub-color);
+  border: none;
+}
 .asideMenu_box {
   margin: 0 1em;
 }
@@ -26,12 +32,17 @@
   color: var(--text-emp-color);
 }
 
+@media screen and (max-width: 480px) {
+}
+
 /*본문 섹션*/
 .content_box.withAside {
   width: 80%;
   max-width: 80em;
 }
-
+.content_box.withAside .main_box:first-child {
+  max-height: 8em;
+}
 .content_box.withAside .button_box {
   display: flex;
   justify-content: center;
@@ -54,7 +65,7 @@
   margin-left: 0;
 }
 
-@media screen and (max-width: 875px) {
+@media (max-width: 875px) {
   .button_box {
     flex-wrap: wrap;
     width: 100%;

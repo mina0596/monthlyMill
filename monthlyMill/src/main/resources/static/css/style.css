@@ -14,6 +14,7 @@
 @import "screens/payment.css";
 @import "screens/orderList.css";
 @import "screens/loading.css";
+@import "screens/orderCancel.css";
 
 :root {
   --font: "ChosunGu";
@@ -27,7 +28,6 @@
   --btn-sub-color: #101010;
 
   --compo-common-color: #c4c4c4;
-  --mobile-width: 412px;
 }
 
 html {
@@ -36,12 +36,6 @@ html {
 @media screen and (max-width: 412px) {
   html {
     font-size: 12px;
-  }
-}
-@media screen and (max-width: var(--mobile-width)) {
-  html {
-    font-size: 12px;
-    background-color: yellow;
   }
 }
 
@@ -54,15 +48,28 @@ button,
 input,
 div,
 select,
-li {
+li,
+textarea {
   font-family: var(--font);
 }
 p {
   line-height: 120%;
 }
 
+/* 박스 */
 .content_box {
   min-height: 65vh;
+  max-width: 1200px;
+}
+@media screen and (min-width: 1200px) {
+  .content_box {
+    margin: 0 auto;
+  }
+}
+
+.borderBox {
+  border: 1px solid gray;
+  border-radius: 0.5em;
 }
 
 /* 버튼 */
@@ -119,7 +126,7 @@ button.noborder {
   max-width: 16em;
   padding: 15px 0;
   border-radius: 30px;
-  font-size: 15px;
+  font-size: 1em;
 }
 .btn.big {
   width: 100%;
@@ -135,6 +142,13 @@ button.noborder {
   padding: 10px 0;
   border-radius: 20px;
 }
+
+@media screen and (max-width: 412px) {
+  .btn.mid {
+    margin: 0 0.2em;
+  }
+}
+
 .btn.square {
   padding: 0.5em 1em;
   border: 1px solid var(--btn-common-color);
@@ -170,6 +184,9 @@ input[type="radio"]:checked + label.btn.square {
   color: var(--text-emp-color);
   font-weight: 600;
 }
+.text.emp.black {
+  color: var(--btn-sub-color);
+}
 .text.big {
   font-size: 2em;
 }
@@ -185,6 +202,9 @@ input[type="radio"]:checked + label.btn.square {
 .text.indent {
   margin-left: 0.4em;
 }
+.text.bold {
+  font-weight: 600;
+}
 .text.vertical {
   writing-mode: vertical-rl;
 }
@@ -196,6 +216,10 @@ input[type="radio"]:checked + label.btn.square {
 }
 .transparent_text {
   color: transparent;
+}
+.transparent_bg {
+  background: transparent;
+  border: none;
 }
 .boxborder {
   padding: 0.5em;
@@ -261,10 +285,12 @@ input.small {
   width: 300px;
   height: 75px;
 }
+.logo.small {
+  width: 100px;
+  height: 25px;
+}
 .logo_jyg {
   display: inline-block;
-  width: 180px;
-  height: 120px;
   font-size: 0;
   background: url("../img/logo_natureHouse.png");
   background-size: cover;

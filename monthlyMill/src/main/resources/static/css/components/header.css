@@ -3,6 +3,9 @@ header {
   display: flex;
   flex-direction: column;
 }
+header a {
+  cursor: pointer;
+}
 /*헤더 윗단*/
 .gnb_util {
   display: flex;
@@ -12,13 +15,13 @@ header {
 }
 .gnb_util ul {
   display: flex;
-  margin-right: 20px;
+  margin-right: 1.25em;
 }
 .gnb_util li:last-child {
   margin-right: 0;
 }
 .gnb_util ul li {
-  margin-right: 10px;
+  margin-right: 0.5em;
 }
 
 .gnb_util ul li a {
@@ -31,7 +34,7 @@ header {
 
 /*헤더 아랫단*/
 .gnb_box {
-  height: 80px;
+  height: 5em;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -63,17 +66,29 @@ header {
   color: var(--header-dark-color);
 }
 .gnb_makers {
-  margin-right: 30px;
+  margin-right: 2em;
 }
 .gnb_makers li a {
   color: var(--desc-color);
 }
-/* 모바일: 메뉴 아이콘 추가됨 */
-@media screen and (max-width: var(--mobile-width)) {
+
+@media screen and (max-width: 768px) {
+  .gnb_box .logo {
+    margin-right: 1.5em;
+  }
+}
+
+/* 모바일: UI변경 */
+@media screen and (max-width: 480px) {
   /*
   .gnb_box:after {
     content: "f0c9";
     font: fontawesome;
   }
   */
+
+  .gnb_box .logo {
+    width: 100px;
+    height: 25px;
+  }
 }

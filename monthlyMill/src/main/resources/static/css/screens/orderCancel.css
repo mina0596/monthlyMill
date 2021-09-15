@@ -1,0 +1,26 @@
+.cancelReason_box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.box_row {
+  width: 100%;
+}
+.inputCancelReason {
+  min-width: 12em;
+  margin-bottom: 0.25em;
+}
+.inputTextArea {
+  display: block;
+  width: 100%;
+  min-width: 50em;
+  min-height: 8em;
+  resize: none;
+  font-size: 1em;
+}
+
+.cancel_column {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

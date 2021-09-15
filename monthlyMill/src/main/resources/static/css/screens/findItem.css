@@ -8,10 +8,16 @@
   display: flex;
 }
 
+.find_wrap .main_box {
+  margin-bottom: 1em;
+}
+.findItem_box .hash_box {
+  justify-content: space-evenly;
+}
 .hash_box {
   display: flex;
   flex-direction: row;
-  border: 1px solid gray;
+  padding: 1em;
 }
 .hash_column {
   display: block;
@@ -60,7 +66,6 @@
 .button_box.find_result_button {
   display: flex;
   justify-content: center;
-  border: 1px solid gray;
 }
 
 /* 결과박스 */
