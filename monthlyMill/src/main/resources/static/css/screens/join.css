@@ -13,7 +13,7 @@
   padding: 0.25em;
   width: 650px;
 }
-@media screen and (max-width: 412px) {
+@media screen and (max-width: 480px) {
   .join_cont {
     width: 100vw;
     padding: 2em;

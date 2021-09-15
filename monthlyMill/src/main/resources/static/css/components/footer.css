@@ -48,14 +48,26 @@ footer {
   display: flex;
   justify-content: center;
 }
-
-@media screen and (max-width: 412px) {
+@media (max-width: 1000px) {
   footer {
     grid-template-columns: 1fr 7fr;
+  }
+  .footer_customerCenter {
+    grid-column: span 2;
+    justify-content: flex-end;
+    padding-right: 2em;
+  }
+}
+@media screen and (max-width: 700px) {
+  .logo_jyg {
+    width: 120px;
+    height: 80px;
   }
   .footer_column {
     margin: 1em 0.5em 0;
   }
+}
+@media screen and (max-width: 480px) {
   .logo_jyg {
     width: 60px;
     height: 40px;
@@ -74,9 +86,12 @@ footer {
     transform: translateY(0.1em);
     background-color: var(--desc-color);
   }
-  .footer_customerCenter {
-    grid-column: span 2;
-    justify-content: flex-end;
-    padding-right: 2em;
+}
+@media screen and (max-width: 350px) {
+  footer {
+    grid-template-columns: 0fr 7fr;
+  }
+  .logo_jyg {
+    width: 0;
   }
 }

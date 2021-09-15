@@ -32,9 +32,6 @@ header a {
   font-weight: 600;
 }
 
-@media screen and (max-width: 412px) {
-}
-
 /*헤더 아랫단*/
 .gnb_box {
   height: 5em;
@@ -69,13 +66,20 @@ header a {
   color: var(--header-dark-color);
 }
 .gnb_makers {
-  margin-right: 30px;
+  margin-right: 2em;
 }
 .gnb_makers li a {
   color: var(--desc-color);
 }
-/* 모바일: 메뉴 아이콘 추가됨 */
-@media screen and (max-width: 412px) {
+
+@media screen and (max-width: 768px) {
+  .gnb_box .logo {
+    margin-right: 1.5em;
+  }
+}
+
+/* 모바일: UI변경 */
+@media screen and (max-width: 480px) {
   /*
   .gnb_box:after {
     content: "f0c9";

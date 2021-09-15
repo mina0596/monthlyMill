@@ -27,7 +27,6 @@
   --btn-sub-color: #101010;
 
   --compo-common-color: #c4c4c4;
-  --mobile-max-width: 412px;
 }
 
 html {
@@ -58,7 +57,14 @@ p {
 /* 박스 */
 .content_box {
   min-height: 65vh;
+  max-width: 1200px;
 }
+@media screen and (min-width: 1200px) {
+  .content_box {
+    margin: 0 auto;
+  }
+}
+
 .borderBox {
   border: 1px solid gray;
   border-radius: 0.5em;
@@ -193,6 +199,9 @@ input[type="radio"]:checked + label.btn.square {
 }
 .text.indent {
   margin-left: 0.4em;
+}
+.text.bold {
+  font-weight: 600;
 }
 .text.vertical {
   writing-mode: vertical-rl;
