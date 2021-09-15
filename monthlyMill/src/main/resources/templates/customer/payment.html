@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"></html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -29,7 +28,7 @@
                 <td>
                   <input
                     type="text"
-                    value="주문자 이름"
+                    th:value="${session.SNAME}"
                     class="inputOrdererName"
                   />
                 </td>
@@ -40,7 +39,7 @@
                   <input
                     type="tel"
                     class="phoneNum inputOrdererPhoneNum"
-                    value="000-0000-0000"
+                    th:value="${session.STEL}"
                     maxlength="13"
                     pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
                   />
@@ -71,18 +70,19 @@
                   </tr>
                 </thead>
                 <tbody class="result_itemList">
-                  <tr class="result_item">
+                  <tr class="result_item" th:if="${#lists.size(cartList) > 0}" th:each="cl,n : ${cartList}">
                     <td>
-                      <span class="result_item num">1</span>
+                      <span class="result_item num" th:text="${n.index+1}"></span>
+                      <input type="hidden" name="cartNum" class="result_cart_num" th:value="${cl.cartNum}">
                     </td>
                     <td>
                       <img src="" alt="제품이미지" class="result_item img" />
                     </td>
                     <td>
                       <div class="result_item info">
-                        <span class="result_item title">제품이름</span>
+                        <span class="result_item title" th:text="${cl.pName}"></span>
                         <div>
-                          <span class="result_item price_number">(가격)</span>
+                          <span class="result_item price_number" th:text="${cl.pPrice}"></span>
                         </div>
                       </div>
                     </td>
@@ -90,7 +90,7 @@
                       <span class="result_delivery">택배배송</span>
                     </td>
                     <td>
-                      <span class="result_item itemNumber">개수</span>
+                      <span class="result_item itemNumber" th:text="${cl.pAmount}">개수</span>
                     </td>
                     <td>
                       <span class="result_item price_number">(최종가격)</span>
@@ -159,6 +159,7 @@
                       placeholder="주소"
                       class="inputReceiverAdress"
                     />
+                    <input type="hidden" class="userAddr" th:value="${session.SADDR}">
                     <button class="getPostNumber" type="button">
                       우편번호 찾기
                     </button>
@@ -350,5 +351,10 @@
     <script src="../../static/js/layout_front.js"></script>
     <script src="../../static/js/memberJoin_front.js"></script>
     <script src="../../static/js/customer/payment_front.js"></script>
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/js/customer/payment_front.js}"></script>
+    <script th:src="@{/js/customer/payment.js}"></script>
+    <script th:src="@{/js/memberJoin_front.js}"></script>
+    <script th:src="@{/js/layout_front.js}"></script>
   </body>
 </html>

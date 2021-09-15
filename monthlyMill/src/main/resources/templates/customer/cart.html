@@ -38,6 +38,7 @@
     </header>
 
     <section class="content_box">
+     <form id="getCartInfo" method="get" th:action="@{/customer/payment/paymentInfo}">
       <div class="cart_wrap">
         <h1 class="h1_title text big">장바구니</h1>
         <div class="main_box result_box cart_box">
@@ -66,19 +67,20 @@
                 </tr>
               </thead>
               <tbody class="result_itemList">
-                <tr class="result_item">
+                <tr class="result_item" th:if="${#lists.size(cartList) > 0}" th:each="cl,n : ${cartList}">
                   <td>
-                    <span class="result_item num">1</span>
+                    <span class="result_item num" th:text="${n.index+1}"></span>
+                    <input type="hidden" name="cartNum" class="result_cart_num" th:value="${cl.cartNum}">
                   </td>
                   <td>
                     <img src="" alt="제품이미지" class="result_item img" />
                   </td>
                   <td>
                     <div class="result_item info">
-                      <span class="result_item title">제품이름</span>
+                      <span class="result_item title" th:text="${cl.pName}"></span>
                       <div>
-                        <span class="result_item price_number itemPrice"
-                          >3000</span
+                        <span class="result_item price_number itemPrice" th:text="${cl.pPrice}"
+                          ></span
                         >
                       </div>
                     </div>
@@ -93,10 +95,11 @@
                     <button type="button" class="itemMinusBtn">
                       <i class="fas fa-minus"></i>
                     </button>
-                    <span class="result_item itemQuantity">1</span>
+                    <span class="result_item itemQuantity" th:text="${cl.pAmount}"></span>
                     <button type="button" class="itemPlusBtn">
                       <i class="fas fa-plus"></i>
                     </button>
+                    <input type="hidden" class="pAmount" name="pAmount" value="0">
                   </td>
                   <td>
                     <span class="result_item price_number itemSumPrice"
@@ -109,7 +112,7 @@
                     </button>
                   </td>
                 </tr>
-                <tr class="result_item">
+                <!-- <tr class="result_item">
                   <td>
                     <span class="result_item num">1</span>
                   </td>
@@ -151,7 +154,7 @@
                       <i class="fas fa-times"></i>
                     </button>
                   </td>
-                </tr>
+                </tr> -->
               </tbody>
             </table>
           </div>
@@ -182,16 +185,19 @@
           </div>
           <div class="button_box">
             <!--누르면 결제창으로-->
-            <button type="" class="btn big emp gotoPaymentBtn">결제하기</button>
+            <button type="submit" class="btn big emp gotoPaymentBtn">주문하기</button>
+            <!-- <input value="주문하기" type="button" class="btn big emp gotoPaymentBtn"> -->
           </div>
         </div>
       </div>
+     </form>
     </section>
 
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../../static/js/customer/cart_front.js"></script>
 
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/js/customer/cart.js}"></script>
     <script
       type="text/javascript"
       th:src="@{/js/customer/cart_front.js}"
