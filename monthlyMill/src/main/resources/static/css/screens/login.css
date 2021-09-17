@@ -9,7 +9,12 @@
 .tap_box input[type="radio"]:checked + label {
   background-color: var(--btn-sub-color);
 }
+/*로그인 정보 입력 박스*/
+.login_box {
+  padding: 0 3em;
+}
 
+/* 로그인 부가기능 박스*/
 .login_convenience {
   display: flex;
   justify-content: center;
@@ -20,7 +25,7 @@
 .login_convenience span:last-child {
   margin-right: 0;
 }
-
+/* 로그인 관련 연결 링크 */
 .login_button_box ul {
   display: flex;
   justify-content: center;

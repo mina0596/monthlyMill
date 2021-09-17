@@ -47,6 +47,13 @@ tr.result_item:last-child {
 .result_item.price_origin {
   text-decoration: line-through;
 }
+@media screen and (max-width: 480px) {
+  .result_item >.itembuttonBox {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
+  }
+}
 .result_item.itemSumPrice {
   display: block;
   text-align: center;
@@ -77,10 +84,51 @@ tr.result_item:last-child {
   text-align: center;
 }
 .price_box .price_title {
-  margin-bottom: 10px;
+  margin-bottom: 0.625em;
 }
 
 .main_payment_box .button_box {
   width: 50%;
   margin: 20px auto;
+}
+
+/* ==== 모바일용 장바구니 리스트 테이블 === */
+@media screen and (max-width: 768px) {
+  .result_item_mobile{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .result_item_mobile .result_item__row.itemTitleRow {
+    display: flex;
+    justify-content: space-between;
+  }
+  .result_item_mobile .result_item__row.itemInfoRow {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+  .result_item_mobile .result_item__subcolumn{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .result_item_mobile .result_item__subrow{
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .payment_box i {
+    transform: translateY(0.75em);
+  }
+  .price_box .price_title {
+    margin-bottom: 0;
+  }
+  .price_box .price_number.text {
+    font-size: 1.5em;
+  }
+  .deliveryInfo_form th {
+    width: 100%;
+  }
 }

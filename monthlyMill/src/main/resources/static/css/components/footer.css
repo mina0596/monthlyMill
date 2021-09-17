@@ -58,20 +58,18 @@ footer {
     padding-right: 2em;
   }
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 768px) {
+  footer {
+    grid-template-columns: 0fr 7fr;
+  }
   .logo_jyg {
-    width: 120px;
-    height: 80px;
+    width: 0;
   }
   .footer_column {
     margin: 1em 0.5em 0;
   }
 }
 @media screen and (max-width: 480px) {
-  .logo_jyg {
-    width: 60px;
-    height: 40px;
-  }
   footer p,
   .footer_gnb,
   .footer_desc {
@@ -85,13 +83,5 @@ footer {
     margin-left: 0.5em;
     transform: translateY(0.1em);
     background-color: var(--desc-color);
-  }
-}
-@media screen and (max-width: 350px) {
-  footer {
-    grid-template-columns: 0fr 7fr;
-  }
-  .logo_jyg {
-    width: 0;
   }
 }

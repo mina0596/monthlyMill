@@ -1,0 +1,55 @@
+<aside class="gnb_side">
+  <div class="gnb_side__top">
+    <!-- 상단 회원정보, 버튼-->
+    <ul class="gnb_side__top_left">
+      <li>
+        <a
+          th:if="${session.SID == null}"
+          th:href="@{/join/join_method}"
+          class="gnb_util__join"
+          >회원가입</a
+        >
+        <a th:if="${session.SID != null}" class="gnb_util__join"
+          >[[${session.SNAME}]]님 환영합니다</a
+        >
+      </li>
+      <li>
+        <a
+          th:if="${session.SID == null}"
+          th:href="@{/login}"
+          class="gnb_util__login"
+          >로그인</a
+        >
+      </li>
+      <li>
+        <a
+          th:if="${session.SID != null}"
+          th:href="@{/logout}"
+          class="gnb_util__login"
+          >로그아웃</a
+        >
+      </li>
+    </ul>
+    <ul class="gnb_side__top_right">
+      <li class="gnb_side__homeBtn">
+        <i class="fas fa-home text mid" aria-labe="홈"></i>
+      </li>
+      <li class="gnb_side__closeBtn">
+        <i class="fas fa-times text mid" aria-labe="닫기"></i>
+      </li>
+    </ul>
+  </div>
+  <!-- 상단 2 : 마이페이지, 주문배송  -->
+  <div class="gnb_side__row"></div>
+
+  <!-- gnb 메뉴 -->
+  <div class="gnb_side__middle">
+    <ul class="gnb_side__menu">
+      <li><a th:href="@{/introduce}">월간방앗간 소개</a></li>
+      <li><a th:href="@{/recommend/findItem}">나만의 떡 찾기</a></li>
+      <li><a href="#" class="noPage">이벤트</a></li>
+      <li><a href="#" class="noPage">리뷰</a></li>
+      <li><a href="#">메이커스</a></li>
+    </ul>
+  </div>
+</aside>
