@@ -11,12 +11,17 @@
 .join_cont {
   margin: 3em auto;
   padding: 0.25em;
-  width: 650px;
+  width: 40em;
 }
+
 @media screen and (max-width: 480px) {
   .join_cont {
     width: 100vw;
-    padding: 2em;
+    margin-top: 1em auto;
+    padding: 1em;
+  }
+  .join_member {
+    padding: 0 1em;
   }
 }
 .join_box {
@@ -186,8 +191,11 @@ select {
 .join_box select.bank {
   width: 8em;
 }
+.join_box input.accountOwner {
+  width: 9.75em;
+}
 .join_box input.accountNumber {
-  width: 50%;
+  width: 18em;
 }
 
 .h3_title {
@@ -242,22 +250,43 @@ select {
 .hash_list .checkHash {
   color: var(--btn-sub-color);
 }
-.hash_list:nth-child(5n) .checkHash {
+.hash_list:nth-child(5n) .checkHash label {
   background-color: rgb(255, 212, 219);
 }
-.hash_list:nth-child(5n + 1) .checkHash {
+.hash_list:nth-child(5n + 1) .checkHash label {
   background-color: rgb(210, 243, 238);
 }
-.hash_list:nth-child(5n + 2) .checkHash {
+.hash_list:nth-child(5n + 2) .checkHash label {
   background-color: lightgray;
 }
-.hash_list:nth-child(5n + 3) .checkHash {
+.hash_list:nth-child(5n + 3) .checkHash label {
   background-color: rgb(198, 233, 255);
 }
-.hash_list:nth-child(5n + 4) .checkHash {
+.hash_list:nth-child(5n + 4) .checkHash label {
   background-color: rgb(250, 243, 210);
+}
+
+.hash_list:nth-child(5n) .checkHash input[type="checkbox"]:checked + label {
+  box-shadow: 0 0.2em 0.5em rgba(218, 28, 59, 0.6);
+}
+.hash_list:nth-child(5n + 1) .checkHash input[type="checkbox"]:checked + label {
+  box-shadow: 0 0.2em 0.5em rgba(17, 127, 141, 0.6);
+}
+.hash_list:nth-child(5n + 2) .checkHash input[type="checkbox"]:checked + label {
+  box-shadow: 0 0.2em 0.5em rgba(32, 32, 32, 0.6);
+}
+.hash_list:nth-child(5n + 3) .checkHash input[type="checkbox"]:checked + label {
+  box-shadow: 0 0.2em 0.5em rgba(28, 102, 172, 0.6);
+}
+.hash_list:nth-child(5n + 4) .checkHash input[type="checkbox"]:checked + label {
+  box-shadow: 0 0.2em 0.5em rgba(226, 131, 22, 0.6);
 }
 
 .text_box.pad {
   margin: 2em 0;
+}
+@media screen and (max-width: 480px) {
+  .text_box.pad .text.mid {
+    font-size: 1.35em;
+  }
 }

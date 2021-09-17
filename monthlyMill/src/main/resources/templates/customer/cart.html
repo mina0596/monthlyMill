@@ -158,29 +158,38 @@
               </tbody>
             </table>
           </div>
-        </div>
 
-        <div class="main_box bottom main_payment_box">
-          <div class="payment_box">
-            <div class="price_box">
-              <span class="price_title">총 상품금액</span>
-              <span class="price_number text big itemTotalPrice">10000</span>
+          <div class="main_box bottom main_payment_box">
+            <div class="payment_box">
+              <div class="price_box">
+                <span class="price_title">총 상품금액</span>
+                <span class="price_number text big itemTotalPrice">10000</span>
+              </div>
+              <div>
+                <i class="fas fa-plus"></i>
+              </div>
+              <div class="price_box">
+                <span class="price_title">총 배송비</span>
+                <span class="price_number text big deliveryTotalPrice"
+                  >2000</span
+                >
+              </div>
+              <div>
+                <i class="fas fa-equals"></i>
+              </div>
+              <div class="price_box">
+                <span class="price_title">총 결제예정금액</span>
+                <span class="price_number text big emp paymentTotalPrice"
+                  >(가격)</span
+                >
+              </div>
             </div>
-            <div>
-              <i class="fas fa-plus"></i>
-            </div>
-            <div class="price_box">
-              <span class="price_title">총 배송비</span>
-              <span class="price_number text big deliveryTotalPrice">2000</span>
-            </div>
-            <div>
-              <i class="fas fa-equals"></i>
-            </div>
-            <div class="price_box">
-              <span class="price_title">총 결제예정금액</span>
-              <span class="price_number text big emp paymentTotalPrice"
-                >(가격)</span
-              >
+            <div class="button_box">
+              <!--누르면 결제창으로-->
+              <button type="submit" class="btn big emp gotoPaymentBtn">
+                주문하기
+              </button>
+              <!-- <input value="주문하기" type="button" class="btn big emp gotoPaymentBtn"> -->
             </div>
           </div>
           <div class="button_box">

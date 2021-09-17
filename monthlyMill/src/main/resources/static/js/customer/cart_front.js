@@ -97,11 +97,11 @@ function init(){
     //이벤트 리스너
     $(document).on("click", ".itemMinusBtn", function(){
         minusCartItem(this);
-        calculateItemSumPrice(this.parentNode.parentNode);
+        calculateItemSumPrice(this.parentNode.parentNode.parentNode);
     });
     $(document).on("click", ".itemPlusBtn", function(){
         plusCartItem(this);
-        calculateItemSumPrice(this.parentNode.parentNode);
+        calculateItemSumPrice(this.parentNode.parentNode.parentNode);
     });
     $(document).on("click", ".deleteItemBtn", function(){
         deleteCartItem(this);
