@@ -60,6 +60,9 @@ public class LoginController {
 			session.setAttribute("SID", loginId);
 			session.setAttribute("SNAME", loginWithId.getMemberName());
 			session.setAttribute("SLEVEL", loginWithId.getMemberCateNum());
+			session.setAttribute("STEL", loginWithId.getMemberPhone());
+			session.setAttribute("SADDR", loginWithId.getMemberAddr());
+			session.setAttribute("SPCODE", loginWithId.getMemberPostalCode());
 		}
 		return "main";
 	}
