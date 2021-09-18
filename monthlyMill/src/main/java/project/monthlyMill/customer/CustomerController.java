@@ -1,4 +1,4 @@
-package project.monthlyMill.controller;
+package project.monthlyMill.customer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

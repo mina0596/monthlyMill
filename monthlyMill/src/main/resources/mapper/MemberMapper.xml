@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="project.monthlyMill.dao.MemberMapper">
+<mapper namespace="project.monthlyMill.signup.SignupMapper">
 	<resultMap type="Member"				id="memberResultMap">
 		<result property="memberNum" 				column="member_num"/>
 		<result property="memberId" 				column="member_id"/>
@@ -13,20 +13,40 @@
 		<result property="memberEmail" 				column="member_email"/>
 		<result property="memberGender" 			column="member_gender"/>
 		<result property="memberAddr" 				column="member_addr"/>
+		<result property="memberDetailAddr" 		column="member_addr"/>
 		<result property="memberPostalCode" 		column="member_postal_code"/>
 		<result property="memberPhone" 				column="member_phone"/>
 		<result property="memberIdentityCheck" 		column="identity_check"/>
-		<result property="refundAccount" 			column="refund_account"/>
-		<result property="refundAccountBank" 		column="refund_account_bank"/>
-		<result property="refundName" 				column="refund_name"/>
 		<result property="memberInfoModifyDate" 	column="member_info_modify_date"/>
 		<result property="memberInfoRegDate" 		column="member_info_reg_date"/>
 	</resultMap>
+	<resultMap type="RefundAccount" 		id="refundAccountResultMap">
+		<result property="memberNum" 				column="member_num"/>
+		<result property="bankName" 				column="bank_name"/>
+		<result property="bankAccountNum" 			column="bank_account_num"/>
+		<result property="holderName" 				column="holder_name"/>	
+	</resultMap>
 	
 	<select id="getMemberInfoById" parameterType="String" resultMap="memberResultMap">
-		SELECT member_num, member_id, member_pw, member_cate_num, member_name, member_age, member_bday, member_email, member_gender, member_addr, member_postal_code, member_phone, identity_check, refund_account, refund_account_bank, refund_name, member_info_modify_date, member_info_reg_date
-		FROM member_info
+		SELECT member_num, member_id, member_pw, member_cate_num, member_name, member_age, member_bday, member_email, member_gender, member_addr, member_detail_addr, member_postal_code, member_phone, identity_check, member_info_modify_date, member_info_reg_date
+		FROM member_basic_info
 		WHERE member_id = #{inputId};
 	</select>
+	
+	<insert id="addBasicMembInfo" parameterType="Member">
+		INSERT INTO member_basic_info
+		(member_num, member_id, member_pw, member_cate_num, member_name, member_age, member_bday, member_email
+		, member_gender, member_addr, member_detail_addr, member_postal_code, member_phone
+		, identity_check, member_info_modify_date, member_info_reg_date)
+		VALUES (NULL, #{memberId}, #{memberPw}, #{memberCateNum}, #{memberName}, #{memberAge}, #{memberBday}, #{memberEmail}
+		, #{memberGender}, #{memberAddr}, #{memberDetailAddr}, #{memberPostalCode}, #{memberPhone}
+		, 'Y', CURDATE(), CURDATE());
+	</insert>
+	
+	<insert id="addRefundInfo" parameterType="RefundAccount">
+		INSERT INTO member_refund_info
+		(member_num, bank_name, bank_account_num, holder_name)
+		VALUES (NULL, #{bankName}, #{bankAccountNum}, #{holderName})
+	</insert>
 	
 </mapper>

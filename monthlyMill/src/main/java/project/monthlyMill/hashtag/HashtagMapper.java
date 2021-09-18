@@ -1,4 +1,4 @@
-package project.monthlyMill.dao;
+package project.monthlyMill.hashtag;
 
 import java.util.List;
 

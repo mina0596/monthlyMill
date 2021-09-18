@@ -1,4 +1,4 @@
-package project.monthlyMill.service;
+package project.monthlyMill.recommendation;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,10 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import project.monthlyMill.dao.HashtagMapper;
-import project.monthlyMill.dao.RecommendMapper;
 import project.monthlyMill.dto.Hashtag;
 import project.monthlyMill.dto.Product;
+import project.monthlyMill.hashtag.HashtagMapper;
 
 @Service
 public class RecommendationService {

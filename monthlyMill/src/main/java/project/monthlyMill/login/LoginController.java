@@ -1,4 +1,4 @@
-package project.monthlyMill.controller;
+package project.monthlyMill.login;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import project.monthlyMill.dto.Member;
-import project.monthlyMill.service.LoginService;
 
 @Controller
 public class LoginController {
@@ -32,7 +31,7 @@ public class LoginController {
 	
 	@GetMapping("/login")
 	public String memberLogin() {
-		return "/login";
+		return "/common/login";
 	}
 	
 	@PostMapping("/login")
@@ -64,12 +63,12 @@ public class LoginController {
 			session.setAttribute("SADDR", loginWithId.getMemberAddr());
 			session.setAttribute("SPCODE", loginWithId.getMemberPostalCode());
 		}
-		return "main";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/logout")
 	public String memberlogout(HttpSession session) {
 		session.invalidate();
-		return "/main";
+		return "/common/main";
 	}
 }

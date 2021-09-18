@@ -1,5 +1,10 @@
 package project.monthlyMill.dto;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 public class Hashtag {
 	private String hashtagNum;
 	private String hashtagHighClass;
@@ -36,13 +41,11 @@ public class Hashtag {
 	public void setHashtagRegDate(String hashtagRegDate) {
 		this.hashtagRegDate = hashtagRegDate;
 	}
-	
 	@Override
 	public String toString() {
 		return "Hashtag [hashtagNum=" + hashtagNum + ", hashtagHighClass=" + hashtagHighClass + ", hashtagMidClass="
 				+ hashtagMidClass + ", hashtagName=" + hashtagName + ", hashtagRegDate=" + hashtagRegDate + "]";
 	}
-	
 	
 	
 }

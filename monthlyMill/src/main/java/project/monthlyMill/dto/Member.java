@@ -11,12 +11,10 @@ public class Member {
 	private String memberEmail;
 	private char memberGender;
 	private String memberAddr;
+	private String memberDetailAddr;
 	private String memberPostalCode;
 	private String memberPhone;
 	private char memberIdentityCheck;
-	private String refundAccount;
-	private String refundAccountBank;
-	private String refundName;
 	private String memberInfoModifyDate;
 	private String memberInfoRegDate;
 	public int getMemberNum() {
@@ -97,24 +95,6 @@ public class Member {
 	public void setMemberIdentityCheck(char memberIdentityCheck) {
 		this.memberIdentityCheck = memberIdentityCheck;
 	}
-	public String getRefundAccount() {
-		return refundAccount;
-	}
-	public void setRefundAccount(String refundAccount) {
-		this.refundAccount = refundAccount;
-	}
-	public String getRefundAccountBank() {
-		return refundAccountBank;
-	}
-	public void setRefundAccountBank(String refundAccountBank) {
-		this.refundAccountBank = refundAccountBank;
-	}
-	public String getRefundName() {
-		return refundName;
-	}
-	public void setRefundName(String refundName) {
-		this.refundName = refundName;
-	}
 	public String getMemberInfoModifyDate() {
 		return memberInfoModifyDate;
 	}
@@ -127,16 +107,20 @@ public class Member {
 	public void setMemberInfoRegDate(String memberInfoRegDate) {
 		this.memberInfoRegDate = memberInfoRegDate;
 	}
-	
+	public String getMemberDetailAddr() {
+		return memberDetailAddr;
+	}
+	public void setMemberDetailAddr(String memberDetailAddr) {
+		this.memberDetailAddr = memberDetailAddr;
+	}
 	@Override
 	public String toString() {
 		return "Member [memberNum=" + memberNum + ", memberId=" + memberId + ", memberPw=" + memberPw
 				+ ", memberCateNum=" + memberCateNum + ", memberName=" + memberName + ", memberAge=" + memberAge
 				+ ", memberBday=" + memberBday + ", memberEmail=" + memberEmail + ", memberGender=" + memberGender
-				+ ", memberAddr=" + memberAddr + ", memberPostalCode=" + memberPostalCode + ", memberPhone="
-				+ memberPhone + ", memberIdentityCheck=" + memberIdentityCheck + ", refundAccount=" + refundAccount
-				+ ", refundAccountBank=" + refundAccountBank + ", refundName=" + refundName + ", memberInfoModifyDate="
-				+ memberInfoModifyDate + ", memberInfoRegDate=" + memberInfoRegDate + "]";
+				+ ", memberAddr=" + memberAddr + ", memberDetailAddr=" + memberDetailAddr + ", memberPostalCode="
+				+ memberPostalCode + ", memberPhone=" + memberPhone + ", memberIdentityCheck=" + memberIdentityCheck
+				+ ", memberInfoModifyDate=" + memberInfoModifyDate + ", memberInfoRegDate=" + memberInfoRegDate + "]";
 	}
 	
 }

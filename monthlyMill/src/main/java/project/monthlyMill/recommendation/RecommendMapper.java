@@ -1,4 +1,4 @@
-package project.monthlyMill.dao;
+package project.monthlyMill.recommendation;
 
 import java.util.List;
 import java.util.Map;
