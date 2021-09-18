@@ -1,4 +1,4 @@
-package project.monthlyMill.dao;
+package project.monthlyMill.signup;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -6,7 +6,7 @@ import project.monthlyMill.dto.Member;
 import project.monthlyMill.dto.RefundAccount;
 
 @Mapper
-public interface MemberMapper {
+public interface SignupMapper {
 	
 	// 1.아이디로 회원정보 가져오기
 	public Member getMemberInfoById(String inputId);

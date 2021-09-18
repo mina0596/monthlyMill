@@ -1,4 +1,4 @@
-package project.monthlyMill.controller;
+package project.monthlyMill.recommendation;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import project.monthlyMill.dto.Hashtag;
 import project.monthlyMill.dto.Product;
-import project.monthlyMill.service.RecommendationService;
 
 @Controller
 @RequestMapping("/customer/recommend")

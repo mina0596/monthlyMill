@@ -1,4 +1,4 @@
-package project.monthlyMill.controller;
+package project.monthlyMill.login;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import project.monthlyMill.dto.Member;
-import project.monthlyMill.service.LoginService;
 
 @Controller
 public class LoginController {

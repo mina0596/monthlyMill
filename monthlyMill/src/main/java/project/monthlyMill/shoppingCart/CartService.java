@@ -1,11 +1,9 @@
-package project.monthlyMill.service;
+package project.monthlyMill.shoppingCart;
 
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
-
-import project.monthlyMill.dao.CartMapper;
 
 @Service
 public class CartService {

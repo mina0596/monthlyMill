@@ -1,4 +1,4 @@
-package project.monthlyMill.controller;
+package project.monthlyMill.shoppingCart;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import project.monthlyMill.dto.Cart;
-import project.monthlyMill.service.CartService;
 
 @Controller
 @RequestMapping("/customer/cart")

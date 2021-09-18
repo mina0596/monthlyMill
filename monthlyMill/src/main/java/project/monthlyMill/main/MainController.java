@@ -1,4 +1,4 @@
-package project.monthlyMill.controller;
+package project.monthlyMill.main;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

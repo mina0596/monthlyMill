@@ -1,7 +1,8 @@
-package project.monthlyMill.controller;
+package project.monthlyMill.signup;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,19 +24,18 @@ import project.monthlyMill.dto.Hashtag;
 import project.monthlyMill.dto.Member;
 import project.monthlyMill.dto.MemberAgreementInfo;
 import project.monthlyMill.dto.RefundAccount;
-import project.monthlyMill.service.JoinService;
 
 @Controller
 @RequestMapping("/join")
-public class JoinController {
+public class SignupController {
 	
-	private static final Logger log = LoggerFactory.getLogger(JoinController.class);
+	private static final Logger log = LoggerFactory.getLogger(SignupController.class);
 	
-	private final JoinService joinService;
+	private final SignupService signupService;
 	
 	@Autowired
-	public JoinController(JoinService joinService) {
-		this.joinService = joinService;
+	public SignupController(SignupService signupService) {
+		this.signupService = signupService;
 	}
 	
 	// 1.가입방법 (회원가입 첫화면) - 고객, 메이커스 선택
@@ -78,45 +79,43 @@ public class JoinController {
 	@ResponseBody
 	public boolean getMemberIdCheckResult(@RequestParam (name = "inputId", required = false) String inputId) {
 		log.info("입력된 아이디 확인: {}", inputId);
-		boolean idCheckResult = joinService.getMemberInfoById(inputId);
+		boolean idCheckResult = signupService.getMemberInfoById(inputId);
 		log.info("아이디 중복 확인: {}", idCheckResult);
 		return idCheckResult;
 	}
 	
 	// 기본정보 입력창 (전부 필수입력란) 세션에 저장
-	@PostMapping("/join_basic")
-	public String getJoinBasicInfo(@RequestParam(name = "inputId", required = false) String memberId
-								 , @RequestParam(name = "inputPw", required = false) String memberPw
-								 , @RequestParam(name = "inputName", required = false) String memberName
-								 , @RequestParam(name = "inputSex", required = false) char memberGender
-								 , @RequestParam(name = "inputPhone", required = false) String memberPhone
-								 , @RequestParam(name = "inputBday", required = false) String memberBday
-								 , @RequestParam(name = "inputAge", required = false) int memberAge
-								 , @RequestParam(name = "address", required = false) String memberAddr
-								 , @RequestParam(name = "addressDetail", required = false) String memberDetailAddr
-								 , @RequestParam(name = "inputPostCode", required = false) String memberPostalCode
-								 , @RequestParam(name = "inputBank", required = false) String refundAccountBank
-								 , @RequestParam(name = "inputAccountOwner", required = false) String refundName
-								 , @RequestParam(name = "inputAccountNumber", required = false) String refundAccount
+	@PostMapping("/sendBasicInfo")
+	@ResponseBody
+	public String getJoinBasicInfo(@RequestBody Map<String, Object> inputBasicInfo
 								 , HttpSession session) {
 		Member inputInfo = new Member();
 		RefundAccount refundInfo = new RefundAccount();
 		//세션에 기본정보 저장하기
-		inputInfo.setMemberId(memberId);
-		inputInfo.setMemberPw(memberPw);
-		inputInfo.setMemberName(memberName);
-		inputInfo.setMemberGender(memberGender);
-		inputInfo.setMemberPhone(memberPhone);
-		inputInfo.setMemberBday(memberBday);
-		inputInfo.setMemberAge(memberAge);
+		inputInfo.setMemberId(String.valueOf(inputBasicInfo.get("inputId")));
+		inputInfo.setMemberPw(String.valueOf(inputBasicInfo.get("inputPw")));
+		inputInfo.setMemberName(String.valueOf(inputBasicInfo.get("inputName")));
+		inputInfo.setMemberBday(String.valueOf(inputBasicInfo.get("inputBday")));
+		inputInfo.setMemberAge(Integer.valueOf((String) inputBasicInfo.get("inputAge")));
+		inputInfo.setMemberGender(String.valueOf(inputBasicInfo.get("inputSex")).charAt(0));
+		inputInfo.setMemberEmail(String.valueOf(inputBasicInfo.get("inputEmail")));
+		inputInfo.setMemberPhone(String.valueOf(inputBasicInfo.get("inputPhone")));
+		inputInfo.setMemberPostalCode(String.valueOf(inputBasicInfo.get("inputPostCode")));
+		inputInfo.setMemberAddr(String.valueOf(inputBasicInfo.get("inputAddress")));
+		inputInfo.setMemberDetailAddr(String.valueOf(inputBasicInfo.get("inputAddressDetail")));
 		inputInfo.setMemberCateNum((int)session.getAttribute("memberCate"));
 		log.info("member 기본정보란 확인:{}", inputInfo);
 		session.setAttribute("basicInfo", inputInfo);
 		//세션에 환불정보 저장하기
-		refundInfo.setBankAccountNum(refundAccount);
-		refundInfo.setBankName(refundAccountBank);
-		refundInfo.setHolderName(refundName);
+		refundInfo.setBankName(String.valueOf(inputBasicInfo.get("inputBank")));
+		refundInfo.setHolderName(String.valueOf(inputBasicInfo.get("inputAccountOwner")));
+		refundInfo.setBankAccountNum(String.valueOf(inputBasicInfo.get("inputAccountNumber")));
 		session.setAttribute("refundInfo", refundInfo);
+		return "success";
+	}
+	
+	@PostMapping("/join_basic")
+	public String getJoinBasicInfo() {
 		return "redirect:/join/join_additory";
 	}
 	
@@ -125,7 +124,7 @@ public class JoinController {
 	public String memberJoinAdditory(HttpSession session, Model model) {
 		
 		//해시태그 제일 하위분류에서는 이름이 겹치는게 없다는 가정하에 만들었음
-		List<Hashtag> tagNames = joinService.getTagNames();
+		List<Hashtag> tagNames = signupService.getTagNames();
 		List<String> midClassList = new ArrayList<String>();
 		for(int i=0; i<tagNames.size(); i++) {
 			midClassList.add(tagNames.get(i).getHashtagMidClass());
@@ -144,8 +143,8 @@ public class JoinController {
 	// 5. 회원가입 완료 메시지 + 로그인
 	@GetMapping("/join_finish")
 	public String memberJoinFinish(HttpSession session) {
-		joinService.addBasicMembInfo((Member)session.getAttribute("basicInfo"));
-		joinService.addRefundInfo((RefundAccount) session.getAttribute("refundInfo"));
+		signupService.addBasicMembInfo((Member)session.getAttribute("basicInfo"));
+		signupService.addRefundInfo((RefundAccount) session.getAttribute("refundInfo"));
 		return "/memberJoin/join_finish";
 	}
 	

@@ -1,4 +1,4 @@
-package project.monthlyMill.controller;
+package project.monthlyMill.payment;
 
 import java.util.List;
 import java.util.Map;
@@ -12,7 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import project.monthlyMill.service.CartService;
+import project.monthlyMill.shoppingCart.CartService;
 
 @Controller
 @RequestMapping("/customer/payment")

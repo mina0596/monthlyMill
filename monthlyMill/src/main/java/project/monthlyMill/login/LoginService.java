@@ -1,19 +1,19 @@
-package project.monthlyMill.service;
+package project.monthlyMill.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import project.monthlyMill.dao.MemberMapper;
 import project.monthlyMill.dto.Member;
+import project.monthlyMill.signup.SignupMapper;
 
 @Service
 public class LoginService {
 	
 	//의존성 주입
-	private final MemberMapper memberMapper;
+	private final SignupMapper memberMapper;
 	
 	@Autowired
-	public LoginService(MemberMapper memberMapper) {
+	public LoginService(SignupMapper memberMapper) {
 		this.memberMapper = memberMapper;
 	}
 	

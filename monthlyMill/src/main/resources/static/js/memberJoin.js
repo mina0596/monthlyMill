@@ -78,7 +78,6 @@ function email_check(inputEmail){
 	
 	// **************** 기본사항 입력***********************
 	var inputId = $('input[name="inputId"]').val();
-	
 	//아이디 중복 체크 + 아이디 유효성검사
 	$('input[name="inputId"]').keyup(function(){
 		$('input[name="idDupCheck"]').val('idDupUncheck');
@@ -276,12 +275,12 @@ function email_check(inputEmail){
 			return submitFlag;
 		}
 		
-		if($('.emailCheck').val() == 'unusable' || !email_check($('.emailCheck').val())){
+	/*	if($('.emailCheck').val() == 'unusable' || !email_check($('.emailCheck').val())){
 			alert('이메일 주소를 다시 입력해주세요');
 			$('.emailCheck').focus();
 			submitFlag = false;
 			return submitFlag;
-		}
+		}*/
 		
 		if($('select[name="inputBank"]').val() == '' || $('select[name="inputBank"]').val() == undefined){
 			alert('환불계좌 은행을 선택해주세요');
@@ -308,7 +307,41 @@ function email_check(inputEmail){
 		
 		$('input[name="inputAddr"]').val($('.address').val() + $('.addressDetail').val());
 		
-		if(submitFlag) $('#joinBasic').submit();
+		if(submitFlag){
+			
+			var params = {
+				"inputId" : $('input[name="inputId"]').val(),
+				"inputPw" : $('input[name="inputPw"]').val(),
+				"inputName" : $('input[name="inputName"]').val(),
+				"inputBday" : $('input[name="inputBday"]').val(),			
+				"inputAge" : $('input[name="inputAge"]').val(),			
+				"inputSex" : $('input[name="inputSex"]:checked').val(),			
+				"inputEmail" : $('input[name="inputEmail"]').val(),			
+				"inputPhone" : $('input[name="inputPhone"]').val(),			
+				"inputPostCode" : $('input[name="inputPostCode"]').val(),			
+				"inputAddress" : $('input[name="address"]').val(),			
+				"inputAddressDetail" : $('input[name="addressDetail"]').val(),			
+				"inputBank" : $('select[name="inputBank"]').val(),			
+				"inputAccountOwner" : $('input[name="inputAccountOwner"]').val(),			
+				"inputAccountNumber" : $('input[name="inputAccountNumber"]').val()			
+			};
+			
+			var request = $.ajax({
+				url: "/join/sendBasicInfo",
+				method: "post",
+				traditional: true,
+				data: JSON.stringify(params),
+				contentType: "application/json",
+				dataType: "text"
+			});
+			
+			request.done(function(data){
+				
+			});
+			request.fail(function(jqXHR, textStatus){
+				alert('서버에러: 관리자에게 문의해주세요');
+			})
+		}
 	
 	});
 	

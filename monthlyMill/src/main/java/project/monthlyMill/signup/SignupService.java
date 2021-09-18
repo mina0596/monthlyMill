@@ -1,4 +1,4 @@
-package project.monthlyMill.service;
+package project.monthlyMill.signup;
 
 import java.util.List;
 
@@ -7,21 +7,20 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import project.monthlyMill.dao.HashtagMapper;
-import project.monthlyMill.dao.MemberMapper;
 import project.monthlyMill.dto.Hashtag;
 import project.monthlyMill.dto.Member;
 import project.monthlyMill.dto.RefundAccount;
+import project.monthlyMill.hashtag.HashtagMapper;
 
 @Service
-public class JoinService {
+public class SignupService {
 
 	//의존성 주입
-	private final MemberMapper memberMapper;
+	private final SignupMapper memberMapper;
 	private final HashtagMapper tagMapper;
 	
 	@Autowired
-	public JoinService(MemberMapper memberMapper, HashtagMapper tagMapper) {
+	public SignupService(SignupMapper memberMapper, HashtagMapper tagMapper) {
 		this.memberMapper = memberMapper;
 		this.tagMapper = tagMapper;
 	}
