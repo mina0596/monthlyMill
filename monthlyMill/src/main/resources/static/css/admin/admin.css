@@ -1,0 +1,18 @@
+/* 입력 폼 관련 */
+.inputform {
+}
+.inputform > ol {
+  list-style: decimal;
+  list-style-position: inside;
+}
+.inputform_item {
+  margin-bottom: 0.25em;
+  padding: 0.25em 0;
+  display: grid;
+  grid-template-columns: 8em auto;
+}
+.inputform__column.inputTitle {
+  display: inline-block;
+}
+
+/* 조회용 리스트 관련 */

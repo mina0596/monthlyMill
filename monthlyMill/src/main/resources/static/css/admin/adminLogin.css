@@ -1,0 +1,35 @@
+.loginbg {
+  background: linear-gradient(
+    to bottom,
+    rgb(138, 165, 130),
+    rgb(255, 254, 187)
+  );
+  height: 100vh;
+}
+.loginBox {
+  margin: 20vh auto 0;
+  padding: 1em 2em 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 1em;
+  box-shadow: 0 0.25em 1em rgba(0, 0, 0, 0.3);
+}
+.loginBox .logo {
+  margin-bottom: 1em;
+}
+.loginBox_row {
+  margin: 0.5em;
+  width: 100%;
+}
+.loginBox_row > input {
+  display: block;
+  margin: 0 auto;
+  width: 70%;
+}
+.loginBox .loginBtn {
+  display: block;
+  margin: 0 auto;
+  width: 70%;
+}

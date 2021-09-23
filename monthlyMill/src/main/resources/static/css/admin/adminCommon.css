@@ -1,0 +1,51 @@
+.wrapper {
+  display: flex;
+}
+
+/*사이드 gnb메뉴바*/
+.adminAside {
+  padding: 1em;
+  min-width: 12em;
+  color: #fff;
+  background-color: #000;
+}
+.gnbAdmin_main > li {
+  padding: 0.5em 0;
+  /* border-bottom: 1px solid rgba(255, 255, 255, 0.5); */
+}
+.gnbAdmin_main > li:last-child {
+  border-bottom: none;
+}
+.gnbAdmin_main__nameBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gnbAdmin_sub {
+  padding: 0.5em;
+  border-top: 1px solid #fff;
+}
+
+.gnbAdmin_sub > li {
+  margin-bottom: 0.5em;
+}
+
+.adminAside a,
+.adminAside i {
+  color: #fff;
+}
+
+/* 컨텐츠 */
+.adminContent {
+  width: 100%;
+  padding: 1em 2em;
+}
+
+/*공통 요소*/
+.adminTitle {
+  font-size: 1.5em;
+  padding: 0.5em;
+  background-color: var(--admin-main-color);
+  color: #fff;
+}

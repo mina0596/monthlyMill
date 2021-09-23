@@ -1,0 +1,355 @@
+:root {
+  --font: "ChosunGu";
+  --text-emp-color: #009207;
+  --desc-color: rgb(147, 148, 147);
+
+  --header-dark-color: #101010;
+
+  --btn-common-color: #919191;
+  --btn-emp-color: #308034;
+  --btn-sub-color: #101010;
+
+  --compo-common-color: #c4c4c4;
+}
+
+html {
+  font-size: 16px;
+}
+
+@media screen and (hover: none) and (pointer: coarse) and (max-width: 767px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+h1,
+h2,
+h3,
+p,
+span,
+button,
+input,
+div,
+select,
+li,
+textarea {
+  font-family: var(--font);
+}
+
+p,
+span,
+label {
+  line-height: 150%;
+}
+/* 박스 */
+.content_box {
+  min-height: 65vh;
+  max-width: 1200px;
+}
+@media screen and (min-width: 1200px) {
+  .content_box {
+    margin: 0 auto;
+  }
+}
+
+.borderBox {
+  border: 1px solid gray;
+  border-radius: 0.5em;
+}
+
+/* 버튼 */
+button {
+  padding: 0.5em 0.75em;
+  color: var(--btn-sub-color);
+  background-color: #fff;
+  border: 1px solid var(--btn-common-color);
+  border-radius: 0.25em;
+}
+button:active {
+  color: #fff;
+  background-color: var(--btn-common-color);
+}
+button.noborder {
+  border: none;
+}
+.btn {
+  background-color: var(--btn-common-color);
+  color: white;
+  border: none;
+  text-align: center;
+}
+.btn:active {
+  background-color: var(--btn-sub-color);
+}
+.btn.noStyle {
+  background-color: transparent;
+  border: none;
+  color: var(--btn-sub-color);
+}
+.btn.noStyle:active {
+  background-color: transparent;
+}
+.btn.sub {
+  background-color: var(--btn-sub-color);
+}
+.btn.emp {
+  background-color: var(--btn-emp-color);
+}
+.btn.emp:disabled {
+  background-color: var(--compo-common-color);
+}
+.btn.emp:active {
+  background-color: var(--text-emp-color);
+}
+.btn_text {
+  background-color: transparent;
+  border: none;
+  color: var(--btn-emp-color);
+  padding: 1px;
+  border-bottom: 1px solid var(--btn-emp-color);
+}
+.btn_text:active {
+  background-color: transparent;
+  color: var(--text-emp-color);
+}
+.btn.mid {
+  margin: 0 10px;
+  width: 50%;
+  max-width: 240px;
+  max-width: 16em;
+  padding: 15px 0;
+  border-radius: 30px;
+  font-size: 1em;
+}
+.btn.big {
+  width: 100%;
+  max-width: 500px;
+  max-width: 28em;
+  padding: 25px;
+  border-radius: 40px;
+  font-size: 1.25em;
+}
+.btn.small {
+  margin: 0 10px;
+  width: 20%;
+  min-width: 125px;
+  max-width: 10em;
+  padding: 10px 0;
+  font-size: 0.8em;
+  border-radius: 20px;
+}
+
+@media screen and (max-width: 768px) {
+}
+@media screen and (max-width: 480px) {
+  button {
+    padding: 0.25em 0.5em;
+  }
+  .btn.mid {
+    margin: 0 0.2em;
+    max-width: 12em;
+    padding: 0.9em 0;
+  }
+  .btn.big {
+    padding: 1em;
+    max-width: 17em;
+  }
+  .btn.small {
+    min-width: 7em;
+    padding: 0.6em 0;
+  }
+}
+
+.btn.square {
+  padding: 0.5em 1em;
+  border: 1px solid var(--btn-common-color);
+  background-color: #fff;
+  color: var(--btn-sub-color);
+}
+input[type="radio"]:checked + label.btn.square {
+  background-color: var(--btn-common-color);
+  color: #fff;
+}
+
+.hidden {
+  display: none;
+}
+/* 텍스트 */
+.h1_title {
+  margin-bottom: 0.75em;
+}
+.h4_title {
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+.underbar {
+  padding-bottom: 0.25em;
+  border-bottom: 2px solid var(--btn-common-color);
+}
+
+.desc_s {
+  font-size: 12px;
+  color: var(--desc-color);
+}
+.text.emp {
+  color: var(--text-emp-color);
+  font-weight: 600;
+}
+.text.emp.black {
+  color: var(--btn-sub-color);
+}
+.text.big {
+  font-size: 2em;
+}
+.text.mid {
+  font-size: 1.5em;
+}
+.text.sm {
+  font-size: 1.25em;
+}
+.text.ss {
+  font-size: 0.85em;
+}
+.text.indent {
+  margin-left: 0.4em;
+}
+.text.bold {
+  font-weight: 600;
+}
+.text.vertical {
+  writing-mode: vertical-rl;
+}
+.text.required::after {
+  content: "*";
+  color: var(--btn-emp-color);
+  font-size: 0.75em;
+  vertical-align: super;
+}
+.transparent_text {
+  color: transparent;
+}
+.transparent_bg {
+  background: transparent;
+  border: none;
+}
+.boxborder {
+  padding: 0.5em;
+  border: 1px solid var(--btn-common-color);
+  border-radius: 0.25em;
+}
+.boxColor {
+  padding: 0.5em;
+  background-color: var(--btn-common-color);
+  color: #fff;
+}
+
+/*표기 요소*/
+.price_number::after {
+  content: "원";
+}
+input.price_number {
+}
+.item_number::after {
+  content: "개";
+}
+input.item_number {
+}
+
+/*기타*/
+.hash,
+.checkHash {
+  margin: 0.15em;
+}
+.hash::before,
+.checkHash label::before {
+  content: "#";
+}
+
+.hash {
+  padding: 0.25em 0.5em;
+  border-radius: 0.25em;
+  background-color: var(--btn-emp-color);
+  color: white;
+}
+
+.checkHash input[type="checkbox"] + label {
+  padding: 0.4em 0.6em;
+  border-radius: 0.25em;
+  transform: scale(0.9);
+}
+.checkHash input[type="checkbox"] + label:hover {
+  transition: transform 0.2s ease-out;
+  transform: scale(1.1);
+}
+.checkHash input[type="checkbox"]:checked + label {
+  margin: 0.25em;
+  transform: scale(1.1);
+  font-weight: 600;
+  /*
+    box-shadow: 0 0.2em 0.5em rgba(112, 88, 88, 0.5);*/
+}
+
+input,
+select {
+  font-size: 1em;
+}
+/*input number 화살표 삭제*/
+input[type="number"].noSpin::-webkit-outer-spin-button,
+input[type="number"].noSpin::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input.small {
+  width: 6em;
+}
+
+.cutLine {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 3em;
+  /*margin-left: 0.5em;*/
+  background-color: var(--btn-common-color);
+  transform: translateY(1.25em);
+}
+.logo {
+  display: inline-block;
+  width: 200px;
+  height: 50px;
+  font-size: 0;
+  background: url("../img/logo_monthlyMill.png");
+  background-size: cover;
+  background-position: center;
+}
+.logo.big {
+  width: 300px;
+  height: 75px;
+}
+.logo.small {
+  width: 140px;
+  height: 35px;
+}
+.logo_jyg {
+  display: inline-block;
+  font-size: 0;
+  background: url("../img/logo_natureHouse.png");
+  background-size: cover;
+  background-position: center;
+}
+.noScroll {
+  overflow: hidden;
+}
+
+/*grid box*/
+.grid_box {
+  display: grid;
+}
+
+/* font */
+@font-face {
+  font-family: "ChosunGu";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
