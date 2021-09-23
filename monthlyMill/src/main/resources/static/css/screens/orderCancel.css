@@ -13,7 +13,6 @@
 .inputTextArea {
   display: block;
   width: 100%;
-  min-width: 50em;
   min-height: 8em;
   resize: none;
   font-size: 1em;
@@ -23,4 +22,11 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+.cancel_agreement_box {
+  margin: 1em 0;
+}
+.cancel_agreement_box .agreement_box {
+  margin-top: 0;
 }

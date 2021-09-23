@@ -18,26 +18,7 @@
     </header>
 
     <div class="wrapper">
-      <aside class="asideMenu">
-        <h1 class="text mid boxborder">My월간방앗간</h1>
-        <div class="asideMenu_box">
-          <h3 class="h4_title text boxborder">나의 주문정보</h3>
-          <ul class="aside_list">
-            <li>
-              <a href="#">주문/배송 조회</a>
-            </li>
-            <li>
-              <a href="#" class="text emp black">취소/반품 조회</a>
-            </li>
-            <li>
-              <a href="#">배송지 관리</a>
-            </li>
-            <li>
-              <a href="#">환불계좌 관리</a>
-            </li>
-          </ul>
-        </div>
-      </aside>
+      <aside class="asideMenu" data-asideMenu-number="2"></aside>
       <section class="content_box withAside">
         <div class="main_box">
           <h3 class="h3_title">취소/반품 조회</h3>
@@ -51,22 +32,25 @@
               <label for="period_6month" class="btn square">6개월</label>
               <input type="radio" name="order_period" class="periodBtn hidden" id="period_12month"></input>
               <label for="period_12month" class="btn square">1년</label>
+              <input type="radio" name="order_period" class="periodBtn hidden" id="period_self"></input>
+              <label for="period_self" class="btn square">직접입력</label>
             </div>
-            <div class="button_box_column periodSelfInput">
-              <input type="date" name="" id="" class="inputPeriodStart" />
-              <span>~</span>
-              <input type="date" name="" id="" class="inputPeriodEnd" />
-              <button type="button" name="order_period" class="periodBtn btn square period_self" id="period_self" >조회</button>
-            </div>
+          </div>
+          <div class="button_box_column periodSelfInput">
+            <input type="date" name="" id="" class="inputPeriodStart"  disabled/>
+            <span>~</span>
+            <input type="date" name="" id="" class="inputPeriodEnd"  disabled/>
+            <button type="button" name="order_period" class="periodInquiryBtn btn square" disabled>조회</button>
           </div>
         </div>
 
         <div class="main_box">
-          <h4 class="h4_title underbar">
-            <span class="orderState text emp">주문취소</span>
-            <span>신청일: 0000-00-00 (요일)</span>
-          </h4>
+          <!-- 주문 취소 있을 때 뜨는 부분-->
           <div class="orderList_list_box">
+            <h4 class="h4_title underbar">
+              <span class="orderState text emp">주문취소</span>
+              <span>신청일: 0000-00-00 (요일)</span>
+            </h4>
             <div class="orderList_top">
               <div class="">
                 
@@ -93,8 +77,8 @@
             </table>
           </div>
 
+          <!--주문취소 없을 때 뜨는 부분 -->
           <div class="orderList_text_box text_box">
-            <!--주문취소내용 없을 때 뜸 -->
             <p class="orderList_text">
               주문취소 내역이 없습니다. 
             </p>

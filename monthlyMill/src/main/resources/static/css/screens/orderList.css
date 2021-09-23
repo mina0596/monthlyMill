@@ -32,6 +32,13 @@
   font-weight: 600;
   color: var(--text-emp-color);
 }
+.asideMenu[data-asideMenu-number="1"] .aside_list li:nth-child(1) a,
+.asideMenu[data-asideMenu-number="2"] .aside_list li:nth-child(2) a,
+.asideMenu[data-asideMenu-number="3"] .aside_list li:nth-child(3) a,
+.asideMenu[data-asideMenu-number="4"] .aside_list li:nth-child(4) a {
+  font-weight: 600;
+  color: var(--btn-sub-color);
+}
 
 @media screen and (max-width: 480px) {
   .wrapper {
@@ -86,9 +93,6 @@
     left: 0.3em;
     content: "\f53d";
   }
-  .aside_list a {
-    color: var(--btn-sub-color);
-  }
 }
 
 /*본문 섹션*/
@@ -97,7 +101,7 @@
   max-width: 80em;
 }
 .content_box.withAside .main_box:first-child {
-  max-height: 8em;
+  max-height: 10em;
 }
 .content_box.withAside .button_box {
   display: flex;
@@ -122,9 +126,6 @@
 }
 
 @media screen and (max-width: 875px) {
-  .content_box.withAside .main_box:first-child {
-    max-height: 10em;
-  }
   .button_box {
     flex-wrap: wrap;
     width: 100%;
@@ -144,7 +145,7 @@
 /**/
 
 .orderList_list_box {
-  margin: 0.5em;
+  margin: 0 0.5em 0.5em;
 }
 .orderList_top {
   display: flex;
@@ -152,7 +153,7 @@
 }
 .orderList_table {
   width: 100%;
-  margin-top: 1em;
+  margin-top: 0.5em;
   border-top: 1px solid var(--compo-common-color);
 }
 .orderList_table tr {

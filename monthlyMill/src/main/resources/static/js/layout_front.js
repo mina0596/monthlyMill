@@ -14,7 +14,11 @@ $(document).ready(function(){
     }
     //공통
     $("footer").load("../component/footer.html");
+    //나의 주문정보 전용
+    $(".asideMenu").load("../component/orderAside.html");
 });
+
+
 
 
 //모바일 디바이스 체크
