@@ -49,7 +49,7 @@ label .agreement_column {
 }
 
 /*입력부*/
-.payment_wrap input {
+.payment_wrap input:not([type="submit"]) {
   height: 2em;
   border: none;
   border-bottom: 1px solid var(--btn-common-color);
@@ -63,7 +63,7 @@ label .agreement_column {
   /*box-shadow: 0 0 0 1px var(--btn-emp-color);*/
 }
 
-/*입금내역 확인*/
+/*입금내역 확인 화면 (payment_confirm) */
 .match_desc_box {
   width: 50%;
 }
@@ -92,4 +92,17 @@ label .agreement_column {
 
 .readDetail {
   margin-left: 2em;
+}
+
+@media screen and (max-width: 480px) {
+  .content_box {
+    margin-top: 1em;
+  }
+  .main_box.payment_confirm_box .h3_title {
+    margin: 0 0.5em;
+  }
+  .match_desc_box {
+    margin: 1em auto;
+    width: 90%;
+  }
 }

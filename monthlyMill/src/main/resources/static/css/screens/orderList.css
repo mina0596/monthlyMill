@@ -15,14 +15,15 @@
   background-color: var(--btn-sub-color);
   border: none;
 }
-.asideMenu_box {
-  margin: 0 1em;
-}
 .asideMenu_box .h4_title {
-  text-align: center;
+  display: inline-block;
+  width: 100%;
+}
+.aside_list {
+  margin: 0.25em 0 0 0.5em;
 }
 .aside_list li {
-  margin: 0 0 0.5em 1em;
+  margin-bottom: 0.5em;
 }
 .aside_list a {
   color: var(--btn-common-color);
@@ -31,8 +32,67 @@
   font-weight: 600;
   color: var(--text-emp-color);
 }
+.asideMenu[data-asideMenu-number="1"] .aside_list li:nth-child(1) a,
+.asideMenu[data-asideMenu-number="2"] .aside_list li:nth-child(2) a,
+.asideMenu[data-asideMenu-number="3"] .aside_list li:nth-child(3) a,
+.asideMenu[data-asideMenu-number="4"] .aside_list li:nth-child(4) a {
+  font-weight: 600;
+  color: var(--btn-sub-color);
+}
 
 @media screen and (max-width: 480px) {
+  .wrapper {
+    flex-direction: column;
+  }
+  .asideMenu {
+    width: 100%;
+    border-right: none;
+    margin-bottom: 1em;
+  }
+  .asideMenu > h1 {
+    text-align: center;
+  }
+  .asideMenu_box {
+    margin: 0;
+  }
+  .asideMenu_box > .h4_title {
+    display: none;
+  }
+  .aside_list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    font-size: 0.8em;
+    margin: 0;
+    padding: 5.5em 0 0.75em;
+    border: 1px solid var(--btn-common-color);
+    border-radius: 0.5em;
+  }
+  .aside_list > li {
+    position: relative;
+    margin: 0;
+  }
+  .aside_list a::before {
+    font-family: "FontAwesome";
+    position: absolute;
+    bottom: 0.75em;
+    left: 0.5em;
+    font-size: 3em;
+  }
+  .aside_list li:nth-child(1) a::before {
+    content: "\f0d1";
+  }
+  .aside_list li:nth-child(2) a::before {
+    content: "\f466";
+  }
+  .aside_list li:nth-child(3) a::before {
+    content: "\f3c5";
+  }
+  .aside_list li:nth-child(4) a::before {
+    left: 0.3em;
+    content: "\f53d";
+  }
 }
 
 /*본문 섹션*/
@@ -41,18 +101,24 @@
   max-width: 80em;
 }
 .content_box.withAside .main_box:first-child {
-  max-height: 8em;
+  max-height: 10em;
 }
 .content_box.withAside .button_box {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 1em;
+  border-bottom: 2px solid var(--btn-common-color);
 }
+
 .button_box_column {
   margin: 0.5em 0.25em;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.periodSet_box .button_box_column label.btn:not([for="period_self"]) {
+  width: 4.6em;
 }
 .periodSelfInput input[type="date"] {
   font-size: 0.85em;
@@ -65,8 +131,9 @@
   margin-left: 0;
 }
 
-@media (max-width: 875px) {
-  .button_box {
+@media screen and (max-width: 875px) {
+  .periodSet_box .button_box {
+    flex-direction: column;
     flex-wrap: wrap;
     width: 100%;
   }
@@ -77,10 +144,15 @@
     margin-top: 0;
   }
 }
+@media screen and (max-width: 480px) {
+  .content_box.withAside {
+    width: 100%;
+  }
+}
 /**/
 
 .orderList_list_box {
-  margin: 0.5em;
+  margin: 0 0.5em 0.5em;
 }
 .orderList_top {
   display: flex;
@@ -88,7 +160,7 @@
 }
 .orderList_table {
   width: 100%;
-  margin-top: 1em;
+  margin-top: 0.5em;
   border-top: 1px solid var(--compo-common-color);
 }
 .orderList_table tr {
@@ -99,6 +171,7 @@
   padding: 1em 0;
 }
 .orderList_bottom {
+  margin-top: 0.5em;
   display: flex;
   justify-content: flex-end;
 }

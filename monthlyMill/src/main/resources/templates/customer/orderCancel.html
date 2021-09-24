@@ -85,7 +85,7 @@
                       <span class="result_item itemNumber">개수</span>
                     </td>
                     <td>
-                      <span class="result_item price_number">(최종가격)</span>
+                      <span class="result_item price_number">10000</span>
                     </td>
                     <td></td>
                   </tr>
@@ -119,17 +119,18 @@
             <h3 class="h3_title">환불 정보</h3>
             <div class="cancel_column">
               <div>
-                <span class="text">결제수단</span>
+                <span class="text">결제수단:</span>
                 <span class="text">무통장 입금</span>
               </div>
 
               <div>
                 <span>환불예정금액</span>
-                <span class="price_number text mid emp">10000</span>
+                <!--여기에 금액 합계 들어감-->
+                <span class="price_number text mid emp">(환불금액)</span>
               </div>
             </div>
 
-            <div class="payment_column cancel_agreement_box">
+            <div class="payment_column cancel_agreement_box boxborder">
               <!--체크 안하고 신청 누를 시 체크 필요하단 창뜨게-->
               <div class="agreement_box">
                 <div class="agreement_column">
@@ -139,7 +140,7 @@
                     class="checkRequired checkbox"
                   />
                   <label class="check_off" for="cancelTermAgree">
-                    <p>주문취소 신청동의</p>
+                    <span>주문취소 신청동의</span>
                     <p class="desc_s">
                       주문취소 상품의 상품명, 상품가격, 배송정보를 확인하였으며,
                       주문취소에 동의하시겠습니까? (전자상거래법 제8조 제2항)
@@ -148,15 +149,14 @@
                 </div>
               </div>
             </div>
-
-            <div class="button_box">
-              <!--누르면 orderList로 -->
-              <a href="#" class="btn mid cancelRequestBtn"> 돌아가기 </a>
-              <!--누르면 취소진행-->
-              <button type="submit" class="btn mid emp cancelRequestBtn">
-                주문취소 신청하기
-              </button>
-            </div>
+          </div>
+          <div class="button_box">
+            <!--누르면 orderList로 -->
+            <a href="#" class="btn mid cancelRequestBtn"> 돌아가기 </a>
+            <!--누르면 취소진행-->
+            <button type="submit" class="btn mid emp cancelRequestBtn">
+              주문취소 신청하기
+            </button>
           </div>
         </div>
       </form>

@@ -1,0 +1,10 @@
+@import "reset.css";
+@import "common.css";
+
+@import "admin/adminCommon.css";
+@import "admin/adminLogin.css";
+@import "admin/admin.css";
+
+:root {
+  --admin-main-color: rgb(42, 110, 33);
+}

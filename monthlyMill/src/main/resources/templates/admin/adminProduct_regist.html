@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../../static/css/styleAdmin.css"
+    />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/styleAdmin.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>관리자</title>
+  </head>
+  <body>
+    <header></header>
+
+    <div class="wrapper">
+      <aside class="adminAside"></aside>
+      <section class="adminContent">
+        <h1 class="h1_title adminTitle">상품등록</h1>
+        <div class="inputform">
+          <ol>
+            <li class="inputform_item">
+              <div class="inputform__column inputTitle">
+                <span>카테고리 설정</span>
+              </div>
+              <div class="inputform__column inputContent">
+                <label for="classify_big">대분류</label>
+                <select name="classify_big" id="">
+                  <option value="">선택</option>
+                </select>
+                <label for="classify_mid">중분류</label>
+                <select name="classify_mid" id="">
+                  <option value="">선택</option>
+                </select>
+                <label for="classify_small">소분류</label>
+                <select name="classify_small" id="">
+                  <option value="">선택</option>
+                </select>
+              </div>
+            </li>
+            <li class="inputform_item">
+              <div class="inputform__column inputTitle">
+                <span>주문번호</span>
+              </div>
+              <div class="inputform__column inputContent">
+                <input type="number" name="" id="" class="" />
+              </div>
+            </li>
+            <li class="inputform_item">
+              <div class="inputform__column inputTitle">
+                <span>판매코드</span>
+              </div>
+              <div class="inputform__column inputContent">
+                <input type="number" name="" id="" class="" />
+              </div>
+            </li>
+            <li class="inputform_item">
+              <div class="inputform__column inputTitle">
+                <span>상품명</span>
+              </div>
+              <div class="inputform__column inputContent">
+                <input type="text" name="" id="" class="" />
+              </div>
+            </li>
+            <li class="inputform_item">
+              <div class="inputform__column inputTitle">
+                <span>판매가격</span>
+              </div>
+              <div class="inputform__column inputContent">
+                <div>
+                  <input
+                    type="number"
+                    name=""
+                    id=""
+                    class=""
+                    placeholder="숫자만 입력"
+                  />
+                </div>
+                <div>
+                  <span>할인</span>
+                  <input
+                    type="radio"
+                    id="discount_off"
+                    name="product_discount"
+                    checked="true"
+                    class="radioDisable"
+                  />
+                  <label for="discount_off">미설정</label>
+                  <input
+                    type="radio"
+                    id="discount_on"
+                    name="product_discount"
+                    class="radioAble"
+                  />
+                  <label for="discount_on">설정</label>
+                  <input
+                    type="number"
+                    name=""
+                    id=""
+                    class="price_number radioInput"
+                  />원
+                </div>
+                <div>
+                  <span>할인 적용가</span>
+                  <span class="price_number"></span>
+                </div>
+              </div>
+            </li>
+            <li class="inputform_item">
+              <div class="inputform__column inputTitle">
+                <span>판매기간</span>
+              </div>
+              <div class="inputform__column inputContent">
+                <input
+                  type="radio"
+                  id="salePeriod_off"
+                  name="product_salePeriod"
+                  checked="true"
+                />
+                <label for="salePeriod_off">미설정</label>
+
+                <input
+                  type="radio"
+                  id="salePeriod_on"
+                  name="product_salePeriod"
+                />
+                <label for="salePeriod_on">설정</label>
+
+                <input type="date" name="" id="" class="" />
+                <span>~</span>
+                <input type="date" name="" id="" class="" />
+              </div>
+            </li>
+            <li class="inputform_item">
+              <div class="inputform__column inputTitle">
+                <span>부가세</span>
+              </div>
+              <div class="inputform__column inputContent">
+                <input type="radio" id="tax_cess" name="product_tax" />
+                <label for="tax_cess">과세상품</label>
+                <input type="radio" id="tax_small" name="product_tax" />
+                <label for="tax_small">영세상품</label>
+                <input type="radio" id="tax_exempt" name="product_tax" />
+                <label for="tax_exempt">면세상품</label>
+              </div>
+            </li>
+            <li class="inputform_item">
+              <div class="inputform__column inputTitle">
+                <span>재고수량</span>
+              </div>
+              <div class="inputform__column inputContent">
+                <input
+                  type="radio"
+                  id="quantity_off"
+                  name="product_quantity"
+                  checked="true"
+                />
+                <label for="quantity_off">미설정</label>
+
+                <input type="radio" id="quantity_on" name="product_quantity" />
+                <label for="quantity_on">설정</label>
+                <input type="number" name="" id="" class="" />개
+              </div>
+            </li>
+            <li class="inputform_item">
+              <div class="inputform__column inputTitle">
+                <span>상품 이미지</span>
+              </div>
+              <div class="inputform__column inputContent">
+                <div>
+                  <p>대표 이미지</p>
+                  <input type="file" name="" id="" class="" />
+                </div>
+                <div>
+                  <p>추가 이미지 (<span class="subimage_count">0/9</span>)</p>
+                  <input type="file" name="" id="" class="" />
+                </div>
+              </div>
+            </li>
+            <li class="inputform_item">
+              <div class="inputform__column inputTitle">
+                <span>상세설명</span>
+              </div>
+              <div class="inputform__column inputContent">
+                <textarea name="" id="" cols="30" rows="10"></textarea>
+              </div>
+            </li>
+            <li class="inputform_item">
+              <div class="inputform__column inputTitle">
+                <span>주요정보</span>
+              </div>
+              <div class="inputform__column inputContent">
+                <div>
+                  <label for="">브랜드</label>
+                  <input type="text" name="" id="" class="" />
+                  <input type="checkbox" name="" id="" />
+                  <label for="">자체제작 상품</label>
+                </div>
+                <div>
+                  <label for="">제조사명</label>
+                  <input type="text" name="" id="" class="" />
+                </div>
+                <div>
+                  <label for="">제조사 주소</label>
+                  <input type="text" name="" id="" class="" />
+                </div>
+              </div>
+            </li>
+            <li class="inputform_item">
+              <div class="inputform__column inputTitle">
+                <span>영양성분</span>
+              </div>
+              <div class="inputform__column inputContent">
+                <input type="text" name="" id="" class="" />
+              </div>
+            </li>
+            <li class="inputform_item">
+              <div class="inputform__column inputTitle">
+                <span>레시피</span>
+              </div>
+              <div class="inputform__column inputContent">
+                <textarea name="" id="" cols="30" rows="10"></textarea>
+              </div>
+            </li>
+            <li class="inputform_item">
+              <div class="inputform__column inputTitle">
+                <span>해시태그 설정</span>
+              </div>
+              <div class="inputform__column inputContent">
+                <label for="classify_big">대분류</label>
+                <select name="classify_big" id="">
+                  <option value="">선택</option>
+                </select>
+                <label for="classify_mid">중분류</label>
+                <select name="classify_mid" id="">
+                  <option value="">선택</option>
+                </select>
+                <label for="classify_small">소분류</label>
+                <select name="classify_small" id="">
+                  <option value="">선택</option>
+                </select>
+              </div>
+            </li>
+            <li class="inputform_item">
+              <div class="inputform__column inputTitle">
+                <span>배송설정</span>
+              </div>
+              <div class="inputform__column inputContent">
+                <div>
+                  <span>배송속성</span>
+                  <input
+                    type="radio"
+                    id="deliveryState_common"
+                    name="product_deliveryState"
+                    checked="true"
+                  />
+                  <label for="deliveryState_common">일반배송</label>
+
+                  <input
+                    type="radio"
+                    id="deliveryState_postProduct"
+                    name="product_deliveryState"
+                  />
+                  <label for="deliveryState_postProduct"
+                    >주문확인 후 제작</label
+                  >
+                </div>
+                <div>
+                  <label for="">기본 배송비</label>
+                  <input
+                    type="number"
+                    name=""
+                    id=""
+                    class="price_number"
+                    value="4000"
+                  />원
+                </div>
+                <div>
+                  <label for="">추가 배송비(제주/도서산간)</label>
+                  <input
+                    type="radio"
+                    id="deliveryAdditory_off"
+                    name="product_deliveryAdditory"
+                    checked="true"
+                  />
+                  <label for="deliveryAdditory_off">미설정</label>
+
+                  <input
+                    type="radio"
+                    id="deliverAdditory_on"
+                    name="product_deliveryAdditory"
+                  />
+                  <label for="deliverAdditory_on">설정</label>
+                  <input type="text" name="" id="" class="price_number" />원
+                </div>
+              </div>
+            </li>
+          </ol>
+          <div class="buttonBox">
+            <button class="previewBtn">미리보기</button>
+            <button class="registBtn">등록하기</button>
+            <button class="cancelBtn">취소</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer></footer>
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/admin/layout_admin.js"></script>
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/js/admin/layout_admin.js}"></script>
+  </body>
+</html>

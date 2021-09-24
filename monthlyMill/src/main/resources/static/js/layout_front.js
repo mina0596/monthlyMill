@@ -14,7 +14,11 @@ $(document).ready(function(){
     }
     //공통
     $("footer").load("../component/footer.html");
+    //나의 주문정보 전용
+    $(".asideMenu").load("../component/orderAside.html");
 });
+
+
 
 
 //모바일 디바이스 체크
@@ -43,12 +47,28 @@ function loadGnbSideMenu(){
     sideWrap.className = "gnb_side_wrapper hidden";
     $("body").prepend(sideWrap);
 }
-//(모바일) gnb 메뉴바 불러오기
+//(모바일) gnb 메뉴바 열기
 function openGnbSideMenu(){
-    document.querySelector(".gnb_side_wrapper").classList.remove("hidden");
+    toggleSideAnimationClass();
+    toggleSideHidden();
+}
+//(모바일) gnb 메뉴바 닫기
+function closeGnbSideMenu(){
+    toggleSideAnimationClass();
+
+    window.setTimeout(()=>{
+        toggleSideHidden();
+    }, 500);
 }
 
-
+/* (모바일) gnb 메뉴바 토글 및 애니메이션용 함수들 */
+function toggleSideAnimationClass(){
+    document.querySelector(".gnb_side_wrapper").classList.toggle("open");
+    document.querySelector(".gnb_side").classList.toggle("open");
+}
+function toggleSideHidden(){
+    document.querySelector(".gnb_side_wrapper").classList.toggle("hidden");
+}
 
 /*==========  이벤트 리스너 연결   ========== */
 
@@ -64,5 +84,5 @@ $(document).on("click", ".gnbSideMenuBtn", function(){
 
 //(모바일)닫기 버튼 이벤트 리스너 추가
 $(document).on("click", ".gnb_side__closeBtn", function(){
-    document.querySelector(".gnb_side_wrapper").classList.add("hidden");
+    closeGnbSideMenu();
 });
