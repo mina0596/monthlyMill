@@ -51,6 +51,9 @@
 
 관리자 화면
 
+- adminLogin: 관리자 로그인
+- adminProduct_regist: 상품 등록 및 수정
+
 ### makers
 
 메이커스 화면

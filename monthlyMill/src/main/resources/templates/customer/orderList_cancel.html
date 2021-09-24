@@ -20,7 +20,7 @@
     <div class="wrapper">
       <aside class="asideMenu" data-asideMenu-number="2"></aside>
       <section class="content_box withAside">
-        <div class="main_box">
+        <div class="main_box periodSet_box">
           <h3 class="h3_title">취소/반품 조회</h3>
           <div class="button_box">
             <div class="button_box_column text ss">
@@ -35,12 +35,12 @@
               <input type="radio" name="order_period" class="periodBtn hidden" id="period_self"></input>
               <label for="period_self" class="btn square">직접입력</label>
             </div>
-          </div>
-          <div class="button_box_column periodSelfInput">
-            <input type="date" name="" id="" class="inputPeriodStart"  disabled/>
-            <span>~</span>
-            <input type="date" name="" id="" class="inputPeriodEnd"  disabled/>
-            <button type="button" name="order_period" class="periodInquiryBtn btn square" disabled>조회</button>
+            <div class="button_box_column periodSelfInput">
+              <input type="date" name="" id="" class="inputPeriodStart"  disabled/>
+              <span>~</span>
+              <input type="date" name="" id="" class="inputPeriodEnd"  disabled/>
+              <button type="button" name="order_period" class="periodInquiryBtn btn square" disabled>조회</button>
+            </div>
           </div>
         </div>
 
@@ -90,9 +90,11 @@
 
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../../static/js/layout_front.js"></script>
+    <script src="../../static/js/customer/orderList_front.js"></script>
 
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
-      <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
+    <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
+    <script type="text/javascript" th:src="@{/js/customer/orderList_front.js}"></script>
 
   </body>
 </html>

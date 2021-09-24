@@ -20,7 +20,7 @@
       <aside class="asideMenu" data-asideMenu-number="1"></aside>
 
       <section class="content_box withAside">
-        <div class="main_box">
+        <div class="main_box periodSet_box">
           <h3 class="h3_title">주문/배송 조회</h3>
           <div class="button_box">
             <div class="button_box_column text ss">
@@ -35,27 +35,30 @@
               <input type="radio" name="order_period" class="periodBtn hidden" id="period_self"></input>
               <label for="period_self" class="btn square">직접입력</label>
             </div>
-          </div>
-          <div class="button_box_column periodSelfInput">
-            <input type="date" name="" id="" class="inputPeriodStart" disabled />
-            <span>~</span>
-            <input type="date" name="" id="" class="inputPeriodEnd" disabled/>
-            <button type="button" name="order_period" class="periodInquiryBtn btn square" disabled>조회</button>
+            <div class="button_box_column periodSelfInput">
+              <input type="date" name="" id="" class="inputPeriodStart" disabled />
+              <span>~</span>
+              <input type="date" name="" id="" class="inputPeriodEnd" disabled/>
+              <button type="button" name="order_period" class="periodInquiryBtn btn square" disabled>조회</button>
+            </div>
           </div>
         </div>
 
         <div class="main_box">
-          <!-- 주문내역 있을 때 뜨는 부분-->
+          <!--해당하는 기간 내에 주문내역이 있는 경우 -->
+          <!--  orderList_list_box 하나 당 주문 하나 -->
           <div class="orderList_list_box">
             <h4 class="h4_title underbar">
               주문일: <span>0000-00-00 (요일)</span>
             </h4>
             <div class="orderList_top">
               <div class="">
+                <!-- 주문 상태, 주문번호 여기 나옴-->
                 <span class="orderState text emp">매칭완료</span>
                 <span class="orderNumber">(주문번호)</span>
               </div>
               <div>
+                <!-- 배송 상태 받아서 여기 나타나게 -->
                 <span class="delivaryState">배송준비중</span>
               </div>
             </div>
@@ -78,11 +81,13 @@
               </tr>
             </table>
             <div class="orderList_bottom">
-              <button type="button">주문취소</button>
+              <!--클릭 시 orderCancel.html로 -->
+              <button type="button orderCancelBtn">주문취소</button>
             </div>
           </div>
+          
 
-          <!--주문내역 없을 때 뜨는 부분 -->
+          <!-- orderList_text_box: 주문내역 없을 때 뜨는 부분 -->
           <div class="orderList_text_box text_box">
             <p class="orderList_text">
               주문 내역이 없습니다. 
@@ -100,6 +105,6 @@
 
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
-    <script type="text/javascript" th:src="@{/js/memberJoin.js}"></script>
+    <script type="text/javascript" th:src="@{/js/customer/orderList_front.js}"></script>
   </body>
 </html>

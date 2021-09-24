@@ -107,12 +107,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 1em;
+  border-bottom: 2px solid var(--btn-common-color);
 }
+
 .button_box_column {
   margin: 0.5em 0.25em;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.periodSet_box .button_box_column label.btn:not([for="period_self"]) {
+  width: 4.6em;
 }
 .periodSelfInput input[type="date"] {
   font-size: 0.85em;
@@ -126,7 +132,8 @@
 }
 
 @media screen and (max-width: 875px) {
-  .button_box {
+  .periodSet_box .button_box {
+    flex-direction: column;
     flex-wrap: wrap;
     width: 100%;
   }
