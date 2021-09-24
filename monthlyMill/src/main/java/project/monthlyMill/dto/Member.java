@@ -17,6 +17,9 @@ public class Member {
 	private char memberIdentityCheck;
 	private String memberInfoModifyDate;
 	private String memberInfoRegDate;
+	private String bankName;
+	private String bankAccountNum;
+	private String holderName;
 	public int getMemberNum() {
 		return memberNum;
 	}
@@ -77,6 +80,12 @@ public class Member {
 	public void setMemberAddr(String memberAddr) {
 		this.memberAddr = memberAddr;
 	}
+	public String getMemberDetailAddr() {
+		return memberDetailAddr;
+	}
+	public void setMemberDetailAddr(String memberDetailAddr) {
+		this.memberDetailAddr = memberDetailAddr;
+	}
 	public String getMemberPostalCode() {
 		return memberPostalCode;
 	}
@@ -107,11 +116,23 @@ public class Member {
 	public void setMemberInfoRegDate(String memberInfoRegDate) {
 		this.memberInfoRegDate = memberInfoRegDate;
 	}
-	public String getMemberDetailAddr() {
-		return memberDetailAddr;
+	public String getBankName() {
+		return bankName;
 	}
-	public void setMemberDetailAddr(String memberDetailAddr) {
-		this.memberDetailAddr = memberDetailAddr;
+	public void setBankName(String bankName) {
+		this.bankName = bankName;
+	}
+	public String getBankAccountNum() {
+		return bankAccountNum;
+	}
+	public void setBankAccountNum(String bankAccountNum) {
+		this.bankAccountNum = bankAccountNum;
+	}
+	public String getHolderName() {
+		return holderName;
+	}
+	public void setHolderName(String holderName) {
+		this.holderName = holderName;
 	}
 	@Override
 	public String toString() {
@@ -120,7 +141,8 @@ public class Member {
 				+ ", memberBday=" + memberBday + ", memberEmail=" + memberEmail + ", memberGender=" + memberGender
 				+ ", memberAddr=" + memberAddr + ", memberDetailAddr=" + memberDetailAddr + ", memberPostalCode="
 				+ memberPostalCode + ", memberPhone=" + memberPhone + ", memberIdentityCheck=" + memberIdentityCheck
-				+ ", memberInfoModifyDate=" + memberInfoModifyDate + ", memberInfoRegDate=" + memberInfoRegDate + "]";
+				+ ", memberInfoModifyDate=" + memberInfoModifyDate + ", memberInfoRegDate=" + memberInfoRegDate
+				+ ", bankName=" + bankName + ", bankAccountNum=" + bankAccountNum + ", holderName=" + holderName + "]";
 	}
 	
 }

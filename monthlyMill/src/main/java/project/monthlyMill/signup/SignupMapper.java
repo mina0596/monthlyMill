@@ -3,7 +3,6 @@ package project.monthlyMill.signup;
 import org.apache.ibatis.annotations.Mapper;
 
 import project.monthlyMill.dto.Member;
-import project.monthlyMill.dto.RefundAccount;
 
 @Mapper
 public interface SignupMapper {
@@ -14,6 +13,4 @@ public interface SignupMapper {
 	// 2.회원가입시 기본정보 등록하기
 	public void addBasicMembInfo(Member mBasicInfo);
 	
-	// 3.회원가입시 환불정보 등록하기
-	public void addRefundInfo(RefundAccount mRefundInfo);
 }

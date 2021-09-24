@@ -10,6 +10,8 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +25,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.monthlyMill.dto.Hashtag;
 import project.monthlyMill.dto.Member;
 import project.monthlyMill.dto.MemberAgreementInfo;
-import project.monthlyMill.dto.RefundAccount;
 
 @Controller
 @RequestMapping("/join")
@@ -44,11 +45,16 @@ public class SignupController {
 		return "/memberJoin/join_method";
 	}
 	
-	@PostMapping("/join_method")
-	public String memberJoinCate(@RequestParam(name = "joinType", required = false) int memberCate
-								,HttpSession session, RedirectAttributes redirectAttr) {
+	@PostMapping("/sendMemberCate")
+	@ResponseBody
+	public Boolean getMemberCate(@RequestParam(name="memberCate", required = false) int memberCate, HttpSession session) {
 		session.setAttribute("memberCate", memberCate);
 		log.info("joinType 잘 데려오는지 확인:{}", memberCate);
+		return true;
+	}
+	
+	@PostMapping("/join_method")
+	public String memberJoinCate(HttpSession session) {
 		return "redirect:/join/join_agreement";
 	}
 	
@@ -57,14 +63,17 @@ public class SignupController {
 	public String getMemberJoinAgreement() {
 		return "/memberJoin/join_agreement";
 	}
-
+	
+	@PostMapping("/sendNewsAgree")
+	@ResponseBody
+	public Boolean getNewsAgree(@RequestParam(name="newsAgreeCheck", required = false) String newsAgreeCheck
+								, HttpSession session) {
+		session.setAttribute("newsAgreeCheck", newsAgreeCheck);
+		return true;
+	}
+	
 	@PostMapping("/join_agreement")
-	public String memberJoinAgreement(@RequestParam (name = "newsAgree", required = false) String newsAgree
-									, HttpSession session) {
-		log.info("newsAgree 체크했는지의 여부 :{}", newsAgree);
-		
-		session.setAttribute("JAgree", newsAgree);
-		
+	public String memberJoinAgreement(HttpSession session) {
 		return "redirect:/join/join_basic";
 	}
 	
@@ -89,28 +98,9 @@ public class SignupController {
 	@ResponseBody
 	public String getJoinBasicInfo(@RequestBody Map<String, Object> inputBasicInfo
 								 , HttpSession session) {
-		Member inputInfo = new Member();
-		RefundAccount refundInfo = new RefundAccount();
-		//세션에 기본정보 저장하기
-		inputInfo.setMemberId(String.valueOf(inputBasicInfo.get("inputId")));
-		inputInfo.setMemberPw(String.valueOf(inputBasicInfo.get("inputPw")));
-		inputInfo.setMemberName(String.valueOf(inputBasicInfo.get("inputName")));
-		inputInfo.setMemberBday(String.valueOf(inputBasicInfo.get("inputBday")));
-		inputInfo.setMemberAge(Integer.valueOf((String) inputBasicInfo.get("inputAge")));
-		inputInfo.setMemberGender(String.valueOf(inputBasicInfo.get("inputSex")).charAt(0));
-		inputInfo.setMemberEmail(String.valueOf(inputBasicInfo.get("inputEmail")));
-		inputInfo.setMemberPhone(String.valueOf(inputBasicInfo.get("inputPhone")));
-		inputInfo.setMemberPostalCode(String.valueOf(inputBasicInfo.get("inputPostCode")));
-		inputInfo.setMemberAddr(String.valueOf(inputBasicInfo.get("inputAddress")));
-		inputInfo.setMemberDetailAddr(String.valueOf(inputBasicInfo.get("inputAddressDetail")));
-		inputInfo.setMemberCateNum((int)session.getAttribute("memberCate"));
-		log.info("member 기본정보란 확인:{}", inputInfo);
-		session.setAttribute("basicInfo", inputInfo);
-		//세션에 환불정보 저장하기
-		refundInfo.setBankName(String.valueOf(inputBasicInfo.get("inputBank")));
-		refundInfo.setHolderName(String.valueOf(inputBasicInfo.get("inputAccountOwner")));
-		refundInfo.setBankAccountNum(String.valueOf(inputBasicInfo.get("inputAccountNumber")));
-		session.setAttribute("refundInfo", refundInfo);
+		log.info("아이디 가져오는것 확인:{}", inputBasicInfo);
+		signupService.addBasicMembInfo(inputBasicInfo, session);
+		
 		return "success";
 	}
 	
@@ -143,8 +133,9 @@ public class SignupController {
 	// 5. 회원가입 완료 메시지 + 로그인
 	@GetMapping("/join_finish")
 	public String memberJoinFinish(HttpSession session) {
-		signupService.addBasicMembInfo((Member)session.getAttribute("basicInfo"));
-		signupService.addRefundInfo((RefundAccount) session.getAttribute("refundInfo"));
+		log.info("세션 저장된 정보들 확인 :{}", (Member)session.getAttribute("basicInfo"));
+		signupService.signUp((Member)session.getAttribute("basicInfo"));
+		session.invalidate();
 		return "/memberJoin/join_finish";
 	}
 	
