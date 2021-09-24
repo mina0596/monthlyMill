@@ -55,6 +55,59 @@ function email_check(inputEmail){
 
  $(function(){
 	
+	// ************************회원가입 첫화면 join_method***************
+	$('#btn_join').click(function(){
+		var memberCate = $('input[name="joinType"]:checked').val();
+
+		var request = $.ajax({
+			url: "/join/sendMemberCate",
+			method: "post",
+			data: { memberCate : memberCate },
+			dataType: "json"
+		});
+		
+		request.done(function(data){
+			if(data) $('#joinCate').submit();
+		})
+		request.fail(function( jqXHR, textStatus){
+			alert('서버에러입니다. 관리자에게 문의해주세요');
+		})
+	})
+	
+	// **************** 약관동의 페이지 ***********************
+	$('.joinAgreementNextBtn').click(function(){
+		var submitFlag = true;
+		if(!$('#termAgree').is(':checked') || !$('#infoAgree').is(':checked') || !$('#locationAgree').is(':checked')){
+			alert('필수항목에 모두 동의해주세요');
+			submitFlag = false;
+			return submitFlag;
+		}
+		var newsAgree = $('#newsAgree').is(':checked');
+		var newsAgreeCheck = '';
+		if(submitFlag && newsAgree){
+			newsAgreeCheck = 'checked';
+		}else if(submitFlag && !newsAgree){
+			newsAgreeCheck = 'unckecked';
+		}
+		
+		var request = $.ajax({
+			url: "/join/sendNewsAgree",
+			method: "post",
+			data: { newsAgreeCheck : newsAgreeCheck },
+			dataType: "json"
+		});
+		
+		request.done(function(data){
+			
+		});
+		request.fail(function( jqXHR, textStatus){
+			
+		alert('서버에러입니다. 관리자에게 문의해주세요');
+		});
+		
+		if(submitFlag) $('#joinTerms').submit();
+	})
+	
 	//(만)나이 계산하는 함수
 	function calcAge(birth){
 		var date = new Date();
@@ -347,16 +400,7 @@ function email_check(inputEmail){
 	
 	
 	
-	// **************** 약관동의 페이지 ***********************
-	$('.joinAgreementNextBtn').click(function(){
-		var submitFlag = true;
-		if(!$('#termAgree').is(':checked') || !$('#infoAgree').is(':checked') || !$('#locationAgree').is(':checked')){
-			alert('필수항목에 모두 동의해주세요');
-			submitFlag = false;
-			return submitFlag;
-		}
-		if(submitFlag) $('#joinTerms').submit();
-	})
+	
 	
 	
 	// **************** 추가입력 페이지 ***********************

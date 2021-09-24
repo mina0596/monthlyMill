@@ -19,9 +19,6 @@
 		<result property="memberIdentityCheck" 		column="identity_check"/>
 		<result property="memberInfoModifyDate" 	column="member_info_modify_date"/>
 		<result property="memberInfoRegDate" 		column="member_info_reg_date"/>
-	</resultMap>
-	<resultMap type="RefundAccount" 		id="refundAccountResultMap">
-		<result property="memberNum" 				column="member_num"/>
 		<result property="bankName" 				column="bank_name"/>
 		<result property="bankAccountNum" 			column="bank_account_num"/>
 		<result property="holderName" 				column="holder_name"/>	
@@ -37,16 +34,12 @@
 		INSERT INTO member_basic_info
 		(member_num, member_id, member_pw, member_cate_num, member_name, member_age, member_bday, member_email
 		, member_gender, member_addr, member_detail_addr, member_postal_code, member_phone
-		, identity_check, member_info_modify_date, member_info_reg_date)
-		VALUES (NULL, #{memberId}, #{memberPw}, #{memberCateNum}, #{memberName}, #{memberAge}, #{memberBday}, #{memberEmail}
+		, identity_check, member_info_modify_date, member_info_reg_date
+		, refund_bank_name, refund_bank_account_num, refund_holder_name)
+		VALUES (sf_createMemberNum(), #{memberId}, #{memberPw}, #{memberCateNum}, #{memberName}, #{memberAge}, #{memberBday}, #{memberEmail}
 		, #{memberGender}, #{memberAddr}, #{memberDetailAddr}, #{memberPostalCode}, #{memberPhone}
-		, 'Y', CURDATE(), CURDATE());
-	</insert>
-	
-	<insert id="addRefundInfo" parameterType="RefundAccount">
-		INSERT INTO member_refund_info
-		(member_num, bank_name, bank_account_num, holder_name)
-		VALUES (NULL, #{bankName}, #{bankAccountNum}, #{holderName})
+		, 'Y', CURDATE(), CURDATE()
+		, #{bankName}, #{bankAccountNum}, #{holderName})
 	</insert>
 	
 </mapper>
