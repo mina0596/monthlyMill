@@ -7,15 +7,20 @@ $(document).ready(function(){
         //모바일
         loadGnbSideMenu();
         $(".gnb_side_wrapper").load("../component/mobile_sideMenu.html");
+        $(".gnb_side_wrapper").load("mobile_sideMenu");
         $("header").load("../component/mobile_header.html");
+        $("header").load("mobile_header");
     }else{
         //기타
         $("header").load("../component/header.html");
+        $("header").load("header");
     }
     //공통
     $("footer").load("../component/footer.html");
+    $("footer").load("footer");
     //나의 주문정보 전용
     $(".asideMenu").load("../component/orderAside.html");
+    $(".asideMenu").load("orderAside");
 });
 
 
