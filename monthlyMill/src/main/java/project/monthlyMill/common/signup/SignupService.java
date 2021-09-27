@@ -1,5 +1,6 @@
-package project.monthlyMill.signup;
+package project.monthlyMill.common.signup;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,18 +19,19 @@ import project.monthlyMill.hashtag.HashtagMapper;
 @Service
 public class SignupService {
 
-	//의존성 주입
-	private final SignupMapper signupMapper;
-	private final HashtagMapper tagMapper;
-	private final PasswordEncoder passwordEncoder;
-	private static final Logger log = LoggerFactory.getLogger(SignupService.class);
+	@Autowired
+	SignupMapper signupMapper;
 	
 	@Autowired
-	public SignupService(SignupMapper signupMapper, HashtagMapper tagMapper, PasswordEncoder passwordEncoder) {
-		this.signupMapper = signupMapper;
-		this.tagMapper = tagMapper;
-		this.passwordEncoder = passwordEncoder;
-	}
+	HashtagMapper tagMapper;
+	
+	@Autowired
+	PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	SMSMapper smsMapper;
+	
+	private static final Logger log = LoggerFactory.getLogger(SignupService.class);
 	
 	//==================================서비스 로직 시작=============================
 	
@@ -75,10 +77,19 @@ public class SignupService {
 		session.setAttribute("basicInfo", inputInfo);
 		log.info("세션 기본정보 이후에 저장 확인:{}", session.getAttribute("basicInfo"));
 	}
+	
 	public void signUp(Member mBasicInfo) {
 		signupMapper.addBasicMembInfo(mBasicInfo);
 	}
 	
+	// 본인인증 문자 기록 저장
+	public void saveHistory(HashMap<String,Object> paramMap) {
+		smsMapper.saveHistory(paramMap);
+	}
 	
+	// 3분이내 문자 카운트
+	public int selectMsgCount(HashMap<String, Object> phoneNumber) {
+		return smsMapper.selectMsgCount(phoneNumber);
+	}
 	
 }

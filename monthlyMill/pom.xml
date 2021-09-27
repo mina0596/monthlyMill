@@ -80,9 +80,27 @@
 		    <version>1.18.12</version>
 		    <scope>provided</scope>
 		</dependency>
-			<dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<!-- Apache HttpComponents 라이브러리 -->
+		<dependency>
+		  <groupId>org.apache.httpcomponents</groupId>
+		  <artifactId>httpclient</artifactId>
+		  <version>4.5.2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20160810</version>
+		</dependency>
+		<!-- 파일업로드를위한 CommonsMultipartResolver  -->
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.4</version>
 		</dependency>
 	</dependencies>
 

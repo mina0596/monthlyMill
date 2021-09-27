@@ -1,4 +1,4 @@
-package project.monthlyMill.signup;
+package project.monthlyMill.common.signup;
 
 import org.apache.ibatis.annotations.Mapper;
 

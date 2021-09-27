@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -175,11 +175,11 @@
               <div class="inputform__column inputContent">
                 <div>
                   <p>대표 이미지</p>
-                  <input type="file" name="" id="" class="" />
+                  <input type="file" name="" id="" class="thumbnail" />
                 </div>
                 <div>
                   <p>추가 이미지 (<span class="subimage_count">0/9</span>)</p>
-                  <input type="file" name="" id="" class="" />
+                  <input type="file" multiple="multiple" name="" id="" class="" />
                 </div>
               </div>
             </li>
@@ -304,7 +304,7 @@
           </ol>
           <div class="buttonBox">
             <button class="previewBtn">미리보기</button>
-            <button class="registBtn">등록하기</button>
+            <button class="registerBtn">등록하기</button>
             <button class="cancelBtn">취소</button>
           </div>
         </div>
@@ -317,5 +317,6 @@
     <script src="../../static/js/admin/layout_admin.js"></script>
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script th:src="@{/js/admin/layout_admin.js}"></script>
+    <script th:src="@{/js/admin/product_register.js}"></script>
   </body>
 </html>

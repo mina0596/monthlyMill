@@ -1,4 +1,4 @@
-package project.monthlyMill.recommendation;
+package project.monthlyMill.customer.recommendation;
 
 import java.util.ArrayList;
 import java.util.HashMap;

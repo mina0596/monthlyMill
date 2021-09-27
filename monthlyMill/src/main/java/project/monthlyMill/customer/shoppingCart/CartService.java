@@ -1,4 +1,4 @@
-package project.monthlyMill.shoppingCart;
+package project.monthlyMill.customer.shoppingCart;
 
 import java.util.List;
 import java.util.Map;
