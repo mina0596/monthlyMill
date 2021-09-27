@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
     <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
     <title>월간방앗간</title>
   </head>
   <body>
@@ -15,12 +19,10 @@
       <div class="find_wrap top">
         <div class="main_box">
           <div class="text_box">
-            <div class="text_box_column top">
-              <p>
-                월간방앗간이 추천해주는 <br />
-                <span class="text emp">나만의 떡</span>을 함께 알아볼까요?
-              </p>
-            </div>
+            <p class="text mid">
+              월간방앗간이 추천해주는 <br />
+              <span class="text emp">나만의 떡</span>을 함께 알아볼까요?
+            </p>
           </div>
           <ul
             class="category_box"
@@ -82,52 +84,73 @@
               <li>
                 <span class="hash_box__title boxborder">가격대</span>
               </li>
-              <li class="checkRange">
-                <input
-                  type="number"
-                  name=""
-                  class="small noSpin minPrice"
-                  placeholder="최소가격"
-                />
-                <label for="">원</label>
+              <li class="checkHash">
+                <input type="radio" class="hidden" name="price" id="priceAll" />
+                <label for="priceAll">상관없음</label>
               </li>
-              <li class="checkRange">
+              <li class="checkHash">
+                <input
+                  type="radio"
+                  class="hidden"
+                  name="price"
+                  id="priceInputSelf"
+                />
+                <label for="priceInputSelf">직접입력</label>
+              </li>
+
+              <li class="checkRange hidden">
+                <div>
+                  <input
+                    type="number"
+                    name=""
+                    class="small noSpin minPrice"
+                    placeholder="최소가격"
+                  />
+                  <label for="">원</label>
+                </div>
                 <span class="text vertical">~</span>
-              </li>
-              <li class="checkRange">
-                <input
-                  type="number"
-                  name=""
-                  class="small noSpin maxPrice"
-                  placeholder="최대가격"
-                />
-                <label for="">원</label>
+                <div>
+                  <input
+                    type="number"
+                    name=""
+                    class="small noSpin maxPrice"
+                    placeholder="최대가격"
+                  />
+                  <label for="">원</label>
+                </div>
               </li>
             </ul>
+
             <ul class="hash_column">
               <li>
                 <span class="hash_box__title boxborder">열량</span>
               </li>
-              <li class="checkRange">
+              <li class="checkHash">
                 <input
-                  type="number"
-                  name=""
-                  class="small noSpin minKcal"
-                  placeholder="최소칼로리"
+                  type="checkbox"
+                  class="hidden"
+                  name="kcal"
+                  id="kcal_high"
                 />
-                <label for="">kcal</label>
+                <label for="kcal_high">고칼로리</label>
               </li>
-              <li class="checkRange">
-                <span class="text vertical">~</span>
-              </li>
-              <li class="checkRange">
+              <li class="checkHash">
                 <input
-                  type="number"
-                  name=""
-                  class="small noSpin maxKcal"
-                  placeholder="최대칼로리"
+                  type="checkbox"
+                  class="hidden"
+                  name="kcal"
+                  id="kcal_mid"
                 />
-                <label for="">kcal</label>
+                <label for="kcal_mid">중간칼로리</label>
+              </li>
+              <li class="checkHash">
+                <input
+                  type="checkbox"
+                  class="hidden"
+                  name="kcal"
+                  id="kcal_low"
+                />
+                <label for="kcal_low">저칼로리</label>
               </li>
             </ul>
             <!--여기까지 테스트 데이터-->
@@ -167,10 +190,10 @@
                 </colgroup>
                 <thead>
                   <th>순위</th>
-                  <th class="transparent_text">상품이미지</th>
-                  <th>상품명</th>
+                  <th class="transparent_text">이미지</th>
+                  <th>상품</th>
                   <th>가격</th>
-                  <th class="transparent_text">장바구니</th>
+                  <th class="transparent_text">담기</th>
                 </thead>
                 <tbody class="result_table_body">
                   <tr class="result_item">
@@ -184,16 +207,18 @@
                       <div class="td_column">
                         <span class="result_item__title">제품이름</span>
                         <button class="result_item__nutrient readDetail">
-                          영양정보
+                          <i class="fas fa-search-plus"></i>
+                          <span>영양정보</span>
                         </button>
                       </div>
                     </td>
                     <td>
-                      <span class="result_item__price">가격</span>
+                      <span class="result_item__price price_number">10000</span>
                     </td>
                     <td>
                       <button type="button" class="result_item__btnCart">
-                        장바구니
+                        <i class="fas fa-cart-plus"></i>
+                        <span>장바구니</span>
                       </button>
                     </td>
                   </tr>
@@ -216,11 +241,15 @@
 
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../../static/js/layout_front.js"></script>
+    <script src="../../static/js/customer/findItem_front.js"></script>
     <script src="../../static/js/module/modal.js"></script>
+
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
     <script
       type="text/javascript"
       th:src="@{/js/customer/findItem.js}"
     ></script>
+    <script type="text/javascript" th:src="@{/js/module/modal.js}"></script>
   </body>
 </html>
