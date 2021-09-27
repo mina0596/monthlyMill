@@ -1,15 +1,23 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link type="text/css" rel="stylesheet" href="style.css" />
+    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
     <title>월간방앗간</title>
   </head>
   <body>
+    <header></header>
+
     <section class="content_box">
       <div class="join_order">
+        <div class="logo"></div>
         <ol>
           <li class="icon">
             <span>약관동의</span>
@@ -18,7 +26,7 @@
             <span>기본정보</span>
           </li>
           <li class="icon">
-            <span>추가정보</span>
+            <span class="text emp">추가정보</span>
           </li>
           <li class="icon">
             <span>가입완료</span>
@@ -29,9 +37,18 @@
       <!-- 3단계 -->
       <!--추가 정보 항목개수 변동가능성 있음-->
       <div class="join_cont">
-        <form method="post" id="memberJoin" class="formTerms">
+        <form
+          method="post"
+          id="joinAddInfo"
+          class="formTerms"
+          th:action="@{/join/join_additory}"
+        >
           <div class="join_box">
             <h3 class="h3_title">추가정보 입력</h3>
+            <p class="text desc">
+              개인별 맞춤 추천을 위한 추가정보입력을 해주세요!
+            </p>
+            <!--
             <table>
               <colgroup></colgroup>
               <tbody>
@@ -52,7 +69,6 @@
                       value="yes"
                     />
                     <label for="allergie_yes">있음</label>
-                    <!--있음 체크되어있을 때만 활성화되도록-->
                     <select name="allergie_kind" id="">
                       <option value="">옵션1</option>
                       <option value="">옵션2</option>
@@ -85,19 +101,83 @@
                   </td>
                 </tr>
               </tbody>
-            </table>
+            </table>-->
+          </div>
+          <!--쿠폰받기 버튼은 추가정보 전부 입력시에만 활성화-->
+          <h4 class="h4_title">#해시태그</h4>
+          <p class="text">관심있는 해시태그를 5개 이상 선택해주세요.</p>
+          <div class="hash_box hash_join_select">
+          
+          <!-- 반복되는부분 -->
+          
+          	<div th:each="ml : ${midClassList}">
+	            <h4 class="h4_title text boxborder"  th:text="${ml}"></h4>
+	            <ol class="hash_list" th:each="ml : ${midClassList}">
+	              <li class="checkHash" th:each="l : ${tagNames}"
+	                th:if="${ml} == ${l.hashtagMidClass}">
+	                <input
+	                  type="checkbox"
+	                  class="hidden"
+	                  name="purpose"
+	                  th:id="${l.hashtagName}"
+	                />
+	                <label th:for="${l.hashtagName}" th:text="${l.hashtagName}"></label>
+	              </li>
+	              <!-- <li class="checkHash">
+	                <input
+	                  type="checkbox"
+	                  class="hidden"
+	                  name="purpose"
+	                  id="hash_bbb"
+	                />
+	                <label for="hash_bbb">bbb</label>
+	              </li>
+	              <li class="checkHash">
+	                <input
+	                  type="checkbox"
+	                  class="hidden"
+	                  name="purpose"
+	                  id="hash_cccc"
+	                />
+	                <label for="hash_cccc">cccc</label>
+	              </li> -->
+	            </ol>
+            </div>
+            
+            
+            
+            
+            
+            
+          </div>
+
+          <div class="button_box">
+            <a
+              th:href="@{/join/join_finish}"
+              id="btn_next"
+              class="btn common mid"
+            >
+              넘어가기
+            </a>
+            <input
+              type="button"
+              id="btn_coupon"
+              class="btn emp mid getCouponBtn"
+              value="쿠폰받기"
+            />
           </div>
         </form>
       </div>
+      <footer></footer>
 
-      <!--버튼-->
-      <!--쿠폰받기 버튼은 추가정보 전부 입력시에만 활성화-->
-      <div class="button_box">
-        <a href="join_finish.html" id="btn_next" class="btn common">
-          넘어가기
-        </a>
-        <a href="#" id="btn_coupon" class="btn emp">쿠폰받기</a>
-      </div>
+      <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script
+        type="text/javascript"
+        src="../../static/js/memberJoin.js"
+      ></script>
+      <script src="../../static/js/layout_front.js"></script>
+      <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+      <script type="text/javascript" th:src="@{/js/memberJoin.js}"></script>
     </section>
   </body>
 </html>

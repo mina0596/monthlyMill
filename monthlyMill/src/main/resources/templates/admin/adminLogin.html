@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../../static/css/styleAdmin.css"
+    />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/styleAdmin.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>관리자 로그인</title>
+  </head>
+  <body class="loginbg">
+    <div class="wrapper">
+      <section class="loginBox">
+        <div class="logo"></div>
+        <div class="loginBox_row">
+          <span>월간방앗간 관리자 페이지에 오신 것을 환영합니다.</span>
+        </div>
+        <div class="loginBox_row">
+          <input type="text" placeholder="아이디" />
+          <input type="password" placeholder="비밀번호" />
+        </div>
+        <div class="loginBox_row buttonBox">
+          <button class="btn emp loginBtn">로그인</button>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

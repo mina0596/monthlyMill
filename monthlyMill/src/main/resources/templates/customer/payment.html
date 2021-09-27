@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+    <title>월간방앗간</title>
+  </head>
+  <body>
+    <header></header>
+    <!-- 우편번호 입력란, 자동계산기능, 무통장입금 버튼이벤트-->
+    <section class="content_box">
+      <form action="">
+        <div class="payment_wrap">
+          <h1 class="h1_title text big">결제하기</h1>
+          <div class="main_box orderer_box">
+            <h3 class="h3_title">주문자</h3>
+            <!-- 여기 value에 로그인한 유저 이름, 휴대폰 정보 자동으로 가져오기 -->
+            <table class="orderer_form">
+              <colgroup>
+                <col width="25%" />
+                <col width="75%" />
+              </colgroup>
+              <tr>
+                <th><span class="text required">이름</span></th>
+                <td>
+                  <input
+                    type="text"
+                    th:value="${session.SNAME}"
+                    class="inputOrdererName"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th><span class="text required">휴대폰번호</span></th>
+                <td>
+                  <input
+                    type="tel"
+                    class="phoneNum inputOrdererPhoneNum"
+                    th:value="${session.STEL}"
+                    maxlength="13"
+                    pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
+                  />
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="main_box result_box cart_box">
+            <h3 class="h3_title">상품정보</h3>
+            <div class="result_list_box">
+              <table class="result_table">
+                <colgroup>
+                  <col width="20%" />
+                  <col width="30%" />
+                  <col width="15%" />
+                  <col width="20%" />
+                  <col width="15%" />
+                </colgroup>
+                <thead class="hidden">
+                  <tr class="result_head">
+                    <th>제품사진</th>
+                    <th>제품명</th>
+                    <th>배송방식</th>
+                    <th>개수</th>
+                    <th>가격</th>
+                  </tr>
+                </thead>
+                <tbody class="result_itemList">
+                  <tr class="result_item" th:if="${#lists.size(cartList) > 0}" th:each="cl,n : ${cartList}">
+                    <td>
+                      <span class="result_item num" th:text="${n.index+1}"></span>
+                      <input type="hidden" name="cartNum" class="result_cart_num" th:value="${cl.cartNum}">
+                    </td>
+                    <td>
+                      <img src="" alt="제품이미지" class="result_item img" />
+                    </td>
+                    <td>
+                      <div class="result_item info">
+                        <span class="result_item title" th:text="${cl.pName}"></span>
+                        <div>
+                          <span class="result_item price_number" th:text="${cl.pPrice}"></span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <span class="result_delivery">택배배송</span>
+                    </td>
+                    <td>
+                      <span class="result_item itemNumber" th:text="${cl.pAmount}">개수</span>
+                    </td>
+                    <td>
+                      <span class="result_item price_number">(최종가격)</span>
+                    </td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="main_box deliveryInfo_box">
+            <h3 class="h3_title">배송정보</h3>
+            <table class="deliveryInfo_form">
+              <colgroup>
+                <col width="25%" />
+                <col width="75%" />
+              </colgroup>
+              <tr>
+                <th><span class="text required">받는분</span></th>
+                <td class="table_column_box">
+                  <input
+                    type="text"
+                    placeholder="받는분 이름"
+                    class="inputReceiverName"
+                  />
+                  <div class="table_column">
+                    <!--체크 시 주문자 정보 가져오기-->
+                    <input
+                      type="checkbox"
+                      class="checkbox"
+                      id="sameWithOrder"
+                    />
+                    <label for="sameWithOrder" class="">주문자와 동일</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th><span class="text required">휴대폰</span></th>
+                <td>
+                  <input
+                    type="tel"
+                    class="phoneNum inputReceiverPhoneNum"
+                    placeholder="휴대폰번호"
+                    maxlength="13"
+                    pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>전화번호</th>
+                <td>
+                  <input
+                    type="tel"
+                    placeholder="전화번호"
+                    class="inputReceiverTeleNum"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th><span class="text required"> 배송주소</span></th>
+                <td class="address_inputBox">
+                  <div class="address_column">
+                    <input
+                      type="text"
+                      placeholder="우편번호"
+                      class="postCode"
+                      readonly="readonly"
+                      id="postCode"
+                      name="inputPostCode"
+                    />
+                    <input type="hidden" class="userAddr" th:value="${session.SADDR}">
+                    <button class="getPostNumber" type="button">
+                      우편번호 찾기
+                    </button>
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="주소"
+                    class="inputReceiverAdress"
+                  />
+                  <input
+                    type="text"
+                    placeholder="상세주소"
+                    class="inputReceiverAddressDetail"
+                  />
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="main_box discount_box">
+            <h3 class="h3_title">할인적용</h3>
+            <div>
+              <button type="button">혜택 직접 선택하기</button>
+              <div class="result_text">보유 쿠폰이 없습니다.</div>
+            </div>
+          </div>
+
+          <div class="main_box main_payment_box">
+            <h3 class="h3_title">결제정보</h3>
+            <div class="payment_box">
+              <div class="price_box">
+                <span class="price_title">총 상품금액</span>
+                <span class="price_number text big itemTotalPrice">5000</span>
+              </div>
+              <div>
+                <i class="fas fa-minus"></i>
+              </div>
+              <div class="price_box">
+                <span class="price_title">총 할인금액</span>
+                <span class="price_number text big discountTotalPrice">0</span>
+              </div>
+              <div>
+                <i class="fas fa-plus"></i>
+              </div>
+              <div class="price_box">
+                <span class="price_title">총 배송비</span>
+                <span class="price_number text big deliveryTotalPrice"
+                  >2000</span
+                >
+              </div>
+              <div>
+                <i class="fas fa-equals"></i>
+              </div>
+              <div class="price_box">
+                <span class="price_title">총 결제예정금액</span>
+                <span
+                  class="price_number text big emp paymentTotalPrice"
+                ></span>
+              </div>
+            </div>
+          </div>
+          <div class="main_box">
+            <h3 class="h3_title">결제수단</h3>
+            <div class="payment_column payment_type_box">
+              <button type="button" class="btn small deposit_noBankbook_btn">
+                무통장 입금
+              </button>
+            </div>
+            <!--현금영수증 발행-->
+            <div class="payment_column payment_receipt_box hidden">
+              <table class="receipt_form">
+                <colgroup>
+                  <col width="25%" />
+                  <col width="75%" />
+                </colgroup>
+                <tr class="receipt_box">
+                  <th><span>현금영수증</span></th>
+                  <td>
+                    <select name="" class="receiptApplyType">
+                      <option value="personalDeduction">개인소득공제용</option>
+                      <option value="businessExpense">사업자지출증빙용</option>
+                      <option value="none">신청안함</option>
+                    </select>
+                    <select name="" class="receiptNumberType">
+                      <option value="phoneNum">휴대폰번호</option>
+                      <option value="cashReceiptNum">현금영수증번호</option>
+                    </select>
+                  </td>
+                </tr>
+                <!--선택안함일 때는 안뜨게-->
+                <tr class="receipt_box recepitPhoneNumber">
+                  <th>
+                    <span class="receiptApplicantPhoneNum">휴대폰번호</span>
+                  </th>
+                  <td>
+                    <input
+                      type="tel"
+                      class="phoneNum inputReceiptApplicantPhoneNum"
+                      placeholder="휴대폰번호"
+                      maxlength="13"
+                      pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
+                    />
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <!--약관 동의-->
+            <div class="payment_column payment_agreement_box">
+              <div class="agreement_all">
+                <input
+                  type="checkbox"
+                  id="paymentTermAllAgree"
+                  class="checkAll checkRequired checkbox"
+                />
+                <label class="check_off" for="paymentTermAllAgree"
+                  >주문상품정보 및 결제대행 서비스 이용약관에 모두 동의하십니까?
+                </label>
+                <button class="toggleBtn" type="button">
+                  <i class="fas fa-chevron-down"></i>
+                </button>
+              </div>
+              <div class="toggleBox">
+                <div class="agreement_box">
+                  <div class="agreement_column">
+                    <input
+                      type="checkbox"
+                      id="foodTermAgree"
+                      class="checkRequired checkbox"
+                    />
+                    <label class="check_off" for="foodTermAgree"
+                      >신선식품(냉장, 냉동포함) 주문 동의 상품가치하락의 사유로
+                      재판매가 불가하므로 주문마감 이후에는 취소가 불가능합니다.
+                      (단, 상품 불량 시 반품 가능)
+                    </label>
+                  </div>
+                </div>
+
+                <div class="agreement_box">
+                  <div class="agreement_column">
+                    <input
+                      type="checkbox"
+                      id="cyberTradeTermAgree"
+                      class="checkRequired checkbox"
+                    />
+                    <label class="check_off" for="cyberTradeTermAgree"
+                      >전자상거래 주문동의 주문하실 상품, 가격, 배송정보,
+                      할인내역 등을 최종 확인하였으며, 구매에 동의합니다.
+                      (전자상거래법 제8조 제2항)
+                    </label>
+                  </div>
+                </div>
+                <div class="agreement_box">
+                  <div class="agreement_column">
+                    <input
+                      type="checkbox"
+                      id="foodTermAgree"
+                      class="checkRequired checkbox"
+                    />
+                    <label class="check_off" for="foodTermAgree">
+                      <span>결제대행 서비스 이용약관 동의</span>
+                      <div class="agreement_column">
+                        <span>전자금융거래 기본약관</span>
+                        <button type="button" class="readDetail btn_text">
+                          전체보기
+                        </button>
+                      </div>
+                      <div class="agreement_column">
+                        <span>개인정보 수집 및 이용동의</span>
+                        <button type="button" class="readDetail btn_text">
+                          전체보기
+                        </button>
+                      </div>
+                      <div class="agreement_column">
+                        <span>개인정보 제공 동의</span>
+                        <button type="button" class="readDetail btn_text">
+                          전체보기
+                        </button>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--end payment_agreement_box-->
+            <div class="button_box">
+              <!--누르면 결제진행-->
+              <button type="submit" class="btn big emp paymentBtn">
+                결제하기
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+    <footer></footer>
+
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/layout_front.js"></script>
+    <script src="../../static/js/memberJoin_front.js"></script>
+    <script src="../../static/js/customer/payment_front.js"></script>
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/js/customer/payment_front.js}"></script>
+    <script th:src="@{/js/customer/payment.js}"></script>
+    <script th:src="@{/js/memberJoin_front.js}"></script>
+    <script th:src="@{/js/layout_front.js}"></script>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko"
+	  xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+    
+    <title>월간방앗간</title>
+  </head>
+  <body>
+    <header>
+    </header>
+
+    <section class="content_box">
+      <!--일반 로그인-->
+      <div class="join_cont login_cont">
+        <form method="post" id="login" class="formLogin" th:action="@{/login}">
+          <div class="logo_box">
+            <div class="logo big">로고이미지</div>
+          </div>
+          <div class="tap_box">
+            <input type="radio" id="btn_memberJoin" class="hidden" name="loginType" value="2" checked="checked"></input>
+            <label for="btn_memberJoin" class="btn mid" >고객</label>
+            <input type="radio" id="btn_makersJoin" class="hidden" name="loginType" value="3"></input>
+            <label for="btn_makersJoin" class="btn mid">메이커스</label>
+          </div>
+          <div class="join_box login_box">
+            <input type="text" placeholder="아이디" class="text sm inputId" name="memberId"/>
+            <input type="password" placeholder="비밀번호" class="text sm inputPw" name="memberPw"/>
+          </div>
+
+          <div class="login_convenience">
+            <span>
+              <input type="checkbox" name="saveId" id="idSaveCheck" class="checkbox"/>
+              <label for="idSaveCheck" >아이디 저장</label>
+            </span>
+            <span>
+              <input type="checkbox" name="autoLogin" id="autoLoginCheck" class="checkbox"/>
+              <label for="autoLoginCheck">자동 로그인</label>
+            </span>
+          </div>
+          <div class="button_box">
+            <input type="submit" id="btn_next" class="btn emp big loginBtn" value="로그인">
+          </div>
+          <div class="login_button_box">
+            <ul>
+              <li><a href="/join/join_method">회원가입</a></li>
+              <li><a href="#">아이디 찾기</a></li>
+              <li><a href="#">비밀번호 찾기</a></li>
+            </ul>
+          </div>
+          <!--
+          <div class="join_box sns" id="sns_join_box">
+            <h3 class="h3_title">SNS계정으로 로그인하기</h3>
+            <div class="button_box sns">
+              <a class="btn_sns">sns버튼 페북</a>
+              <a class="btn_sns">sns버튼 네이버</a>
+              <a class="btn_sns">sns버튼 카카오</a>
+              <a class="btn_sns">sns버튼 구글</a>
+            </div>
+          </div>
+          -->
+        </form>
+      </div>
+    </section>
+
+    <footer></footer>
+    
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script defer src="../../static/js/layout_front.js"></script>
+    <script src="../../static/js/login_front.js"></script>
+
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script type="text/javascript" th:scr="@{/js/login.js}"></script>
+    <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
+
+  </body>
+</html>

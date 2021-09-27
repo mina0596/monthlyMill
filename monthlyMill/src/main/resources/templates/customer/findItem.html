@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+    <title>월간방앗간</title>
+  </head>
+  <body>
+    <header></header>
+
+    <section class="content_box">
+      <div class="find_wrap top">
+        <div class="main_box">
+          <div class="text_box">
+            <div class="text_box_column top">
+              <p>
+                월간방앗간이 추천해주는 <br />
+                <span class="text emp">나만의 떡</span>을 함께 알아볼까요?
+              </p>
+            </div>
+          </div>
+          <ul
+            class="category_box"
+            th:if="${#lists.size(highClassList) > 0}"
+            th:each="hl : ${highClassList}"
+          >
+            <li class="category_title boxborder" th:text="${hl}"></li>
+            <!-- <li class="category_item hash" th:text="${hl}"></li> -->
+          </ul>
+        </div>
+
+        <div class="main_box borderBox findItem_box">
+          <div class="hash_box">
+            <!-- <ul class="hash_column" th:if="${#lists.size(midClassList) > 0 && #lists.size(hashtagList) > 0}" th:each="ml : ${midClassList}">
+                    <li><span class="hash_box__title" th:text="${ml}"></span></li>
+                    <li>
+                    	<input type="checkbox" class="hashCheck" 
+                    		   th:each="l : ${hashtagList}" th:if="${ml} == ${l.hashtagMidClass}" 
+                    		   th:text="'#' + ${l.hashtagName}" th:value="${l.hashtagNum}" th:name="${l.hashtagName}"></input>
+                    	<input type="hidden" class="midClassName" th:value="${ml}">
+                    </li>
+                </ul> -->
+            <!-- (input 체크박스 id ) = ( label for 이름 ) -->
+            <ul
+              class="hash_column"
+              th:if="${#lists.size(midClassList) > 0 && #lists.size(hashtagList) > 0}"
+              th:each="ml : ${midClassList}"
+            >
+              <li>
+                <span
+                  class="hash_box__title midClassName"
+                  th:text="${ml}"
+                ></span>
+              </li>
+              <li
+                class="checkHash"
+                th:each="l : ${hashtagList}"
+                th:if="${ml} == ${l.hashtagMidClass}"
+              >
+                <input
+                  type="checkbox"
+                  th:id="${l.hashtagName}"
+                  class="hidden hashCheck"
+                  th:value="${l.hashtagNum}"
+                />
+                <label
+                  class="labelClass"
+                  th:for="${l.hashtagName}"
+                  th:text="${l.hashtagName}"
+                ></label>
+              </li>
+              <!-- <li class="checkHash">
+                    <input type="checkbox" name="" id="hash_ccccc" class="hidden">
+                    <label for="hash_ccccc">ccccc</label>
+                  </li> -->
+            </ul>
+            <!-- 범위 해시 -->
+            <ul class="hash_column">
+              <li>
+                <span class="hash_box__title boxborder">가격대</span>
+              </li>
+              <li class="checkRange">
+                <input
+                  type="number"
+                  name=""
+                  class="small noSpin minPrice"
+                  placeholder="최소가격"
+                />
+                <label for="">원</label>
+              </li>
+              <li class="checkRange">
+                <span class="text vertical">~</span>
+              </li>
+              <li class="checkRange">
+                <input
+                  type="number"
+                  name=""
+                  class="small noSpin maxPrice"
+                  placeholder="최대가격"
+                />
+                <label for="">원</label>
+              </li>
+            </ul>
+            <ul class="hash_column">
+              <li>
+                <span class="hash_box__title boxborder">열량</span>
+              </li>
+              <li class="checkRange">
+                <input
+                  type="number"
+                  name=""
+                  class="small noSpin minKcal"
+                  placeholder="최소칼로리"
+                />
+                <label for="">kcal</label>
+              </li>
+              <li class="checkRange">
+                <span class="text vertical">~</span>
+              </li>
+              <li class="checkRange">
+                <input
+                  type="number"
+                  name=""
+                  class="small noSpin maxKcal"
+                  placeholder="최대칼로리"
+                />
+                <label for="">kcal</label>
+              </li>
+            </ul>
+            <!--여기까지 테스트 데이터-->
+          </div>
+          <div class="button_box find_result_button">
+            <button type="button" class="btn emp mid" id="resultBtn">
+              결과보기
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="find_wrap bottom">
+        <div class="main_box result_box borderBox">
+          <div class="text_box">
+            <span class="result_beforeText"
+              >결과를 보려면 키워드를 선택해주세요.</span
+            >
+          </div>
+
+          <div class="result_list_box">
+            <div class="result_hash">
+              <ol class="result_hash_list">
+                <li class="hash">선택한태그</li>
+                <li class="hash">선택한태그</li>
+                <li class="hash">선택한태그</li>
+              </ol>
+            </div>
+            <form target="param" method="get" action="/customer/cart/addItem">
+              <table class="result_table">
+                <colgroup>
+                  <col width="10%" />
+                  <col width="20%" />
+                  <col width="40%" />
+                  <col width="15%" />
+                  <col width="15%" />
+                </colgroup>
+                <thead>
+                  <th>순위</th>
+                  <th class="transparent_text">상품이미지</th>
+                  <th>상품명</th>
+                  <th>가격</th>
+                  <th class="transparent_text">장바구니</th>
+                </thead>
+                <tbody class="result_table_body">
+                  <tr class="result_item">
+                    <td>
+                      <span class="result_item__num">1</span>
+                    </td>
+                    <td>
+                      <img src="" alt="제품이미지" class="result_item__img" />
+                    </td>
+                    <td>
+                      <div class="td_column">
+                        <span class="result_item__title">제품이름</span>
+                        <button class="result_item__nutrient readDetail">
+                          영양정보
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <span class="result_item__price">가격</span>
+                    </td>
+                    <td>
+                      <button type="button" class="result_item__btnCart">
+                        장바구니
+                      </button>
+                    </td>
+                  </tr>
+                  <!-- -->
+                </tbody>
+              </table>
+            </form>
+            <iframe
+              id="if"
+              name="param"
+              width="0"
+              height="0"
+              frameborder="0"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer></footer>
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/layout_front.js"></script>
+    <script src="../../static/js/module/modal.js"></script>
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script
+      type="text/javascript"
+      th:src="@{/js/customer/findItem.js}"
+    ></script>
+  </body>
+</html>

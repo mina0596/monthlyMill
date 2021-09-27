@@ -1,0 +1,105 @@
+.find_wrap {
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.category_box {
+  margin: 0 auto;
+  display: flex;
+}
+
+.find_wrap .main_box {
+  margin-bottom: 1em;
+}
+.findItem_box .hash_box {
+  justify-content: space-evenly;
+}
+.hash_box {
+  display: flex;
+  flex-direction: row;
+  padding: 1em;
+}
+.hash_column {
+  display: block;
+  margin-right: 30px;
+}
+.hash_column:last-child {
+  margin-right: 0px;
+}
+.hash_box__title {
+  display: block;
+  margin: 5px auto;
+  text-align: center;
+  font-weight: 600;
+  /*
+  padding: 3px 0;
+  border: 1px solid var(--btn-common-color);
+  border-radius: 5px;*/
+}
+/*
+.hash_column .checkHash {
+  color: var(--btn-sub-color);
+}
+.hash_column:nth-child(5n) .checkHash {
+  background-color: rgb(255, 212, 219);
+}
+.hash_column:nth-child(5n + 1) .checkHash {
+  background-color: rgb(210, 243, 238);
+}
+.hash_column:nth-child(5n + 2) .checkHash {
+  background-color: lightgray;
+}
+.hash_column:nth-child(5n + 3) .checkHash {
+  background-color: rgb(198, 233, 255);
+}
+.hash_column:nth-child(5n + 4) .checkHash {
+  background-color: rgb(250, 243, 210);
+}
+*/
+.checkRange {
+  text-align: center;
+}
+.checkRange input {
+  text-align: center;
+}
+
+.button_box.find_result_button {
+  display: flex;
+  justify-content: center;
+}
+
+/* 결과박스 */
+.result_beforeText {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.result_hash_list {
+  display: flex;
+  margin-bottom: 20px;
+}
+.result_hash_list li {
+  margin-right: 5px;
+}
+.result_table {
+  width: 100%;
+}
+.result_table th,
+.result_table td {
+  padding: 1em 0;
+}
+
+.result_table thead {
+  border-bottom: 2px solid var(--btn-common-color);
+}
+.result_table th {
+  text-align: left;
+  font-weight: 600;
+}
+.td_column {
+  display: flex;
+  justify-content: space-between;
+}
+.result_item__nutrient {
+  margin-right: 1em;
+}

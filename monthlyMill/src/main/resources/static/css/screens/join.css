@@ -1,0 +1,292 @@
+/*회원가입*/
+.content_box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.join_order {
+  margin: 30px auto 0;
+}
+
+.join_cont {
+  margin: 3em auto;
+  padding: 0.25em;
+  width: 40em;
+}
+
+@media screen and (max-width: 480px) {
+  .join_cont {
+    width: 100vw;
+    margin-top: 1em auto;
+    padding: 1em;
+  }
+  .join_member {
+    padding: 0 1em;
+  }
+}
+.join_box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+.join_box.sns {
+  margin: 50px 0;
+}
+
+/*가입 단계 박스*/
+.join_order {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1em;
+}
+.join_order .logo {
+  margin: 0 0 10px;
+}
+.join_order ol {
+  display: flex;
+  padding: 1em;
+  border: 1px solid var(--btn-common-color);
+  border-radius: 0.25em;
+}
+.join_order ol li {
+  margin-right: 0.5em;
+}
+.join_order ol li::after {
+  content: "\f061";
+  color: var(--btn-common-color);
+  font-family: FontAwesome;
+  margin-left: 0.25em;
+}
+.join_order ol li:last-child::after {
+  content: none;
+}
+
+/*------- 약관동의 -------*/
+/*약관 체크박스*/
+.agreement_box {
+  margin: 0.625em 0.625em 0;
+  display: flex;
+  justify-content: space-between;
+}
+.agreement_all {
+  margin-top: 0.625em;
+  padding: 0.625em;
+  border: 1px solid var(--btn-common-color);
+  border-radius: 20px;
+}
+.checkbox {
+  display: none;
+}
+.checkbox + label::before {
+  content: "\f111";
+  color: var(--btn-common-color);
+  font-family: FontAwesome;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.checkbox:checked + label::before {
+  content: "\f058";
+  color: var(--btn-emp-color);
+}
+
+/*약관 모달창*/
+.modalWrap {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 5;
+}
+.modal {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  z-index: 10;
+  width: 60vw;
+  height: 60vh;
+  min-width: 400px;
+  max-width: 700px;
+  min-height: 300px;
+  max-height: 550px;
+  padding: 10px 0;
+  background-color: #fff;
+  border-radius: 1em;
+}
+.modal_box {
+  margin: 1.2em;
+  display: flex;
+  justify-content: center;
+}
+.modal_title {
+  font-size: 18px;
+  font-weight: 700;
+}
+.modal_box.content {
+  margin: 0 1.6em;
+  height: 35vh;
+  min-height: 150px;
+  border: 1px solid var(--desc-color);
+  border-radius: 1em;
+}
+.modal_content {
+  margin: 1em;
+  overflow-y: auto;
+}
+.modal_content::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent;
+}
+.modal_content::-webkit-scrollbar-thumb {
+  background-color: var(--compo-common-color);
+  border-radius: 5px;
+}
+.modal_box.button_box {
+  position: absolute;
+  margin: 1.2em auto;
+  padding-top: 0;
+  width: 100%;
+  bottom: 0;
+}
+
+/* ------- 기본정보 ------- */
+/*테이블*/
+.join_box table th,
+td {
+  padding: 5px 0;
+}
+.join_box table th {
+  text-align: left;
+}
+.birth_box {
+  display: flex;
+}
+.birth_box input,
+select {
+  width: 5em;
+}
+.join_cont .desc_s {
+  margin-top: 3px;
+}
+
+/*입력칸*/
+.join_box input:not(.btn) {
+  height: 2em;
+  border: none;
+  border-bottom: 1px solid var(--btn-common-color);
+}
+.join_box input[type="radio"] {
+  height: auto;
+}
+.join_box input:focus {
+  outline: none;
+  border-bottom: 2px solid var(--btn-emp-color);
+}
+.join_box select {
+  height: 2em;
+}
+.join_box select.bank {
+  width: 8em;
+}
+.join_box input.accountOwner {
+  width: 9.75em;
+}
+.join_box input.accountNumber {
+  width: 18em;
+}
+
+.h3_title {
+  padding-bottom: 0.5em;
+  font-size: 22px;
+  letter-spacing: -1px;
+  font-weight: 600;
+  border-bottom: 2px solid gray;
+}
+.desc {
+  padding: 1em 0;
+  color: var(--desc-color);
+  line-height: 120%;
+}
+
+.tap_box {
+  padding-top: 1.5em;
+  display: flex;
+  justify-content: center;
+}
+.button_box {
+  display: flex;
+  justify-content: center;
+  padding-top: 1em;
+}
+.button_box.sns {
+  margin-top: 20px;
+  justify-content: space-around;
+}
+.btn_sns {
+  display: block;
+  width: 90px;
+  height: 90px;
+  padding: 10px 0;
+  background-color: yellowgreen;
+  font-size: 15px;
+}
+
+/* ------- 추가정보 입력창 ------- */
+.hash_box.hash_join_select {
+  display: flex;
+  flex-direction: column;
+  margin: 1em 0;
+}
+.hash_box .h4_title {
+  width: fit-content;
+}
+.hash_list {
+  display: flex;
+  margin-bottom: 1em;
+}
+.hash_list .checkHash {
+  color: var(--btn-sub-color);
+}
+.hash_list:nth-child(5n) .checkHash label {
+  background-color: rgb(255, 212, 219);
+}
+.hash_list:nth-child(5n + 1) .checkHash label {
+  background-color: rgb(210, 243, 238);
+}
+.hash_list:nth-child(5n + 2) .checkHash label {
+  background-color: lightgray;
+}
+.hash_list:nth-child(5n + 3) .checkHash label {
+  background-color: rgb(198, 233, 255);
+}
+.hash_list:nth-child(5n + 4) .checkHash label {
+  background-color: rgb(250, 243, 210);
+}
+
+.hash_list:nth-child(5n) .checkHash input[type="checkbox"]:checked + label {
+  box-shadow: 0 0.2em 0.5em rgba(218, 28, 59, 0.6);
+}
+.hash_list:nth-child(5n + 1) .checkHash input[type="checkbox"]:checked + label {
+  box-shadow: 0 0.2em 0.5em rgba(17, 127, 141, 0.6);
+}
+.hash_list:nth-child(5n + 2) .checkHash input[type="checkbox"]:checked + label {
+  box-shadow: 0 0.2em 0.5em rgba(32, 32, 32, 0.6);
+}
+.hash_list:nth-child(5n + 3) .checkHash input[type="checkbox"]:checked + label {
+  box-shadow: 0 0.2em 0.5em rgba(28, 102, 172, 0.6);
+}
+.hash_list:nth-child(5n + 4) .checkHash input[type="checkbox"]:checked + label {
+  box-shadow: 0 0.2em 0.5em rgba(226, 131, 22, 0.6);
+}
+
+.text_box.pad {
+  margin: 2em 0;
+}
+@media screen and (max-width: 480px) {
+  .text_box.pad .text.mid {
+    font-size: 1.35em;
+  }
+}

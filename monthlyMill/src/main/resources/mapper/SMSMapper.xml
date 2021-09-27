@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project.monthlyMill.signup.SMSMapper">
+	<insert id="saveHistory" parameterType="map">
+		INSERT INTO sms_history
+		(idx, sms_type, phone_number, `contents`, event_time)
+		VALUES (NULL, '', '', '', NOW())
+	</insert>
+	
+	<select id="selectMsgCount" parameterType="String" resultType="int">
+		SELECT 
+			COUNT(1)
+		FROM 
+			sms_history AS sh
+			WHERE sh.phone_number = #{phoneNumber}
+			AND NOW() BETWEEN sh.event_time AND DATE_ADD(sh.event_time,INTERVAL 3 MINUTE)
+	</select>
+</mapper>

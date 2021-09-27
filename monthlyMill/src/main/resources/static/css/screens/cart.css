@@ -1,0 +1,128 @@
+/*가격 표기 공통*/
+.cart_wrap {
+  margin: 1em;
+}
+
+/*장바구니 리스트 요약*/
+.result_summary {
+  display: flex;
+  justify-content: space-between;
+}
+.result_summary .itmeNumberTotal::before {
+  content: "총 ";
+}
+
+/*장바구니 제품 리스트 테이블*/
+.result_table {
+  margin: : 0.5em;
+}
+tr.result_item {
+  border-bottom: 1px solid var(--btn-common-color);
+}
+tr.result_item:last-child {
+  border-bottom: 0;
+}
+.result_item td {
+  vertical-align: middle;
+}
+.result_item.num {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.result_item.img {
+  display: block;
+  margin-left: 1em;
+  width: 6em;
+  height: 4em;
+  object-fit: cover;
+  background-color: aliceblue;
+}
+.result_item.price_origin {
+  text-decoration: line-through;
+}
+@media screen and (max-width: 480px) {
+  .result_item >.itembuttonBox {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
+  }
+}
+.result_item.itemSumPrice {
+  display: block;
+  text-align: center;
+}
+.result_item.deleteItemBtn {
+  float: right;
+}
+.result_text {
+  margin: 1.5em 0;
+  text-align: center;
+}
+
+/*가격 책정 박스*/
+.main_payment_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.payment_box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.price_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.price_box .price_title {
+  margin-bottom: 0.625em;
+}
+
+.main_payment_box .button_box {
+  width: 50%;
+  margin: 20px auto;
+}
+
+/* ==== 모바일용 장바구니 리스트 테이블 === */
+@media screen and (max-width: 768px) {
+  .result_item_mobile{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .result_item_mobile .result_item__row.itemTitleRow {
+    display: flex;
+    justify-content: space-between;
+  }
+  .result_item_mobile .result_item__row.itemInfoRow {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+  .result_item_mobile .result_item__subcolumn{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .result_item_mobile .result_item__subrow{
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .payment_box i {
+    transform: translateY(0.75em);
+  }
+  .price_box .price_title {
+    margin-bottom: 0;
+  }
+  .price_box .price_number.text {
+    font-size: 1.5em;
+  }
+  .deliveryInfo_form th {
+    width: 100%;
+  }
+}

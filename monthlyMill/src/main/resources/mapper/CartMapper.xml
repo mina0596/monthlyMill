@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project.monthlyMill.shoppingCart.CartMapper">
+	<resultMap type="Cart"	id="cartResultMap">
+		<result property="cartNum"			column="cart_num"/>
+		<result property="memberNum"		column="member_num"/>
+		<result property="pCode"			column="product_code"/>
+		<result property="pAmount"			column="amount"/>
+		<result property="cartRegDate"		column="cart_reg_date"/>
+	</resultMap>
+	
+	<insert id="addItem" parameterType="map">
+		INSERT INTO member_cart
+		(cart_num, member_num, product_code, amount, cart_reg_date)
+		VALUES (0, #{memberNum}, #{pCode}, 1, NOW());
+	</insert>
+	
+	<select id="getCartListByMemberId" parameterType="String" resultType="map">
+		SELECT
+			mCart.cart_num as cartNum,
+			mCart.product_code as pCode, 
+			mCart.amount as pAmount, 
+			pInfo.product_name as pName, 
+			pInfo.product_price as pPrice
+		FROM 
+			member_cart AS mCart
+		INNER JOIN 
+			product_info AS pInfo
+		ON 
+			mCart.product_code = pInfo.product_code
+		LEFT JOIN
+			order_info AS oInfo
+		on
+			mCart.cart_num = oInfo.cart_num
+		WHERE member_num = #{memberNum}
+		ORDER BY cartNum ASC;
+	</select>
+	
+	<update id="updateCartByCartNum" parameterType="map">
+		UPDATE member_cart
+		SET
+			amount=#{pAmount}
+		WHERE cart_num=#{cartNum}
+	</update>
+	
+</mapper>

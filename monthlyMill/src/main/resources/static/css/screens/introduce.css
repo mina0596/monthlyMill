@@ -1,0 +1,66 @@
+.main_story_box {
+  display: flex;
+  flex-direction: row;
+}
+
+/*세로 박스*/
+.main_column {
+  margin: 1em;
+}
+.main_column.intro_box {
+  flex-grow: 2;
+}
+.main_column.img_box {
+  flex-grow: 1;
+  width: 100%;
+  min-width: 300px;
+  min-height: 200px;
+  background: url("../../img/intro_img.jpg");
+  background-size: cover;
+  border-radius: 1em;5
+}
+
+/*소개 설명글*/
+.main_story_box .text_box {
+  text-align: left;
+}
+.main_story_box .brand{
+  color: var(--desc-color);
+  letter-spacing: -1px;
+}
+.main_story_box .text_box p {
+  margin-bottom: 1em;
+}
+/*아랫단 특징 설명 박스*/
+.story_box {
+  display: flex;
+}
+.story_box .story_item {
+  flex-grow: 1;
+  flex-basis: 200px;
+  min-width: 12em;
+  min-height: 10em;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1em;
+  background-color: var(--btn-emp-color);
+  color:#fff;
+  border-radius: 1em;
+}
+.story_box .story_item:nth-child(2){
+  background-color: var(--btn-sub-color);
+}
+.story_box .story_item p {
+  display: block;
+  padding: 0.5em;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+
+}
+@media screen and (max-width: 480px) {
+
+}

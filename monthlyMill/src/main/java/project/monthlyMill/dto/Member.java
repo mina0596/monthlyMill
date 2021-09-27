@@ -1,22 +1,31 @@
 package project.monthlyMill.dto;
 
 public class Member {
+	private int memberNum;
 	private String memberId;
 	private String memberPw;
 	private int memberCateNum;
 	private String memberName;
-	private String memberAge;
+	private int memberAge;
+	private String memberBday;
+	private String memberEmail;
 	private char memberGender;
+	private String memberAddr;
+	private String memberDetailAddr;
+	private String memberPostalCode;
 	private String memberPhone;
 	private char memberIdentityCheck;
-	private String memberAllergy;
-	private String memberDisease;
-	private String businessReg;
-	private String businessDoc;
-	private String businessWeb;
 	private String memberInfoModifyDate;
 	private String memberInfoRegDate;
-	
+	private String bankName;
+	private String bankAccountNum;
+	private String holderName;
+	public int getMemberNum() {
+		return memberNum;
+	}
+	public void setMemberNum(int memberNum) {
+		this.memberNum = memberNum;
+	}
 	public String getMemberId() {
 		return memberId;
 	}
@@ -41,17 +50,47 @@ public class Member {
 	public void setMemberName(String memberName) {
 		this.memberName = memberName;
 	}
-	public String getMemberAge() {
+	public int getMemberAge() {
 		return memberAge;
 	}
-	public void setMemberAge(String memberAge) {
+	public void setMemberAge(int memberAge) {
 		this.memberAge = memberAge;
+	}
+	public String getMemberBday() {
+		return memberBday;
+	}
+	public void setMemberBday(String memberBday) {
+		this.memberBday = memberBday;
+	}
+	public String getMemberEmail() {
+		return memberEmail;
+	}
+	public void setMemberEmail(String memberEmail) {
+		this.memberEmail = memberEmail;
 	}
 	public char getMemberGender() {
 		return memberGender;
 	}
 	public void setMemberGender(char memberGender) {
 		this.memberGender = memberGender;
+	}
+	public String getMemberAddr() {
+		return memberAddr;
+	}
+	public void setMemberAddr(String memberAddr) {
+		this.memberAddr = memberAddr;
+	}
+	public String getMemberDetailAddr() {
+		return memberDetailAddr;
+	}
+	public void setMemberDetailAddr(String memberDetailAddr) {
+		this.memberDetailAddr = memberDetailAddr;
+	}
+	public String getMemberPostalCode() {
+		return memberPostalCode;
+	}
+	public void setMemberPostalCode(String memberPostalCode) {
+		this.memberPostalCode = memberPostalCode;
 	}
 	public String getMemberPhone() {
 		return memberPhone;
@@ -65,36 +104,6 @@ public class Member {
 	public void setMemberIdentityCheck(char memberIdentityCheck) {
 		this.memberIdentityCheck = memberIdentityCheck;
 	}
-	public String getMemberAllergy() {
-		return memberAllergy;
-	}
-	public void setMemberAllergy(String memberAllergy) {
-		this.memberAllergy = memberAllergy;
-	}
-	public String getMemberDisease() {
-		return memberDisease;
-	}
-	public void setMemberDisease(String memberDisease) {
-		this.memberDisease = memberDisease;
-	}
-	public String getBusinessReg() {
-		return businessReg;
-	}
-	public void setBusinessReg(String businessReg) {
-		this.businessReg = businessReg;
-	}
-	public String getBusinessDoc() {
-		return businessDoc;
-	}
-	public void setBusinessDoc(String businessDoc) {
-		this.businessDoc = businessDoc;
-	}
-	public String getBusinessWeb() {
-		return businessWeb;
-	}
-	public void setBusinessWeb(String businessWeb) {
-		this.businessWeb = businessWeb;
-	}
 	public String getMemberInfoModifyDate() {
 		return memberInfoModifyDate;
 	}
@@ -107,18 +116,33 @@ public class Member {
 	public void setMemberInfoRegDate(String memberInfoRegDate) {
 		this.memberInfoRegDate = memberInfoRegDate;
 	}
-	
+	public String getBankName() {
+		return bankName;
+	}
+	public void setBankName(String bankName) {
+		this.bankName = bankName;
+	}
+	public String getBankAccountNum() {
+		return bankAccountNum;
+	}
+	public void setBankAccountNum(String bankAccountNum) {
+		this.bankAccountNum = bankAccountNum;
+	}
+	public String getHolderName() {
+		return holderName;
+	}
+	public void setHolderName(String holderName) {
+		this.holderName = holderName;
+	}
 	@Override
 	public String toString() {
-		return "Member [memberId=" + memberId + ", memberPw=" + memberPw + ", memberCateNum=" + memberCateNum
-				+ ", memberName=" + memberName + ", memberAge=" + memberAge + ", memberGender=" + memberGender
-				+ ", memberPhone=" + memberPhone + ", memberIdentityCheck=" + memberIdentityCheck + ", memberAllergy="
-				+ memberAllergy + ", memberDisease=" + memberDisease + ", businessReg=" + businessReg + ", businessDoc="
-				+ businessDoc + ", businessWeb=" + businessWeb + ", memberInfoModifyDate=" + memberInfoModifyDate
-				+ ", memberInfoRegDate=" + memberInfoRegDate + "]";
+		return "Member [memberNum=" + memberNum + ", memberId=" + memberId + ", memberPw=" + memberPw
+				+ ", memberCateNum=" + memberCateNum + ", memberName=" + memberName + ", memberAge=" + memberAge
+				+ ", memberBday=" + memberBday + ", memberEmail=" + memberEmail + ", memberGender=" + memberGender
+				+ ", memberAddr=" + memberAddr + ", memberDetailAddr=" + memberDetailAddr + ", memberPostalCode="
+				+ memberPostalCode + ", memberPhone=" + memberPhone + ", memberIdentityCheck=" + memberIdentityCheck
+				+ ", memberInfoModifyDate=" + memberInfoModifyDate + ", memberInfoRegDate=" + memberInfoRegDate
+				+ ", bankName=" + bankName + ", bankAccountNum=" + bankAccountNum + ", holderName=" + holderName + "]";
 	}
-	
-	
-	
 	
 }

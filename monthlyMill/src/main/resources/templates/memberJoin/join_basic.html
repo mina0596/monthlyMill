@@ -1,21 +1,29 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link type="text/css" rel="stylesheet" href="style.css" />
+    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
     <title>월간방앗간</title>
   </head>
   <body>
+    <header></header>
+
     <section class="content_box">
       <div class="join_order">
+        <div class="logo"></div>
         <ol>
           <li class="icon">
             <span>약관동의</span>
           </li>
           <li class="icon">
-            <span>기본정보</span>
+            <span class="text emp">기본정보</span>
           </li>
           <li class="icon">
             <span>추가정보</span>
@@ -28,7 +36,7 @@
 
       <!-- 2단계 -->
       <div class="join_cont">
-        <form method="post" id="memberJoin" class="formTerms">
+      	<form method="post" th:action="@{/join/join_basic}">
           <div class="join_box">
             <!--필수 정보-->
             <h3 class="h3_title">필수정보 입력</h3>
@@ -40,60 +48,294 @@
               </colgroup>
               <tbody>
                 <tr>
-                  <th><span>아이디</span></th>
+                  <th><span class="text required">아이디</span></th>
                   <td>
-                    <input type="text" name="inputId" />
-                    <button type="button" id="idCheck">중복조회</button>
+                    <input type="text" name="inputId" required />
+                    <input
+                      type="hidden"
+                      name="idDupCheck"
+                      value="idDupUncheck"
+                    />
+                    <button type="button" class="idCheck">중복조회</button>
+                    <div class="desc_s">
+                      <span class="idDupMsg"> </span>
+                    </div>
                   </td>
                 </tr>
                 <tr>
-                  <th><span>비밀번호</span></th>
-                  <td><input type="password" /></td>
-                </tr>
-                <tr>
-                  <th><span>비밀번호 확인</span></th>
-                  <td><input type="password" /></td>
-                </tr>
-                <tr>
-                  <th><span>닉네임</span></th>
-                  <td><input type="text" /></td>
-                </tr>
-                <tr>
-                  <th><span>나이</span></th>
-                  <td><input type="number" /></td>
-                </tr>
-                <tr>
-                  <th><span>성별</span></th>
+                  <th><span class="text required">비밀번호</span></th>
                   <td>
-                    <input type="radio" id="sex_male" name="sex" value="male" />
+                    <input type="password" name="inputPw" required />
+                    <input type="hidden" name="pWCheck" value="unusable" />
+                    <div class="desc_s">
+                      <span class="pwValidationMsg"> </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th><span class="text required">비밀번호 확인</span></th>
+                  <td>
+                    <input type="password" name="inputPwConfirm" required />
+                    <input
+                      type="hidden"
+                      name="pWConfirmCheck"
+                      value="unusable"
+                    />
+                    <div class="desc_s">
+                      <span class="inputPwConfirmMsg"> </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th><span class="text required">이름</span></th>
+                  <td>
+                    <input type="text" name="inputName" required />
+                    <input type="hidden" name="nameCheck" value="unusable" />
+                    <div class="desc_s">
+                      <span class="nameValidationMsg"> </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th><span class="text required">생년월일</span></th>
+                  <td>
+                    <div class="birth_box">
+                      <div>
+                        <input
+                          type="number"
+                          class="birthYear"
+                          maxlength="4"
+                          placeholder="년(4자리)"
+                          name="inputBYear"
+                          pattern="[0-9]{4}"
+                          required
+                        />
+                        <input
+                          type="hidden"
+                          name="inputBday"
+                          class="inputBday"
+                        />
+                        <input type="hidden" name="inputAge" class="inputAge" />
+                      </div>
+                      <div>
+                        <select class="birthMonth" name="inputBMonth" required>
+                          <option value="">월</option>
+                          <option value="01">1월</option>
+                          <option value="02">2월</option>
+                          <option value="03">3월</option>
+                          <option value="04">4월</option>
+                          <option value="05">5월</option>
+                          <option value="06">6월</option>
+                          <option value="07">7월</option>
+                          <option value="08">8월</option>
+                          <option value="09">9월</option>
+                          <option value="10">10월</option>
+                          <option value="11">11월</option>
+                          <option value="12">12월</option>
+                        </select>
+                      </div>
+                      <div>
+                        <select class="birthDay" name="inputBDay" required>
+                          <option value="">일</option>
+                          <option value="01">1일</option>
+                          <option value="02">2일</option>
+                          <option value="03">3일</option>
+                          <option value="04">4일</option>
+                          <option value="05">5일</option>
+                          <option value="06">6일</option>
+                          <option value="07">7일</option>
+                          <option value="08">8일</option>
+                          <option value="09">9일</option>
+                          <option value="10">10일</option>
+                          <option value="11">11일</option>
+                          <option value="12">12일</option>
+                          <option value="13">13일</option>
+                          <option value="14">14일</option>
+                          <option value="15">15일</option>
+                          <option value="16">16일</option>
+                          <option value="17">17일</option>
+                          <option value="18">18일</option>
+                          <option value="19">19일</option>
+                          <option value="20">20일</option>
+                          <option value="21">21일</option>
+                          <option value="22">22일</option>
+                          <option value="23">23일</option>
+                          <option value="24">24일</option>
+                          <option value="25">25일</option>
+                          <option value="26">26일</option>
+                          <option value="27">27일</option>
+                          <option value="28">28일</option>
+                          <option value="29">29일</option>
+                          <option value="30">30일</option>
+                          <option value="31">31일</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="desc_s">
+                      <span></span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th><span class="text required">성별</span></th>
+                  <td>
+                    <input
+                      type="radio"
+                      id="sex_male"
+                      name="inputSex"
+                      value="남"
+                    />
                     <label for="sex_male">남</label>
                     <input
                       type="radio"
                       id="sex_female"
-                      name="sex"
-                      value="female"
+                      name="inputSex"
+                      value="여"
                     />
                     <label for="sex_female">여</label>
                   </td>
                 </tr>
                 <tr>
-                  <th><span>본인인증</span></th>
+                  <th><span class="text required">이메일</span></th>
                   <td>
-                    <input type="tel" placeholder="휴대폰번호" />
-                    <button>인증하기</button>
+                    <input type="email" name="inputEmail" required />
+                    <input type="hidden" class="emailCheck" />
+                    <div class="desc_s">
+                      <span class="emailValidationMsg"> </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th><span class="text required">본인인증</span></th>
+                  <td>
+                    <input
+                      type="tel"
+                      class="phoneNum"
+                      placeholder="휴대폰번호"
+                      maxlength="13"
+                      pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
+                      name="inputPhone"
+                      required
+                    />
+                    <button type="button" class="identifyBtn">인증하기</button>
+                    <div class="desc_s">
+                      <span class="phoneValidationMsg">본인인증 메시지</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th><span class="text required">주소</span></th>
+                  <td class="address_inputBox">
+                    <div class="address_column">
+                      <input
+                        type="text"
+                        placeholder="우편번호"
+                        class="postCode"
+                        readonly="readonly"
+                        id="postCode"
+                        name="inputPostCode"
+                      />
+                      <button type="button" class="getPostNumber">
+                        우편번호 찾기
+                      </button>
+                    </div>
+                    <input
+                      type="text"
+                      placeholder="주소"
+                      id="address"
+                      name="address"
+                      class="address"
+                      readonly="readonly"
+                    />
+                    <input type="hidden" name="inputAddr" />
+                    <input
+                      type="text"
+                      placeholder="상세주소"
+                      class="addressDetail"
+                      id="addressDetail"
+                      name="addressDetail"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <th><span class="text required">환불계좌</span></th>
+                  <td>
+                    <div>
+                      <select class="bank" name="inputBank" required>
+                        <option value="">은행선택</option>
+                        <option value="KB국민은행">KB국민은행</option>
+                        <option value="IBK기업은행">IBK기업은행</option>
+                        <option value="NH농협">NH농협</option>
+                        <option value="KDB산업은행">KDB산업은행</option>
+                        <option value="수협은행">수협은행</option>
+                        <option value="신한은행">신한은행</option>
+                        <option value="우리은행">우리은행</option>
+                        <option value="우체국은행">우체국은행</option>
+                        <option value="하나은행">하나은행</option>
+                        <option value="한국씨티은행">한국씨티은행</option>
+                        <option value="SC제일은행">SC제일은행</option>
+                        <option value="카카오뱅크">카카오뱅크</option>
+                        <option value="케이뱅크">케이뱅크</option>
+                        <option value="경남은행">경남은행</option>
+                        <option value="광주은행">광주은행</option>
+                        <option value="대구은행">대구은행</option>
+                        <option value="부산은행">부산은행</option>
+                        <option value="전북은행">전북은행</option>
+                        <option value="제주은행">제주은행</option>
+                        <option value="저축은행">저축은행</option>
+                        <option value="산립조합은행">산립조합은행</option>
+                        <option value="새마을금고">새마을금고</option>
+                        <option value="신협은행">신협은행</option>
+                      </select>
+                      <input
+                        type="text"
+                        class="accountOwner"
+                        name="inputAccountOwner"
+                        placeholder="예금주"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <input
+                        type="number"
+                        class="accountNumber numberOnly noSpin"
+                        name="inputAccountNumber"
+                        placeholder="계좌번호(숫자만 입력)"
+                        required
+                      />
+                    </div>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
+          <!--넘어가는 버튼-->
+          <div class="button_box">
+            <a href="#" class="prevPageBtn btn common mid">이전</a>
+            <input
+              type="submit"
+              class="joinBasicNextBtn btn emp mid"
+              value="다음"
+            />
+          </div>
         </form>
       </div>
+      <footer></footer>
 
-      <!--넘어가는 버튼-->
-      <div class="button_box">
-        <a href="#" id="btn_prev" class="btn common">이전</a>
-        <a href="join_additory.html" id="btn_next" class="btn emp">다음</a>
-      </div>
+      <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script
+        type="text/javascript"
+        src="../../static/js/memberJoin.js"
+      ></script>
+      <script
+        type="text/javascript"
+        src="../../static/js/memberJoin_front.js"
+      ></script>
+      <script src="../../static/js/layout_front.js"></script>
+      <!-- 우편번호 팝업창 -->
+      <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+      <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+      <script type="text/javascript" th:src="@{/js/memberJoin.js}"></script>
     </section>
   </body>
 </html>

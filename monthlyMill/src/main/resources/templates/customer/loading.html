@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>월간방앗간</title>
+  </head>
+  <body>
+    <header>
+      <div class="gnb_util">
+        <ul>
+          <li>
+            <a
+              th:if="${session.SID == null}"
+              th:href="@{/join/join_method}"
+              class="gnb_util__join"
+              >회원가입</a
+            >
+            <a th:if="${session.SID != null}" class="gnb_util__join"
+              >[[${session.SNAME}]]님 환영합니다</a
+            >
+          </li>
+          <li>
+            <a
+              th:if="${session.SID == null}"
+              th:href="@{/login}"
+              class="gnb_util__login"
+              >로그인</a
+            >
+          </li>
+          <li>
+            <a
+              th:if="${session.SID != null}"
+              th:href="@{/logout}"
+              class="gnb_util__login"
+              >로그아웃</a
+            >
+          </li>
+          <li><a th:href="@{/customer/cart}">장바구니</a></li>
+        </ul>
+      </div>
+      <div class="gnb_box">
+        <ul class="gnb_customer">
+          <div class="logo">로고 이미지</div>
+          <li><a th:href="@{/introduce}">월간방앗간 소개</a></li>
+          <li><a th:href="@{/recommend/findItem}">나만의 떡 찾기</a></li>
+          <li><a href="#">이벤트</a></li>
+          <li><a href="#">리뷰</a></li>
+        </ul>
+        <ul class="gnb_makers">
+          <li><a href="#">메이커스</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <section class="content_box">
+      <div class="loading_wrap">
+        <!-- 대기 및 로딩 중일때 뜨는 부분 -->
+        <div class="text_box nowLoading">
+          <p>잠시만 기다려주세요.고객님의 입금내역을 확인중입니다.</p>
+          <p>약 2~3분이 소요됩니다.</p>
+          <p>2~3분이 지난 후에 모래시계를 눌러주신 후 승인내역을 확인하세요.</p>
+          <div class="animation_box">
+            <i class="far fa-hourglass loading_icon"></i>
+            <div class="loadingDots">
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
+          </div>
+        </div>
+        <!-- 로딩 종료 시 뜨는 부분 -->
+
+        <div class="endLoading reMatch">
+          <button type="button" class="btn mid matchBtn">재매칭</button>
+          <p>재매칭은 최대 2회까지 가능합니다.</p>
+        </div>
+        <div class="endLoading successMatch">
+          <button type="button" class="btn mid matchBtn">매칭완료</button>
+          <p>매칭 성공 시 멘트</p>
+        </div>
+        <div class="endLoading failMatch">
+          <button type="button" class="btn mid matchBtn">매칭실패</button>
+          <p>3번 실패 시 멘트</p>
+        </div>
+      </div>
+    </section>
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/customer/loading_front.js"></script>
+
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
+    <script type="text/javascript" th:src="@{/js/loading.js}"></script>
+  </body>
+</html>
