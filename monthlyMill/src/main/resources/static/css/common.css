@@ -254,12 +254,9 @@ input[type="radio"]:checked + label.btn.square {
 .price_number::after {
   content: "원";
 }
-input.price_number {
-}
+
 .item_number::after {
   content: "개";
-}
-input.item_number {
 }
 
 /*기타*/
@@ -279,21 +276,27 @@ input.item_number {
   color: white;
 }
 
-.checkHash input[type="checkbox"] + label {
+.checkHash input[type="checkbox"] + label,
+.checkHash input[type="radio"] + label {
   padding: 0.4em 0.6em;
+  margin: 0.15em;
   border-radius: 0.25em;
-  transform: scale(0.9);
+  transition: transform 0.2s ease-in;
+  transform: scale(1);
 }
-.checkHash input[type="checkbox"] + label:hover {
+/* hover이벤트는 모바일에서 제외 */
+@media screen and (hover: hover) {
+  .checkHash input[type="checkbox"] + label:hover,
+  .checkHash input[type="radio"] + label:hover {
+    transition: transform 0.2s ease-out;
+    transform: scale(1.15);
+  }
+}
+.checkHash input[type="checkbox"]:checked + label,
+.checkHash input[type="radio"]:checked + label {
   transition: transform 0.2s ease-out;
   transform: scale(1.1);
-}
-.checkHash input[type="checkbox"]:checked + label {
-  margin: 0.25em;
-  transform: scale(1.1);
   font-weight: 600;
-  /*
-    box-shadow: 0 0.2em 0.5em rgba(112, 88, 88, 0.5);*/
 }
 
 input,
