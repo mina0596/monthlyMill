@@ -1,4 +1,4 @@
-package project.monthlyMill.signup;
+package project.monthlyMill.common.signup;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,6 +44,12 @@ public class SMSController {
 			}
 			paramMap.put("contents", paramMap.get("contents") + numStr);
 			paramMap.put("data", numStr);
+			
+			//화면에서 휴대폰 번호를 받는다
+			// 휴대폰 번호 + 생성된 6자리 난수를 DB에 Table에 등록한다 (SMS_HISTORY)
+			//사용자가 인증버튼을 누르면 SMS_HISTORY에서 휴대폰번호와 입력받은 6자리로 SELECT하여 있는지 체크
+			//없으면 인증 실패
+			//있으면 본인인증 완료 
 		}
 		resultMap.put("isSuccess", "true");
 		

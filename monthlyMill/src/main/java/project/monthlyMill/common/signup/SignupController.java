@@ -1,8 +1,10 @@
-package project.monthlyMill.signup;
+package project.monthlyMill.common.signup;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
@@ -10,8 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,11 +21,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import project.monthlyMill.dto.Hashtag;
 import project.monthlyMill.dto.Member;
-import project.monthlyMill.dto.MemberAgreementInfo;
 
 @Controller
 @RequestMapping("/join")
@@ -32,12 +31,13 @@ public class SignupController {
 	
 	private static final Logger log = LoggerFactory.getLogger(SignupController.class);
 	
-	private final SignupService signupService;
+	@Autowired
+	SignupService signupService;
 	
 	@Autowired
-	public SignupController(SignupService signupService) {
-		this.signupService = signupService;
-	}
+	SMSSender smsSender;
+
+	
 	
 	// 1.가입방법 (회원가입 첫화면) - 고객, 메이커스 선택
 	@GetMapping("/join_method")
@@ -139,5 +139,64 @@ public class SignupController {
 		return "/memberJoin/join_finish";
 	}
 	
+	
+	@GetMapping("/testsms")
+	public HashMap<String, Object> TestSms(){
+		
+		String sendMsg = "테스트입니다";
+		String recvNumber ="01056716928";
+		
+		HashMap<String, Object> paramMap = new HashMap<>();
+		paramMap.put("contents", sendMsg);
+		paramMap.put("phoneNumber", recvNumber);
+		smsSender.sendSms(paramMap);
+		return null;
+		
+	
+	}
+	
+	@PostMapping("/sendMsg")
+	@ResponseBody
+	public Map<String, Object> sendMessage(@RequestBody HashMap<String, Object> paramMap, HttpRequest request){
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		try {
+			//3분 이내 5번 이상 실패했으면 5분 이후에 요청
+			int msgCount = 0;
+			msgCount = signupService.selectMsgCount(paramMap);
+			
+			if(msgCount >= 5) {
+				resultMap.put("isSmsFull", "true");
+				return resultMap;
+			}
+			
+			//인증번호 숫자 6자리 포함 문자 전송이면 (sendType random으로 설정하면 됨)
+			if(paramMap.containsValue("random")) {
+				Random rdm = new Random();
+				String numStr = ""; //난수가 저장될 변수
+				String rand = "";
+				
+				for(int i=0; i<6; i++) {
+					//0~9까지 난수 생성
+					rand = Integer.toString(rdm.nextInt(10));
+					numStr += rand;
+				}
+				paramMap.put("contents", paramMap.get("contents") + numStr);
+				paramMap.put("data", numStr);
+				
+				//화면에서 휴대폰 번호를 받는다
+				// 휴대폰 번호 + 생성된 6자리 난수를 DB에 Table에 등록한다 (SMS_HISTORY)
+				//사용자가 인증버튼을 누르면 SMS_HISTORY에서 휴대폰번호와 입력받은 6자리로 SELECT하여 있는지 체크
+				//없으면 인증 실패
+				//있으면 본인인증 완료 
+			}
+			
+			smsSender.sendSms(paramMap);
+			resultMap.put("isSuccess", "true");
+		}catch (Exception e) {
+			log.error("문자발송 실해: " + e.getMessage());
+			resultMap.put("isSucccess", "false");
+		}
+		return resultMap;
+	}
 
 }

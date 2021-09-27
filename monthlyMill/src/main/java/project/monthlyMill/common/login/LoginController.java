@@ -1,4 +1,4 @@
-package project.monthlyMill.login;
+package project.monthlyMill.common.login;
 
 import java.io.IOException;
 import java.io.PrintWriter;

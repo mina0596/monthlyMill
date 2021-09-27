@@ -1,4 +1,4 @@
-package project.monthlyMill.login;
+package project.monthlyMill.common.login;
 
 import javax.servlet.http.HttpSession;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import project.monthlyMill.common.signup.SignupMapper;
 import project.monthlyMill.dto.Member;
-import project.monthlyMill.signup.SignupMapper;
 
 @Service
 public class LoginService {
