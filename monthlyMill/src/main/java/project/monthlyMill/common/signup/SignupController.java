@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -141,7 +142,7 @@ public class SignupController {
 	
 	
 	@GetMapping("/testsms")
-	public HashMap<String, Object> TestSms(){
+	public String TestSms(){
 		
 		String sendMsg = "테스트입니다";
 		String recvNumber ="01056716928";
@@ -149,21 +150,23 @@ public class SignupController {
 		HashMap<String, Object> paramMap = new HashMap<>();
 		paramMap.put("contents", sendMsg);
 		paramMap.put("phoneNumber", recvNumber);
+		paramMap.put("sendType", "random");
 		smsSender.sendSms(paramMap);
-		return null;
+		return "/memberJoin/join_finish";
 		
 	
 	}
 	
 	@PostMapping("/sendMsg")
 	@ResponseBody
-	public Map<String, Object> sendMessage(@RequestBody HashMap<String, Object> paramMap, HttpRequest request){
+	public Map<String, Object> sendMessage(@RequestBody HashMap<String, Object> paramMap, HttpServletRequest request){
+		log.info("받아오는값 확인:{}", paramMap);
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		try {
 			//3분 이내 5번 이상 실패했으면 5분 이후에 요청
 			int msgCount = 0;
 			msgCount = signupService.selectMsgCount(paramMap);
-			
+			log.info("msgCount:{}", msgCount);
 			if(msgCount >= 5) {
 				resultMap.put("isSmsFull", "true");
 				return resultMap;
@@ -193,7 +196,7 @@ public class SignupController {
 			smsSender.sendSms(paramMap);
 			resultMap.put("isSuccess", "true");
 		}catch (Exception e) {
-			log.error("문자발송 실해: " + e.getMessage());
+			log.error("문자발송 실패: " + e.getMessage());
 			resultMap.put("isSucccess", "false");
 		}
 		return resultMap;

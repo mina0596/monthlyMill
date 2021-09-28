@@ -20,7 +20,7 @@ import project.monthlyMill.hashtag.HashtagMapper;
 public class SignupService {
 
 	@Autowired
-	SignupMapper signupMapper;
+	MemberMapper signupMapper;
 	
 	@Autowired
 	HashtagMapper tagMapper;

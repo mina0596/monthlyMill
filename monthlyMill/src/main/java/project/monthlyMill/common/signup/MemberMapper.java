@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import project.monthlyMill.dto.Member;
 
 @Mapper
-public interface SignupMapper {
+public interface MemberMapper {
 	
 	// 1.아이디로 회원정보 가져오기
 	public Member getMemberInfoById(String inputId);

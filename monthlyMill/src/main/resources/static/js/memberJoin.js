@@ -397,8 +397,28 @@ function email_check(inputEmail){
 		}
 	
 	});
-	
-	
+	// **************** 본인인증 ****************************
+	$('.identifyBtn').click(function(){
+		var inputPN = $('.phoneNum').val().split('-');
+		var param = {
+			phoneNumber : inputPN[0] + inputPN[1] + inputPN[2],
+			sendType : "random",
+			contents : "",
+			sType: "SMS"
+		}
+		console.log(param);
+		$.ajax({
+			url: "/join/sendMsg",
+			data: JSON.stringify(param),
+			dataTyp: "JSON",
+			method: "post",
+			traditional: true,
+			contentType: "application/json",
+			success: function(result){
+				console.log(result);
+			}
+		});
+	});
 	
 	
 	

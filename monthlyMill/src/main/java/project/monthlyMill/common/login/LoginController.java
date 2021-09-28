@@ -2,6 +2,7 @@ package project.monthlyMill.common.login;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -42,31 +43,29 @@ public class LoginController {
 	
 	@PostMapping("/login/getInfo")
 	@ResponseBody
-	public Boolean memberLogin(@RequestBody Map<String,String> loginInfoMap, HttpSession session, HttpServletResponse response) {
+	public HashMap<String,Boolean> memberLogin(@RequestBody Map<String,String> loginInfoMap
+											 , HttpSession session
+											 , HttpServletResponse response) {
 		//로그인할때 권한에 대한 설정 넣어야함
 		//비밀번호 암호화 넣어야함
 		Member loginWithId = loginService.loginCheck(loginInfoMap.get("inputId"));
 		log.info("로그인정보확인해보자 :{}", loginWithId);
 		boolean check = passwordEncoder.matches(loginInfoMap.get("inputPw"), loginWithId.getMemberPw());
-		if(loginWithId == null || !passwordEncoder.matches(loginInfoMap.get("inputPw"), loginWithId.getMemberPw()) || loginWithId.getMemberCateNum() != Integer.parseInt(loginInfoMap.get("inputMType"))){
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out;
-			try {
-				out = response.getWriter();
-				out.println("<script>alert('아이디와 비밀번호를 다시 확인해주세요'); location.href='/login';</script>");
-				out.flush();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			
+		HashMap<String,Boolean> loginResult = new HashMap<String,Boolean>();
+		
+		if(loginWithId == null || !check || loginWithId.getMemberCateNum() != Integer.parseInt(loginInfoMap.get("inputMType"))){
+			loginResult.put("result", false);
 		}else if(check && loginWithId.getMemberCateNum() == Integer.parseInt(loginInfoMap.get("inputMType"))) {
 			loginService.saveInSession(loginWithId, session);
+			loginResult.put("result", true);
 		}
-		return true;
+		log.info("loginResult 확인하기:{}", loginResult);
+		return loginResult;
 	}
 	
 	@PostMapping("/login")
-	public String loginDone() {
+	public String loginDone(HttpSession session) {
+		log.info("session값 확인해보자"+ session.getAttribute("SNAME"));
 		return "redirect:/";
 	}
 	

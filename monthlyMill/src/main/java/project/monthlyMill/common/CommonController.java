@@ -31,4 +31,9 @@ public class CommonController {
 		return "/component/mobile_sideMenu";
 	}
 	
+	@GetMapping("/introduce")
+	public String introductPage() {
+		return "/common/introduce";
+	}
+	
 }
