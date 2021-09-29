@@ -96,18 +96,18 @@ header a {
 .gnb_side {
   display: none;
 }
-@media screen and (max-width: 768px) {
+@media screen and (pointer: coarse) and (max-width: 768px) {
   .gnb_side_wrapper {
     position: fixed;
     width: 100vw;
     height: 100vh;
     z-index: 5;
     background-color: rgba(0, 0, 0, 0);
-    animation: gnbSideWrapperFadeOff 0.5s ease-out forwards;
+    animation: gnbSideWrapperFadeOff 0.3s ease-in forwards;
   }
   .gnb_side_wrapper.open {
     background-color: rgba(0, 0, 0, 0);
-    animation: gnbSideWrapperFadeOn 0.5s ease-in forwards;
+    animation: gnbSideWrapperFadeOn 0.3s ease-in-out forwards;
   }
 
   @keyframes gnbSideWrapperFadeOn {

@@ -132,6 +132,10 @@
 }
 
 @media screen and (max-width: 875px) {
+  .content_box.withAside .main_box:first-child {
+    max-height: none;
+  }
+
   .periodSet_box .button_box {
     flex-direction: column;
     flex-wrap: wrap;

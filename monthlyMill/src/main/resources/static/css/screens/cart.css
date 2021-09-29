@@ -13,9 +13,30 @@
 }
 
 /*장바구니 제품 리스트 테이블*/
-.result_table {
-  margin: : 0.5em;
+.cart_box .result_table {
+  margin: 0.5em 0;
+  margin-bottom: 0.5em;
+  border-bottom: 2px solid var(--btn-common-color);
 }
+.cart_box .result_table col:nth-child(1) {
+  width: 0%;
+}
+.cart_box .result_table col:nth-child(2) {
+  width: 20%;
+}
+.cart_box .result_table col:nth-child(3) {
+  width: 25%;
+}
+.cart_box .result_table col:nth-child(4) {
+  width: 20%;
+}
+.cart_box .result_table col:nth-child(5) {
+  width: 20%;
+}
+.cart_box .result_table col:nth-child(6) {
+  width: 15%;
+}
+
 tr.result_item {
   border-bottom: 1px solid var(--btn-common-color);
 }
@@ -37,32 +58,29 @@ tr.result_item:last-child {
   height: 4em;
   object-fit: cover;
   background-color: aliceblue;
+  color: transparent;
 }
 .result_item.price_origin {
   text-decoration: line-through;
 }
-@media screen and (max-width: 480px) {
-  .result_item >.itembuttonBox {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    text-align: center;
-  }
-}
+
 .result_item.itemSumPrice {
   display: block;
   text-align: center;
+  font-size: 1.25em;
 }
 .result_item.deleteItemBtn {
   float: right;
+  font-size: 1.25em;
 }
 .result_text {
-  margin: 1.5em 0;
+  padding: 1.5em 0 2.5em;
   text-align: center;
+  border-bottom: 2px solid gray;
 }
 
 /*가격 책정 박스*/
 .main_payment_box {
-  display: flex;
   flex-direction: column;
   justify-content: center;
 }
@@ -86,33 +104,74 @@ tr.result_item:last-child {
   margin: 20px auto;
 }
 
-/* ==== 모바일용 장바구니 리스트 테이블 === */
 @media screen and (max-width: 768px) {
-  .result_item_mobile{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  .cart_box .result_table colgroup {
+    display: none;
   }
-  .result_item_mobile .result_item__row.itemTitleRow {
-    display: flex;
-    justify-content: space-between;
+  .cart_box .h3_title {
+    margin-bottom: 0;
   }
-  .result_item_mobile .result_item__row.itemInfoRow {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
+  .cart_box .result_table td {
+    padding: 0.5em 0;
   }
-  .result_item_mobile .result_item__subcolumn{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  .cart_box .result_table td:nth-child(4) {
+    padding: 0;
   }
-  .result_item_mobile .result_item__subrow{
-    display: flex;
-    justify-content: space-between;
+  .cart_box .result_table td:nth-child(5),
+  .cart_box .result_table td:nth-child(6) {
+    padding-bottom: 1em;
+  }
+
+  .cart_box .result_table td:nth-child(3),
+  .cart_box .result_table td:nth-child(4),
+  .cart_box .result_table td:nth-child(5) {
+    display: block;
+  }
+
+  .cart_box .result_table td:nth-child(2) {
+    vertical-align: top;
+    width: 9em;
+  }
+
+  .cart_box .result_table td:nth-child(3) > div {
+    margin-left: 0;
+  }
+
+  .cart_box .result_table .itemPrice {
+    display: none;
+  }
+  .cart_box .result_table td:nth-child(6) {
+    position: relative;
+    vertical-align: bottom;
+    padding-right: 0.5em;
+  }
+  .cart_box .result_table .itemSumPrice {
+    text-align: right;
+  }
+
+  .cart_box .result_table td:last-child {
+    position: absolute;
+    left: 90%;
   }
 }
-
 @media screen and (max-width: 480px) {
+  .result_item.img {
+    margin-top: 0.25em;
+    width: 7.5em;
+    height: 5em;
+  }
+  .result_item > .itembuttonBox {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
+  }
+  .result_item.img {
+    margin-left: 0;
+  }
+  .result_item.info {
+    margin-left: 1em;
+  }
+
   .payment_box i {
     transform: translateY(0.75em);
   }
@@ -122,7 +181,7 @@ tr.result_item:last-child {
   .price_box .price_number.text {
     font-size: 1.5em;
   }
-  .deliveryInfo_form th {
-    width: 100%;
+  .main_payment_box {
+    min-height: 0;
   }
 }

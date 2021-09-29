@@ -1,3 +1,31 @@
+//기능 실행
+function init(){
+    document.querySelectorAll("tr.result_item").forEach((item)=>{
+        calculateItemSumPrice(item);
+    });
+    changeitemTotalNumber();
+
+    //이벤트 리스너
+    $(document).on("click", ".itemMinusBtn", function(){
+        minusCartItem(this);
+        calculateItemSumPrice(this.parentNode.parentNode.parentNode);
+    });
+    $(document).on("click", ".itemPlusBtn", function(){
+        plusCartItem(this);
+        calculateItemSumPrice(this.parentNode.parentNode.parentNode);
+    });
+    $(document).on("click", ".deleteItemBtn", function(){
+        deleteCartItem(this);
+        calculateItemTotalPrice();
+    });
+    $(document).on("click", ".deleteItemAllBtn", function(){
+        deleteCartItemAll(this);
+    });
+}
+
+init();
+
+
 //카트 아이템 개수합산 변경 
 function changeitemTotalNumber(){
     const itmeNumberTotal = document.querySelector(".itmeNumberTotal");
@@ -87,29 +115,3 @@ function calculatePaymentTotalPrice(){
     totalPrice.innerText = parseInt(itemTotal.innerText) + parseInt(deliveryPrice.innerText);
 }
 
-//기능 실행
-function init(){
-    document.querySelectorAll("tr.result_item").forEach((item)=>{
-        calculateItemSumPrice(item);
-    });
-    changeitemTotalNumber();
-
-    //이벤트 리스너
-    $(document).on("click", ".itemMinusBtn", function(){
-        minusCartItem(this);
-        calculateItemSumPrice(this.parentNode.parentNode.parentNode);
-    });
-    $(document).on("click", ".itemPlusBtn", function(){
-        plusCartItem(this);
-        calculateItemSumPrice(this.parentNode.parentNode.parentNode);
-    });
-    $(document).on("click", ".deleteItemBtn", function(){
-        deleteCartItem(this);
-        calculateItemTotalPrice();
-    });
-    $(document).on("click", ".deleteItemAllBtn", function(){
-        deleteCartItemAll(this);
-    });
-}
-
-init();
