@@ -4,15 +4,13 @@
 .payment_wrap .main_box {
   padding: 0.75em;
 }
+
+/*배송정보*/
 .table_column_box {
   display: flex;
 }
 .table_column {
   padding-top: 0.5em;
-}
-
-.payment_wrap .h3_title {
-  margin-bottom: 0.5em;
 }
 .address_inputBox {
   display: flex;
@@ -23,6 +21,7 @@
   width: 25em;
 }
 
+/* 결제수단 */
 .payment_type_box {
   margin-bottom: 1em;
 }
@@ -31,8 +30,6 @@ label .agreement_column {
   display: flex;
   justify-content: space-between;
 }
-
-/* 결제정보 */
 .receipt_form {
   width: 70%;
   min-width: 22.25em;
@@ -54,8 +51,10 @@ label .agreement_column {
   border: none;
   border-bottom: 1px solid var(--btn-common-color);
 }
+.payment_wrap input[type="button"],
 .payment_wrap input[type="checkbox"] {
   height: auto;
+  border-bottom: none;
 }
 .payment_wrap input:focus {
   outline: none;
@@ -64,8 +63,14 @@ label .agreement_column {
 }
 
 /*입금내역 확인 화면 (payment_confirm) */
+.paymentConfirmWrap,
+.paymentDepositForm {
+  margin: 1em auto 0;
+  max-width: 800px;
+}
 .match_desc_box {
-  width: 50%;
+  margin: 1em auto;
+  width: 90%;
 }
 .match_desc_column {
   text-align: center;
@@ -94,15 +99,30 @@ label .agreement_column {
   margin-left: 2em;
 }
 
-@media screen and (max-width: 480px) {
-  .content_box {
-    margin-top: 1em;
-  }
+@media screen and (max-width: 768px) {
   .main_box.payment_confirm_box .h3_title {
     margin: 0 0.5em;
   }
-  .match_desc_box {
-    margin: 1em auto;
-    width: 90%;
+
+  /*상품정보*/
+  .payment_item_list_table td:nth-child(3) {
+    padding-bottom: 0.25em;
+  }
+  .payment_item_list_table td:nth-child(5) {
+    padding-top: 0.25em;
+  }
+  .payment_item_list_table .itemSumPrice {
+    font-size: 1em;
+  }
+  /*배송정보*/
+  .deliveryInfo_form {
+    width: 100%;
+  }
+  .deliveryInfo_form .col__quarter {
+    min-width: 4.5em;
+  }
+  .inputReceiverAdress,
+  .inputReceiverAddressDetail {
+    width: 100%;
   }
 }

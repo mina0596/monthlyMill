@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
     <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
     <title>월간방앗간</title>
   </head>
   <body>
@@ -15,13 +19,14 @@
       <form action="">
         <div class="payment_wrap">
           <h1 class="h1_title text big">결제하기</h1>
+
           <div class="main_box orderer_box">
             <h3 class="h3_title">주문자</h3>
             <!-- 여기 value에 로그인한 유저 이름, 휴대폰 정보 자동으로 가져오기 -->
             <table class="orderer_form">
               <colgroup>
-                <col width="25%" />
-                <col width="75%" />
+                <col class="col__quarter" />
+                <col class="col__three_quarter" />
               </colgroup>
               <tr>
                 <th><span class="text required">이름</span></th>
@@ -47,19 +52,22 @@
               </tr>
             </table>
           </div>
-          <div class="main_box result_box cart_box">
+
+          <div class="main_box cart_box">
             <h3 class="h3_title">상품정보</h3>
             <div class="result_list_box">
-              <table class="result_table">
+              <table class="result_table payment_item_list_table">
                 <colgroup>
-                  <col width="20%" />
-                  <col width="30%" />
-                  <col width="15%" />
-                  <col width="20%" />
-                  <col width="15%" />
+                  <col />
+                  <col />
+                  <col />
+                  <col />
+                  <col />
+                  <col />
                 </colgroup>
                 <thead class="hidden">
                   <tr class="result_head">
+                    <th></th>
                     <th>제품사진</th>
                     <th>제품명</th>
                     <th>배송방식</th>
@@ -68,19 +76,37 @@
                   </tr>
                 </thead>
                 <tbody class="result_itemList">
-                  <tr class="result_item" th:if="${#lists.size(cartList) > 0}" th:each="cl,n : ${cartList}">
+                  <tr
+                    class="result_item"
+                    th:if="${#lists.size(cartList) > 0}"
+                    th:each="cl,n : ${cartList}"
+                  >
                     <td>
-                      <span class="result_item num" th:text="${n.index+1}"></span>
-                      <input type="hidden" name="cartNum" class="result_cart_num" th:value="${cl.cartNum}">
+                      <span
+                        class="result_item num"
+                        th:text="${n.index+1}"
+                      ></span>
+                      <input
+                        type="hidden"
+                        name="cartNum"
+                        class="result_cart_num"
+                        th:value="${cl.cartNum}"
+                      />
                     </td>
                     <td>
                       <img src="" alt="제품이미지" class="result_item img" />
                     </td>
                     <td>
                       <div class="result_item info">
-                        <span class="result_item title" th:text="${cl.pName}"></span>
-                        <div>
-                          <span class="result_item price_number" th:text="${cl.pPrice}"></span>
+                        <span class="result_item title" th:text="${cl.pName}"
+                          >이름</span
+                        >
+                        <div class="hidden">
+                          <span
+                            class="result_item price_number itemPrice"
+                            th:text="${cl.pPrice}"
+                            >1000</span
+                          >
                         </div>
                       </div>
                     </td>
@@ -88,10 +114,16 @@
                       <span class="result_delivery">택배배송</span>
                     </td>
                     <td>
-                      <span class="result_item itemNumber" th:text="${cl.pAmount}">개수</span>
+                      <span
+                        class="result_item item_number itemQuantity"
+                        th:text="${cl.pAmount}"
+                        >1</span
+                      >
                     </td>
                     <td>
-                      <span class="result_item price_number">(최종가격)</span>
+                      <span class="result_item price_number itemSumPrice"
+                        >(최종가격)</span
+                      >
                     </td>
                     <td></td>
                   </tr>
@@ -104,8 +136,8 @@
             <h3 class="h3_title">배송정보</h3>
             <table class="deliveryInfo_form">
               <colgroup>
-                <col width="25%" />
-                <col width="75%" />
+                <col class="col__quarter" />
+                <col class="col__three_quarter" />
               </colgroup>
               <tr>
                 <th><span class="text required">받는분</span></th>
@@ -160,7 +192,11 @@
                       id="postCode"
                       name="inputPostCode"
                     />
-                    <input type="hidden" class="userAddr" th:value="${session.SADDR}">
+                    <input
+                      type="hidden"
+                      class="userAddr"
+                      th:value="${session.SADDR}"
+                    />
                     <button class="getPostNumber" type="button">
                       우편번호 찾기
                     </button>
@@ -179,6 +215,7 @@
               </tr>
             </table>
           </div>
+
           <div class="main_box discount_box">
             <h3 class="h3_title">할인적용</h3>
             <div>
@@ -221,6 +258,7 @@
               </div>
             </div>
           </div>
+
           <div class="main_box">
             <h3 class="h3_title">결제수단</h3>
             <div class="payment_column payment_type_box">
@@ -344,11 +382,14 @@
               </div>
             </div>
             <!--end payment_agreement_box-->
-            <div class="button_box">
-              <!--누르면 결제진행-->
-              <button type="submit" class="btn big emp paymentBtn">
-                결제하기
-              </button>
+
+            <div class="main_box">
+              <div class="button_box">
+                <!--누르면 결제진행-->
+                <button type="submit" class="btn big emp paymentBtn">
+                  결제하기
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -356,18 +397,14 @@
     </section>
     <footer></footer>
 
-    <script
-      src="https://kit.fontawesome.com/7161175c87.js"
-      crossorigin="anonymous"
-    ></script>
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../../static/js/layout_front.js"></script>
     <script src="../../static/js/memberJoin_front.js"></script>
     <script src="../../static/js/customer/payment_front.js"></script>
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/js/layout_front.js}"></script>
+    <script th:src="@{/js/memberJoin_front.js}"></script>
     <script th:src="@{/js/customer/payment_front.js}"></script>
     <script th:src="@{/js/customer/payment.js}"></script>
-    <script th:src="@{/js/memberJoin_front.js}"></script>
-    <script th:src="@{/js/layout_front.js}"></script>
   </body>
 </html>

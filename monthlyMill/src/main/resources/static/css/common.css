@@ -73,6 +73,10 @@ button:active {
 button.noborder {
   border: none;
 }
+button.noborder:active {
+  border: none;
+  background-color: transparent;
+}
 .btn {
   background-color: var(--btn-common-color);
   color: white;
@@ -97,7 +101,9 @@ button.noborder {
   background-color: var(--btn-emp-color);
 }
 .btn.emp:disabled {
+  color: #fff;
   background-color: var(--compo-common-color);
+  border: none;
 }
 .btn.emp:active {
   background-color: var(--text-emp-color);
@@ -113,6 +119,14 @@ button.noborder {
   background-color: transparent;
   color: var(--text-emp-color);
 }
+.btn.big {
+  width: 100%;
+  max-width: 500px;
+  max-width: 28em;
+  padding: 25px;
+  border-radius: 40px;
+  font-size: 1.25em;
+}
 .btn.mid {
   margin: 0 10px;
   width: 50%;
@@ -121,14 +135,6 @@ button.noborder {
   padding: 15px 0;
   border-radius: 30px;
   font-size: 1em;
-}
-.btn.big {
-  width: 100%;
-  max-width: 500px;
-  max-width: 28em;
-  padding: 25px;
-  border-radius: 40px;
-  font-size: 1.25em;
 }
 .btn.small {
   margin: 0 10px;
@@ -140,7 +146,10 @@ button.noborder {
   border-radius: 20px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (pointer: coarse) and (max-width: 768px) {
+  .content_box {
+    margin-top: 1em;
+  }
 }
 @media screen and (max-width: 480px) {
   button {
@@ -148,12 +157,12 @@ button.noborder {
   }
   .btn.mid {
     margin: 0 0.2em;
-    max-width: 12em;
+    /* max-width: 12em; */
     padding: 0.9em 0;
   }
   .btn.big {
     padding: 1em;
-    max-width: 17em;
+    /* max-width: 17em; */
   }
   .btn.small {
     min-width: 7em;
@@ -179,11 +188,19 @@ input[type="radio"]:checked + label.btn.square {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 /* 텍스트 */
 .h1_title {
   margin-bottom: 0.75em;
+}
+.h3_title {
+  padding-bottom: 0.5em;
+  font-size: 22px;
+  letter-spacing: -1px;
+  font-weight: 600;
+  border-bottom: 2px solid gray;
+  margin-bottom: 0.5em;
 }
 .h4_title {
   font-weight: 600;
@@ -193,7 +210,11 @@ input[type="radio"]:checked + label.btn.square {
   padding-bottom: 0.25em;
   border-bottom: 2px solid var(--btn-common-color);
 }
-
+.desc {
+  padding: 1em 0;
+  color: var(--desc-color);
+  line-height: 120%;
+}
 .desc_s {
   font-size: 12px;
   color: var(--desc-color);
@@ -284,6 +305,7 @@ input[type="radio"]:checked + label.btn.square {
   transition: transform 0.2s ease-in;
   transform: scale(1);
 }
+
 /* hover이벤트는 모바일에서 제외 */
 @media screen and (hover: hover) {
   .checkHash input[type="checkbox"] + label:hover,
@@ -348,6 +370,14 @@ input.small {
 }
 .noScroll {
   overflow: hidden;
+}
+
+/* table */
+.col__quarter {
+  width: 25%;
+}
+.col__three_quarter {
+  width: 75%;
 }
 
 /*grid box*/

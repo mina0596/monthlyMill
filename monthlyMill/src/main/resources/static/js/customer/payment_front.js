@@ -1,4 +1,8 @@
 $(document).ready(function(){
+	//각 상품별 최종가격 계산
+	document.querySelectorAll("tr.result_item").forEach((item)=>{
+        calculateItemSumPrice(item);
+    });
 
 	//총 결제예정금액 계산
 	$(".paymentTotalPrice").text(
@@ -36,6 +40,14 @@ let autoHypenPhone = function(str){
 	}
     return str;
         
+}
+
+function calculateItemSumPrice(tableRow){
+    const itemPrice = parseInt(tableRow.querySelector(".itemPrice").innerText);
+    const itemQuantity = parseInt(tableRow.querySelector(".itemQuantity").innerText);
+    const itemSum = tableRow.querySelector(".itemSumPrice");
+
+    itemSum.innerText = itemPrice * itemQuantity ;
 }
 
 //결제수단 버튼 토글 이벤트
