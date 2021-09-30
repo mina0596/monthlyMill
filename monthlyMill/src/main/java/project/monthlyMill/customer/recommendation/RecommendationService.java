@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import project.monthlyMill.dto.Hashtag;
@@ -17,8 +18,12 @@ import project.monthlyMill.hashtag.HashtagMapper;
 @Service
 public class RecommendationService {
 	private static final Logger log = LoggerFactory.getLogger(RecommendationService.class);
-	private final HashtagMapper hashtagMapper;
-	private final RecommendMapper rcmdMapper;
+	
+	@Autowired
+	HashtagMapper hashtagMapper;
+	
+	@Autowired
+	RecommendMapper rcmdMapper;
 	
 	public RecommendationService(HashtagMapper hashtagMapper, RecommendMapper rcmdMapper) {
 		this.hashtagMapper = hashtagMapper;
@@ -47,7 +52,7 @@ public class RecommendationService {
 			}else if(midClassName.equals("구매목적")) {
 				keyAndValue.put("pMainUsage", tagNum);
 			}
-			log.info("service단에서 keyAndValeu 확인:{}", keyAndValue);
+			log.info("service단에서 keyAndValue 확인:{}", keyAndValue);
 			pInputInfo.add(keyAndValue);
 		}
 		log.info("service단에서 pInputInfo 확인:{}", pInputInfo);
