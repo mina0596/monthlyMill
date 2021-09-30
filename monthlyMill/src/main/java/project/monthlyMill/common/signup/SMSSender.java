@@ -92,7 +92,6 @@ public class SMSSender {
 				
 				if (responseCode == 200) {
 					//문자 내역 저장
-					log.info("작동하나요?");
 					paramMap.put("contents", messageList.get(i));
 					log.info("paramMap saveHistory직전 확인:{}", paramMap);
 					signupService.saveHistory(paramMap);

@@ -6,7 +6,7 @@
 	<insert id="saveHistory" parameterType="map">
 		INSERT INTO sms_history
 		(idx, sms_type, phone_number, `contents`, event_time)
-		VALUES (NULL, #{sType}, #{phoneNumber}, #{contents}, NOW())
+		VALUES (NULL, #{sType}, #{phoneNumber}, #{data}, NOW())
 	</insert>
 	
 	<select id="selectMsgCount" parameterType="String" resultType="int">
@@ -16,5 +16,16 @@
 			sms_history AS sh
 			WHERE sh.phone_number = #{phoneNumber}
 			AND NOW() BETWEEN sh.event_time AND DATE_ADD(sh.event_time,INTERVAL 3 MINUTE)
+	</select>
+	
+	<select id="selectValidateNum" parameterType="String" resultType="map">
+		SELECT 
+			phone_number as 'phoneNum', `contents` as 'validationNum', event_time
+		FROM 
+			sms_history AS sh
+			WHERE sh.phone_number = #{phoneNumber}
+			AND NOW() BETWEEN sh.event_time AND DATE_ADD(sh.event_time,INTERVAL 3 MINUTE)
+			ORDER BY sh.event_time DESC
+			LIMIT 1
 	</select>
 </mapper>

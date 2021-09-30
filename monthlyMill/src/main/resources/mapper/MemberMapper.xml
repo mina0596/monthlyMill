@@ -42,4 +42,11 @@
 		, #{bankName}, #{bankAccountNum}, #{holderName})
 	</insert>
 	
+	<insert id="addPreferTags" parameterType="list">
+		INSERT INTO member_hashtag
+			(member_num, hashtag_num, prefer_check)
+		VALUES
+			(sf_findMemberNumById(#{memberId}), #{hashtagNum}, '관심');
+	</insert>
+	
 </mapper>

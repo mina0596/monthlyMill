@@ -112,7 +112,7 @@
           
           	<div th:each="ml : ${midClassList}">
 	            <h4 class="h4_title text boxborder"  th:text="${ml}"></h4>
-	            <ol class="hash_list" th:each="ml : ${midClassList}">
+	            <ol class="hash_list">
 	              <li class="checkHash" th:each="l : ${tagNames}"
 	                th:if="${ml} == ${l.hashtagMidClass}">
 	                <input
@@ -120,6 +120,7 @@
 	                  class="hidden"
 	                  name="purpose"
 	                  th:id="${l.hashtagName}"
+	                  th:value="${l.hashtagNum}"
 	                />
 	                <label th:for="${l.hashtagName}" th:text="${l.hashtagName}"></label>
 	              </li>
