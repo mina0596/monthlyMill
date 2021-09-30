@@ -2,31 +2,29 @@ package project.monthlyMill.common.login;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import project.monthlyMill.common.signup.SignupMapper;
+import project.monthlyMill.common.signup.MemberMapper;
 import project.monthlyMill.dto.Member;
 
 @Service
 public class LoginService {
-	
-	//의존성 주입
-	private final SignupMapper memberMapper;
-	private final PasswordEncoder passwordEncoder;
+	private static final Logger log = LoggerFactory.getLogger(LoginService.class);
 	
 	@Autowired
-	public LoginService(SignupMapper memberMapper, PasswordEncoder passwordEncoder) {
-		this.memberMapper = memberMapper;
-		this.passwordEncoder = passwordEncoder;
-		
-	}
+	MemberMapper signupMapper;
+	
+	@Autowired
+	PasswordEncoder passwordEncoder;
 	
 	//=======================================서비스 로직 시작======================================
 	
 	public Member loginCheck(String loginId) {
-		return memberMapper.getMemberInfoById(loginId);
+		return signupMapper.getMemberInfoById(loginId);
 	}
 	
 	//로그인 후 세션에 저장해두는 로직

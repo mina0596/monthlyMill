@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <div class="gnb_util">
   <ul>
     <li>
@@ -27,14 +29,14 @@
         >로그아웃</a
       >
     </li>
-    <li><a th:href="@{/customer/cart}">장바구니</a></li>
+    <li><a th:href="@{/customer/cart/cartList}">장바구니</a></li>
   </ul>
 </div>
 <div class="gnb_box">
   <ul class="gnb_customer">
     <div class="logo">로고 이미지</div>
     <li><a th:href="@{/introduce}">월간방앗간 소개</a></li>
-    <li><a th:href="@{/recommend/findItem}">나만의 떡 찾기</a></li>
+    <li><a th:href="@{/customer/recommend/findItem}">나만의 떡 찾기</a></li>
     <li><a href="#" class="noPage">이벤트</a></li>
     <li><a href="#" class="noPage">리뷰</a></li>
   </ul>
@@ -42,3 +44,4 @@
     <li><a href="#" class="noPage">메이커스</a></li>
   </ul>
 </div>
+</html>

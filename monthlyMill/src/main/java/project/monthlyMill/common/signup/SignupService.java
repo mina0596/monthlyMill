@@ -20,7 +20,7 @@ import project.monthlyMill.hashtag.HashtagMapper;
 public class SignupService {
 
 	@Autowired
-	SignupMapper signupMapper;
+	MemberMapper memberMapper;
 	
 	@Autowired
 	HashtagMapper tagMapper;
@@ -37,7 +37,7 @@ public class SignupService {
 	
 	// 1.회원가입시 아이디 중복체크
 	public boolean getMemberInfoById(String inputId) {
-		Member memberInfoByIdResult = signupMapper.getMemberInfoById(inputId);
+		Member memberInfoByIdResult = memberMapper.getMemberInfoById(inputId);
 		if(memberInfoByIdResult != null) {
 			return false;
 		}else{
@@ -79,7 +79,7 @@ public class SignupService {
 	}
 	
 	public void signUp(Member mBasicInfo) {
-		signupMapper.addBasicMembInfo(mBasicInfo);
+		memberMapper.addBasicMembInfo(mBasicInfo);
 	}
 	
 	// 본인인증 문자 기록 저장
@@ -90,6 +90,16 @@ public class SignupService {
 	// 3분이내 문자 카운트
 	public int selectMsgCount(HashMap<String, Object> phoneNumber) {
 		return smsMapper.selectMsgCount(phoneNumber);
+	}
+	
+	// 본인인증 문자 입력 확인
+	public HashMap<String, String> selectValidateNum(String phoneNum){
+		return smsMapper.selectValidateNum(phoneNum);
+	}
+	
+	// 관심태그 등록하기
+	public void addPreferTags(HashMap<String,Object> tagInfoMap) {
+		memberMapper.addPreferTags(tagInfoMap);
 	}
 	
 }

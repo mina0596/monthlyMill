@@ -23,11 +23,11 @@ import org.springframework.stereotype.Service;
 
 @Service("SMSSender")
 public class SMSSender {
-	private static final Logger logger = LoggerFactory.getLogger(SMSSender.class);
+	private static final Logger log = LoggerFactory.getLogger(SMSSender.class);
 	
 	
 	@Autowired
-	SMSService smsService;
+	SignupService signupService;
 	
 	private static final String SERVICE_URL_AGAIN = "http://www.sms9.co.kr/authSendApi/authSendApi_UTF8.php";
 	private static final String CONTENT_TYPE = "application/x-www-form-urlencoded; charset=UTF-8";
@@ -43,7 +43,7 @@ public class SMSSender {
 
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 
-		logger.info("Send SMS Again In ...");
+		log.info("Send SMS Again In ...");
 
 		HttpPost httpPost = new HttpPost(SERVICE_URL_AGAIN);
 
@@ -55,10 +55,10 @@ public class SMSSender {
 			List<String> messageList = messageSplit(paramMap.get("contents").toString(), 90);
 			
 			for (int i = 0; i < messageList.size(); i++) {
-				logger.info("-----------------------------------------------------------------------------------------");
-				logger.info("-----------------------------------------------------------------------------------------");
-				logger.info("-----------------------------------------------------------------------------------------");
-				logger.info("origin SendMsg : " + messageList.get(i));
+				log.info("-----------------------------------------------------------------------------------------");
+				log.info("-----------------------------------------------------------------------------------------");
+				log.info("-----------------------------------------------------------------------------------------");
+				log.info("origin SendMsg : " + messageList.get(i));
 				
 				
 				sendMsg = URLEncoder.encode(messageList.get(i), "UTF-8").replace("+", "%20");
@@ -75,24 +75,26 @@ public class SMSSender {
 				postParams.add(new BasicNameValuePair("sMode", "Real"));
 				postParams.add(new BasicNameValuePair("sType", "SMS"));
 				
+				log.info("postParams :{}", postParams);
 				CloseableHttpResponse httpResponse = null;
 				httpPost.setEntity(new UrlEncodedFormEntity(postParams));
 				httpResponse = httpClient.execute(httpPost);
-	
+				
 				int responseCode = httpResponse.getStatusLine().getStatusCode();
 			
-				logger.info("HexStr SendMsg : " + sendMsg);
+				log.info("HexStr SendMsg : " + sendMsg);
 	
-				logger.info("Response Code: :" + responseCode);
+				log.info("Response Code: :" + responseCode);
 	
-				logger.info("-----------------------------------------------------------------------------------------");
-				logger.info("-----------------------------------------------------------------------------------------");
-				logger.info("-----------------------------------------------------------------------------------------");
+				log.info("-----------------------------------------------------------------------------------------");
+				log.info("-----------------------------------------------------------------------------------------");
+				log.info("-----------------------------------------------------------------------------------------");
 				
 				if (responseCode == 200) {
 					//문자 내역 저장
 					paramMap.put("contents", messageList.get(i));
-					smsService.saveHistory(paramMap);
+					log.info("paramMap saveHistory직전 확인:{}", paramMap);
+					signupService.saveHistory(paramMap);
 				}
 				
 				BufferedReader reader = new BufferedReader(new InputStreamReader(httpResponse.getEntity().getContent()));

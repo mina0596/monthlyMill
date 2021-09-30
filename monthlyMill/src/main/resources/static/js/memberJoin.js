@@ -46,12 +46,6 @@ function sample6_execDaumPostcode() {
             }
         }).open();
     }
-// 이메일 정규식표현 이용한 유효성검사 함수
-function email_check(inputEmail){
-	var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/; 
-	return (inputEmail != '' && inputEmail != 'undefined' && regex.test(inputEmail));
-
-}
 
  $(function(){
 	
@@ -222,9 +216,55 @@ function email_check(inputEmail){
 
 	})
 	
+	// **************** 본인인증 ****************************
+	var phoneNum = '';
+	$('.identifyBtn').click(function(){
+		var inputPN = $('.phoneNum').val().split('-');
+		var param = {
+			phoneNumber : inputPN[0] + inputPN[1] + inputPN[2],
+			sendType : "random",
+			contents : "[월간방앗간] 인증번호 ",
+			sType: "SMS"
+		}
+		$.ajax({
+			url: "/join/sendMsg",
+			data: JSON.stringify(param),
+			dataTyp: "JSON",
+			method: "post",
+			traditional: true,
+			contentType: "application/json",
+			success: function(result){
+				phoneNum=inputPN[0] + inputPN[1] + inputPN[2];
+				alert('인증번호가 전송되었습니다.');
+			}
+		});
+	});
+	
+	$('.confirmIdentifyBtn').click(function(){
+		var param = {"validationNum" : $('.ValidattionNum').val(),
+					"phoneNum" : phoneNum};
+		var request = $.ajax({
+			url: "/join/phoneNumValidate",
+			data: JSON.stringify(param),
+			dataType: "JSON",
+			method: "POST",
+			traditional: true,
+			contentType: "application/json",
+		});
+		request.done(function(data){
+			if(data.result){
+				alert('인증되었습니다.');
+				$('input[name="phoneNumCheck"]').val('usable');
+			}else if(!data.result){
+				alert('인증번호가 맞지 않습니다. 다시 확인해주세요.');
+			}
+		});
+	});
+	
 	$('input[name="inputEmail"]').blur(function(){
-		var inputEmail = $(this).val();
-		if(inputEmail == '' || inputEmail == 'undefined'){
+		var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+		var inputEmail = regex.exec($(this).val());
+		if(inputEmail == '' && inputEmail == undefined){
 			$('.emailValidationMsg').text('이메일 주소를 정확하게 입력해주세요');
 			$('.emailCheck').val('unusable');
 		}else{
@@ -316,6 +356,18 @@ function email_check(inputEmail){
 			return submitFlag;
 		}
 		
+		if($('input[name="phoneNumCheck"]').val() == '' || $('input[name="phoneNumCheck"]').val() == undefined){
+			alert('인증번호를 입력해주세요');
+			$('input[name="phoneNumCheck"]').focus();
+			submitFlag = false;
+			return submitFlag;
+		}else if($('input[name="phoneNumCheck"]').val() == 'unusable'){
+			alert('본인 인증번호를 정확하게 입력해주세요');
+			$('input[name="phoneNumCheck"]').focus();
+			submitFlag = false;
+			return submitFlag;
+		}
+		
 		if($('.postCode').val() == '' || $('.postCode').val() == undefined){
 			alert('우편번호를 입력해주세요');
 			$('.getPostNumber').focus();
@@ -328,12 +380,12 @@ function email_check(inputEmail){
 			return submitFlag;
 		}
 		
-	/*	if($('.emailCheck').val() == 'unusable' || !email_check($('.emailCheck').val())){
+		if($('.emailCheck').val() == 'unusable' || !email_check($('.emailCheck').val())){
 			alert('이메일 주소를 다시 입력해주세요');
 			$('.emailCheck').focus();
 			submitFlag = false;
 			return submitFlag;
-		}*/
+		}
 		
 		if($('select[name="inputBank"]').val() == '' || $('select[name="inputBank"]').val() == undefined){
 			alert('환불계좌 은행을 선택해주세요');
@@ -401,12 +453,26 @@ function email_check(inputEmail){
 	
 	
 	
-	
-	
 	// **************** 추가입력 페이지 ***********************
 	$('.getCouponBtn').click(function(){
-		alert('할인쿠폰이 제공되었습니다🤘🎫🤘🎫');
-		$('#joinAddInfo').submit();
+		var param = [];
+		$('input[name="purpose"]:checked').each(function(){
+			param.push($(this).val());
+		})
+		
+		$.ajax({
+			url: "/join/getPreferTags",
+			method: "POST",
+			tranditional: true,
+			data: JSON.stringify(param),
+			contentType: "application/json",
+			dataType: "text",
+			success: function(result){
+				alert('할인쿠폰이 제공되었습니다🤘🎫🤘🎫');
+				$('#joinAddInfo').submit();
+			}
+		});
+		
 	})
 	
 	

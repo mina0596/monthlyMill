@@ -12,4 +12,6 @@ public interface SMSMapper {
 	// 3분이내 문자 카운트
 	public int selectMsgCount(HashMap<String, Object> phoneNumber);
 	
+	// 본인인증 문자 확인
+	public HashMap<String, String> selectValidateNum(String phoneNum);
 }
