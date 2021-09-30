@@ -103,11 +103,11 @@ header a {
     height: 100vh;
     z-index: 5;
     background-color: rgba(0, 0, 0, 0);
-    animation: gnbSideWrapperFadeOff 0.3s ease-in forwards;
+    animation: gnbSideWrapperFadeOff 0.4s ease-in forwards;
   }
   .gnb_side_wrapper.open {
     background-color: rgba(0, 0, 0, 0);
-    animation: gnbSideWrapperFadeOn 0.3s ease-in-out forwards;
+    animation: gnbSideWrapperFadeOn 0.4s ease-in forwards;
   }
 
   @keyframes gnbSideWrapperFadeOn {
@@ -138,11 +138,11 @@ header a {
     z-index: 10;
     background-color: #fff;
 
-    animation: gnbSideClose 0.5s ease-out forwards;
+    animation: gnbSideClose 0.4s ease-out forwards;
   }
   .gnb_side.open {
     transform: translateX(80vw);
-    animation: gnbSideOpen 0.5s ease-in forwards;
+    animation: gnbSideOpen 0.4s ease-in forwards;
   }
 
   @keyframes gnbSideOpen {

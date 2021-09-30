@@ -16,7 +16,7 @@
 .cart_box .result_table {
   margin: 0.5em 0;
   margin-bottom: 0.5em;
-  border-bottom: 2px solid var(--btn-common-color);
+  border-bottom: 2px solid gray;
 }
 .cart_box .result_table col:nth-child(1) {
   width: 0%;

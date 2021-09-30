@@ -63,8 +63,14 @@ label .agreement_column {
 }
 
 /*입금내역 확인 화면 (payment_confirm) */
+.paymentConfirmWrap,
+.paymentDepositForm {
+  margin: 1em auto 0;
+  max-width: 800px;
+}
 .match_desc_box {
-  width: 50%;
+  margin: 1em auto;
+  width: 90%;
 }
 .match_desc_column {
   text-align: center;
@@ -96,10 +102,6 @@ label .agreement_column {
 @media screen and (max-width: 768px) {
   .main_box.payment_confirm_box .h3_title {
     margin: 0 0.5em;
-  }
-  .match_desc_box {
-    margin: 1em auto;
-    width: 90%;
   }
 
   /*상품정보*/
