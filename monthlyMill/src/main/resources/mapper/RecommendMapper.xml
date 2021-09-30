@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="project.monthlyMill.dao.RecommendMapper">
+<mapper namespace="project.monthlyMill.customer.recommendation.RecommendMapper">
 	<resultMap type="Product" 		id="productResultMap">
 		<result property="pCode" 			column="product_code"/>
 		<result property="pName" 			column="product_name"/>

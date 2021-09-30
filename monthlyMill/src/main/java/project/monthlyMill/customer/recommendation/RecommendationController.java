@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,11 +25,8 @@ import project.monthlyMill.dto.Product;
 public class RecommendationController {
 	
 	private static final Logger log = LoggerFactory.getLogger(RecommendationController.class);
-	private final RecommendationService rcmdService;
-	
-	public RecommendationController(RecommendationService rcmdService) {
-		this.rcmdService = rcmdService;
-	}
+	@Autowired
+	RecommendationService rcmdService;
 	
 	//나의 떡 추천 찾기
 	@GetMapping("/findItem")

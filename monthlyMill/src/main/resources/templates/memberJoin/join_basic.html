@@ -36,7 +36,7 @@
 
       <!-- 2단계 -->
       <div class="join_cont">
-        <form method="post" th:action="@{/join/join_basic}">
+        <form method="post" id="joinBasic" th:action="@{/join/join_basic}">
           <div class="join_box">
             <!--필수 정보-->
             <h3 class="h3_title">필수정보 입력</h3>
@@ -199,7 +199,7 @@
                   <th><span class="text required">이메일</span></th>
                   <td>
                     <input type="email" name="inputEmail" required />
-                    <input type="hidden" class="emailCheck" />
+                    <input type="hidden" class="emailCheck" value="unusable"/>
                     <div class="desc_s">
                       <span class="emailValidationMsg"> </span>
                     </div>
@@ -335,7 +335,7 @@
           <div class="button_box">
             <a href="#" class="prevPageBtn btn common mid">이전</a>
             <input
-              type="submit"
+              type="button"
               class="joinBasicNextBtn btn emp mid"
               value="다음"
             />

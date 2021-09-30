@@ -8,11 +8,15 @@ $(function(){
 	var html = '';
 	var resultHtml = '';
 	
-	
-	$('#resultBtn').click(function(){
-		$('.result_hash_list').remove();
+	$(document).on('click', '#resultBtn',  function(){
+		console.log($('.hash'));
+		document.getElementsByClassName('result_hash_list').remove;
+		document.getElementsByClassName('hash').remove;
+		console.log($('.hash'));
+		$('.hash').remove();
 		$('.result_beforeText').remove();
 		$('.result_item').remove();
+		html='';
 		
 		
 		// ********************************** 선택한 해시태그 화면단에 뿌려주기************************
@@ -24,19 +28,19 @@ $(function(){
 			}
 		});
 		
-		
 		//*********************************** 해당하는 상품 데려오는 AJAX******************************
 		var params = {
 			"selectedTagsList" : selectedTags,
 			"selectedMidClassList" : selectedMidClass
 		};
+		
 		var request = $.ajax({
 			url: "/customer/recommend/sendSelectedTags",
 			method: "post",
 			traditional: true,
 			data: JSON.stringify(params),
-			contentType: "application/json", 
-			dataType: "json",
+			contentType: "application/json",
+			dataType: "json"
 		});
 		
 		request.done(function( rcmdResult ){
@@ -64,7 +68,8 @@ $(function(){
 					resultHtml += '</tr></form>';
 				}
 			}else{
-				resultHtml = '<span class="no_result">선택하신 해시태그에 해당하는 상품이 없습니다.</span>';
+				resultHtml += '<tr class="result_item">';
+				resultHtml += '<td><span class="no_result">선택하신 해시태그에 해당하는 상품이 없습니다.</span></td>';
 			}
 			$('.result_table_body').append(resultHtml);
 		});

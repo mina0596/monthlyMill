@@ -100,6 +100,7 @@ public class SignupController {
 	public String getJoinBasicInfo(@RequestBody Map<String, Object> inputBasicInfo
 								 , HttpSession session) {
 		log.info("아이디 가져오는것 확인:{}", inputBasicInfo);
+		
 		signupService.addBasicMembInfo(inputBasicInfo, session);
 		
 		return "success";
@@ -107,6 +108,7 @@ public class SignupController {
 	
 	@PostMapping("/join_basic")
 	public String getJoinBasicInfo() {
+		
 		return "redirect:/join/join_additory";
 	}
 	
@@ -135,13 +137,20 @@ public class SignupController {
 	@GetMapping("/join_finish")
 	public String memberJoinFinish(HttpSession session) {
 		log.info("세션 저장된 정보들 확인 :{}", (Member)session.getAttribute("basicInfo"));
+		
+		// 회원 기본정보 저장하는 sql 실행
 		signupService.signUp((Member)session.getAttribute("basicInfo"));
+		
+		// 관심 해시태그 저장하는 sql 실행
 		Member member = (Member) session.getAttribute("basicInfo");
 		HashMap<String,Object> preferMap = new HashMap<String,Object>();
 		ArrayList<String> tagList = new ArrayList<String>();
+		log.info("session에 저장된 태그 list확인:{}", session.getAttribute("preferTags").getClass());
+		tagList = (ArrayList<String>) session.getAttribute("preferTags");
 		for(int i=0; i<tagList.size(); i++) {
 			preferMap.put("hashtagNum", tagList.get(i));
 			preferMap.put("memberId", member.getMemberId());
+			log.info("for 문 도는 preferMap 정보 돌때마다 확인:{}", preferMap);
 			signupService.addPreferTags(preferMap);
 		}
 		session.invalidate();
