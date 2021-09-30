@@ -262,9 +262,9 @@ function sample6_execDaumPostcode() {
 	});
 	
 	$('input[name="inputEmail"]').blur(function(){
-		var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-		var inputEmail = regex.exec($(this).val());
-		if(inputEmail == '' && inputEmail == undefined){
+		var regex=/^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+		var inputEmail = regex.test($(this).val());
+		if(!inputEmail){
 			$('.emailValidationMsg').text('이메일 주소를 정확하게 입력해주세요');
 			$('.emailCheck').val('unusable');
 		}else{
@@ -319,7 +319,7 @@ function sample6_execDaumPostcode() {
 			submitFlag = false;
 			return submitFlag;
 		}else if($('input[name="nameCheck"]').val() == 'unusable'){
-			alert('닉네임은 한글으로만 입력해주세요');
+			alert('이름은 한글으로만 입력해주세요');
 			$('input[name="inputName"]').focus();
 			submitFlag = false;
 			return submitFlag;
@@ -380,7 +380,7 @@ function sample6_execDaumPostcode() {
 			return submitFlag;
 		}
 		
-		if($('.emailCheck').val() == 'unusable' || !email_check($('.emailCheck').val())){
+		if($('.emailCheck').val() == 'unusable' || $('.emailCheck').val() == undefined){
 			alert('이메일 주소를 다시 입력해주세요');
 			$('.emailCheck').focus();
 			submitFlag = false;
@@ -430,7 +430,7 @@ function sample6_execDaumPostcode() {
 				"inputAccountOwner" : $('input[name="inputAccountOwner"]').val(),			
 				"inputAccountNumber" : $('input[name="inputAccountNumber"]').val()			
 			};
-			
+			console.log(params);
 			var request = $.ajax({
 				url: "/join/sendBasicInfo",
 				method: "post",
@@ -441,7 +441,7 @@ function sample6_execDaumPostcode() {
 			});
 			
 			request.done(function(data){
-				
+				$('#joinBasic').submit();
 			});
 			request.fail(function(jqXHR, textStatus){
 				alert('서버에러: 관리자에게 문의해주세요');
