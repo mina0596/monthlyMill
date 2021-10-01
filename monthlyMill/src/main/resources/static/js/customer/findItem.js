@@ -9,10 +9,8 @@ $(function(){
 	var resultHtml = '';
 	
 	$(document).on('click', '#resultBtn',  function(){
-		console.log($('.hash'));
 		document.getElementsByClassName('result_hash_list').remove;
 		document.getElementsByClassName('hash').remove;
-		console.log($('.hash'));
 		$('.hash').remove();
 		$('.result_beforeText').remove();
 		$('.result_item').remove();
@@ -82,9 +80,27 @@ $(function(){
 		
 		//*********************************** 장바구니******************************
 		$(document).on('click', '.result_item__btnCart', function(){
-			alert('장바구니에 ' + $(this).parent().parent().children().find('.result_item__title').text() + '를 추가하였습니다.');
-	
 			
+			var param = $(this).parent().parent().children().find('.result_item_code').val();
+			var pName = $(this).parent().parent().children().find('.result_item__title').text();
+			var params = { 'pCode' : param };
+			$.ajax({
+				url: "/customer/cart/addItem",
+				method: "POST",
+				traditional: true,
+				data: JSON.stringify(params),
+				contentType: "application/json",
+				dataType: "json",
+				success: function(result){
+					if(result.sessionCheck == 'sessionEmpty'){
+						alert('로그인 후에 이용 가능합니다.');
+						location.href='/login';
+					}else{
+						
+						alert('장바구니에 ' + pName + '를 추가하였습니다.');
+					}
+				}
+			});
 			
 			
 		});

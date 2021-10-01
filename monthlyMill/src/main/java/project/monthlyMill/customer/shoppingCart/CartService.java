@@ -3,20 +3,18 @@ package project.monthlyMill.customer.shoppingCart;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CartService {
 	
-	private final CartMapper cartMapper;
-	
-	public CartService(CartMapper cartMapper) {
-		this.cartMapper = cartMapper;
-	}
+	@Autowired
+	CartMapper cartMapper;
 	
 	// 1.장바구니에 아이템 추가하기 
-	public int addItem(Map<String,Object> cartInfo) {
-		return cartMapper.addItem(cartInfo);
+	public void addItem(Map<String,Object> cartInfo) {
+		cartMapper.addItem(cartInfo);
 	}
 	
 	

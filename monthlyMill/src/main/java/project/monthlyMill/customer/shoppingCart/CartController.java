@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,23 +25,29 @@ import project.monthlyMill.dto.Cart;
 public class CartController {
 	
 	private static final Logger log = LoggerFactory.getLogger(CartController.class);
-	private final CartService cartService;
 	
-	public CartController(CartService cartService) {
-		this.cartService = cartService;
-	}
+	@Autowired
+	CartService cartService;
 	
 	// 1.장바구니에 아이템 추가하기
-	@GetMapping("/addItem")
-	public String addItem(@RequestParam(name = "pCode", required = false) String addPcode
-						, HttpSession session) {
-		log.info("addPcode 확인:{}", addPcode);
+	// 떡추천 화면에서 장바구니 버튼눌렀을때 아이템 추가하기
+	@PostMapping("/addItem")
+	@ResponseBody
+	public HashMap<String,String> addItem(@RequestBody HashMap<String,String> pCode
+										, HttpSession session){
+		log.info("세션확인:{}", session.getAttribute("SID"));
+		log.info("ajax로 pCode넘어오는거 확인:{}", pCode);
+		HashMap<String, String> resultMap = new HashMap<String,String>();
 		Map<String,Object> addItemInfo = new HashMap<String, Object>();
-		addItemInfo.put("memberNum", session.getAttribute("SMNUM"));
-		addItemInfo.put("pCode", addPcode);
-		log.info("map에 넣은 값들 확인:{}", addItemInfo);
-		cartService.addItem(addItemInfo);
-		return "/customer/cart";
+		if(session.getAttribute("SID")==null) {
+			resultMap.put("sessionCheck", "sessionEmpty");
+		}else{
+			resultMap.put("sessionCheck", "sessionExist");
+			addItemInfo.put("memberNum", session.getAttribute("SMNUM"));
+			addItemInfo.put("pCode", pCode.get("pCode"));
+			cartService.addItem(addItemInfo);
+		}
+		return resultMap;
 	}
 	
 	// 2.장바구니 정보 가져오기
@@ -69,18 +76,8 @@ public class CartController {
 			cartService.updateCartByCartNum(cartInfoMap);
 		}
 		return null;
+		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 }
