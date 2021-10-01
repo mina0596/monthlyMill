@@ -8,12 +8,13 @@
 		<result property="pCode"			column="product_code"/>
 		<result property="pAmount"			column="amount"/>
 		<result property="cartRegDate"		column="cart_reg_date"/>
+		<result property="orderCheck"		column="order_check"/>
 	</resultMap>
 	
 	<insert id="addItem" parameterType="map">
 		INSERT INTO member_cart
-		(cart_num, member_num, product_code, amount, cart_reg_date)
-		VALUES (0, #{memberNum}, #{pCode}, 1, NOW());
+		(cart_num, member_num, product_code, amount, cart_reg_date, order_check, delete_check)
+		VALUES (0, #{memberNum}, #{pCode}, 1, CURDATE(), 'N', 'N');
 	</insert>
 	
 	<select id="getCartListByMemberId" parameterType="String" resultType="map">
@@ -22,7 +23,8 @@
 			mCart.product_code as pCode, 
 			mCart.amount as pAmount, 
 			pInfo.product_name as pName, 
-			pInfo.product_price as pPrice
+			pInfo.product_price as pPrice,
+			pInfo.default_shipping_fee as defaultShippingFee
 		FROM 
 			member_cart AS mCart
 		INNER JOIN 
@@ -33,7 +35,7 @@
 			order_info AS oInfo
 		on
 			mCart.cart_num = oInfo.cart_num
-		WHERE member_num = #{memberNum}
+		WHERE member_num = #{memberNum} and mCart.order_check='N' and mCart.delete_check='N'
 		ORDER BY cartNum ASC;
 	</select>
 	

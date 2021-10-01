@@ -13,7 +13,7 @@
 		<result property="memberEmail" 				column="member_email"/>
 		<result property="memberGender" 			column="member_gender"/>
 		<result property="memberAddr" 				column="member_addr"/>
-		<result property="memberDetailAddr" 		column="member_addr"/>
+		<result property="memberDetailAddr" 		column="member_detail_addr"/>
 		<result property="memberPostalCode" 		column="member_postal_code"/>
 		<result property="memberPhone" 				column="member_phone"/>
 		<result property="memberIdentityCheck" 		column="identity_check"/>

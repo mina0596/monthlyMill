@@ -35,6 +35,7 @@ public class LoginService {
 		session.setAttribute("SLEVEL", member.getMemberCateNum());
 		session.setAttribute("STEL", member.getMemberPhone());
 		session.setAttribute("SADDR", member.getMemberAddr());
+		session.setAttribute("SDADDR", member.getMemberDetailAddr());
 		session.setAttribute("SPCODE", member.getMemberPostalCode());
 
 	}

@@ -16,7 +16,7 @@
     <header></header>
     <!-- 우편번호 입력란, 자동계산기능, 무통장입금 버튼이벤트-->
     <section class="content_box">
-      <form action="">
+      <form method="post" th:action="@{/customer/payment/paymentInfo}" id="paymentInfo">
         <div class="payment_wrap">
           <h1 class="h1_title text big">결제하기</h1>
 
@@ -35,6 +35,7 @@
                     type="text"
                     th:value="${session.SNAME}"
                     class="inputOrdererName"
+                    readonly="readonly"
                   />
                 </td>
               </tr>
@@ -47,6 +48,7 @@
                     th:value="${session.STEL}"
                     maxlength="13"
                     pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
+                    readonly="readonly"
                   />
                 </td>
               </tr>
@@ -192,11 +194,6 @@
                       id="postCode"
                       name="inputPostCode"
                     />
-                    <input
-                      type="hidden"
-                      class="userAddr"
-                      th:value="${session.SADDR}"
-                    />
                     <button class="getPostNumber" type="button">
                       우편번호 찾기
                     </button>
@@ -205,11 +202,13 @@
                     type="text"
                     placeholder="주소"
                     class="inputReceiverAdress"
+                    id="address"
                   />
                   <input
                     type="text"
                     placeholder="상세주소"
                     class="inputReceiverAddressDetail"
+                    id="addressDetail"
                   />
                 </td>
               </tr>
@@ -229,7 +228,7 @@
             <div class="payment_box">
               <div class="price_box">
                 <span class="price_title">총 상품금액</span>
-                <span class="price_number text big itemTotalPrice">5000</span>
+                <span class="price_number text big itemTotalPrice" th:text="${totalItemPrice}"></span>
               </div>
               <div>
                 <i class="fas fa-minus"></i>
@@ -243,8 +242,8 @@
               </div>
               <div class="price_box">
                 <span class="price_title">총 배송비</span>
-                <span class="price_number text big deliveryTotalPrice"
-                  >2000</span
+                <span class="price_number text big deliveryTotalPrice" th:text="${shippingFee}"
+                  ></span
                 >
               </div>
               <div>
@@ -253,7 +252,7 @@
               <div class="price_box">
                 <span class="price_title">총 결제예정금액</span>
                 <span
-                  class="price_number text big emp paymentTotalPrice"
+                  class="price_number text big emp paymentTotalPrice" th:text="${totalPrice}"
                 ></span>
               </div>
             </div>
@@ -386,8 +385,8 @@
             <div class="main_box">
               <div class="button_box">
                 <!--누르면 결제진행-->
-                <button type="submit" class="btn big emp paymentBtn">
-                  결제하기
+                <button type="button" class="btn big emp paymentBtn">
+                  결제하기 
                 </button>
               </div>
             </div>
@@ -401,10 +400,14 @@
     <script src="../../static/js/layout_front.js"></script>
     <script src="../../static/js/memberJoin_front.js"></script>
     <script src="../../static/js/customer/payment_front.js"></script>
+    
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
-    <script th:src="@{/js/layout_front.js}"></script>
-    <script th:src="@{/js/memberJoin_front.js}"></script>
-    <script th:src="@{/js/customer/payment_front.js}"></script>
-    <script th:src="@{/js/customer/payment.js}"></script>
+    <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
+    <!-- 우편번호 api  -->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    
+    <script type="text/javascript" th:src="@{/js/memberJoin_front.js}"></script>
+    <script type="text/javascript" th:src="@{/js/customer/payment_front.js}"></script>
+    <script type="text/javascript" th:src="@{/js/customer/payment.js}"></script>
   </body>
 </html>

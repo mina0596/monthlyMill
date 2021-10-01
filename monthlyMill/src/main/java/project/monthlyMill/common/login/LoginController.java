@@ -27,14 +27,11 @@ public class LoginController {
 	
 	private static final Logger log = LoggerFactory.getLogger(LoginController.class);
 	
-	private final LoginService loginService;
-	private final PasswordEncoder passwordEncoder;
+	@Autowired
+	LoginService loginService;
 	
 	@Autowired
-	public LoginController(LoginService loginService, PasswordEncoder passwordEncoder) {
-		this.loginService = loginService;
-		this.passwordEncoder = passwordEncoder;
-	}
+	PasswordEncoder passwordEncoder;
 	
 	@GetMapping("/login")
 	public String memberLogin() {
