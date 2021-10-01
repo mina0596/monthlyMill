@@ -13,6 +13,9 @@
 }
 
 /*장바구니 제품 리스트 테이블*/
+.cart_box .h3_title {
+  margin-bottom: 0;
+}
 .cart_box .result_table {
   margin: 0.5em 0;
   margin-bottom: 0.5em;
@@ -107,9 +110,6 @@ tr.result_item:last-child {
 @media screen and (max-width: 768px) {
   .cart_box .result_table colgroup {
     display: none;
-  }
-  .cart_box .h3_title {
-    margin-bottom: 0;
   }
   .cart_box .result_table td {
     padding: 0.5em 0;

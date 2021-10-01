@@ -58,7 +58,8 @@ label {
 }
 
 /* 버튼 */
-button {
+button,
+.button {
   padding: 0.5em 0.75em;
   color: var(--btn-sub-color);
   background-color: #fff;

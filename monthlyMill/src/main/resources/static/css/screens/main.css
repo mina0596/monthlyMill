@@ -5,12 +5,15 @@
 }
 
 .main_wrap {
-  width: 100%;
   display: flex;
+  width: 100%;
+}
+.main_wrap.top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
-/*상단 슬라이더 영역*/
-
+/* 슬라이더 배너 영역*/
 .slider {
   position: relative;
   margin: 0 auto;
@@ -70,7 +73,8 @@
   background-position: center center;
 }
 
-/*좌측 영역*/
+/* 상단 박스 */
+/*나만의 떡 찾기 영역*/
 .text_box {
   display: flex;
   flex-direction: column;
@@ -91,7 +95,12 @@
   background-color: rgba(255, 255, 255, 0.5);
 }
 
-/*우측 검색 영역*/
+/*해시태그 검색 영역*/
+.search_box {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+}
 .search_input {
   display: flex;
   align-items: center;
@@ -104,16 +113,56 @@
   height: 2.5em;
 }
 .search_blur {
-  width: 50%;
-  background-color: thistle;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.search_textbox_wrap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 .search_textbox {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+}
+.search_hash_blur {
+  padding: 1em;
+}
+.hash_blur {
+  filter: blur(0.2em);
+  box-shadow: 0 0 0.2em 0.2em var(--btn-emp-color);
 }
 
-@media screen and (max-height: 768px) {
-  .main_wrap {
-    flex-direction: column;
+/* 하단 박스 */
+/* 다양한 떡 소개 영역 */
+.main_intro_box {
+  width: 70%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 auto;
+  border: 1px solid gray;
+}
+.main_intro_title .text_box {
+  margin-top: 0;
+}
+.intro_hash_list {
+  display: flex;
+  flex-direction: row;
+}
+.main_intro_img {
+}
+
+@media screen and (max-width: 768px) {
+  .main_wrap.top {
+    grid-template-columns: 1fr;
+  }
+  .slider_list__slide img {
+    min-width: 0;
   }
 }
