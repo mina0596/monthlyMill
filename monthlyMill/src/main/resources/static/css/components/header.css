@@ -86,10 +86,6 @@ header a {
   .gnb_menu {
     margin-right: 1em;
   }
-
-  .gnb_customer {
-    margin-left: 1em;
-  }
 }
 
 /* 모바일용 gnb 사이드 메뉴 */

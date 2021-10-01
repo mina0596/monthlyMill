@@ -163,6 +163,10 @@
 .result_table .readDetail {
   margin-right: 1em;
 }
+.result_item__btnCart {
+  font-size: 0.85em;
+  line-height: 150%;
+}
 
 @media screen and (min-width: 769px) {
   .result_item__nutrient > i,
@@ -178,17 +182,18 @@
     width: 13%;
   }
 
+  /*
   .result_item__btnCart,
   .result_item__btnCart:active {
     border: none;
     background-color: transparent;
   }
+  */
   .result_item__btnCart:active {
     color: var(--btn-emp-color);
     transform: scale(1.1);
   }
-  .result_item__nutrient > i,
-  .result_item__btnCart > i {
+  .result_item__nutrient > i {
     font-size: 1.5em;
     text-align: center;
   }
@@ -197,6 +202,18 @@
     position: absolute;
     font-size: 0;
   }
+
+  /*
+  input.result_item__btnCart {
+    font-size: 1em;
+  }
+  input.result_item__btnCart::before {
+    content: "\f217";
+    font-family: "FontAwesome";
+    font-size: 1.5em;
+    color: #000;
+  }
+  */
 }
 .result_item__nutrient {
   margin-right: 1em;
