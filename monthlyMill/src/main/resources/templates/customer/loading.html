@@ -103,6 +103,13 @@
 
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
-    <script type="text/javascript" th:src="@{/js/loading.js}"></script>
+    <script type="text/javascript" th:src="@{/js/loading_front.js}"></script>
+    
+    <!--  5초 후에 페이지 이동하게 설정해둠   -->
+    <script type="text/javascript">
+    	$(function(){
+			setTimeout('location.href="/customer/payment/paymentConfirm"', 5000);
+		});
+    </script>
   </body>
 </html>

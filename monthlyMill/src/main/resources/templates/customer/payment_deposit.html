@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"></html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,7 +16,7 @@
     <header></header>
     
     <section class="content_box">
-      <form action="" class="paymentDepositForm">
+      <form th:action="@{/customer/payment/paymentDeposit}" method="post" class="paymentDepositForm" id="paymentDepositForm">
         <div class="payment_wrap">
           <h1 class="h1_title text big">결제하기</h1>
           <div class="main_box result_box">
@@ -25,9 +24,10 @@
             <table>
               <colgroup></colgroup>
               <tbody>
-                <tr>
-                  <td>상품명</td>
-                  <td><span class="result_item title">(상품이름)</span></td>
+                <tr th:each="l, count : ${cartList}">
+                  <td th:id="${count.index}" th:if="${count.index == 0}">상품명</td>
+                  <td th:id="${count.index}" th:unless="${count.index == 0}"></td>
+                  <td><span class="result_item title" th:text="${l.pName}">(상품이름)</span></td>
                 </tr>
                 <tr>
                   <td>제공기간</td>
@@ -37,7 +37,7 @@
                 </tr>
                 <tr>
                   <td>상품금액</td>
-                  <td><span class="result_item price_number text emp">(가격)</span></td>
+                  <td><span class="result_item price_number text emp" th:text="${totalPrice}">(가격)</span></td>
                 </tr>
               </tbody>
             </table>
@@ -75,7 +75,7 @@
                   <tr>
                     <td>입금자 명</td>
                     <td>
-                      <input type="text" class="depositorName" placeholder="입급자명 입력">
+                      <input type="text" class="depositorName" placeholder="입금자명 입력">
                     </td>
                   </tr>
                   <tr>
@@ -95,10 +95,11 @@
                   />
                   <label class="check_off" for="purchaseAgree"
                     >상기 구매 내역에 동의합니다. 
-                  </div>
+                  </label>
+                 </div>
               </div>
               <div class="button_box">
-                <input type="button" class="btn emp big confirmBtn" value="확인" disabled>
+                <input type="button" class="btn emp big paymentConfirmBtn" value="확인">
               </div>
             </div>
           </div>
@@ -111,5 +112,9 @@
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../../static/js/layout_front.js"></script>
     <script src="../../static/js/customer/payment_deposit_front.js"></script>
+    
+    <script type="text/javascript" th:src="@{/js/customer/layout_front.js}"></script>
+    <script type="text/javascript" th:src="@{/js/customer/payment_deposit_front.js}"></script>
+    <script type="text/javascript" th:src="@{/js/customer/payment_deposit.js}"></script>
   </body>
 </html>

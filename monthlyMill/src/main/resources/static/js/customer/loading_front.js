@@ -83,5 +83,8 @@ function addNowLoading(type){
     document.querySelector(".nowLoading").innerHTML = loadingCode;
 }
 
+$(function(){
+	setTimeout('console.log("작동하니?")', 1000);
+})
 
 
