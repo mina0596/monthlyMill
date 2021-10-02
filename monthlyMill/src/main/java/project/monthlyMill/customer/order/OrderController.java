@@ -17,4 +17,14 @@ public class OrderController {
 	public String getOrderList(Model model) {
 		return "/customer/orderList";
 	}
+	
+	@GetMapping("/orderCancel")
+	public String cancelOrder() {
+		return "/customer/cancelOrder";
+	}
+	
+	@GetMapping("/cancelOrderList")
+	public String cancelOrderList() {
+		return "/customer/cancelOrderList";
+	}
 }

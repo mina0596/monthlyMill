@@ -94,10 +94,15 @@ public class PaymentController {
 		return "success";
 	}
 	
-	
 	@PostMapping("/paymentDeposit")
 	public String paymentDeposit() {
 		return "redirect:/customer/payment/loading";
+	}
+	
+	// 7. 입금 확인 되었다는 메세지 페이지
+	@GetMapping("/paymentConfirm")
+	public String paymentConfirm() {
+		return "/customer/payment_confirm";
 	}
 	
 	@GetMapping("/loading")
@@ -105,8 +110,4 @@ public class PaymentController {
 		return "/customer/loading";
 	}
 	
-	@GetMapping("/paymentConfirm")
-	public String paymentConfirm() {
-		return "/customer/payment_confirm";
-	}
 }
