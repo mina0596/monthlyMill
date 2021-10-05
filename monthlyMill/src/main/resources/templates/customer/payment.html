@@ -16,7 +16,11 @@
     <header></header>
     <!-- 우편번호 입력란, 자동계산기능, 무통장입금 버튼이벤트-->
     <section class="content_box">
-      <form method="post" th:action="@{/customer/payment/paymentInfo}" id="paymentInfo">
+      <form
+        method="post"
+        th:action="@{/customer/payment/paymentInfo}"
+        id="paymentInfo"
+      >
         <div class="payment_wrap">
           <h1 class="h1_title text big">결제하기</h1>
 
@@ -228,7 +232,10 @@
             <div class="payment_box">
               <div class="price_box">
                 <span class="price_title">총 상품금액</span>
-                <span class="price_number text big itemTotalPrice" th:text="${totalItemPrice}"></span>
+                <span
+                  class="price_number text big itemTotalPrice"
+                  th:text="${totalItemPrice}"
+                ></span>
               </div>
               <div>
                 <i class="fas fa-minus"></i>
@@ -242,9 +249,10 @@
               </div>
               <div class="price_box">
                 <span class="price_title">총 배송비</span>
-                <span class="price_number text big deliveryTotalPrice" th:text="${shippingFee}"
-                  ></span
-                >
+                <span
+                  class="price_number text big deliveryTotalPrice"
+                  th:text="${shippingFee}"
+                ></span>
               </div>
               <div>
                 <i class="fas fa-equals"></i>
@@ -252,7 +260,8 @@
               <div class="price_box">
                 <span class="price_title">총 결제예정금액</span>
                 <span
-                  class="price_number text big emp paymentTotalPrice" th:text="${totalPrice}"
+                  class="price_number text big emp paymentTotalPrice"
+                  th:text="${totalPrice}"
                 ></span>
               </div>
             </div>
@@ -352,26 +361,38 @@
                   <div class="agreement_column">
                     <input
                       type="checkbox"
-                      id="foodTermAgree"
+                      id="paymentServiceTermAgree"
                       class="checkRequired checkbox"
                     />
-                    <label class="check_off" for="foodTermAgree">
+                    <label class="check_off" for="paymentServiceTermAgree">
                       <span>결제대행 서비스 이용약관 동의</span>
                       <div class="agreement_column">
                         <span>전자금융거래 기본약관</span>
-                        <button type="button" class="readDetail btn_text">
+                        <button
+                          type="button"
+                          class="readDetail btn_text"
+                          data-termtitle="paymentServiceBasicTermAgree"
+                        >
                           전체보기
                         </button>
                       </div>
                       <div class="agreement_column">
                         <span>개인정보 수집 및 이용동의</span>
-                        <button type="button" class="readDetail btn_text">
+                        <button
+                          type="button"
+                          class="readDetail btn_text"
+                          data-termtitle="paymentSeviceInfoCollectAgree"
+                        >
                           전체보기
                         </button>
                       </div>
                       <div class="agreement_column">
                         <span>개인정보 제공 동의</span>
-                        <button type="button" class="readDetail btn_text">
+                        <button
+                          type="button"
+                          class="readDetail btn_text"
+                          data-termtitle="paymentSeviceInfoOfferAgree"
+                        >
                           전체보기
                         </button>
                       </div>
@@ -386,7 +407,7 @@
               <div class="button_box">
                 <!--누르면 결제진행-->
                 <button type="button" class="btn big emp paymentBtn">
-                  결제하기 
+                  결제하기
                 </button>
               </div>
             </div>
@@ -398,16 +419,22 @@
 
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../../static/js/layout_front.js"></script>
-    <script src="../../static/js/memberJoin_front.js"></script>
+    <script
+      type="text/javascript"
+      src="../../static/js/memberJoin_front.js"
+    ></script>
     <script src="../../static/js/customer/payment_front.js"></script>
-    
+
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
     <!-- 우편번호 api  -->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    
+
     <script type="text/javascript" th:src="@{/js/memberJoin_front.js}"></script>
-    <script type="text/javascript" th:src="@{/js/customer/payment_front.js}"></script>
+    <script
+      type="text/javascript"
+      th:src="@{/js/customer/payment_front.js}"
+    ></script>
     <script type="text/javascript" th:src="@{/js/customer/payment.js}"></script>
   </body>
 </html>
