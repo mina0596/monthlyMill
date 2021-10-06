@@ -84,7 +84,7 @@ function addNowLoading(type){
 }
 
 $(function(){
-	setTimeout('console.log("작동하니?")', 1000);
+	setTimeout('console.log("작동하니?")', 10000);
 })
 
 
