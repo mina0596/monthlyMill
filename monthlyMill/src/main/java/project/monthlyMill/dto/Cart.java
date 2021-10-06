@@ -6,7 +6,6 @@ public class Cart {
 	private String pCode;
 	private int pAmount;
 	private String cartRegDate;
-	private char orderCheck;
 	public int getCartNum() {
 		return cartNum;
 	}
@@ -37,16 +36,10 @@ public class Cart {
 	public void setCartRegDate(String cartRegDate) {
 		this.cartRegDate = cartRegDate;
 	}
-	public char getOrderCheck() {
-		return orderCheck;
-	}
-	public void setOrderCheck(char orderCheck) {
-		this.orderCheck = orderCheck;
-	}
 	@Override
 	public String toString() {
 		return "Cart [cartNum=" + cartNum + ", memberNum=" + memberNum + ", pCode=" + pCode + ", pAmount=" + pAmount
-				+ ", cartRegDate=" + cartRegDate + ", orderCheck=" + orderCheck + "]";
+				+ ", cartRegDate=" + cartRegDate + "]";
 	}
 	
 	

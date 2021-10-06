@@ -1,10 +1,13 @@
 package project.monthlyMill.customer.shoppingCart;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import project.monthlyMill.dto.Cart;
 
 @Service
 public class CartService {
@@ -13,8 +16,18 @@ public class CartService {
 	CartMapper cartMapper;
 	
 	// 1.장바구니에 아이템 추가하기 
-	public void addItem(Map<String,Object> cartInfo) {
-		cartMapper.addItem(cartInfo);
+	public void addItem(HashMap<String,Object> cartInfo) {
+		Cart checkProductInCart = cartMapper.selectProductInCart(cartInfo);
+		if(checkProductInCart == null) {
+			cartMapper.addItem(cartInfo);
+		}else {
+			int cartNum = checkProductInCart.getCartNum();
+			int pAmount = checkProductInCart.getpAmount();
+			HashMap<String, Object> infoMap = new HashMap<String, Object>();
+			infoMap.put("pAmount", pAmount+1);
+			infoMap.put("cartNum", cartNum);
+			cartMapper.updateProductAmount(infoMap);
+		}
 	}
 	
 	
@@ -25,7 +38,7 @@ public class CartService {
 	}
 	
 	// 3.장바구니 정보 수정
-	public int updateCartByCartNum(Map<String,Integer> updateCartInfo) {
+	public int updateCartByCartNum(HashMap<String,Integer> updateCartInfo) {
 		return cartMapper.updateCartByCartNum(updateCartInfo);
 	}
 }

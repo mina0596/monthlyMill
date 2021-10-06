@@ -2,17 +2,37 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="project.monthlyMill.customer.shoppingCart.OrderMapper">
-	<resultMap type="Cart"	id="cartResultMap">
-		<result property="cartNum"			column="cart_num"/>
-		<result property="memberNum"		column="member_num"/>
-		<result property="pCode"			column="product_code"/>
-		<result property="pAmount"			column="amount"/>
-		<result property="cartRegDate"		column="cart_reg_date"/>
-		<result property="orderCheck"		column="order_check"/>
+	<resultMap type="Order"	id="orderResultMap">
+		<result property="idx"					column="idx"/>
+		<result property="orderNum"				column="order_num"/>
+		<result property="memberNum"			column="member_num"/>
+		<result property="pCode"				column="product_code"/>
+		<result property="cartNum"				column="cart_num"/>
+		<result property="pCount"				column="product_count"/>
+		<result property="pPrice"				column="product_price"/>
+		<result property="orderDate"			column="order_date"/>
+		<result property="expDelDate"			column="exp_delivery_date"/>
+		<result property="orderPayment"			column="order_payment"/>
+		<result property="orderRefund"			column="order_refund"/>
+		<result property="orderModifyDate"		column="order_modify_date"/>
+		<result property="orderRegDate"			column="order_reg_date"/>
 	</resultMap>
 	
 	<select id="selectOrderSequence" resultType="String">
-		
+		SELECT
+			if(COUNT(0)=0, '1', substring(MAX(oi.order_num), 11)+1)
+		FROM
+			order_info AS oi
+			where
+				oi.order_reg_date = CURDATE();
 	</select>
+	
+	<insert id="addOrder" parameterType="Order">
+		INSERT INTO order_info
+			(idx, order_num, member_num, product_code, cart_num, product_count, product_price, order_date, exp_delivery_date, order_payment, order_refund, order_modify_date)
+		VALUES (NULL, #{orderNum}, #{memberNum}, #{pCode}, #{cartNum}, #{pCount}, #{pPrice}, NOW(), NOW(), #{orderPayment}, #{orderRefund}, CURDATE())
+	</insert>
+	
+	
 	
 </mapper>

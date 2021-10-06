@@ -8,14 +8,32 @@
 		<result property="pCode"			column="product_code"/>
 		<result property="pAmount"			column="amount"/>
 		<result property="cartRegDate"		column="cart_reg_date"/>
-		<result property="orderCheck"		column="order_check"/>
 	</resultMap>
+	
+	<select id="selectProductInCart" parameterType="map" resultMap="cartResultMap">
+		SELECT
+			cart.*
+		FROM
+			member_cart AS cart
+			WHERE 
+				cart.member_num = #{memberNum}
+				and
+				cart.product_code = #{pCode}
+	</select>
 	
 	<insert id="addItem" parameterType="map">
 		INSERT INTO member_cart
-		(cart_num, member_num, product_code, amount, cart_reg_date, order_check, delete_check)
-		VALUES (0, #{memberNum}, #{pCode}, 1, CURDATE(), 'N', 'N');
+		(cart_num, member_num, product_code, amount, cart_reg_date)
+		VALUES (0, #{memberNum}, #{pCode}, 1, CURDATE());
 	</insert>
+	
+	<update id="updateProductAmount" parameterType="map">
+		UPDATE member_cart
+		SET
+			amount=#{pAmount},
+			cart_reg_date=CURDATE()
+		WHERE cart_num=#{cartNum}
+	</update>
 	
 	<select id="getCartListByMemberNum" parameterType="String" resultType="map">
 		SELECT
@@ -35,7 +53,7 @@
 			order_info AS oInfo
 		on
 			mCart.cart_num = oInfo.cart_num
-		WHERE member_num = #{memberNum} and mCart.order_check='N' and mCart.delete_check='N'
+		WHERE mCart.member_num = #{memberNum}
 		ORDER BY cartNum ASC;
 	</select>
 	

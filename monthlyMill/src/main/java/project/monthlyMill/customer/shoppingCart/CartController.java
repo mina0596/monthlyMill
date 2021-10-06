@@ -38,7 +38,7 @@ public class CartController {
 		log.info("세션확인:{}", session.getAttribute("SID"));
 		log.info("ajax로 pCode넘어오는거 확인:{}", pCode);
 		HashMap<String, String> resultMap = new HashMap<String,String>();
-		Map<String,Object> addItemInfo = new HashMap<String, Object>();
+		HashMap<String,Object> addItemInfo = new HashMap<String, Object>();
 		if(session.getAttribute("SID")==null) {
 			resultMap.put("sessionCheck", "sessionEmpty");
 		}else{
@@ -62,14 +62,14 @@ public class CartController {
 	// 3.장바구니 정보 수정
 	@PostMapping("/itemCartInfo")
 	@ResponseBody
-	public String getCartInfo(@RequestBody Map<String,Object> cartInfo) {
+	public String getCartInfo(@RequestBody HashMap<String,Object> cartInfo) {
 		log.info("카트 정보 받아오는거 확인하기 cartInfo:{}", cartInfo);
 		List<String> cartNum = (List<String>) cartInfo.get("cartNum");
 		List<String> pAmount = (List<String>) cartInfo.get("pAmount");
 		log.info("cartNum 넘어오는 배열 확인:{}", cartNum);
 		
 		for(int i=0; i<cartNum.size(); i++) {
-			Map<String, Integer> cartInfoMap = new HashMap<String, Integer>();
+			HashMap<String, Integer> cartInfoMap = new HashMap<String, Integer>();
 			
 			cartInfoMap.put("pAmount", Integer.parseInt(pAmount.get(i)));
 			cartInfoMap.put("cartNum", Integer.parseInt(cartNum.get(i)));
