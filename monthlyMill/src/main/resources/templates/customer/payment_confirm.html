@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"></html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -54,5 +53,8 @@
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../../static/js/layout_front.js"></script>
     <script src="../../static/js/customer/payment_front.js"></script>
+    
+    <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
+    <script type="text/javascript" th:src="@{/js/customer/payment_front.js}"></script>
   </body>
 </html>

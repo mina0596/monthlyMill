@@ -2,6 +2,9 @@
  * 
  */
 $(function(){
+	// *********** 완전 tbody를 없앴다가, 검색을 누르면 띄우는게 낫지않을까?
+	
+	$('.result_item').remove();
 	var selectedTagsName = [];
 	var selectedTags = [];
 	var selectedMidClass = [];
@@ -51,6 +54,9 @@ $(function(){
 		});
 		
 		request.done(function( rcmdResult ){
+			if($('.text_box') != null || $('.text_box') != undefined){
+				$('.text_box').remove();
+			}
 			$('.result_item').remove();
 			html = '';
 			if(selectedTagsName.length != 0){
@@ -59,20 +65,17 @@ $(function(){
 					html += '<li class="hash">' + selectedTagsName[i] + '</li>';
 				}
 				$('.result_hash_list').html(html);
-				
 			}else{
 				html = `<span>태그를 선택해주세요.</span>`;
 				$('.text_box').html(html);
 			}
-
-			
 			if(rcmdResult.length != 0){
 				resultHtml = '';
 				for(var j=0; j<rcmdResult.length; j++){
 					resultHtml += `
 					<tr class="result_item">
 						<td>
-							<span class="result_item__num">${j}</span>
+							<span class="result_item__num">${j+1}</span>
 						</td>
 						<td>
 							<img src="" alt="제품이미지" class="result_item__img">
@@ -81,6 +84,7 @@ $(function(){
 							<div class="td_column">
 								<span class="result_item__title">${rcmdResult[j].pName}</span>
 								<input name="pCode" class="result_item_code" type="hidden" value="${rcmdResult[j].pCode}">
+								<input class="nutrient" type="hidden" value="${rcmdResult[j].pNutrition}">
 								<button class="result_item__nutrient readDetail">
 									<i class="fas fa-search-plus"></i>
 									<span>영양정보</span>
@@ -106,31 +110,42 @@ $(function(){
 			$('.text_box').html('<span>선택하신 해시태그에 해당하는 상품이 없습니다.</span>');
 		});
 		
-		//*********************************** 장바구니******************************
-		$(document).on('click', '.result_item__btnCart', function(){
-			var param = $(this).parent().parent().children().find('.result_item_code').val();
-			var pName = $(this).parent().parent().children().find('.result_item__title').text();
-			var params = { 'pCode' : param };
-			$.ajax({
-				url: "/customer/cart/addItem",
-				method: "POST",
-				traditional: true,
-				data: JSON.stringify(params),
-				contentType: "application/json",
-				dataType: "json",
-				success: function(result){
-					if(result.sessionCheck == 'sessionEmpty'){
-						alert('로그인 후에 이용 가능합니다.');
-						location.href='/login';
-					}else{
-						
-						alert('장바구니에 ' + pName + '를 추가하였습니다.');
-					}
+	});
+	
+	
+	
+	
+	
+	//*********************************** 장바구니******************************
+	$(document).on('click', '.result_item__btnCart', function(){
+		var param = $(this).parent().parent().children().find('.result_item_code').val();
+		var pName = $(this).parent().parent().children().find('.result_item__title').text();
+		var params = { 'pCode' : param };
+		$.ajax({
+			url: "/customer/cart/addItem",
+			method: "POST",
+			traditional: true,
+			data: JSON.stringify(params),
+			contentType: "application/json",
+			dataType: "json",
+			success: function(result){
+				if(result.sessionCheck == 'sessionEmpty'){
+					alert('로그인 후에 이용 가능합니다.');
+					location.href='/login';
+				}else{
+					
+					alert('장바구니에 ' + pName + '를 추가하였습니다.');
 				}
-			});
-			
-			
+			}
 		});
-	})
+	});
+	
+	$(document).on('click', '.result_item__nutrient', function(){
+		var modalContent = $(this).parent().children('.nutrient').val();
+		var modalTitle = $(this).parent().children('.result_item__title').text() + '의 영양정보';
+		openDetailModal(modalContent, modalTitle);
+	});
+	
 
 });
+

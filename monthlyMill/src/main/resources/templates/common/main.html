@@ -79,7 +79,7 @@
                 placeholder="#해시태그 살펴볼까요?"
               />
             </div>
-            <div class="search_blur">
+            <div class="search_blur" th:if="@{sesssion.SID == null}">
               <div class="search_textbox_wrap">
                 <div class="search_textbox btn_white">
                   <span>회원가입 후 확인이 가능해요!</span>

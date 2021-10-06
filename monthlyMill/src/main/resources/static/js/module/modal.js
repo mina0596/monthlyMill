@@ -1,13 +1,9 @@
 /* 공통사용 코드 분리 */
 
 //모달창 띄우기
-function openDetailModal(){
+function openDetailModal(modalContent, modalTitle){
 	let modalWrap = document.createElement("div");
 	modalWrap.className = "modalWrap";
-	let modalTitle = `제목`;
-	let modalcontent = `내용 전문 이부분은 이후 각 내용별로 받아오기 Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur illum porro dolores nobis tenetur laudantium repudiandae, repellat ipsum sunt officia ipsa, laborum dolore necessitatibus possimus reiciendis magnam suscipit deserunt. Nemo. 
-	Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur illum porro dolores nobis tenetur laudantium repudiandae, repellat ipsum sunt officia ipsa, laborum dolore necessitatibus possimus reiciendis magnam suscipit deserunt. Nemo.
-	Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur illum porro dolores nobis tenetur laudantium repudiandae, repellat ipsum sunt officia ipsa, laborum dolore necessitatibus possimus reiciendis magnam suscipit deserunt. Nemo.`;
 
 	modalWrap.innerHTML = `
 		<div class="modal">
@@ -16,7 +12,7 @@ function openDetailModal(){
 			</div>
 			<div class="modal_box content">
 				<p class="modal_content">
-					${modalcontent}
+					${modalContent}
 				</p>
 			</div>
 			<div class="modal_box button_box">
@@ -45,9 +41,11 @@ function scrollAble(){
 }
 
 //이벤트 리스너
+/*
 $(document).on("click", ".readDetail", function(){
-	openDetailModal();
+	openDetailModal(modalContent);
 });
+*/
 $(document).on("click", ".closeModalBtn", function(){
 	closeDetailModal();
 });

@@ -17,7 +17,7 @@
 		VALUES (0, #{memberNum}, #{pCode}, 1, CURDATE(), 'N', 'N');
 	</insert>
 	
-	<select id="getCartListByMemberId" parameterType="String" resultType="map">
+	<select id="getCartListByMemberNum" parameterType="String" resultType="map">
 		SELECT
 			mCart.cart_num as cartNum,
 			mCart.product_code as pCode, 

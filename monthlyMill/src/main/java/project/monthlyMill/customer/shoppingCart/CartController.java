@@ -54,7 +54,7 @@ public class CartController {
 	@GetMapping("/cartList")
 	public String getCartList(Model model, HttpSession session) {
 		String memberNum = String.valueOf(session.getAttribute("SMNUM"));
-		List<Map<String,String>> cartList = cartService.getCartListByMemberId(memberNum);
+		List<Map<String,String>> cartList = cartService.getCartListByMemberNum(memberNum);
 		model.addAttribute("cartList", cartList);
 		return "/customer/cart";
 	}
