@@ -20,9 +20,12 @@ public interface CartMapper {
 	// 1-2. 아이템이 존재하면 장바구니 업데이트해주기
 	public void updateProductAmount(HashMap<String, Object> infoMap);
 	
-	// 2.장바구니 정보 가져오기
+	// 2. 회원의 장바구니 정보 가져오기
 	public List<Map<String,String>> getCartListByMemberNum(String memberNum);
 	
 	// 3.장바구니 정보 수정
 	public int updateCartByCartNum(HashMap<String,Integer> updateCartInfo);
+	
+	// 4. 장바구니 번호로 장바구니 정보 가져오기 
+	public Cart getCartInfoByCartNum(int cartNum);
 }

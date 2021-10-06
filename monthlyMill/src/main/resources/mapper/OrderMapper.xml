@@ -12,10 +12,16 @@
 		<result property="pPrice"				column="product_price"/>
 		<result property="orderDate"			column="order_date"/>
 		<result property="expDelDate"			column="exp_delivery_date"/>
-		<result property="orderPayment"			column="order_payment"/>
-		<result property="orderRefund"			column="order_refund"/>
+		<result property="paymentCheck"			column="payment_check"/>
+		<result property="refundCheck"			column="refund_check"/>
 		<result property="orderModifyDate"		column="order_modify_date"/>
 		<result property="orderRegDate"			column="order_reg_date"/>
+		<result property="receiverName"			column="receiver_name"/>
+		<result property="receiverPhoneNum"		column="receiver_phone"/>
+		<result property="receiverHomeNum"		column="receiver_home"/>
+		<result property="receiverPostalCode"	column="receiver_postal_code"/>
+		<result property="receiverAddr"			column="receiver_addr"/>
+		<result property="receiverDetailAddr"	column="receiver_detail_addr"/>
 	</resultMap>
 	
 	<select id="selectOrderSequence" resultType="String">
@@ -29,8 +35,10 @@
 	
 	<insert id="addOrder" parameterType="Order">
 		INSERT INTO order_info
-			(idx, order_num, member_num, product_code, cart_num, product_count, product_price, order_date, exp_delivery_date, order_payment, order_refund, order_modify_date)
-		VALUES (NULL, #{orderNum}, #{memberNum}, #{pCode}, #{cartNum}, #{pCount}, #{pPrice}, NOW(), NOW(), #{orderPayment}, #{orderRefund}, CURDATE())
+			(idx, order_num, member_num, product_code, cart_num, product_count, order_date, exp_delivery_date, payment_check, refund_check, order_modify_date, order_reg_date
+			, receiver_name, receiver_phone, receiver_home, receiver_postal_code, receiver_addr, receiver_detail_addr)
+		VALUES (NULL, #{orderNum}, #{memberNum}, #{pCode}, #{cartNum}, #{pCount}, NOW(), NOW(), 'N', 'N', CURDATE()
+			, #{receiverName}, #{receiverPhoneNum}, #{receiverHomeNum}, #{receiverPostalCode}, #{receiverAddr}, #{receiverDetailAddr})
 	</insert>
 	
 	

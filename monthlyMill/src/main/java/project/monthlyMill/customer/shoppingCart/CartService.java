@@ -31,7 +31,7 @@ public class CartService {
 	}
 	
 	
-	// 2.장바구니 정보 가져오기
+	// 2.회원번호로 회원의 장바구니 정보 가져오기
 	public List<Map<String,String>> getCartListByMemberNum(String memberNum){
 		
 		return cartMapper.getCartListByMemberNum(memberNum);
@@ -40,5 +40,10 @@ public class CartService {
 	// 3.장바구니 정보 수정
 	public int updateCartByCartNum(HashMap<String,Integer> updateCartInfo) {
 		return cartMapper.updateCartByCartNum(updateCartInfo);
+	}
+	
+	// 4. 장바구니 번호로 장바구니 정보 가져오기
+	public Cart getCartInfoByCartNum(int cartNum){
+		return cartMapper.getCartInfoByCartNum(cartNum);
 	}
 }

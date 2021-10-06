@@ -10,10 +10,16 @@ public class Order {
 	private int pPrice;
 	private String orderDate;
 	private String expDelDate;
-	private char orderPayment;
-	private char orderRefund;
+	private char paymentCheck;
+	private char refundCheck;
 	private String orderModifyDate;
 	private String orderRegDate;
+	private String receiverName; 
+	private String receiverPhoneNum; 
+	private String receiverHomeNum; 
+	private String receiverPostalCode; 
+	private String receiverAddr; 
+	private String receiverDetailAddr;
 	public int getIdx() {
 		return idx;
 	}
@@ -42,7 +48,7 @@ public class Order {
 		return cartNum;
 	}
 	public void setCartNum(int cartNum) {
-		cartNum = cartNum;
+		this.cartNum = cartNum;
 	}
 	public int getpCount() {
 		return pCount;
@@ -68,17 +74,17 @@ public class Order {
 	public void setExpDelDate(String expDelDate) {
 		this.expDelDate = expDelDate;
 	}
-	public char getOrderPayment() {
-		return orderPayment;
+	public char getPaymentCheck() {
+		return paymentCheck;
 	}
-	public void setOrderPayment(char orderPayment) {
-		this.orderPayment = orderPayment;
+	public void setPaymentCheck(char paymentCheck) {
+		this.paymentCheck = paymentCheck;
 	}
-	public char getOrderRefund() {
-		return orderRefund;
+	public char getRefundCheck() {
+		return refundCheck;
 	}
-	public void setOrderRefund(char orderRefund) {
-		this.orderRefund = orderRefund;
+	public void setRefundCheck(char refundCheck) {
+		this.refundCheck = refundCheck;
 	}
 	public String getOrderModifyDate() {
 		return orderModifyDate;
@@ -92,13 +98,52 @@ public class Order {
 	public void setOrderRegDate(String orderRegDate) {
 		this.orderRegDate = orderRegDate;
 	}
+	public String getReceiverName() {
+		return receiverName;
+	}
+	public void setReceiverName(String receiverName) {
+		this.receiverName = receiverName;
+	}
+	public String getReceiverPhoneNum() {
+		return receiverPhoneNum;
+	}
+	public void setReceiverPhoneNum(String receiverPhoneNum) {
+		this.receiverPhoneNum = receiverPhoneNum;
+	}
+	public String getReceiverHomeNum() {
+		return receiverHomeNum;
+	}
+	public void setReceiverHomeNum(String receiverHomeNum) {
+		this.receiverHomeNum = receiverHomeNum;
+	}
+	public String getReceiverPostalCode() {
+		return receiverPostalCode;
+	}
+	public void setReceiverPostalCode(String receiverPostalCode) {
+		this.receiverPostalCode = receiverPostalCode;
+	}
+	public String getReceiverAddr() {
+		return receiverAddr;
+	}
+	public void setReceiverAddr(String receiverAddr) {
+		this.receiverAddr = receiverAddr;
+	}
+	public String getReceiverDetailAddr() {
+		return receiverDetailAddr;
+	}
+	public void setReceiverDetailAddr(String receiverDetailAddr) {
+		this.receiverDetailAddr = receiverDetailAddr;
+	}
 	@Override
 	public String toString() {
 		return "Order [idx=" + idx + ", orderNum=" + orderNum + ", memberNum=" + memberNum + ", pCode=" + pCode
-				+ ", CartNum=" + cartNum + ", pCount=" + pCount + ", pPrice=" + pPrice + ", orderDate=" + orderDate
-				+ ", expDelDate=" + expDelDate + ", orderPayment=" + orderPayment + ", orderRefund=" + orderRefund
-				+ ", orderModifyDate=" + orderModifyDate + ", orderRegDate=" + orderRegDate + "]";
-	}
+				+ ", cartNum=" + cartNum + ", pCount=" + pCount + ", pPrice=" + pPrice + ", orderDate=" + orderDate
+				+ ", expDelDate=" + expDelDate + ", paymentCheck=" + paymentCheck + ", refundCheck=" + refundCheck
+				+ ", orderModifyDate=" + orderModifyDate + ", orderRegDate=" + orderRegDate + ", receiverName="
+				+ receiverName + ", receiverPhoneNum=" + receiverPhoneNum + ", receiverHomeNum=" + receiverHomeNum
+				+ ", receiverPostalCode=" + receiverPostalCode + ", receiverAddr=" + receiverAddr
+				+ ", receiverDetailAddr=" + receiverDetailAddr + "]";
+	} 
 	
-	
+		
 }

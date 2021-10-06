@@ -124,6 +124,11 @@ $(function(){
 			submitCheck = true;
 		}
 		
+		var cartNum = [];
+		$('.result_cart_num').each(function(){
+				cartNum.push($(this).val());
+			})
+		
 		var params = {
 			"receiverName" : $('.inputReceiverName').val(),
 			"receiverPhone" : $('.inputReceiverPhoneNum').val(),
@@ -133,7 +138,8 @@ $(function(){
 			"totalPrice" : $('.paymentTotalPrice').val(),
 			"receiptType" : $('select[class="receiptApplyType"]').val(),
 			"receiptNumType" : $('select[class="receiptNumberType"]').val(),
-			"receiptNumType" : $('.inputReceiptApplicantPhoneNum').val(),
+			"receiptNum" : $('.inputReceiptApplicantPhoneNum').val(),
+			"cartNum": cartNum
 		}
 		
 		if(submitCheck){

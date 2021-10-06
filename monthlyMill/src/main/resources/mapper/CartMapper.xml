@@ -64,4 +64,10 @@
 		WHERE cart_num=#{cartNum}
 	</update>
 	
+	<select id="getCartInfoByCartNum" parameterType="int" resultMap="cartResultMap">
+		SELECT cart_num, member_num, product_code, amount, cart_reg_date
+		FROM member_cart
+		where cart_num = #{cartNum};
+	</select>
+	
 </mapper>
