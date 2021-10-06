@@ -73,7 +73,7 @@ public class PaymentController {
 			log.info("화면에서 받아오는 주문 정보 확인하기 :{}", params);
 			log.info("**************************************");
 			log.info("**************************************");
-			List<Integer> cartList = (List<Integer>) params.get("cartNum");
+			List<String> cartList = (List<String>) params.get("cartNum");
 			
 			Order orderInfo = new Order();
 			orderInfo.setMemberNum(Integer.parseInt(session.getAttribute("SMNUM").toString()));
@@ -84,8 +84,8 @@ public class PaymentController {
 			orderInfo.setReceiverDetailAddr(String.valueOf(params.get("receiverDetailAddr")));
 			orderInfo.setOrderNum(orderService.selectOrderNum());
 			for(int i=0; i<cartList.size(); i++) {
-				orderInfo.setCartNum(cartList.get(i));
-				Cart cartInfo = cartService.getCartInfoByCartNum(cartList.get(i));
+				orderInfo.setCartNum(Integer.parseInt(cartList.get(i)));
+				Cart cartInfo = cartService.getCartInfoByCartNum(Integer.parseInt(cartList.get(i)));
 				orderInfo.setpCount(cartInfo.getpAmount());
 				orderInfo.setpCode(cartInfo.getpCode());
 				orderService.addOrder(orderInfo);

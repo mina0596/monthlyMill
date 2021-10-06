@@ -1,26 +1,26 @@
 $(document).ready(function(){
-    var isMoblie = detectMobileDevice(window.navigator.userAgent);
+    var isMobile = detectMobileDevice(window.navigator.userAgent);
     var testMobile = detectMobileTest();
 
     //header, footer 불러오기 (모바일, pc다르게)
-    if(isMoblie || testMobile){
+    if(isMobile || testMobile){
         //모바일
         loadGnbSideMenu();
         //$(".gnb_side_wrapper").load("../component/mobile_sideMenu.html");
-        $(".gnb_side_wrapper").load("mobile_sideMenu");
+        $(".gnb_side_wrapper").load("/mobile_sideMenu");
         //$("header").load("../component/mobile_header.html");
-        $("header").load("mobile_header");
+        $("header").load("/mobile_header");
     }else{
         //기타
         //$("header").load("../component/header.html");
-        $("header").load("header");
+        $("header").load("/header");
     }
     //공통
     //$("footer").load("../component/footer.html");
-    $("footer").load("footer");
+    $("footer").load("/footer");
     //나의 주문정보 전용
     //$(".asideMenu").load("../component/orderAside.html");
-    $(".asideMenu").load("orderAside");
+    $(".asideMenu").load("/orderAside");
 });
 
 
@@ -42,7 +42,7 @@ function detectMobileDevice(agent) {
 
 //테스트 환경용 함수 (실제 환경에선 주석처리 할 것.) 
 function detectMobileTest(){
-    console.log(window.outerWidth);
+    //console.log(window.outerWidth);
     return  ( window.outerWidth < 769 ) ? true : false ;
 }
 

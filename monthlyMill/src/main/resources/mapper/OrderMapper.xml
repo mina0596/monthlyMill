@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="project.monthlyMill.customer.shoppingCart.OrderMapper">
+<mapper namespace="project.monthlyMill.customer.order.OrderMapper">
 	<resultMap type="Order"	id="orderResultMap">
 		<result property="idx"					column="idx"/>
 		<result property="orderNum"				column="order_num"/>
@@ -35,9 +35,8 @@
 	
 	<insert id="addOrder" parameterType="Order">
 		INSERT INTO order_info
-			(idx, order_num, member_num, product_code, cart_num, product_count, order_date, exp_delivery_date, payment_check, refund_check, order_modify_date, order_reg_date
-			, receiver_name, receiver_phone, receiver_home, receiver_postal_code, receiver_addr, receiver_detail_addr)
-		VALUES (NULL, #{orderNum}, #{memberNum}, #{pCode}, #{cartNum}, #{pCount}, NOW(), NOW(), 'N', 'N', CURDATE()
+			(idx, order_num, member_num, product_code, cart_num, product_count, order_date, exp_delivery_date, payment_check, refund_check, order_modify_date, order_reg_date, receiver_name, receiver_phone, receiver_home, receiver_postal_code, receiver_addr, receiver_detail_addr)
+		VALUES (NULL, #{orderNum}, #{memberNum}, #{pCode}, #{cartNum}, #{pCount}, NOW(), NOW(), 'N', 'N', CURDATE(), CURDATE()
 			, #{receiverName}, #{receiverPhoneNum}, #{receiverHomeNum}, #{receiverPostalCode}, #{receiverAddr}, #{receiverDetailAddr})
 	</insert>
 	

@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"></html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
+    <!-- <link type="text/css" rel="stylesheet" href="../../static/css/style.css" /> -->
     <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
     <title>월간방앗간</title>
   </head>
@@ -167,9 +166,14 @@
       src="https://kit.fontawesome.com/7161175c87.js"
       crossorigin="anonymous"
     ></script>
-    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+   <!--  <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../../static/js/layout_front.js"></script>
     <script src="../../static/js/memberJoin_front.js"></script>
-    <script src="../../static/js/customer/payment_front.js"></script>
+    <script src="../../static/js/customer/payment_front.js"></script> -->
+    
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
+    <script type="text/javascript" th:src="@{/js//memberJoin_front.js}"></script>
+    <script type="text/javascript" th:src="@{/js/customer/payment_front.js}"></script>
   </body>
 </html>
