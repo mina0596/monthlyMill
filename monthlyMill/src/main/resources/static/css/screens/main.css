@@ -46,12 +46,10 @@
   color: white;
   background-color: rgba(0, 0, 0, 0.6);
 }
-.slider_list_wrapper {
+.slider_list {
   width: 100%;
 }
-.slider_list__slide {
-}
-.slider_list__slide img {
+.slide_img {
   width: 100%;
   min-width: var(--slider-min-width);
   object-fit: cover;
@@ -142,20 +140,37 @@
 /* 다양한 떡 소개 영역 */
 .main_intro_box {
   width: 70%;
-
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin: 0 auto;
   border: 1px solid gray;
 }
-.main_intro_title .text_box {
+.main_intro_text_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main_intro_text_box > .text_box {
   margin-top: 0;
 }
-.intro_hash_list {
+
+.item_box {
+  display: grid;
+  grid-template-rows: 1fr 0.75fr 3.25fr;
+}
+.main_intro_title > p {
+  text-align: center;
+}
+.intro_hash_box {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .main_intro_img {
+  height: 100%;
+  background-color: aquamarine;
 }
 
 @media screen and (max-width: 768px) {
@@ -164,5 +179,9 @@
   }
   .slider_list__slide img {
     min-width: 0;
+  }
+
+  .main_intro_box {
+    width: 100%;
   }
 }
