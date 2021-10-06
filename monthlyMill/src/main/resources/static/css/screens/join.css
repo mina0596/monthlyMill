@@ -106,9 +106,9 @@
   left: 50%;
   transform: translate(-50%, -30%);
   z-index: 10;
-  width: 60vw;
+  width: 70vw;
   height: 60vh;
-  min-width: 400px;
+  min-width: 350px;
   max-width: 700px;
   min-height: 300px;
   max-height: 550px;
@@ -127,22 +127,28 @@
 }
 .modal_box.content {
   margin: 0 1.6em;
-  height: 35vh;
+  height: 75%;
+  min-height: 35vh;
   min-height: 150px;
   border: 1px solid var(--desc-color);
   border-radius: 1em;
 }
 .modal_content {
-  margin: 1em;
+  padding: 0.25em;
+  border-radius: 1em;
   overflow-y: auto;
 }
 .modal_content::-webkit-scrollbar {
   width: 5px;
-  background-color: transparent;
+  position: fixed;
+  z-index: 30;
 }
 .modal_content::-webkit-scrollbar-thumb {
   background-color: var(--compo-common-color);
   border-radius: 5px;
+}
+.modal_content::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 .modal_box.button_box {
   position: absolute;

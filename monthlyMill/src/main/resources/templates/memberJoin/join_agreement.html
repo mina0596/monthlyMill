@@ -59,7 +59,11 @@
                 >
               </div>
               <div class="agreement_column">
-                <button type="button" class="readDetail btn_text">
+                <button
+                  type="button"
+                  class="readDetail btn_text"
+                  data-termtitle="termAgree"
+                >
                   전체보기
                 </button>
               </div>
@@ -76,7 +80,11 @@
                 >
               </div>
               <div class="agreement_column">
-                <button type="button" class="readDetail btn_text">
+                <button
+                  type="button"
+                  class="readDetail btn_text"
+                  data-termtitle="infoAgree"
+                >
                   전체보기
                 </button>
               </div>
@@ -93,7 +101,57 @@
                 >
               </div>
               <div class="agreement_column">
-                <button type="button" class="readDetail btn_text">
+                <button
+                  type="button"
+                  class="readDetail btn_text"
+                  data-termtitle="locationAgree"
+                >
+                  전체보기
+                </button>
+              </div>
+            </div>
+            <div class="agreement_box">
+              <div class="agreement_column">
+                <input
+                  type="checkbox"
+                  id="InfoOfferAgree"
+                  name="InfoOfferAgree"
+                  class="checkSelective checkbox"
+                  value="checked"
+                />
+                <label class="check_off" for="InfoOfferAgree"
+                  >(선택)개인정보의 제3자 제공에 동의합니다.</label
+                >
+              </div>
+              <div class="agreement_column">
+                <button
+                  type="button"
+                  class="readDetail btn_text"
+                  data-termtitle="InfoOfferAgree"
+                >
+                  전체보기
+                </button>
+              </div>
+            </div>
+            <div class="agreement_box">
+              <div class="agreement_column">
+                <input
+                  type="checkbox"
+                  id="outsourceAgree"
+                  name="outsourceAgree"
+                  class="checkSelective checkbox"
+                  value="checked"
+                />
+                <label class="check_off" for="outsourceAgree"
+                  >(선택)개인정보 처리 위탁에 동의합니다.</label
+                >
+              </div>
+              <div class="agreement_column">
+                <button
+                  type="button"
+                  class="readDetail btn_text"
+                  data-termtitle="outsourceAgree"
+                >
                   전체보기
                 </button>
               </div>
@@ -108,11 +166,15 @@
                   value="checked"
                 />
                 <label class="check_off" for="newsAgree"
-                  >(선택)SMS, 이메일 정보수신에 동의합니다.</label
+                  >(선택)SMS, 이메일 마케팅 정보수신에 동의합니다.</label
                 >
               </div>
               <div class="agreement_column">
-                <button type="button" class="readDetail btn_text">
+                <button
+                  type="button"
+                  class="readDetail btn_text"
+                  data-termtitle="newsAgree"
+                >
                   전체보기
                 </button>
               </div>
@@ -139,10 +201,10 @@
       crossorigin="anonymous"
     ></script>
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-    <!--  <script
+    <script
       type="text/javascript"
       src="../../static/js/memberJoin_front.js"
-    ></script> -->
+    ></script>
     <script src="../../static/js/layout_front.js"></script>
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>

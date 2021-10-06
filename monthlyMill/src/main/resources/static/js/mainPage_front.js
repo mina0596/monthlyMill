@@ -8,27 +8,20 @@ $(document).ready(function(){
     /* 상단 슬라이드 */
     $('.slider_list').slick({
         autopaly:true,
-        infinite:true,
-        appendArrows:$('.slider_arrows'),
-        prevArrow: `
-            <div class="slider_button prev slick-prev" id="slidePrev">
-                <i class="fas fa-chevron-left"></i>
-            </div>`,
-        nextArrow: `
-            <div class="slider_button next slick-next" id="slideNext">
-                <i class="fas fa-chevron-right"></i>
-            </div>`
+        dots:true,
+        // prevArrow: $("#slidePrev"),
+        // nextArrow: $("#slideNext"),
     });
 
     makeSlideNumber();
 
-    $('.slider_button').click(function(){
-        updateSlideNumber();
-    });
+    // $('.slider_button').click(function(){
+    //     updateSlideNumber();
+    // });
     
-    //로그인 상태일 경우 
-    //showSearchTags();
-    //hideSearchTextbox();
+    // 로그인 상태일 경우 
+    // showSearchTags();
+    // hideSearchTextbox();
 });
 
 
