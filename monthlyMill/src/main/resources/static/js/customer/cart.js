@@ -30,7 +30,8 @@ $(function(){
 		});
 		
 		request.done(function(data){
-		})
+			location.href="/customer/payment/paymentInfo";
+		});
 		
 		request.fail(function(){
 			alert('서버오류입니다.');

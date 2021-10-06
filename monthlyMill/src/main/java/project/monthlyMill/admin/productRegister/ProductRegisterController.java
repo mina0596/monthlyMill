@@ -4,6 +4,8 @@ import java.io.File;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -32,12 +34,21 @@ public class ProductRegisterController {
 		String path = "images/" + current.format(DateTimeFormatter.ofPattern("yyyMMdd"));
 		File file = new File(path);
 		
+
+		if(!file.exists()) {
+			file.mkdirs();
+		}
+		
+		
 		log.info("update ajax post" + uploadFile.getOriginalFilename());
 		log.info("update ajax post" + uploadFile.getSize());
 		
-		file = new File(path + "/" + uploadFile.getOriginalFilename());
+		file = new File( "/ehddnr0819/" + path +  "/" + uploadFile.getOriginalFilename());
+		
+
 		try {
-			uploadFile.transferTo(file);
+			FileUtils.writeByteArrayToFile(file, uploadFile.getBytes());
+			//uploadFile.transferTo(file);
 		}catch (Exception e) {
 			log.error(e.getMessage());
 		} 

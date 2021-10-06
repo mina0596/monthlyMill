@@ -79,6 +79,9 @@ public class CartController {
 		
 	}
 	
-	
+	@PostMapping("/cartList")
+	public String getCartList() {
+		return "redirect:/customer/payment/paymentInfo";
+	}
 }
 
