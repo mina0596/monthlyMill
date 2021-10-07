@@ -60,24 +60,32 @@ public class RecommendationController {
 	public List<Product> getSelectedTags(@RequestBody Map<String,Object> selectedTags, Model model) {
 		List<String> selectedTagsList = (List<String>) selectedTags.get("selectedTagsList");
 		List<String> selectedMidClass = (List<String>) selectedTags.get("selectedMidClassList");
+		List<String> selectedTagsName = (List<String>) selectedTags.get("selectedTagsName");
 		log.info("태그코드 넘어오는거 확인해보자: {}", selectedTagsList);
 		log.info("태그 중카테고리값 넘어오는거 확인해보자: {}", selectedMidClass);
+		log.info("태그명 넘어오는거 확인해보자: {}", selectedTagsName);
 		
 		List<Map<String,String>> selectedTagsInfo = new ArrayList<Map<String,String>>();
 		Map<String,String> selectedTagsMap = null;
+		
 		for(int j=0; j<selectedTagsList.size(); j++) {
 			selectedTagsMap = new HashMap<String,String>();
 			selectedTagsMap.put("hashtagMidClass", selectedMidClass.get(j));
 			selectedTagsMap.put("hashtagNum", selectedTagsList.get(j));
+			selectedTagsMap.put("hashtagName", selectedTagsName.get(j));
 			log.info("{}", j, "번쨰 list확인:{}", selectedTagsInfo);
 			if(!selectedTagsInfo.contains(selectedTagsMap)) {
 				selectedTagsInfo.add(selectedTagsMap);
 			}
 		}
-		
 		log.info("키와 값으로 만들어놓은 태그정보 확인해보자: {}", selectedTagsInfo);
 		
 		List<Product> rcmdResult = rcmdService.getRcmdProductInfo(selectedTagsInfo);
+		
+		
+		
+		
+		
 		log.info("service단에서 가녀오는거 확인:{}", rcmdResult);
 		model.addAttribute("rcmdResult", rcmdResult);
 		return rcmdResult;

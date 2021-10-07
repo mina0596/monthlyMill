@@ -13,28 +13,56 @@
 		<result property="pTexture" 		column="product_texture"/>
 		<result property="pTaste" 			column="product_taste"/>
 	</resultMap>
+	
 	<select id="getRcmdProductInfo" parameterType="map" resultMap="productResultMap">
 		SELECT product_code, product_name, product_price, product_ingredient, product_nutrition, product_prefer_age, product_main_usage, product_texture, product_taste
 		FROM product_info
 			WHERE
 			<trim suffixOverrides="AND">
 				<foreach item="item" index="key" collection="list" separator="">
-					<if test="item.pPreferAge != null and item.pPreferAge != ''.toString()">
-						product_prefer_age LIKE concat ('%', #{item.pPreferAge}, '%') AND
+					<if test="item.pPrice != null and item.pPrice != ''.toString()">
+						product_price 
+						<if test="item.pPrice == 'tag00018'">
+							<![CDATA[ < 10000 ]]> AND
+						</if>
+						<if test="item.pPrice == 'tag00019'">
+							<![CDATA[ between 10000  and 30000 ]]> AND
+						</if>
+						<if test="item.pPrice == 'tag00020'">
+							<![CDATA[ between 30000  and 50000 ]]> AND
+						</if>
+						<if test="item.pPrice == 'tag00021'">
+							<![CDATA[ between 50000  and 100000 ]]> AND
+						</if>
+						<if test="item.pPrice == 'tag00022'"> 
+							<![CDATA[ > 100000 ]]> AND
+						</if>
+						<if test="item.pPrice == 'tag00026'">
+							<![CDATA[ > 1 ]]> AND
+						</if>
 					</if>
-					<if test="item.pMainUsage != null and item.pMainUsage != ''.toString()">
-						product_main_usage LIKE concat ('%', #{item.pMainUsage}, '%') AND
-					</if>
-					<if test="item.pTexture != null and item.pTexture != ''.toString()">
-						product_texture LIKE concat ('%', #{item.pTexture}, '%') AND
-					</if>
-					<if test="item.pTaste != null and item.pTaste != ''.toString()">
-						product_taste LIKE concat ('%', #{item.pTaste}, '%') AND
+					<if test="item.tagNames != null and item.tagNames != ''.toString()">
+						product_hashtag LIKE concat ('%', #{item.tagNames}, '%') AND
 					</if>
 				</foreach>
 			</trim>
 	</select>
 	
+	<!-- 
+	<select id="getRcmdProductInfo" parameterType="list" resultMap="productResultMap">
+		SELECT product_code, product_name, product_price, product_ingredient, product_nutrition, product_prefer_age, product_main_usage, product_texture, product_taste
+		FROM product_info
+			WHERE
+			<trim suffixOverrides="AND">
+				<foreach item="item" index="key" collection="list" separator="">
+					<if test="item != null and item != ''.toString()">
+						product_prefer_age LIKE concat ('%', #{item}, '%') AND
+					</if>
+				</foreach>
+			</trim>
+	</select>
+	
+	 -->
 	
 	<!-- <select id="getRcmdProductInfo" parameterType="map" resultMap="productResultMap">
 		SELECT product_code, product_name, product_price, product_ingredient, product_nutrition, product_prefer_age, product_main_usage, product_texture, product_taste
@@ -56,4 +84,7 @@
 				</if>
 			</trim>
 	</select> -->
+	
+	
+	
 </mapper>
