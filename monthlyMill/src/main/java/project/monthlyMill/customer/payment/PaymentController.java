@@ -127,6 +127,7 @@ public class PaymentController {
 	// 7. 입금 확인 되었다는 메세지 페이지
 	@GetMapping("/paymentConfirm")
 	public String paymentConfirm() {
+		
 		return "/customer/payment_confirm";
 	}
 	
