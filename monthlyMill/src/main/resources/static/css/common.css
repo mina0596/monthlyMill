@@ -224,6 +224,9 @@ input[type="radio"]:checked + label.btn.square {
   color: var(--text-emp-color);
   font-weight: 600;
 }
+.text.empLight {
+  color: #17c520;
+}
 .text.emp.black {
   color: var(--btn-sub-color);
 }

@@ -86,12 +86,12 @@
             <div class="text_box_column top">
               <p>
                 월간방앗간이 추천드리는 <br />
-                <span class="text emp">#나만의 떡</span> <br />
+                <span class="text sm empLight">#나만의 떡</span> <br />
                 같이 찾으러 가봐요.
               </p>
             </div>
             <a
-              class="text_box_column bottom"
+              class="text_box_column bottom boxborder"
               th:href="@{/customer/recommend/findItem}"
               >나만의 떡 찾으러 가기
               <i class="fas fa-chevron-right"></i>
@@ -107,11 +107,15 @@
               <input
                 type="text"
                 class="search_bar"
-                placeholder="#해시태그 살펴볼까요?"
+                placeholder="나에게 어울리는 떡을 찾아 검색해주세요."
               />
             </div>
             <div class="search_blur">
-            <div class="hidden loginCheck" th:if="${loginCheck != null or loginCheck != ''}" th:value="${loginCheck}"></div>
+              <div
+                class="hidden loginCheck"
+                th:if="${loginCheck != null or loginCheck != ''}"
+                th:value="${loginCheck}"
+              ></div>
               <div class="search_textbox_wrap">
                 <div class="search_textbox btn_white">
                   <span>회원가입 후 확인이 가능해요!</span>
@@ -122,9 +126,9 @@
                 </div>
               </div>
               <div class="search_hash_blur">
-                <span class="hash">블러해시</span>
-                <span class="hash">블러해시</span>
-                <span class="hash">블러해시</span>
+                <!-- <span class="hash hash_blur">블러해시</span>
+                <span class="hash hash_blur">블러해시</span>
+                <span class="hash hash_blur">블러해시</span> -->
               </div>
             </div>
           </div>
