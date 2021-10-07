@@ -3,7 +3,7 @@
  */
 $(function(){
 	// *********** 완전 tbody를 없앴다가, 검색을 누르면 띄우는게 낫지않을까?
-	
+	$('.result_list_box').addClass("hidden");
 	$('.result_item').remove();
 	var selectedTagsName = [];
 	var selectedTags = [];
@@ -13,15 +13,20 @@ $(function(){
 	
 	$('.hashCheck').change(function(){
 		if($(this).val()=='tag00027'){
-			$('.checkRange').removeClass('hidden');
+			if($(this).prop("checked")){
+                $('.checkRange').removeClass('hidden');
+			}else{
+				$('.checkRange').addClass('hidden');
+			}
 		}
 	})
-	
+
 	
 	$(document).on('click', '#resultBtn',  function(){
 		document.querySelector('.result_hash_list').innerHTML='';
 		//document.getElementsByClassName('hash').remove;
 		//$('.hash').remove();
+		$('.result_list_box').removeClass("hidden");
 		$('.result_beforeText').remove();
 		$('.result_item').remove();
 		html='';

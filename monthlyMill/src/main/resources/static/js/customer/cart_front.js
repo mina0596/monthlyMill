@@ -1,12 +1,13 @@
 //기능 실행
 function init(){
+    changeitemTotalNumber();
+    
     if(document.querySelectorAll("tr.result_item").length === 0){
         cartNoItem();
     }else{
         document.querySelectorAll("tr.result_item").forEach((item)=>{
             calculateItemSumPrice(item);
-        });
-        changeitemTotalNumber();
+        });    
 
         //이벤트 리스너
         $(document).on("click", ".itemMinusBtn", function(){

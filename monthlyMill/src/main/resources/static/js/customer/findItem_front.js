@@ -7,6 +7,6 @@ function setPriceInputHidden(){
     }
 }
 
-$(document).on("change", 'input[name="price"]' , function(){
+$(document).on("change", '.checkRange' , function(){
     setPriceInputHidden();
 });
