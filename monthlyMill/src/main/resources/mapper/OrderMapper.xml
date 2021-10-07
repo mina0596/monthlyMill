@@ -47,7 +47,7 @@
 		UPDATE order_info
 		SET
 			payment_check='Y',
-			order_modify_date=CURDATE(),
+			order_modify_date=CURDATE()
 		WHERE member_num=#{memberNum} 
 		and payment_check='N';
 	</update>
