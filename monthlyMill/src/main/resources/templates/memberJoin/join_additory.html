@@ -111,7 +111,7 @@
           <!-- 반복되는부분 -->
           
           	<div th:each="ml : ${midClassList}">
-	            <h4 class="h4_title text boxborder"  th:text="${ml}"></h4>
+	            <h4 class="h4_title text boxborder"  th:text="${ml}" th:if="${ml != '가격'}"></h4>
 	            <ol class="hash_list">
 	              <li class="checkHash" th:each="l : ${tagNames}"
 	                th:if="${ml == l.hashtagMidClass and l.hashtagMidClass != '가격'}">
