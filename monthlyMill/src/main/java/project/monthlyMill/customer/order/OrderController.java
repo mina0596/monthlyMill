@@ -11,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import project.monthlyMill.dto.Order;
 
@@ -41,10 +43,16 @@ public class OrderController {
 	@GetMapping("/cancelOrderForm")
 	public String cancelOrder(@RequestParam(name = "deleteOrderNum", required = false)String deleteOrderNum
 							, Model model) {
-		log.info("주문리스트 화면에서 취소버튼 누른 주문번호 받아오는지 확인:{}", deleteOrderNum);
 		List<HashMap<String,Object>> cancelOrderInfo = orderService.getOrderByOrderNum(deleteOrderNum);
-		model.addAttribute("info", cancelOrderInfo);
 		return "/customer/cancelOrder";
+	}
+	
+	@PostMapping("/getCancelInfo")
+	@ResponseBody
+	public List<HashMap<String, Object>> getCancelInfo(@RequestParam(name = "orderNum", required = false)String orderNum){
+		log.info("주문리스트 화면에서 취소버튼 누른 주문번호 받아오는지 확인:{}", orderNum);
+		List<HashMap<String, Object>> resultList = orderService.getOrderByOrderNum(orderNum);
+		return resultList;
 	}
 	
 	@GetMapping("/cancelOrderList")

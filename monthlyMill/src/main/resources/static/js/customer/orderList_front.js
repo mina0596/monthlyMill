@@ -18,6 +18,8 @@ $(document).on("click", '#period_self' , function(){
 
 //주문취소 버튼 주문번호 값넘기기
 $(document).on("click", '.orderCancelBtn', function(){
-    const canceldOrderNumber = $(".orderNumber").text();  
+    const canceldOrderNumber = $(this).parent().parent().find('.orderNumber').text();  
+	console.log(canceldOrderNumber);
     localStorage.setItem("canceldOrderNumber", canceldOrderNumber);
+	location.href='/customer/order/cancelOrderForm';
 })
