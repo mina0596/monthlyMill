@@ -66,7 +66,7 @@ public class SignupService {
 		inputInfo.setMemberPostalCode(String.valueOf(inputBasicInfo.get("inputPostCode")));
 		inputInfo.setMemberAddr(String.valueOf(inputBasicInfo.get("inputAddress")));
 		inputInfo.setMemberDetailAddr(String.valueOf(inputBasicInfo.get("inputAddressDetail")));
-		inputInfo.setMemberCateNum((int)session.getAttribute("memberCate"));
+		inputInfo.setMemberCateNum(Integer.parseInt(session.getAttribute("memberCate").toString()));
 		
 		
 		//세션에 환불정보 저장하기
