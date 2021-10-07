@@ -82,7 +82,7 @@ public class PaymentController {
 			orderInfo.setReceiverPhoneNum(String.valueOf(params.get("receiverPhone")));
 			orderInfo.setReceiverPostalCode(String.valueOf(params.get("receiverPostalCode")));
 			orderInfo.setReceiverDetailAddr(String.valueOf(params.get("receiverDetailAddr")));
-			orderInfo.setOrderNum(orderService.selectOrderNum());
+			orderInfo.setOrderNum(orderService.selectOrderNum(Integer.parseInt(session.getAttribute("SMNUM").toString())));
 			for(int i=0; i<cartList.size(); i++) {
 				orderInfo.setCartNum(Integer.parseInt(cartList.get(i)));
 				Cart cartInfo = cartService.getCartInfoByCartNum(Integer.parseInt(cartList.get(i)));
