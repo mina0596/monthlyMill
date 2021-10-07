@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -40,6 +41,7 @@ public class OrderController {
 		return "/customer/orderList";
 	}
 	
+// 취소 신청양식 화면으로 이동
 	@GetMapping("/cancelOrderForm")
 	public String cancelOrder(@RequestParam(name = "deleteOrderNum", required = false)String deleteOrderNum
 							, Model model) {
@@ -47,6 +49,9 @@ public class OrderController {
 		return "/customer/cancelOrder";
 	}
 	
+	
+	
+// 취소신청양식에 orderNum 을 이용해 select한 리스트 화면에 보내주기
 	@PostMapping("/getCancelInfo")
 	@ResponseBody
 	public List<HashMap<String, Object>> getCancelInfo(@RequestParam(name = "orderNum", required = false)String orderNum){
@@ -55,8 +60,31 @@ public class OrderController {
 		return resultList;
 	}
 	
+// 주문취소 신청하기 버튼 눌러 취소 테이블에 insert
+	@PostMapping("/requestRefund")
+	@ResponseBody
+	public String getRefundRequest(@RequestBody HashMap<String, Object> requestInfo
+								, HttpSession session) {
+		log.info("주문취소 신청하기 버튼을 누르면 취소에 대한 정보 가져오는지 확인:{}", requestInfo);
+		requestInfo.put("memberNum", Integer.parseInt(session.getAttribute("SMNUM").toString()));
+		orderService.addCancelRequest(requestInfo);
+		return "success";
+	}
+
+// 취소신청 완료하면 화면이동
+	@PostMapping("/cancelOrderForm")
+	public String finishCancelOrder() {
+		return "redirect:/customer/order/cancelOrderList";
+	}
+	
 	@GetMapping("/cancelOrderList")
-	public String cancelOrderList() {
+	public String cancelOrderList(Model model, HttpSession session) {
+		int memberNum = Integer.parseInt(session.getAttribute("SMNUM").toString());
+		List<HashMap<String, Object>> cancelOrderInfo = orderService.getCancelListByMemberNum(memberNum);
+		List<HashMap<String, Object>> cancelOrderNum = orderService.getCanceledOrderNum(memberNum);
+		
+		model.addAttribute("cancelOrderInfo", cancelOrderInfo);
+		model.addAttribute("cancelOrderNum", cancelOrderNum);
 		return "/customer/cancelOrderList";
 	}
 	

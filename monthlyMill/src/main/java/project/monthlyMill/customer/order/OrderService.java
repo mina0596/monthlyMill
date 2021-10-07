@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,5 +53,19 @@ public class OrderService {
 		return orderMapper.getOrderByOrderNum(orderNum);
 	}
 
+	// 7. 주문 취소 신청하기
+	public void addCancelRequest(HashMap<String, Object> infoMap) {
+		orderMapper.addCancelRequest(infoMap);
+	}
+	
+	// 8. 주문 취소 정보 가져오기
+	public List<HashMap<String, Object>> getCancelListByMemberNum(int memberNum){
+		return orderMapper.getCancelListByMemberNum(memberNum);
+	}
+	
+	// 9. 주문 취소 주문번호만 가져오기
+	public List<HashMap<String, Object>> getCanceledOrderNum(int memberNum){
+		return orderMapper.getCanceledOrderNum(memberNum);
+	}
 	
 }

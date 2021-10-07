@@ -44,8 +44,46 @@ $(function(){
 	
 	// ******************* 주문취소 양식 완성후 제출******************
 	$('.cancelRequestBtn').click(function(){
-		console.log($('select[class="inputCancelReason"]').val());
+		
+		var submitFlag = true;
+		if($('select[class="inputCancelReason"]').val() == '' || $('select[class="inputCancelReason"]').val() == undefined){
+			alert('취소사유를 선택해주세요');
+			submitFlag = false;
+			return submitFlag;
+		}else if(!$('.cancelTermAgree').is(':checked')){
+			alert('주문 취소 신청동의에 체크해주세요');
+			submitFlag = false;
+			return submitFlag;
+		}
+		
+		
+		if(submitFlag){
+			var param = {
+				'orderNum': $('.orderNumber').text(),
+				'refundPrice': $('.total_price_number').text(),
+				'cancelReason': $('select[class="inputCancelReason"]').val(),
+				'cancelDetailReason': $('.inputTextArea').val(),
+				'refundMethod': $('.refund_method').text()
+			}
+			
+			$.ajax({
+				url: "/customer/order/requestRefund",
+				method: "POST",
+				data: JSON.stringify(param),
+				traditional: true,
+				contentType: "application/json",
+				dataType: "text",
+				success: function(data){
+					if(data == 'success'){
+						$('#getCancelInfo').submit();
+					}
+				}
+			});
+		};
 		
 	})
+	
+	
+	// ******************* 주문취소 목록 ********************
 	
 });

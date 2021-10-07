@@ -25,13 +25,11 @@
 	
 	<select id="selectOrderSequence" resultType="String" parameterType="int">
 		SELECT
-			if(COUNT(0)=0, '1', substring(MAX(oi.order_num), 11)+1)
+			if(COUNT(0)=0, '0001', cast(substring(MAX(oi.order_num), 11, 14) as decimal)+1)
 		FROM
 			order_info AS oi
 			where
-				oi.order_reg_date = CURDATE()
-				and
-				oi.member_num = #{memberNum};
+				oi.order_reg_date = CURDATE();
 	</select>
 	
 	<insert id="addOrder" parameterType="Order">
@@ -107,8 +105,41 @@
 		WHERE o.order_num = #{orderNum};
 	</select>
 	
+	<insert id="addCancelRequest" parameterType="map">
+		INSERT INTO order_cancel
+			(idx, order_num, requested_member_num, cancel_reason, detail_reason, total_refund_price, refund_method, approval_check, approved_date, requested_date, approved_member_num)
+		VALUES 
+			(NULL, #{orderNum}, #{memberNum}, #{cancelReason}, #{cancelDetailReason}, #{refundPrice}, '무통장 입금', 'N', NOW(), NOW(), null);
+	</insert>
 	
+	<select id="getCancelListByMemberNum" parameterType="int" resultType="map">
+		SELECT 
+			c.order_num AS orderNum,
+			c.requested_date AS requestedDate,
+			p.product_name AS pName,
+			o.product_count AS pCount
+		FROM
+			order_cancel AS c
+			INNER join
+			order_info AS o
+			on
+			c.order_num = o.order_num
+			INNER join
+			product_info AS p
+			on
+			o.product_code = p.product_code
+			where
+			c.requested_member_num = #{memberNum}
+	</select>
 	
-	
+	<select id="getCanceledOrderNum" parameterType="int" resultType="map">
+		SELECT 
+			DISTINCT(c.order_num) AS orderNum,
+			c.requested_date AS requestedDate
+		FROM
+			order_cancel AS c
+			where
+			c.requested_member_num = #{memberNum}
+	</select>
 	
 </mapper>

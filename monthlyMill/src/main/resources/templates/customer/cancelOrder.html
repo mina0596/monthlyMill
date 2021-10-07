@@ -16,7 +16,7 @@
     <header></header>
 
     <section class="content_box">
-      <form action="">
+      <form th:action="@{/customer/order/cancelOrderForm}" method="post" id="getCancelInfo">
         <div class="payment_wrap">
           <h1 class="h1_title text big">주문취소 신청</h1>
           <div class="main_box orderer_box">
@@ -126,7 +126,7 @@
             <div class="cancel_column">
               <div>
                 <span class="text">결제수단:</span>
-                <span class="text">무통장 입금</span>
+                <span class="refund_method">무통장 입금</span>
               </div>
 
               <div>
