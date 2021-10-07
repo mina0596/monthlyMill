@@ -11,7 +11,7 @@ localStorage.setItem("matchScenarioNum", tmp);
 
 
 //시간설정
-const timeoutTime = 1000;
+const timeoutTime = 10000;
 
 //랜덤하게 매칭 시나리오 실행됨
 $(function () {
