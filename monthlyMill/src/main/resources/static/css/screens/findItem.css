@@ -15,6 +15,7 @@
 .findItem_box .hash_box {
   justify-content: space-evenly;
 }
+
 .hash_box {
   display: flex;
   flex-direction: row;
@@ -41,10 +42,24 @@
   margin: 0.25em 0;
   text-align: center;
   font-weight: 600;
-  /*
-  padding: 3px 0;
-  border: 1px solid var(--btn-common-color);
-  border-radius: 5px;*/
+}
+
+@media screen and (max-width: 768px) {
+  .findItem_box .hash_box {
+    flex-direction: column;
+  }
+  .findItem_box .hash_column {
+    flex-direction: row;
+    margin-right: 0;
+    min-width: 0;
+  }
+  .hash_column li:not(.hidden) {
+    width: auto;
+  }
+  .hash_column li:first-child {
+    width: 100%;
+    margin-top: 0.5em;
+  }
 }
 
 .hash_column .checkHash,
@@ -111,6 +126,18 @@
 .checkRange input {
   width: 5em;
   text-align: center;
+}
+@media screen and (max-width: 768px) {
+  .hash_column .checkRange {
+    flex-direction: row;
+    margin-left: 0.5em;
+  }
+  .checkRange > span {
+    margin: 0 0.25em;
+  }
+  .checkRange .vertical {
+    writing-mode: horizontal-tb;
+  }
 }
 
 .button_box.find_result_button {
