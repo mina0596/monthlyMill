@@ -74,3 +74,6 @@
 .failMatch .matchBtn {
   background-color: royalblue;
 }
+.matchText {
+  margin: 1em 0;
+}
