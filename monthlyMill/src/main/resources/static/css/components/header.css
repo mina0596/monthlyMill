@@ -86,6 +86,9 @@ header a {
   .gnb_menu {
     margin-right: 1em;
   }
+  .gnb_menu > li > a {
+    color: #000;
+  }
 }
 
 /* 모바일용 gnb 사이드 메뉴 */
@@ -174,7 +177,7 @@ header a {
     justify-content: flex-end;
     align-items: center;
   }
-  .gnb_side__top_btns a {
+  .gnb_side__top a {
     color: #fff;
   }
   .gnb_side__top_btns li:first-child,
@@ -204,6 +207,9 @@ header a {
   .gnb_side__menu li {
     padding: 1em 0.5em;
     border-bottom: 1px solid var(--compo-common-color);
+  }
+  .gnb_side__menu a {
+    color: #000;
   }
 }
 @media screen and (max-width: 480px) {

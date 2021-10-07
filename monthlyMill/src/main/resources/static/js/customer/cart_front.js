@@ -1,26 +1,30 @@
 //기능 실행
 function init(){
-    document.querySelectorAll("tr.result_item").forEach((item)=>{
-        calculateItemSumPrice(item);
-    });
-    changeitemTotalNumber();
+    if(document.querySelectorAll("tr.result_item").length === 0){
+        cartNoItem();
+    }else{
+        document.querySelectorAll("tr.result_item").forEach((item)=>{
+            calculateItemSumPrice(item);
+        });
+        changeitemTotalNumber();
 
-    //이벤트 리스너
-    $(document).on("click", ".itemMinusBtn", function(){
-        minusCartItem(this);
-        calculateItemSumPrice(this.parentNode.parentNode.parentNode);
-    });
-    $(document).on("click", ".itemPlusBtn", function(){
-        plusCartItem(this);
-        calculateItemSumPrice(this.parentNode.parentNode.parentNode);
-    });
-    $(document).on("click", ".deleteItemBtn", function(){
-        deleteCartItem(this);
-        calculateItemTotalPrice();
-    });
-    $(document).on("click", ".deleteItemAllBtn", function(){
-        deleteCartItemAll(this);
-    });
+        //이벤트 리스너
+        $(document).on("click", ".itemMinusBtn", function(){
+            minusCartItem(this);
+            calculateItemSumPrice(this.parentNode.parentNode);
+        });
+        $(document).on("click", ".itemPlusBtn", function(){
+            plusCartItem(this);
+            calculateItemSumPrice(this.parentNode.parentNode);
+        });
+        $(document).on("click", ".deleteItemBtn", function(){
+            deleteCartItem(this);
+            calculateItemTotalPrice();
+        });
+        $(document).on("click", ".deleteItemAllBtn", function(){
+            deleteCartItemAll(this);
+        });
+    }
 }
 
 init();

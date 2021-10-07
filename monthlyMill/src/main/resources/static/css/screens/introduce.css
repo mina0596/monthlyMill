@@ -71,10 +71,7 @@
   padding: 0.5em;
   text-align: center;
 }
-
-@media screen and (max-width: 768px) {
-  .main_story_box {
-  }
+@media screen and (max-width: 1000px) {
   .main_story_box {
     flex-direction: column-reverse;
   }
@@ -86,7 +83,8 @@
     width: 100%;
     background-position: center center;
   }
-
+}
+@media screen and (max-width: 768px) {
   .main_story_box .text_box .title {
     font-size: 1.35em;
   }
