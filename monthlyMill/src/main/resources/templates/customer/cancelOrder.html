@@ -105,13 +105,13 @@
             <div class="box_row">
               <select name="" id="" class="inputCancelReason required">
                 <option value="">선택해주세요.</option>
-                <option value="">고객단순변심</option>
-                <option value="">상품불만족</option>
-                <option value="">고객주문오류</option>
-                <option value="">다른 곳보다 비쌈</option>
-                <option value="">쿠폰, 할인 혜택이 변경됨</option>
-                <option value="">배송이 늦어짐</option>
-                <option value="">기타</option>
+                <option value="고객단순변심">고객단순변심</option>
+                <option value="상품불만족">상품불만족</option>
+                <option value="고객주문오류">고객주문오류</option>
+                <option value="다른 곳보다 비쌈">다른 곳보다 비쌈</option>
+                <option value="쿠폰, 할인 혜택이 변경됨">쿠폰, 할인 혜택이 변경됨</option>
+                <option value="배송이 늦어짐">배송이 늦어짐</option>
+                <option value="기타">기타</option>
               </select>
               <!-- 최대 500자 -->
               <textarea
@@ -164,7 +164,7 @@
               돌아가기
             </a>
             <!--누르면 취소진행-->
-            <button type="submit" class="btn mid emp cancelRequestBtn">
+            <button type="button" class="btn mid emp cancelRequestBtn">
               주문취소 신청하기
             </button>
           </div>
@@ -181,7 +181,7 @@
     <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
     <script
       type="text/javascript"
-      th:src="@{/js/customer/orderList.js}"
+      th:src="@{/js/customer/cancelOrder.js}"
     ></script>
     <script
       type="text/javascript"
