@@ -19,10 +19,10 @@
       <div class="loading_wrap">
         <!-- 대기 및 로딩 중일때 뜨는 부분 -->
         <div class="text_box nowLoading">
-          <p>고객님의 입금내역을 확인중입니다.</p>
+          <p>고객님에게 알맞은 메이커스를 찾고 있습니다.</p>
           <p>잠시만 기다려주세요. 약 2~3분이 소요됩니다.</p>
           <p>
-            페이지가 자동으로 넘어가지 않는 경우, 모래시계를 눌러서 승인내역을
+            페이지가 다음으로 넘어가지 않는 경우, 모래시계를 눌러 매칭결과를
             확인하세요.
           </p>
           <div class="animation_box">
@@ -34,21 +34,42 @@
             </div>
           </div>
         </div>
+
+        <div class="main_box">
+          <!-- 매칭할 때: 로딩 종료 시 뜨는 부분 -->
+          <div class="endLoading hidden">
+            <button type="button" class="btn big matchBtn">재매칭</button>
+            <p class="matchText">재매칭은 최대 2회까지 가능합니다.</p>
+          </div>
+
+          <!-- <div class="endLoading reMatch hidden">
+            <button type="button" class="btn big matchBtn">재매칭</button>
+            <p>재매칭은 최대 2회까지 가능합니다.</p>
+          </div>
+
+          <div class="endLoading successMatch hidden">
+            <button type="button" class="btn big matchBtn">매칭완료</button>
+            <p>매칭 성공 시 멘트</p>
+          </div>
+
+          <div class="endLoading failMatch hidden">
+            <button type="button" class="btn big matchBtn">매칭실패</button>
+            <p>3번 실패 시 멘트</p>
+          </div> -->
+        </div>
       </div>
     </section>
     <footer></footer>
 
     <!-- <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="../../static/js/layout_front.js"></script>-->
+    <script src="../../static/js/layout_front.js"></script>
+    <script src="../../static/js/customer/loading_front.js"></script> -->
 
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
-
-    <!--  5초 후에 페이지 이동하게 설정해둠   -->
-    <script type="text/javascript">
-      $(function () {
-        setTimeout('location.href="/customer/payment/paymentConfirm"', 5000);
-      });
-    </script>
+    <script
+      type="text/javascript"
+      th:src="@{/js/customer/loading_front.js}"
+    ></script>
   </body>
 </html>
