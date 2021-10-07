@@ -4,8 +4,14 @@ const matchBtn = document.querySelector(".matchBtn");
 const matchText = document.querySelector(".matchText");
 let matchCount = 0; 
 
+const matchScenarioNum = localStorage.getItem("matchScenarioNum");
+const tmp = parseInt(matchScenarioNum)+1;
+console.log(tmp, tmp % 4);
+localStorage.setItem("matchScenarioNum", tmp);
+
+
 //시간설정
-const timeoutTime = 10000;
+const timeoutTime = 1000;
 
 //랜덤하게 매칭 시나리오 실행됨
 $(function () {
@@ -14,8 +20,31 @@ $(function () {
 
 //랜덤 시나리오
 function randomScenario(){
-    const ScenarioCase = Math.floor(Math.random() * 2);
-    // console.log("matchCount:", matchCount, ScenarioCase);
+    let ScenarioCase = Math.floor(Math.random() * 2);
+    
+    if((matchScenarioNum % 4) === 0){
+        //실패-성공
+        if(matchCount<1){
+            ScenarioCase = 0;
+        }else{
+            ScenarioCase = 1;
+        }
+    }else if((matchScenarioNum % 4) === 1){
+        //실패-실패-실패
+        ScenarioCase = 0;
+    }else if((matchScenarioNum % 4) === 2){
+        //성공
+        ScenarioCase = 1;
+    }else if((matchScenarioNum % 4) === 3){
+        //실패-실패-성공
+        if(matchCount<2){
+            ScenarioCase = 0;
+        }else{
+            ScenarioCase = 1;
+        }
+    }
+
+     console.log(matchScenarioNum%4,"matchCount:", matchCount, ScenarioCase ? true : false );
     if(ScenarioCase === 1){
         //1. 매칭성공
         setTimeout('loadingComplete(true)', timeoutTime);
@@ -23,6 +52,7 @@ function randomScenario(){
         //2. 재매칭 
         setTimeout('loadingComplete(false)', timeoutTime);
     }
+    
 }
 
 //로딩 중 아이콘 누르면 새로고침됨

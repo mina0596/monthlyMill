@@ -1,27 +1,35 @@
 //변수 선언
 let curSlidePos = 0;
 const IMAGE_NUMBER = document.querySelector(".slider_list").children.length;
+const isLogin = document.querySelector('.loginCheck').getAttribute("value");
 
+//이건...매칭 테스트 시나리오용
+localStorage.setItem("matchScenarioNum", 0);
 
 $(function(){
 
     /* 상단 슬라이드 */
     $('.slider_list').slick({
-        autopaly:true,
+         autopaly:true,
          prevArrow: $("#slidePrev"),
          nextArrow: $("#slideNext"),
     });
-
+    // 슬라이드 번호
     makeSlideNumber();
-    addSearchHash();
-
     $('.slider_button').click(function(){
         updateSlideNumber();
     });
     
-    // 로그인 상태일 경우 
-    // showSearchTags();
-    // hideSearchTextbox();
+    addSearchHash();
+
+    // 로그인 상태일 때는 value에 값 있음
+    if((isLogin !== null)&&(isLogin !== "")&&(isLogin !== " ")){
+        showSearchTags();
+        hideSearchTextbox();
+        $(".search_box").click(function(){
+            location.href = '/customer/recommend/findItem';
+        })
+    }
 });
 
 
@@ -51,21 +59,24 @@ function addSearchHash(){
         document.querySelector(".search_hash_blur").appendChild(item);
     });
 }
-//해시태그 보이기
+//블러처리 해시태그 보이기
 function showSearchTags(){   
-    const serchTag = document.createElement("div");
-    serchTag.className = "search_tag";
-    serchTag.innerHTML = `<span class="tag">${'#추천키워드'}</span>`;
-    document.querySelector(".search_box").appendChild(serchTag);
-
+    document.querySelectorAll(".hash_blur").forEach((item)=>{
+        if(item.classList.contains("hash_blur")){
+            item.classList.remove("hash_blur");
+        }
+    });
+    // const serchTag = document.createElement("div");
+    // serchTag.className = "search_tag";
+    // serchTag.innerHTML = `<span class="tag">${'#추천키워드'}</span>`;
+    // document.querySelector(".search_box").appendChild(serchTag);
 }
 
-
-/* 하단 메인 */
-function hideSearchTextbox(){
-    //로그인 시 가려지도록
-    document.querySelector(".search_textbox").classList.add("hidden");
+//비회원 상태시 보여주는 문구 삭제
+function hideSearchTextbox(){ 
+    document.querySelector(".search_textbox_wrap").classList.add("hidden");
 }
+
 
 
 
