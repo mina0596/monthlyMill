@@ -40,8 +40,12 @@ $(function(){
 			}
 		}
 		
-	})
+	});
 	
-
+	// ******************* 주문취소 양식 완성후 제출******************
+	$('.cancelRequestBtn').click(function(){
+		console.log($('select[class="inputCancelReason"]').val());
+		
+	})
 	
 });
