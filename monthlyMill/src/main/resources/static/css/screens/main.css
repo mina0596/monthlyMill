@@ -123,6 +123,9 @@
 }
 .search_icon {
   width: 10%;
+  display: flex;
+  justify-content: center;
+  font-size: 1.25em;
 }
 .search_bar {
   width: 90%;
@@ -145,6 +148,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: 1em;
+}
+.search_textbox a {
+  color: #000;
 }
 .search_hash_blur {
   padding: 1em;
@@ -209,5 +216,11 @@
 
   .main_intro_box {
     width: 100%;
+  }
+}
+@media screen and (pointer: coarse) and (max-width: 768px) {
+  .slider_list__slide img {
+    width: 100%;
+    object-fit: cover;
   }
 }
