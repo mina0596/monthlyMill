@@ -46,22 +46,24 @@
         <div class="main_box">
           <!--해당하는 기간 내에 주문내역이 있는 경우 -->
           <!--  orderList_list_box 하나 당 주문 하나 -->
-          <div class="orderList_list_box">
+          <form th:action="@{/customer/order/cancelOrderForm}" method="get" id="getCancelOrderNum">
+          <div class="orderList_list_box" th:if="${#lists.size(orderNumList) > 0 && #lists.size(orderList) > 0}" th:each="on : ${orderNumList}" >
             <h4 class="h4_title underbar">
-              주문일: <span>0000-00-00 (요일)</span>
+              주문일: <span th:text="${on.orderRegDate}">0000-00-00 (요일)</span>
             </h4>
             <div class="orderList_top">
               <div class="">
                 <!-- 주문 상태, 주문번호 여기 나옴-->
                 <span class="orderState text emp">매칭완료</span>
-                <span class="orderNumber">(주문번호)</span>
+                <span class="orderNumber" th:text="${on.orderNum}" th:value="${on.orderNum}" name="deleteOrderNum">(주문번호)</span>
+                <input type="hidden" th:value="${on.orderNum}" name="deleteOrderNum">
               </div>
               <div>
                 <!-- 배송 상태 받아서 여기 나타나게 -->
                 <span class="delivaryState">배송준비중</span>
               </div>
             </div>
-            <table class="orderList_table">
+            <table class="orderList_table" th:each="ol : ${orderList}" th:if="${on.orderNum} == ${ol.orderNum}">
               <colgroup>
                 <col width="25%" />
                 <col width="75%" />
@@ -71,27 +73,28 @@
                   <img src="" class="itemImg" alt="제품사진" />
                 </td>
                 <td class="list_column column_right">
-                  <p class="itemName">제품명</p>
+                  <p class="itemName" th:text="${ol.pName}">제품명</p>
                   <div>
-                    <span class="price_number">(가격)</span>
-                    <span class="item_number">(개수)</span>
+                    <span class="price_number" th:text="${ol.pPrice} * ${ol.pCount}">(가격)</span>
+                    <span class="item_number" th:text="${ol.pCount}">(개수)</span>
                   </div>
                 </td>
               </tr>
             </table>
             <div class="orderList_bottom">
               <!--클릭 시 orderCancel.html로 -->
-              <button type="button orderCancelBtn">주문취소</button>
+              <button type="button" class="orderCancelBtn">주문취소</button>
             </div>
           </div>
           
 
           <!-- orderList_text_box: 주문내역 없을 때 뜨는 부분 -->
-          <div class="orderList_text_box text_box">
+          <div class="orderList_text_box text_box" th:unless="${#lists.size(orderNumList) > 0 && #lists.size(orderList) > 0}">
             <p class="orderList_text">
               주문 내역이 없습니다. 
             </p>
           </div>
+	   </form>
         </div>
       </section>
     </div>
@@ -105,5 +108,6 @@
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
     <script type="text/javascript" th:src="@{/js/customer/orderList_front.js}"></script>
+    <script type="text/javascript" th:src="@{/js/customer/orderList.js}"></script>
   </body>
 </html>

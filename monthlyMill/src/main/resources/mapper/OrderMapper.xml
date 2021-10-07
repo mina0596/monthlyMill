@@ -9,7 +9,6 @@
 		<result property="pCode"				column="product_code"/>
 		<result property="cartNum"				column="cart_num"/>
 		<result property="pCount"				column="product_count"/>
-		<result property="pPrice"				column="product_price"/>
 		<result property="orderDate"			column="order_date"/>
 		<result property="expDelDate"			column="exp_delivery_date"/>
 		<result property="paymentCheck"			column="payment_check"/>
@@ -35,10 +34,78 @@
 	
 	<insert id="addOrder" parameterType="Order">
 		INSERT INTO order_info
-			(idx, order_num, member_num, product_code, cart_num, product_count, order_date, exp_delivery_date, payment_check, refund_check, order_modify_date, order_reg_date, receiver_name, receiver_phone, receiver_home, receiver_postal_code, receiver_addr, receiver_detail_addr)
+			(idx, order_num, member_num, product_code, cart_num, product_count, order_date, exp_delivery_date, payment_check, refund_check, order_modify_date, order_reg_date, receiver_name, receiver_phone, receiver_home, receiver_postal_code, receiver_addr, receiver_detail_addr, cancel_check)
 		VALUES (NULL, #{orderNum}, #{memberNum}, #{pCode}, #{cartNum}, #{pCount}, NOW(), NOW(), 'N', 'N', CURDATE(), CURDATE()
-			, #{receiverName}, #{receiverPhoneNum}, #{receiverHomeNum}, #{receiverPostalCode}, #{receiverAddr}, #{receiverDetailAddr})
+			, #{receiverName}, #{receiverPhoneNum}, #{receiverHomeNum}, #{receiverPostalCode}, #{receiverAddr}, #{receiverDetailAddr}, 'N')
 	</insert>
+	
+	
+	<!--  입금확인되면 update됨 -->
+	<update id="updatePaymentConfirm" parameterType="int">
+		UPDATE order_info
+		SET
+			payment_check='Y',
+			order_modify_date=CURDATE(),
+		WHERE member_num=#{memberNum} 
+		and payment_check='N';
+	</update>
+	<!-- 
+	<delete id="deleteFromCart" parameterType="">
+	
+	</delete>
+	 -->
+	
+	<select id="getOrderListByMemberNum" parameterType="int" resultType="map">
+		SELECT o.idx, o.order_num AS orderNum, o.member_num, o.product_code, o.cart_num, 
+			o.product_count AS pCount, 
+			o.order_date, 
+			order_reg_date AS orderRegDate,
+			p.product_name AS pName,
+			p.product_price AS pPrice
+		FROM 
+			order_info AS o
+		INNER join
+			product_info AS p
+		ON 
+			o.product_code = p.product_code
+		WHERE member_num = #{memberNum}
+		and o.cancel_check = 'N';
+	</select>
+	
+	<select id="getOrderNumByMemberNum" parameterType="int" resultType="map">
+		SELECT
+			DISTINCT(o.order_num) AS orderNum,
+			o.order_reg_date AS orderRegDate
+		FROM
+			order_info AS o
+			where
+			o.member_num = #{memberNum} 
+			and
+			o.cancel_check = 'N';
+	</select>
+	
+	<select id="getOrderByOrderNum" parameterType="String" resultType="map">
+		SELECT 
+			o.order_num AS orderNum, 
+			m.member_name AS mName,
+			m.member_phone AS mPhone,
+			p.product_name AS pName,
+			o.product_count AS pCount,
+			p.product_price AS pPrice
+		FROM 
+			order_info AS o
+		INNER join
+			member_basic_info AS m
+			on
+			o.member_num = m.member_num
+		INNER join
+			product_info AS p
+			on
+			o.product_code = p.product_code
+		WHERE o.order_num = #{orderNum};
+	</select>
+	
+	
 	
 	
 	

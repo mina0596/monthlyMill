@@ -114,7 +114,7 @@
 	            <h4 class="h4_title text boxborder"  th:text="${ml}"></h4>
 	            <ol class="hash_list">
 	              <li class="checkHash" th:each="l : ${tagNames}"
-	                th:if="${ml} == ${l.hashtagMidClass}">
+	                th:if="${ml == l.hashtagMidClass and l.hashtagMidClass != '가격'}">
 	                <input
 	                  type="checkbox"
 	                  class="hidden"

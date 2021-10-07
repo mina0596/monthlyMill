@@ -124,7 +124,7 @@ $(document).on("click", ".toggleBtn", function(){
 	toggleBoxFunc();
 });
 
-
+// ***************** 매칭하기 버튼 ***************
 $('.gotoMatchBtn').click(function(){
-	location.href="/customer/order/orderList";
+	location.href="/customer/order/waitForMatch";
 })

@@ -6,7 +6,7 @@ let matchCount = 0;
 
 //시작 후 5초 후 재매칭 안내
 $(function () {
-    setTimeout('loadingComplete(false)', 5000);
+    setTimeout('loadingComplete(false)', 10000);
 });
 
 //로딩 중 아이콘 누르면 새로고침됨
@@ -41,7 +41,7 @@ function matchRetry(){
 }
 function retryAction(){
     toggleNowLoading();
-    setTimeout('loadingComplete(true)', 5000);
+    setTimeout('loadingComplete(true)', 10000);
 }
 //매칭 성공
 function matchSuccess(){
