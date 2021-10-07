@@ -23,13 +23,15 @@
 		<result property="receiverDetailAddr"	column="receiver_detail_addr"/>
 	</resultMap>
 	
-	<select id="selectOrderSequence" resultType="String">
+	<select id="selectOrderSequence" resultType="String" parameterType="int">
 		SELECT
 			if(COUNT(0)=0, '1', substring(MAX(oi.order_num), 11)+1)
 		FROM
 			order_info AS oi
 			where
-				oi.order_reg_date = CURDATE();
+				oi.order_reg_date = CURDATE()
+				and
+				oi.member_num = #{memberNum};
 	</select>
 	
 	<insert id="addOrder" parameterType="Order">

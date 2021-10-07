@@ -17,11 +17,11 @@ public class OrderService {
 	OrderMapper orderMapper;
 	
 	// 1. 주문 sequence 가져오기
-	public String selectOrderNum() {
+	public String selectOrderNum(int memberNum) {
 		Date date = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		String nowDate = format.format(date);
-		String orderNum = 's' + nowDate + '_' + orderMapper.selectOrderSequence(); 
+		String orderNum = 's' + nowDate + '_' + orderMapper.selectOrderSequence(memberNum); 
 		return orderNum;
 	}
 		
