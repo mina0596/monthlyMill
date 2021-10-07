@@ -28,4 +28,7 @@ public interface CartMapper {
 	
 	// 4. 장바구니 번호로 장바구니 정보 가져오기 
 	public Cart getCartInfoByCartNum(int cartNum);
+	
+	// 5. 장바구니 cartNum 으로 삭제하기
+	public void deleteCartByCartNum(int cartNum);
 }

@@ -70,4 +70,8 @@
 		where cart_num = #{cartNum};
 	</select>
 	
+	<delete id="deleteCartByCartNum" parameterType="int">
+		DELETE FROM member_cart WHERE cart_num=#{cartNum}
+	</delete>
+	
 </mapper>

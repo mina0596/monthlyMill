@@ -79,6 +79,14 @@ public class CartController {
 		
 	}
 	
+	// 4. 장바구니 삭제
+	@PostMapping("/deleteCart")
+	@ResponseBody
+	public String deleteCart(@RequestParam(name = "cartNum", required = false) int cartNum) {
+		cartService.deleteCartByCartNum(cartNum);
+		return "success";
+	}
+	
 	@PostMapping("/cartList")
 	public String getCartList() {
 		return "redirect:/customer/payment/paymentInfo";
