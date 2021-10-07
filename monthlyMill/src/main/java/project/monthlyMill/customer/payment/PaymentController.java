@@ -118,7 +118,9 @@ public class PaymentController {
 	}
 	
 	@PostMapping("/paymentDeposit")
-	public String paymentDeposit() {
+	public String paymentDeposit(HttpSession session) {
+		int memberNum = Integer.valueOf(session.getAttribute("SMNUM").toString());
+		orderService.updatePaymentConfirm(memberNum);
 		return "redirect:/customer/payment/loading";
 	}
 	
