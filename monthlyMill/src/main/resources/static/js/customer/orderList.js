@@ -29,14 +29,13 @@ $(function(){
 					html += '</td>';
 					html += '<td><span class="result_delivery">택배배송</span></td>';
 					html += '<td><span class="result_item itemNumber">' + result[i].pCount + '</span></td>';
-					html += '<td><span class="result_item total_price_number">' + (result[i].pCount * result[i].pPrice) + '</span></td>';
+					html += '<td><span class="result_item total_price_number price_number">' + (result[i].pCount * result[i].pPrice) + '</span></td>';
 					html += '<td></td>';
 					html += '</tr>';
 					totalRefundPrice += (result[i].pCount * result[i].pPrice);
 				}
-				$('.result_itemList').append(html);
+				$('.result_table').append(html);
 				console.log(totalRefundPrice);
-				$('.refund_price_number').text(totalRefundPrice + '원');
 			}
 		}
 		

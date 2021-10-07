@@ -7,8 +7,7 @@ $(function(){
 
     /* 상단 슬라이드 */
     $('.slider_list').slick({
-        //autopaly:true,
-        //dots:true,
+        autopaly:true,
          prevArrow: $("#slidePrev"),
          nextArrow: $("#slideNext"),
     });

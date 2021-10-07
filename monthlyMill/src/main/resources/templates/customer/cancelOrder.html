@@ -69,7 +69,7 @@
                 <tbody class="result_itemList">
                   <tr class="result_item">
                     <td>
-                      <span class="result_item num">1</span>
+                      <span class="result_item num hidden">1</span>
                     </td>
                     <td>
                       <img src="" alt="제품이미지" class="result_item img" />
@@ -89,7 +89,9 @@
                       <span class="result_item itemNumber">개수</span>
                     </td>
                     <td>
-                      <span class="result_item total_price_number">10000</span>
+                      <span class="result_item total_price_number price_number"
+                        >10000</span
+                      >
                     </td>
                     <td></td>
                   </tr>
@@ -130,7 +132,9 @@
               <div>
                 <span>환불예정금액</span>
                 <!--여기에 금액 합계 들어감-->
-                <span class="refund_price_number text mid emp">(환불금액)</span>
+                <span class="refund_price_number text mid emp price_number"
+                  >(환불금액)</span
+                >
               </div>
             </div>
 
@@ -155,8 +159,10 @@
             </div>
           </div>
           <div class="button_box">
-            <!--누르면 orderList로 -->
-            <a href="#" class="btn mid cancelRequestBtn"> 돌아가기 </a>
+            <!--누르면 뒤로 -->
+            <a href="javascript:history.back()" class="btn mid prevPageBtn">
+              돌아가기
+            </a>
             <!--누르면 취소진행-->
             <button type="submit" class="btn mid emp cancelRequestBtn">
               주문취소 신청하기
@@ -173,7 +179,10 @@
 
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
-    <script type="text/javascript" th:src="@{/js/customer/orderList.js}"></script>
+    <script
+      type="text/javascript"
+      th:src="@{/js/customer/orderList.js}"
+    ></script>
     <script
       type="text/javascript"
       th:src="@{/js/customer/cancelOrder_front.js}"
