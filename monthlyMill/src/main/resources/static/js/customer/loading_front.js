@@ -1,6 +1,13 @@
 const loading_icon = document.querySelector(".loading_icon");
 const endLoading = document.querySelector(".endLoading");
+const matchBtn = document.querySelector(".matchBtn");
+const matchText = document.querySelector(".matchText");
 let matchCount = 0; 
+
+//시작 후 5초 후 재매칭 안내
+$(function () {
+    setTimeout('loadingComplete(false)', 5000);
+});
 
 //로딩 중 아이콘 누르면 새로고침됨
 loading_icon.addEventListener("click", function(){
@@ -18,73 +25,61 @@ function loadingComplete(ifMatchSuccess){
             matchFail();
         }
     }
-    deleteNowLoading();
+    toggleNowLoading();
 }
 
-//매칭 성공 시
-function matchSuccess(){
-    endLoading.classList.add("successMatch");
-}
 //재매칭
 function matchRetry(){
     endLoading.classList.add("reMatch");
-    const textNodes = 
-        ["재매칭은 최대 2회까지 가능합니다.", 
-        "최종 매칭 실패시 결제금액이 환불됩니다."];
+    matchBtn.innerHTML = "재매칭";
+    matchText.innerHTML = 
+        `재매칭은 최대 2회까지 가능합니다.<br/> 
+        최종 매칭 실패시 결제금액이 환불됩니다.`
+    // matchCount ++;
 
-    textNodes.forEach((textNode)=>{
-        const text = document.createTextNode(textNode);
-        endLoading.appendChild(text);
-    });
-
-    matchCount ++;
+    matchBtn.addEventListener("click", retryAction);
 }
+function retryAction(){
+    toggleNowLoading();
+    setTimeout('loadingComplete(true)', 5000);
+}
+//매칭 성공
+function matchSuccess(){
+    if(endLoading.classList.contains("reMatch")){
+        endLoading.classList.remove("reMatch");
+        matchBtn.removeEventListener("click", retryAction);
+    }
+    endLoading.classList.add("successMatch");
+    matchBtn.innerHTML = "매칭완료";
+    matchText.innerHTML = "버튼을 눌러 결과를 확인하세요."
+
+    
+    matchBtn.addEventListener("click", function(){
+        setTimeout('location.href="/customer/order/orderList"', 5000);
+    });
+}
+   
 //매칭 실패
 function matchFail(){
-    endLoading.classList.add("failMatch");
-}
-
-//로딩 종료
-function deleteNowLoading(){
-    document.querySelector(".nowLoading").innerHTML = "";
-}
-
-//입금내역 로딩 화면
-function paymentLoading(){
-    addNowLoading("payment")
-}
-//매칭 진행 시 로딩화면
-function paymentLoading(){
-    addNowLoading("match")
-}
-
-function addNowLoading(type){
-    let loadingText = '';
-
-    if(type === "payment"){
-        loadingText = `<p>고객님의 입금내역을 확인중입니다.</p>`;
-    }else{
-        loadingText = `<p>고객님에게 알맞은 메이커스를 찾고 있습니다.</p>`;
+    if(endLoading.classList.contains("reMatch")){
+        endLoading.classList.remove("reMatch");
+        matchBtn.removeEventListener("click", retryAction);
     }
-
-    const loadingCode = `
-        ${loadingText}
-        <p>잠시만 기다려 주세요. 약 2~3분 정도 소요됩니다.</p>
-        <p>2~3분이 지난 후에 모래시계를 눌러 매칭완료를 확인하세요.</p>
-        <div class="animation_box">
-        <i class="far fa-hourglass loading_icon"></i>
-        <div class="loadingDots">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-        </div>
-        </div>
-    `;
-    document.querySelector(".nowLoading").innerHTML = loadingCode;
+    endLoading.classList.add("failMatch");
+    matchBtn.innerHTML = "매칭실패";
+    matchText.innerHTML = `
+        매칭에 실패했습니다. 결제금액이 환불됩니다.<br/>
+        버튼을 누르면 장바구니 화면으로 돌아갑니다. 
+    `
+    matchBtn.addEventListener("click", function(){
+        window.location.href = "/customer/cart/cartList";
+    });
+}
+//로딩 종료 : 로딩 문구 보이지않게 & 버튼부 보이게 함. 
+function toggleNowLoading(){
+    document.querySelector(".nowLoading").classList.toggle("hidden");
+    endLoading.classList.toggle("hidden");
 }
 
-$(function(){
-	setTimeout('console.log("작동하니?")', 10000);
-})
 
 

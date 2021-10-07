@@ -6,12 +6,12 @@ const IMAGE_NUMBER = document.querySelector(".slider_list").children.length;
 $(document).ready(function(){
 
     /* 상단 슬라이드 */
-    $('.slider_list').slick({
-        autopaly:true,
-        dots:true,
-        // prevArrow: $("#slidePrev"),
-        // nextArrow: $("#slideNext"),
-    });
+    // $('.slider_list').slick({
+    //     autopaly:true,
+    //     //dots:true,
+    //      prevArrow: $("#slidePrev"),
+    //      nextArrow: $("#slideNext"),
+    // });
 
     makeSlideNumber();
 
