@@ -11,6 +11,13 @@ $(function(){
 	var html = '';
 	var resultHtml = '';
 	
+	$('.hashCheck').change(function(){
+		if($(this).val()=='tag00027'){
+			$('.checkRange').removeClass('hidden');
+		}
+	})
+	
+	
 	$(document).on('click', '#resultBtn',  function(){
 		document.querySelector('.result_hash_list').innerHTML='';
 		//document.getElementsByClassName('hash').remove;
@@ -41,7 +48,8 @@ $(function(){
 		//*********************************** 해당하는 상품 데려오는 AJAX******************************
 		var params = {
 			"selectedTagsList" : selectedTags,
-			"selectedMidClassList" : selectedMidClass
+			"selectedMidClassList" : selectedMidClass,
+			"selectedTagsName" : selectedTagsName
 		};
 		
 		var request = $.ajax({
@@ -54,6 +62,7 @@ $(function(){
 		});
 		
 		request.done(function( rcmdResult ){
+			console.log('rcmdResult 값 확인' + rcmdResult);
 			if($('.text_box') != null || $('.text_box') != undefined){
 				$('.text_box').remove();
 			}
@@ -69,7 +78,7 @@ $(function(){
 				html = `<span>태그를 선택해주세요.</span>`;
 				$('.text_box').html(html);
 			}
-			if(rcmdResult.length != 0){
+			if(rcmdResult.length != 0 || rcmdResult != ''){
 				resultHtml = '';
 				for(var j=0; j<rcmdResult.length; j++){
 					resultHtml += `

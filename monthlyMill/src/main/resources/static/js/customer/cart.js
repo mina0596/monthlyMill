@@ -2,6 +2,26 @@
  * 
  */
 $(function(){
+	// ************** 주문 삭제버튼 이벤트 ***************
+	$('.deleteItemBtn').click(function(){
+		var deleteCartNum = $(this).parent().parent('tr').find('.result_cart_num').val();
+		
+		$.ajax({
+			url: "/customer/cart/deleteCart",
+			method: "post",
+			data: { cartNum : deleteCartNum},
+			dataType: "text",
+			success: function(data){
+				alert('장바구니에서 삭제되었습니다.');
+			}
+		})
+		
+	})
+	
+	
+	
+
+	// ************** 주문하기 버튼 이벤트 ****************
 	$('.gotoPaymentBtn').click(function(){
 		var itemQuantities = $('.result_itemList').children('tr').find('.itemQuantity');
 		var cartNum = [];

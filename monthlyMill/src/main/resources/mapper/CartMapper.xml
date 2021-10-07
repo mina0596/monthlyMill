@@ -37,7 +37,7 @@
 	
 	<select id="getCartListByMemberNum" parameterType="String" resultType="map">
 		SELECT
-			mCart.cart_num as cartNum,
+			DISTINCT(mCart.cart_num) as cartNum,
 			mCart.product_code as pCode, 
 			mCart.amount as pAmount, 
 			pInfo.product_name as pName, 
@@ -69,5 +69,9 @@
 		FROM member_cart
 		where cart_num = #{cartNum};
 	</select>
+	
+	<delete id="deleteCartByCartNum" parameterType="int">
+		DELETE FROM member_cart WHERE cart_num=#{cartNum}
+	</delete>
 	
 </mapper>

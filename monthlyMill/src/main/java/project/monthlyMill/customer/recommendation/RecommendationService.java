@@ -25,10 +25,6 @@ public class RecommendationService {
 	@Autowired
 	RecommendMapper rcmdMapper;
 	
-	public RecommendationService(HashtagMapper hashtagMapper, RecommendMapper rcmdMapper) {
-		this.hashtagMapper = hashtagMapper;
-		this.rcmdMapper = rcmdMapper;
-	}
 	
 	//큰 카테고리 해시태그
 	public List<Hashtag> getHashtag() {
@@ -36,21 +32,20 @@ public class RecommendationService {
 	}
 	
 	//선택한 해시태그에 대한 검색 결과
-	public List<Product> getRcmdProductInfo(List<Map<String, String>> selectedTagsMap1){
+	
+	public List<Product> getRcmdProductInfo(List<Map<String, String>> selectedTagsMap){
 		Map<String,String> keyAndValue= null;
 		List<Map<String,String>> pInputInfo = new ArrayList<Map<String,String>>();
 		
-		for(int i=0; i<selectedTagsMap1.size(); i++) {
+		for(int i=0; i<selectedTagsMap.size(); i++) {
 			keyAndValue= new HashMap<String,String>();
-			String midClassName = selectedTagsMap1.get(i).get("hashtagMidClass");
-			String tagNum = selectedTagsMap1.get(i).get("hashtagNum");
-			if(midClassName.equals("연령대")) {
-				keyAndValue.put("pPreferAge", tagNum);
-				
-			}else if(midClassName.equals("맛")) {
-				keyAndValue.put("pTaste", tagNum);
-			}else if(midClassName.equals("구매목적")) {
-				keyAndValue.put("pMainUsage", tagNum);
+			String tagsName = selectedTagsMap.get(i).get("hashtagName");
+			String midClassName = selectedTagsMap.get(i).get("hashtagMidClass");
+			String tagNum = selectedTagsMap.get(i).get("hashtagNum");
+			if(midClassName.equals("가격")) {
+				keyAndValue.put("pPrice", tagNum);
+			}else {
+				keyAndValue.put("tagNames", tagsName);
 			}
 			log.info("service단에서 keyAndValue 확인:{}", keyAndValue);
 			pInputInfo.add(keyAndValue);
@@ -59,4 +54,7 @@ public class RecommendationService {
 		
 		return rcmdMapper.getRcmdProductInfo(pInputInfo);
 	}
+	
+	
+	
 }
