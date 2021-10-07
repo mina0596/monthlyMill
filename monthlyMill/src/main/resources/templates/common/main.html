@@ -21,27 +21,58 @@
   <body>
     <header></header>
 
-    <section class="content_box">
+    <section class="content_box main_contents_box">
       <!-- 슬라이드 배너-->
       <div class="main_wrap banner">
         <div class="slider">
-          <div class="slider_arrows"></div>
+          <div class="slider_arrows">
+            <div class="slider_button prev" id="slidePrev">
+              <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="slider_button next" id="slideNext">
+              <i class="fas fa-chevron-right"></i>
+            </div>
+          </div>
           <div class="slider_pager">
             <span class="slider_pager__number"></span>
           </div>
           <div class="slider_list_wrapper">
             <ul class="slider_list">
-              <li class="slider_list__slide">
-                <img src="../../static/img/slide_1.jpg" alt="" srcset="" />
-                <img th:src="@{/img/slide_1.jpg}" alt="" srcset="" />
+              <li class="slide">
+                <img
+                  src="../../static/img/main_slide_1.jpg"
+                  alt=""
+                  class="slide_img"
+                />
+                <img
+                  th:src="@{/img/main_slide_1.jpg}"
+                  alt=""
+                  class="slide_img"
+                />
               </li>
-              <li class="slider_list__slide">
-                <img src="../../static/img/slide_2.jpg" alt="" srcset="" />
-                <img th:src="@{/img/slide_2.jpg}" alt="" srcset="" />
+              <li class="slide">
+                <img
+                  src="../../static/img/main_slide_2.jpg"
+                  alt=""
+                  class="slide_img"
+                />
+                <img
+                  th:src="@{/img/main_slide_2.jpg}"
+                  alt=""
+                  class="slide_img"
+                />
               </li>
-              <li class="slider_list__slide">
-                <img src="../../static/img/slide_3.jpg" alt="" srcset="" />
-                <img th:src="@{/img/slide_3.jpg}" alt="" srcset="" />
+              <li class="slide">
+                <img
+                  src="../../static/img/main_slide_3.jpg"
+                  alt=""
+                  class="slide_img"
+                />
+                <img
+                  th:src="@{/img/main_slide_3.jpg}"
+                  alt=""
+                  class="slide_img"
+                />
               </li>
             </ul>
           </div>
@@ -83,7 +114,10 @@
               <div class="search_textbox_wrap">
                 <div class="search_textbox btn_white">
                   <span>회원가입 후 확인이 가능해요!</span>
-                  <a th:href="@{/join/join_method}">회원가입하러 가기</a>
+                  <a th:href="@{/join/join_method}" class="">
+                    <span>회원가입하러 가기</span>
+                    <i class="fas fa-chevron-right"></i>
+                  </a>
                 </div>
               </div>
               <div class="search_hash_blur">
@@ -97,7 +131,7 @@
       </div>
 
       <!-- 하단 -->
-      <div class="main_wrap bottom">
+      <div class="main_wrap bottom hidden">
         <div class="main_box main_intro_box_wrap">
           <div class="main_intro_box">
             <!--좌측-->
@@ -144,17 +178,21 @@
     <footer></footer>
 
     <!-- <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script
+      type="text/javascript"
+      src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
     <script src="../../static/js/layout_front.js"></script>
     <script
       type="text/javascript"
       src="../../static/js/mainPage_front.js"
     ></script> -->
+
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script
       type="text/javascript"
       src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
     ></script>
-
-    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
     <script type="text/javascript" th:src="@{/js/mainPage_front.js}"></script>
   </body>
