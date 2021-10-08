@@ -25,7 +25,7 @@
 	
 	<select id="selectOrderSequence" resultType="String" parameterType="int">
 		SELECT
-			if(COUNT(0)=0, '0001', cast(substring(MAX(oi.order_num), 11, 14) as decimal)+1)
+			if(COUNT(0)=0, '0001', LPAD(cast(substring(MAX(oi.order_num), 11, 14) as decimal)+1,4,0))
 		FROM
 			order_info AS oi
 			where
