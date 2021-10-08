@@ -60,7 +60,7 @@ $(function(){
 		if(submitFlag){
 			var param = {
 				'orderNum': $('.orderNumber').text(),
-				'refundPrice': $('.total_price_number').text(),
+				'refundPrice': totalRefundPrice,
 				'cancelReason': $('.inputCancelReason').val(),
 				'cancelDetailReason': $('.inputTextArea').val(),
 				'refundMethod': $('.refund_method').text()
