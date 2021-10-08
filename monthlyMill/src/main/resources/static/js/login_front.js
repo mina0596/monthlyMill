@@ -2,6 +2,8 @@ const idSaveCheckbox = document.querySelector("#idSaveCheck");
 const inputId = document.querySelector(".inputId");
 const loginBtn = document.querySelector(".loginBtn");
 
+//이건...매칭 테스트 시나리오용
+localStorage.setItem("matchScenarioNum", 0);
 
 //아이디 저장
 function saveId(){

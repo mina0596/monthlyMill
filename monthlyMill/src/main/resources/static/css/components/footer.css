@@ -26,6 +26,7 @@ footer {
 
 .footer_desc {
   margin-top: 1em;
+  padding: 0 1.75em 0 0;
 }
 .footer_desc_row span {
   font-size: 0.9em;
@@ -69,19 +70,23 @@ footer {
     margin: 1em 0.5em 0;
   }
 }
+
 @media screen and (max-width: 480px) {
   footer p,
   .footer_gnb,
-  .footer_desc {
+  .footer_desc_row {
     font-size: 0.75em;
   }
   .footer_desc_row span::after {
     content: "";
     display: inline-block;
     width: 1px;
-    height: 1.5em;
+    height: 0.8em;
     margin-left: 0.5em;
     transform: translateY(0.1em);
     background-color: var(--desc-color);
+  }
+  .footer_column.footer_customerCenter {
+    margin-top: 0;
   }
 }

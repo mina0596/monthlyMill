@@ -3,8 +3,7 @@ let curSlidePos = 0;
 const IMAGE_NUMBER = document.querySelector(".slider_list").children.length;
 const isLogin = document.querySelector('.loginCheck').getAttribute("value");
 
-//이건...매칭 테스트 시나리오용
-localStorage.setItem("matchScenarioNum", 0);
+
 
 $(function(){
 
