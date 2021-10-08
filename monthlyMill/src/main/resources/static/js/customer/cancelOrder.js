@@ -29,14 +29,14 @@ $(function(){
 					html += '</td>';
 					html += '<td><span class="result_delivery">택배배송</span></td>';
 					html += '<td><span class="result_item itemNumber">' + result[i].pCount + '</span></td>';
-					html += '<td><span class="result_item total_price_number">' + (result[i].pCount * result[i].pPrice) + '</span></td>';
+					html += '<td><span class="result_item total_price_number price_number">' + (result[i].pCount * result[i].pPrice) + '</span></td>';
 					html += '<td></td>';
 					html += '</tr>';
 					totalRefundPrice += (result[i].pCount * result[i].pPrice);
 				}
 				$('.result_itemList').append(html);
 				console.log(totalRefundPrice);
-				$('.refund_price_number').text(totalRefundPrice + '원');
+				$('.refund_price_number').text(totalRefundPrice);
 			}
 		}
 		
@@ -46,11 +46,11 @@ $(function(){
 	$('.cancelRequestBtn').click(function(){
 		
 		var submitFlag = true;
-		if($('select[class="inputCancelReason"]').val() == '' || $('select[class="inputCancelReason"]').val() == undefined){
+		if($('.inputCancelReason').val() == '' || $('.inputCancelReason').val() == undefined){
 			alert('취소사유를 선택해주세요');
 			submitFlag = false;
 			return submitFlag;
-		}else if(!$('.cancelTermAgree').is(':checked')){
+		}else if(!($('#cancelTermAgree').is(':checked'))){
 			alert('주문 취소 신청동의에 체크해주세요');
 			submitFlag = false;
 			return submitFlag;
@@ -61,7 +61,7 @@ $(function(){
 			var param = {
 				'orderNum': $('.orderNumber').text(),
 				'refundPrice': $('.total_price_number').text(),
-				'cancelReason': $('select[class="inputCancelReason"]').val(),
+				'cancelReason': $('.inputCancelReason').val(),
 				'cancelDetailReason': $('.inputTextArea').val(),
 				'refundMethod': $('.refund_method').text()
 			}
