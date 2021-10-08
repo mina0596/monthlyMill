@@ -36,4 +36,7 @@ public interface OrderMapper {
 	
 	// 9. 주문 취소 주문번호만 가져오기
 	public List<HashMap<String, Object>> getCanceledOrderNum(int memberNum);
+	
+	// 10. 주문취소를 주문정보 테이블에서 업데이트해주기
+	public void updateCancelCheck(String orderNum);
 }

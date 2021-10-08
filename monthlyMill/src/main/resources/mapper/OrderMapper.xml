@@ -112,34 +112,49 @@
 			(NULL, #{orderNum}, #{memberNum}, #{cancelReason}, #{cancelDetailReason}, #{refundPrice}, '무통장 입금', 'N', NOW(), NOW(), null);
 	</insert>
 	
+	<update id="updateCancelCheck" parameterType="String">
+		UPDATE order_info
+			SET
+				cancel_check='Y'
+			WHERE order_num=#{orderNum}
+	</update>
+	
+	
 	<select id="getCancelListByMemberNum" parameterType="int" resultType="map">
 		SELECT 
-			c.order_num AS orderNum,
-			c.requested_date AS requestedDate,
+			sub.orderNum AS orderNum,
+			sub.requestedDate AS requestedDate,
 			p.product_name AS pName,
-			o.product_count AS pCount
+			o.product_count AS pCount,
+			p.product_price AS pPrice
 		FROM
+				(SELECT 
+			c.order_num AS orderNum,
+			c.requested_date AS requestedDate
+			FROM
 			order_cancel AS c
+			where
+			c.requested_member_num = #{memberNum}
+			GROUP BY orderNum) AS sub
 			INNER join
 			order_info AS o
 			on
-			c.order_num = o.order_num
+			sub.orderNum = o.order_num
 			INNER join
 			product_info AS p
 			on
 			o.product_code = p.product_code
-			where
-			c.requested_member_num = #{memberNum}
 	</select>
 	
 	<select id="getCanceledOrderNum" parameterType="int" resultType="map">
 		SELECT 
-			DISTINCT(c.order_num) AS orderNum,
+			c.order_num AS orderNum,
 			c.requested_date AS requestedDate
 		FROM
 			order_cancel AS c
 			where
 			c.requested_member_num = #{memberNum}
+			GROUP BY orderNum
 	</select>
 	
 </mapper>

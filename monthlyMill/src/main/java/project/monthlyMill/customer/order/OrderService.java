@@ -55,7 +55,11 @@ public class OrderService {
 
 	// 7. 주문 취소 신청하기
 	public void addCancelRequest(HashMap<String, Object> infoMap) {
+		if(!infoMap.containsKey("cancelDetailReason")) {
+			infoMap.put("cancelDetailReason", "null");
+		}
 		orderMapper.addCancelRequest(infoMap);
+		orderMapper.updateCancelCheck(infoMap.get("orderNum").toString());
 	}
 	
 	// 8. 주문 취소 정보 가져오기
