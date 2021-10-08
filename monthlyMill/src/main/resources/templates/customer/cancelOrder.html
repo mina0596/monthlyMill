@@ -16,7 +16,11 @@
     <header></header>
 
     <section class="content_box">
-      <form th:action="@{/customer/order/cancelOrderForm}" method="post" id="getCancelInfo">
+      <form
+        th:action="@{/customer/order/cancelOrderForm}"
+        method="post"
+        id="getCancelInfo"
+      >
         <div class="payment_wrap">
           <h1 class="h1_title text big">주문취소 신청</h1>
           <div class="main_box orderer_box">
@@ -45,7 +49,7 @@
           </div>
           <div class="main_box result_box cart_box">
             <h3 class="h3_title">상품정보</h3>
-            <div class="orderNumber hidden"></div>
+            <div class="orderNumber hidden cancelOrder_orderNumber"></div>
             <div class="result_list_box">
               <table class="result_table">
                 <colgroup>
@@ -109,7 +113,9 @@
                 <option value="상품불만족">상품불만족</option>
                 <option value="고객주문오류">고객주문오류</option>
                 <option value="다른 곳보다 비쌈">다른 곳보다 비쌈</option>
-                <option value="쿠폰, 할인 혜택이 변경됨">쿠폰, 할인 혜택이 변경됨</option>
+                <option value="쿠폰, 할인 혜택이 변경됨">
+                  쿠폰, 할인 혜택이 변경됨
+                </option>
                 <option value="배송이 늦어짐">배송이 늦어짐</option>
                 <option value="기타">기타</option>
               </select>

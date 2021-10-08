@@ -6,21 +6,30 @@ $(document).ready(function(){
     if(isMobile || testMobile){
         //모바일
         loadGnbSideMenu();
-        //$(".gnb_side_wrapper").load("../component/mobile_sideMenu.html");
+        // $(".gnb_side_wrapper").load("../component/mobile_sideMenu.html");
         $(".gnb_side_wrapper").load("/mobile_sideMenu");
-        //$("header").load("../component/mobile_header.html");
+        // $("header").load("../component/mobile_header.html");
         $("header").load("/mobile_header");
     }else{
         //기타
-        //$("header").load("../component/header.html");
+        // $("header").load("../component/header.html");
         $("header").load("/header");
     }
     //공통
-    //$("footer").load("../component/footer.html");
+    // $("footer").load("../component/footer.html");
     $("footer").load("/footer");
     //나의 주문정보 전용
-    //$(".asideMenu").load("../component/orderAside.html");
+    // $(".asideMenu").load("../component/orderAside.html");
     $(".asideMenu").load("/orderAside");
+
+    window.onload = function() {
+        //주문취소 신청 외의 페이지에서 작동
+        if((!$(".cancelOrder_orderNumber").length) &&
+            (localStorage.getItem("canceldOrderNumber") !== null)){
+            console.log("local storage:", localStorage.getItem("canceldOrderNumber"));
+            localStorage.removeItem("canceldOrderNumber");
+        }
+    }
 });
 
 

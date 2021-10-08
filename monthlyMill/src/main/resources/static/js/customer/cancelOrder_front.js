@@ -1,10 +1,9 @@
 document.querySelector(".orderNumber").innerText = localStorage.getItem("canceldOrderNumber");
 
-$('.prevPageBtn').click(function(){
-    localStorage.removeItem("canceldOrderNumber");
-});
-$('.cancelRequestBtn').click(function(){
-    localStorage.removeItem("canceldOrderNumber");
+$('.cancelRequestBtn, .prevPageBtn').click(function(){
+    if(localStorage.getItem("canceldOrderNumber") !== null){
+        localStorage.removeItem("canceldOrderNumber");
+    }
 });
 
 
