@@ -115,7 +115,7 @@ $(function(){
 				}
 				$('.result_table_body').html(resultHtml);
 			}else{
-				$('.text_box').html('<span>선택하신 해시태그에 해당하는 상품이 없습니다.</span>');
+				$('.result_table_body').html('<span class="text_box">선택하신 해시태그에 해당하는 상품이 없습니다.</span>');
 			}	
 		});
 		
