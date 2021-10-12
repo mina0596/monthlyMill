@@ -44,6 +44,7 @@
                 </select>
               </div>
             </li>
+            <!-- 
             <li class="inputform_item">
               <div class="inputform__column inputTitle">
                 <span>주문번호</span>
@@ -52,12 +53,13 @@
                 <input type="number" name="" id="" class="" />
               </div>
             </li>
+             -->
             <li class="inputform_item">
               <div class="inputform__column inputTitle">
                 <span>판매코드</span>
               </div>
               <div class="inputform__column inputContent">
-                <input type="number" name="" id="" class="" />
+                <input type="text" name="" id="" class="product_code" th:value="${pCode}" readonly="readonly" th:placeholder="${pCode}"/>
               </div>
             </li>
             <li class="inputform_item">
@@ -65,7 +67,7 @@
                 <span>상품명</span>
               </div>
               <div class="inputform__column inputContent">
-                <input type="text" name="" id="" class="" />
+                <input type="text" name="" id="" class="product_name" />
               </div>
             </li>
             <li class="inputform_item">
@@ -78,7 +80,7 @@
                     type="number"
                     name=""
                     id=""
-                    class=""
+                    class="product_price"
                     placeholder="숫자만 입력"
                   />
                 </div>
@@ -103,10 +105,12 @@
                     type="number"
                     name=""
                     id=""
-                    class="price_number radioInput"
+                    class="discount_number radioInput"
+                    disabled="disabled"
                   />원
                 </div>
                 <div>
+                <!--  %랑 원 함께 -->
                   <span>할인 적용가</span>
                   <span class="price_number"></span>
                 </div>
@@ -179,7 +183,7 @@
                 </div>
                 <div>
                   <p>추가 이미지 (<span class="subimage_count">0/9</span>)</p>
-                  <input type="file" multiple="multiple" name="" id="" class="" />
+                  <input type="file" multiple="multiple" name="" id="" class="subImg" />
                 </div>
               </div>
             </li>

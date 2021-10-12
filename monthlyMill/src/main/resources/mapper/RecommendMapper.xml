@@ -17,32 +17,31 @@
 	<select id="getRcmdProductInfo" parameterType="map" resultMap="productResultMap">
 		SELECT product_code, product_name, product_price, product_ingredient, product_nutrition, product_prefer_age, product_main_usage, product_texture, product_taste
 		FROM product_info
-			WHERE
-			<trim suffixOverrides="AND">
+			<trim prefix="WHERE" suffixOverrides="or">
 				<foreach item="item" index="key" collection="list" separator="">
 					<if test="item.pPrice != null and item.pPrice != ''.toString()">
 						product_price 
 						<if test="item.pPrice == 'tag00018'">
-							<![CDATA[ < 10000 ]]> AND
+							<![CDATA[ < 10000 ]]> or
 						</if>
 						<if test="item.pPrice == 'tag00019'">
-							<![CDATA[ between 10000  and 30000 ]]> AND
+							<![CDATA[ between 10000  and 30000 ]]> or
 						</if>
 						<if test="item.pPrice == 'tag00020'">
-							<![CDATA[ between 30000  and 50000 ]]> AND
+							<![CDATA[ between 30000  and 50000 ]]> or
 						</if>
 						<if test="item.pPrice == 'tag00021'">
-							<![CDATA[ between 50000  and 100000 ]]> AND
+							<![CDATA[ between 50000  and 100000 ]]> or
 						</if>
 						<if test="item.pPrice == 'tag00022'"> 
-							<![CDATA[ > 100000 ]]> AND
+							<![CDATA[ > 100000 ]]> or
 						</if>
 						<if test="item.pPrice == 'tag00026'">
-							<![CDATA[ > 1 ]]> AND
+							<![CDATA[ > 1 ]]> or
 						</if>
 					</if>
 					<if test="item.tagNames != null and item.tagNames != ''.toString()">
-						product_hashtag LIKE concat ('%', #{item.tagNames}, '%') AND
+						product_hashtag LIKE concat ('%', #{item.tagNames}, '%') or
 					</if>
 				</foreach>
 			</trim>
