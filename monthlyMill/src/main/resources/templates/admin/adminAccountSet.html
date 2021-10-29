@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../../static/css/styleAdmin.css"
+    />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/styleAdmin.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>관리자</title>
+  </head>
+  <body>
+    <header></header>
+    <body>
+      <div class="wrapper">
+        <aside class="adminAside"></aside>
+        <section class="adminContent">
+          <h1 class="h1_title adminTitle">관리자 계정관리</h1>
+
+          <div class="buttonBox">
+            <button class="addBtn">계정추가</button>
+            <button class="updateBtn">수정</button>
+            <button class="deleteBtn">삭제</button>
+          </div>
+
+          <!-- 테이블 -->
+          <div class="table_box">
+            <table class="adminTable">
+              <thead>
+                <th>분류</th>
+                <th>이름</th>
+                <th>부서</th>
+                <!-- 권한 -->
+                <th>고객</th>
+                <th>상품</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td> 마스터계정</td>
+                  <td> 관리자 </td>
+                  <td> <input type="checkbox" name="" id=""> </td>
+                  <td> <input type="checkbox" name="" id=""> </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="buttonBox">
+              <button>저장</button>
+              <button>취소</button>
+            </div>
+          </div>
+
+        </section>
+      </div>
+
+    <footer></footer>
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/admin/layout_admin.js"></script>
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/js/admin/layout_admin.js}"></script>
+</body>
+</html>

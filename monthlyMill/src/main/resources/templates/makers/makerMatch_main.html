@@ -1,0 +1,90 @@
+<!-- 월간매칭 메인 -->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../../static/css/styleMakers.css"
+    />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/styleMakers.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>월간방앗간</title>
+  </head>
+  <body>
+    <header class="makerHeader"></header>
+    <div class="wrapper">
+      <section class="">
+        <h3>월간매칭</h3>
+
+        <div class="dueTimeBox">
+          <!-- 매칭 종료시간인 오후 4시까지 남은 시간 -->
+          <span class="dueTime"> </span>
+        </div>
+
+        <div class="filterBox">
+          <span>필터</span>
+          <select name="" id="">
+            <option value="">떡</option>
+            <option value="">제과</option>
+            <option value="">제빵</option>
+            <option value="">음료</option>
+          </select>
+        </div>
+
+        <ul class="match-matchList">
+          <li class="matchListItem">
+            <span class="matchListItem-itemName">이름</span>
+            <img src="" alt="상품이미지" />
+
+            <div class="matchListItem-infoBox">
+              <p class="matchListItem-biddingPrice">입찰가</p>
+              <p class="matchListItem-aria">지역</p>
+              <p class="matchListItem-deliveryDate">배송날짜</p>
+              <p class="matchListItem-size">규격</p>
+            </div>
+
+            <div class="matchListItem-standard">
+              <span class="itemWeight kg_number">1</span>
+              <span class="itemQuantity item_number">1</span>
+              <span class="itemPerGram perGram_number">1</span>
+            </div>
+            <!-- 이미 참가중인경우 재입찰로 표기 -->
+            <button class="">참가가능</button>
+          </li>
+          <li class="matchListItem">
+            <span class="matchListItem-itemName">이름</span>
+            <img src="" alt="상품이미지" />
+
+            <div class="matchListItem-infoBox">
+              <p class="matchListItem-biddingPrice">입찰가</p>
+              <p class="matchListItem-aria">지역</p>
+              <p class="matchListItem-deliveryDate">배송날짜</p>
+              <p class="matchListItem-size">규격</p>
+            </div>
+
+            <div class="matchListItem-standard">
+              <span class="itemWeight kg_number">1</span>
+              <span class="itemQuantity item_number">1</span>
+              <span class="itemPerGram perGram_number">1</span>
+            </div>
+            <!-- 이미 참가중인경우 재입찰로 표기 -->
+            <button class="">참가가능</button>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <footer></footer>
+
+    <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../static/js/layout_front.js"></script>
+    <script src="../../static/js/makers/makerMatch.js"></script>
+  </body>
+</html>

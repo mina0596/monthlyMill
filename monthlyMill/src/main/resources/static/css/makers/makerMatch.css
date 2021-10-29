@@ -1,0 +1,63 @@
+/* 월간매칭 메인*/
+.dueTimeBox {
+  display: flex;
+  justify-content: center;
+
+  border: 1px solid gray;
+}
+
+.match-matchList {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+.matchListItem {
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid gray;
+}
+.matchListItem-itemName {
+  text-align: center;
+}
+.matchListItem-standard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/*월간매칭 상세*/
+.matchDetail-titleBox {
+  width: 100%;
+}
+.matchDetail-columnWrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.matchDetail-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.matchDetail-bidBox {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+.matchDetail-recipeBox {
+  padding: 1em;
+}
+.recipeOrderList {
+  padding-left: 1em;
+}
+.recipeOrder {
+  list-style-type: decimal;
+}
+
+/*형태 표시용 선*/
+.matchDetail-titleBox,
+.matchDetail-column,
+.matchDetail-nowBidBox,
+.matchDetail-bidBox {
+  border: 1px solid gray;
+}

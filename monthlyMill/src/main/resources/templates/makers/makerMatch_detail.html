@@ -1,0 +1,87 @@
+<!-- 월간매칭 상세 -->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../../static/css/styleMakers.css"
+    />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/styleMakers.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>월간방앗간</title>
+  </head>
+  <body>
+    <header class="makerHeader"></header>
+    <div class="wrapper">
+      <section class="">
+        <h3>매칭상세</h3>
+
+        <div class="matchDetail-titleBox">
+          <span class="matchDetail-itemName">상품명</span>
+        </div>
+        <div class="matchDetail-columnWrap">
+          <div class="matchDetail-column">
+            <!-- 상품정보 -->
+            <div class="matchDetail-itemBox">
+              <img src="" alt="상품이미지" />
+              <p class="aria">지역</p>
+              <p class="deliveryDate">배송날짜</p>
+              <p class="size">규격</p>
+              <div class="matchDetail-standard">
+                <span class="itemWeight kg_number">1</span>
+                <span class="itemQuantity item_number">2</span>
+                <span class="itemPerGram perGram_number">3</span>
+              </div>
+            </div>
+
+            <div class="matchDetail-nowBidBox">
+              <span>현재 입찰가</span>
+              <span class="biddingPrice">12000</span>
+            </div>
+          </div>
+
+          <div class="matchDetail-column">
+            <!-- 재료, 공정 정보 -->
+            <div class="matchDetail-recipeBox">
+              <h4>레시피</h4>
+              <ol class="recipeOrderList">
+                <li class="recipeOrder">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                </li>
+                <li class="recipeOrder">
+                  Reprehenderit, consectetur perspiciatis, id doloribus eum
+                  accusantium, error tempore similique quae officia eligendi
+                  rerum.
+                </li>
+                <li class="recipeOrder">
+                  Voluptatum laudantium veritatis nam, in nulla dolorem earum.
+                </li>
+              </ol>
+            </div>
+
+            <!-- 입찰 입력란 -->
+            <div class="matchDetail-bidBox">
+              <span>입찰가</span>
+              <!-- 현재 입찰가보다 낮은 값만 작성 가능하게 -->
+              <span class="offerPrice">11500</span>
+              <button>입찰신청</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer></footer>
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/layout_front.js"></script>
+  </body>
+</html>

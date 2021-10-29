@@ -10,12 +10,15 @@ header a {
 .gnb_util {
   display: flex;
   justify-content: flex-end;
-  padding: 0.5675em;
+  padding: 1.55em 1em;
   background-color: var(--header-dark-color);
+}
+.gnb_util.gnb_util-makers {
+  justify-content: space-between;
 }
 .gnb_util ul {
   display: flex;
-  margin-right: 1.25em;
+  margin: 0 1.25em;
 }
 .gnb_util li:last-child {
   margin-right: 0;
@@ -26,7 +29,7 @@ header a {
 
 .gnb_util ul li a {
   color: white;
-  font-size: 0.825rem;
+  font-size: 1em;
 }
 .gnb_util ul li a:hover {
   font-weight: 600;
@@ -34,7 +37,7 @@ header a {
 
 /*헤더 아랫단*/
 .gnb_box {
-  height: 5em;
+  height: 5.375em;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -73,7 +76,7 @@ header a {
 }
 
 /* 모바일: UI변경 */
-@media screen and (max-width: 768px) {
+@media screen and (pointer: coars) and (max-width: 768px) {
   .gnb_box {
     height: 4em;
     min-width: 0;
@@ -91,7 +94,7 @@ header a {
   }
 }
 
-/* 모바일용 gnb 사이드 메뉴 */
+/*============ 모바일용 gnb 사이드 메뉴 ============ */
 .gnb_side {
   display: none;
 }

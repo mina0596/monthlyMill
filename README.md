@@ -44,15 +44,18 @@
 - payment_confirm: 입금내역 확인
 - loading: 결제대기, 매칭대기용 로딩 화면
 - orderList: 나의 주문정보-주문배송조회
-- orderList_cancel: 나의 주문정보-취소반품조회
-- orderCancel: 주문취소창
+- cancelOrderList: 나의 주문정보-취소반품조회
+- cancelOrder: 주문취소창
 
 ### admin
 
 관리자 화면
 
 - adminLogin: 관리자 로그인
-- adminProduct_regist: 상품 등록 및 수정
+- adminMain: 관리자 메인페이지(대시보드)
+- adminProduct_regist: 상품- 상품 등록 및 수정
+- adminCustomer_infoSet: 고객- 고객정보관리
+- adminCustomer_orderSet: 고객- 고객배송관리
 
 ### makers
 

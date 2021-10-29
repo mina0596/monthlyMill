@@ -1,0 +1,67 @@
+<!-- my매칭: 매칭이력 -->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>월간방앗간</title>
+  </head>
+  <body>
+    <header class="makerHeader"></header>
+    <aside></aside>
+    <section class="">
+      <h3>매칭현황</h3>
+
+      <div>
+        <span>조회기간</span>
+      </div>
+      <div>
+        <span>상세조건</span>
+        <select name="" id="">
+          <option value="all">전체</option>
+          <option value="orderNum">주문번호</option>
+          <option value="delivery">배송방법</option>
+          <option value="shipDate">발송일</option>
+          <option value="paymentDate">결제일</option>
+        </select>
+        <input type="text" placeholder="찾는 단어 입력" />
+        <button>조건추가</button>
+        <button>검색하기</button>
+      </div>
+
+      <table>
+        <thead>
+          <th>주문번호</th>
+          <th>배송방법</th>
+          <th>택배사</th>
+          <th>송장번호</th>
+          <th>발송일</th>
+          <th>결제일</th>
+          <th>상품명</th>
+          <th>규격</th>
+        </thead>
+        <tbody>
+          <td>주문번호</td>
+          <td>배송방법</td>
+          <td>택배사</td>
+          <td>송장번호</td>
+          <td>발송일</td>
+          <td>결제일</td>
+          <td>상품명</td>
+          <td>규격</td>
+        </tbody>
+      </table>
+    </section>
+    <footer></footer>
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+  </body>
+</html>

@@ -13,12 +13,19 @@ $(function(){
          prevArrow: $("#slidePrev"),
          nextArrow: $("#slideNext"),
     });
-    // 슬라이드 번호
+
+    //자동재생
+    $('.slider_list').slick('slickPlay'); 
+
+    // 슬라이드 번호 표시
     makeSlideNumber();
-    $('.slider_button').click(function(){
+
+    // 슬라이드 번호 변경
+    $('.slick-slider').on("beforeChange", function(){
         updateSlideNumber();
     });
-    
+
+    //해시태그 랜덤 추가
     addSearchHash();
 
     // 로그인 상태일 때는 value에 값 있음

@@ -170,8 +170,7 @@ td {
 .birth_box {
   display: flex;
 }
-.birth_box input,
-.join_box select {
+.birth_box input {
   width: 5em;
 }
 .join_cont .desc_s {
@@ -193,6 +192,7 @@ td {
 }
 .join_box select {
   height: 2em;
+  min-width: 5em;
 }
 .join_box select.bank {
   width: 8em;

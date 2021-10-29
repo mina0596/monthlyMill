@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <div class="gnb_util gnb_util-makers">
+    <ul>
+      <li class="gnb_util__makers">
+        <a href="">메이커스</a>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <a th:if="${session.SID != null}" class="gnb_util__join" th:href="@{/}"
+          >[[${session.SNAME}]]님
+        </a>
+      </li>
+      <!-- <li>
+        <a
+          th:if="${session.SID != null}"
+          th:href="@{/logout}"
+          class="gnb_util__login"
+          >로그아웃</a
+        >
+      </li> -->
+      <li><a th:href="@{/}">my매칭</a></li>
+      <li><a th:href="@{/}">정산</a></li>
+    </ul>
+  </div>
+  <div class="gnb_box">
+    <ul class="gnb_customer">
+      <a class="logo" th:href="@{/main}">로고 이미지</a>
+      <li><a th:href="@{/makerNotice}">공지사항</a></li>
+      <li><a th:href="@{/makerMatch}">월간매칭</a></li>
+      <li><a th:href="@{/makerAsk}">문의게시판</a></li>
+    </ul>
+  </div>
+</html>

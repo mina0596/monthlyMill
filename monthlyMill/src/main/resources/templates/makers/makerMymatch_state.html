@@ -1,0 +1,46 @@
+<!-- my매칭: 매칭현황 -->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>월간방앗간</title>
+  </head>
+  <body>
+    <header class="makerHeader"></header>
+    <aside class="makerAside"></aside>
+    <section class="">
+      <h3>매칭현황</h3>
+
+      <ol>
+        <!-- li 하나가 매칭 한 개 -->
+        <li>
+          <div class="itemInfo">
+            <span class="itemName">상품명</span>
+            <span class="itemAria">지역</span>
+            <span class="itemDeliveryDate">배송날짜</span>
+            <span class="itemSize">규격</span>
+            <span class="itemPrice">입찰신청가</span>
+          </div>
+          <div class="itemButtons">
+            <!-- '상세'로 바꾸는게 더 직관적인 단어같음 -->
+            <button class="inquiryBtn">조회</button>
+            <button class="cancelBtn">취소</button>
+          </div>
+        </li>
+      </ol>
+    </section>
+    <footer></footer>
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/layout_front.js"></script>
+  </body>
+</html>

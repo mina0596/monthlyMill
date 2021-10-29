@@ -86,7 +86,7 @@
 }
 @media screen and (max-width: 768px) {
   .main_story_box .text_box .title {
-    font-size: 1.35em;
+    font-size: 4.5vw;
   }
   .text_box .mobileCenter {
     display: block;
