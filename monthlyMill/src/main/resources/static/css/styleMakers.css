@@ -11,8 +11,9 @@
 /* Screens */
 @import "makers/makerMain.css";
 @import "makers/makerMatch.css";
+@import "makers/makerJoin.css";
 
 .wrapper {
-  max-width: ;
+  /* max-width: ; */
   margin: 0 auto;
 }

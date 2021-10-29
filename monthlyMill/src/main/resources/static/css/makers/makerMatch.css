@@ -44,7 +44,10 @@
   grid-template-columns: 1fr 2fr 1fr;
 }
 
-.matchDetail-recipeBox {
+.matchDetail-itemBox,
+.matchDetail-nowBidBox,
+.matchDetail-recipeBox,
+.matchDetail-bidBox {
   padding: 1em;
 }
 .recipeOrderList {

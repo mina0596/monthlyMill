@@ -61,23 +61,15 @@ function checkBusinessNum(value){
     if(10 - sum%10 === registNum[9]){
         msg = "올바른 사업자등록번호입니다.";
         $(".BusinessNumValidationMsg").addClass("desc_right");
-
-        //파일첨부 활성화
-        $(".BusinessRegistFile").attr("disabled", false);
-        $(".BusinessRegistFileValidationMsg").text("pdf/jpg/png 파일만 첨부가 가능합니다.");
         
     }else{
         msg = "잘못된 사업자등록번호입니다.";
         $(".BusinessNumValidationMsg").addClass("desc_wrong");
-
-        //파일첨부 비활성화
-        $(".BusinessRegistFile").attr("disabled", true);
-        $(".BusinessRegistFileValidationMsg").text("사업자등록번호를 먼저 입력해주세요.");
     }
     $(".BusinessNumValidationMsg").text(msg);
 };
 
-//첨부파일 검사 
+//첨부파일 확장자 검사 
 function checkRegistFile(file, msgBox){
     msgBox.removeClass("desc_right desc_wrong");
     if(file!= ""){
@@ -95,31 +87,27 @@ function checkRegistFile(file, msgBox){
     }
 }
 
-//통신판매업신고번호 입력 시 하이픈 자동추가 
-let autoHypenReportNum = function(str){
-    str = str.replace(/[^0-9]/g, '');
-	let tmp = '';
-	if( str.length < 5){
-        return str;
-	}else if(str.length < 9){
-		tmp += str.substr(0, 4);
-		tmp += '-';
-		tmp += str.substr(4);
-		return tmp;
-	}else{              
-		tmp += str.substr(0, 4);
-		tmp += '-';
-		tmp += str.substr(4, 4);
-		tmp += '-';
-		tmp += str.substr(6);
-		return tmp;
-	} 
-}
+//통신판매업신고번호 입력 시 하이픈 자동추가 (오류있음!)
+// let autoHypenReportNum = function(str){
+//     str = str.replace(/[^0-9]/g, '');
+// 	let tmp = '';
+// 	if( str.length < 5){
+//         return str;
+// 	}else if(str.length < 9){
+// 		tmp += str.substr(0, 4);
+// 		tmp += '-';
+// 		tmp += str.substr(4);
+// 		return tmp;
+// 	}else{              
+// 		tmp += str.substr(0, 4);
+// 		tmp += '-';
+// 		tmp += str.substr(4, 4);
+// 		tmp += '-';
+// 		tmp += str.substr(6);
+// 		return tmp;
+// 	} 
+// }
 
-//통신판매업신고번호 유효성 검사 
-function checkReportNum(value){
-
-}
 
 //이벤트 리스너
 $(document).on("keyup", ".businessNum", function(){
@@ -132,8 +120,9 @@ $(document).on("keyup", ".businessNum", function(){
         $(".BusinessNumValidationMsg").text("10자리의 숫자를 입력해주세요.");
     }
 });
+
 $(document).on("keyup", ".reportNum", function(){
-    this.value = autoHypenReportNum(this.value);
+    // this.value = autoHypenReportNum(this.value);
     // $(".reportNumValidationMsg").removeClass("desc_right desc_wrong");
 });
 
@@ -146,6 +135,6 @@ $(document).on("change", ".attachFile", function(){
 
 
 $(document).on("click", ".joinEnterNextBtn", function(){
-    //미입력 정보체크 후 넘어가게, 미입력 input란에 focus맞추기
+
     
 });

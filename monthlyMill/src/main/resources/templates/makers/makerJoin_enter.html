@@ -4,13 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <link
+      type="text/css"
       rel="stylesheet"
-      href="//cdn.jsdelivr.net/npm/font-kopubworld@1.0/dotum.min.css"
+      href="../../static/css/styleMakers.css"
     />
-    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
-    <!-- <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" /> -->
+    <link type="text/css" rel="stylesheet" th:href="@{/css/styleMakers.css}" />
     <script
       src="https://kit.fontawesome.com/7161175c87.js"
       crossorigin="anonymous"
@@ -103,15 +102,25 @@
                   <td>
                     <input type="text" placeholder="성함을 입력해주세요." />
                     <div>
-                      <input type="checkbox" name="" id="" />
-                      <label for="">기본정보와 동일</label>
+                      <input
+                        type="checkbox"
+                        class="checkbox"
+                        id="sameNameCheck"
+                      />
+                      <label class="check_off" for="sameNameCheck"
+                        >기본정보와 동일</label
+                      >
                     </div>
                   </td>
                 </tr>
                 <tr>
                   <th><span class="text required">개업일자</span></th>
                   <td>
-                    <input type="text" placeholder="YYYYMMDD(숫자만 입력)" />
+                    <input
+                      type="text"
+                      placeholder="YYYYMMDD(숫자만 입력)"
+                      required
+                    />
                   </td>
                 </tr>
                 <tr>
@@ -122,9 +131,9 @@
                         type="text"
                         name="businessPlace"
                         required
-                        placeholder="사업자등록증에 있는 주소로 입력해주세요."
+                        placeholder="사업자등록증에 있는 주소로 입력"
                       />
-                      <button class="businessNumVerifyBtn">인증하기</button>
+                      <button class="businessNumVerifyBtn">진위인증</button>
                     </div>
                     <input type="hidden" name="nameCheck" value="unusable" />
                     <div class="desc_s">
@@ -142,7 +151,6 @@
                         class="BusinessRegistFile attachFile"
                         accept="application/pdf, image/jpg, image/png"
                         required
-                        disabled
                       />
                     </div>
                     <div class="desc_s">
@@ -151,7 +159,7 @@
                           BusinessRegistFileValidationMsg
                           FileValidationMsg
                         "
-                        >사업자등록번호를 먼저 입력해주세요.</span
+                        >pdf/jpg/png 파일만 첨부가 가능합니다.</span
                       >
                     </div>
                   </td>
@@ -206,7 +214,9 @@
                   </td>
                 </tr>
                 <tr>
-                  <th>통신판매업신고증 첨부</th>
+                  <th>
+                    <span class="text required">통신판매업신고증 첨부</span>
+                  </th>
                   <td>
                     <!-- 통신판매업 파일 첨부 -->
 
@@ -215,7 +225,6 @@
                       class="reportNumfFile attachFile"
                       accept="application/pdf, image/jpg, image/png"
                       required
-                      disabled
                     />
 
                     <div class="desc_s">
@@ -224,7 +233,7 @@
                           BusinessRegistFileValidationMsg
                           FileValidationMsg
                         "
-                        >통신판매업신고번호를 먼저 입력해주세요.</span
+                        >pdf/jpg/png 파일만 첨부가 가능합니다.</span
                       >
                     </div>
                   </td>
@@ -317,11 +326,11 @@
 
           <div class="boxborder">
             <p>
-              신청 전 상품 판매를 희망하는 카테고리와 작성한 정보가 잘
+              -신청 전 상품 판매를 희망하는 카테고리와 작성한 정보가 잘
               입력되었는지 다시한 번 확인해주시기 바랍니다.
             </p>
             <p>
-              신청서 제출 후 완료시점 기준으로 2~3 영업일 이내에 입점 권한이
+              -신청서 제출 후 완료시점 기준으로 2~3 영업일 이내에 입점 권한이
               부여됩니다.
             </p>
           </div>
@@ -344,24 +353,18 @@
       <footer></footer>
 
       <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="../../static/js/layout_front.js"></script>
       <script
         type="text/javascript"
-        src="../../static/js/makers/makerJoin.js"
+        src="../../static/js/makers/makerJoin_front.js"
       ></script>
-      <!-- 
-      <script
-        type="text/javascript"
-        src="../../static/js/memberJoin_front.js"
-      ></script>
-      <script src="../../static/js/layout_front.js"></script> -->
 
-      <!-- <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
-      <script type="text/javascript" th:src="@{/js/makerJoin.js}"></script> -->
-      <!-- <script
+      <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+      <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
+      <script
         type="text/javascript"
-        th:src="@{/js/memberJoin_front.js}"
-      ></script> -->
-      <!-- <script type="text/javascript" th:src="@{/js/layout_front.js}"></script> -->
+        th:src="@{/js/makerJoin_front.js}"
+      ></script>
     </section>
   </body>
 </html>

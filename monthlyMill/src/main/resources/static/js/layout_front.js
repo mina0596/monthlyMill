@@ -12,7 +12,7 @@ $(document).ready(function(){
         $("header").load("/mobile_header");
     }else{
         //PC
-        console.log($(".makerHeader").length);
+        // console.log($(".makerHeader").length);
         //메이커스
         if($(".makerHeader").length){
             $(".makerHeader").load("../component/makerHeader.html");

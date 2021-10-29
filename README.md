@@ -12,8 +12,12 @@
 
 - header
 - footer
-- mobile_header
-- mobile_sideMenu
+- orderAside
+- mobile_header : 모바일 헤더
+- mobile_sideMenu : 모바일 사이드바
+- admin_gnb : 관리자 공통메뉴
+- makerHeader : 메이커스 헤더
+- makerAside : 메이커스 사이드바
 
 ### common
 
@@ -42,24 +46,44 @@
 - payment:결제창
 - payment_deposit: 결제계산창
 - payment_confirm: 입금내역 확인
-- loading: 결제대기, 매칭대기용 로딩 화면
+- loading: 결제대기 로딩화면
+- loadingMatch: 매칭대기 로딩화면
 - orderList: 나의 주문정보-주문배송조회
 - cancelOrderList: 나의 주문정보-취소반품조회
-- cancelOrder: 주문취소창
+- cancelOrder: 주문취소 신청
 
 ### admin
 
-관리자 화면
+관리자 화면 (정리덜됨!)
 
 - adminLogin: 관리자 로그인
 - adminMain: 관리자 메인페이지(대시보드)
 - adminProduct_regist: 상품- 상품 등록 및 수정
 - adminCustomer_infoSet: 고객- 고객정보관리
-- adminCustomer_orderSet: 고객- 고객배송관리
+- adminCustomer_deliverySet: 고객- 고객배송관리
 
 ### makers
 
 메이커스 화면
+
+- makerMain: 메이커스 메인화면
+- makerJoin_popup: 메이커스 가입 전 입점팝업창
+- makerJoin_agreement: 메이커스 가입 1단계 약관동의 (팝업창 여기 뜸)
+- makerJoin_basic: 메이커스 가입 2단계 기본정보
+- makerJoin_enter: 메이커스 가입 3단계 입점신청
+- makerJoin_finish: 메이커스 가입 4단계 가입완료
+- makerMatch_main: 월간매칭 메인화면
+- makerMatch_detail: 월간매칭 상세화면
+
+~여기까진 어느정도 구조 작업 되어있음
+
+- makerMymatch_state: my매칭 매칭현황
+- makerMymatch_history: my매칭 매칭이력
+
+메이커스 관련 JS파일
+
+- makerJoin_front: 3단계 입점신청 유효값 검사 조금 해둠(다한건아님)
+- makerMatch_front: 서버시간 뜨는부분 현재 로컬시간 가져와서 하는걸로 텍스트 띄워둠! (시작/종료 시간은 적당히 넣어놨음)
 
 ---
 
