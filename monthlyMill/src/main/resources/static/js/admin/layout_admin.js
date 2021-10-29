@@ -1,6 +1,6 @@
 $(document).ready(function(){
     //gnb 불러오기
-    //$("aside").load("../component/admin_gnb.html");
+    $("aside").load("../component/admin_gnb.html");
     $("aside").load("/admin_gnb");
 });
 

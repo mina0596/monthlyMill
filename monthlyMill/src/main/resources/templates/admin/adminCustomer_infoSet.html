@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../../static/css/styleAdmin.css"
+    />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/styleAdmin.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>관리자</title>
+  </head>
+  <body>
+    <header></header>
+
+    <div class="wrapper">
+      <aside class="adminAside"></aside>
+      <section class="adminContent">
+        <h1 class="h1_title adminTitle">고객정보관리</h1>
+        <div class="button_box">
+          <button>등록</button>
+          <button>수정</button>
+          <button>삭제</button>
+        </div>
+        <div class="search_box">
+          <input type="text" placeholder="검색" />
+        </div>
+        <div class="table_box">
+          <table class="customerTable">
+            <thead>
+              <th class="checkboxColumn">선택</th>
+              <th class="">아이디</th>
+              <th class="">비밀번호</th>
+              <th class="">이름</th>
+              <th class="">생년월일</th>
+              <th class="">성별</th>
+              <th class="">주소</th>
+              <th class="">이메일</th>
+              <th class="">핸드폰번호</th>
+              <th class="">환불계좌</th>
+              <th class="">선호해시태그</th>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <footer></footer>
+
+    <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../static/js/admin/layout_admin.js"></script>
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/js/admin/layout_admin.js}"></script>
+    <script th:src="@{/js/admin/product_register.js}"></script>
+  </body>
+</html>

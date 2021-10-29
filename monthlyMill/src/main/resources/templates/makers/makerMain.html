@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../../static/css/styleMakers.css"
+    />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/styleMakers.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>월간방앗간</title>
+  </head>
+  <body>
+    <header class="makerHeader"></header>
+    <div class="wrapper">
+      <section class="makerMain">
+        <!-- 클릭 시 공지사항으로 이동 -->
+        <div class="makerMain-top">
+          <div class="mainNoticeBox">
+            <i class="fas fa-volume-off"></i>
+            <p class="mainNotice">여기에 가장 최신 공지사항 1개 제목 들어감!</p>
+          </div>
+        </div>
+
+        <div class="makerMain-bottom">
+          <!-- 2단 보기, 폭 좁아지면 1단보기 배치  -->
+          <div class="mainweeklyBest">
+            <h3 class="mainTitle">이번 주 고객 베스트 메뉴</h3>
+            <ol>
+              <li class="bestItem">
+                <span>Best 1</span>
+                <img src="" alt="이미지" class="bestItemImg" />
+                <span class="bestItemName">설기</span>
+              </li>
+              <li class="bestItem">
+                <span>2</span>
+                <img src="" alt="이미지" class="bestItemImg" />
+                <span class="bestItemName">인절미</span>
+              </li>
+              <li class="bestList">
+                <span>3</span>
+                <img src="" alt="이미지" class="bestItemImg" />
+                <span class="bestItemName">설기</span>
+              </li>
+              <li class="bestItem">
+                <span>4</span>
+                <img src="" alt="이미지" class="bestItemImg" />
+                <span class="bestItemName">설기</span>
+              </li>
+              <li class="bestItem">
+                <span>5</span>
+                <img src="" alt="이미지" class="bestItemImg" />
+                <span class="bestItemName">설기</span>
+              </li>
+            </ol>
+          </div>
+
+          <div class="bottomColumn">
+            <div class="mainAgeBest">
+              <h3 class="mainTitle">연령대별 선호제품</h3>
+              <div class="mainAgeBest-columns">
+                <div class="column">
+                  <ol class="">
+                    <li class="mainTitle">여기소제목</li>
+                    <li class="bestItem">
+                      <img src="" alt="이미지" class="bestItemImg" />
+                      <span class="itemName">설기</span>
+                    </li>
+                    <li class="bestItem">
+                      <img src="" alt="이미지" class="bestItemImg" />
+                      <span class="itemName">설기</span>
+                    </li>
+                    <li class="bestItem">
+                      <img src="" alt="이미지" class="bestItemImg" />
+                      <span class="itemName">설기</span>
+                    </li>
+                  </ol>
+                </div>
+                <div class="column">
+                  <ol class="">
+                    <li class="mainTitle">여기소제목</li>
+                    <li class="bestItem">
+                      <img src="" alt="이미지" class="bestItemImg" />
+                      <span class="itemName">설기</span>
+                    </li>
+                    <li class="bestItem">
+                      <img src="" alt="이미지" class="bestItemImg" />
+                      <span class="itemName">설기</span>
+                    </li>
+                    <li class="bestItem">
+                      <img src="" alt="이미지" class="bestItemImg" />
+                      <span class="itemName">설기</span>
+                    </li>
+                  </ol>
+                </div>
+                <div class="column">
+                  <ol class="">
+                    <li class="mainTitle">여기소제목</li>
+                    <li class="bestItem">
+                      <img src="" alt="이미지" class="bestItemImg" />
+                      <span class="itemName">설기</span>
+                    </li>
+                    <li class="bestItem">
+                      <img src="" alt="이미지" class="bestItemImg" />
+                      <span class="itemName">설기</span>
+                    </li>
+                    <li class="bestItem">
+                      <img src="" alt="이미지" class="bestItemImg" />
+                      <span class="itemName">설기</span>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+
+            <div class="mainMatch">
+              <h3 class="mainTitle">매칭</h3>
+              <ul class="mainMatch-columns">
+                <li class="mainMatchItem">
+                  <span>매칭 건수</span>
+                  <span class="match_number">1</span>
+                </li>
+                <li class="mainMatchItem">
+                  <span>매칭 현황</span>
+                  <span class="match_number">1</span>
+                </li>
+                <li class="mainMatchItem">
+                  <span>대기중인 매칭</span>
+                  <span class="match_number">1</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer></footer>
+
+    <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../static/js/layout_front.js"></script>
+    <!--<script
+      type="text/javascript"
+      src="../../static/js/mainPage_front.js"
+    ></script> -->
+
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
+    <!-- <script type="text/javascript" th:src="@{/js/mainPage_front.js}"></script> -->
+  </body>
+</html>

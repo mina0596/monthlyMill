@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../../static/css/styleAdmin.css"
+    />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/styleAdmin.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>관리자</title>
+  </head>
+  <body>
+    <header></header>
+
+    <div class="wrapper">
+      <aside class="adminAside"></aside>
+      <section class="adminContent">
+        <h1 class="h1_title adminTitle">고객배송관리</h1>
+
+        <div class="period_box">
+          <span class="titlebox">조회기간</span>
+          <select name="" id="">
+            <option value="">결제일</option>
+            <option value="">발송처리일</option>
+            <option value="">입금대기</option>
+            <option value="">입금확인</option>
+          </select>
+          <div class="period_box_column text ss">
+            <input type="radio" name="order_period" class="periodBtn hidden" id="period_today" checked="checked"></input>
+            <label for="period_today" class="btn square ">오늘</label>
+            <input type="radio" name="order_period" class="periodBtn hidden" id="period_1week"></input>
+            <label for="period_1week" class="btn square">1주일</label>
+            <input type="radio" name="order_period" class="periodBtn hidden" id="period_1month"></input>
+            <label for="period_1month" class="btn square">1개월</label>
+            <input type="radio" name="order_period" class="periodBtn hidden" id="period_3month"></input>
+            <label for="period_3month" class="btn square">3개월</label>
+            <input type="radio" name="order_period" class="periodBtn hidden" id="period_self"></input>
+            <label for="period_self" class="btn square">직접입력</label>
+          </div>
+          <div class="period_box_column periodSelfInput">
+            <input type="date" name="" id="" class="inputPeriodStart" disabled />
+            <span>~</span>
+            <input type="date" name="" id="" class="inputPeriodEnd" disabled/>
+            <button type="button" name="order_period" class="periodInquiryBtn btn square" disabled>조회</button>
+          </div>
+        </div>
+
+        <div class="condition_box">
+          <!-- 상세조건은 조건을 여러개 걸수있게 -->
+          <span class="titlebox">상세조건</span>
+          <select name="" id="">
+            <option value="">전체</option>
+            <option value="">수취인명</option>
+            <option value="">구매자명</option>
+          </select>
+          <input type="text" placeholder="입력창" />
+          <button>검색</button>
+        </div>
+
+        <div class="state_box">
+          <span class="titlebox">주문상태</span>
+
+          <select name="" id="">
+            <option value="">전체</option>
+            <option value="">배송중</option>
+            <option value="">배송완료</option>
+          </select>
+        </div>
+
+        <div class="button_box">
+          <button class="AddBtn">배송등록</button>
+          <button class="EditBtn">배송수정</button>
+          <button class="CancelBtn">배송취소</button>
+          <button class="DeleteBtn">배송삭제</button>
+        </div>
+
+        <div class="table_box">
+          <table class="customerTable">
+            <thead>
+              <th class="checkboxColumn">선택</th>
+              <th class="orderNumber">주문번호</th>
+              <th class="orderTime">주문일시</th>
+              <th class="customerId">구매자ID</th>
+              <th class="customerName">구매자명</th>
+              <th class="receiverName">수취인명</th>
+              <th class="address">배송주소</th>
+              <!-- 상품번호= 상품코드?? -->
+              <th class="productNumber">상품번호</th>
+              <th class="category">상품카테고리</th>
+              <th class="Name">상품명</th>
+              <th class="option">옵션</th>
+              <th class="quantity">수량</th>
+              <th class="price">결제금액</th>
+              <th class="paymentType">결제방법</th>
+              <th class="orderState">주문상태</th>
+            </thead>
+            <tbody>
+              <td class="">
+                <input type="checkbox" name="" id="">
+              </td>
+            </tbody>
+          </table>
+        </div>
+
+
+      </section>
+    </div>
+
+    <footer></footer>
+
+    <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../static/js/admin/layout_admin.js"></script>
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/js/admin/layout_admin.js}"></script>
+    <script th:src="@{/js/admin/product_register.js}"></script>
+  </body>
+</html>

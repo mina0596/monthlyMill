@@ -1,9 +1,12 @@
 :root {
-  --font: "ChosunGu";
+  /* --font: "ChosunGu"; */
+  --font: "KoPubWorld Dotum";
+  --main-green: #1e4139;
+
   --text-emp-color: #009207;
   --desc-color: rgb(147, 148, 147);
 
-  --header-dark-color: #101010;
+  --header-dark-color: #1e4139;
 
   --btn-common-color: #919191;
   --btn-emp-color: #308034;
@@ -29,6 +32,7 @@ p,
 span,
 button,
 input,
+input#file-upload-button,
 div,
 select,
 li,
@@ -220,6 +224,12 @@ input[type="radio"]:checked + label.btn.square {
   font-size: 12px;
   color: var(--desc-color);
 }
+.desc_wrong {
+  color: red;
+}
+.desc_right {
+  color: #17c520;
+}
 .text.emp {
   color: var(--text-emp-color);
   font-weight: 600;
@@ -282,6 +292,18 @@ input[type="radio"]:checked + label.btn.square {
 
 .item_number::after {
   content: "개";
+}
+.match_number::after {
+  content: "건";
+}
+.kg_number::after {
+  content: "kg";
+}
+.perGram_number::before {
+  content: "1개당 ";
+}
+.perGram_number::after {
+  content: "g";
 }
 
 /*기타*/
@@ -397,3 +419,4 @@ input.small {
   font-weight: normal;
   font-style: normal;
 }
+@import "//cdn.jsdelivr.net/npm/font-kopubworld@1.0/dotum.min.css";

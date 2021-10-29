@@ -4,8 +4,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
-    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../../static/css/styleAdmin.css"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../../static/css/admin/adminMain.css"
+    />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/styleAdmin.css}" />
     <script
       src="https://kit.fontawesome.com/7161175c87.js"
       crossorigin="anonymous"
@@ -14,11 +23,62 @@
   </head>
   <header></header>
   <body>
-    <section class="content_box"></section>
+    <!-- 대시보드 -->
+    <section class="content_box">
+      <div class="dashboard">
+        <div class="board">
+          <div class="board_title">취소/정산</div>
+          <div class="board_body">
+            <ul class="board_column">
+              <li class="">결제대기 <span class="dash_number"></span></li>
+              <li class="">신규주문 <span class="dash_number"></span></li>
+            </ul>
+            <ul class="board_column">
+              <li class="">배송준비 <span class="dash_number"></span></li>
+              <li class="">배송중 <span class="dash_number"></span></li>
+              <li class="">배송완료 <span class="dash_number"></span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="board">
+          <div class="board_title">주문/배송</div>
+          <div class="board_body">
+            <ul class="board_column">
+              <li class="">결제대기 <span class="dash_number"></span></li>
+              <li class="">신규주문 <span class="dash_number"></span></li>
+            </ul>
+            <ul class="board_column">
+              <li class="">배송준비 <span class="dash_number"></span></li>
+              <li class="">배송중 <span class="dash_number"></span></li>
+              <li class="">배송완료 <span class="dash_number"></span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="board">
+          <div class="board_title">매출 통계</div>
+          <div class="board_body"></div>
+        </div>
+        <div class="board">
+          <div class="board_title">미답변문의</div>
+          <div class="board_body"></div>
+        </div>
+        <div class="board">
+          <div class="board_title">상품</div>
+          <div class="board_body"></div>
+        </div>
+        <div class="board">
+          <div class="board_title">리뷰</div>
+          <div class="board_body"></div>
+        </div>
+      </div>
+    </section>
 
     <footer></footer>
 
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/admin/layout_admin.js"></script>
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
-    <script type="text/javascript" th:src="@{/js/memberJoin.js}"></script>
+    <script th:src="@{/js/admin/layout_admin.js}"></script>
   </body>
 </html>

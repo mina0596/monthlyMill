@@ -11,16 +11,28 @@ $(document).ready(function(){
         // $("header").load("../component/mobile_header.html");
         $("header").load("/mobile_header");
     }else{
-        //기타
-        // $("header").load("../component/header.html");
-        $("header").load("/header");
+        //PC
+        // console.log($(".makerHeader").length);
+        //메이커스
+        if($(".makerHeader").length){
+            $(".makerHeader").load("../component/makerHeader.html");
+            $(".makerAside").load("../component/makerAside.html");
+        }else{
+            //고객
+            $("header").load("../component/header.html");
+            $("header").load("/header");
+        }
     }
-    //공통
-    // $("footer").load("../component/footer.html");
+    //모바일, PC 공통
+
+    $("footer").load("../component/footer.html");
     $("footer").load("/footer");
-    //나의 주문정보 전용
-    // $(".asideMenu").load("../component/orderAside.html");
-    $(".asideMenu").load("/orderAside");
+
+    //사이드바
+    if( $(".asideMenu").length){
+        // $(".asideMenu").load("../component/orderAside.html");
+        $(".asideMenu").load("/orderAside");
+    }
 
     window.onload = function() {
         //주문취소 신청 외의 페이지에서 작동

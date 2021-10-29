@@ -8,3 +8,7 @@
 :root {
   --admin-main-color: rgb(42, 110, 33);
 }
+
+.dash_number::after {
+  content: "건";
+}

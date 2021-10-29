@@ -1,0 +1,38 @@
+.makerMain,
+.bottomColumn {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.makerMain > * {
+  border: 1px solid gray;
+}
+.mainTitle {
+  text-align: center;
+  background-color: var(--main-green);
+  color: #fff;
+}
+
+/* 상단 공지바*/
+.mainNoticeBox {
+  display: flex;
+  padding: 0.5em;
+}
+/* 하단 베스트 순위 + 매칭*/
+.makerMain-bottom {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+.mainAgeBest-columns,
+.mainMatch-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.bestItem {
+}
+.bestItemImg {
+  width: 50%;
+  background-color: yellowgreen;
+}
+.bestItemName {
+}

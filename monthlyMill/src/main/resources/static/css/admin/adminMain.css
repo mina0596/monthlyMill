@@ -1,0 +1,27 @@
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5em;
+  min-height: 10em;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.board_title,
+.board_body {
+  padding: 0.5em;
+}
+.board_title {
+  width: 100%;
+  text-align: center;
+  font-size: 1.25em;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.board_body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

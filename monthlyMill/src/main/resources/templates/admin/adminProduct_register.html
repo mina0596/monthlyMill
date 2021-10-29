@@ -56,10 +56,18 @@
              -->
             <li class="inputform_item">
               <div class="inputform__column inputTitle">
-                <span>판매코드</span>
+                <span>상품코드</span>
               </div>
               <div class="inputform__column inputContent">
-                <input type="text" name="" id="" class="product_code" th:value="${pCode}" readonly="readonly" th:placeholder="${pCode}"/>
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  class="product_code"
+                  th:value="${pCode}"
+                  readonly="readonly"
+                  th:placeholder="${pCode}"
+                />
               </div>
             </li>
             <li class="inputform_item">
@@ -101,16 +109,22 @@
                     class="radioAble"
                   />
                   <label for="discount_on">설정</label>
-                  <input
-                    type="number"
-                    name=""
-                    id=""
-                    class="discount_number radioInput"
-                    disabled="disabled"
-                  />원
+                  <div>
+                    <input
+                      type="number"
+                      name=""
+                      id=""
+                      class="discount_number radioInput"
+                      disabled
+                    />
+                    <select name="" id="">
+                      <option value="퍼센트">%</option>
+                      <option value="원">원</option>
+                    </select>
+                  </div>
                 </div>
                 <div>
-                <!--  %랑 원 함께 -->
+                  <!--  %랑 원 함께 -->
                   <span>할인 적용가</span>
                   <span class="price_number"></span>
                 </div>
@@ -169,7 +183,7 @@
 
                 <input type="radio" id="quantity_on" name="product_quantity" />
                 <label for="quantity_on">설정</label>
-                <input type="number" name="" id="" class="" />개
+                <input type="number" name="" id="" class="" disabled />개
               </div>
             </li>
             <li class="inputform_item">
@@ -183,7 +197,13 @@
                 </div>
                 <div>
                   <p>추가 이미지 (<span class="subimage_count">0/9</span>)</p>
-                  <input type="file" multiple="multiple" name="" id="" class="subImg" />
+                  <input
+                    type="file"
+                    multiple="multiple"
+                    name=""
+                    id=""
+                    class="subImg"
+                  />
                 </div>
               </div>
             </li>
@@ -200,6 +220,22 @@
                 <span>주요정보</span>
               </div>
               <div class="inputform__column inputContent">
+                <div class="">
+                  <input
+                    type="radio"
+                    id="quantity_off"
+                    name="product_quantity"
+                    checked="true"
+                  />
+                  <label for="quantity_off">미설정</label>
+
+                  <input
+                    type="radio"
+                    id="quantity_on"
+                    name="product_quantity"
+                  />
+                  <label for="quantity_on">설정</label>
+                </div>
                 <div>
                   <label for="">브랜드</label>
                   <input type="text" name="" id="" class="" />
@@ -301,7 +337,13 @@
                     name="product_deliveryAdditory"
                   />
                   <label for="deliverAdditory_on">설정</label>
-                  <input type="text" name="" id="" class="price_number" />원
+                  <input
+                    type="text"
+                    name=""
+                    id=""
+                    class="price_number"
+                    disabled
+                  />원
                 </div>
               </div>
             </li>
