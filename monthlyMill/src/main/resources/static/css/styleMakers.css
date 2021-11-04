@@ -7,13 +7,17 @@
 @import "components/header.css";
 @import "components/footer.css";
 @import "components/popup.css";
+@import "components/board.css";
 
 /* Screens */
+
 @import "makers/makerMain.css";
 @import "makers/makerMatch.css";
 @import "makers/makerJoin.css";
+@import "makers/makerMypage.css";
 
 .wrapper {
   /* max-width: ; */
   margin: 0 auto;
+  padding: 2em 1em;
 }

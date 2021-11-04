@@ -1,0 +1,124 @@
+<!-- 정산 -->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../../static/css/styleMakers.css"
+    />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/styleMakers.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>월간방앗간</title>
+  </head>
+  <body>
+    <header class="makerHeader"></header>
+    <div class="wrapper wrapper-mypage">
+      <aside class="makerAside"></aside>
+      <section class="content_box">
+        <h3 class="mypage_title">정산</h3>
+        <div>
+          <div class="calculate-funcTap">
+            <select name="" id="calculate-year">
+              <option value="2021">2021</option>
+            </select>
+            <button class="excelDownload">전체엑셀다운</button>
+          </div>
+
+          <table class="calculTable">
+            <thead class="table-head">
+              <th class="calculTable-date"><span>기간</span></th>
+              <th class="calculTable-total"><span>총매출액</span></th>
+              <th class="calculTable-card"><span>신용카드결제</span></th>
+              <th class="calculTable-cash"><span>현금결제</span></th>
+              <th class="calculTable-phone"><span>휴대폰결제</span></th>
+              <th class="calculTable-etc"><span>기타결제</span></th>
+              <th class="calculTable-coupon"><span>쿠폰</span></th>
+              <th class="calculTable-download"><span>상세내역다운</span></th>
+            </thead>
+            <tbody class="table-body">
+              <tr class="table-row">
+                <td class="calculTable-date">1월</td>
+                <td class="calculTable-total price_number">
+                  <span>100000</span>
+                </td>
+                <td class="calculTable-card price_number">
+                  <span>40000</span>
+                </td>
+                <td class="calculTable-cash price_number">
+                  <span>30000</span>
+                </td>
+                <td class="calculTable-phone price_number">
+                  <span>20000</span>
+                </td>
+                <td class="calculTable-etc price_number"><span>10000</span></td>
+                <td class="calculTable-coupon price_number"><span>0</span></td>
+                <td class="calculTable-download">
+                  <button class="excelDownload-month noborder">다운로드</button>
+                </td>
+              </tr>
+              <tr class="table-row">
+                <td class="calculTable-date">2월</td>
+                <td class="calculTable-total price_number">
+                  <span>100000</span>
+                </td>
+                <td class="calculTable-card price_number">
+                  <span>40000</span>
+                </td>
+                <td class="calculTable-cash price_number">
+                  <span>30000</span>
+                </td>
+                <td class="calculTable-phone price_number">
+                  <span>20000</span>
+                </td>
+                <td class="calculTable-etc price_number"><span>10000</span></td>
+                <td class="calculTable-coupon price_number"><span>0</span></td>
+                <td class="calculTable-download">
+                  <button class="excelDownload-month noborder">다운로드</button>
+                </td>
+              </tr>
+
+              <tr class="table-row table-sum-row">
+                <td class="calculTable-date">합계</td>
+                <td class="calculTable-total price_number">
+                  <span>100000</span>
+                </td>
+                <td class="calculTable-card price_number">
+                  <span>40000</span>
+                </td>
+                <td class="calculTable-cash price_number">
+                  <span>30000</span>
+                </td>
+                <td class="calculTable-phone price_number">
+                  <span>20000</span>
+                </td>
+                <td class="calculTable-etc price_number"><span>10000</span></td>
+                <td class="calculTable-coupon price_number"><span>0</span></td>
+                <td class="calculTable-download">
+                  <button class="excelDownload-month noborder">다운로드</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <footer></footer>
+
+    <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../static/js/layout_front.js"></script>
+    <script src="../../static/js/makers/makerCalculation.js"></script>
+
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
+    <script type="text/javascript" th:src="@{/js/makerCalculation.js}"></script>
+  </body>
+</html>

@@ -5,8 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
-    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../../static/css/styleMakers.css"
+    />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/styleMakers.css}" />
     <script
       src="https://kit.fontawesome.com/7161175c87.js"
       crossorigin="anonymous"
@@ -16,50 +20,77 @@
   </head>
   <body>
     <header class="makerHeader"></header>
-    <aside></aside>
-    <section class="">
-      <h3>매칭현황</h3>
+    <div class="wrapper-mypage">
+      <aside class="makerAside"></aside>
+      <section class="content_box content_box-makerMypage">
+        <h3 class="h3_title">매칭이력</h3>
 
-      <div>
-        <span>조회기간</span>
-      </div>
-      <div>
-        <span>상세조건</span>
-        <select name="" id="">
-          <option value="all">전체</option>
-          <option value="orderNum">주문번호</option>
-          <option value="delivery">배송방법</option>
-          <option value="shipDate">발송일</option>
-          <option value="paymentDate">결제일</option>
-        </select>
-        <input type="text" placeholder="찾는 단어 입력" />
-        <button>조건추가</button>
-        <button>검색하기</button>
-      </div>
+        <div class="myMatch-searchTap">
+          <div class="myMatch_periodSearch" >
+            <span class="myMatch-searchNameItem">조회기간</span>
+            <div class="myMatch-period-button_box">
+              <div class="button_box_column text ss">
+                <input type="radio" name="order_period" class="periodBtn hidden" id="period_today"></input>
+                <label for="period_today" class="btn square">오늘</label>
+                <input type="radio" name="order_period" class="periodBtn hidden" id="period_1week"></input>
+                <label for="period_1week" class="btn square">1주일</label>
+                <input type="radio" name="order_period" class="periodBtn hidden" id="period_self"></input>
+                <input type="radio" name="order_period" class="periodBtn hidden" id="period_1month" checked="checked"></input>
+                <label for="period_1month" class="btn square ">1개월</label>
+                <input type="radio" name="order_period" class="periodBtn hidden" id="period_3month"></input>
+                <label for="period_3month" class="btn square">3개월</label>
+                
+                <label for="period_self" class="btn square">직접입력</label>
+              </div>
+              <div class="button_box_column periodSelfInput">
+                <input type="date" name="" id="" class="inputPeriodStart" disabled />
+                <span>~</span>
+                <input type="date" name="" id="" class="inputPeriodEnd" disabled/>
+              </div>
+            </div>
+          </div>
+          <div class="myMatch_detailSearch">
+            <span class="myMatch-searchNameItem">상세조건</span>
+            <select name="" id="">
+              <option value="all">전체</option>
+              <option value="orderNum">주문번호</option>
+              <option value="delivery">배송방법</option>
+              <option value="shipDate">발송일</option>
+              <option value="paymentDate">결제일</option>
+            </select>
+            <input type="text" placeholder="찾는 단어 입력" />
+          </div>
+          <div class="button_box">
+            <button class="myMatch-historySearchBtn">검색</button>
+          </div>
+        </div>
 
-      <table>
-        <thead>
-          <th>주문번호</th>
-          <th>배송방법</th>
-          <th>택배사</th>
-          <th>송장번호</th>
-          <th>발송일</th>
-          <th>결제일</th>
-          <th>상품명</th>
-          <th>규격</th>
-        </thead>
-        <tbody>
-          <td>주문번호</td>
-          <td>배송방법</td>
-          <td>택배사</td>
-          <td>송장번호</td>
-          <td>발송일</td>
-          <td>결제일</td>
-          <td>상품명</td>
-          <td>규격</td>
-        </tbody>
-      </table>
-    </section>
+        <table class="matchHistoryTable">
+          <thead class="table-head">
+            <th class="matchHistoryTable-orederNum">주문번호</th>
+            <th class="matchHistoryTable-delivery">배송방법</th>
+            <th class="matchHistoryTable-courier">택배사</th>
+            <th class="matchHistoryTable-invoiceNum">송장번호</th>
+            <th class="matchHistoryTable-deliveryDate">발송일</th>
+            <th class="matchHistoryTable-paymentDate">결제일</th>
+            <th class="matchHistoryTable-itemName">상품명</th>
+            <th class="matchHistoryTable-itemStandard">규격</th>
+          </thead>
+          <tbody class="table-body">
+            <tr class="table-row">
+              <td class="matchHistoryTable-orederNum">주문번호</th>
+            <td class="matchHistoryTable-delivery">배송방법</td>
+            <td class="matchHistoryTable-courier">택배사</td>
+            <td class="matchHistoryTable-invoiceNum">송장번호</td>
+            <td class="matchHistoryTable-deliveryDate">발송일</td>
+            <td class="matchHistoryTable-paymentDate">결제일</td>
+            <td class="matchHistoryTable-itemName">상품명</td>
+            <td class="matchHistoryTable-itemStandard">규격</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
     <footer></footer>
 
     <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>

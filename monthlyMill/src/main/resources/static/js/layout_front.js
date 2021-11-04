@@ -29,8 +29,11 @@ $(document).ready(function(){
     $("footer").load("/footer");
 
     //사이드바
-    if( $(".asideMenu").length){
-        // $(".asideMenu").load("../component/orderAside.html");
+    if( $(".makerAside").length){
+        $(".makerAside").load("../component/makerAside.html");
+        $(".makerAside").load("/makerAside");
+    }else if( $(".asideMenu").length){
+        $(".asideMenu").load("../component/orderAside.html");
         $(".asideMenu").load("/orderAside");
     }
 
