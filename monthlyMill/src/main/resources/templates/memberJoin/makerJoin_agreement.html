@@ -45,7 +45,7 @@
           method="post"
           id="joinTerms"
           class="formTerms"
-          th:action="@{/join/join_agreement}"
+          th:action="@{/join/makersJoin/join_agreement}"
         >
           <h3 class="h3_title">약관동의</h3>
           <div class="join_box">
@@ -197,7 +197,7 @@
               >이전</a
             >
             <input
-              type="submit"
+              type="button"
               id="btn_coupon"
               class="btn emp mid joinAgreementNextBtn"
               value="다음"
@@ -225,5 +225,6 @@
     <script type="text/javascript" th:src="@{/js/memberJoin_front.js}"></script>
     <script type="text/javascript" th:src="@{/js/memberJoin.js}"></script>
     <script type="text/javascript" th:src="@{/js/makerJoin_front.js}"></script>
+    <script type="text/javascript" th:src="@{/js/makers/makerJoin_front.js}"></script>
   </body>
 </html>

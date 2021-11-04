@@ -34,8 +34,8 @@
 	
 	<insert id="addOrder" parameterType="Order">
 		INSERT INTO order_info
-			(idx, order_num, member_num, product_code, cart_num, product_count, order_date, exp_delivery_date, payment_check, refund_check, order_modify_date, order_reg_date, receiver_name, receiver_phone, receiver_home, receiver_postal_code, receiver_addr, receiver_detail_addr, cancel_check)
-		VALUES (NULL, #{orderNum}, #{memberNum}, #{pCode}, #{cartNum}, #{pCount}, NOW(), NOW(), 'N', 'N', CURDATE(), CURDATE()
+			(idx, order_num, member_id, product_code, cart_num, product_count, order_date, exp_delivery_date, payment_check, refund_check, order_modify_date, order_reg_date, receiver_name, receiver_phone, receiver_home, receiver_postal_code, receiver_addr, receiver_detail_addr, cancel_check)
+		VALUES (NULL, #{orderNum}, #{memberId}, #{pCode}, #{cartNum}, #{pCount}, NOW(), NOW(), 'N', 'N', CURDATE(), CURDATE()
 			, #{receiverName}, #{receiverPhoneNum}, #{receiverHomeNum}, #{receiverPostalCode}, #{receiverAddr}, #{receiverDetailAddr}, 'N')
 	</insert>
 	
@@ -46,7 +46,7 @@
 		SET
 			payment_check='Y',
 			order_modify_date=CURDATE()
-		WHERE member_num=#{memberNum} 
+		WHERE member_id=#{memberId} 
 		and payment_check='N';
 	</update>
 	<!-- 
@@ -55,7 +55,7 @@
 	</delete>
 	 -->
 	
-	<select id="getOrderListByMemberNum" parameterType="int" resultType="map">
+	<select id="getOrderListByMemberId" parameterType="String" resultType="map">
 		SELECT o.idx, o.order_num AS orderNum, o.member_num, o.product_code, o.cart_num, 
 			o.product_count AS pCount, 
 			o.order_date, 
@@ -68,18 +68,18 @@
 			product_info AS p
 		ON 
 			o.product_code = p.product_code
-		WHERE member_num = #{memberNum}
+		WHERE member_id = #{memberId}
 		and o.cancel_check = 'N';
 	</select>
 	
-	<select id="getOrderNumByMemberNum" parameterType="int" resultType="map">
+	<select id="getOrderNumByMemberId" parameterType="String" resultType="map">
 		SELECT
 			DISTINCT(o.order_num) AS orderNum,
 			o.order_reg_date AS orderRegDate
 		FROM
 			order_info AS o
 			where
-			o.member_num = #{memberNum} 
+			o.member_id = #{memberId} 
 			and
 			o.cancel_check = 'N';
 	</select>
@@ -97,7 +97,7 @@
 		INNER join
 			member_basic_info AS m
 			on
-			o.member_num = m.member_num
+			o.member_id = m.member_id
 		INNER join
 			product_info AS p
 			on
@@ -107,9 +107,9 @@
 	
 	<insert id="addCancelRequest" parameterType="map">
 		INSERT INTO order_cancel
-			(idx, order_num, requested_member_num, cancel_reason, detail_reason, total_refund_price, refund_method, approval_check, approved_date, requested_date, approved_member_num)
+			(idx, order_num, requested_member_id, cancel_reason, detail_reason, total_refund_price, refund_method, approval_check, approved_date, requested_date, approved_member_num)
 		VALUES 
-			(NULL, #{orderNum}, #{memberNum}, #{cancelReason}, #{cancelDetailReason}, #{refundPrice}, '무통장 입금', 'N', NOW(), NOW(), null);
+			(NULL, #{orderNum}, #{memberId}, #{cancelReason}, #{cancelDetailReason}, #{refundPrice}, '무통장 입금', 'N', NOW(), NOW(), null);
 	</insert>
 	
 	<update id="updateCancelCheck" parameterType="String">
@@ -120,7 +120,7 @@
 	</update>
 	
 	
-	<select id="getCancelListByMemberNum" parameterType="int" resultType="map">
+	<select id="getCancelListByMemberNum" parameterType="String" resultType="map">
 		SELECT 
 			sub.orderNum AS orderNum,
 			sub.requestedDate AS requestedDate,
@@ -134,7 +134,7 @@
 			FROM
 			order_cancel AS c
 			where
-			c.requested_member_num = #{memberNum}
+			c.requested_member_id = #{memberId}
 			GROUP BY orderNum) AS sub
 			INNER join
 			order_info AS o
@@ -146,14 +146,14 @@
 			o.product_code = p.product_code
 	</select>
 	
-	<select id="getCanceledOrderNum" parameterType="int" resultType="map">
+	<select id="getCanceledOrderNum" parameterType="String" resultType="map">
 		SELECT 
 			c.order_num AS orderNum,
 			c.requested_date AS requestedDate
 		FROM
 			order_cancel AS c
 			where
-			c.requested_member_num = #{memberNum}
+			c.requested_member_id = #{memberId}
 			GROUP BY orderNum
 	</select>
 	

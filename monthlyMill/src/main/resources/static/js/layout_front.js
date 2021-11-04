@@ -15,8 +15,10 @@ $(document).ready(function(){
         // console.log($(".makerHeader").length);
         //메이커스
         if($(".makerHeader").length){
-            $(".makerHeader").load("../component/makerHeader.html");
-            $(".makerAside").load("../component/makerAside.html");
+            // $(".makerHeader").load("../component/makerHeader.html");
+            $(".makerHeader").load("/makerHeader");
+            // $(".makerAside").load("../component/makerAside.html");
+            $(".makerAside").load("/makerAside");
         }else{
             //고객
             $("header").load("../component/header.html");
@@ -99,8 +101,19 @@ function toggleSideHidden(){
 /*==========  이벤트 리스너 연결   ========== */
 
 //(공통) header gnb 준비중 페이지
-$(document).on("click", ".noPage", function(){
-    alert('준비중입니다.');
+$(document).on("click", ".goToMakersMainPage", function(){
+	var loginMCate = $('.loginMCate').val();
+	console.log(loginMCate);
+	// 로그인이 되어잇지않으면 로그인화면으로 이동
+	if(loginMCate == null || loginMCate == undefined || loginMCate == ''){
+	    alert('메이커스로 로그인 후 이용 가능합니다.');
+		location.href="/login"
+	// 로그인이 되어잇는데 일반회원이면 알람창 / 메이커스면 화면이동
+	}else if(loginMCate == 2){
+	    alert('메이커스로 로그인 후 이용 가능합니다.');
+	}else if(loginMCate == 3){
+		location.href="/makers/main"
+	}
 });
 
 //(모바일) gnb 메뉴버튼 이벤트 연결

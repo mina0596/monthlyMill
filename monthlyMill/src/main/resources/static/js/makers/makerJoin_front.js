@@ -2,7 +2,7 @@
 
 //팝업창 띄우기
 if($(".popupWrapper").length){
-    $(".popupWrapper").load("./makerJoin_popup.html");
+    $(".popupWrapper").load("/join/makersJoin/makerJoin_popup");
 }
 
 //팝업 닫기 버튼 동작

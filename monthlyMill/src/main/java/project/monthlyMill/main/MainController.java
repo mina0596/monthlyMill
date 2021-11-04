@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
 	@GetMapping("/")
 	public String main(HttpSession session, Model model) {
-		if(session.getAttribute("SMNUM") != null) {
-			model.addAttribute("loginCheck", session.getAttribute("SMNUM"));
+		if(session.getAttribute("SID") != null) {
+			model.addAttribute("loginCheck", session.getAttribute("SID"));
 		}
 		return "/common/main";
 	}

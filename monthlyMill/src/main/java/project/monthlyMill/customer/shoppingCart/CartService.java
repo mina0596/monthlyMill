@@ -31,9 +31,9 @@ public class CartService {
 	}
 	
 	// 2.회원번호로 회원의 장바구니 정보 가져오기
-	public List<Map<String,String>> getCartListByMemberNum(String memberNum){
+	public List<Map<String,String>> getCartListByMemberNum(String memberId){
 		
-		return cartMapper.getCartListByMemberNum(memberNum);
+		return cartMapper.getCartListByMemberId(memberId);
 	}
 	
 	// 3.장바구니 정보 수정

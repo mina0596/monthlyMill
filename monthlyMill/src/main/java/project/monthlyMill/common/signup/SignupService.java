@@ -66,14 +66,20 @@ public class SignupService {
 		inputInfo.setMemberPostalCode(String.valueOf(inputBasicInfo.get("inputPostCode")));
 		inputInfo.setMemberAddr(String.valueOf(inputBasicInfo.get("inputAddress")));
 		inputInfo.setMemberDetailAddr(String.valueOf(inputBasicInfo.get("inputAddressDetail")));
-		inputInfo.setMemberCateNum(Integer.parseInt(session.getAttribute("memberCate").toString()));
+		inputInfo.setMemberCateNum(Integer.valueOf((String) inputBasicInfo.get("memberCate")));
 		
 		
 		//세션에 환불정보 저장하기
 		inputInfo.setBankName(String.valueOf(inputBasicInfo.get("inputBank")));
 		inputInfo.setHolderName(String.valueOf(inputBasicInfo.get("inputAccountOwner")));
 		inputInfo.setBankAccountNum(String.valueOf(inputBasicInfo.get("inputAccountNumber")));
-
+		
+		
+		// 세션에 동의정보 저장하기
+		HashMap<String, Object> agreementInfo = (HashMap<String, Object>) session.getAttribute("agreementCheck");
+		inputInfo.setInfoOfferAgree(String.valueOf(agreementInfo.get("InfoOfferAgreeCheck")).charAt(0));
+		inputInfo.setOutsourceAgree(String.valueOf(agreementInfo.get("outsourceAgreeCheck")).charAt(0));
+		inputInfo.setNewsAgree(String.valueOf(agreementInfo.get("newsAgreeCheck")).charAt(0));
 		session.setAttribute("basicInfo", inputInfo);
 		log.info("세션 기본정보 이후에 저장 확인:{}", session.getAttribute("basicInfo"));
 	}

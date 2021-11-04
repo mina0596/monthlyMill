@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class CommonController {
 	
+	// ***************** 일반회원 ******************
 	@GetMapping("/footer")
 	public String footerFragment() {
 		return "/component/footer";
@@ -36,4 +37,16 @@ public class CommonController {
 		return "/common/introduce";
 	}
 	
+	
+	// ***************** 메이커스 *******************
+	
+	@GetMapping("/makerHeader")
+	public String makersHeader() {
+		return "/component/makerHeader";
+	}
+	
+	@GetMapping("/makerAside")
+	public String makerAside() {
+		return "/component/makerAside";
+	}
 }

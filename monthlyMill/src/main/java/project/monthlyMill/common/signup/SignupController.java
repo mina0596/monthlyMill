@@ -56,7 +56,12 @@ public class SignupController {
 	
 	@PostMapping("/join_method")
 	public String memberJoinCate(HttpSession session) {
-		return "redirect:/join/join_agreement";
+		int memberCate = Integer.parseInt(session.getAttribute("memberCate").toString());
+		if(memberCate == 2) {
+			return "redirect:/join/join_agreement";
+		}else{
+			return "redirect:/join/makersJoin/join_agreement";
+		}
 	}
 	
 	// 2.약관동의
@@ -65,11 +70,22 @@ public class SignupController {
 		return "/memberJoin/join_agreement";
 	}
 	
+	@GetMapping("/makersJoin/makerJoin_popup")
+	public String makerJoinPopUp() {
+		return "/memberJoin/makerJoin_popup";
+	}
+	
+	@GetMapping("/makersJoin/join_agreement")
+	public String getMakersJoinAgreement() {
+		return "/memberJoin/makerJoin_agreement";
+	}
+	
 	@PostMapping("/sendNewsAgree")
 	@ResponseBody
-	public Boolean getNewsAgree(@RequestParam(name="newsAgreeCheck", required = false) String newsAgreeCheck
+	public Boolean getNewsAgree(@RequestBody HashMap<String,String> params
 								, HttpSession session) {
-		session.setAttribute("newsAgreeCheck", newsAgreeCheck);
+		log.info("선택사항 확인: {}", params );
+		session.setAttribute("agreementCheck", params);
 		return true;
 	}
 	
@@ -78,10 +94,22 @@ public class SignupController {
 		return "redirect:/join/join_basic";
 	}
 	
+	// 메이커스 이용약관 
+	@PostMapping("/makersJoin/join_agreement")
+	public String getAgreementInfo() {
+		return "redirect:/join/makersJoin/join_basic";
+	}
+	
 	// 3.기본정보 입력창 (전부 필수입력란)
 	@GetMapping("/join_basic")
 	public String memberJoinBasic() {
 		return "/memberJoin/join_basic";
+	}
+	
+	// 메이커스 기본 입력창
+	@GetMapping("/makersJoin/join_basic")
+	public String makersJoinBasic() {
+		return "/memberJoin/makerJoin_basic";
 	}
 	
 	// 아이디 중복 확인
@@ -97,10 +125,9 @@ public class SignupController {
 	// 기본정보 입력창 (전부 필수입력란) 세션에 저장
 	@PostMapping("/sendBasicInfo")
 	@ResponseBody
-	public String getJoinBasicInfo(@RequestBody Map<String, Object> inputBasicInfo
+	public String getJoinBasicInfo(@RequestBody HashMap<String, Object> inputBasicInfo
 								 , HttpSession session) {
 		log.info("아이디 가져오는것 확인:{}", inputBasicInfo);
-		
 		signupService.addBasicMembInfo(inputBasicInfo, session);
 		
 		return "success";
@@ -110,6 +137,39 @@ public class SignupController {
 	public String getJoinBasicInfo() {
 		
 		return "redirect:/join/join_additory";
+	}
+	
+	@PostMapping("/makersJoin/join_basic")
+	public String getMakersBasicInfo() {
+		return "redirect:/join/makersJoin/makersStoreEnter";
+	}
+	
+	@GetMapping("/makersJoin/makersStoreEnter")
+	public String makersStoreEntering() {
+		return "/memberJoin/makerJoin_enter";
+	}
+	
+	// 메이커스 입점신청 후 페이지 이동
+	@PostMapping("/makersJoin/makersStoreEnter")
+	public String getEnteringStoreInfo() {
+		return "redirect:/join/makersJoin/join_finish";
+	}
+	
+	
+	@GetMapping("/makersJoin/join_finish")
+	public String finishMakersJoin(HttpSession session) {
+		signupService.signUp((Member) session.getAttribute("basicInfo"));
+		return "/memberJoin/makerJoin_finish";
+	}
+	
+	// 메이커스 입점 정보
+	@PostMapping("/makersJoin/makersStoreInfo")
+	@ResponseBody
+	public String getStoreInfo(@RequestBody HashMap<String, Object> params
+							 , HttpSession session) {
+		log.info("입점신청 후 데이터 확인 :{}", params);
+		session.setAttribute("storeInfo", params);
+		return "success";
 	}
 	
 	// 4.추가정보 입력창 (전부 선택입력란)
@@ -137,6 +197,7 @@ public class SignupController {
 	@GetMapping("/join_finish")
 	public String memberJoinFinish(HttpSession session) {
 		log.info("세션 저장된 정보들 확인 :{}", (Member)session.getAttribute("basicInfo"));
+		
 		
 		// 회원 기본정보 저장하는 sql 실행
 		signupService.signUp((Member)session.getAttribute("basicInfo"));

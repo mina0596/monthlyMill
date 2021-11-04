@@ -15,8 +15,8 @@ public class PaymentService {
 	CartMapper cartMapper;
 	
 	// 총 계산 금액 계산하기
-	public int getPaymentInfo(String memberNum, String infoName) {
-		List<Map<String,String>> cartList = cartMapper.getCartListByMemberNum(memberNum);
+	public int getPaymentInfo(String memberId, String infoName) {
+		List<Map<String,String>> cartList = cartMapper.getCartListByMemberId(memberId);
 		int totalItemPrice = 0; 
 		for(int i=0; i<cartList.size(); i++) {
 			totalItemPrice += (Integer.parseInt(String.valueOf(cartList.get(i).get("pPrice"))) 

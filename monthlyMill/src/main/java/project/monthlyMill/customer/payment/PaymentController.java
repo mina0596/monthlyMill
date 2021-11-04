@@ -42,12 +42,12 @@ public class PaymentController {
 	// 1. 장바구니에서 결제하기 넘어가는 정보 받아 뿌려주기
 	@GetMapping("/paymentInfo")
 	public String getPaymentInfo(Model model, HttpSession session) {
-		String memberNum = String.valueOf(session.getAttribute("SMNUM"));
-		List<Map<String,String>> cartList = cartService.getCartListByMemberNum(memberNum);
+		String memberId = String.valueOf(session.getAttribute("SID"));
+		List<Map<String,String>> cartList = cartService.getCartListByMemberNum(memberId);
 		model.addAttribute("cartList", cartList);
-		model.addAttribute("totalItemPrice", paymentService.getPaymentInfo(memberNum, "상품가격합"));
-		model.addAttribute("shippingFee", paymentService.getPaymentInfo(memberNum, "배송비"));
-		model.addAttribute("totalPrice", paymentService.getPaymentInfo(memberNum, "총합"));
+		model.addAttribute("totalItemPrice", paymentService.getPaymentInfo(memberId, "상품가격합"));
+		model.addAttribute("shippingFee", paymentService.getPaymentInfo(memberId, "배송비"));
+		model.addAttribute("totalPrice", paymentService.getPaymentInfo(memberId, "총합"));
 		
 		return "/customer/payment";
 	}
@@ -76,13 +76,13 @@ public class PaymentController {
 			List<String> cartList = (List<String>) params.get("cartNum");
 			
 			Order orderInfo = new Order();
-			orderInfo.setMemberNum(Integer.parseInt(session.getAttribute("SMNUM").toString()));
+			orderInfo.setMemberId(String.valueOf(session.getAttribute("SID").toString()));
 			orderInfo.setReceiverAddr(String.valueOf(params.get("receiverAddr")));
 			orderInfo.setReceiverName(String.valueOf(params.get("receiverName")));
 			orderInfo.setReceiverPhoneNum(String.valueOf(params.get("receiverPhone")));
 			orderInfo.setReceiverPostalCode(String.valueOf(params.get("receiverPostalCode")));
 			orderInfo.setReceiverDetailAddr(String.valueOf(params.get("receiverDetailAddr")));
-			orderInfo.setOrderNum(orderService.selectOrderNum(Integer.parseInt(session.getAttribute("SMNUM").toString())));
+			orderInfo.setOrderNum(orderService.selectOrderNum((session.getAttribute("SID").toString())));
 			for(int i=0; i<cartList.size(); i++) {
 				orderInfo.setCartNum(Integer.parseInt(cartList.get(i)));
 				Cart cartInfo = cartService.getCartInfoByCartNum(Integer.parseInt(cartList.get(i)));
@@ -102,10 +102,10 @@ public class PaymentController {
 	// 5. 결제하기 화면으로 이동
 	@GetMapping("/paymentDeposit")
 	public String paymentDeposit(HttpSession session, Model model) {
-		String memberNum = String.valueOf(session.getAttribute("SMNUM"));
-		List<Map<String,String>> cartList = cartService.getCartListByMemberNum(memberNum);
+		String memberId = String.valueOf(session.getAttribute("SID"));
+		List<Map<String,String>> cartList = cartService.getCartListByMemberNum(memberId);
 		model.addAttribute("cartList", cartList);
-		model.addAttribute("totalPrice", paymentService.getPaymentInfo(memberNum, "총합"));
+		model.addAttribute("totalPrice", paymentService.getPaymentInfo(memberId, "총합"));
 		return "/customer/payment_deposit";
 	}
 	
@@ -119,8 +119,8 @@ public class PaymentController {
 	
 	@PostMapping("/paymentDeposit")
 	public String paymentDeposit(HttpSession session) {
-		int memberNum = Integer.valueOf(session.getAttribute("SMNUM").toString());
-		orderService.updatePaymentConfirm(memberNum);
+		String memberId = session.getAttribute("SID").toString();
+		orderService.updatePaymentConfirm(memberId);
 		return "redirect:/customer/payment/loading";
 	}
 	

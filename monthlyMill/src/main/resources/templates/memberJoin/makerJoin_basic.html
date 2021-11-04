@@ -40,7 +40,7 @@
 
       <!-- 2단계 -->
       <div class="join_cont">
-        <form method="post" id="joinBasic" th:action="@{/join/join_basic}">
+        <form method="post" id="joinBasic" th:action="@{/join/makersJoin/join_basic}">
           <div class="join_box">
             <!--필수 정보-->
             <h3 class="h3_title">기본정보 입력</h3>
@@ -54,6 +54,7 @@
                 <tr>
                   <th><span class="text required">아이디</span></th>
                   <td>
+                    <input type="hidden" name="memberCate" value="3" />
                     <input type="text" name="inputId" required />
                     <input
                       type="hidden"

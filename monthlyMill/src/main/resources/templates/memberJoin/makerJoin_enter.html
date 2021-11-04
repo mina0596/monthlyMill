@@ -40,7 +40,7 @@
 
       <!-- 3단계 입점신청 -->
       <div class="join_cont">
-        <form method="post" id="joinBasic" th:action="@{/join/join_basic}">
+        <form method="post" id="enterStore" th:action="@{/join/makersJoin/makersStoreEnter}">
           <div class="join_box">
             <h3 class="h3_title">판매자 정보 입력</h3>
             <span class="desc">입점승인을 위해 필요한 정보를 입력합니다.</span>
@@ -55,8 +55,8 @@
                   <td>
                     <select class="sellerType" name="sellerType" required>
                       <option value="">선택</option>
-                      <option value="domestic">국내사업자</option>
-                      <option value="foreign">국외사업자</option>
+                      <option value="국내사업자">국내사업자</option>
+                      <option value="국외사업자">국외사업자</option>
                     </select>
                   </td>
                 </tr>
@@ -100,7 +100,7 @@
                 <tr>
                   <th><span class="text required">대표자 이름</span></th>
                   <td>
-                    <input type="text" placeholder="성함을 입력해주세요." />
+                    <input type="text" placeholder="성함을 입력해주세요." class="ownerName"/>
                     <div>
                       <input
                         type="checkbox"
@@ -120,6 +120,7 @@
                       type="text"
                       placeholder="YYYYMMDD(숫자만 입력)"
                       required
+                      class="storeOpenDate"
                     />
                   </td>
                 </tr>
@@ -129,7 +130,7 @@
                     <div>
                       <input
                         type="text"
-                        name="businessPlace"
+                        name="businessAddr"
                         required
                         placeholder="사업자등록증에 있는 주소로 입력"
                       />
@@ -167,7 +168,7 @@
                 <tr>
                   <th><span class="text required">사업자 구분</span></th>
                   <td>
-                    <select class="sellerClassify" name="sellerType" required>
+                    <select class="sellerClass" name="sellerType" required>
                       <option value="">선택</option>
                       <option value="individual">개인</option>
                       <option value="corporate">법인</option>
@@ -179,7 +180,7 @@
                   <td>
                     <input
                       type="text"
-                      name="businessCondition"
+                      name="businessStatus"
                       required
                       placeholder="대표 업태를 입력해주세요."
                     />
@@ -202,7 +203,7 @@
                   <td>
                     <input
                       type="text"
-                      class="reportNum"
+                      class="salesNum"
                       placeholder="신고번호를 입력해주세요."
                       pattern="[0-9]{4}-[가-힣]{4}-[0-9]{4,6}"
                       name="inputReportNum"
@@ -252,12 +253,12 @@
               <tbody>
                 <th><span class="text required">대표 카테고리</span></th>
                 <td>
-                  <select name="" id="">
+                  <select name="repItemCate" id="">
                     <option value="">선택</option>
-                    <option value="tteok">떡</option>
-                    <option value="confectionery">제과</option>
-                    <option value="bakery">제빵</option>
-                    <option value="drink">음료</option>
+                    <option value="떡">떡</option>
+                    <option value="제과">제과</option>
+                    <option value="제빵">제빵</option>
+                    <option value="음료">음료</option>
                   </select>
                 </td>
               </tbody>
@@ -351,20 +352,22 @@
         </form>
       </div>
       <footer></footer>
-
+<!-- 
       <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
       <script src="../../static/js/layout_front.js"></script>
       <script
         type="text/javascript"
         src="../../static/js/makers/makerJoin_front.js"
       ></script>
-
+ -->
       <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
       <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
+      <script type="text/javascript" th:src="@{/js/makers/makerJoin.js}"></script>
       <script
         type="text/javascript"
-        th:src="@{/js/makerJoin_front.js}"
+        th:src="@{/js/makers/makerJoin_front.js}"
       ></script>
+      
     </section>
   </body>
 </html>

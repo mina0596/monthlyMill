@@ -3,7 +3,7 @@ package project.monthlyMill.dto;
 public class Order {
 	private int idx;
 	private String orderNum;
-	private int memberNum;
+	private String memberId;
 	private String pCode;
 	private int cartNum;
 	private int pCount;
@@ -32,11 +32,11 @@ public class Order {
 	public void setOrderNum(String orderNum) {
 		this.orderNum = orderNum;
 	}
-	public int getMemberNum() {
-		return memberNum;
+	public String getMemberId() {
+		return memberId;
 	}
-	public void setMemberNum(int memberNum) {
-		this.memberNum = memberNum;
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
 	}
 	public String getpCode() {
 		return pCode;
@@ -136,7 +136,7 @@ public class Order {
 	}
 	@Override
 	public String toString() {
-		return "Order [idx=" + idx + ", orderNum=" + orderNum + ", memberNum=" + memberNum + ", pCode=" + pCode
+		return "Order [idx=" + idx + ", orderNum=" + orderNum + ", memberId=" + memberId + ", pCode=" + pCode
 				+ ", cartNum=" + cartNum + ", pCount=" + pCount + ", pPrice=" + pPrice + ", orderDate=" + orderDate
 				+ ", expDelDate=" + expDelDate + ", paymentCheck=" + paymentCheck + ", refundCheck=" + refundCheck
 				+ ", orderModifyDate=" + orderModifyDate + ", orderRegDate=" + orderRegDate + ", receiverName="

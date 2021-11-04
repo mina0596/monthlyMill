@@ -11,19 +11,19 @@ import project.monthlyMill.dto.Order;
 public interface OrderMapper {
 	
 	// 1. 주문 sequence 가져오기
-	public String selectOrderSequence(int memberNum);
+	public String selectOrderSequence(String memberId);
 	
 	// 2. 주문 정보 DB에 저장하기
 	public void addOrder(Order orderInfo);
 	
 	// 3. 주문에 대한 입금 확인
-	public void updatePaymentConfirm(int memberNum);
+	public void updatePaymentConfirm(String memberId);
 	
 	// 4. 회원번호로 주문내역 가져오기
-	public List<HashMap<String, Object>> getOrderListByMemberNum(int memberNum);
+	public List<HashMap<String, Object>> getOrderListByMemberId(String memberId);
 	
 	// 5. 회원번호로 주문번호 가져오기
-	public List<HashMap<String, Object>> getOrderNumByMemberNum(int memberNum);
+	public List<HashMap<String, Object>> getOrderNumByMemberId(String memberId);
 	
 	// 6. 주문번호로 주문정보 가져오기
 	public List<HashMap<String, Object>> getOrderByOrderNum(String orderNum);
@@ -32,10 +32,10 @@ public interface OrderMapper {
 	public void addCancelRequest(HashMap<String, Object> infoMap);
 	
 	// 8. 주문 취소 정보 가져오기
-	public List<HashMap<String, Object>> getCancelListByMemberNum(int memberNum);
+	public List<HashMap<String, Object>> getCancelListByMemberId(String memberId);
 	
 	// 9. 주문 취소 주문번호만 가져오기
-	public List<HashMap<String, Object>> getCanceledOrderNum(int memberNum);
+	public List<HashMap<String, Object>> getCanceledOrderNum(String memberId);
 	
 	// 10. 주문취소를 주문정보 테이블에서 업데이트해주기
 	public void updateCancelCheck(String orderNum);

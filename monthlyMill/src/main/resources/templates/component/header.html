@@ -42,7 +42,16 @@
       <li><a href="#" class="noPage">리뷰</a></li>
     </ul>
     <ul class="gnb_makers">
-      <li><a href="#" class="noPage">메이커스</a></li>
+      <li><a href="#" class="goToMakersMainPage">메이커스</a></li>
+      <input class="loginMCate" type="hidden" th:value="${session.SLEVEL}">
     </ul>
   </div>
+  <!-- 
+  <script th:inline="javascript">
+  	var SLEVEL = '';
+  	/*<![CDATA[*/
+  		SLEVEL = [[${session.SLEVEL}]];
+  	/*]]>*/
+  
+  </script> -->
 </html>
