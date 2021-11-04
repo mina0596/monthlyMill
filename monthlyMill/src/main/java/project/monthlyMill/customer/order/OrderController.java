@@ -30,9 +30,9 @@ public class OrderController {
 	
 	@GetMapping("/orderList")
 	public String getOrderList(Model model, HttpSession session) {
-		int memberNum = Integer.valueOf(session.getAttribute("SMNUM").toString());
-		List<HashMap<String, Object>> orderListByMemberNum = orderService.getOrderListByMemberNum(memberNum);
-		List<HashMap<String, Object>> orderNumList = orderService.getOrderNumByMemberNum(memberNum);
+		String memberId = session.getAttribute("SID").toString();
+		List<HashMap<String, Object>> orderListByMemberNum = orderService.getOrderListByMemberId(memberId);
+		List<HashMap<String, Object>> orderNumList = orderService.getOrderNumByMemberId(memberId);
 		
 		model.addAttribute("orderList", orderListByMemberNum);
 		model.addAttribute("orderNumList", orderNumList);
@@ -66,7 +66,7 @@ public class OrderController {
 	public String getRefundRequest(@RequestBody HashMap<String, Object> requestInfo
 								, HttpSession session) {
 		log.info("주문취소 신청하기 버튼을 누르면 취소에 대한 정보 가져오는지 확인:{}", requestInfo);
-		requestInfo.put("memberNum", Integer.parseInt(session.getAttribute("SMNUM").toString()));
+		requestInfo.put("memberId", session.getAttribute("SID").toString());
 		orderService.addCancelRequest(requestInfo);
 		return "success";
 	}
@@ -79,9 +79,9 @@ public class OrderController {
 	
 	@GetMapping("/cancelOrderList")
 	public String cancelOrderList(Model model, HttpSession session) {
-		int memberNum = Integer.parseInt(session.getAttribute("SMNUM").toString());
-		List<HashMap<String, Object>> cancelOrderInfo = orderService.getCancelListByMemberNum(memberNum);
-		List<HashMap<String, Object>> cancelOrderNum = orderService.getCanceledOrderNum(memberNum);
+		String memberId = session.getAttribute("SID").toString();
+		List<HashMap<String, Object>> cancelOrderInfo = orderService.getCancelListByMemberId(memberId);
+		List<HashMap<String, Object>> cancelOrderNum = orderService.getCanceledOrderNum(memberId);
 		
 		model.addAttribute("cancelOrderInfo", cancelOrderInfo);
 		model.addAttribute("cancelOrderNum", cancelOrderNum);

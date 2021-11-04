@@ -20,6 +20,12 @@ public class Member {
 	private String bankName;
 	private String bankAccountNum;
 	private String holderName;
+	private char infoOfferAgree;
+	private char outsourceAgree;
+	private char newsAgree;
+	
+	
+	
 	public int getMemberNum() {
 		return memberNum;
 	}
@@ -134,6 +140,24 @@ public class Member {
 	public void setHolderName(String holderName) {
 		this.holderName = holderName;
 	}
+	public char getInfoOfferAgree() {
+		return infoOfferAgree;
+	}
+	public void setInfoOfferAgree(char infoOfferAgree) {
+		this.infoOfferAgree = infoOfferAgree;
+	}
+	public char getOutsourceAgree() {
+		return outsourceAgree;
+	}
+	public void setOutsourceAgree(char outsourceAgree) {
+		this.outsourceAgree = outsourceAgree;
+	}
+	public char getNewsAgree() {
+		return newsAgree;
+	}
+	public void setNewsAgree(char newsAgree) {
+		this.newsAgree = newsAgree;
+	}
 	@Override
 	public String toString() {
 		return "Member [memberNum=" + memberNum + ", memberId=" + memberId + ", memberPw=" + memberPw
@@ -142,7 +166,10 @@ public class Member {
 				+ ", memberAddr=" + memberAddr + ", memberDetailAddr=" + memberDetailAddr + ", memberPostalCode="
 				+ memberPostalCode + ", memberPhone=" + memberPhone + ", memberIdentityCheck=" + memberIdentityCheck
 				+ ", memberInfoModifyDate=" + memberInfoModifyDate + ", memberInfoRegDate=" + memberInfoRegDate
-				+ ", bankName=" + bankName + ", bankAccountNum=" + bankAccountNum + ", holderName=" + holderName + "]";
+				+ ", bankName=" + bankName + ", bankAccountNum=" + bankAccountNum + ", holderName=" + holderName
+				+ ", infoOfferAgree=" + infoOfferAgree + ", outsourceAgree=" + outsourceAgree + ", newsAgree="
+				+ newsAgree + "]";
 	}
+	
 	
 }

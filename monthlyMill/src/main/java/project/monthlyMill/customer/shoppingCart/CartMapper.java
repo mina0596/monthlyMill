@@ -21,7 +21,7 @@ public interface CartMapper {
 	public void updateProductAmount(HashMap<String, Object> infoMap);
 	
 	// 2. 회원의 장바구니 정보 가져오기
-	public List<Map<String,String>> getCartListByMemberNum(String memberNum);
+	public List<Map<String,String>> getCartListByMemberId(String memberId);
 	
 	// 3.장바구니 정보 수정
 	public int updateCartByCartNum(HashMap<String,Integer> updateCartInfo);

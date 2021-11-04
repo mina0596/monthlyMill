@@ -4,7 +4,7 @@
 <mapper namespace="project.monthlyMill.customer.shoppingCart.CartMapper">
 	<resultMap type="Cart"	id="cartResultMap">
 		<result property="cartNum"			column="cart_num"/>
-		<result property="memberNum"		column="member_num"/>
+		<result property="memberId"		column="member_id"/>
 		<result property="pCode"			column="product_code"/>
 		<result property="pAmount"			column="amount"/>
 		<result property="cartRegDate"		column="cart_reg_date"/>
@@ -16,15 +16,15 @@
 		FROM
 			member_cart AS cart
 			WHERE 
-				cart.member_num = #{memberNum}
+				cart.member_id = #{memberId}
 				and
 				cart.product_code = #{pCode}
 	</select>
 	
 	<insert id="addItem" parameterType="map">
 		INSERT INTO member_cart
-		(cart_num, member_num, product_code, amount, cart_reg_date)
-		VALUES (0, #{memberNum}, #{pCode}, 1, CURDATE());
+		(cart_num, member_id, product_code, amount, cart_reg_date)
+		VALUES (0, #{memberId}, #{pCode}, 1, CURDATE());
 	</insert>
 	
 	<update id="updateProductAmount" parameterType="map">
@@ -35,7 +35,7 @@
 		WHERE cart_num=#{cartNum}
 	</update>
 	
-	<select id="getCartListByMemberNum" parameterType="String" resultType="map">
+	<select id="getCartListByMemberId" parameterType="String" resultType="map">
 		SELECT
 			DISTINCT(mCart.cart_num) as cartNum,
 			mCart.product_code as pCode, 
@@ -53,7 +53,7 @@
 			order_info AS oInfo
 		on
 			mCart.cart_num = oInfo.cart_num
-		WHERE mCart.member_num = #{memberNum}
+		WHERE mCart.member_id = #{memberId}
 		ORDER BY cartNum ASC;
 	</select>
 	
@@ -65,7 +65,7 @@
 	</update>
 	
 	<select id="getCartInfoByCartNum" parameterType="int" resultMap="cartResultMap">
-		SELECT cart_num, member_num, product_code, amount, cart_reg_date
+		SELECT cart_num, member_Id, product_code, amount, cart_reg_date
 		FROM member_cart
 		where cart_num = #{cartNum};
 	</select>

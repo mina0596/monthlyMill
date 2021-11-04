@@ -2,7 +2,7 @@ package project.monthlyMill.dto;
 
 public class Cart {
 	private int cartNum;
-	private int memberNum;
+	private String memberId;
 	private String pCode;
 	private int pAmount;
 	private String cartRegDate;
@@ -12,11 +12,11 @@ public class Cart {
 	public void setCartNum(int cartNum) {
 		this.cartNum = cartNum;
 	}
-	public int getMemberNum() {
-		return memberNum;
+	public String getMemberId() {
+		return memberId;
 	}
-	public void setMemberNum(int memberNum) {
-		this.memberNum = memberNum;
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
 	}
 	public String getpCode() {
 		return pCode;
@@ -38,7 +38,7 @@ public class Cart {
 	}
 	@Override
 	public String toString() {
-		return "Cart [cartNum=" + cartNum + ", memberNum=" + memberNum + ", pCode=" + pCode + ", pAmount=" + pAmount
+		return "Cart [cartNum=" + cartNum + ", memberId=" + memberId + ", pCode=" + pCode + ", pAmount=" + pAmount
 				+ ", cartRegDate=" + cartRegDate + "]";
 	}
 	

@@ -19,11 +19,11 @@ public class OrderService {
 	OrderMapper orderMapper;
 	
 	// 1. 주문 sequence 가져오기
-	public String selectOrderNum(int memberNum) {
+	public String selectOrderNum(String memberId) {
 		Date date = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		String nowDate = format.format(date);
-		String orderNum = 's' + nowDate + '_' + orderMapper.selectOrderSequence(memberNum); 
+		String orderNum = 's' + nowDate + '_' + orderMapper.selectOrderSequence(memberId); 
 		return orderNum;
 	}
 		
@@ -33,19 +33,19 @@ public class OrderService {
 	}
 	
 	// 3. 주문에 대한 입금 확인
-	public void updatePaymentConfirm(int memberNum) {
-		orderMapper.updatePaymentConfirm(memberNum);
+	public void updatePaymentConfirm(String memberId) {
+		orderMapper.updatePaymentConfirm(memberId);
 	}
 	
 
 	// 4. 주문 내역 회원아이디로 가져오기
-	public List<HashMap<String, Object>> getOrderListByMemberNum(int memberNum){
-		return orderMapper.getOrderListByMemberNum(memberNum);
+	public List<HashMap<String, Object>> getOrderListByMemberId(String memberId){
+		return orderMapper.getOrderListByMemberId(memberId);
 	}
 	
 	// 5. 회원번호로 주문번호 가져왹
-	public List<HashMap<String, Object>> getOrderNumByMemberNum(int memberNum){
-		return orderMapper.getOrderNumByMemberNum(memberNum);
+	public List<HashMap<String, Object>> getOrderNumByMemberId(String memberId){
+		return orderMapper.getOrderNumByMemberId(memberId);
 	}
 	
 	// 6. 주문번호로 주문정보 가져오기
@@ -63,13 +63,13 @@ public class OrderService {
 	}
 	
 	// 8. 주문 취소 정보 가져오기
-	public List<HashMap<String, Object>> getCancelListByMemberNum(int memberNum){
-		return orderMapper.getCancelListByMemberNum(memberNum);
+	public List<HashMap<String, Object>> getCancelListByMemberId(String memberId){
+		return orderMapper.getCancelListByMemberId(memberId);
 	}
 	
 	// 9. 주문 취소 주문번호만 가져오기
-	public List<HashMap<String, Object>> getCanceledOrderNum(int memberNum){
-		return orderMapper.getCanceledOrderNum(memberNum);
+	public List<HashMap<String, Object>> getCanceledOrderNum(String memberId){
+		return orderMapper.getCanceledOrderNum(memberId);
 	}
 	
 }

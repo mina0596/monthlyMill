@@ -77,17 +77,41 @@ function sample6_execDaumPostcode() {
 			return submitFlag;
 		}
 		var newsAgree = $('#newsAgree').is(':checked');
+		var InfoOfferAgree = $('#InfoOfferAgree').is(':checked');
+		var outsourceAgree = $('#outsourceAgree').is(':checked');
 		var newsAgreeCheck = '';
-		if(submitFlag && newsAgree){
-			newsAgreeCheck = 'checked';
-		}else if(submitFlag && !newsAgree){
-			newsAgreeCheck = 'unckecked';
+		var InfoOfferAgreeCheck = '';
+		var outsourceAgreeCheck = '';
+		if(submitFlag){
+			if(newsAgree){
+				newsAgreeCheck = 'Y';
+			}else{
+				newsAgreeCheck = 'N';
+			} 
+			if(InfoOfferAgree){
+				InfoOfferAgreeCheck = 'Y';
+			}else{
+				InfoOfferAgreeCheck = 'N';
+			}
+			if(outsourceAgree){
+				outsourceAgreeCheck = 'Y';
+			}else{
+				outsourceAgreeCheck = 'N';
+			}
 		}
+		
+		var params = { 
+						"newsAgreeCheck" : newsAgreeCheck,
+						"InfoOfferAgreeCheck" : InfoOfferAgreeCheck,
+						"outsourceAgreeCheck" : outsourceAgreeCheck
+						}
 		
 		var request = $.ajax({
 			url: "/join/sendNewsAgree",
 			method: "post",
-			data: { newsAgreeCheck : newsAgreeCheck },
+			data: JSON.stringify(params),
+			contentType: "application/json",
+			tradional: true,
 			dataType: "json"
 		});
 		
@@ -134,6 +158,9 @@ function sample6_execDaumPostcode() {
 		sample6_execDaumPostcode();
 	})
 	
+	
+	// 아이디 중복 조회
+	
 	$('.idCheck').click(function(){
 		var regex = /^[a-z][a-z\d]{4,11}$/;
 		inputId = $('input[name="inputId"]').val();
@@ -164,6 +191,7 @@ function sample6_execDaumPostcode() {
 			$('input[name="idDupCheck"]').val('idDupUncheck');
 		}
 	});
+	
 	
 	//비밀번호 유효성검사
 	$('input[name="inputPw"]').keyup(function(){
@@ -415,6 +443,7 @@ function sample6_execDaumPostcode() {
 		if(submitFlag){
 			
 			var params = {
+				"memberCate" : $('input[name="memberCate"]').val(),
 				"inputId" : $('input[name="inputId"]').val(),
 				"inputPw" : $('input[name="inputPw"]').val(),
 				"inputName" : $('input[name="inputName"]').val(),
@@ -459,7 +488,6 @@ function sample6_execDaumPostcode() {
 		$('input[name="purpose"]:checked').each(function(){
 			param.push($(this).val());
 		})
-		
 		$.ajax({
 			url: "/join/getPreferTags",
 			method: "POST",
@@ -474,8 +502,6 @@ function sample6_execDaumPostcode() {
 		});
 		
 	})
-	
-	
 	
 })
 
