@@ -1,0 +1,178 @@
+.wrapper-mypage {
+  display: grid;
+  grid-template-columns: 11em auto;
+}
+.makerAside {
+  padding-right: 0.5em;
+}
+.makerMypage-content {
+  padding: 1em;
+}
+.mypage_title {
+  width: fit-content;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  background-color: var(--main-green);
+  color: #fff;
+  font-size: 15pt;
+  font-weight: 600;
+}
+.mypage_title::before {
+  margin-right: 0.25em;
+  content: "\f007";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+
+/* ============ 추가정보 관리 ===========*/
+.mypage-infoBoxWrap {
+  max-width: 40em;
+}
+.mypage-infoBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1em;
+  padding: 2em;
+  background-color: var(--main-green);
+}
+.mypage-infoBox-para {
+  color: #fff;
+  text-align: center;
+}
+.mypage-infoBox-alert {
+  padding: 0.25em 0.5em;
+  border-radius: 0.25em;
+  max-width: fit-content;
+  background-color: #fff;
+  font-weight: 600;
+}
+.mypage-infoBox-alertIcon {
+  color: var(--main-red);
+}
+.mypage-infoBox-enterBtn {
+  padding: 0.25em 1em;
+  background-color: var(--main-green);
+  color: #fff;
+}
+
+/* ============ 마이매칭 현황 ===========*/
+.myMatch-dateBox {
+  width: fit-content;
+  padding: 0.5em 1.5em;
+  border: 1px solid var(--main-green);
+}
+
+.myMatch-itemListBox {
+  margin-top: 1em;
+}
+.myMatch-itemList {
+  width: 100%;
+  margin: 0.5em 0.5em 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: aliceblue; */
+}
+.myMatch-itemInfo {
+  list-style: inside;
+  list-style-type: decimal;
+}
+.myMatch-inquiryBtn {
+  background-color: var(--main-green);
+}
+.myMatch-cancelBtn {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+}
+
+/* ============ 마이매칭 이력 ===========*/
+.myMatch-searchTap {
+  margin-bottom: 1em;
+}
+.myMatch_periodSearch {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.myMatch-period-button_box {
+  display: flex;
+  flex-direction: row;
+  margin: 1em;
+}
+.button_box_column {
+  display: flex;
+  flex-wrap: wrap;
+}
+.myMatch-searchNameItem,
+.myMatch-historySearchBtn {
+  height: fit-content;
+  padding: 0.5em 1em;
+  background-color: var(--main-green);
+  color: #fff;
+}
+.matchHistoryTable {
+  width: 100%;
+  font-size: 11pt;
+  text-align: center;
+}
+.matchHistoryTable-orederNum,
+.matchHistoryTable-delivery,
+.matchHistoryTable-courier,
+.matchHistoryTable-invoiceNum,
+.matchHistoryTable-deliveryDate,
+.matchHistoryTable-paymentDate,
+.matchHistoryTable-itemName,
+.matchHistoryTable-itemStandard {
+  width: 12.5%;
+}
+
+/* ============ 정산 ===========*/
+
+.calculate-funcTap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.calculTable {
+  width: 100%;
+  font-size: 11pt;
+  text-align: center;
+}
+.table-head {
+  line-height: 1.5em;
+  border-bottom: 1px solid #000;
+}
+.table-head th:nth-child(2n + 1) {
+  background-color: var(--main-yellow);
+}
+.table-row {
+  line-height: 1.5em;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+.table-row:first-child {
+  border-top: none;
+}
+.calculTable-date {
+  width: 10%;
+}
+.calculTable-total,
+.calculTable-card,
+.calculTable-cash,
+.calculTable-phone,
+.calculTable-etc,
+.calculTable-coupon {
+  width: 13%;
+}
+.calculTable-download {
+  width: 10%;
+}
+
+.table-sum-row {
+  border-top: 1px solid #000;
+}
+.excelDownload-month {
+  color: blue;
+  cursor: pointer;
+}

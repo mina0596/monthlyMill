@@ -3,32 +3,40 @@
   <div class="gnb_util gnb_util-makers">
     <ul>
       <li class="gnb_util__makers">
-        <a href="">메이커스</a>
+        <a th:href="@{/makerMain}">
+          <i class="fas fa-home"></i>
+          <span>메이커스</span></a
+        >
       </li>
     </ul>
     <ul>
       <li>
-        <a th:if="${session.SID != null}" class="gnb_util__join" th:href="@{/}"
-          >[[${session.SNAME}]]님
+        <a th:if="${session.SID != null}" class="gnb_util__join" th:href="@{/}">
+          <i class="fas fa-user"></i>
+          <span>[[${session.SNAME}]] 님</span>
         </a>
       </li>
-      <!-- <li>
+      <li>
         <a
           th:if="${session.SID != null}"
           th:href="@{/logout}"
           class="gnb_util__login"
-          >로그아웃</a
+          ><span>로그아웃</span></a
         >
-      </li> -->
-      <li><a th:href="@{/}">my매칭</a></li>
-      <li><a th:href="@{/}">정산</a></li>
+      </li>
+      <li>
+        <a th:href="@{/}"><span>my매칭</span></a>
+      </li>
+      <li>
+        <a th:href="@{/}"><span>정산</span></a>
+      </li>
     </ul>
   </div>
   <div class="gnb_box">
     <ul class="gnb_customer">
       <a class="logo" th:href="@{/main}">로고 이미지</a>
       <li><a th:href="@{/makerNotice}">공지사항</a></li>
-      <li><a th:href="@{/makerMatch}">월간매칭</a></li>
+      <li><a th:href="@{/makerMatch_main}">월간매칭</a></li>
       <li><a th:href="@{/makerAsk}">문의게시판</a></li>
     </ul>
   </div>

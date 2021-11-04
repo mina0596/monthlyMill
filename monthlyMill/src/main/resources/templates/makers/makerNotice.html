@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../../static/css/styleMakers.css"
+    />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/styleMakers.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>월간방앗간</title>
+  </head>
+  <body>
+    <header class="makerHeader"></header>
+
+    <div class="wrapper">
+      <section class="content_box">
+        <h3 class="h3_title noborder">공지사항</h3>
+        <table class="board-table">
+          <thead>
+            <th class="board-notice-num"><span>번호</span></th>
+            <th class="board-notice-title"><span>제목</span></th>
+            <th class="board-notice-date"><span>작성일</span></th>
+          </thead>
+          <tbody>
+            <!-- 게시글 한 개 -->
+            <tr class="board-row">
+              <td class="board-notice-num"><span>1</span></td>
+              <td class="board-notice-title">
+                <!-- 각 게시글로 이동하는 링크 -->
+                <a href="#"
+                  ><span
+                    >긴제목 공지 Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit. Similique ipsa, eos esse dolore impedit
+                    rerum nostrum molestias facilis magni, laudantium ut culpa
+                    blanditiis non et minima! Illo odit similique
+                    suscipit.</span
+                  ></a
+                >
+              </td>
+              <td class="board-notice-date"><span>2021-11-01</span></td>
+            </tr>
+
+            <tr class="board-row">
+              <td class="board-notice-num"><span>10</span></td>
+              <td class="board-notice-title"><a href="#">11월 일정변경</a></td>
+              <td class="board-notice-date"><span>2021-11-01</span></td>
+            </tr>
+            <tr class="board-row">
+              <td class="board-notice-num"><span>1</span></td>
+              <td class="board-notice-title"><a href="#">공지</a></td>
+              <td class="board-notice-date"><span>2021-11-01</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- 게시판 페이지: 일정 개수(15개 정도?) 마다 페이지 번호 추가 -->
+        <div class="button_box">
+          <button class="board-prevBtn">이전</button>
+          <button class="borad-pageBtn">1</button>
+          <button class="board-nextBtn">다음</button>
+        </div>
+      </section>
+    </div>
+
+    <footer></footer>
+
+    <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../static/js/layout_front.js"></script>
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
+  </body>
+</html>

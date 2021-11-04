@@ -5,8 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
-    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../../static/css/styleMakers.css"
+    />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/styleMakers.css}" />
     <script
       src="https://kit.fontawesome.com/7161175c87.js"
       crossorigin="anonymous"
@@ -16,32 +20,58 @@
   </head>
   <body>
     <header class="makerHeader"></header>
-    <aside class="makerAside"></aside>
-    <section class="">
-      <h3>매칭현황</h3>
+    <div class="wrapper-mypage">
+      <aside
+        class="makerAside"
+        data-asideMenu=""
+        data-asideMenu-number=""
+      ></aside>
+      <section class="content_box">
+        <h3 class="h3_title">매칭현황</h3>
 
-      <ol>
-        <!-- li 하나가 매칭 한 개 -->
-        <li>
-          <div class="itemInfo">
-            <span class="itemName">상품명</span>
-            <span class="itemAria">지역</span>
-            <span class="itemDeliveryDate">배송날짜</span>
-            <span class="itemSize">규격</span>
-            <span class="itemPrice">입찰신청가</span>
+        <div class="myMatch-dateBox">
+          <span class="myMatch-date">yyyy-mm-dd 오늘날짜</span>
+        </div>
+
+        <ol class="myMatch-itemListBox">
+          <!-- <div class="myMatch-item"> 하나가 매칭 한 개 -->
+          <div class="myMatch-itemList">
+            <li class="myMatch-itemInfo">
+              <span class="myMatchItem myMatch-itemName">상품명</span>
+              <span class="myMatchItem myMatch-itemAria">지역</span>
+              <span class="myMatchItem myMatch-itemDeliveryDate">배송날짜</span>
+              <span class="myMatchItem myMatch-itemSize">규격</span>
+              <span class="myMatchItem myMatch-itemPrice">입찰신청가</span>
+            </li>
+
+            <div class="myMatch-itemButtons">
+              <button class="myMatch-inquiryBtn btn">조회</button>
+              <button class="myMatch-cancelBtn btn">취소</button>
+            </div>
           </div>
-          <div class="itemButtons">
-            <!-- '상세'로 바꾸는게 더 직관적인 단어같은데 물어볼것 -->
-            <button class="inquiryBtn">조회</button>
-            <button class="cancelBtn">취소</button>
+
+          <div class="myMatch-itemList">
+            <li class="myMatch-itemInfo">
+              <span class="myMatchItem myMatch-itemName">상품명</span>
+              <span class="myMatchItem myMatch-itemAria">지역</span>
+              <span class="myMatchItem myMatch-itemDeliveryDate">배송날짜</span>
+              <span class="myMatchItem myMatch-itemSize">규격</span>
+              <span class="myMatchItem myMatch-itemPrice">입찰신청가</span>
+            </li>
+
+            <div class="myMatch-itemButtons">
+              <button class="myMatch-inquiryBtn btn">조회</button>
+              <button class="myMatch-cancelBtn btn">취소</button>
+            </div>
           </div>
-        </li>
-      </ol>
-    </section>
+        </ol>
+      </section>
+    </div>
     <footer></footer>
 
     <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../static/js/layout_front.js"></script>
+    <script src="../../static/js/makers/makerMyMatch.js"></script>
 
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>

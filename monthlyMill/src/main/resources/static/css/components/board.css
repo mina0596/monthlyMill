@@ -1,0 +1,57 @@
+/* 게시판 */
+
+.board-table {
+  width: 100%;
+  border-top: 2px solid var(--main-green);
+  border-bottom: 2px solid var(--main-green);
+}
+.board-table th {
+  font-weight: 600;
+}
+.board-table th,
+.board-table td {
+  padding: 0.5em;
+}
+.board-row {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* 공지사항 게시판 */
+.board-notice-num {
+  width: 3em;
+  text-align: center;
+}
+.board-notice-title {
+  text-align: center;
+}
+.board-notice-title:hover {
+  text-decoration: underline;
+}
+.board-notice-date {
+  width: 8em;
+  text-align: center;
+}
+
+/* 모바일에서는 번호 생략, 날짜 작게 아래쪽 표기하는게 깔끔할듯 */
+@media screen and (hover: none) and (max-width: 768px) {
+  .board-notice-num {
+    display: none;
+  }
+}
+
+/* 게시글 */
+.post {
+  padding: 1em 0;
+}
+.post-title {
+  font-size: 22px;
+  margin-bottom: 0.5em;
+}
+.post-date {
+  font-size: 17px;
+}
+.post-body {
+  padding: 1em 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}

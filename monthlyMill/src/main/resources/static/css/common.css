@@ -2,6 +2,8 @@
   /* --font: "ChosunGu"; */
   --font: "KoPubWorld Dotum";
   --main-green: #1e4139;
+  --main-yellow: #fee5ac;
+  --main-red: #a01733;
 
   --text-emp-color: #009207;
   --desc-color: rgb(147, 148, 147);
@@ -36,8 +38,13 @@ input#file-upload-button,
 div,
 select,
 li,
+table,
 textarea {
   font-family: var(--font);
+}
+
+a {
+  color: #000;
 }
 
 p,
@@ -201,10 +208,10 @@ input[type="radio"]:checked + label.btn.square {
 }
 .h3_title {
   padding-bottom: 0.5em;
-  font-size: 22px;
+  font-size: 29px;
   letter-spacing: -1px;
   font-weight: 600;
-  border-bottom: 2px solid gray;
+  border-bottom: 2px solid var(--main-green);
   margin-bottom: 0.5em;
 }
 .h4_title {
@@ -396,6 +403,9 @@ input.small {
 }
 .noScroll {
   overflow: hidden;
+}
+.noborder {
+  border: none;
 }
 
 /* table */
