@@ -90,6 +90,8 @@
 - makerNotice: 공지사항 리스트
 - makerNotice_post: 공지사항 게시글
 
+---
+
 메이커스 관련 JS파일
 
 - makerJoin_front: 3단계 입점신청 유효값 검사 조금 해둠(다한건아님)
