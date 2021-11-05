@@ -4,35 +4,159 @@
   flex-direction: column;
   width: 100%;
 }
-.makerMain > * {
-  border: 1px solid gray;
-}
-.mainTitle {
-  text-align: center;
-  background-color: var(--main-green);
-  color: #fff;
-}
 
 /* 상단 공지바*/
 .mainNoticeBox {
   display: flex;
+  justify-content: center;
+  align-items: baseline;
+  margin: 1em 0;
   padding: 0.5em;
+  background-color: var(--main-yellow);
 }
-/* 하단 베스트 순위 + 매칭*/
-.makerMain-bottom {
+.mainNotice {
+  margin-left: 0.5em;
+  font-weight: 700;
+}
+.mainNotice:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/*  베스트 순위 + 매칭*/
+.makerMain-body {
   display: grid;
   grid-template-columns: 1fr 2fr;
 }
-.mainAgeBest-columns,
+
+.mainweeklyBest {
+  padding: 0 0.5em;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+.mainTitle {
+  margin: 0.5em auto 1em;
+  padding: 0.5em 2em;
+  width: fit-content;
+  font-weight: 700;
+  text-align: center;
+
+  border-radius: 1em;
+  background-color: var(--main-yellow);
+}
+.mainSubtitle {
+  padding: 0.5em;
+  text-align: center;
+}
+
+.bestItem {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5em 0;
+  padding-left: 1em;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.bestItemName {
+  margin: 0.5em 1em;
+}
+.bestItemImg {
+  width: 60%;
+  height: 100%;
+  max-height: 40px;
+  object-fit: cover;
+  background-color: yellowgreen;
+  clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+/*이미지 열림*/
+.bestItem:hover {
+  flex-direction: column;
+  margin-bottom: 2em;
+  padding-left: 0;
+}
+.bestItem:hover .bestItemName {
+  font-weight: 700;
+}
+.bestItem:hover .bestItemImg {
+  width: 100%;
+  height: auto;
+  max-height: none;
+  clip-path: none;
+}
+
+/*연령대별 선호제품*/
+.mainAgeBest-columns {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+.mainAgeBest {
+  /* border: 1px solid rgba(0, 0, 0, 0.1); */
+}
+.sub-bestItemList {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-left: none;
+  padding: 1em;
+}
+.mainAgeBest-columnTap {
+  position: relative;
+}
+.mainAgeBestBtn {
+  position: absolute;
+  top: 50%;
+}
+.mainAgeBestBtn.prevBtn {
+  left: 0;
+}
+.mainAgeBestBtn.nextBtn {
+  right: 0;
+}
+
+.sub-bestItem {
+  list-style-position: inside;
+  list-style-type: decimal;
+}
+.sub-bestItemBox {
+  margin: 0 0.5em;
+  display: grid;
+  grid-template-rows: 4fr 1fr;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.sub-bestItemImg {
+  background-color: rgb(202, 202, 202);
+}
+.bestItemName,
+.sub-bestItem {
+  list-style-position: inside;
+  list-style-type: decimal;
+}
+.bestItem:first-child > .bestItemName::marker {
+  content: "BEST 1.";
+}
+
+/*메인화면 매칭 대시보드*/
 .mainMatch-columns {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
-.bestItem {
+.mainMatch {
+  padding: 0.25em;
+  color: #fff;
 }
-.bestItemImg {
-  width: 50%;
-  background-color: yellowgreen;
+.mainMatch-title,
+.mainMatch-item {
+  padding: 1em;
+  margin: 0.25em;
+  text-align: center;
+  background-color: var(--main-green);
 }
-.bestItemName {
+.mainMatch-item {
+  display: flex;
+  flex-direction: column;
+}
+.mainMatch-number {
+  font-size: 16pt;
+  color: #ff0;
+}
+.mainMatch-number::after {
+  font-size: 12pt;
+  color: #fff;
 }

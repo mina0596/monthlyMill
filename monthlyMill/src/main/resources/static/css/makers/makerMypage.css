@@ -1,10 +1,10 @@
 /* ============ 메이커스 마이페이지 공통 ===========*/
 .wrapper-mypage {
   display: grid;
-  grid-template-columns: 11em auto;
+  grid-template-columns: 200px auto;
 }
 .makerAside {
-  padding-right: 0.5em;
+  /* padding-right: 0.5em; */
 }
 .makerMypage-content {
   padding: 1em;

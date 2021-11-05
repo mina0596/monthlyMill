@@ -21,58 +21,99 @@
   <body>
     <header class="makerHeader"></header>
     <div class="wrapper">
-      <section class="">
-        <h3>매칭상세</h3>
-
-        <div class="matchDetail-titleBox">
-          <span class="matchDetail-itemName">상품명</span>
-        </div>
+      <section class="content_box">
         <div class="matchDetail-columnWrap">
           <div class="matchDetail-column">
             <!-- 상품정보 -->
             <div class="matchDetail-itemBox">
-              <img src="" alt="상품이미지" />
-              <p class="aria">지역</p>
-              <p class="deliveryDate">배송날짜</p>
-              <p class="size">규격</p>
-              <div class="matchDetail-standard">
-                <span class="itemWeight kg_number">1</span>
-                <span class="itemQuantity item_number">2</span>
-                <span class="itemPerGram perGram_number">3</span>
+              <div class="matchDetail-imgBox">
+                <!-- 상품규격은 이미지 hover시 올라옴 -->
+                <div class="matchDetail-standard">
+                  <p class="size">상품규격</p>
+                  <span class="itemWeight kg_number">1</span>
+                  <span class="itemQuantity item_number">2</span>
+                  <span class="itemPerGram perGram_number">3</span>
+                </div>
+                <img
+                  src="../../static/img/main_slide_1.jpg"
+                  alt="상품이미지"
+                  class="matchItem-img"
+                />
+              </div>
+
+              <div class="matchDetail-infoBox">
+                <div class="matchDetail-itemNameBox">
+                  <h2 class="matchDetail-itemCategory">떡</h2>
+                  <h2 class="matchDetail-itemName">상품명 외 2건</h2>
+                </div>
+                <p class="deliveryDate">배송년 날월 짜일</p>
+                <p class="deliveryType">배송종류</p>
+                <p class="aria">배송구 지역동</p>
+              </div>
+
+              <div class="matchDetail-nowBidBox">
+                <img
+                  src="../../static/img/icon_bestPrice.png"
+                  alt=""
+                  class="bidPriceImg"
+                />
+                <div class="matchDetail-nowBidPrice">
+                  <span class="">[최저 입찰가]</span>
+                  <span class="bidPrice price_number">12000</span>
+                </div>
               </div>
             </div>
 
-            <div class="matchDetail-nowBidBox">
-              <span>현재 입찰가</span>
-              <span class="biddingPrice">12000</span>
-            </div>
+            <!-- 합배송일 때 합배송되는 다른 상품들 같이 표시 -->
+            <ul class="matchDetail-otherItemList">
+              <li class="matchDetail-otherItem">
+                <img src="" alt="" class="matchDetail-otherItemImg" />
+                <div class="matchDetail-otherItemInfo">
+                  <h4 class="matchDetail-otherItemTitle">상품명</h4>
+                  <span class="matchDetail-otherItemStandard">상품규격</span>
+                </div>
+              </li>
+            </ul>
           </div>
 
           <div class="matchDetail-column">
             <!-- 재료, 공정 정보 -->
             <div class="matchDetail-recipeBox">
-              <h4>레시피</h4>
-              <ol class="recipeOrderList">
-                <li class="recipeOrder">
+              <h3 class="recipeTitle">레시피</h3>
+
+              <div class="recipeColumn">
+                <h4 class="recipeSubtitle">재료(준비물)</h4>
+                <p class="recipe-ingridient">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </li>
-                <li class="recipeOrder">
+                </p>
+              </div>
+              <div class="recipeColumn">
+                <h4 class="recipeSubtitle">공정(만드는 방법)</h4>
+                <p class="recipe-process">
                   Reprehenderit, consectetur perspiciatis, id doloribus eum
                   accusantium, error tempore similique quae officia eligendi
                   rerum.
-                </li>
-                <li class="recipeOrder">
-                  Voluptatum laudantium veritatis nam, in nulla dolorem earum.
-                </li>
-              </ol>
+                </p>
+              </div>
+
+              <img
+                src="../../static/img/icon_roller.png"
+                alt=""
+                class="recipeIconImg"
+              />
             </div>
 
             <!-- 입찰 입력란 -->
             <div class="matchDetail-bidBox">
               <span>입찰가</span>
               <!-- 현재 입찰가보다 낮은 값만 작성 가능하게 -->
-              <span class="offerPrice">11500</span>
-              <button>입찰신청</button>
+              <img
+                src="../../static/img/icon_coin.png"
+                alt=""
+                class="bidPriceIconImg"
+              />
+              <input class="offerPrice price_number" value="11500" />
+              <button class="bidBtn">입찰신청</button>
             </div>
           </div>
         </div>
