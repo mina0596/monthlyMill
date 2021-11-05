@@ -1,1 +1,120 @@
 <!-- 회원정보조회 -->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../../static/css/styleMakers.css"
+    />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/styleMakers.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>월간방앗간</title>
+  </head>
+  <body>
+    <header class="makerHeader"></header>
+    <div class="wrapper wrapper-mypage">
+      <aside class="makerAside"></aside>
+
+      <section class="content_box">
+        <h3 class="mypage_title">회원정보 관리</h3>
+        <div class="join_box">
+          <h3 class="h3_title">회원정보 조회</h3>
+          <table class="info-table">
+            <tbody>
+              <tr>
+                <th class="info-headColumn">
+                  <span>아이디</span>
+                </th>
+                <td class="info-bodyColumn">
+                  <span class="info-id">ididid6</span>
+                </td>
+              </tr>
+              <tr>
+                <th class="info-headColumn">
+                  <span>이름</span>
+                </th>
+                <td class="info-bodyColumn">
+                  <span class="info-name">홍길동</span>
+                </td>
+              </tr>
+              <tr>
+                <th class="info-headColumn">
+                  <span>생년월일</span>
+                </th>
+                <td class="info-bodyColumn">
+                  <span class="info-birth">0000년 00월 0일</span>
+                </td>
+              </tr>
+              <tr>
+                <th class="info-headColumn">
+                  <span>성별</span>
+                </th>
+                <td class="info-bodyColumn">
+                  <span class="info-sex">남또는여</span>
+                </td>
+              </tr>
+              <tr>
+                <th class="info-headColumn">
+                  <span>이메일</span>
+                </th>
+                <td class="info-bodyColumn">
+                  <span class="info-email">asdf@mail.com</span>
+                </td>
+              </tr>
+              <tr>
+                <th class="info-headColumn">
+                  <span>휴대폰번호</span>
+                </th>
+                <td class="info-bodyColumn">
+                  <span class="info-phoneNum">010-0000-1111</span>
+                </td>
+              </tr>
+              <tr>
+                <th class="info-headColumn">
+                  <span>주소</span>
+                </th>
+                <td class="info-bodyColumn">
+                  <p class="info-postCode">우편번호</p>
+                  <p class="info-adress">주소</p>
+                  <p class="info-adressDetail">상세주소</p>
+                </td>
+              </tr>
+              <tr>
+                <th class="info-headColumn">
+                  <span>사용계좌</span>
+                </th>
+                <td class="info-bodyColumn">
+                  <span class="info-bank">은행명</span>
+                  <span class="info-accountOwner">예금주명</span>
+                  <p class="info-accountNumber">계좌번호</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="button_box">
+            <button class="info-updateBtn">수정</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer></footer>
+
+    <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../static/js/layout_front.js"></script>
+    <!-- <script src="../../static/js/makers/maker.js"></script> -->
+
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
+    <script type="text/javascript" th:src="@{/js/makerCalculation.js}"></script>
+  </body>
+</html>

@@ -1,4 +1,5 @@
 @import "//cdn.jsdelivr.net/npm/font-kopubworld@1.0";
+/*L 300 M 400 B 700*/
 
 @import "reset.css";
 @import "common.css";
@@ -20,4 +21,7 @@
   /* max-width: ; */
   margin: 0 auto;
   padding: 2em 1em;
+}
+.element_box {
+  margin: 1.5em 0;
 }

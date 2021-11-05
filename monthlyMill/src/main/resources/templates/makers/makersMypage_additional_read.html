@@ -1,0 +1,136 @@
+<!-- 회원정보조회 -->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../../static/css/styleMakers.css"
+    />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/styleMakers.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>월간방앗간</title>
+  </head>
+  <body>
+    <header class="makerHeader"></header>
+    <div class="wrapper wrapper-mypage">
+      <aside class="makerAside"></aside>
+
+      <section class="content_box">
+        <h3 class="mypage_title">추가정보 관리</h3>
+        <div class="join_box">
+          <div>
+            <h3 class="h3_title">담당자 정보</h3>
+            <table class="info-table">
+              <tbody>
+                <tr>
+                  <th class="info-headColumn">
+                    <span class="text">이름</span>
+                  </th>
+                  <td class="info-bodyColumn">
+                    <span type="text" name="inputName">홍길동</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="info-headColumn">
+                    <span class="text">이메일</span>
+                  </th>
+                  <td class="info-bodyColumn">
+                    <span name="inputEmail">이메일@ </span>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="info-headColumn">
+                    <span class="text">휴대폰번호</span>
+                  </th>
+                  <td class="info-bodyColumn">
+                    <span class="phoneNum">010-0000-0000 </span>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="info-headColumn">
+                    <span>FAX 번호</span>
+                  </th>
+                  <td class="info-bodyColumn">
+                    <span class="faxNum">팩스</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <h3 class="h3_title">정산 입금 계좌</h3>
+            <table class="info-table">
+              <tbody>
+                <tr>
+                  <th class="info-headColumn"><span>정산대금입금계좌</span></th>
+                  <td class="info-bodyColumn">
+                    <span class="bank">은행명</span>
+                    <div>
+                      <span class="accountOwner">예금주</span>
+                      <span class="accountNumber">계좌번호</span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <h3 class="h3_title">배송정보</h3>
+            <table class="info-table">
+              <tbody>
+                <tr>
+                  <th class="info-headColumn">출고지</th>
+                  <td class="info-bodyColumn">
+                    <div>
+                      <span class="releaseBrand">브랜드</span>
+                    </div>
+                    <div>
+                      <span class="releaseAddress">주소</span>
+                    </div>
+                    <div>
+                      <span class="releasePhoneNum">전화번호</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="info-headColumn">반품/교환지</th>
+                  <td class="info-bodyColumn">
+                    <div>
+                      <span class="returnBrand">브랜드</span>
+                    </div>
+                    <div>
+                      <span class="returnAddress">주소</span>
+                    </div>
+                    <div>
+                      <span class="returnPhoneNum">전화번호</span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="button_box">
+            <button class="userInfo-updateBtn">수정</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer></footer>
+
+    <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../static/js/layout_front.js"></script>
+
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
+  </body>
+</html>
