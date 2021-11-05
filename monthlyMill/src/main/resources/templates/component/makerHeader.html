@@ -3,7 +3,7 @@
   <div class="gnb_util gnb_util-makers">
     <ul>
       <li class="gnb_util__makers">
-        <a th:href="@{/makerMain}">
+        <a th:href="@{/makers/main}">
           <i class="fas fa-home"></i>
           <span>메이커스</span></a
         >
@@ -25,18 +25,18 @@
         >
       </li>
       <li>
-        <a th:href="@{/}"><span>my매칭</span></a>
+        <a th:href="@{/makers/myMatch/state}"><span>my매칭</span></a>
       </li>
       <li>
-        <a th:href="@{/}"><span>정산</span></a>
+        <a th:href="@{/makers/sales/list}"><span>정산</span></a>
       </li>
     </ul>
   </div>
   <div class="gnb_box">
     <ul class="gnb_customer">
-      <a class="logo" th:href="@{/main}">로고 이미지</a>
-      <li><a th:href="@{/makerNotice}">공지사항</a></li>
-      <li><a th:href="@{/makerMatch_main}">월간매칭</a></li>
+      <a class="logo" th:href="@{/}">로고 이미지</a>
+      <li><a th:href="@{/makers/noticeList}">공지사항</a></li>
+      <li><a th:href="@{/makers/auction/list}">월간매칭</a></li>
       <li><a th:href="@{/makerAsk}">문의게시판</a></li>
     </ul>
   </div>
