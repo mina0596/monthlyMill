@@ -21,25 +21,100 @@
   <body>
     <header class="makerHeader"></header>
     <div class="wrapper">
-      <section class="">
-        <h3>월간매칭</h3>
+      <div class="dueTimeBox">
+        <!-- 매칭 종료시간인 오후 4시까지 남은 시간 -->
+        <span class="dueTime"> </span>
+      </div>
 
-        <div class="dueTimeBox">
-          <!-- 매칭 종료시간인 오후 4시까지 남은 시간 -->
-          <span class="dueTime"> </span>
-        </div>
-
+      <section class="content-box">
+        <!-- 필터 조건 -->
         <div class="filterBox">
-          <span>필터</span>
-          <select name="" id="">
-            <option value="">떡</option>
-            <option value="">제과</option>
-            <option value="">제빵</option>
-            <option value="">음료</option>
-          </select>
+          <li class="filterList">
+            <span>택배</span>
+            <select name="" id="">
+              <option value="all">전체</option>
+              <option value="">택배</option>
+              <option value="">퀵</option>
+            </select>
+          </li>
+          <li class="filterList">
+            <span>카테고리</span>
+            <select name="" id="">
+              <option value="all">전체</option>
+              <option value="">떡</option>
+              <option value="">제과</option>
+              <option value="">제빵</option>
+              <option value="">음료</option>
+            </select>
+          </li>
         </div>
 
-        <ul class="match-matchList">
+        <!-- 매칭 리스트 -->
+        <div class="matchDetail-column">
+          <!-- 상품정보 -->
+          <div class="match-itemBox">
+            <div class="match-imgBox">
+              <!-- 상품규격은 이미지 hover시 올라옴 -->
+              <div class="match-standard">
+                <span class="itemWeight kg_number">1</span>
+                <span class="itemQuantity item_number">2</span>
+                <span class="itemPerGram perGram_number">3</span>
+              </div>
+              <img
+                src="../../static/img/main_slide_1.jpg"
+                alt="상품이미지"
+                class="matchItem-img"
+              />
+            </div>
+
+            <div class="match-column-right">
+              <div class="match-isParticipatedBox">
+                <span class="match-isParticipated">참가중</span>
+              </div>
+
+              <div class="matchDetail-infoBox">
+                <div class="matchDetail-itemNameBox">
+                  <h2 class="matchDetail-itemCategory">떡</h2>
+                  <h2 class="matchDetail-itemName">상품명 외 2건</h2>
+                </div>
+                <p class="deliveryDate">배송년 날월 짜일</p>
+                <p class="deliveryType">배송종류</p>
+                <p class="aria">배송구 지역동</p>
+              </div>
+
+              <div class="matchDetail-nowBidBox">
+                <img
+                  src="../../static/img/icon_bestPrice.png"
+                  alt=""
+                  class="bidPriceImg"
+                />
+                <div class="matchDetail-nowBidPrice">
+                  <span class="">[최저 입찰가]</span>
+                  <span class="bidPrice price_number">12000</span>
+                </div>
+                <button class="match-participateBtn">참가</button>
+              </div>
+            </div>
+            <div class="match-buttonBox">
+              <button class="match-dropBtn">
+                <i>버튼</i>
+              </button>
+            </div>
+          </div>
+
+          <!-- 합배송일 때 합배송되는 다른 상품들 같이 표시 -->
+          <ul class="matchDetail-otherItemList">
+            <li class="matchDetail-otherItem">
+              <img src="" alt="" class="matchDetail-otherItemImg" />
+              <div class="matchDetail-otherItemInfo">
+                <h4 class="matchDetail-otherItemTitle">상품명</h4>
+                <span class="matchDetail-otherItemStandard">상품규격</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- <ul class="match-matchList">
           <li class="matchListItem">
             <span class="matchListItem-itemName">이름</span>
             <img src="" alt="상품이미지" />
@@ -56,7 +131,7 @@
               <span class="itemQuantity item_number">1</span>
               <span class="itemPerGram perGram_number">1</span>
             </div>
-            <!-- 이미 참가중인경우 재입찰로 표기 -->
+    
             <button class="">참가가능</button>
           </li>
           <li class="matchListItem">
@@ -75,10 +150,10 @@
               <span class="itemQuantity item_number">1</span>
               <span class="itemPerGram perGram_number">1</span>
             </div>
-            <!-- 이미 참가중인경우 재입찰로 표기 -->
+
             <button class="">참가가능</button>
           </li>
-        </ul>
+        </ul> -->
       </section>
     </div>
     <footer></footer>

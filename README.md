@@ -27,16 +27,6 @@
 - main: 메인화면(시연 이후 사용)
 - introduce: 월간방앗간 소개(=임시용 메인창)
 
-### memberJoin
-
-회원가입 관련 화면들
-
-- join_method: 회원가입 첫 화면
-- join_agreement: 약관동의창
-- join_basic: 필수정보 입력
-- join_additory: 추가정보 입력
-- join_finish: 회원가입 완료
-
 ### customer
 
 고객 이용 화면
@@ -67,11 +57,6 @@
 메이커스 화면
 
 - makerMain: 메이커스 메인화면
-- makerJoin_popup: 메이커스 가입 전 입점팝업창
-- makerJoin_agreement: 메이커스 가입 1단계 약관동의 (팝업창 여기 뜸)
-- makerJoin_basic: 메이커스 가입 2단계 기본정보
-- makerJoin_enter: 메이커스 가입 3단계 입점신청
-- makerJoin_finish: 메이커스 가입 4단계 가입완료
 
 - makerMatch_main: 월간매칭 메인화면
 - makerMatch_detail: 월간매칭 상세화면
@@ -98,6 +83,21 @@
 - makerMatch_front: 서버시간 뜨는부분 현재 로컬시간 가져와서 하는걸로 텍스트 띄워둠! (시작/종료 시간은 적당히 넣어놨음)
 
 ---
+
+### memberJoin
+
+회원가입 관련 화면들
+
+- join_method: 회원가입 첫 화면
+- join_agreement: 약관동의창
+- join_basic: 필수정보 입력
+- join_additory: 추가정보 입력
+- join_finish: 회원가입 완료
+- makerJoin_popup: 메이커스 가입 전 입점팝업창
+- makerJoin_agreement: 메이커스 가입 1단계 약관동의 (팝업창 여기 뜸)
+- makerJoin_basic: 메이커스 가입 2단계 기본정보
+- makerJoin_enter: 메이커스 가입 3단계 입점신청
+- makerJoin_finish: 메이커스 가입 4단계 가입완료
 
 ## 주요 흐름
 

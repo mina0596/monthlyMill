@@ -19,123 +19,188 @@
   </head>
   <body>
     <header class="makerHeader"></header>
+
     <div class="wrapper">
       <section class="makerMain">
         <!-- 클릭 시 공지사항으로 이동 -->
-        <div class="makerMain-top">
-          <div class="mainNoticeBox">
-            <i class="fas fa-volume-off"></i>
-            <p class="mainNotice">여기에 가장 최신 공지사항 1개 제목 들어감!</p>
-          </div>
+        <div class="mainNoticeBox">
+          <i class="fas fa-volume-off"></i>
+          <p class="mainNotice">여기에 가장 최신 공지사항 1개 제목 들어감!</p>
         </div>
 
-        <div class="makerMain-bottom">
-          <!-- 2단 보기, 폭 좁아지면 1단보기 배치  -->
-          <div class="mainweeklyBest">
-            <h3 class="mainTitle">이번 주 고객 베스트 메뉴</h3>
-            <ol>
-              <li class="bestItem">
-                <span>Best 1</span>
-                <img src="" alt="이미지" class="bestItemImg" />
-                <span class="bestItemName">설기</span>
-              </li>
-              <li class="bestItem">
-                <span>2</span>
-                <img src="" alt="이미지" class="bestItemImg" />
-                <span class="bestItemName">인절미</span>
-              </li>
-              <li class="bestList">
-                <span>3</span>
-                <img src="" alt="이미지" class="bestItemImg" />
-                <span class="bestItemName">설기</span>
-              </li>
-              <li class="bestItem">
-                <span>4</span>
-                <img src="" alt="이미지" class="bestItemImg" />
-                <span class="bestItemName">설기</span>
-              </li>
-              <li class="bestItem">
-                <span>5</span>
-                <img src="" alt="이미지" class="bestItemImg" />
-                <span class="bestItemName">설기</span>
-              </li>
-            </ol>
-          </div>
+        <div class="content_box">
+          <div class="makerMain-body">
+            <!-- 왼쪽 컬럼 -->
+            <div class="mainweeklyBest">
+              <h3 class="mainTitle">이번 주 고객 베스트 메뉴</h3>
+              <ol class="bestItemList">
+                <!-- 이 div하나가 베스트아이템 하나  -->
+                <div class="bestItem bestItem-open">
+                  <li class="bestItemName">
+                    <span>설기</span>
+                  </li>
+                  <img
+                    src="../../static/img/main_slide_1.jpg"
+                    alt="이미지"
+                    class="bestItemImg"
+                  />
+                </div>
 
-          <div class="bottomColumn">
-            <div class="mainAgeBest">
-              <h3 class="mainTitle">연령대별 선호제품</h3>
-              <div class="mainAgeBest-columns">
-                <div class="column">
-                  <ol class="">
-                    <li class="mainTitle">여기소제목</li>
-                    <li class="bestItem">
-                      <img src="" alt="이미지" class="bestItemImg" />
-                      <span class="itemName">설기</span>
-                    </li>
-                    <li class="bestItem">
-                      <img src="" alt="이미지" class="bestItemImg" />
-                      <span class="itemName">설기</span>
-                    </li>
-                    <li class="bestItem">
-                      <img src="" alt="이미지" class="bestItemImg" />
-                      <span class="itemName">설기</span>
-                    </li>
-                  </ol>
+                <div class="bestItem">
+                  <li class="bestItemName">
+                    <span>설기</span>
+                  </li>
+                  <img
+                    src="../../static/img/main_intro1_백설기.jpg"
+                    alt="이미지"
+                    class="bestItemImg"
+                  />
                 </div>
-                <div class="column">
-                  <ol class="">
-                    <li class="mainTitle">여기소제목</li>
-                    <li class="bestItem">
-                      <img src="" alt="이미지" class="bestItemImg" />
-                      <span class="itemName">설기</span>
-                    </li>
-                    <li class="bestItem">
-                      <img src="" alt="이미지" class="bestItemImg" />
-                      <span class="itemName">설기</span>
-                    </li>
-                    <li class="bestItem">
-                      <img src="" alt="이미지" class="bestItemImg" />
-                      <span class="itemName">설기</span>
-                    </li>
-                  </ol>
+                <div class="bestItem">
+                  <li class="bestItemName">
+                    <span>설기</span>
+                  </li>
+                  <img
+                    src="../../static/img/main_intro1_백설기.jpg"
+                    alt="이미지"
+                    class="bestItemImg"
+                  />
                 </div>
-                <div class="column">
-                  <ol class="">
-                    <li class="mainTitle">여기소제목</li>
-                    <li class="bestItem">
-                      <img src="" alt="이미지" class="bestItemImg" />
-                      <span class="itemName">설기</span>
-                    </li>
-                    <li class="bestItem">
-                      <img src="" alt="이미지" class="bestItemImg" />
-                      <span class="itemName">설기</span>
-                    </li>
-                    <li class="bestItem">
-                      <img src="" alt="이미지" class="bestItemImg" />
-                      <span class="itemName">설기</span>
-                    </li>
-                  </ol>
+                <div class="bestItem">
+                  <li class="bestItemName">
+                    <span>설기</span>
+                  </li>
+                  <img
+                    src="../../static/img/main_intro1_백설기.jpg"
+                    alt="이미지"
+                    class="bestItemImg"
+                  />
                 </div>
-              </div>
+                <div class="bestItem">
+                  <li class="bestItemName">
+                    <span>설기</span>
+                  </li>
+                  <img
+                    src="../../static/img/main_intro1_백설기.jpg"
+                    alt="이미지"
+                    class="bestItemImg"
+                  />
+                </div>
+              </ol>
             </div>
 
-            <div class="mainMatch">
-              <h3 class="mainTitle">매칭</h3>
-              <ul class="mainMatch-columns">
-                <li class="mainMatchItem">
-                  <span>매칭 건수</span>
-                  <span class="match_number">1</span>
-                </li>
-                <li class="mainMatchItem">
-                  <span>매칭 현황</span>
-                  <span class="match_number">1</span>
-                </li>
-                <li class="mainMatchItem">
-                  <span>대기중인 매칭</span>
-                  <span class="match_number">1</span>
-                </li>
-              </ul>
+            <!-- 오른쪽 컬럼 -->
+            <div class="bottomColumn">
+              <div class="mainAgeBest">
+                <h3 class="mainTitle">연령대별 선호제품</h3>
+
+                <div class="mainAgeBest-columns">
+                  <!-- 이 mainAgeBest-column 클래스 div 하나가 연령대 컬럼 -->
+                  <div class="mainAgeBest-column">
+                    <h4 class="mainSubtitle">어린이/청소년</h4>
+                    <div class="mainAgeBest-columnTap">
+                      <button class="mainAgeBestBtn prevBtn"><</button>
+                      <ol class="sub-bestItemList">
+                        <!-- 이 div하나가 어린이/청소년 베스트 탭 아이템 하나 -->
+                        <div class="sub-bestItemBox">
+                          <img src="" alt="이미지" class="sub-bestItemImg" />
+                          <li class="sub-bestItem">
+                            <span class="itemName">설기</span>
+                          </li>
+                        </div>
+
+                        <div class="sub-bestItemBox">
+                          <img src="" alt="이미지" class="sub-bestItemImg" />
+                          <li class="sub-bestItem">
+                            <span class="itemName">설기</span>
+                          </li>
+                        </div>
+                        <div class="sub-bestItemBox">
+                          <img src="" alt="이미지" class="sub-bestItemImg" />
+                          <li class="sub-bestItem">
+                            <span class="itemName">설기</span>
+                          </li>
+                        </div>
+                      </ol>
+                      <button class="mainAgeBestBtn nextBtn">></button>
+                    </div>
+                  </div>
+
+                  <div class="mainAgeBest-column">
+                    <h4 class="mainSubtitle">성인/직장인</h4>
+                    <div class="mainAgeBest-columnTap">
+                      <button class="mainAgeBestBtn prevBtn"><</button>
+                      <ol class="sub-bestItemList">
+                        <div class="sub-bestItemBox">
+                          <img src="" alt="이미지" class="sub-bestItemImg" />
+                          <li class="sub-bestItem">
+                            <span class="itemName">설기</span>
+                          </li>
+                        </div>
+                        <div class="sub-bestItemBox">
+                          <img src="" alt="이미지" class="sub-bestItemImg" />
+                          <li class="sub-bestItem">
+                            <span class="itemName">설기</span>
+                          </li>
+                        </div>
+                        <div class="sub-bestItemBox">
+                          <img src="" alt="이미지" class="sub-bestItemImg" />
+                          <li class="sub-bestItem">
+                            <span class="itemName">설기</span>
+                          </li>
+                        </div>
+                      </ol>
+                      <button class="mainAgeBestBtn nextBtn">></button>
+                    </div>
+                  </div>
+
+                  <div class="mainAgeBest-column">
+                    <h4 class="mainSubtitle">중장년/노인</h4>
+                    <div class="mainAgeBest-columnTap">
+                      <button class="mainAgeBestBtn prevBtn"><</button>
+                      <ol class="sub-bestItemList">
+                        <div class="sub-bestItemBox">
+                          <img src="" alt="이미지" class="sub-bestItemImg" />
+                          <li class="sub-bestItem">
+                            <span class="itemName">설기</span>
+                          </li>
+                        </div>
+                        <div class="sub-bestItemBox">
+                          <img src="" alt="이미지" class="sub-bestItemImg" />
+                          <li class="sub-bestItem">
+                            <span class="itemName">설기</span>
+                          </li>
+                        </div>
+                        <div class="sub-bestItemBox">
+                          <img src="" alt="이미지" class="sub-bestItemImg" />
+                          <li class="sub-bestItem">
+                            <span class="itemName">설기</span>
+                          </li>
+                        </div>
+                      </ol>
+                      <button class="mainAgeBestBtn nextBtn">></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mainMatch">
+                <h3 class="mainMatch-title">매칭</h3>
+                <ul class="mainMatch-columns">
+                  <li class="mainMatch-item">
+                    <span>당월 매칭 건수</span>
+                    <span class="mainMatch-number match_number">1</span>
+                  </li>
+                  <li class="mainMatch-item">
+                    <span>나의 매칭 현황</span>
+                    <span class="mainMatch-number match_number">1</span>
+                  </li>
+                  <li class="mainMatch-item">
+                    <span>대기중인 매칭</span>
+                    <span class="mainMatch-number match_number">1</span>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>

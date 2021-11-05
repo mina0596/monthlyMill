@@ -1,8 +1,12 @@
 <div class="asideWrapper">
-  <h1 class="text mid boxborder">메이커 이름</h1>
+  <div class="asideMenu_title">
+    <i class="fas fa-user asideUserIcon"></i>
+    <h1 class="text mid aside-userName">[[${session.SNAME}]]</h1>
+    <span class="">님</span>
+  </div>
   <div class="asideMenu_box">
     <ul class="aside_list">
-      <h3 class="h4_title text boxborder">마이페이지</h3>
+      <h4 class="aside_title text">마이페이지</h4>
       <li class="aside_list__pagelink">
         <a href="/makers/myPage/user/BasicInfo">회원정보 관리</a>
       </li>
@@ -14,7 +18,7 @@
       </li>
     </ul>
     <ul class="aside_list">
-      <h3 class="h4_title text boxborder">My매칭</h3>
+      <h4 class="aside_title text">My매칭</h4>
       <li class="aside_list__pagelink">
         <a href="/makers/myMatch/state">매칭 현황</a>
       </li>
@@ -22,6 +26,6 @@
         <a href="/makers/myMatch/history">매칭 이력</a>
       </li>
     </ul>
-    <h3 class="h4_title text boxborder">정산</h3>
+    <h4 class="aside_title text">정산</h4>
   </div>
 </div>

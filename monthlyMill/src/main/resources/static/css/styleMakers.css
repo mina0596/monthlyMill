@@ -9,6 +9,7 @@
 @import "components/footer.css";
 @import "components/popup.css";
 @import "components/board.css";
+@import "components/aside.css";
 
 /* Screens */
 
@@ -20,7 +21,7 @@
 .wrapper {
   /* max-width: ; */
   margin: 0 auto;
-  padding: 2em 1em;
+  /* padding: 2em 1em; */
 }
 .element_box {
   margin: 1.5em 0;

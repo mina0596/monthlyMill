@@ -1,66 +1,205 @@
-/* 월간매칭 메인*/
+/* =========== 월간매칭 메인 ===========*/
+/*상단 서버 시간바*/
 .dueTimeBox {
   display: flex;
   justify-content: center;
-
-  border: 1px solid gray;
+  align-items: baseline;
+  margin: 1em 0;
+  padding: 0.5em;
+  background-color: var(--main-red);
+}
+.dueTime {
+  color: #fff;
 }
 
-.match-matchList {
+/*필터*/
+.filterList {
+}
+
+/*상품리스트 (pc 2단) */
+.match-itemBox {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 3fr;
+  background-color: var(--main-gray);
 }
-.matchListItem {
-  display: flex;
-  flex-direction: column;
-
-  border: 1px solid gray;
+/*왼쪽 이미지란*/
+.match-imgBox {
+  position: relative;
 }
-.matchListItem-itemName {
+.match-standard {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
   text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
 }
-.matchListItem-standard {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+.match-imgBox .matchItem-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  max-width: none;
 }
 
-/*월간매칭 상세*/
+/*오른쪽 정보란*/
+.match-column-right {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.match-isParticipatedBox {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+
+.match-buttonBox {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 1em;
+}
+.match-participateBtn {
+  padding: 0.5em 2em;
+}
+
+/*============ 월간매칭 상세 ===========*/
 .matchDetail-titleBox {
   width: 100%;
 }
+/* 구조 */
 .matchDetail-columnWrap {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
+  margin-top: 2em;
 }
 .matchDetail-column {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  margin: 1em;
+}
+/*좌측 상품정보 박스*/
+.matchDetail-itemBox {
+  background-color: var(--main-gray);
+}
+.matchDetail-imgBox {
+  position: relative;
+}
+.matchDetail-standard {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  padding: 0.5em 0;
+
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.matchItem-img {
+  max-width: 300px;
 }
 
-.matchDetail-bidBox {
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+.matchDetail-infoBox {
+  padding: 2em 1em;
 }
-
 .matchDetail-itemBox,
 .matchDetail-nowBidBox,
-.matchDetail-recipeBox,
 .matchDetail-bidBox {
   padding: 1em;
 }
-.recipeOrderList {
-  padding-left: 1em;
+.matchDetail-itemNameBox {
+  margin-bottom: 1em;
 }
-.recipeOrder {
-  list-style-type: decimal;
+.matchDetail-itemCategory,
+.matchDetail-itemName {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 20pt;
+}
+.matchDetail-itemCategory::before {
+  content: "[";
+}
+.matchDetail-itemCategory::after {
+  content: "] ";
 }
 
-/*형태 표시용 선*/
-.matchDetail-titleBox,
-.matchDetail-column,
-.matchDetail-nowBidBox,
+.matchDetail-nowBidBox {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+.bidPriceImg {
+  width: 70px;
+}
+.matchDetail-nowBidPrice {
+  display: flex;
+  flex-direction: column;
+}
+.matchDetail-nowBidPrice > .bidPrice {
+  font-weight: 700;
+  font-size: 20pt;
+  color: var(--main-red);
+}
+/*좌측하단 리스트*/
+.matchDetail-otherItemList {
+  display: flex;
+  flex-direction: column;
+}
+.matchDetail-otherItem {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0.5em 0;
+  padding: 0.5em;
+  background-color: var(--main-gray);
+}
+.matchDetail-otherItemImg {
+  width: 100%;
+
+  background-color: rgba(0, 0, 0);
+}
+.matchDetail-otherItemInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.matchDetail-otherItemTitle {
+  font-size: 16pt;
+}
+
+/*우측 레시피 박스*/
+.matchDetail-recipeBox {
+  padding: 2em 1em 0;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+.recipeTitle {
+  margin-bottom: 1em;
+  text-align: center;
+  font-weight: 700;
+  font-size: 20pt;
+}
+.recipeColumn {
+  margin-bottom: 1.25em;
+  padding: 1.5em 2em;
+  border-radius: 0.5em;
+  background-color: var(--main-yellow);
+}
+.recipeSubtitle {
+  margin-bottom: 0.5em;
+  font-weight: 700;
+  font-size: 13pt;
+}
+
+.recipeIconImg {
+  display: block;
+  margin: 0 auto;
+}
+
+/*우측 하단 입찰신청 박스*/
 .matchDetail-bidBox {
-  border: 1px solid gray;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: 700;
+}
+
+.bidPriceIconImg {
+  width: 30px;
 }
