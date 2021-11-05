@@ -1,3 +1,4 @@
+/* ============ 메이커스 마이페이지 공통 ===========*/
 .wrapper-mypage {
   display: grid;
   grid-template-columns: 11em auto;
@@ -10,21 +11,24 @@
 }
 .mypage_title {
   width: fit-content;
-  padding: 0.5em 1em;
-  border-radius: 0.5em;
+  margin-bottom: 1em;
+  padding: 0.3em 1em;
+  border-radius: 0.75em;
   background-color: var(--main-green);
   color: #fff;
-  font-size: 15pt;
-  font-weight: 600;
+  font-size: 15.5pt;
+  font-weight: 700;
 }
 .mypage_title::before {
-  margin-right: 0.25em;
+  margin-right: 0.5em;
   content: "\f007";
   font-family: "Font Awesome 5 Free";
+  font-size: 0.85em;
   font-weight: 900;
+  line-height: 150%;
 }
 
-/* ============ 추가정보 관리 ===========*/
+/* ============ 안내 페이지 / 비밀번호 재입력 ===========*/
 .mypage-infoBoxWrap {
   max-width: 40em;
 }
@@ -32,15 +36,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  min-height: 15em;
   margin: 1em;
   padding: 2em;
   background-color: var(--main-green);
 }
+
 .mypage-infoBox-para {
   color: #fff;
   text-align: center;
+  margin-bottom: 1em;
 }
-.mypage-infoBox-alert {
+.mypage-infoBox-alert,
+.mypage-infoBox-inputBox {
   padding: 0.25em 0.5em;
   border-radius: 0.25em;
   max-width: fit-content;
@@ -50,10 +59,53 @@
 .mypage-infoBox-alertIcon {
   color: var(--main-red);
 }
-.mypage-infoBox-enterBtn {
+.mypage-infoBox-input {
+  border: none;
+}
+.mypage-infoBox-pwValidatingMsg {
+  margin-top: 0.5em;
+  color: red;
+  font-size: 8pt;
+}
+
+.mypage-infoBox-enterBtn,
+.mypage-infoBox-pwConfirmBtn {
   padding: 0.25em 1em;
   background-color: var(--main-green);
   color: #fff;
+}
+
+/* ============ 회원/입점/추가 정보 관리 ===========*/
+.info-table {
+  width: 100%;
+}
+.info-headColumn,
+.additionalInfo-headColumn {
+  width: 25%;
+  min-width: 8em;
+}
+.info-bodyColumn,
+.additionalInfo-bodyColumn {
+  width: 75%;
+}
+
+.enterApprovalBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.enterApproval {
+  padding: 0.25em 1em;
+  background-color: var(--main-red);
+  color: #fff;
+}
+.enterApproval.approved {
+  background-color: var(--main-green);
+}
+.enterApprovalResult {
+  padding: 0.25em 1em;
+  text-align: center;
+  box-shadow: inset 0px 0px 0px 1px #000;
 }
 
 /* ============ 마이매칭 현황 ===========*/

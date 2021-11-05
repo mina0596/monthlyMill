@@ -40,7 +40,11 @@
 
       <!-- 2단계 -->
       <div class="join_cont">
-        <form method="post" id="joinBasic" th:action="@{/join/makersJoin/join_basic}">
+        <form
+          method="post"
+          id="joinBasic"
+          th:action="@{/join/makersJoin/join_basic}"
+        >
           <div class="join_box">
             <!--필수 정보-->
             <h3 class="h3_title">기본정보 입력</h3>
@@ -273,14 +277,14 @@
                       placeholder="주소"
                       id="address"
                       name="address"
-                      class="address"
+                      class="address inputLong"
                       readonly="readonly"
                     />
                     <input type="hidden" name="inputAddr" />
                     <input
                       type="text"
                       placeholder="상세주소"
-                      class="addressDetail"
+                      class="addressDetail inputLong"
                       id="addressDetail"
                       name="addressDetail"
                     />
@@ -343,7 +347,7 @@
             <a
               href="javascript:history.back()"
               class="prevPageBtn btn common mid"
-              >이전</a
+              ><span>이전</span></a
             >
             <input
               type="button"

@@ -207,10 +207,11 @@ input[type="radio"]:checked + label.btn.square {
   margin-bottom: 0.75em;
 }
 .h3_title {
+  padding-left: 0.5em;
   padding-bottom: 0.5em;
-  font-size: 29px;
-  letter-spacing: -1px;
-  font-weight: 600;
+  font-size: 14pt;
+  /* letter-spacing: -1px; */
+  font-weight: 700;
   border-bottom: 2px solid var(--main-green);
   margin-bottom: 0.5em;
 }
@@ -367,6 +368,9 @@ input[type="number"].noSpin::-webkit-inner-spin-button {
 input.small {
   width: 6em;
 }
+input.inputLong {
+  width: 100%;
+}
 
 .cutLine {
   content: "";
@@ -380,9 +384,9 @@ input.small {
 .logo {
   display: inline-block;
   width: 200px;
-  height: 50px;
+  height: 77px;
   font-size: 0;
-  background: url("../img/logo_monthlyMill.png");
+  background: url("../img/logo_monthlyMill.jpg");
   background-size: cover;
   background-position: center;
 }

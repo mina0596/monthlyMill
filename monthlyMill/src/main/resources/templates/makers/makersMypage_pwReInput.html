@@ -1,4 +1,4 @@
-<!-- 추가정보 -->
+<!-- 회원정보조회 -->
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
@@ -20,25 +20,28 @@
   </head>
   <body>
     <header class="makerHeader"></header>
-
     <div class="wrapper wrapper-mypage">
       <aside class="makerAside"></aside>
       <section class="content_box">
-        <h3 class="mypage_title">추가정보 관리</h3>
         <div class="mypage-infoBoxWrap">
+          <h3 class="mypage_title">회원정보 관리</h3>
           <div class="mypage-infoBox">
             <p class="mypage-infoBox-para">
-              월간방앗간 중요 안내를 받는 담당자 정보 입력이 필요합니다.
-              <br />
-              원활한 정산대금을 위해서 계좌 입력이 반드시 필요합니다.
+              월간방앗간 로그인 시 사용하는 비밀번호를 입력하세요.
             </p>
-            <div class="mypage-infoBox-alert">
-              <i class="fas fa-exclamation mypage-infoBox-alertIcon"></i>
-              <span>현재 입력된 정보가 없습니다.</span>
+            <div class="mypage-infoBox-inputBox">
+              <i class="fas fa-lock"></i>
+              <input
+                type="password"
+                placeholder="비밀번호 입력"
+                class="mypage-infoBox-input"
+              />
             </div>
+            <span class="mypage-infoBox-pwValidatingMsg"> </span>
           </div>
           <div class="button_box">
-            <button class="mypage-infoBox-enterBtn">등록하기</button>
+            <button class="mypage-infoBox-pwConfirmBtn">확인</button>
+            <button class="mypage-infoBox-pwCancelBtn">취소</button>
           </div>
         </div>
       </section>
@@ -48,8 +51,10 @@
 
     <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../static/js/layout_front.js"></script>
+    <script src="../../static/js/makers/makerMypage.js"></script>
 
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
+    <script type="text/javascript" th:src="@{/js/makerCalculation.js}"></script>
   </body>
 </html>

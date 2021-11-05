@@ -72,17 +72,23 @@
 - makerJoin_basic: 메이커스 가입 2단계 기본정보
 - makerJoin_enter: 메이커스 가입 3단계 입점신청
 - makerJoin_finish: 메이커스 가입 4단계 가입완료
+
 - makerMatch_main: 월간매칭 메인화면
 - makerMatch_detail: 월간매칭 상세화면
+
 - makerMymatch_state: my매칭 매칭현황
 - makerMymatch_history: my매칭 매칭이력
+- makerCalculation: 정산
+- makersMypage_user_read: 회원정보 조회
+- makersMypage_user_set: 회원정보 수정
+- makersMypage_enter_read: 입점정보 조회
+- makersMypage_enter_set: 입점정보 수정
+- makersMypage_additional_info: 추가정보 안내
+- makersMypage_additional_read: 추가정보 조회
+- makersMypage_additional_set: 추가정보 수정
+
 - makerNotice: 공지사항 리스트
 - makerNotice_post: 공지사항 게시글
-- makerCalculation: 정산
-
-~여기까진 어느정도 구조 작업 되어있음 ~
-
-- 현재 마이페이지 쪽 작업중
 
 메이커스 관련 JS파일
 
