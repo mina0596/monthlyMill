@@ -17,6 +17,16 @@
 }
 
 /*상품리스트 (pc 2단) */
+.match-matchList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+@media screen and (max-width: 767px) {
+  .match-matchList {
+    grid-template-columns: 1fr;
+  }
+}
+
 .match-itemBox {
   display: grid;
   grid-template-columns: 2fr 3fr;
@@ -32,6 +42,10 @@
   bottom: 0;
   text-align: center;
   background-color: rgba(255, 255, 255, 0.8);
+}
+.match-standard > .itemWeight::after,
+.match-standard > .itemQuantity::after {
+  margin-right: 0.5em;
 }
 .match-imgBox .matchItem-img {
   width: 100%;
@@ -144,8 +158,8 @@
 }
 .matchDetail-otherItem {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin: 0.5em 0;
+  grid-template-columns: 1fr 2fr;
+  margin-top: 0.5em;
   padding: 0.5em;
   background-color: var(--main-gray);
 }
