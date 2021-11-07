@@ -43,7 +43,7 @@ public class CartController {
 			resultMap.put("sessionCheck", "sessionEmpty");
 		}else{
 			resultMap.put("sessionCheck", "sessionExist");
-			addItemInfo.put("memberNum", session.getAttribute("SMNUM"));
+			addItemInfo.put("memberId", session.getAttribute("SID"));
 			addItemInfo.put("pCode", pCode.get("pCode"));
 			cartService.addItem(addItemInfo);
 		}
@@ -53,8 +53,8 @@ public class CartController {
 	// 2.장바구니 정보 가져오기
 	@GetMapping("/cartList")
 	public String getCartList(Model model, HttpSession session) {
-		String memberNum = String.valueOf(session.getAttribute("SMNUM"));
-		List<Map<String,String>> cartList = cartService.getCartListByMemberNum(memberNum);
+		String memberId = String.valueOf(session.getAttribute("SID"));
+		List<Map<String,String>> cartList = cartService.getCartListByMemberNum(memberId);
 		model.addAttribute("cartList", cartList);
 		return "/customer/cart";
 	}

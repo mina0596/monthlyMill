@@ -23,6 +23,7 @@ import project.monthlyMill.customer.shoppingCart.CartMapper;
 import project.monthlyMill.customer.shoppingCart.CartService;
 import project.monthlyMill.dto.Cart;
 import project.monthlyMill.dto.Order;
+import project.monthlyMill.dto.Shipment;
 
 @Controller
 @RequestMapping("/customer/payment")
@@ -76,19 +77,21 @@ public class PaymentController {
 			List<String> cartList = (List<String>) params.get("cartNum");
 			
 			Order orderInfo = new Order();
+			Shipment shipInfo = new Shipment();
 			orderInfo.setMemberId(String.valueOf(session.getAttribute("SID").toString()));
-			orderInfo.setReceiverAddr(String.valueOf(params.get("receiverAddr")));
-			orderInfo.setReceiverName(String.valueOf(params.get("receiverName")));
-			orderInfo.setReceiverPhoneNum(String.valueOf(params.get("receiverPhone")));
-			orderInfo.setReceiverPostalCode(String.valueOf(params.get("receiverPostalCode")));
-			orderInfo.setReceiverDetailAddr(String.valueOf(params.get("receiverDetailAddr")));
+			orderInfo.setTotalDiscountAmount(Integer.parseInt(params.get("discountAmount").toString()));
+			shipInfo.setReceiverAddr(String.valueOf(params.get("receiverAddr")));
+			shipInfo.setReceiverName(String.valueOf(params.get("receiverName")));
+			shipInfo.setReceiverPhoneNum(String.valueOf(params.get("receiverPhone")));
+			shipInfo.setReceiverPostalCode(String.valueOf(params.get("receiverPostalCode")));
+			shipInfo.setReceiverDetailAddr(String.valueOf(params.get("receiverDetailAddr")));
 			orderInfo.setOrderNum(orderService.selectOrderNum((session.getAttribute("SID").toString())));
+			orderInfo.setMPaidShippingFee(Integer.parseInt(params.get("shippingFee").toString()));
 			for(int i=0; i<cartList.size(); i++) {
-				orderInfo.setCartNum(Integer.parseInt(cartList.get(i)));
 				Cart cartInfo = cartService.getCartInfoByCartNum(Integer.parseInt(cartList.get(i)));
-				orderInfo.setpCount(cartInfo.getpAmount());
-				orderInfo.setpCode(cartInfo.getpCode());
-				orderService.addOrder(orderInfo);
+				orderInfo.setPCount(cartInfo.getPAmount());
+				orderInfo.setPCode(cartInfo.getPCode());
+				orderService.addOrder(orderInfo, shipInfo);
 			}
 		return "success";
 	}

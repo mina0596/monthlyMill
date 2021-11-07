@@ -49,10 +49,6 @@
 			product_info AS pInfo
 		ON 
 			mCart.product_code = pInfo.product_code
-		LEFT JOIN
-			order_info AS oInfo
-		on
-			mCart.cart_num = oInfo.cart_num
 		WHERE mCart.member_id = #{memberId}
 		ORDER BY cartNum ASC;
 	</select>

@@ -5,22 +5,29 @@
 	<resultMap type="Order"	id="orderResultMap">
 		<result property="idx"					column="idx"/>
 		<result property="orderNum"				column="order_num"/>
-		<result property="memberNum"			column="member_num"/>
+		<result property="memberId"				column="member_num"/>
 		<result property="pCode"				column="product_code"/>
-		<result property="cartNum"				column="cart_num"/>
-		<result property="pCount"				column="product_count"/>
-		<result property="orderDate"			column="order_date"/>
-		<result property="expDelDate"			column="exp_delivery_date"/>
-		<result property="paymentCheck"			column="payment_check"/>
+		<result property="pCount"				column="product_code"/>
+		<result property="matchingCheck"		column="matching_check"/>
+		<result property="makerId"				column="matched_maker_id"/>
+		<result property="matchingNum"			column="matching_num"/>
 		<result property="refundCheck"			column="refund_check"/>
+		<result property="orderDate"			column="order_date"/>
+		<result property="totalProductPrice"	column="total_product_price"/>
+		<result property="shippingMethod"		column="shipping_method"/>
+		<result property="actualShippingFee"	column="actual_shipping_fee"/>
+		<result property="mPaidShippingFee"		column="m_paid_shipping_fee"/>
+		<result property="discountCheck"		column="discount_check"/>
+		<result property="totalDiscountAmount"	column="total_discounted_amount"/>
+		<result property="discountMethod"		column="discount_method"/>
+		<result property="couponNum"			column="coupon_num"/>
+		<result property="paymentCheck"			column="payment_check"/>
+		<result property="paymentAmount"		column="payment_amount"/>
+		<result property="paymentDate"			column="payment_date"/>
 		<result property="orderModifyDate"		column="order_modify_date"/>
 		<result property="orderRegDate"			column="order_reg_date"/>
-		<result property="receiverName"			column="receiver_name"/>
-		<result property="receiverPhoneNum"		column="receiver_phone"/>
-		<result property="receiverHomeNum"		column="receiver_home"/>
-		<result property="receiverPostalCode"	column="receiver_postal_code"/>
-		<result property="receiverAddr"			column="receiver_addr"/>
-		<result property="receiverDetailAddr"	column="receiver_detail_addr"/>
+		<result property="cancelCheck"			column="cancel_check"/>
+		<result property="memo"					column="memo"/>
 	</resultMap>
 	
 	<select id="selectOrderSequence" resultType="String" parameterType="int">
@@ -34,9 +41,10 @@
 	
 	<insert id="addOrder" parameterType="Order">
 		INSERT INTO order_info
-			(idx, order_num, member_id, product_code, cart_num, product_count, order_date, exp_delivery_date, payment_check, refund_check, order_modify_date, order_reg_date, receiver_name, receiver_phone, receiver_home, receiver_postal_code, receiver_addr, receiver_detail_addr, cancel_check)
-		VALUES (NULL, #{orderNum}, #{memberId}, #{pCode}, #{cartNum}, #{pCount}, NOW(), NOW(), 'N', 'N', CURDATE(), CURDATE()
-			, #{receiverName}, #{receiverPhoneNum}, #{receiverHomeNum}, #{receiverPostalCode}, #{receiverAddr}, #{receiverDetailAddr}, 'N')
+			(idx, order_num, member_id, product_code, product_count, matching_check, matched_maker_id, matching_num, refund_check, order_date, total_product_price, shipping_method, actual_shipping_fee, m_paid_shipping_fee,
+			 discount_check, total_discounted_amount, discount_method, coupon_num, payment_check, payment_amount, payment_date, order_modify_date, order_reg_date, cancel_check, memo)
+		VALUES (NULL, #{orderNum}, #{memberId}, #{pCode}, #{pCount}, 'N', NULL, NOW(), NOW(), 'N', NULL, NULL, 'N', CURDATE(), #{totalPrice}, '택배', NULL, #{shippingFee}, 
+			'N', #{discountAmount}, NULL, NULL, 'N', NULL, NULL, CURDATE(), CURDATE(), 'N', NULL)
 	</insert>
 	
 	
@@ -157,4 +165,11 @@
 			GROUP BY orderNum
 	</select>
 	
+	
+	<!-- **********************************배송에 대한 정보 ******************************* -->
+	<insert id="addOrderShipInfo" parameterType="Shipment">
+		INSERT INTO shipping_info
+			(idx, order_num, shipping_method, shipping_fee, receiver_name, receiver_phone, receiver_home, receiver_postal_code, receiver_addr, receiver_detail_addr, expected_delivery_date, shipping_filed_date, shipped_date)
+		VALUES (NULL, #{orderNum}, #{shippingMethod}, #{shippingFee}, #{receiverName}, #{receiverPhoneNum}, #{receiverHomeNum}, #{receiverPostalCode}, #{receiverAddr}, #{receiverDetailAddr}, #{expDelDate}, NULL, NULL)
+	</insert>
 </mapper>

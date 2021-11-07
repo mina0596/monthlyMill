@@ -25,20 +25,21 @@
 		<result property="infoOfferAgree" 			column="info_offer_agree"/>	
 		<result property="outsourceAgree" 			column="outsource_agree"/>	
 		<result property="newsAgree" 				column="news_agree"/>	
+		<result property="memo" 					column="memo"/>	
 	</resultMap>
 	
 	<select id="getMemberInfoById" parameterType="String" resultMap="memberResultMap">
-		SELECT member_num, member_id, member_pw, member_cate_num, member_name, member_age, member_bday, member_email, member_gender, member_addr, member_detail_addr, member_postal_code, member_phone, identity_check, refund_bank_name, refund_bank_account_num, refund_holder_name, info_offer_agree, outsource_agree, news_agree, member_info_modify_date, member_info_reg_date
+		SELECT member_num, member_id, member_pw, member_cate_num, member_name, member_age, member_bday, member_email, member_gender, member_addr, member_detail_addr, member_postal_code, member_phone, identity_check, refund_bank_name, refund_bank_account_num, refund_holder_name, info_offer_agree, outsource_agree, news_agree, member_info_modify_date, member_info_reg_date, memo
 		FROM member_basic_info
 		WHERE member_id = #{inputId};
 	</select>
 	
 	<insert id="addBasicMembInfo" parameterType="Member">
 		INSERT INTO member_basic_info
-	(member_num, member_id, member_pw, member_cate_num, member_name, member_age, member_bday, member_email, member_gender, member_addr, member_detail_addr, member_postal_code, member_phone, identity_check, refund_bank_name, refund_bank_account_num, refund_holder_name, info_offer_agree, outsource_agree, news_agree, member_info_modify_date, member_info_reg_date)
+	(member_num, member_id, member_pw, member_cate_num, member_name, member_age, member_bday, member_email, member_gender, member_addr, member_detail_addr, member_postal_code, member_phone, identity_check, refund_bank_name, refund_bank_account_num, refund_holder_name, info_offer_agree, outsource_agree, news_agree, member_info_modify_date, member_info_reg_date, memo)
 		VALUES (sf_createMemberNum(), #{memberId}, #{memberPw}, #{memberCateNum}, #{memberName}, #{memberAge}, #{memberBday}, #{memberEmail}
 		, #{memberGender}, #{memberAddr}, #{memberDetailAddr}, #{memberPostalCode}, #{memberPhone}
-		, 'Y', #{bankName}, #{bankAccountNum}, #{holderName}, #{infoOfferAgree}, #{outsourceAgree}, #{newsAgree}, CURDATE(), CURDATE())
+		, 'Y', #{bankName}, #{bankAccountNum}, #{holderName}, #{infoOfferAgree}, #{outsourceAgree}, #{newsAgree}, CURDATE(), CURDATE(), '메모 (아직 설정안함)')
 	</insert>
 	
 	<insert id="addPreferTags" parameterType="list">

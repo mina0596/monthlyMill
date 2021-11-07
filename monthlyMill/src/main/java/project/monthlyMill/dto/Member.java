@@ -1,5 +1,8 @@
 package project.monthlyMill.dto;
 
+import lombok.Data;
+
+@Data
 public class Member {
 	private int memberNum;
 	private String memberId;
@@ -23,153 +26,7 @@ public class Member {
 	private char infoOfferAgree;
 	private char outsourceAgree;
 	private char newsAgree;
+	private String memo;
 	
-	
-	
-	public int getMemberNum() {
-		return memberNum;
-	}
-	public void setMemberNum(int memberNum) {
-		this.memberNum = memberNum;
-	}
-	public String getMemberId() {
-		return memberId;
-	}
-	public void setMemberId(String memberId) {
-		this.memberId = memberId;
-	}
-	public String getMemberPw() {
-		return memberPw;
-	}
-	public void setMemberPw(String memberPw) {
-		this.memberPw = memberPw;
-	}
-	public int getMemberCateNum() {
-		return memberCateNum;
-	}
-	public void setMemberCateNum(int memberCateNum) {
-		this.memberCateNum = memberCateNum;
-	}
-	public String getMemberName() {
-		return memberName;
-	}
-	public void setMemberName(String memberName) {
-		this.memberName = memberName;
-	}
-	public int getMemberAge() {
-		return memberAge;
-	}
-	public void setMemberAge(int memberAge) {
-		this.memberAge = memberAge;
-	}
-	public String getMemberBday() {
-		return memberBday;
-	}
-	public void setMemberBday(String memberBday) {
-		this.memberBday = memberBday;
-	}
-	public String getMemberEmail() {
-		return memberEmail;
-	}
-	public void setMemberEmail(String memberEmail) {
-		this.memberEmail = memberEmail;
-	}
-	public char getMemberGender() {
-		return memberGender;
-	}
-	public void setMemberGender(char memberGender) {
-		this.memberGender = memberGender;
-	}
-	public String getMemberAddr() {
-		return memberAddr;
-	}
-	public void setMemberAddr(String memberAddr) {
-		this.memberAddr = memberAddr;
-	}
-	public String getMemberDetailAddr() {
-		return memberDetailAddr;
-	}
-	public void setMemberDetailAddr(String memberDetailAddr) {
-		this.memberDetailAddr = memberDetailAddr;
-	}
-	public String getMemberPostalCode() {
-		return memberPostalCode;
-	}
-	public void setMemberPostalCode(String memberPostalCode) {
-		this.memberPostalCode = memberPostalCode;
-	}
-	public String getMemberPhone() {
-		return memberPhone;
-	}
-	public void setMemberPhone(String memberPhone) {
-		this.memberPhone = memberPhone;
-	}
-	public char getMemberIdentityCheck() {
-		return memberIdentityCheck;
-	}
-	public void setMemberIdentityCheck(char memberIdentityCheck) {
-		this.memberIdentityCheck = memberIdentityCheck;
-	}
-	public String getMemberInfoModifyDate() {
-		return memberInfoModifyDate;
-	}
-	public void setMemberInfoModifyDate(String memberInfoModifyDate) {
-		this.memberInfoModifyDate = memberInfoModifyDate;
-	}
-	public String getMemberInfoRegDate() {
-		return memberInfoRegDate;
-	}
-	public void setMemberInfoRegDate(String memberInfoRegDate) {
-		this.memberInfoRegDate = memberInfoRegDate;
-	}
-	public String getBankName() {
-		return bankName;
-	}
-	public void setBankName(String bankName) {
-		this.bankName = bankName;
-	}
-	public String getBankAccountNum() {
-		return bankAccountNum;
-	}
-	public void setBankAccountNum(String bankAccountNum) {
-		this.bankAccountNum = bankAccountNum;
-	}
-	public String getHolderName() {
-		return holderName;
-	}
-	public void setHolderName(String holderName) {
-		this.holderName = holderName;
-	}
-	public char getInfoOfferAgree() {
-		return infoOfferAgree;
-	}
-	public void setInfoOfferAgree(char infoOfferAgree) {
-		this.infoOfferAgree = infoOfferAgree;
-	}
-	public char getOutsourceAgree() {
-		return outsourceAgree;
-	}
-	public void setOutsourceAgree(char outsourceAgree) {
-		this.outsourceAgree = outsourceAgree;
-	}
-	public char getNewsAgree() {
-		return newsAgree;
-	}
-	public void setNewsAgree(char newsAgree) {
-		this.newsAgree = newsAgree;
-	}
-	@Override
-	public String toString() {
-		return "Member [memberNum=" + memberNum + ", memberId=" + memberId + ", memberPw=" + memberPw
-				+ ", memberCateNum=" + memberCateNum + ", memberName=" + memberName + ", memberAge=" + memberAge
-				+ ", memberBday=" + memberBday + ", memberEmail=" + memberEmail + ", memberGender=" + memberGender
-				+ ", memberAddr=" + memberAddr + ", memberDetailAddr=" + memberDetailAddr + ", memberPostalCode="
-				+ memberPostalCode + ", memberPhone=" + memberPhone + ", memberIdentityCheck=" + memberIdentityCheck
-				+ ", memberInfoModifyDate=" + memberInfoModifyDate + ", memberInfoRegDate=" + memberInfoRegDate
-				+ ", bankName=" + bankName + ", bankAccountNum=" + bankAccountNum + ", holderName=" + holderName
-				+ ", infoOfferAgree=" + infoOfferAgree + ", outsourceAgree=" + outsourceAgree + ", newsAgree="
-				+ newsAgree + "]";
-	}
-	
-	
+		
 }
