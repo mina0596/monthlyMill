@@ -14,8 +14,17 @@
 		<result property="pTaste" 			column="product_taste"/>
 	</resultMap>
 	
-	<select id="getRcmdProductInfo" parameterType="map" resultMap="productResultMap">
-		SELECT product_code, product_name, product_price, product_ingredient, product_nutrition, product_prefer_age, product_main_usage, product_texture, product_taste
+	<select id="getRcmdProductInfo" parameterType="map" resultType="map">
+		SELECT 
+			product_code as pCode,
+			product_name as pName, 
+			product_price as pPrice, 
+			product_ingredient as pIngredient,
+			product_nutrition as pNutrition, 
+			product_prefer_age as pPreferAge,
+			product_main_usage as pMainUsage, 
+			product_texture as pTexture,  
+			product_taste as pTaste
 		FROM product_info
 			<trim prefix="WHERE" suffixOverrides="or">
 				<foreach item="item" index="key" collection="list" separator="">

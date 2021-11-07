@@ -29,7 +29,6 @@ public class LoginService {
 	
 	//로그인 후 세션에 저장해두는 로직
 	public void saveInSession(Member member, HttpSession session) {
-		session.setAttribute("SMNUM", member.getMemberNum());
 		session.setAttribute("SID", member.getMemberId());
 		session.setAttribute("SNAME", member.getMemberName());
 		session.setAttribute("SLEVEL", member.getMemberCateNum());

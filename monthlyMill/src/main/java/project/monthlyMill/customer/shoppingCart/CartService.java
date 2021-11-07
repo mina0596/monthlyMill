@@ -22,7 +22,7 @@ public class CartService {
 			cartMapper.addItem(cartInfo);
 		}else {
 			int cartNum = checkProductInCart.getCartNum();
-			int pAmount = checkProductInCart.getpAmount();
+			int pAmount = checkProductInCart.getPAmount();
 			HashMap<String, Object> infoMap = new HashMap<String, Object>();
 			infoMap.put("pAmount", pAmount+1);
 			infoMap.put("cartNum", cartNum);

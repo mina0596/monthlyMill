@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import project.monthlyMill.dto.Order;
+import project.monthlyMill.dto.Shipment;
 
 @Service
 public class OrderService {
@@ -28,8 +29,9 @@ public class OrderService {
 	}
 		
 	// 2. 주문 정보 DB에 저장하기
-	public void addOrder(Order orderInfo) {
+	public void addOrder(Order orderInfo, Shipment shipInfo) {
 		orderMapper.addOrder(orderInfo);
+		orderMapper.addOrderShipInfo(shipInfo);
 	}
 	
 	// 3. 주문에 대한 입금 확인

@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import project.monthlyMill.dto.Order;
+import project.monthlyMill.dto.Shipment;
 
 @Mapper
 public interface OrderMapper {
@@ -39,4 +40,7 @@ public interface OrderMapper {
 	
 	// 10. 주문취소를 주문정보 테이블에서 업데이트해주기
 	public void updateCancelCheck(String orderNum);
+	
+	// 11. 주문시 배송정보 저장하기
+	public void addOrderShipInfo(Shipment shipInfo);
 }
