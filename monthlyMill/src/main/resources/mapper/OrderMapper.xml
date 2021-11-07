@@ -64,7 +64,7 @@
 	 -->
 	
 	<select id="getOrderListByMemberId" parameterType="String" resultType="map">
-		SELECT o.idx, o.order_num AS orderNum, o.member_num, o.product_code, o.cart_num, 
+		SELECT o.idx, o.order_num AS orderNum, o.product_code, 
 			o.product_count AS pCount, 
 			o.order_date, 
 			order_reg_date AS orderRegDate,
@@ -128,7 +128,7 @@
 	</update>
 	
 	
-	<select id="getCancelListByMemberNum" parameterType="String" resultType="map">
+	<select id="getCancelListByMemberId" parameterType="String" resultType="map">
 		SELECT 
 			sub.orderNum AS orderNum,
 			sub.requestedDate AS requestedDate,
@@ -140,7 +140,7 @@
 			c.order_num AS orderNum,
 			c.requested_date AS requestedDate
 			FROM
-			order_cancel AS c
+			order_cancel_info AS c
 			where
 			c.requested_member_id = #{memberId}
 			GROUP BY orderNum) AS sub
@@ -159,7 +159,7 @@
 			c.order_num AS orderNum,
 			c.requested_date AS requestedDate
 		FROM
-			order_cancel AS c
+			order_cancel_info AS c
 			where
 			c.requested_member_id = #{memberId}
 			GROUP BY orderNum

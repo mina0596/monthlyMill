@@ -34,7 +34,7 @@
                   <span>아이디</span>
                 </th>
                 <td class="info-bodyColumn">
-                  <span class="info-id">ididid6</span>
+                  <span class="info-id" th:text="${makersInfo.memberId}"></span>
                 </td>
               </tr>
               <tr>
@@ -42,7 +42,7 @@
                   <span>이름</span>
                 </th>
                 <td class="info-bodyColumn">
-                  <span class="info-name">홍길동</span>
+                  <span class="info-name" th:text="${makersInfo.memberName}"></span>
                 </td>
               </tr>
               <tr>
@@ -50,7 +50,7 @@
                   <span>생년월일</span>
                 </th>
                 <td class="info-bodyColumn">
-                  <span class="info-birth">0000년 00월 0일</span>
+                  <span class="info-birth" th:text="${makersInfo.memberBday}"></span>
                 </td>
               </tr>
               <tr>
@@ -58,7 +58,7 @@
                   <span>성별</span>
                 </th>
                 <td class="info-bodyColumn">
-                  <span class="info-sex">남또는여</span>
+                  <span class="info-sex" th:text="${makersInfo.memberGender}"></span>
                 </td>
               </tr>
               <tr>
@@ -66,7 +66,7 @@
                   <span>이메일</span>
                 </th>
                 <td class="info-bodyColumn">
-                  <span class="info-email">asdf@mail.com</span>
+                  <span class="info-email" th:text="${makersInfo.memberEmail}"></span>
                 </td>
               </tr>
               <tr>
@@ -74,7 +74,7 @@
                   <span>휴대폰번호</span>
                 </th>
                 <td class="info-bodyColumn">
-                  <span class="info-phoneNum">010-0000-1111</span>
+                  <span class="info-phoneNum" th:text="${makersInfo.memberPhone}"></span>
                 </td>
               </tr>
               <tr>
@@ -82,9 +82,9 @@
                   <span>주소</span>
                 </th>
                 <td class="info-bodyColumn">
-                  <p class="info-postCode">우편번호</p>
-                  <p class="info-adress">주소</p>
-                  <p class="info-adressDetail">상세주소</p>
+                  <p class="info-postCode" th:text="${makersInfo.memberPostalCode}"></p>
+                  <p class="info-adress" th:text="${makersInfo.memberAddr}"></p>
+                  <p class="info-adressDetail" th:text="${makersInfo.memberDetailAddr}"></p>
                 </td>
               </tr>
               <tr>
@@ -92,9 +92,9 @@
                   <span>사용계좌</span>
                 </th>
                 <td class="info-bodyColumn">
-                  <span class="info-bank">은행명</span>
-                  <span class="info-accountOwner">예금주명</span>
-                  <p class="info-accountNumber">계좌번호</p>
+                  <span class="info-bank" th:text="${makersInfo.bankName}"></span>
+                  <span class="info-accountOwner" th:text="${makersInfo.holderName}"></span>
+                  <p class="info-accountNumber" th:text="${makersInfo.bankAccountNum}"></p>
                 </td>
               </tr>
             </tbody>
@@ -115,6 +115,7 @@
 
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
-    <script type="text/javascript" th:src="@{/js/makerCalculation.js}"></script>
+    <script type="text/javascript" th:src="@{/js/makers/makerSales.js}"></script>
+    <script type="text/javascript" th:src="@{/js/makers/makerMypage.js}"></script>
   </body>
 </html>

@@ -11,7 +11,7 @@
     </ul>
     <ul>
       <li>
-        <a th:if="${session.SID != null}" class="gnb_util__join" th:href="@{/}">
+        <a th:if="${session.SID != null && session.SLEVEL == 3}" class="gnb_util__join" th:href="@{/makers/myPage/user/basicInfo}">
           <i class="fas fa-user"></i>
           <span>[[${session.SNAME}]] 님</span>
         </a>

@@ -42,7 +42,9 @@
                     </th>
                     <td class="info-bodyColumn">
                       <input type="hidden" name="memberCate" value="3" />
-                      <input type="text" name="inputId" required />
+                      <!-- 바꿀 수 없다는 표시를 제대로 해줄 수 있었으면.... 밑에 언더바가 없다던가 -->
+                      <input type="text" name="inputId" th:value="${makersInfo.memberId}" readonly="readonly" disabled="disabled" required />
+                      <!-- 
                       <input
                         type="hidden"
                         name="idDupCheck"
@@ -52,6 +54,8 @@
                       <div class="desc_s">
                         <span class="idDupMsg"> </span>
                       </div>
+                       -->
+                      
                     </td>
                   </tr>
                   <tr>
@@ -273,7 +277,7 @@
                     <th class="info-headColumn">
                       <span class="text required">주소</span>
                     </th>
-                    <td class="info-bodyColumn" class="address_inputBox">
+                    <td class="info-bodyColumn address_inputBox">
                       <div class="address_column">
                         <input
                           type="text"
@@ -376,6 +380,6 @@
 
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
-    <script type="text/javascript" th:src="@{/js/makerCalculation.js}"></script>
+    <script type="text/javascript" th:src="@{/js/makers/makerSales.js}"></script>
   </body>
 </html>

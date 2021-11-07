@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project.monthlyMill.makers.myPage.MakersMyPageMapper">
+	<resultMap type="Member"				id="makersResultMap">
+		<result property="memberNum" 				column="member_num"/>
+		<result property="memberId" 				column="member_id"/>
+		<result property="memberPw" 				column="member_pw"/>
+		<result property="memberCateNum" 			column="member_cate_num"/>
+		<result property="memberName" 				column="member_name"/>
+		<result property="memberAge" 				column="member_age"/>
+		<result property="memberBday" 				column="member_bday"/>
+		<result property="memberEmail" 				column="member_email"/>
+		<result property="memberGender" 			column="member_gender"/>
+		<result property="memberAddr" 				column="member_addr"/>
+		<result property="memberDetailAddr" 		column="member_detail_addr"/>
+		<result property="memberPostalCode" 		column="member_postal_code"/>
+		<result property="memberPhone" 				column="member_phone"/>
+		<result property="memberIdentityCheck" 		column="identity_check"/>
+		<result property="memberInfoModifyDate" 	column="member_info_modify_date"/>
+		<result property="memberInfoRegDate" 		column="member_info_reg_date"/>
+		<result property="bankName" 				column="refund_bank_name"/>
+		<result property="bankAccountNum" 			column="refund_bank_account_num"/>
+		<result property="holderName" 				column="refund_holder_name"/>	
+		<result property="infoOfferAgree" 			column="info_offer_agree"/>	
+		<result property="outsourceAgree" 			column="outsource_agree"/>	
+		<result property="newsAgree" 				column="news_agree"/>	
+		<result property="memo" 					column="memo"/>	
+	</resultMap>
+	
+	
+	<!-- 메이커스의 회원 기본정보 아이디로 가져오기 -->
+	<select id="getMakersInfoById" resultMap="makersResultMap">
+		SELECT member_num, member_id, member_pw, member_cate_num, member_name, member_age, member_bday, member_email, member_gender, member_addr, member_detail_addr, member_postal_code, member_phone, identity_check, refund_bank_name, refund_bank_account_num, refund_holder_name, info_offer_agree, outsource_agree, news_agree, member_info_modify_date, member_info_reg_date, memo
+		FROM member_basic_info
+		WHERE member_id=#{memberId} AND member_cate_num = 3
+	</select>
+	
+</mapper>
