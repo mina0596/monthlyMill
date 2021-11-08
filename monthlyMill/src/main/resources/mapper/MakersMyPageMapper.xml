@@ -28,12 +28,58 @@
 		<result property="memo" 					column="memo"/>	
 	</resultMap>
 	
+	<resultMap type="MakerStore"					id="storeResultMap">
+		<result property="idx" 						column="idx"/>
+		<result property="enterCheck" 				column="store_enter_check"/>
+		<result property="enterCheckReason" 		column="enter_check_reason"/>
+		<result property="makerId" 					column="maker_id"/>
+		<result property="sellerType" 				column="seller_type"/>
+		<result property="companyName" 				column="company_name"/>
+		<result property="brandName" 				column="brand_name"/>
+		<result property="businessNum" 				column="business_num"/>
+		<result property="ownerName" 				column="owner_name"/>
+		<result property="storeOpenDate" 			column="store_open_date"/>
+		<result property="businessAddr" 			column="business_addr"/>
+		<result property="docName" 					column="business_doc_org_name"/>
+		<result property="docFilePath" 				column="business_doc_file_path"/>
+		<result property="docFileSize" 				column="business_doc_file_size"/>
+		<result property="sellerClass" 				column="seller_class"/>
+		<result property="businessStatus" 			column="business_status"/>
+		<result property="businessType" 			column="business_type"/>
+		<result property="salesNum" 				column="sales_num"/>
+		<result property="salesDocName" 			column="sales_doc_org_name"/>
+		<result property="salesDocFilePath" 			column="sales_doc_file_path"/>	
+		<result property="salesDocFileSize" 			column="sales_doc_file_size"/>	
+		<result property="repItemCate" 					column="rep_item_cate"/>	
+		<result property="instorePicName" 				column="instore_pic_org_name"/>	
+		<result property="instorePicFilePath" 			column="instore_pic_file_path"/>	
+		<result property="instorePicFileSize" 			column="instore_pic_file_size"/>	
+		<result property="kitPicName1" 					column="kitchen_pic_org_name1"/>	
+		<result property="kitPicFilePath1" 				column="kitchen_pic_file_path1"/>	
+		<result property="kitPicFileSize1" 				column="kitchen_pic_file_size1"/>	
+		<result property="kitPicName2" 					column="kitchen_pic_org_name2"/>	
+		<result property="kitPicFilePath2" 				column="kitchen_pic_file_path2"/>	
+		<result property="kitPicFileSize2" 				column="kitchen_pic_file_size2"/>	
+		<result property="kitPicName3" 					column="kitchen_pic_org_name3"/>	
+		<result property="kitPicFilePath3" 				column="kitchen_pic_file_path3"/>	
+		<result property="kitPicFileSize3" 				column="kitchen_pic_file_size3"/>	
+		<result property="modifyDate" 					column="maker_info_modify_date"/>	
+		<result property="regDate" 						column="maker_info_reg_date"/>	
+	</resultMap>
+	
 	
 	<!-- 메이커스의 회원 기본정보 아이디로 가져오기 -->
 	<select id="getMakersInfoById" resultMap="makersResultMap">
 		SELECT member_num, member_id, member_pw, member_cate_num, member_name, member_age, member_bday, member_email, member_gender, member_addr, member_detail_addr, member_postal_code, member_phone, identity_check, refund_bank_name, refund_bank_account_num, refund_holder_name, info_offer_agree, outsource_agree, news_agree, member_info_modify_date, member_info_reg_date, memo
 		FROM member_basic_info
 		WHERE member_id=#{memberId} AND member_cate_num = 3
+	</select>
+	
+	<!-- 메이커스의 입점정보 아이디로 가져오기 -->
+	<select id="getStoreInfoById" resultMap="storeResultMap">
+		SELECT store_enter_check, enter_check_reason, maker_id, seller_type, company_name, brand_name, business_num, owner_name, store_open_date, business_addr, business_doc_org_name, business_doc_file_path, business_doc_file_size, seller_class, business_status, business_type, sales_num, sales_doc_org_name, sales_doc_file_path, sales_doc_file_size, rep_item_cate, instore_pic_org_name, instore_pic_file_path, instore_pic_file_size, kitchen_pic_org_name1, kitchen_pic_file_path1, kitchen_pic_file_size1, kitchen_pic_org_name2, kitchen_pic_file_path2, kitchen_pic_file_size3, kitchen_pic_org_name3, kitchen_pic_file_path3, kitchen_pic_file_size2, maker_info_modify_date, maker_info_reg_date
+		FROM maker_store_info
+		WHERE maker_id=#{makerId}
 	</select>
 	
 </mapper>
