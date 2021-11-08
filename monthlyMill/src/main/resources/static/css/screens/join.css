@@ -190,6 +190,12 @@ td {
   outline: none;
   border-bottom: 2px solid var(--btn-emp-color);
 }
+
+.join_box input.readonly,
+.join_box select.readonly {
+  border-bottom: none;
+}
+
 .join_box select {
   height: 2em;
   min-width: 5em;
