@@ -1,4 +1,4 @@
-<!-- 회원정보조회 -->
+<!-- 회원정보수정 -->
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
@@ -26,7 +26,7 @@
       <section class="content_box">
         <h3 class="mypage_title">회원정보 관리</h3>
         <div class="join_box">
-          <h3 class="h3_title">회원정보 조회</h3>
+          <h3 class="h3_title">회원정보 수정</h3>
 
           <div class="join_cont">
             <form
@@ -43,19 +43,18 @@
                     <td class="info-bodyColumn">
                       <input type="hidden" name="memberCate" value="3" />
                       <!-- 바꿀 수 없다는 표시를 제대로 해줄 수 있었으면.... 밑에 언더바가 없다던가 -->
-                      <input type="text" name="inputId" th:value="${makersInfo.memberId}" readonly="readonly" disabled="disabled" required />
-                      <!-- 
+
                       <input
-                        type="hidden"
-                        name="idDupCheck"
-                        value="idDupUncheck"
+                        type="text"
+                        name="inputId"
+                        th:value="${makersInfo.memberId}"
+                        class="readonly"
+                        readonly
+                        required
                       />
-                      <button type="button" class="idCheck">중복조회</button>
                       <div class="desc_s">
-                        <span class="idDupMsg"> </span>
+                        <span> 아이디는 변경할 수 없습니다. </span>
                       </div>
-                       -->
-                      
                     </td>
                   </tr>
                   <tr>
@@ -63,7 +62,14 @@
                       <span class="text required">비밀번호</span>
                     </th>
                     <td class="info-bodyColumn">
-                      <input type="password" name="inputPw" required />
+                      <input
+                        type="password"
+                        name="inputPw"
+                        class="inputPw"
+                        disabled
+                      />
+                      <!-- 변경 버튼 누르면 disabled없어지게 수정해둠!-->
+                      <button class="passwordChangeBtn">변경하기</button>
                       <input type="hidden" name="pWCheck" value="unusable" />
                       <div class="desc_s">
                         <span class="pwValidationMsg"> </span>
@@ -75,7 +81,12 @@
                       <span class="text required">비밀번호 확인</span>
                     </th>
                     <td class="info-bodyColumn">
-                      <input type="password" name="inputPwConfirm" required />
+                      <input
+                        type="password"
+                        name="inputPwConfirm"
+                        class="inputPwConfirm"
+                        disabled
+                      />
                       <input
                         type="hidden"
                         name="pWConfirmCheck"
@@ -91,10 +102,17 @@
                       <span class="text required">이름</span>
                     </th>
                     <td class="info-bodyColumn">
-                      <input type="text" name="inputName" required />
+                      <input
+                        type="text"
+                        name="inputName"
+                        class="readonly"
+                        readonly
+                      />
                       <input type="hidden" name="nameCheck" value="unusable" />
                       <div class="desc_s">
-                        <span class="nameValidationMsg"> </span>
+                        <span class="nameValidationMsg"
+                          >이름은 변경할 수 없습니다.</span
+                        >
                       </div>
                     </td>
                   </tr>
@@ -107,14 +125,16 @@
                         <div>
                           <input
                             type="number"
-                            class="birthYear"
+                            class="birthYear readonly"
                             maxlength="4"
                             placeholder="년(4자리)"
                             name="inputBYear"
                             pattern="[0-9]{4}"
                             min="1900"
+                            readonly
                             required
                           />
+                          <span>년</span>
                           <input
                             type="hidden"
                             name="inputBday"
@@ -127,65 +147,26 @@
                           />
                         </div>
                         <div>
-                          <select
-                            class="birthMonth"
+                          <input
+                            class="birthMonth readonly"
                             name="inputBMonth"
+                            readonly
                             required
-                          >
-                            <option value="">월</option>
-                            <option value="01">1월</option>
-                            <option value="02">2월</option>
-                            <option value="03">3월</option>
-                            <option value="04">4월</option>
-                            <option value="05">5월</option>
-                            <option value="06">6월</option>
-                            <option value="07">7월</option>
-                            <option value="08">8월</option>
-                            <option value="09">9월</option>
-                            <option value="10">10월</option>
-                            <option value="11">11월</option>
-                            <option value="12">12월</option>
-                          </select>
+                          />
+                          <span>월</span>
                         </div>
                         <div>
-                          <select class="birthDay" name="inputBDay" required>
-                            <option value="">일</option>
-                            <option value="01">1일</option>
-                            <option value="02">2일</option>
-                            <option value="03">3일</option>
-                            <option value="04">4일</option>
-                            <option value="05">5일</option>
-                            <option value="06">6일</option>
-                            <option value="07">7일</option>
-                            <option value="08">8일</option>
-                            <option value="09">9일</option>
-                            <option value="10">10일</option>
-                            <option value="11">11일</option>
-                            <option value="12">12일</option>
-                            <option value="13">13일</option>
-                            <option value="14">14일</option>
-                            <option value="15">15일</option>
-                            <option value="16">16일</option>
-                            <option value="17">17일</option>
-                            <option value="18">18일</option>
-                            <option value="19">19일</option>
-                            <option value="20">20일</option>
-                            <option value="21">21일</option>
-                            <option value="22">22일</option>
-                            <option value="23">23일</option>
-                            <option value="24">24일</option>
-                            <option value="25">25일</option>
-                            <option value="26">26일</option>
-                            <option value="27">27일</option>
-                            <option value="28">28일</option>
-                            <option value="29">29일</option>
-                            <option value="30">30일</option>
-                            <option value="31">31일</option>
-                          </select>
+                          <input
+                            class="birthDay readonly"
+                            name="inputBDay"
+                            readonly
+                            required
+                          />
+                          <span>일</span>
                         </div>
                       </div>
                       <div class="desc_s">
-                        <span></span>
+                        <span>생년월일은 변경할 수 없습니다.</span>
                       </div>
                     </td>
                   </tr>
@@ -367,6 +348,7 @@
 
           <div class="button_box">
             <button class="info-updateBtn">수정</button>
+            <button class="info-cancelBtn">취소</button>
           </div>
         </div>
       </section>
@@ -376,10 +358,13 @@
 
     <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../static/js/layout_front.js"></script>
-    <!-- <script src="../../static/js/makers/maker.js"></script> -->
+    <script src="../../static/js/makers/makerUserEdit_front.js"></script>
 
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
-    <script type="text/javascript" th:src="@{/js/makers/makerSales.js}"></script>
+    <script
+      type="text/javascript"
+      th:src="@{/js/makerUserEdit_front.js}"
+    ></script>
   </body>
 </html>
