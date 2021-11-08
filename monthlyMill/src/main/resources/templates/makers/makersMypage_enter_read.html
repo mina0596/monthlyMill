@@ -28,6 +28,7 @@
         <div class="enterApprovalBox">
           <!-- 승인의 경우 approved 클래스 포함, 미승인은 없음 -->
           <span class="enterApproval">입점 승인 여부</span>
+          <input type="hidden" th:value="${storeInfo.enterCheck}" class="enterCheck">
           <span class="enterApprovalResult">미승인 사유 들어가는곳</span>
         </div>
         <div class="element_box">
@@ -39,7 +40,7 @@
                   <span>판매자 유형</span>
                 </th>
                 <td class="info-bodyColumn">
-                  <span class="info-sellerType">sellerType</span>
+                  <span class="info-sellerType" th:text="${storeInfo.sellerType}"></span>
                 </td>
               </tr>
               <tr>
@@ -47,7 +48,7 @@
                   <span>상호</span>
                 </th>
                 <td class="info-bodyColumn">
-                  <span class="info-companyName">companyName</span>
+                  <span class="info-companyName" th:text="${storeInfo.companyName}"></span>
                 </td>
               </tr>
               <tr>
@@ -55,7 +56,7 @@
                   <span>브랜드</span>
                 </th>
                 <td class="info-bodyColumn">
-                  <span class="info-BrandName">BrandName</span>
+                  <span class="info-BrandName" th:text="${storeInfo.brandName}"></span>
                 </td>
               </tr>
               <tr>
@@ -63,16 +64,15 @@
                   <span>사업자등록번호</span>
                 </th>
                 <td class="info-bodyColumn">
-                  <span class="info-businessNum">businessNum</span>
+                  <span class="info-businessNum" th:text="${storeInfo.businessNum}"></span>
                 </td>
               </tr>
-
               <tr>
                 <th class="info-headColumn">
-                  <span>사업자등록증 첨부</span>
+                  <span>사업자등록번호 첨부</span>
                 </th>
                 <td class="info-bodyColumn">
-                  <button class="info-businessNum">businessNum파일명</button>
+                  <span class="info-businessNum">파일 다운받을 수 있게?</span>
                 </td>
               </tr>
               <tr>
@@ -80,7 +80,7 @@
                   <span>대표자 이름</span>
                 </th>
                 <td class="info-bodyColumn">
-                  <span class="info-ownerName">ownerName</span>
+                  <span class="info-ownerName" th:text="${storeInfo.ownerName}"></span>
                 </td>
               </tr>
               <tr>
@@ -88,7 +88,7 @@
                   <span>개업일자</span>
                 </th>
                 <td class="info-bodyColumn">
-                  <span class="info-storeOpenDate">storeOpenDate</span>
+                  <span class="info-storeOpenDate" th:text="${storeInfo.storeOpenDate}"></span>
                 </td>
               </tr>
               <tr>
@@ -96,7 +96,7 @@
                   <span>사업장소재지</span>
                 </th>
                 <td class="info-bodyColumn">
-                  <span class="info-businessAddr">businessAddr</span>
+                  <span class="info-businessAddr" th:text="${storeInfo.businessAddr}"></span>
                 </td>
               </tr>
               <tr>
@@ -104,7 +104,7 @@
                   <span>사업자 구분</span>
                 </th>
                 <td class="info-bodyColumn">
-                  <span class="info-sellerClass">sellerClass</span>
+                  <span class="info-sellerClass" th:text="${storeInfo.sellerClass}"></span>
                 </td>
               </tr>
               <tr>
@@ -112,7 +112,7 @@
                   <span>업태</span>
                 </th>
                 <td class="info-bodyColumn">
-                  <span class="info-businessStatus">businessStatus</span>
+                  <span class="info-businessStatus" th:text="${storeInfo.businessStatus}"></span>
                 </td>
               </tr>
               <tr>
@@ -120,7 +120,7 @@
                   <span>업종</span>
                 </th>
                 <td class="info-bodyColumn">
-                  <span class="info-businessType">businessType</span>
+                  <span class="info-businessType" th:text="${storeInfo.businessType}"></span>
                 </td>
               </tr>
               <tr>
@@ -128,17 +128,15 @@
                   <span>통신판매업신고번호</span>
                 </th>
                 <td class="info-bodyColumn">
-                  <span class="info-salesNum">salesNum</span>
+                  <span class="info-salesNum" th:text="${storeInfo.salesNum}"></span>
                 </td>
               </tr>
               <tr>
                 <th class="info-headColumn">
-                  <span>통신판매업신고증 첨부</span>
+                  <span>통신판매업신고번호 첨부</span>
                 </th>
                 <td class="info-bodyColumn">
-                  <button class="info-reportNumfFile">
-                    reportNumfFile파일명
-                  </button>
+                  <span class="info-reportNumfFile" >파일 다운받을 수 있게</span>
                 </td>
               </tr>
             </tbody>
@@ -153,7 +151,7 @@
                 <span>대표 카테고리</span>
               </th>
               <td class="info-bodyColumn">
-                <span class="info-repItemCate">repItemCate</span>
+                <span class="info-repItemCate" th:text="${storeInfo.repItemCate}"></span>
               </td>
             </tr>
           </table>
@@ -168,7 +166,7 @@
                   <span>점포전면사진</span>
                 </th>
                 <td class="info-bodyColumn">
-                  <button class="info-storeFrontImg">사진 파일명</button>
+                  <span class="info-storeFrontImg">사진</span>
                 </td>
               </tr>
               <tr>
@@ -176,7 +174,7 @@
                   <span>주방 내부사진1</span>
                 </th>
                 <td class="info-bodyColumn">
-                  <button class="info-kitchenImg1">사진1 파일명</button>
+                  <span class="info-kitchenImg1">사진1</span>
                 </td>
               </tr>
               <tr>
@@ -184,7 +182,7 @@
                   <span>주방 내부사진2</span>
                 </th>
                 <td class="info-bodyColumn">
-                  <button class="info-kitchenImg2">사진2 파일명</button>
+                  <span class="info-kitchenImg2">사진2</span>
                 </td>
               </tr>
               <tr>
@@ -192,7 +190,7 @@
                   <span>주방 내부사진3</span>
                 </th>
                 <td class="info-bodyColumn">
-                  <button class="info-kitchenImg3">사진3 파일명</button>
+                  <span class="info-kitchenImg3">사진3</span>
                 </td>
               </tr>
             </tbody>
@@ -200,7 +198,7 @@
         </div>
 
         <div class="button_box">
-          <button class="info-updateBtn">수정</button>
+          <button class="store-updateBtn">수정</button>
         </div>
       </section>
     </div>
@@ -217,5 +215,6 @@
       type="text/javascript"
       th:src="@{/js/makerEnterRead_front.js}"
     ></script>
+        <script type="text/javascript" th:src="@{/js/makers/makerMypage.js}"></script>
   </body>
 </html>
