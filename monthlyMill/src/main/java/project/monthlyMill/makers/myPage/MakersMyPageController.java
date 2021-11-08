@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import project.monthlyMill.dto.MakerStore;
 import project.monthlyMill.dto.Member;
 
 @Controller
@@ -36,8 +37,12 @@ public class MakersMyPageController {
 		return "/makers/makersMypage_additional_info";
 	}
 	
+	// 메이커스 입점정보 뿌려주기
 	@GetMapping("/storeInfo")
-	public String getStoreInfo() {
+	public String getStoreInfo(HttpSession session, Model model) {
+		String makerId = (String) session.getAttribute("SID");
+		MakerStore storeInfo = makersMyPageService.getStoreInfoById(makerId);
+		model.addAttribute("storeInfo", storeInfo);
 		return "/makers/makersMypage_enter_read";
 	}
 	
