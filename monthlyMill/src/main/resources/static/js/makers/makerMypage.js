@@ -28,10 +28,21 @@ function pWcheck(inputPw, inputUrl){
 /*====== 패스워드 재입력창 ======*/
 $(document).on("click", ".mypage-infoBox-pwConfirmBtn", function(){
     //pwCheck에 패스워드 일치여부 T/F값 넣어주세요
-	
-	var inputPw = $('.mypage-infoBox-input').val();
-	var inputUrl = "/makers/myPage/user/editBasicInfo";
-	pWcheck(inputPw, inputUrl);
+	var urlAddr = document.location.href;
+	var ogn = document.location.origin;
+	urlAddr = urlAddr.replace(ogn + '/', '');
+	/* ========== 기본정보 수정시 ===========*/
+	if(urlAddr == 'makers/myPage/user/confirmPw'){
+		var inputPw = $('.mypage-infoBox-input').val();
+		var inputUrl = "/makers/myPage/user/editBasicInfo";
+		pWcheck(inputPw, inputUrl);
+	/* ========== 입점정보 수정시 ===========*/
+	}else if(urlAddr == 'makers/myPage/store/confirmPw'){
+		var inputPw = $('.mypage-infoBox-input').val();
+		var inputUrl = "/makers/myPage/user/editStoreInfo";
+		pWcheck(inputPw, inputUrl);
+		
+	}
 	
 });
 
@@ -50,8 +61,10 @@ $(document).on("click", ".info-updateBtn", function(){
     location.href="/makers/myPage/user/confirmPw";
 });
 
+/* ================ 입점정보============*/
+
 /*====== 메이커스 입점정보 읽기전용화면에서 비번확인 화면으로 이동 ======*/
-$(document).on("click", ".info-updateBtn", function(){
+$(document).on("click", ".store-updateBtn", function(){
    
     location.href="/makers/myPage/store/confirmPw";
 });
@@ -60,5 +73,35 @@ $(function(){
 	var enterCheck = $('.enterCheck').val();
 	if(enterCheck == 'Y'){
 		// 입정승인이 승인일 경우
+		$('.enterApproval').addClass('approved');
+	}else if(enterCheck == 'N'){
+		// 입점승인이 미승인일 경우
+		$('.enterApproval').attr('class', 'enterApproval');
 	}
+	$('#sameNameCheck').change(function(){
+		if($(this).is(':checked')){
+			$('.ownerName').val($('.makersName').val());
+		}else{
+			$('.ownerName').val('');
+		}
+	});
 })
+// 입점정보 수정 완료 후
+$('.storeUpdateBtn').click(function(){
+	$('#enterStore').submit();
+})
+
+
+/*================== 추가정보 ==============================*/
+$('.addInfoBtn').click(function(){
+	location.href="/makers/myPage/user/regAdditionalInfo";
+})
+$('.regAddInfoBtn').click(function(){
+	$('#setAddInfo').submit();
+})
+
+
+
+
+
+

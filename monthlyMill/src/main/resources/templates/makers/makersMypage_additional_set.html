@@ -28,6 +28,11 @@
         <div class="join_box">
           <div>
             <h3 class="h3_title">담당자 정보</h3>
+            <form
+              method="post"
+              id="setAddInfo"
+              th:action="@{/makers/myPage/user/regAdditionalInfo}"
+            >
             <table class="info-table">
               <tbody>
                 <tr>
@@ -99,6 +104,7 @@
                 </tr>
               </tbody>
             </table>
+            </form>
           </div>
           <div>
             <h3 class="h3_title">정산 입금 계좌</h3>
@@ -191,10 +197,11 @@
                 </tr>
               </tbody>
             </table>
+            </form>
           </div>
 
           <div class="button_box">
-            <button class="userInfo-updateBtn">등록</button>
+            <button class="regAddInfoBtn">등록</button>
           </div>
         </div>
       </section>
@@ -207,5 +214,9 @@
 
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
+    <script
+      type="text/javascript"
+      th:src="@{/js/makers/makerMypage.js}"
+    ></script>
   </body>
 </html>

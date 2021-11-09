@@ -32,20 +32,8 @@ public class MakersMyPageController {
 	PasswordEncoder pwEncoder;
 
 	
-	@GetMapping("/user/additionalInfo")
-	public String getAdditionalInfo() {
-		return "/makers/makersMypage_additional_info";
-	}
 	
-	// 메이커스 입점정보 뿌려주기
-	@GetMapping("/storeInfo")
-	public String getStoreInfo(HttpSession session, Model model) {
-		String makerId = (String) session.getAttribute("SID");
-		MakerStore storeInfo = makersMyPageService.getStoreInfoById(makerId);
-		model.addAttribute("storeInfo", storeInfo);
-		return "/makers/makersMypage_enter_read";
-	}
-	
+	// ******************* 기본정보 ********************
 	
 	// 메이커스 기본정보 뿌려주기
 	@GetMapping("/user/basicInfo")
@@ -58,7 +46,7 @@ public class MakersMyPageController {
 	
 	// 메이커스 기본정보 수정을 위한 비밀번호 확인 화면 이동
 	@GetMapping("/user/confirmPw")
-	public String getconfirmedPw() {
+	public String getUserConfirmedPw() {
 		
 		return "/makers/makersMypage_pwReInput";
 	}
@@ -85,5 +73,73 @@ public class MakersMyPageController {
 		Member makersInfo = makersMyPageService.getMakersInfoById(makerId);
 		model.addAttribute("makersInfo", makersInfo);
 		return "/makers/makersMypage_user_edit";
+	}
+	
+	
+	
+	
+	// ************************ 입점정보 **********************
+	
+	// 메이커스 입점정보 뿌려주기
+	@GetMapping("/storeInfo")
+	public String getStoreInfo(HttpSession session, Model model) {
+		String makerId = (String) session.getAttribute("SID");
+		MakerStore storeInfo = makersMyPageService.getStoreInfoById(makerId);
+		model.addAttribute("storeInfo", storeInfo);
+		return "/makers/makersMypage_enter_read";
+	}
+		
+	
+	// 메이커스 입점정보 수정화면
+	@GetMapping("/user/editStoreInfo")
+	public String getStoreEditVersion(HttpSession session, Model model) {
+		String makerId = (String) session.getAttribute("SID");
+		String makerName = (String) session.getAttribute("SNAME");
+		
+		MakerStore storeInfo = makersMyPageService.getStoreInfoById(makerId);
+		model.addAttribute("storeInfo", storeInfo);
+		model.addAttribute("makersName", makerName);
+		return "/makers/makersMypage_enter_edit";
+	}
+
+	// 메이커스 입점정보 수정을 위한 비밀번호 확인 화면 이동
+	@GetMapping("/store/confirmPw")
+	public String getStoreConfirmedPw() {
+		
+		return "/makers/makersMypage_pwReInput";
+	}
+	
+	// 입점정보 수정 후 화면이동
+	@PostMapping("/user/editStoreInfo")
+	public String updateStoreInfo() {
+		return "redirect:/makers/myPage/storeInfo";
+	}
+	
+	
+	
+	
+	// ********************** 추가정보 ******************
+	// 추가정보가 없을 시 화면
+	@GetMapping("/user/additionalInfo")
+	public String getAdditionalInfo() {
+		return "/makers/makersMypage_additional_info";
+	}
+	
+	// 추가정보 등록화면
+	@GetMapping("/user/regAdditionalInfo")
+	public String setAddInfo() {
+		return "/makers/makersMypage_additional_set";
+	}
+	
+	// 추가정보 등록 후 화면이동
+	@PostMapping("/user/regAdditionalInfo")
+	public String finishAddInfo() {
+		return "redirect:/makers/myPage/user/addtionalInfo";
+	}
+	
+	// 추가정보 뿌려준화면
+	@GetMapping("/user/addtionalInfo")
+	public String getAddInfo() {
+		return "/makers/makersMypage_additional_read";
 	}
 }

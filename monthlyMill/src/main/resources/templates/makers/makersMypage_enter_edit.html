@@ -29,6 +29,11 @@
         <div class="enterApprovalBox">
           <!-- 승인의 경우 approved 클래스 포함, 미승인은 없음 -->
           <span class="enterApproval">입점 승인 여부</span>
+          <input
+            type="hidden"
+            th:value="${storeInfo.enterCheck}"
+            class="enterCheck"
+          />
           <span class="enterApprovalResult">미승인 사유 들어가는곳</span>
         </div>
 
@@ -36,7 +41,7 @@
           <form
             method="post"
             id="enterStore"
-            th:action="@{/join/makersJoin/makersStoreEnter}"
+            th:action="@{/makers/myPage/user/editStoreInfo}"
           >
             <div class="join_box">
               <h3 class="h3_title">판매자 정보 입력</h3>
@@ -66,6 +71,7 @@
                         type="text"
                         name="companyName"
                         required
+                        th:value="${storeInfo.companyName}"
                         placeholder="상호명을 입력해주세요."
                       />
                     </td>
@@ -78,6 +84,7 @@
                       <input
                         type="text"
                         name="BrandName"
+                        th:value="${storeInfo.brandName}"
                         required
                         placeholder="브랜드명을 입력해주세요."
                       />
@@ -97,6 +104,7 @@
                           maxlength="12"
                           pattern="[0-9]{3}-[0-9]{2}-[0-9]{5}"
                           placeholder="숫자만 입력해주세요."
+                          th:value="${storeInfo.businessNum}"
                           required
                         />
                       </div>
@@ -145,6 +153,7 @@
                         type="text"
                         placeholder="성함을 입력해주세요."
                         class="ownerName"
+                        th:value="${storeInfo.ownerName}"
                       />
                       <div>
                         <input
@@ -155,6 +164,11 @@
                         <label class="check_off" for="sameNameCheck"
                           >기본정보와 동일</label
                         >
+                        <input
+                          type="hidden"
+                          class="makersName"
+                          th:value="${makersName}"
+                        />
                       </div>
                     </td>
                   </tr>
@@ -167,6 +181,7 @@
                         type="text"
                         placeholder="YYYYMMDD(숫자만 입력)"
                         required
+                        th:value="${storeInfo.storeOpenDate}"
                         class="storeOpenDate"
                       />
                     </td>
@@ -175,11 +190,12 @@
                     <th class="info-headColumn">
                       <span class="text required">사업장 소재지</span>
                     </th>
-                    <td class="info-bodyColumn" class="address_inputBox">
+                    <td class="info-bodyColumn address_inputBox" >
                       <div>
                         <input
                           type="text"
                           name="businessAddr"
+                          th:value="${storeInfo.businessAddr}"
                           required
                           placeholder="사업자등록증에 있는 주소로 입력"
                         />
@@ -212,6 +228,7 @@
                       <input
                         type="text"
                         name="businessStatus"
+                        th:value="${storeInfo.businessStatus}"
                         required
                         placeholder="대표 업태를 입력해주세요."
                       />
@@ -225,6 +242,7 @@
                       <input
                         type="text"
                         name="businessType"
+                        th:value="${storeInfo.businessType}"
                         required
                         placeholder="대표 업종을 입력해주세요."
                       />
@@ -241,6 +259,7 @@
                         class="salesNum"
                         placeholder="신고번호를 입력해주세요."
                         pattern="[0-9]{4}-[가-힣]{4}-[0-9]{4,6}"
+                        th:value="${storeInfo.salesNum}"
                         name="inputReportNum"
                         required
                       />
@@ -399,7 +418,7 @@
 
             <!--넘어가는 버튼-->
             <div class="button_box">
-              <button class="info-updateBtn">수정 후 재신청하기</button>
+              <button class="storeUpdateBtn">수정 후 재신청하기</button>
             </div>
           </form>
         </div>
@@ -413,5 +432,9 @@
 
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
+    <script
+      type="text/javascript"
+      th:src="@{/js/makers/makerMypage.js}"
+    ></script>
   </body>
 </html>
