@@ -1,0 +1,20 @@
+.wishItem {
+  margin: 0.5em;
+}
+.wishItem-imgBox {
+  position: relative;
+}
+.wishItem-img {
+  width: 300px;
+  height: 200px;
+}
+.wishItem-iconbox {
+  position: absolute;
+  right: 0.5em;
+  bottom: 0.5em;
+  font-size: 2em;
+  color: #fff;
+}
+.wishItem-cart {
+  margin-right: 0.5em;
+}

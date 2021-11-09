@@ -10,6 +10,22 @@ $(document).ready(function(){
 		parseInt($(".discountTotalPrice").text()) +
 		parseInt($(".deliveryTotalPrice").text()) 
 	);
+
+	//예약날짜 범위 제한: 3일 후 부터
+	const minDate = new Date();
+	minDate.setDate(minDate.getDate()+3);
+	const minDateStr = `${minDate.getFullYear()}-${minDate.getMonth()+1}-${minDate.getDate()}`;
+
+	$(".reservationDate").attr("min", minDateStr);
+
+	//배송방법 퀵이면 시간선택 보이게
+	$(".reservationDeliveryType").on("change", function(){
+		if(this.value=="quick"){
+			$(".reservation-quickTimeSet").removeClass("hidden");
+		}else{
+			$(".reservation-quickTimeSet").addClass("hidden");
+		}
+	});
 })
 
 // 번호입력 시 하이픈 자동추가

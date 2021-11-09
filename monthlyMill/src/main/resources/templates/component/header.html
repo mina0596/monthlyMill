@@ -7,13 +7,13 @@
           th:if="${session.SID == null}"
           th:href="@{/join/join_method}"
           class="gnb_util__join"
-          >회원가입</a
+          ><span>회원가입</span></a
         >
         <a
           th:if="${session.SID != null}"
           class="gnb_util__join"
           th:href="@{/customer/order/orderList}"
-          >[[${session.SNAME}]]님 환영합니다</a
+          ><span>[[${session.SNAME}]]님 환영합니다</span></a
         >
       </li>
       <li>
@@ -21,7 +21,7 @@
           th:if="${session.SID == null}"
           th:href="@{/login}"
           class="gnb_util__login"
-          >로그인</a
+          ><span>로그인</span></a
         >
       </li>
       <li>
@@ -29,10 +29,18 @@
           th:if="${session.SID != null}"
           th:href="@{/logout}"
           class="gnb_util__login"
-          >로그아웃</a
+          ><span>로그아웃</span></a
         >
       </li>
-      <li><a th:href="@{/customer/cart/cartList}">장바구니</a></li>
+      <li>
+        <a th:href="@{/customer/cart/cartList}"><span>my찜</span></a>
+      </li>
+      <li>
+        <a th:href="@{/customer/cart/cartList}"><span>장바구니</span></a>
+      </li>
+      <li>
+        <a th:href="@{/customer/cart/cartList}"><span>주문/배송</span></a>
+      </li>
     </ul>
   </div>
   <div class="gnb_box">

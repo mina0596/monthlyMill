@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>월간방앗간</title>
+  </head>
+  <body>
+    <header></header>
+    <section class="content_box">
+      <div class="main_box">
+        <h3 class="h3_title">문의하기</h3>
+        <div class="post-titleBox">
+          <div class="post-titleInfo">
+            <span class="post-category">카테고리명</span>
+            <span class="post-title">제목</span>
+            <!-- 비공개 게시글인경우 자물쇠 아이콘포함 -->
+            <i class="fas fa-lock"></i>
+          </div>
+          <div class="post-subInfo">
+            <span class="post-writer">작성자명</span>
+            <span class="post-date">2021-00-00</span>
+          </div>
+        </div>
+
+        <div class="post-body">
+          <img sre="" class="post-img" alt="첨부 이미지" />
+          <p class="post-text">
+            글 내용 Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Fugiat excepturi quis eum perferendis ut consequuntur iste ea
+            laborum corporis reiciendis placeat tenetur, tempore laudantium
+            repudiandae laboriosam soluta eaque earum doloremque?
+          </p>
+        </div>
+
+        <!-- 관리자 답변 있는경우 표시됨 -->
+        <div class="post-reply">
+          <div class="post-reply-info">
+            <span class="post-reply-writer">관리자</span>
+            <span class="post-reply-date">2021-00-00</span>
+          </div>
+          <div class="post-reply-body">
+            <p class="post-reply-text">
+              답변 내용 Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Fugiat excepturi quis eum perferendis ut consequuntur iste ea
+              laborum corporis reiciendis placeat tenetur, tempore laudantium
+              repudiandae laboriosam soluta eaque earum doloremque?
+            </p>
+          </div>
+        </div>
+        <div class="button_box">
+          <button class="gotoListBtn">목록으로</button>
+        </div>
+      </div>
+    </section>
+    <footer></footer>
+
+    <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../static/js/layout_front.js"></script>
+
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
+  </body>
+</html>

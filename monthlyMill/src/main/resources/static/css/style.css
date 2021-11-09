@@ -7,6 +7,7 @@
 @import "components/header.css";
 @import "components/footer.css";
 @import "components/popup.css";
+@import "components/board.css";
 
 /* Screens */
 @import "screens/main.css";
@@ -19,3 +20,5 @@
 @import "screens/orderList.css";
 @import "screens/loading.css";
 @import "screens/orderCancel.css";
+@import "screens/menuItem.css";
+@import "screens/myWish.css";

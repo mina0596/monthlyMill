@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>월간방앗간</title>
+  </head>
+  <body>
+    <header></header>
+    <section class="content_box">
+      <div class="main_box">
+        <h3 class="h3_title">문의하기</h3>
+        <div class="post-categoryBox">
+          <span>문의 유형</span>
+          <select name="" id="" class="post-category">
+            <option value="">카테고리 선택</option>
+            <option value="">취소/반품/교환</option>
+            <option value="">배송</option>
+            <option value="">주문</option>
+            <option value="">상품</option>
+            <option value="">기타</option>
+          </select>
+        </div>
+        <div class="post-inputTitleBox">
+          <span>제목</span>
+          <input
+            type="text"
+            placeholder="제목을 입력하세요."
+            class="post-inputTitle"
+          />
+        </div>
+        <div class="bodyBox">
+          <div class="textInputBox">
+            <textarea name="" class="post-inputText" cols="30" rows="10">
+            </textarea>
+          </div>
+        </div>
+        <div class="controlBox">
+          <div class="post-fileBox">
+            <span>파일첨부</span>
+            <div>
+              <button class="attachFileBtn">파일첨부</button>
+              <span class="desc_s"
+                >5MB 이하의 파일만 첨부하실 수 있으며, exe, zip 등 일부
+                파일형식은 첨부하실 수 없습니다.</span
+              >
+            </div>
+          </div>
+          <div class="post-setBox">
+            <span>글쓰기 설정</span>
+            <div>
+              <input type="radio" name="publicSet" id="public" />
+              <label for="public">공개</label>
+              <input type="radio" name="publicSet" id="private" checked />
+              <label for="private">비공개</label>
+            </div>
+          </div>
+          <div class="button_box">
+            <button class="postBtn">등록</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer></footer>
+
+    <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../static/js/layout_front.js"></script>
+
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
+  </body>
+</html>
