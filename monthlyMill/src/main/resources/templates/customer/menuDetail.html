@@ -1,0 +1,148 @@
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>월간방앗간</title>
+  </head>
+  <body>
+    <header></header>
+
+    <div class="wrapper">
+      <section class="content_box">
+        <div class="main_box">
+          <!-- 상단 상품정보 -->
+          <div class="menuDetail-itemBox">
+            <div class="menuDetail-itemColumn imgColumn">
+              <img
+                src="../../static/img/main_intro1_백설기.jpg"
+                alt="사진"
+                class="menuDetail-itemImg"
+              />
+              <p class="desc_s">
+                상기 이미지는 연출된 이미지입니다. 실제 배송시 받는 제품과
+                상이할 수 있습니다.
+              </p>
+              <button class="nutritionBtn">영양성분</button>
+            </div>
+
+            <div class="menuDetail-itemColumn infoColumn">
+              <h4 class="menuItem-name">호박고지</h4>
+              <ul class="menuDetail-info">
+                <li class="menuDetail-infoList big">
+                  <span>가격</span>
+                  <span class="item-price price_number">19000</span>
+                </li>
+                <li class="menuDetail-infoList big">
+                  <span>규격</span>
+                  <div>
+                    <span class="standard-weight kg_number">2</span>/
+                    <span class="standard-quantity item_number">20</span>/
+                    <span class="standard-perGram perGram_number">100</span>
+                  </div>
+                </li>
+                <li class="menuDetail-infoList">
+                  <span>배송방법</span>
+                  <span class="item-deliveryType">택배배송</span>
+                </li>
+                <li class="menuDetail-infoList">
+                  <span>배송비</span>
+                  <div class="menuDetail-deliveryInfo">
+                    <span>택배 4000원</span>
+                    <span>퀵</span>
+                    <span>4만원 미만 5000원</span>
+                    <span>4만원 ~ 5만원 4000원</span>
+                    <span>5만원 초과 3000원</span>
+                  </div>
+                </li>
+                <li class="menuDetail-infoList">
+                  <span>상품수량</span>
+                  <div>
+                    <button>-</button>
+                    <span class="itemQuantity">2</span>
+                    <button>+</button>
+                  </div>
+                </li>
+              </ul>
+              <div class="menuDetail-priceBox">
+                <span>총 상품금액</span>
+                <span class="item-sumPrice price_number">38000</span>
+              </div>
+              <div class="menuDetail-cartBox">
+                <span class="wishNumber">300</span>
+                <button class="gotoCartBtn">장바구니</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 중단 상품상세정보 -->
+          <div class="menuDetail-bodyBox">
+            <h3 class="h3_title">상품 상세정보</h3>
+            <div class="menuDeatail-body">
+              <img src="" alt="" class="menuDetail-detailImg" />
+              <p class="menuDetail-detailText">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque
+                aut fuga vel est nemo molestiae fugiat at quam perferendis vitae
+                consectetur, magnam error consequuntur dolores harum aspernatur.
+                Veniam, laborum est.
+              </p>
+            </div>
+          </div>
+
+          <!-- 하단 다른고객 같이 구매상품 -->
+          <div class="menuDetail-recommendBox">
+            <h3 class="h3_title">다른 고객이 같이 구매한 상품</h3>
+            <ul class="itemListBox recommendBox">
+              <li class="menuItem">
+                <div class="menuItem-imgBox">
+                  <img
+                    src="../../static/img/main_intro1_백설기.jpg"
+                    alt="사진"
+                    class="menuItem-img"
+                  />
+                  <div class="menuItem-iconbox">
+                    <i class="fas fa-shopping-cart menuItem-cart"></i>
+                  </div>
+                </div>
+                <div class="menuItem-nameBox">
+                  <span class="menuItem-name">상품이름</span>
+                  <span class="wishNumber">300</span>
+                </div>
+                <span class="item-price price_number">10000</span>
+              </li>
+              <li class="menuItem">
+                <div class="menuItem-imgBox">
+                  <img
+                    src="../../static/img/main_intro1_백설기.jpg"
+                    alt="사진"
+                    class="menuItem-img"
+                  />
+                  <div class="menuItem-iconbox">
+                    <i class="fas fa-shopping-cart menuItem-cart"></i>
+                  </div>
+                </div>
+                <div class="menuItem-nameBox">
+                  <span class="menuItem-name">상품이름</span>
+                  <span class="wishNumber">300</span>
+                </div>
+                <span class="item-price price_number">10000</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer></footer>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/layout_front.js"></script>
+
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
+  </body>
+</html>

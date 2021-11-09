@@ -1,0 +1,92 @@
+/* 메뉴 리스트 화면*/
+.menu-conditionBox {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5em 0.5em 1.5em;
+}
+.menu-noticeBox {
+  display: flex;
+  align-items: center;
+  border-top: 2px solid var(--main-green);
+  padding: 1em 0;
+}
+.menu-categorySelected {
+  min-width: 3em;
+  text-align: center;
+}
+.menu-desc {
+  margin-left: 0.5em;
+}
+.itemListBox {
+  display: flex;
+  flex-wrap: wrap;
+}
+.menuItem {
+  margin: 0.5em;
+}
+.menuItem-imgBox {
+  position: relative;
+}
+.menuItem-img {
+  width: 300px;
+  height: 200px;
+}
+.menuItem-iconbox {
+  position: absolute;
+  right: 0.5em;
+  bottom: 0.5em;
+  font-size: 2em;
+  color: #fff;
+}
+.menuItem-nameBox {
+  display: flex;
+  justify-content: space-between;
+}
+.wishNumber::before {
+  margin-right: 0.25em;
+  content: "\f004";
+  font-family: "Font Awesome 5 Free";
+}
+.wishNumber.wished::before {
+  font-weight: 900;
+}
+
+/* 메뉴 상세화면 */
+/*상단*/
+.menuDetail-itemBox {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 2em;
+}
+.menuDetail-itemColumn {
+  display: flex;
+  flex-direction: column;
+}
+.menuDetail-itemColumn.imgColumn {
+  margin-right: 1em;
+}
+.menuDetail-itemColumn.infoColumn {
+}
+.menuDetail-itemImg {
+  width: 100%;
+  max-height: 300px;
+}
+h4.menuItem-name {
+  font-size: 20pt;
+}
+.menuDetail-infoList {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+.menuDetail-deliveryInfo {
+  display: flex;
+  flex-direction: column;
+}
+.menuDetail-priceBox {
+  font-size: 20pt;
+}
+/*중단*/
+.menuDetail-bodyBox {
+  margin-bottom: 2em;
+}
+/*하단*/

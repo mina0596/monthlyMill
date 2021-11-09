@@ -28,6 +28,16 @@
   line-height: 150%;
 }
 
+/* 첨부파일 이미지 보기 */
+.imgPreviewBox {
+  width: 300px;
+  padding-bottom: 150px;
+}
+.imgPreview {
+  width: 100%;
+  height: 100%;
+}
+
 /* ============ 안내 페이지 / 비밀번호 재입력 ===========*/
 .mypage-infoBoxWrap {
   max-width: 40em;

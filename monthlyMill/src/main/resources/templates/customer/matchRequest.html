@@ -1,4 +1,4 @@
-<!-- 결제창 -->
+<!-- 매칭신청 -->
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
@@ -225,21 +225,48 @@
             <h3 class="h3_title">예약날짜 & 배송방법</h3>
             <div class="reservation-datePick reservation-column">
               <!-- 예약 가능 날짜: 주문일+3일부터 선택되게 해둠 -->
-              <span>예약날짜</span>
-              <span type="date" class="reservationDate" >2021-00-00 (월)<span/>
+              <span>예약날짜 선택</span>
+              <input type="date" name="" class="reservationDate" />
             </div>
 
             <div class="reservation-column">
               <span>배송방법</span>
-              <span class="reservationDeliveryType">택배
-              </span>
+              <select name="" class="reservationDeliveryType">
+                <option value="delivery">택배</option>
+                <option value="quick">퀵</option>
+              </select>
             </div>
-            <!-- <div class="reservation-quickTimeSet reservation-column hidden">
+            <div class="reservation-quickTimeSet reservation-column hidden">
               <span>퀵 시간 선택</span>
               <select class="reservationTime">
+                <option value="">선택</option>
+                <option value="00">00:00</option>
+                <option value="01">01:00</option>
+                <option value="02">02:00</option>
+                <option value="03">03:00</option>
+                <option value="04">04:00</option>
+                <option value="05">05:00</option>
+                <option value="06">06:00</option>
+                <option value="07">07:00</option>
+                <option value="08">08:00</option>
+                <option value="09">09:00</option>
+                <option value="10">10:00</option>
+                <option value="11">11:00</option>
+                <option value="12">12:00</option>
+                <option value="13">13:00</option>
+                <option value="14">14:00</option>
+                <option value="15">15:00</option>
+                <option value="16">16:00</option>
+                <option value="17">17:00</option>
+                <option value="18">18:00</option>
+                <option value="19">19:00</option>
+                <option value="20">20:00</option>
+                <option value="21">21:00</option>
+                <option value="22">22:00</option>
+                <option value="23">23:00</option>
               </select>
               <span class="desc_s">1시간 단위로 선택 가능합니다.</span>
-            </div> -->
+            </div>
             <div class="reservation-column">
               <span>배송비</span>
               <!-- 자동으로 가격대+배송방법에 해당되는 배송비 뜨게 -->
@@ -295,14 +322,13 @@
             </div>
           </div>
 
-          <div class="main_box">
+          <!--<div class="main_box">
             <h3 class="h3_title">결제수단</h3>
             <div class="payment_column payment_type_box">
               <button type="button" class="btn small deposit_noBankbook_btn">
                 무통장 입금
               </button>
             </div>
-            <!--현금영수증 발행-->
             <div class="payment_column payment_receipt_box hidden">
               <table class="receipt_form">
                 <colgroup>
@@ -323,7 +349,6 @@
                     </select>
                   </td>
                 </tr>
-                <!--선택안함일 때는 안뜨게-->
                 <tr class="receipt_box recepitPhoneNumber">
                   <th>
                     <span class="receiptApplicantPhoneNum">휴대폰번호</span>
@@ -340,7 +365,6 @@
                 </tr>
               </table>
             </div>
-            <!--약관 동의-->
             <div class="payment_column payment_agreement_box">
               <div class="agreement_all">
                 <input
@@ -429,14 +453,13 @@
                 </div>
               </div>
             </div>
-            <!--end payment_agreement_box-->
-          </div>
+          </div>-->
 
           <div class="main_box">
             <div class="button_box">
-              <!--누르면 결제진행 됨-->
+              <!--누르면 매칭 신청됨-->
               <button type="button" class="btn big emp paymentBtn">
-                결제하기
+                매칭신청
               </button>
             </div>
           </div>

@@ -1,0 +1,94 @@
+<!-- 월간방앗간 MENU -->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>월간방앗간</title>
+  </head>
+  <body>
+    <header></header>
+
+    <div class="wrapper">
+      <section class="content_box">
+        <div class="main_box">
+          <h3 class="h3_title">월간방앗간 MENU</h3>
+          <div class="menu-conditionBox">
+              <div class="filterBox">
+                  <span>카테고리</span>
+                  <select name="" class="categoryFilter">
+                      <option value="all">전체</option>
+                      <option value="tteok">떡</option>
+                  </select>
+              </div>
+              <div class="searchBox">
+                  <input type="text" class="searchInput">
+                  <i class="fas fa-search"></i>
+              </div>
+          </div>
+          <div class="menu-noticeBox">
+              <span class="boxborder menu-categorySelected">떡</span>
+              <div class="menu-desc">
+                  <p class="desc_s">*매칭 신청(주문)을 통한 메이커스 찾기 서비스는 오전 10시 ~ 오후 4시 입니다. (오후 4시에 매칭 성공/실패 여부 안내)</p>
+                  <p class="desc_s">*오후 4시 이후 매칭 신청(주문)은 익일 오전 10시에 시작됩니다.</p>
+              </div>
+          </div>
+
+          <ul class="itemListBox">
+            <!-- 메뉴 아이템 -->
+            <li class="menuItem">
+              <div class="menuItem-imgBox">
+                <img
+                  src="../../static/img/main_intro1_백설기.jpg"
+                  alt="사진"
+                  class="menuItem-img"
+                />
+                <div class="menuItem-iconbox">
+                  <i class="fas fa-shopping-cart menuItem-cart"></i>
+                </div>
+            </div>
+            <div class="menuItem-nameBox">
+                <span class="menuItem-name">상품이름</span>
+                <span class="wishNumber">300</span>
+            </div>
+              <span class="item-price price_number">10000</span>
+            </li>
+
+            <li class="menuItem">
+              <div class="menuItem-imgBox">
+                <img
+                  src="../../static/img/main_intro1_백설기.jpg"
+                  alt="사진"
+                  class="menuItem-img"
+                />
+                <div class="menuItem-iconbox">
+                  <i class="fas fa-shopping-cart gotoCartBtn"></i>
+                </div>
+            </div>
+            <div class="menuItem-nameBox">
+                <span class="item-name">상품이름</span>
+                <span class="wishNumber wished">300</span>
+            </div>
+              <span class="item-price price_number">10000</span>
+            </li>
+            
+
+            
+        </div>
+      </section>
+    </div>
+    <footer></footer>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/layout_front.js"></script>
+
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
+  </body>
+</html>

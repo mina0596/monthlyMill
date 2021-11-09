@@ -24,23 +24,40 @@
 고객/메이커스 공통 화면
 
 - login: 로그인
-- main: 메인화면(시연 이후 사용)
-- introduce: 월간방앗간 소개(=임시용 메인창)
+- main: 메인화면
+- introduce: 월간방앗간 소개
 
 ### customer
 
-고객 이용 화면
+고객 이용 화면(기존작업 화면)
 
 - findItem: 떡 찾기
 - cart: 장바구니
-- payment:결제창
-- payment_deposit: 결제계산창
+- payment:결제창 => 수정중.
+- payment_deposit: 결제계산창 => 수정함
 - payment_confirm: 입금내역 확인
 - loading: 결제대기 로딩화면
 - loadingMatch: 매칭대기 로딩화면
 - orderList: 나의 주문정보-주문배송조회
 - cancelOrderList: 나의 주문정보-취소반품조회
 - cancelOrder: 주문취소 신청
+
+고객 이용 화면(새로 추가된 화면)
+
+- askPost_read: 문의글 읽기
+- askPost_write: 문의글 쓰기
+- findId: 아이디 찾기
+- findId_result: 아이디 찾기 결과
+- findPassword: 비밀번호 찾기
+- findPassword_reset: 비밀번호 재설정
+- findPassword_finish: 비밀번호 재설정 완료
+
+- matchRequest: 매칭신청
+- menuList: 월간방앗간 메뉴
+- menuDetail: 월간방앗간 메뉴-상품 상세보기
+- myWishList: my찜
+
+아직 없는페이지: 주문확인창
 
 ### admin
 
@@ -66,7 +83,7 @@
 - makerCalculation: 정산
 - makersMypage_user_read: 회원정보 조회
 - makersMypage_user_set: 회원정보 수정
-- makersMypage_enter_read: 입점정보 조회
+- makersMypage_enter_read: 입점정보 조회 => 일단 수정했는데 pdf파일 처리 고민중
 - makersMypage_enter_set: 입점정보 수정
 - makersMypage_additional_info: 추가정보 안내
 - makersMypage_additional_read: 추가정보 조회

@@ -21,6 +21,10 @@
   width: 25em;
 }
 
+/*예약, 배송*/
+.reservation-column {
+  margin-bottom: 0.5em;
+}
 /* 결제수단 */
 .payment_type_box {
   margin-bottom: 1em;
@@ -83,7 +87,7 @@ label .agreement_column {
 }
 .match_desc_column.grid_box.bottom {
   grid-row: unset;
-  grid-template-columns: 8fr 4fr 3fr;
+  grid-template-columns: 4fr 8fr 3fr;
   /*grid-template-columns:
   4fr minmax(5em, 8fr) 4fr 2fr minmax(4em, 4fr) 2fr 1fr minmax(4em, 4fr)
   1fr;*/

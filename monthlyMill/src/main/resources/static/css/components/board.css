@@ -39,12 +39,22 @@
   }
 }
 
-/* 게시글 */
+/* 게시글 읽기 */
 .post {
   padding: 1em 0;
 }
+.post-titleBox {
+  display: flex;
+  justify-content: space-between;
+}
+.post-subInfo {
+}
+.post-category {
+  margin-right: 0.5em;
+  color: rgba(0, 0, 0, 0.5);
+}
 .post-title {
-  font-size: 22px;
+  font-size: 16pt;
   margin-bottom: 0.5em;
 }
 .post-date {
@@ -54,4 +64,28 @@
   padding: 1em 0;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.post-reply {
+  padding: 1em 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* 게시글 작성 */
+.post-categoryBox {
+  display: grid;
+  grid-template-columns: 6em 10em;
+}
+.post-inputTitleBox,
+.post-fileBox,
+.post-setBox {
+  display: grid;
+  grid-template-columns: 6em auto;
+}
+
+.post-inputTitle {
+  width: 100%;
+}
+.post-inputText {
+  width: 100%;
+  resize: none;
 }
