@@ -26,6 +26,15 @@ function init(){
             deleteCartItemAll(this);
         });
     }
+
+    //
+    $(document).on("click", ".gotoMatchBtn", function(){
+        $(".popupWrapper").removeClass("hidden");
+    });
+    //추가주문 확인 팝업창
+    $(document).on("click", ".gobackBtn", function(){
+        $(".popupWrapper").addClass("hidden");
+    });
 }
 
 init();
@@ -119,4 +128,5 @@ function calculatePaymentTotalPrice(){
 
     totalPrice.innerText = parseInt(itemTotal.innerText) + parseInt(deliveryPrice.innerText);
 }
+
 

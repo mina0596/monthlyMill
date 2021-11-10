@@ -1,0 +1,35 @@
+.couponWrap {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+}
+.couponInfo {
+  display: flex;
+  justify-content: space-between;
+}
+.couponBox {
+  margin: 1em 0;
+}
+.couponBox > .coupon {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.5em;
+  margin-bottom: 0.5em;
+  padding: 1em;
+}
+.coupon_effect {
+  font-size: 18pt;
+  font-weight: 700;
+  color: var(--text-emp-color);
+}
+.coupon_subtitle {
+  font-weight: 700;
+}
+.couponDesc {
+  padding: 1em;
+  background-color: var(--main-gray);
+}
+.couponDesc_title {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}

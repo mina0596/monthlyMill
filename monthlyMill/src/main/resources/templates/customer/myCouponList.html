@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>월간방앗간</title>
+  </head>
+  <body>
+    <header></header>
+
+    <div class="wrapper">
+      <aside class="asideMenu" data-asideMenu-number="2"></aside>
+
+      <section class="content_box withAside">
+        <div class="main_box">
+          <h3 class="h3_title">쿠폰조회</h3>
+          <div class="couponWrap">
+            <div class="couponInfo">
+              <span class="couponState text mid">
+                <span>보유쿠폰</span>
+                <span class="coupon_number">2</span>장
+              </span>
+              <button class="addCouponBtn">쿠폰등록</button>
+            </div>
+            <ul class="couponBox">
+              <li class="coupon">
+                <span class="coupon_effect">1000원</span>
+                <p class="coupon_subtitle">웰컴할인쿠폰</p>
+                <p class="coupon_restriction">
+                  총 상품 15000원 이상 구매 시 사용가능
+                </p>
+              </li>
+              <li class="coupon">
+                <span class="coupon_effect">1000원</span>
+                <p class="coupon_subtitle">웰컴할인쿠폰</p>
+                <p class="coupon_restriction">
+                  총 상품 15000원 이상 구매 시 사용가능
+                </p>
+              </li>
+            </ul>
+            <div class="couponDesc">
+              <span class="couponDesc_title">쿠폰 유의사항</span>
+              <p>
+                배송비를 제외한 주문 상품 금액 기준으로 적용됩니다. <br />취소
+                및 환불 완료 시 사용한 쿠폰은 복구됩니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer></footer>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/layout_front.js"></script>
+
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
+  </body>
+</html>

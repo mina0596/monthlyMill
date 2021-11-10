@@ -1,0 +1,314 @@
+<!-- 매칭신청 주문확인 -->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>월간방앗간</title>
+  </head>
+  <body>
+    <header></header>
+    <!-- 우편번호 입력란, 자동계산기능, 무통장입금 버튼이벤트-->
+    <section class="content_box">
+      <form
+        method="post"
+        th:action="@{/customer/payment/paymentInfo}"
+        id="paymentInfo"
+      >
+        <div class="payment_wrap">
+          <h1 class="h1_title text big">결제하기</h1>
+
+          <div class="main_box orderer_box">
+            <h3 class="h3_title">주문자</h3>
+            <!-- 여기 value에 로그인한 유저 이름, 휴대폰 정보 자동으로 가져오기 -->
+            <table class="orderer_form">
+              <colgroup>
+                <col class="col__quarter" />
+                <col class="col__three_quarter" />
+              </colgroup>
+              <tr>
+                <th><span class="text required">이름</span></th>
+                <td>
+                  <span th:value="${session.SNAME}" class="inputOrdererName"
+                    >홍길동</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <th><span class="text required">휴대폰번호</span></th>
+                <td>
+                  <span
+                    class="phoneNum inputOrdererPhoneNum"
+                    th:value="${session.STEL}"
+                    >010-0000-0000</span
+                  >
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="main_box cart_box">
+            <h3 class="h3_title">상품정보</h3>
+            <div class="result_list_box">
+              <table class="result_table payment_item_list_table">
+                <colgroup>
+                  <col />
+                  <col />
+                  <col />
+                  <col />
+                  <col />
+                  <col />
+                </colgroup>
+                <thead class="hidden">
+                  <tr class="result_head">
+                    <th></th>
+                    <th>제품사진</th>
+                    <th>제품명</th>
+                    <th>배송방식</th>
+                    <th>개수</th>
+                    <th>가격</th>
+                  </tr>
+                </thead>
+                <tbody class="result_itemList">
+                  <tr
+                    class="result_item"
+                    th:if="${#lists.size(cartList) > 0}"
+                    th:each="cl,n : ${cartList}"
+                  >
+                    <td>
+                      <span
+                        class="result_item num"
+                        th:text="${n.index+1}"
+                      ></span>
+                      <input
+                        type="hidden"
+                        name="cartNum"
+                        class="result_cart_num"
+                        th:value="${cl.cartNum}"
+                      />
+                    </td>
+                    <td>
+                      <img src="" alt="제품이미지" class="result_item img" />
+                    </td>
+                    <td>
+                      <div class="result_item info">
+                        <span class="result_item title" th:text="${cl.pName}"
+                          >이름</span
+                        >
+                        <div class="hidden">
+                          <span
+                            class="result_item price_number itemPrice"
+                            th:text="${cl.pPrice}"
+                            >1000</span
+                          >
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <span class="result_delivery">택배배송</span>
+                    </td>
+                    <td>
+                      <span
+                        class="result_item item_number itemQuantity"
+                        th:text="${cl.pAmount}"
+                        >1</span
+                      >
+                    </td>
+                    <td>
+                      <span class="result_item price_number itemSumPrice"
+                        >(최종가격)</span
+                      >
+                    </td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="main_box deliveryInfo_box">
+            <h3 class="h3_title">배송정보</h3>
+            <table class="deliveryInfo_form">
+              <colgroup>
+                <col class="col__quarter" />
+                <col class="col__three_quarter" />
+              </colgroup>
+              <tr>
+                <th><span class="text required">받는분</span></th>
+                <td class="table_column_box">
+                  <span class="inputReceiverName">홍길동</span>
+                </td>
+              </tr>
+              <tr>
+                <th><span class="text required">휴대폰</span></th>
+                <td>
+                  <span class="phoneNum inputReceiverPhoneNum"
+                    >010-0000-0000</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <th>전화번호</th>
+                <td>
+                  <span class="inputReceiverTeleNum">010-0000-0000</span>
+                </td>
+              </tr>
+              <tr>
+                <th><span class="text required"> 배송주소</span></th>
+                <td class="address_inputBox">
+                  <div class="address_column">
+                    <span class="postCode" id="postCode" name="inputPostCode"
+                      >00000</span
+                    >
+                  </div>
+                  <span class="inputReceiverAdress" id="address">주소</span>
+                  <span class="inputReceiverAddressDetail" id="addressDetail"
+                    >상세주소</span
+                  >
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <!-- 여기가 추가된 부분! -->
+          <div class="main_box reservation_box">
+            <h3 class="h3_title">예약날짜 & 배송방법</h3>
+            <div class="reservation-datePick reservation-column">
+              <!-- 예약 가능 날짜: 주문일+3일부터 선택되게 해둠 -->
+              <span>예약날짜 선택</span>
+              <span type="date" name="" class="reservationDate"
+                >2021-00-00</span
+              >
+            </div>
+
+            <div class="reservation-column">
+              <span>배송방법</span>
+              <span name="" class="reservationDeliveryType"> 택배 </span>
+            </div>
+            <div class="reservation-quickTimeSet reservation-column hidden">
+              <span>퀵 시간 선택</span>
+              <span class="reservationTime">15:00 </span>
+            </div>
+            <div class="reservation-column">
+              <span>배송비</span>
+              <!-- 자동으로 가격대+배송방법에 해당되는 배송비 뜨게 -->
+              <span class="deliveryCharge price_number">4000</span>
+            </div>
+          </div>
+
+          <div class="main_box discount_box">
+            <h3 class="h3_title">할인적용</h3>
+            <div>
+              <div class="result_text">적용 할인이 없습니다.</div>
+            </div>
+          </div>
+
+          <div class="main_box main_payment_box">
+            <h3 class="h3_title">결제정보</h3>
+            <div class="payment_box">
+              <div class="price_box">
+                <span class="price_title">총 상품금액</span>
+                <span
+                  class="price_number text big itemTotalPrice"
+                  th:text="${totalItemPrice}"
+                ></span>
+              </div>
+              <div>
+                <i class="fas fa-minus"></i>
+              </div>
+              <div class="price_box">
+                <span class="price_title">총 할인금액</span>
+                <span class="price_number text big discountTotalPrice">0</span>
+              </div>
+              <div>
+                <i class="fas fa-plus"></i>
+              </div>
+              <div class="price_box">
+                <span class="price_title">총 배송비</span>
+                <span
+                  class="price_number text big deliveryTotalPrice"
+                  th:text="${shippingFee}"
+                ></span>
+              </div>
+              <div>
+                <i class="fas fa-equals"></i>
+              </div>
+              <div class="price_box">
+                <span class="price_title">총 결제예정금액</span>
+                <span
+                  class="price_number text big emp paymentTotalPrice"
+                  th:text="${totalPrice}"
+                ></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="main_box">
+            <p class="text center mid">매칭신청이 완료되었습니다.</p>
+          </div>
+
+          <div class="main_box payment_confirm_box">
+            <h3 class="h3_title">안내사항</h3>
+            <div class="main_column">
+              <p>입금내역이 확인되었습니다.</p>
+              <p class="text indent">
+                    - 배송일 변경/배송지 변경을 원하실 경우 고객센터에 연락해주세요. </br>
+                    - 매칭완료(오후 4시) 후에는 매칭 성공실패 여부가 문자로 발송됩니다.</br>
+                    - 제품에 문제가 발생할 시 고객센터로 문의주세요.</br>
+                    - 상품준비중 이후부터는 상품 특성상 환불이 불가합니다.</br>
+                    - 예약날짜 기준 3일 전까지는 100% 환불이 가능합니다.
+              </p>
+            </div>
+            <div class="main_column match_desc_box">
+                <div class="match_desc_column up grid_box">
+                    <span class="text boxborder">결제완료</span>
+                    <span class="text boxborder">상품준비중</span>
+                    <span class="text boxborder">생산완료</span>
+                    <span class="text boxborder">배송중</span>
+                </div>
+                <div class="match_desc_column bottom grid_box">                
+                    <div>100% 환불</div>
+                    <div>환불불가</div>                
+                </div>
+              </div>
+          </div>
+          <div class="main_column">
+            <div class="button_box">
+              <!--주문배송조회 화면으로 이동-->
+              <button type="button" class="btn big emp gotoMatchBtn" >주문 조회 하기</button>
+          </div>
+          </div>
+
+        </div>
+      </form>
+    </section>
+    <footer></footer>
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/layout_front.js"></script>
+    <script
+      type="text/javascript"
+      src="../../static/js/memberJoin_front.js"
+    ></script>
+    <script src="../../static/js/customer/payment_front.js"></script>
+
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
+    <!-- 우편번호 api  -->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+    <script type="text/javascript" th:src="@{/js/memberJoin_front.js}"></script>
+    <script
+      type="text/javascript"
+      th:src="@{/js/customer/payment_front.js}"
+    ></script>
+    <script type="text/javascript" th:src="@{/js/customer/payment.js}"></script>
+  </body>
+</html>

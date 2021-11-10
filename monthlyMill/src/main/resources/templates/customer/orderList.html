@@ -57,6 +57,8 @@
                 <span class="orderState text emp">매칭완료</span>
                 <span class="orderNumber" th:text="${on.orderNum}" th:value="${on.orderNum}">(주문번호)</span>
                 <input type="hidden" th:value="${on.orderNum}" name="deleteOrderNum">
+                <span>/ 2021-00-00(목)</span>
+                <span>예약</span>
               </div>
               <div>
                 <!-- 배송 상태 받아서 여기 나타나게 -->
@@ -68,6 +70,18 @@
                 <col width="25%" />
                 <col width="75%" />
               </colgroup>
+              <tr>
+                <td class="list_column column_left">
+                  <img src="" class="itemImg" alt="제품사진" />
+                </td>
+                <td class="list_column column_right">
+                  <p class="itemName" th:text="${ol.pName}">제품명</p>
+                  <div>
+                    <span class="price_number" th:text="${ol.pPrice} * ${ol.pCount}">(가격)</span>
+                    <span class="item_number" th:text="${ol.pCount}">(개수)</span>
+                  </div>
+                </td>
+              </tr>
               <tr>
                 <td class="list_column column_left">
                   <img src="" class="itemImg" alt="제품사진" />
@@ -100,10 +114,10 @@
     </div>
     <footer></footer>
 
-    <!-- <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../../static/js/layout_front.js"></script>
     <script src="../../static/js/customer/orderList_front.js"></script>
-     -->
+    
 
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
