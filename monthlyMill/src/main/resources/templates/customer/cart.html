@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link type="text/css" rel="stylesheet" href="../../static/css/style.css" /> -->
+    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" />
     <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
     <script
       src="https://kit.fontawesome.com/7161175c87.js"
@@ -14,162 +14,188 @@
   </head>
   <body>
     <header></header>
+    <div class="popupWrapper hidden">
+      <div class="popup">
+        <div class="popupBody">
+          <p class="text mid center">추가주문할 상품은 없으신가요?</p>
+          <p class="text center">
+            같은 장소로 배달하는 경우에는 같이 주문하면 한번에 매칭이 가능해요!
+          </p>
+          <div class="button_box">
+            <button class="gobackBtn">돌아가기</button>
 
-    <section class="content_box">
-      <form
-        id="getCartInfo"
-        method="post"
-        th:action="@{/customer/cart/cartList}"
-      >
-        <div class="cart_wrap">
-          <h1 class="h1_title text big">장바구니</h1>
-
-          <div class="main_box result_box cart_box">
-            <div class="result_list_box">
-              <div class="result_summary h3_title">
-                <span class="itmeNumberTotal item_number">(개수합산)</span>
-                <button type="button" class="deleteItemAllBtn">전체삭제</button>
-              </div>
-              <table class="result_table">
-                <colgroup>
-                  <col />
-                  <col />
-                  <col />
-                  <col />
-                  <col />
-                  <col />
-                </colgroup>
-                <thead class="hidden">
-                  <tr class="result_head">
-                    <th>번호</th>
-                    <th>제품사진</th>
-                    <th>제품명</th>
-                    <th>배송방식</th>
-                    <th>개수</th>
-                    <th>가격</th>
-                  </tr>
-                </thead>
-                <tbody class="result_itemList">
-                  <tr
-                    class="result_item"
-                    th:if="${#lists.size(cartList) > 0}"
-                    th:each="cl,n : ${cartList}"
-                  >
-                    <td>
-                      <span
-                        class="result_item num"
-                        th:text="${n.index+1}"
-                      ></span>
-                      <input
-                        type="hidden"
-                        name="cartNum"
-                        class="result_cart_num"
-                        th:value="${cl.cartNum}"
-                      />
-                    </td>
-                    <td>
-                      <img src="" alt="제품이미지" class="result_item img" />
-                    </td>
-                    <td>
-                      <div class="result_item info">
-                        <span class="result_item title" th:text="${cl.pName}"
-                          >이름</span
-                        >
-                        <div>
-                          <span
-                            class="result_item price_number itemPrice"
-                            th:text="${cl.pPrice}"
-                            >10000</span
-                          >
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <select class="result_delivery mid">
-                        <option value="택배배송">택배배송</option>
-                        <option value="퀵배송">퀵배송</option>
-                      </select>
-                    </td>
-                    <td>
-                      <button type="button" class="itemMinusBtn">
-                        <i class="fas fa-minus"></i>
-                      </button>
-                      <span
-                        class="result_item itemQuantity"
-                        th:text="${cl.pAmount}"
-                        >1</span
-                      >
-                      <button type="button" class="itemPlusBtn">
-                        <i class="fas fa-plus"></i>
-                      </button>
-                      <input
-                        type="hidden"
-                        class="pAmount"
-                        name="pAmount"
-                        value="0"
-                      />
-                    </td>
-                    <td class="td_itemSumPrice">
-                      <span class="result_item price_number itemSumPrice"
-                        >(최종가격)</span
-                      >
-                    </td>
-                    <td>
-                      <button
-                        type="button"
-                        class="result_item deleteItemBtn noborder"
-                      >
-                        <i class="fas fa-times"></i>
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div class="main_box bottom main_payment_box">
-            <div class="payment_box">
-              <div class="price_box">
-                <span class="price_title">총 상품금액</span>
-                <span class="price_number text big itemTotalPrice">10000</span>
-              </div>
-              <div>
-                <i class="fas fa-plus"></i>
-              </div>
-              <div class="price_box">
-                <span class="price_title">총 배송비</span>
-                <span class="price_number text big deliveryTotalPrice"
-                  >4000</span
-                >
-              </div>
-              <div>
-                <i class="fas fa-equals"></i>
-              </div>
-              <div class="price_box">
-                <span class="price_title">총 결제예정금액</span>
-                <span class="price_number text big emp paymentTotalPrice"
-                  >(가격)</span
-                >
-              </div>
-            </div>
-          </div>
-          <div class="main_box button_box">
-            <div class="button_box">
-              <!--누르면 결제창으로-->
-              <button type="submit" class="btn big emp gotoPaymentBtn">
-                주문하기
-              </button>
-            </div>
+            <!-- 이게 기존 주문하기버튼 역할함 -->
+            <button type="submit" form="getCartInfo" class="gotoPaymentBtn">
+              매칭신청하기
+            </button>
           </div>
         </div>
-      </form>
-    </section>
+      </div>
+    </div>
+
+    <div class="wrapper">
+      <aside class="asideMenu" data-asideMenu-number="5"></aside>
+      <section class="content_box withAside">
+        <form
+          id="getCartInfo"
+          method="post"
+          th:action="@{/customer/cart/cartList}"
+        >
+          <div class="cart_wrap">
+            <h1 class="h1_title text big">장바구니</h1>
+
+            <div class="main_box result_box cart_box">
+              <div class="result_list_box">
+                <div class="result_summary h3_title">
+                  <span class="itmeNumberTotal item_number">(개수합산)</span>
+                  <button type="button" class="deleteItemAllBtn">
+                    전체삭제
+                  </button>
+                </div>
+                <table class="result_table">
+                  <colgroup>
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                  </colgroup>
+                  <thead class="hidden">
+                    <tr class="result_head">
+                      <th>번호</th>
+                      <th>제품사진</th>
+                      <th>제품명</th>
+                      <th>배송방식</th>
+                      <th>개수</th>
+                      <th>가격</th>
+                    </tr>
+                  </thead>
+                  <tbody class="result_itemList">
+                    <tr
+                      class="result_item"
+                      th:if="${#lists.size(cartList) > 0}"
+                      th:each="cl,n : ${cartList}"
+                    >
+                      <td>
+                        <input type="checkbox" class="result_item itemCheck" />
+                        <span
+                          class="result_item num"
+                          th:text="${n.index+1}"
+                        ></span>
+                        <input
+                          type="hidden"
+                          name="cartNum"
+                          class="result_cart_num"
+                          th:value="${cl.cartNum}"
+                        />
+                      </td>
+                      <td>
+                        <img src="" alt="제품이미지" class="result_item img" />
+                      </td>
+                      <td>
+                        <div class="result_item info">
+                          <span class="result_item title" th:text="${cl.pName}"
+                            >이름</span
+                          >
+                          <div>
+                            <span
+                              class="result_item price_number itemPrice"
+                              th:text="${cl.pPrice}"
+                              >10000</span
+                            >
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <select class="result_delivery mid">
+                          <option value="택배배송">택배배송</option>
+                          <option value="퀵배송">퀵배송</option>
+                        </select>
+                      </td>
+                      <td>
+                        <button type="button" class="itemMinusBtn">
+                          <i class="fas fa-minus"></i>
+                        </button>
+                        <span
+                          class="result_item itemQuantity"
+                          th:text="${cl.pAmount}"
+                          >1</span
+                        >
+                        <button type="button" class="itemPlusBtn">
+                          <i class="fas fa-plus"></i>
+                        </button>
+                        <input
+                          type="hidden"
+                          class="pAmount"
+                          name="pAmount"
+                          value="0"
+                        />
+                      </td>
+                      <td class="td_itemSumPrice">
+                        <span class="result_item price_number itemSumPrice"
+                          >(최종가격)</span
+                        >
+                      </td>
+                      <td>
+                        <button
+                          type="button"
+                          class="result_item deleteItemBtn noborder"
+                        >
+                          <i class="fas fa-times"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="main_box bottom main_payment_box">
+              <div class="payment_box">
+                <div class="price_box">
+                  <span class="price_title">총 상품금액</span>
+                  <span class="price_number text big itemTotalPrice"
+                    >10000</span
+                  >
+                </div>
+                <div>
+                  <i class="fas fa-plus"></i>
+                </div>
+                <div class="price_box">
+                  <span class="price_title">총 배송비</span>
+                  <span class="price_number text big deliveryTotalPrice"
+                    >4000</span
+                  >
+                </div>
+                <div>
+                  <i class="fas fa-equals"></i>
+                </div>
+                <div class="price_box">
+                  <span class="price_title">총 결제예정금액</span>
+                  <span class="price_number text big emp paymentTotalPrice"
+                    >(가격)</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="main_box">
+              <div class="button_box">
+                <!--누르면 결제창으로-->
+                <button type="button" class="btn big emp gotoMatchBtn">
+                  매칭(주문)하기
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </section>
+    </div>
     <footer></footer>
 
-    <!-- <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../../static/js/layout_front.js"></script>
-    <script src="../../static/js/customer/cart_front.js"></script> -->
+    <script src="../../static/js/customer/cart_front.js"></script>
 
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script th:src="@{/js/layout_front.js}"></script>

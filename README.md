@@ -32,9 +32,9 @@
 고객 이용 화면(기존작업 화면)
 
 - findItem: 떡 찾기
-- cart: 장바구니
+- cart: 장바구니 =>체크박스 추가
 - payment:결제창 => 수정중.
-- payment_deposit: 결제계산창 => 수정함
+- payment_deposit: 결제계산창
 - payment_confirm: 입금내역 확인
 - loading: 결제대기 로딩화면
 - loadingMatch: 매칭대기 로딩화면
@@ -53,11 +53,12 @@
 - findPassword_finish: 비밀번호 재설정 완료
 
 - matchRequest: 매칭신청
+- matchRequest_confirm: 매칭신청 주문확인창
+
 - menuList: 월간방앗간 메뉴
 - menuDetail: 월간방앗간 메뉴-상품 상세보기
 - myWishList: my찜
-
-아직 없는페이지: 주문확인창
+- myCouponList: 쿠폰 조회
 
 ### admin
 
