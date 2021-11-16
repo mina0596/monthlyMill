@@ -48,9 +48,9 @@
       <a class="logo" th:href="@{/}">로고 이미지</a>
       <li><a th:href="@{/introduce}">월간방앗간 소개</a></li>
       <li><a th:href="@{/customer/recommend/findItem}">나만의 떡 찾기</a></li>
-      <li><a href="#" class="noPage">월간방앗간 MENU</a></li>
+      <li><a th:href="@{/customer/menu/list}" >월간방앗간 MENU</a></li>
       <li><a href="#" class="noPage">이벤트&공지사항</a></li>
-      <li><a href="#" class="noPage">고객센터</a></li>
+      <li><a th:href="@{/customer/service/list}" >고객센터</a></li>
     </ul>
     <ul class="gnb_makers">
       <li><a href="#" class="goToMakersMainPage">메이커스</a></li>

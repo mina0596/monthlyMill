@@ -11,7 +11,7 @@ public class WebMvcConfig {
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
 		multipartResolver.setDefaultEncoding("UTF-8");
 		// 파일 최대크기 5MB로 설정함
-		multipartResolver.setMaxUploadSize(5 * 1024 * 1024);
+		multipartResolver.setMaxUploadSize(31054240);
 		return multipartResolver;
 	}
 }

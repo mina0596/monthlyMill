@@ -117,7 +117,7 @@
                       class="discount_number radioInput"
                       disabled
                     />
-                    <select name="" id="">
+                    <select name="" id="discount_type">
                       <option value="퍼센트">%</option>
                       <option value="원">원</option>
                     </select>
@@ -139,7 +139,7 @@
                   type="radio"
                   id="salePeriod_off"
                   name="product_salePeriod"
-                  checked="true"
+                  checked="checked"
                 />
                 <label for="salePeriod_off">미설정</label>
 
@@ -150,9 +150,9 @@
                 />
                 <label for="salePeriod_on">설정</label>
 
-                <input type="date" name="" id="" class="" />
+                <input type="date" name="" id="" class="sale_start_date" />
                 <span>~</span>
-                <input type="date" name="" id="" class="" />
+                <input type="date" name="" id="" class="sale_complete_date" />
               </div>
             </li>
             <li class="inputform_item">
@@ -177,13 +177,14 @@
                   type="radio"
                   id="quantity_off"
                   name="product_quantity"
-                  checked="true"
+                  class="product_quantity"
+                  checked="checked"
                 />
                 <label for="quantity_off">미설정</label>
 
                 <input type="radio" id="quantity_on" name="product_quantity" />
                 <label for="quantity_on">설정</label>
-                <input type="number" name="" id="" class="" disabled />개
+                <input type="number" name="" id="limited_quantity_number" class="limited_quantity_number" disabled />개
               </div>
             </li>
             <li class="inputform_item">
@@ -212,7 +213,7 @@
                 <span>상세설명</span>
               </div>
               <div class="inputform__column inputContent">
-                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <textarea name="" id="product_detail" cols="30" rows="10"></textarea>
               </div>
             </li>
             <li class="inputform_item">
@@ -257,7 +258,7 @@
                 <span>영양성분</span>
               </div>
               <div class="inputform__column inputContent">
-                <input type="text" name="" id="" class="" />
+                <input type="text" name="" id="" class="nutrition_info" />
               </div>
             </li>
             <li class="inputform_item">
@@ -265,7 +266,7 @@
                 <span>레시피</span>
               </div>
               <div class="inputform__column inputContent">
-                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <textarea name="" id="" cols="30" rows="10" class="recipe_info"></textarea>
               </div>
             </li>
             <li class="inputform_item">
@@ -317,7 +318,7 @@
                     type="number"
                     name=""
                     id=""
-                    class="price_number"
+                    class="default_shipping_fee"
                     value="4000"
                   />원
                 </div>

@@ -92,7 +92,7 @@ $(function(){
 							<span class="result_item__num">${j+1}</span>
 						</td>
 						<td>
-							<img src="" alt="제품이미지" class="result_item__img">
+							<img src="${rcmdResult[j].thumbPath}" alt="제품이미지" class="result_item__img" width: 150px; height: 100px;>
 						</td>
 						<td>
 							<div class="td_column">

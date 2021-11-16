@@ -3,6 +3,10 @@ package project.monthlyMill.admin.productRegister;
 import java.io.File;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -13,10 +17,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
+import project.monthlyMill.dto.Product;
 
 @Controller
 @RequestMapping("/admin")
@@ -33,34 +40,25 @@ public class ProductRegisterController {
 		return "/admin/adminProduct_register";
 	}
 	
-	@PostMapping("/productRegister/uploadImg")
+	
+	
+	// ******** 대표이미지 파일 정보 가져오기 **********
+	@PostMapping("/productRegister/getProductInfo")
 	@ResponseBody
-	public void fileUpload(MultipartFile uploadFile) {
-		ZonedDateTime current = ZonedDateTime.now();	// 오늘 날짜 가져오기
-		// 폴더 경로 정해주기
-		String path = "images/" + current.format(DateTimeFormatter.ofPattern("yyyMMdd"));
-		File file = new File(path);
-		
-		// file이 존재한다면, 
-		if(!file.exists()) {
-			file.mkdirs();	// 폴더생성
-		}
-		
-		log.info("update ajax post: " + uploadFile);
-		log.info("update ajax post: " + uploadFile.getOriginalFilename());
-		log.info("update ajax post: " + uploadFile.getSize());
-		
-		// window를 사용한다면, fix되어진 폴더 경로는 c: 그 이후의 경로를 적어줌.
-		
-		file = new File( "/ehddnr0819/" + path +  "/" + uploadFile.getOriginalFilename());
-		
-		
-		try {
-			// 실제 파일이 업로드 되는 부분
-			FileUtils.writeByteArrayToFile(file, uploadFile.getBytes());
-			//uploadFile.transferTo(file);
-		}catch (Exception e) {
-			log.error(e.getMessage());
-		}
+	public String getPInfo(@RequestBody HashMap<String, Object> params, HttpSession session) {
+		log.info("들어오는 상품정보 확인해보기 : {}", params);
+		pService.getProductBasicInfo(params, session);
+		return "success";
 	}
+	
+	
+	// ******** 대표이미지 파일 정보 가져오기 **********
+	@PostMapping("/productRegister/thumbnail")
+	@ResponseBody
+	public void fileUpload(MultipartFile thumbnailData, String pCode) {
+		pService.getThumbnailInfo(thumbnailData, pCode);
+		log.info("pCode는 ajax에서 가져오나 확인:{}", pCode);
+	}
+	
+	
 }
