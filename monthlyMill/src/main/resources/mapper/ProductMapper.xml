@@ -2,15 +2,157 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="project.monthlyMill.admin.productRegister.ProductMapper">
-	<insert id="addProduct" parameterType="map">
+	<resultMap type="Product"	id="productResultMap">
+		<result property="pCode"				column="product_code"/>
+		<result property="pCate"				column="product_cate"/>
+		<result property="pName"				column="product_name"/>
+		<result property="pPrice"				column="product_price"/>
+		<result property="discountCheck"		column="discount_check"/>
+		<result property="discountAmount"		column="discount_amount"/>
+		<result property="discountType"			column="discount_type"/>
+		<result property="sellStartDate"		column="sell_start_date"/>
+		<result property="sellCompDate"			column="sell_comp_date"/>
+		<result property="vatType"				column="vat_type"/>
+		<result property="quantityLimit"		column="quantity_limit"/>
+		<result property="thumbName"			column="thumbnail_file_name"/>
+		<result property="thumbPath"			column="thumbnail_file_path"/>
+		<result property="thumbSize"			column="thumbnail_file_size"/>
+		<result property="imgName"				column="extra_file_name"/>
+		<result property="imgPath"				column="extra_file_path"/>
+		<result property="imgSize"				column="extra_file_size"/>
+		<result property="nutrition"			column="nutrition"/>
+		<result property="detail"				column="product_detail"/>
+		<result property="recipe"				column="recipe"/>
+		<result property="ingredient"			column="product_ingredient"/>
+		<result property="regId"				column="product_reg_member"/>
+		<result property="pModifyDate"			column="product_info_modify_date"/>
+		<result property="pRegDate"				column="product_info_reg_date"/>
+		<result property="pPreferAge"			column="product_prefer_age"/>
+		<result property="pMainUsage"			column="product_main_usage"/>
+		<result property="pTexture"				column="product_texture"/>
+		<result property="pTaste"				column="product_taste"/>
+		<result property="defaultShippingFee"	column="default_shipping_fee"/>
+		<result property="hashTag"				column="product_hashtag"/>
+	</resultMap>
+	<insert id="addProduct" parameterType="Product">
 		INSERT INTO product_info
-			(product_code, product_name, product_price, product_ingredient
-			, original_file_name, file_path, file_size, product_nutrition
-			, product_reg_member, product_info_modify_date, product_info_reg_date, product_prefer_age, product_main_usage, product_texture, product_taste, default_shipping_fee, product_hashtag)
-		VALUES ('', '', 0, '', '', '', 0, '', 0, NOW(), NOW(), '', '', '', '', 0, '')
+			(product_code, product_cate, product_name, product_price, discount_check, discount_amount, discount_type,
+			<if test="sellStartDate != null and sellStartDate != ''.toString()">
+				sell_start_date,
+			</if> 
+			<if test="sellCompDate != null and sellCompDate != ''.toString()">
+				sell_comp_date,
+			</if>  
+			vat_type, quantity_limit, product_ingredient, thumbnail_file_name, thumbnail_file_path, thumbnail_file_size, extra_file_name, extra_file_path, extra_file_size, 
+			nutrition, product_detail, recipe, product_reg_member, product_info_modify_date, product_info_reg_date, product_prefer_age, product_main_usage, product_texture, product_taste, default_shipping_fee, product_hashtag)
+		VALUES (#{pCode}, #{pCate}, #{pName}, #{pPrice}, #{discountCheck}, #{discountAmount}, #{discountType}, 
+		<if test="sellStartDate != null and sellStartDate != ''.toString()">
+			#{sellStartDate},
+		</if> 
+		<if test="sellCompDate != null and sellCompDate != ''.toString()">
+			#{sellCompDate},
+		</if> 
+		#{vatType}, #{quantityLimit}, #{ingredient}, '', '', 0, '', '', 0, 
+		#{nutrition}, #{detail}, #{recipe}, #{regId}, CURDATE(), CURDATE(), '', '', '', '', #{defaultShippingFee}, #{hashTag})
 	</insert>
 	
 	<select id="getProductCode" resultType="String">
 		SELECT sf_createProductCode();
 	</select>
+	
+	
+	<!-- 상품코드로 상품정보 수정  -->
+	<update id="updatePInfoByPCode" parameterType="Product">
+		UPDATE product_info
+			<trim prefix="SET" suffixOverrides=",">
+				<if test="pCate != null and pCate != ''.toString()">
+					product_cate=#{pCate},
+				</if>
+				<if test="pName != null and pName != ''.toString()">
+					product_name=#{pName},
+				</if>
+				<if test="pPrice != null and pPrice != ''.toString()">				
+					product_price=#{pPrice},
+				</if>
+				<if test="discountCheck != null and discountCheck != ''.toString()">								
+					discount_check=#{discountCheck},
+				</if>
+				<if test="discountAmount != null and discountAmount != ''.toString()">												
+					discount_amount=#{discountAmount},
+				</if>
+				<if test="discountType != null and discountType != ''.toString()">																
+					discount_type=#{discountType},
+				</if>
+				<if test="sellStartDate != null and sellStartDate != ''.toString()">
+					sell_start_date=#{sellStartDate},
+				</if>
+				<if test="sellCompDate != null and sellCompDate != ''.toString()">
+					sell_comp_date=#{sellCompDate},
+				</if>
+				<if test="vatType != null and vatType != ''.toString()">
+					vat_type=#{vatType},
+				</if>
+				<if test="quantityLimit != null and quantityLimit != ''.toString()">
+					quantity_limit=#{quantityLimit},
+				</if>
+				<if test="ingredient != null and ingredient != ''.toString()">
+					product_ingredient=#{ingredient},
+				</if>
+				<if test="thumbName != null and thumbName != ''.toString()">
+					thumbnail_file_name=#{thumbName},
+				</if>
+				<if test="thumbPath != null and thumbPath != ''.toString()">
+					thumbnail_file_path=#{thumbPath},
+				</if>
+				<if test="thumbSize != null and thumbSize != ''.toString()">
+					thumbnail_file_size=#{thumbSize},
+				</if>
+				<if test="imgName != null and imgName != ''.toString()">
+					extra_file_name=#{imgName},
+				</if>
+				<if test="imgPath != null and imgPath != ''.toString()">
+					extra_file_path=#{imgPath},
+				</if>
+				<if test="imgSize != null and imgSize != ''.toString()">
+					extra_file_size=#{imgSize},
+				</if>
+				<if test="nutrition != null and nutrition != ''.toString()">
+					nutrition=#{nutrition},
+				</if>
+				<if test="detail != null and detail != ''.toString()">
+					product_detail=#{detail},
+				</if>
+				<if test="recipe != null and recipe != ''.toString()">
+					recipe=#{recipe},
+				</if>
+				<if test="regId != null and regId != ''.toString()">
+					product_reg_member=#{regId},
+				</if>
+				<if test="pModifyDate != null and pModifyDate != ''.toString()">
+					product_info_modify_date=#{pModifyDate},
+				</if>
+				<if test="pRegDate != null and pRegDate != ''.toString()">
+					product_info_reg_date=#{pRegDate},
+				</if>
+				<if test="pPreferAge != null and pPreferAge != ''.toString()">
+					product_prefer_age=#{pPreferAge},
+				</if>
+				<if test="pMainUsage != null and pMainUsage != ''.toString()">
+					product_main_usage=#{pMainUsage},
+				</if>
+				<if test="pTexture != null and pTexture != ''.toString()">
+					product_texture=#{pTexture},
+				</if>
+				<if test="pTaste != null and pTaste != ''.toString()">
+					product_taste=#{pTaste},
+				</if>
+				<if test="defaultShippingFee != null and defaultShippingFee != ''.toString()">
+					default_shipping_fee=#{defaultShippingFee},
+				</if>
+				<if test="hashTag != null and hashTag != ''.toString()">
+					product_hashtag=#{hashTag},
+				</if>
+			</trim>
+		WHERE product_code=#{pCode}
+	</update>
 </mapper>
