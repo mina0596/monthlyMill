@@ -81,7 +81,6 @@ public class ProductRegisterService {
 			newFileName = pCode + "_" + current.format(DateTimeFormatter.ofPattern("yyyMMdd")) + orgFileExtention;
 			// window를 사용한다면, fix되어진 폴더 경로는 c: 그 이후의 경로를 적어줌.
 			
-			
 			// Product 객체에 썸네일 파일 정보 입력 후 update쿼리 실행
 			Product pInfo = new Product();
 			pInfo.setThumbName(thumbnailData.getOriginalFilename());
