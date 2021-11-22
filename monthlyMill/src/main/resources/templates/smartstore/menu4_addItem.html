@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>스마트스토어 엑셀관리</title>
+    <link rel="stylesheet" href="../../static/css/screens/smartstore.css" />
+  </head>
+  <body>
+    <!-- 상단 공통메뉴 -->
+    <header class="header" data-page-number="3"></header>
+
+    <section class="manualWrapper">
+      <div class="manual">
+        <div class="manualTitle">
+          <h3>발주품목별 생산구성 등록</h3>
+        </div>
+      <section class="tableSection">
+        <div class="manualBody">
+          <table class="manualTable">
+            <tbody>
+            <tr class="manualRow">  
+              <th class="manualTh classifyCode">구분코드</th>
+              <td>
+                <input type="text" class="manualInput classifyCode-input" />
+              </td>
+            </tr>
+            <tr class="manualRow">  
+              <th class="manualTh classifyName">구분명</th>
+              <td>
+                <input type="text" class="manualInput classifyName-input" />
+              </td>
+            </tr>
+            <tr class="manualRow">  
+              <th class="manualTh packingMaterial">포장재</th>
+              <td>
+                <select type="text" class="manualInput packingMaterial-input" >
+                  <option value="">-</option>
+                  <option value="fold-s">접이소</option>
+                  <option value="fold-m">접이중</option>
+                  <option value="fold-l">접이대</option>
+                  <option value="ssabari">싸바리</option>
+                  <option value="ibaji">이바지</option>
+                  <option value="return-1">답례1호</option>
+                  <option value="return-2">답례2호</option>
+                  <option value="return-3">답례3호</option>
+                  <option value="return-4">답례4호</option>
+                  <option value="pyebaek">폐백음식</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="manualRow">  
+              <th class="manualTh price">금액</th>
+              <td>
+                <input type="number" min="0" step="10" class="price-input" />
+                <label for="">원</label>
+              </td>
+            </tr>
+            <tr class="manualRow">  
+              <th class="manualTh tteokType">떡 종류</th>
+              <td>
+                <div class="">
+                <select type="text" class="manualInput tteokType-input " >
+                  <option class="type-duteop">두텁</option>
+                  <option class="type-redbeen">팥</option>
+                  <option class="type-hogo">호고</option>
+                  <option class="type-nutrition">영양</option>
+                  <option class="type-sasong">사송</option>
+                  <option class="type-samsong">삼송</option>
+                  <option class="type-isong">이송</option>
+                  <option class="type-pyeshong">폐송</option>
+                  <option class="type-osong">오송</option>
+                  <option class="type-ssuk">쑥갠</option>
+                  <option class="type-jaseol">자설</option>
+                  <option class="type-danseol">단설</option>
+                  <option class="type-bacseol">백설</option>
+                  <option class="type-bac">百</option>
+                  <option class="type-dol">첫돌</option>
+                  <option class="type-hangwa">한과</option>
+                  <option class="type-susu">수수</option>
+                  <option class="type-cake">케익</option>
+                  <option class="type-etc">기타</option>
+                </select>
+
+                  <input type="number" class="manualInput quantity">
+                  <label for="">개</label>
+                  <button class="button addTteokTypeBtn">추가</button>
+                </div>
+              </td>
+            </tr>
+            <tr class="manualRow">  
+              <th class="manualTh note">비고</th>
+              <td>
+                <input type="text" class="manualInput note-input" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="manualBtnBox">
+        <button class="manualEnterBtn btn emp">등록</button>
+        <button class="manualCancelBtn">취소</button>
+      </div>
+    </div>
+  </section>
+    </div>
+
+    <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../static/js/smartstore/common.js"></script>
+
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+  </body>
+</html>

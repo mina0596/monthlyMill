@@ -44,8 +44,15 @@
   background-color: var(--main-yellow);
 }
 .mainSubtitle {
-  padding: 0.5em;
-  text-align: center;
+  padding-left: 1.5em;
+  text-align: left;
+  font-weight: 700;
+}
+.mainSubtitle::before {
+  content: "\f007";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-right: 0.5em;
 }
 
 .bestItem {
@@ -67,19 +74,27 @@
   clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 /*이미지 열림*/
+
+.bestItem:first-child,
 .bestItem:hover {
   flex-direction: column;
   margin-bottom: 2em;
   padding-left: 0;
-}
-.bestItem:hover .bestItemName {
+
   font-weight: 700;
+  text-align: center;
 }
+/* .bestItem:hover .bestItemName {
+} */
+.bestItem:first-child .bestItemImg,
 .bestItem:hover .bestItemImg {
   width: 100%;
   height: auto;
   max-height: none;
   clip-path: none;
+}
+.bestItem:first-child > .bestItemName::marker {
+  content: "BEST 1.";
 }
 
 /*연령대별 선호제품*/
@@ -94,14 +109,18 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   border-left: none;
-  padding: 1em;
+  padding: 0.5em 1em;
 }
 .mainAgeBest-columnTap {
   position: relative;
+  margin-bottom: 1em;
 }
 .mainAgeBestBtn {
   position: absolute;
-  top: 50%;
+  top: 40%;
+  background-color: var(--main-green);
+  color: #fff;
+  border: none;
 }
 .mainAgeBestBtn.prevBtn {
   left: 0;
@@ -113,6 +132,7 @@
 .sub-bestItem {
   list-style-position: inside;
   list-style-type: decimal;
+  text-align: center;
 }
 .sub-bestItemBox {
   margin: 0 0.5em;
@@ -127,9 +147,6 @@
 .sub-bestItem {
   list-style-position: inside;
   list-style-type: decimal;
-}
-.bestItem:first-child > .bestItemName::marker {
-  content: "BEST 1.";
 }
 
 /*메인화면 매칭 대시보드*/

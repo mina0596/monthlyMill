@@ -201,16 +201,15 @@
   width: 100%;
   font-size: 11pt;
   text-align: center;
+  border: 1px solid #000;
 }
 .table-head {
-  line-height: 1.5em;
-  border-bottom: 1px solid #000;
+  border-bottom: 2px solid #000;
 }
 .table-head th:nth-child(2n + 1) {
   background-color: var(--main-yellow);
 }
 .table-row {
-  line-height: 1.5em;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 .table-row:first-child {
@@ -218,6 +217,8 @@
 }
 .calculTable-date {
   width: 10%;
+  padding: 0.5em 0;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
 .calculTable-total,
 .calculTable-card,
@@ -226,13 +227,15 @@
 .calculTable-etc,
 .calculTable-coupon {
   width: 13%;
+
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
 .calculTable-download {
   width: 10%;
 }
 
 .table-sum-row {
-  border-top: 1px solid #000;
+  border-top: 2px solid #000;
 }
 .excelDownload-month {
   color: blue;

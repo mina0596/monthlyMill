@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>스마트스토어 엑셀관리</title>
+    <link rel="stylesheet" href="../../static/css/screens/smartstore.css" />
+  </head>
+  <body>
+    <!-- 상단 공통메뉴 -->
+    <header class="header" data-page-number="1"></header>
+
+    <div class="wrapper">
+      <section class="manualWrapper">
+        <div class="manual">
+          <div class="manualTitle">
+            <h3>수기 등록</h3>
+          </div>
+          <div class="manualBody">
+            <table class="manualTable">
+              <tr class="manualRow">
+                <th class="manualTh">발송기한</th>
+                <td>
+                  <input type="date" class="manualInput sendDate-input" />
+                </td>
+              </tr>
+              <tr class="manualRow">
+                <!-- 엑셀 데이터에는 시간까지 나오는데 수기입력때 시간도 입력하는건지? -->
+                <th class="manualTh">결제일</th>
+                <td>
+                  <input type="date" class="manualInput paymentDate-input" />
+                  <input type="time" class="manualInput paymentDate-input" />
+                </td>
+              </tr>
+              <tr class="manualRow">
+                <th class="manualTh">배송방법</th>
+                <td>
+                  <select class="manualInput deliveryType-input">
+                    <option value="visitReceipt">방문수령</option>
+                    <option value="directDelivery">직접전달</option>
+                    <option value="quickService">퀵서비스</option>
+                    <option value="parcel">택배,등기,소포</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="manualRow">
+                <th class="manualTh">구매자명</th>
+                <td>
+                  <input type="text" class="manualInput purchaserName-input" />
+                </td>
+              </tr>
+              <tr class="manualRow">
+                <th class="manualTh">구매자연락처</th>
+                <td>
+                  <input type="text" class="manualInput purchaserPhone-input" />
+                </td>
+              </tr>
+              <tr class="manualRow">
+                <th class="manualTh">수취인명</th>
+                <td>
+                  <input type="text" class="manualInput receiverName-input" />
+                </td>
+              </tr>
+              <tr class="manualRow">
+                <th class="manualTh">수취인연락처1</th>
+                <td>
+                  <input type="text" class="manualInput receiverPhone-input" />
+                </td>
+              </tr>
+              <tr class="manualRow">
+                <th class="manualTh">상품명</th>
+                <td>
+                  <input type="text" class="manualInput itemName-input" />
+                </td>
+              </tr>
+              <tr class="manualRow">
+                <th class="manualTh">발주품목</th>
+                <td>
+                  <input type="text" class="manualInput orderItemList-input" />
+                </td>
+              </tr>
+              <tr class="manualRow">
+                <th class="manualTh">수량</th>
+                <td>
+                  <input type="text" class="manualInput quantity-input" />
+                </td>
+              </tr>
+              <tr class="manualRow">
+                <th class="manualTh">상품별 총 주문금액</th>
+                <td>
+                  <input type="text" class="manualInput eachTotalPrice-input" />
+                </td>
+              </tr>
+              <tr class="manualRow">
+                <th class="manualTh">옵션정보</th>
+                <td>
+                  <input type="text" class="manualInput optionInfo-input" />
+                </td>
+              </tr>
+              <tr class="manualRow">
+                <th class="manualTh">배송지</th>
+                <td>
+                  <input
+                    type="text"
+                    class="manualInput deliveryDestination-input"
+                  />
+                </td>
+              </tr>
+              <tr class="manualRow">
+                <th class="manualTh">배송메세지</th>
+                <td>
+                  <input type="text" class="manualInput deliveryMsg-input" />
+                </td>
+              </tr>
+              <tr class="manualRow">
+                <th class="manualTh">희망일</th>
+                <td>
+                  <input type="text" class="manualInput deliveryDate-input" />
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="manualBtnBox">
+            <button class="manualEnterBtn emp-color">등록</button>
+            <button class="manualCancelBtn">취소</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../static/js/smartstore/common.js"></script>
+
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+  </body>
+</html>
