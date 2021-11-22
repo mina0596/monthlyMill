@@ -100,6 +100,9 @@ $('.regAddInfoBtn').click(function(){
 	$('#setAddInfo').submit();
 })
 
+$('.makerAddInfo-updateBtn').click(function(){
+	location.href="/makers/myPage/user/editAdditionalInfo";
+})
 
 
 

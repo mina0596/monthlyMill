@@ -2,6 +2,7 @@ package project.monthlyMill.customer.order;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import project.monthlyMill.customer.shoppingCart.CartService;
 import project.monthlyMill.dto.Order;
 
 @Controller
@@ -27,6 +29,20 @@ public class OrderController {
 	
 	@Autowired
 	OrderService orderService;
+	
+	@Autowired
+	CartService cartService;
+	
+	@GetMapping("/requestMatch")
+	public String requestMatch(HttpSession session, Model model) {
+		String memberId = String.valueOf(session.getAttribute("SID"));
+		List<Map<String,String>> cartList = cartService.getCartListByMemberNum(memberId);
+		model.addAttribute("cartList", cartList);
+		model.addAttribute("totalItemPrice", orderService.getPaymentInfo(memberId, "상품가격합"));
+		model.addAttribute("shippingFee", orderService.getPaymentInfo(memberId, "배송비"));
+		model.addAttribute("totalPrice", orderService.getPaymentInfo(memberId, "총합"));
+		return "/customer/matchRequest";
+	}
 	
 	@GetMapping("/orderList")
 	public String getOrderList(Model model, HttpSession session) {

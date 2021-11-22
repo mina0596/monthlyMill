@@ -1,8 +1,11 @@
 package project.monthlyMill.makers.myPage;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import project.monthlyMill.dto.MakerAdditionalInfo;
 import project.monthlyMill.dto.MakerStore;
 import project.monthlyMill.dto.Member;
 
@@ -20,5 +23,10 @@ public class MakersMyPageService {
 	// 메이커스의 입점정보 아이디로 가져오기 
 	public MakerStore getStoreInfoById(String makerId) {
 		return makersMyPageMapper.getStoreInfoById(makerId);
+	}
+	
+	// 메이커스 추가정보 아이디로 가져오기
+	public MakerAdditionalInfo getAddInfoById(String makerId){
+		return makersMyPageMapper.getAddInfoById(makerId);
 	}
 }

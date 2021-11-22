@@ -28,7 +28,7 @@
 		<result property="memo" 					column="memo"/>	
 	</resultMap>
 	
-	<resultMap type="MakerStore"					id="storeResultMap">
+	<resultMap type="MakerStore"		id="storeResultMap">
 		<result property="idx" 						column="idx"/>
 		<result property="enterCheck" 				column="store_enter_check"/>
 		<result property="enterCheckReason" 		column="enter_check_reason"/>
@@ -67,7 +67,23 @@
 		<result property="regDate" 						column="maker_info_reg_date"/>	
 	</resultMap>
 	
-	
+	<resultMap type="MakerAdditionalInfo"		id="addInfoResultMap">
+		<result property="idx"							column="idx"/>
+		<result property="makerId"						column="maker_id"/>
+		<result property="managerName"					column="manager_name"/>
+		<result property="managerEmail"					column="manager_email"/>
+		<result property="managerPhone"					column="manager_phone"/>
+		<result property="managerFax"					column="manager_fax"/>
+		<result property="bankName"						column="bank_name"/>
+		<result property="bankHolderName"				column="bank_holder_name"/>
+		<result property="bankAccountNum"				column="bank_acoount_num"/>
+		<result property="shippingBrandName"			column="shipping_brand_name"/>
+		<result property="shippingAddr"					column="shipping_addr"/>
+		<result property="shippingPhone"				column="shipping_phone"/>
+		<result property="returnBrandName"				column="return_brand_name"/>
+		<result property="returnAddr"					column="return_addr"/>
+		<result property="returnPhone"					column="return_phone"/>
+	</resultMap>
 	<!-- 메이커스의 회원 기본정보 아이디로 가져오기 -->
 	<select id="getMakersInfoById" resultMap="makersResultMap">
 		SELECT member_num, member_id, member_pw, member_cate_num, member_name, member_age, member_bday, member_email, member_gender, member_addr, member_detail_addr, member_postal_code, member_phone, identity_check, refund_bank_name, refund_bank_account_num, refund_holder_name, info_offer_agree, outsource_agree, news_agree, member_info_modify_date, member_info_reg_date, memo
@@ -82,4 +98,10 @@
 		WHERE maker_id=#{makerId}
 	</select>
 	
+	<!-- 메이커스 추가정보 아이디로 가져오기 -->
+	<select id="getAddInfoById" resultMap="addInfoResultMap">
+		SELECT idx, maker_id, manager_name, manager_email, manager_phone, manager_fax, bank_name, bank_holder_name, bank_acoount_num, shipping_brand_name, shipping_addr, shipping_phone, return_brand_name, return_addr, return_phone
+		FROM maker_add_info
+		WHERE maker_id = #{makerId}
+	</select>	
 </mapper>

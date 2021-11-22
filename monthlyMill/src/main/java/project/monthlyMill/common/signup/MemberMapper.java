@@ -1,6 +1,7 @@
 package project.monthlyMill.common.signup;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -17,5 +18,8 @@ public interface MemberMapper {
 	
 	// 3.관심태그 등록하기
 	public void addPreferTags(HashMap<String,Object> tagInfoMap);
+	
+	// 4.모든회원정보 가져오기
+	public List<Member> getAllMemberInfo();
 	
 }

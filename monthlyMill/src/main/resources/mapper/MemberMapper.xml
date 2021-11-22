@@ -19,9 +19,9 @@
 		<result property="memberIdentityCheck" 		column="identity_check"/>
 		<result property="memberInfoModifyDate" 	column="member_info_modify_date"/>
 		<result property="memberInfoRegDate" 		column="member_info_reg_date"/>
-		<result property="bankName" 				column="bank_name"/>
-		<result property="bankAccountNum" 			column="bank_account_num"/>
-		<result property="holderName" 				column="holder_name"/>	
+		<result property="bankName" 				column="refund_bank_name"/>
+		<result property="bankAccountNum" 			column="refund_bank_account_num"/>
+		<result property="holderName" 				column="refund_holder_name"/>	
 		<result property="infoOfferAgree" 			column="info_offer_agree"/>	
 		<result property="outsourceAgree" 			column="outsource_agree"/>	
 		<result property="newsAgree" 				column="news_agree"/>	
@@ -49,4 +49,9 @@
 			(#{memberId}, #{hashtagNum}, '관심');
 	</insert>
 	
+	<!--  모든 멤버정보 가져오기 -->
+	<select id="getAllMemberInfo" resultMap="memberResultMap">
+		SELECT member_num, member_id, member_pw, member_cate_num, member_name, member_age, member_bday, member_email, member_gender, member_addr, member_detail_addr, member_postal_code, member_phone, identity_check, refund_bank_name, refund_bank_account_num, refund_holder_name, info_offer_agree, outsource_agree, news_agree, member_info_modify_date, member_info_reg_date, memo
+		FROM member_basic_info
+	</select>
 </mapper>

@@ -17,4 +17,10 @@ public class AdminController {
 	public String login() {
 		return "/admin/adminLogin";
 	}
+	
+	// 관리자 계정 추가화면
+	@GetMapping("/addAccount")
+	public String addAccount() {
+		return "/admin/adminAccountSet";
+	}
 }
