@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>스마트스토어 엑셀관리</title>
+    <link rel="stylesheet" href="../../static/css/screens/smartstore.css" />
+  </head>
+  <body>
+    <!-- 상단 공통메뉴 -->
+    <header class="header" data-page-number="1">
+      <div class="headerWrap">
+        <ul class="headerColumn-left">
+          <li class="headerMenu"><a href="">시트등록</a></li>
+          <li class="headerMenu"><a href="">데이터 조회/수정</a></li>
+          <li class="headerMenu"><a href="">생산일지</a></li>
+          <li class="headerMenu"><a href="">상품표</a></li>
+        </ul>
+        <div class="headerColumn-right">
+          <span class="header-userName">(사용자이름)</span>
+          <button class="header-logoutBtn">로그아웃</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- 본문 -->
+    <div class="wrapper">
+      <!-- 본문 상단 컨트롤 영역 -->
+      <section class="topSection">
+        <h1 class="pageTitle">파일등록</h1>
+
+        <div class="top-box">
+          <button type="file" class="attchExcelBtn">엑셀파일등록</button>
+          <select class="categorySelect">
+            <option value="">카테고리1</option>
+            <option value="">카테고리2</option>
+          </select>
+          <button class="attchCategoryBtn">파일등록</button>
+          <button class="inputLineBtn">수기등록</button>
+        </div>
+      </section>
+
+      <!-- 테이블 영역 -->
+      <section class="tableSection">
+        <table class="table">
+          <thead class="theadFix">
+            <!-- 총 15항목 -->
+            <th class="thead sendDate">발송기한</th>
+            <th class="thead paymentDate">결제일</th>
+            <th class="thead deliveryType">배송방법</th>
+            <th class="thead purchaserName">구매자명</th>
+            <th class="thead purchaserPhone">구매자연락처</th>
+            <th class="thead receiverName">수취인명</th>
+            <th class="thead receiverPhone">수취인연락처1</th>
+            <th class="thead itemName">상품명</th>
+            <th class="thead orderItemList">발주품목</th>
+            <th class="thead quantity">수량</th>
+            <th class="thead eachTotalPrice">상품별 총 주문금액</th>
+            <th class="thead optionInfo">옵션정보</th>
+            <th class="thead deliveryDestination">배송지</th>
+            <th class="thead deliveryMsg">배송메세지</th>
+            <th class="thead deliveryDate">희망일</th>
+          </thead>
+          <tbody class="tbody">
+            <tr class="trow">
+              <td class="tdata sendDate">
+                <span title="2021-11-18">2021-11-18</span>
+              </td>
+              <td class="tdata paymentDate">
+                <span title="2021-10-29 10:59:03"> 2021-10-29 10:59:03 </span>
+              </td>
+              <td class="tdata deliveryType">
+                <span title="퀵서비스">퀵서비스 </span>
+              </td>
+              <td class="tdata purchaserName">
+                <span title="하유정"> 하유정 </span>
+              </td>
+              <td class="tdata purchaserPhone">
+                <span title="010-8989-4851">010-8989-4851</span>
+              </td>
+              <td
+                class="tdata receiverName"
+                title="최연식 . 최연식 . 최연식 . 최연식 . 최연식 . 최연식"
+              >
+                <span>
+                  최연식 . 최연식 . 최연식 . 최연식 . 최연식 . 최연식
+                </span>
+              </td>
+              <td class="tdata receiverPhone">
+                <span
+                  title="010-3075-0300 . 010-3075-0300 . 010-3075-0300 . 010-3075-0300
+                . 010-3075-0300 . 010-3075-0300"
+                >
+                  010-3075-0300 . 010-3075-0300 . 010-3075-0300 . 010-3075-0300
+                  . 010-3075-0300 . 010-3075-0300
+                </span>
+              </td>
+              <td class="tdata itemName">
+                <span
+                  title="11 . 12 . 1부(오전 11시이전 배송) . 한문百 . 서초구 . 기품
+                답례떡1호 돌 백일 결혼 조문 어린이집 기업 답례떡"
+                >
+                  11 . 12 . 1부(오전 11시이전 배송) . 한문百 . 서초구 . 기품
+                  답례떡1호 돌 백일 결혼 조문 어린이집 기업 답례떡
+                </span>
+              </td>
+              <td class="tdata orderItemList">
+                <span title="11 . 12 . 1부 . 한문百 . 퀵 . 답례1호">
+                  11 . 12 . 1부 . 한문百 . 퀵 . 답례1호
+                </span>
+              </td>
+              <td class="tdata quantity">
+                <span title="1 . 1 . 1 . 1 . 1 . 16">
+                  1 . 1 . 1 . 1 . 1 . 16
+                </span>
+              </td>
+              <td class="tdata eachTotalPrice">
+                <span title="0 . 0 . 0 . 0 . 11000 . 87500">
+                  0 . 0 . 0 . 0 . 11000 . 87500
+                </span>
+              </td>
+              <td class="tdata optionInfo">
+                <span
+                  title="월: 11 . 일: 12 . 시간: 1부(오전 11시이전 배송) . 백설기종류
+                선택: 한문百 . 퀵서비스 지역 선택: 서초구 . 방문/퀵배송/터미널
+                중 택1: 퀵배송 / 상품구성: 1-3호"
+                >
+                  월: 11 . 일: 12 . 시간: 1부(오전 11시이전 배송) . 백설기종류
+                  선택: 한문百 . 퀵서비스 지역 선택: 서초구 . 방문/퀵배송/터미널
+                  중 택1: 퀵배송 / 상품구성: 1-3호
+                </span>
+              </td>
+              <td class="tdata deliveryDestination">
+                <span
+                  title="서울특별시 서초구 신반포로23길 30 (잠원동, 반원상가) 우리은행
+                잠원동 지점"
+                >
+                  서울특별시 서초구 신반포로23길 30 (잠원동, 반원상가) 우리은행
+                  잠원동 지점
+                </span>
+              </td>
+              <td class="tdata deliveryMsg">
+                <span
+                  title="nan . nan . nan . nan . 남편 회사로 바로 배송할 예정입니다.
+                기존 주문건이랑 합배송 없이 개별 퀵으로 오전중에 보내주세요 .
+                준서가 백일을 맞이하였습니다. 맛있게 드시고, 축하해주세요^^
+                감사합니다. 아빠 최연식 드림 "
+                >
+                  nan . nan . nan . nan . 남편 회사로 바로 배송할 예정입니다.
+                  기존 주문건이랑 합배송 없이 개별 퀵으로 오전중에 보내주세요 .
+                  준서가 백일을 맞이하였습니다. 맛있게 드시고, 축하해주세요^^
+                  감사합니다. 아빠 최연식 드림
+                </span>
+              </td>
+              <td class="tdata deliveryDate">
+                <span title="11월 12일: 1부"> 11월 12일: 1부 </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+
+    <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../static/js/smartstore/common.js"></script>
+
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+  </body>
+</html>

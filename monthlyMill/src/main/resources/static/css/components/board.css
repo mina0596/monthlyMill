@@ -16,7 +16,27 @@
   border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+/*비밀글 표시용*/
+.postPrivate::after {
+  content: "\f023";
+  font-family: "FontAwesome";
+}
+.board-ask-replyNumber {
+  color: red;
+}
+.board-ask-replyNumber::before {
+  content: "[";
+}
+.board-ask-replyNumber::after {
+  content: "]";
+}
+
 /* 공지사항 게시판 */
+.board-listFuncBox {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 .board-notice-num {
   width: 3em;
   text-align: center;
@@ -29,6 +49,30 @@
 }
 .board-notice-date {
   width: 8em;
+  text-align: center;
+}
+
+/*고객센터 게시판*/
+.board-ask-num {
+  width: 3em;
+  text-align: center;
+}
+.board-ask-type {
+  width: 5em;
+  text-align: center;
+}
+.board-ask-title {
+  text-align: center;
+}
+.board-ask-title:hover {
+  text-decoration: underline;
+}
+.board-ask-date {
+  width: 7em;
+  text-align: center;
+}
+.board-ask-writer {
+  width: 5em;
   text-align: center;
 }
 

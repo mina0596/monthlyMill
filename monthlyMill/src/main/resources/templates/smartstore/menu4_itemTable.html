@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>스마트스토어 엑셀관리</title>
+    <link rel="stylesheet" href="../../static/css/screens/smartstore.css" />
+  </head>
+  <body>
+    <!-- 상단 공통메뉴 -->
+    <header class="header" data-page-number="3"></header>
+
+    <div class="wrapper">
+      <section class="topSection">
+        <h1 class="pageTitle">발주품목별 생산구성표(상품표)</h1>
+        <div class="top-box">
+          <select name="" class="categorySelect">
+            <option value="">검색조건</option>
+            <option value="">구분명</option>
+          </select>
+          <input type="text" placeholder="검색어 입력" />
+          <button class="searchBtn">검색</button>
+        </div>
+      </section>
+      <section class="tableSection">
+        <table class="table">
+          <thead class="theadFix">
+            <!-- 테이블 헤드 고정해두기 -->
+            <th class="thead classifyCode">구분코드</th>
+            <th class="thead classifyName">구분명</th>
+            <th class="thead packingMaterial">포장재</th>
+            <th class="thead price">금액</th>
+
+            <th class="thead type-duteop">두텁</th>
+            <th class="thead type-redbeen">팥</th>
+            <th class="thead type-hogo">호고</th>
+            <th class="thead type-nutrition">영양</th>
+            <th class="thead type-sasong">사송</th>
+            <th class="thead type-samsong">삼송</th>
+            <th class="thead type-isong">이송</th>
+            <th class="thead type-pyeshong">폐송</th>
+            <th class="thead type-osong">오송</th>
+            <th class="thead type-ssuk">쑥갠</th>
+            <th class="thead type-jaseol">자설</th>
+            <th class="thead type-danseol">단설</th>
+            <th class="thead type-bacseol">백설</th>
+            <th class="thead type-bac">百</th>
+            <th class="thead type-dol">첫돌</th>
+            <th class="thead type-hangwa">한과</th>
+            <th class="thead type-susu">수수</th>
+            <th class="thead type-cake">케익</th>
+            <th class="thead type-etc">기타</th>
+
+            <th class="thead sendDate">비고</th>
+          </thead>
+          <tbody class="tbody">
+            <!-- 내용 클릭 시 수정되게, 스크롤 -->
+            <th class="tdata classifyCode">구분코드</th>
+            <th class="tdata classifyName">구분명</th>
+            <th class="tdata packingMaterial">포장재</th>
+            <th class="tdata price">금액</th>
+
+            <th class="tdata type-duteop">두텁</th>
+            <th class="tdata type-redbeen">팥</th>
+            <th class="tdata type-hogo">호고</th>
+            <th class="tdata type-nutrition">영양</th>
+            <th class="tdata type-sasong">사송</th>
+            <th class="tdata type-samsong">삼송</th>
+            <th class="tdata type-isong">이송</th>
+            <th class="tdata type-pyeshong">폐송</th>
+            <th class="tdata type-osong">오송</th>
+            <th class="tdata type-ssuk">쑥갠</th>
+            <th class="tdata type-jaseol">자설</th>
+            <th class="tdata type-danseol">단설</th>
+            <th class="tdata type-bacseol">백설</th>
+            <th class="tdata type-bac">百</th>
+            <th class="tdata type-dol">첫돌</th>
+            <th class="tdata type-hangwa">한과</th>
+            <th class="tdata type-susu">수수</th>
+            <th class="tdata type-cake">케익</th>
+            <th class="tdata type-etc">기타</th>
+
+            <th class="tdata note">비고</th>
+          </tbody>
+        </table>
+      </section>
+    </div>
+
+    <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../static/js/smartstore/common.js"></script>
+
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+  </body>
+</html>

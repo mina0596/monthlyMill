@@ -190,6 +190,11 @@
 .result_table .readDetail {
   margin-right: 1em;
 }
+.result_item__img {
+  width: 150px;
+  height: 100px;
+  background-color: thistle;
+}
 .result_item__btnCart {
   font-size: 0.85em;
   line-height: 150%;

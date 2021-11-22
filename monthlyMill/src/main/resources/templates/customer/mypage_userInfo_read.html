@@ -1,0 +1,161 @@
+<!-- 회원정보조회 -->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../../static/css/styleMakers.css"
+    />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/styleMakers.css}" />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>월간방앗간</title>
+  </head>
+  <body>
+    <header></header>
+    <div class="wrapper wrapper-mypage">
+      <aside class="asideMenu" data-asideMenu-number="1"></aside>
+
+      <section class="content_box">
+        <h3 class="mypage_title">회원정보 관리</h3>
+        <div class="join_box">
+          <h3 class="h3_title">회원정보 조회</h3>
+          <table class="info-table">
+            <tbody>
+              <tr>
+                <th class="info-headColumn">
+                  <span>아이디</span>
+                </th>
+                <td class="info-bodyColumn">
+                  <span class="info-id" th:text="${makersInfo.memberId}"></span>
+                </td>
+              </tr>
+              <tr>
+                <th class="info-headColumn">
+                  <span>이름</span>
+                </th>
+                <td class="info-bodyColumn">
+                  <span
+                    class="info-name"
+                    th:text="${makersInfo.memberName}"
+                  ></span>
+                </td>
+              </tr>
+              <tr>
+                <th class="info-headColumn">
+                  <span>생년월일</span>
+                </th>
+                <td class="info-bodyColumn">
+                  <span
+                    class="info-birth"
+                    th:text="${makersInfo.memberBday}"
+                  ></span>
+                </td>
+              </tr>
+              <tr>
+                <th class="info-headColumn">
+                  <span>성별</span>
+                </th>
+                <td class="info-bodyColumn">
+                  <span
+                    class="info-sex"
+                    th:text="${makersInfo.memberGender}"
+                  ></span>
+                </td>
+              </tr>
+              <tr>
+                <th class="info-headColumn">
+                  <span>이메일</span>
+                </th>
+                <td class="info-bodyColumn">
+                  <span
+                    class="info-email"
+                    th:text="${makersInfo.memberEmail}"
+                  ></span>
+                </td>
+              </tr>
+              <tr>
+                <th class="info-headColumn">
+                  <span>휴대폰번호</span>
+                </th>
+                <td class="info-bodyColumn">
+                  <span
+                    class="info-phoneNum"
+                    th:text="${makersInfo.memberPhone}"
+                  ></span>
+                </td>
+              </tr>
+              <tr>
+                <th class="info-headColumn">
+                  <span>주소</span>
+                </th>
+                <td class="info-bodyColumn">
+                  <p
+                    class="info-postCode"
+                    th:text="${makersInfo.memberPostalCode}"
+                  ></p>
+                  <p class="info-adress" th:text="${makersInfo.memberAddr}"></p>
+                  <p
+                    class="info-adressDetail"
+                    th:text="${makersInfo.memberDetailAddr}"
+                  ></p>
+                </td>
+              </tr>
+              <tr>
+                <th class="info-headColumn">
+                  <span>환불계좌</span>
+                </th>
+                <td class="info-bodyColumn">
+                  <span
+                    class="info-bank"
+                    th:text="${makersInfo.bankName}"
+                  ></span>
+                  <span
+                    class="info-accountOwner"
+                    th:text="${makersInfo.holderName}"
+                  ></span>
+                  <p
+                    class="info-accountNumber"
+                    th:text="${makersInfo.bankAccountNum}"
+                  ></p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="join_box">
+          <h3 class="h3_title">추가정보 조회</h3>
+          <p>내가 선택한 #해시태그</p>
+
+          <div class="button_box">
+            <button class="info-updateBtn">정보수정</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer></footer>
+
+    <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../static/js/layout_front.js"></script>
+    <!-- <script src="../../static/js/makers/maker.js"></script> -->
+
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
+    <script
+      type="text/javascript"
+      th:src="@{/js/makers/makerSales.js}"
+    ></script>
+    <script
+      type="text/javascript"
+      th:src="@{/js/makers/makerMypage.js}"
+    ></script>
+  </body>
+</html>

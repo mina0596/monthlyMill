@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>스마트스토어 엑셀관리</title>
+    <link rel="stylesheet" href="../../static/css/screens/smartstore.css" />
+  </head>
+  <body>
+    <!-- 상단 공통메뉴 -->
+    <header class="header" data-page-number="1"></header>
+
+    <div class="wrapper">
+      <section class="topSection">
+        <h1 class="pageTitle">주문 상세내역</h1>
+        <div class="top-box">
+          <select name="" class="categorySelect">
+            <option value="">검색조건</option>
+            <option value="">구분명</option>
+          </select>
+          <input type="text" placeholder="검색어 입력" />
+          <button class="searchBtn">검색</button>
+        </div>
+      </section>
+      <section class="tableSection">
+        <table class="table">
+          <thead class="theadFix">
+            <th class="thead deliveryDate">희망일</th>
+
+            <th class="thead orderSite">주문사이트</th>
+
+            <th class="thead number">번호</th>
+            <th class="thead paymentDate">결제일</th>
+            <th class="thead orderItemList">발주품목</th>
+            <th class="thead quantity">수량</th>
+            <th class="thead eachTotalPrice">상품별 총 주문금액</th>
+
+            <th class="thead optionInfo">옵션정보</th>
+            <th class="thead deliveryType">배송방법</th>
+
+            <th class="thead receiverName">수취인명</th>
+            <th class="thead deliveryDestination">배송지</th>
+            <th class="thead receiverPhone">수취인연락처1</th>
+
+            <th class="thead purchaserName">구매자명</th>
+            <th class="thead deliveryMsg">배송메세지</th>
+            <th class="thead purchaserPhone">구매자연락처</th>
+
+            <th class="thead sendDate">발송기한</th>
+
+            <!-- 상품명 부분은 안나오나?  -->
+            <th class="thead itemName">상품명</th>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </div>
+
+    <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../static/js/smartstore/common.js"></script>
+
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+  </body>
+</html>
