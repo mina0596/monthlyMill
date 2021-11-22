@@ -36,7 +36,6 @@
             <thead>
               <th class="checkboxColumn">선택</th>
               <th class="">아이디</th>
-              <th class="">비밀번호</th>
               <th class="">이름</th>
               <th class="">생년월일</th>
               <th class="">성별</th>
@@ -46,7 +45,20 @@
               <th class="">환불계좌</th>
               <th class="">선호해시태그</th>
             </thead>
-            <tbody></tbody>
+            <tbody>
+	            <tr th:if="${#lists.size(mInfo) > 0}" th:each="l, n : ${mInfo}">
+	              <td class="checkboxColumn" th:text="${n.index+1}"></td>
+	              <td class="" th:text="${l.memberId}"></td>
+	              <td class="" th:text="${l.memberName}"></td>
+	              <td class="" th:text="${l.memberBday}"></td>
+	              <td class="" th:text="${l.memberGender}"></td>
+	              <td class="" th:text="${l.memberAddr + l.memberDetailAddr}"></td>
+	              <td class="" th:text="${l.memberEmail}"></td>
+	              <td class="" th:text="${l.memberPhone}"></td>
+	              <td class="" th:text="${l.bankName + l.bankAccountNum + l.holderName}"></td>
+	              <td class="" >선호해시태그</td>
+	            </tr>
+            </tbody>
           </table>
         </div>
       </section>

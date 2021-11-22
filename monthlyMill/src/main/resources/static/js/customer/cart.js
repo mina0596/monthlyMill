@@ -50,7 +50,7 @@ $(function(){
 		});
 		
 		request.done(function(data){
-			location.href="/customer/payment/paymentInfo";
+			location.href="/customer/order/requestMatch";
 		});
 		
 		request.fail(function(){

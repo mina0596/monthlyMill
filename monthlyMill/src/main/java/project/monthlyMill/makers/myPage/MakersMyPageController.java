@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import project.monthlyMill.dto.MakerAdditionalInfo;
 import project.monthlyMill.dto.MakerStore;
 import project.monthlyMill.dto.Member;
 
@@ -121,8 +122,24 @@ public class MakersMyPageController {
 	// ********************** 추가정보 ******************
 	// 추가정보가 없을 시 화면
 	@GetMapping("/user/additionalInfo")
-	public String getAdditionalInfo() {
-		return "/makers/makersMypage_additional_info";
+	public String getAdditionalInfo(HttpSession session, Model model) {
+		String makerId = (String) session.getAttribute("SID");
+		MakerAdditionalInfo addInfo = makersMyPageService.getAddInfoById(makerId);
+		// 메이커스 추가정보가 DB에 없으면 등록할 수 있는 화면으로 이동
+		if(addInfo == null) {
+			
+			return "/makers/makersMypage_additional_info";
+		}else {
+			// 메이커스 추가정보가 DB에 있으면 정보 조회화면으로 이동
+			model.addAttribute("addInfo", addInfo);
+			return "/makers/makersMypage_additional_read";
+		}
+	}
+	
+	// 추가정보 수정화면
+	@GetMapping("/user/editAdditionalInfo")
+	public String updateAddInfo() {
+		return "/makers/makersMypage_additional_set";
 	}
 	
 	// 추가정보 등록화면
@@ -137,9 +154,4 @@ public class MakersMyPageController {
 		return "redirect:/makers/myPage/user/addtionalInfo";
 	}
 	
-	// 추가정보 뿌려준화면
-	@GetMapping("/user/addtionalInfo")
-	public String getAddInfo() {
-		return "/makers/makersMypage_additional_read";
-	}
 }

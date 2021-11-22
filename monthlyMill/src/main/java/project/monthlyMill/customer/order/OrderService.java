@@ -4,12 +4,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import project.monthlyMill.customer.shoppingCart.CartMapper;
 import project.monthlyMill.dto.Order;
 import project.monthlyMill.dto.Shipment;
 
@@ -18,6 +20,9 @@ public class OrderService {
 	
 	@Autowired
 	OrderMapper orderMapper;
+	
+	@Autowired
+	CartMapper cartMapper;
 	
 	// 1. 주문 sequence 가져오기
 	public String selectOrderNum(String memberId) {
@@ -72,6 +77,27 @@ public class OrderService {
 	// 9. 주문 취소 주문번호만 가져오기
 	public List<HashMap<String, Object>> getCanceledOrderNum(String memberId){
 		return orderMapper.getCanceledOrderNum(memberId);
+	}
+	
+	
+	// 총 계산 금액 계산하기
+	public int getPaymentInfo(String memberId, String infoName) {
+		List<Map<String,String>> cartList = cartMapper.getCartListByMemberId(memberId);
+		int totalItemPrice = 0; 
+		for(int i=0; i<cartList.size(); i++) {
+			totalItemPrice += (Integer.parseInt(String.valueOf(cartList.get(i).get("pPrice"))) 
+					* Integer.parseInt(String.valueOf(cartList.get(i).get("pAmount"))));
+		}
+		int shippingFee = Integer.parseInt(String.valueOf(cartList.get(0).get("defaultShippingFee")));
+		int totalPrice = shippingFee + totalItemPrice;
+		
+		if(infoName.equals("상품가격합")) {
+			return totalItemPrice;
+		}else if(infoName.equals("배송비")) {
+			return shippingFee;
+		}else{
+			return totalPrice;
+		}
 	}
 	
 }
