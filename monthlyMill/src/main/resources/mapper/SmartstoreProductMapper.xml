@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project.monthlyMill.smartstore.SmartstoreProductMapper">
+	<resultMap type="SmartStoreProduct"	id="SmartStoreProductResultMap">
+		<result property="idx"			column="idx"/>
+		<result property="pCode"		column="product_code"/>
+		<result property="pName"			column="product_name"/>
+		<result property="wrappingType"			column="wrapping_type"/>
+		<result property="pPrice"		column="product_price"/>
+		<result property="item01"		column="item_01"/>
+		<result property="item02"		column="item_02"/>
+		<result property="item03"		column="item_03"/>
+		<result property="item04"		column="item_04"/>
+		<result property="item05"		column="item_05"/>
+		<result property="item06"		column="item_06"/>
+		<result property="item07"		column="item_07"/>
+		<result property="item08"		column="item_08"/>
+		<result property="item09"		column="item_09"/>
+		<result property="item10"		column="item_10"/>
+		<result property="item11"		column="item_11"/>
+		<result property="item12"		column="item_12"/>
+		<result property="item13"		column="item_13"/>
+		<result property="item14"		column="item_14"/>
+		<result property="item15"		column="item_15"/>
+		<result property="item16"		column="item_16"/>
+		<result property="item17"		column="item_17"/>
+		<result property="item18"		column="item_18"/>
+		<result property="item19"		column="item_19"/>
+		<result property="memo"		column="memo"/>
+		<result property="regDate"		column="reg_date"/>
+		<result property="modifyDate"		column="modify_date"/>
+		<result property="regMId"		column="reg_m_id"/>
+		<result property="modifyMId"		column="modify_m_id"/>
+	</resultMap>
+	
+	<!-- ====== 모든 상품 조회 ====== -->
+	<select id="getAllProductInfo" resultMap="SmartStoreProductResultMap">
+		SELECT idx, product_code, product_name, wrapping_type, product_price, item_01, item_02, item_03, item_04, item_05, item_06, item_07, item_08, item_09, item_10, item_11, item_12, item_13, item_14, item_15, item_16, item_17, item_18, item_19, memo, reg_date, modify_date, reg_m_id, modify_m_id
+		FROM smartstore_product_info
+	</select>
+	
+	
+</mapper>

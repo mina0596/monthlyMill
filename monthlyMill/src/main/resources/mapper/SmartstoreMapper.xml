@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project.monthlyMill.smartstore.SmartstoreOrderMapper">
+	<resultMap type="SmartStoreOrder"	id="SmartStoreOrderResultMap">
+		<result property="idx"			column="idx"/>
+		<result property="shippingDate"		column="shipping_date"/>
+		<result property="paidDate"			column="paid_date"/>
+		<result property="shippingMethod"			column="shipping_method"/>
+		<result property="ordererName"		column="orderer_name"/>
+		<result property="orderderPhone"		column="orderer_phone"/>
+		<result property="receiverName"		column="receiver_name"/>
+		<result property="receiverPhone"		column="receiver_phone"/>
+		<result property="productName"		column="product_name"/>
+		<result property="detailedProduct"		column="detailed_product"/>
+		<result property="orderQuantity"		column="order_quantity"/>
+		<result property="totOrderAmount"		column="total_order_amount"/>
+		<result property="option"		column="option_info"/>
+		<result property="shippingAddr"		column="shipping_addr"/>
+		<result property="delieveryMsg"		column="delivery_msg"/>
+		<result property="expDeliveryDate"		column="exp_delivery_date"/>
+		<result property="regDate"		column="reg_date"/>
+		<result property="regMId"		column="reg_m_id"/>
+		<result property="orderType"		column="order_type"/>
+	</resultMap>
+	
+	<!-- ====== 모든 주문 조회 ====== -->
+	<select id="getAllOrderInfo" resultMap="SmartStoreOrderResultMap">
+		SELECT idx, shipping_date, paid_date, shipping_method, orderer_name, orderer_phone, receiver_name, receiver_phone, product_name, detailed_product, order_quantity, total_order_amount, option_info, shipping_addr, delivery_msg, exp_delivery_date, reg_date, reg_m_id, order_type
+		FROM smartstore_order_info
+	</select>
+	
+	
+</mapper>

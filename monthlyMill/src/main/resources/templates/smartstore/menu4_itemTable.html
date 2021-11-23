@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>스마트스토어 엑셀관리</title>
     <link rel="stylesheet" href="../../static/css/screens/smartstore.css" />
+    <link rel="stylesheet" th:href="@{/css/screens/smartstore.css}" />
   </head>
   <body>
     <!-- 상단 공통메뉴 -->
@@ -91,5 +92,6 @@
     <script src="../../static/js/smartstore/common.js"></script>
 
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/smartstore/common.js}"></script>
   </body>
 </html>

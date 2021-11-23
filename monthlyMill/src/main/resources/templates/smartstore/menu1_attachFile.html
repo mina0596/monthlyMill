@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>스마트스토어 엑셀관리</title>
-    <link rel="stylesheet" href="../../static/css/screens/smartstore.css" />
+    <!-- <link rel="stylesheet" href="../../static/css/screens/smartstore.css" /> -->
+    <link rel="stylesheet" th:href="@{/css/screens/smartstore.css}" />
   </head>
   <body>
     <!-- 상단 공통메뉴 -->
@@ -33,8 +34,9 @@
         <div class="top-box">
           <button type="file" class="attchExcelBtn">엑셀파일등록</button>
           <select class="categorySelect">
-            <option value="">카테고리1</option>
-            <option value="">카테고리2</option>
+            <option value="N 스토어">N 스토어</option>
+            <option value="N 예약">N 예약</option>
+            <option value="전화예약">전화예약</option>
           </select>
           <button class="attchCategoryBtn">파일등록</button>
           <button class="inputLineBtn">수기등록</button>
@@ -63,98 +65,85 @@
             <th class="thead deliveryDate">희망일</th>
           </thead>
           <tbody class="tbody">
-            <tr class="trow">
+            <tr class="trow" th:each="l : ${allOrderInfo}">
               <td class="tdata sendDate">
-                <span title="2021-11-18">2021-11-18</span>
+                <span title="${l.shippingDate}" th:text="${l.shippingDate}"></span>
               </td>
               <td class="tdata paymentDate">
-                <span title="2021-10-29 10:59:03"> 2021-10-29 10:59:03 </span>
+                <span title="${l.paidDate}" th:text="${l.paidDate}"></span>
               </td>
               <td class="tdata deliveryType">
-                <span title="퀵서비스">퀵서비스 </span>
+                <span title="${l.shippingMethod}" th:text="${l.shippingMethod}"></span>
               </td>
               <td class="tdata purchaserName">
-                <span title="하유정"> 하유정 </span>
+                <span title="${l.ordererName}" th:text="${l.ordererName}"></span>
               </td>
               <td class="tdata purchaserPhone">
-                <span title="010-8989-4851">010-8989-4851</span>
+                <span title="${l.orderderPhone}" th:text="${l.orderderPhone}"></span>
               </td>
               <td
                 class="tdata receiverName"
-                title="최연식 . 최연식 . 최연식 . 최연식 . 최연식 . 최연식"
+                th:title="${l.receiverName}"
               >
-                <span>
-                  최연식 . 최연식 . 최연식 . 최연식 . 최연식 . 최연식
+                <span th:text="${l.receiverName}">
+                  
                 </span>
               </td>
               <td class="tdata receiverPhone">
                 <span
-                  title="010-3075-0300 . 010-3075-0300 . 010-3075-0300 . 010-3075-0300
-                . 010-3075-0300 . 010-3075-0300"
+                  th:title="${l.receiverPhone}"
+                th:text="${l.receiverPhone}"
                 >
-                  010-3075-0300 . 010-3075-0300 . 010-3075-0300 . 010-3075-0300
-                  . 010-3075-0300 . 010-3075-0300
+             
                 </span>
               </td>
               <td class="tdata itemName">
                 <span
-                  title="11 . 12 . 1부(오전 11시이전 배송) . 한문百 . 서초구 . 기품
-                답례떡1호 돌 백일 결혼 조문 어린이집 기업 답례떡"
+                  th:title="${l.productName}"
+                  th:text="${l.productName}"
                 >
-                  11 . 12 . 1부(오전 11시이전 배송) . 한문百 . 서초구 . 기품
-                  답례떡1호 돌 백일 결혼 조문 어린이집 기업 답례떡
+                 
                 </span>
               </td>
               <td class="tdata orderItemList">
-                <span title="11 . 12 . 1부 . 한문百 . 퀵 . 답례1호">
-                  11 . 12 . 1부 . 한문百 . 퀵 . 답례1호
+                <span th:title="${l.detailedProduct}"
+                th:text="${l.detailedProduct}">
                 </span>
               </td>
               <td class="tdata quantity">
-                <span title="1 . 1 . 1 . 1 . 1 . 16">
-                  1 . 1 . 1 . 1 . 1 . 16
+                <span th:title="${l.orderQuantity}"
+                th:text="${l.orderQuantity}">
+                  
                 </span>
               </td>
               <td class="tdata eachTotalPrice">
-                <span title="0 . 0 . 0 . 0 . 11000 . 87500">
-                  0 . 0 . 0 . 0 . 11000 . 87500
+                <span th:title="${l.totOrderAmount}"
+                th:text="${l.totOrderAmount}">
                 </span>
               </td>
               <td class="tdata optionInfo">
                 <span
-                  title="월: 11 . 일: 12 . 시간: 1부(오전 11시이전 배송) . 백설기종류
-                선택: 한문百 . 퀵서비스 지역 선택: 서초구 . 방문/퀵배송/터미널
-                중 택1: 퀵배송 / 상품구성: 1-3호"
+                  th:title="${l.option}"
+                  th:text="${l.option}"
                 >
-                  월: 11 . 일: 12 . 시간: 1부(오전 11시이전 배송) . 백설기종류
-                  선택: 한문百 . 퀵서비스 지역 선택: 서초구 . 방문/퀵배송/터미널
-                  중 택1: 퀵배송 / 상품구성: 1-3호
                 </span>
               </td>
               <td class="tdata deliveryDestination">
                 <span
-                  title="서울특별시 서초구 신반포로23길 30 (잠원동, 반원상가) 우리은행
-                잠원동 지점"
+                 th:title="${l.shippingAddr}"
+                 th:text="${l.shippingAddr}"
                 >
-                  서울특별시 서초구 신반포로23길 30 (잠원동, 반원상가) 우리은행
-                  잠원동 지점
                 </span>
               </td>
               <td class="tdata deliveryMsg">
                 <span
-                  title="nan . nan . nan . nan . 남편 회사로 바로 배송할 예정입니다.
-                기존 주문건이랑 합배송 없이 개별 퀵으로 오전중에 보내주세요 .
-                준서가 백일을 맞이하였습니다. 맛있게 드시고, 축하해주세요^^
-                감사합니다. 아빠 최연식 드림 "
+                  th:title="${l.delieveryMsg}"
+                  th:text="${l.delieveryMsg}"
                 >
-                  nan . nan . nan . nan . 남편 회사로 바로 배송할 예정입니다.
-                  기존 주문건이랑 합배송 없이 개별 퀵으로 오전중에 보내주세요 .
-                  준서가 백일을 맞이하였습니다. 맛있게 드시고, 축하해주세요^^
-                  감사합니다. 아빠 최연식 드림
                 </span>
               </td>
               <td class="tdata deliveryDate">
-                <span title="11월 12일: 1부"> 11월 12일: 1부 </span>
+                <span th:title="${l.expDeliveryDate}" th:text="${l.expDeliveryDate}"></span>
               </td>
             </tr>
           </tbody>
@@ -166,5 +155,6 @@
     <script src="../../static/js/smartstore/common.js"></script>
 
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/smartstore/common.js}"></script>
   </body>
 </html>
