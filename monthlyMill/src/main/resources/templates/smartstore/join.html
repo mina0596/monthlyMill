@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../../static/css/screens/smartstore.css"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      th:href="@{/css/screens/smartstore.css}"
+    />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>스마트스토어 관리페이지 회원가입</title>
+  </head>
+  <body class="joinbg">
+    <div class="wrapper">
+        <h1 class="pageTitle">회원가입</h1>
+        <table>
+        <colgroup>
+          <col width="25%" />
+          <col width="75%" />
+        </colgroup>
+        <tbody>
+          <tr>
+            <th><span class="text required">아이디</span></th>
+            <td>
+              <input type="hidden" name="memberCate" value="2" />
+              <input type="text" name="inputId" required />
+              <input
+                type="hidden"
+                name="idDupCheck"
+                value="idDupUncheck"
+              />
+              <button type="button" class="idCheck">중복조회</button>
+              <div class="desc_s">
+                <span class="idDupMsg"> </span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th><span class="text required">비밀번호</span></th>
+            <td>
+              <input type="password" name="inputPw" required />
+              <input type="hidden" name="pWCheck" value="unusable" />
+              <div class="desc_s">
+                <span class="pwValidationMsg"> </span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th><span class="text required">비밀번호 확인</span></th>
+            <td>
+              <input type="password" name="inputPwConfirm" required />
+              <input
+                type="hidden"
+                name="pWConfirmCheck"
+                value="unusable"
+              />
+              <div class="desc_s">
+                <span class="inputPwConfirmMsg"> </span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th><span class="text required">이름</span></th>
+            <td>
+              <input type="text" name="inputName" required />
+              <input type="hidden" name="nameCheck" value="unusable" />
+              <div class="desc_s">
+                <span class="nameValidationMsg"> </span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th><span class="text required">부서</span></th>
+            <td>
+            <input type="text" name="inputDept" class="" placeholder="부서명" required/></td>
+          </tr>
+          <tr>
+            <th><span class="text required">전화번호</span></th>
+            <td>
+              <input
+              type="tel"
+              class="phoneNum"
+              placeholder="휴대폰번호 입력"
+              maxlength="13"
+              pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
+              name="inputPhone"
+              required
+            />
+          </td>
+          </tr>
+          <tr>
+            <th><span class="text required">이메일</span></th>
+            <td>
+              <input type="email" name="inputEmail" required />
+              <input type="hidden" class="emailCheck" value="unusable" />
+              <div class="desc_s">
+                <span class="emailValidationMsg"> </span>
+              </div>
+          </td>
+          </tr>
+        </ul>
+        </tbody>
+      </table>
+        <div class="loginBox_row buttonBox">
+          <button class="btn emp joinBtn">회원가입</button>
+          <button class="cancelBtn">취소</button>
+        </div>
+  </body>
+</html>

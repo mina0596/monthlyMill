@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../../static/css/screens/smartstore.css"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      th:href="@{/css/screens/smartstore.css}"
+    />
+    <script
+      src="https://kit.fontawesome.com/7161175c87.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>스마트스토어 관리페이지 로그인</title>
+  </head>
+  <body class="loginbg">
+    <div class="wrapper">
+      <section class="loginBox">
+        <div class="loginBox_row">
+          <span>스마트스토어 관리 페이지를 이용하려면 로그인해주세요.</span>
+        </div>
+        <div class="loginBox_row inputBox">
+          <input type="text" class="loginInput loginId" placeholder="아이디" />
+          <input
+            type="password"
+            class="loginInput loginPw"
+            placeholder="비밀번호"
+          />
+        </div>
+        <div class="loginBox_row buttonBox">
+          <button class="btn emp loginBtn">로그인</button>
+          <button class="joinBtn">회원가입</button>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
