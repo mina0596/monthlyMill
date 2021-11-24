@@ -24,7 +24,7 @@
             <tr class="manualRow">  
               <th class="manualTh classifyCode">구분코드</th>
               <td>
-                <input type="text" class="manualInput classifyCode-input" />
+                <input type="text" class="manualInput classifyCode-input" readonly="readonly" th:value="${pCode}" />
               </td>
             </tr>
             <tr class="manualRow">  
@@ -37,17 +37,17 @@
               <th class="manualTh packingMaterial">포장재</th>
               <td>
                 <select type="text" class="manualInput packingMaterial-input" >
-                  <option value="">-</option>
-                  <option value="fold-s">접이소</option>
-                  <option value="fold-m">접이중</option>
-                  <option value="fold-l">접이대</option>
-                  <option value="ssabari">싸바리</option>
-                  <option value="ibaji">이바지</option>
-                  <option value="return-1">답례1호</option>
-                  <option value="return-2">답례2호</option>
-                  <option value="return-3">답례3호</option>
-                  <option value="return-4">답례4호</option>
-                  <option value="pyebaek">폐백음식</option>
+                  <option value="-">-</option>
+                  <option value="접이소">접이소</option>
+                  <option value="접이중">접이중</option>
+                  <option value="접이대">접이대</option>
+                  <option value="싸바리">싸바리</option>
+                  <option value="이바지">이바지</option>
+                  <option value="답례1호">답례1호</option>
+                  <option value="답례2호">답례2호</option>
+                  <option value="답례3호">답례3호</option>
+                  <option value="답례4호">답례4호</option>
+                  <option value="폐백음식">폐백음식</option>
                 </select>
               </td>
             </tr>
@@ -63,29 +63,30 @@
               <td>
                 <div class="">
                 <select type="text" class="manualInput tteokType-input " >
-                  <option class="type-duteop">두텁</option>
-                  <option class="type-redbeen">팥</option>
-                  <option class="type-hogo">호고</option>
-                  <option class="type-nutrition">영양</option>
-                  <option class="type-sasong">사송</option>
-                  <option class="type-samsong">삼송</option>
-                  <option class="type-isong">이송</option>
-                  <option class="type-pyeshong">폐송</option>
-                  <option class="type-osong">오송</option>
-                  <option class="type-ssuk">쑥갠</option>
-                  <option class="type-jaseol">자설</option>
-                  <option class="type-danseol">단설</option>
-                  <option class="type-bacseol">백설</option>
-                  <option class="type-bac">百</option>
-                  <option class="type-dol">첫돌</option>
-                  <option class="type-hangwa">한과</option>
-                  <option class="type-susu">수수</option>
-                  <option class="type-cake">케익</option>
-                  <option class="type-etc">기타</option>
+                  <option value="item01">두텁</option>
+                  <option value="item02">팥</option>
+                  <option value="item03">호고</option>
+                  <option value="item04">영양</option>
+                  <option value="item05">사송</option>
+                  <option value="item06">삼송</option>
+                  <option value="item07">이송</option>
+                  <option value="item08">폐송</option>
+                  <option value="item09">오송</option>
+                  <option value="item10">쑥갠</option>
+                  <option value="item11">자설</option>
+                  <option value="item12">단설</option>
+                  <option value="item13">백설</option>
+                  <option value="item14">百</option>
+                  <option value="item15">첫돌</option>
+                  <option value="item16">한과</option>
+                  <option value="item17">수수</option>
+                  <option value="item18">케익</option>
+                  <option value="item19">기타</option>
                 </select>
 
                   <input type="number" class="manualInput quantity">
                   <label for="">개</label>
+                  <!-- 추가되게 해주세요 -->
                   <button class="button addTteokTypeBtn">추가</button>
                 </div>
               </td>
@@ -100,7 +101,7 @@
         </table>
       </div>
       <div class="manualBtnBox">
-        <button class="manualEnterBtn btn emp">등록</button>
+        <button class="addNewProductBtn btn emp">등록</button>
         <button class="manualCancelBtn">취소</button>
       </div>
     </div>
@@ -112,5 +113,6 @@
 
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/smartstore/common.js}"></script>
+    <script type="text/javascript" th:src="@{/js/smartstore/product.js}"></script>
   </body>
 </html>
