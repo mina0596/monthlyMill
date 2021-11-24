@@ -40,5 +40,25 @@
 		FROM smartstore_product_info
 	</select>
 	
+	<!-- ====== 상품코드 시퀀스 가져오기 ======= -->
+	<select id="getPcodeSequence" resultType="String">
+		SELECT
+			if(COUNT(0)=0, '0001', LPAD(cast(substring(MAX(spi.product_code), 11, 14) as decimal)+1,4,0))
+		FROM
+			smartstore_product_info AS spi
+			where
+				spi.reg_date = CURDATE();
+	</select>
+	
+	<!-- ====== 상품 등록하기 ====== -->
+	<insert id="addNewProduct" parameterType="SmartStoreProduct">
+		INSERT INTO smartstore_product_info
+		(idx, product_code, product_name, wrapping_type, product_price, item_01, item_02, item_03, item_04, item_05, item_06, item_07, item_08, item_09, item_10, item_11, item_12, item_13, item_14, item_15, item_16, item_17, item_18, item_19, memo, reg_date, modify_date, reg_m_id, modify_m_id)
+		VALUES (NULL, #{pCode}, #{pName}, #{wrappingType}, #{pPrice}, #{item01}, #{item02}, #{item03}, #{item04}, #{item05}, #{item06}, 
+		#{item07}, #{item08}, #{item09}, #{item10}, #{item11}, #{item12}, #{item13}, #{item14},
+		#{item15}, #{item16}, #{item17}, #{item18}, #{item19},
+		#{memo}, NOW(), NOW(), '', '')
+	</insert>
+	
 	
 </mapper>

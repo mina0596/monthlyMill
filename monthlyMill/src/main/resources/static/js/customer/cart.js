@@ -46,7 +46,7 @@ $(function(){
 			traditional: true,
 			data: JSON.stringify(params),
 			contentType: "application/json", 
-			dataType: "text",
+			dataType: "text"
 		});
 		
 		request.done(function(data){
