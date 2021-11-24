@@ -16,52 +16,158 @@
       <section class="topSection">
         <h1 class="pageTitle">주문 상세내역</h1>
         <div class="top-box">
-          <select name="" class="categorySelect">
-            <option value="">검색조건</option>
-            <option value="">구분명</option>
-          </select>
-          <input type="text" placeholder="검색어 입력" />
-          <button class="searchBtn">검색</button>
+          <div class="top-searchBox">
+            <div class="searchBox">
+              <select name="" class="categorySelect">
+                <option value="">검색조건</option>
+                <option value="">구분명</option>
+              </select>
+              <input
+                type="text"
+                class="searchTextInput"
+                placeholder="검색어 입력"
+              />
+            </div>
+          </div>
+
+          <div class="top-searchBtnBox">
+            <button class="textBtn addSearchBtn">+검색조건추가</button>
+            <button class="searchBtn">검색</button>
+          </div>
         </div>
       </section>
       <section class="tableSection">
         <table class="table">
           <thead class="theadFix">
-            <th class="thead deliveryDate">희망일</th>
+            <tr>
+              <th class="thead deliveryDate" rowspan="4">희망일</th>
+              <th class="thead orderSite" rowspan="4">주문사이트</th>
 
-            <th class="thead orderSite">주문사이트</th>
-
-            <th class="thead number">번호</th>
-            <th class="thead paymentDate">결제일</th>
-            <th class="thead orderItemList">발주품목</th>
-            <th class="thead quantity">수량</th>
-            <th class="thead eachTotalPrice">상품별 총 주문금액</th>
-
-            <th class="thead optionInfo">옵션정보</th>
-            <th class="thead deliveryType">배송방법</th>
-
-            <th class="thead receiverName">수취인명</th>
-            <th class="thead deliveryDestination">배송지</th>
-            <th class="thead receiverPhone">수취인연락처1</th>
-
-            <th class="thead purchaserName">구매자명</th>
-            <th class="thead deliveryMsg">배송메세지</th>
-            <th class="thead purchaserPhone">구매자연락처</th>
-
-            <th class="thead sendDate">발송기한</th>
+              <th class="thead number" rowspan="4">번호</th>
+              <th class="thead paymentDate">결제일</th>
+              <th class="thead orderItemList">발주품목</th>
+              <th class="thead quantity">수량</th>
+              <th class="thead eachTotalPrice">상품별 총 주문금액</th>
+              <th class="thead sendDate" rowspan="4">발송기한</th>
+            </tr>
+            <tr>
+              <th class="thead">수기</th>
+              <th class="thead optionInfo">옵션정보</th>
+              <th class="thead deliveryType" colspan="2">배송방법</th>
+            </tr>
+            <tr>
+              <th class="thead receiverName">수취인명</th>
+              <th class="thead deliveryDestination">배송지</th>
+              <th class="thead receiverPhone" colspan="2">수취인연락처1</th>
+            </tr>
+            <tr>
+              <th class="thead purchaserName">구매자명</th>
+              <th class="thead deliveryMsg">배송메세지</th>
+              <th class="thead purchaserPhone" colspan="2">구매자연락처</th>
+            </tr>
 
             <!-- 상품명 부분은 안나오나?  -->
-            <th class="thead itemName">상품명</th>
+            <!-- <th class="thead itemName">상품명</th> -->
           </thead>
-          <tbody></tbody>
+          <tbody>
+            <!-- 여기부터 -->
+            <tr class="trow">
+              <td class="tdata changeable deliveryDate" rowspan="4">희망일</td>
+              <td class="tdata changeable orderSite" rowspan="4">주문사이트</td>
+
+              <td class="tdata changeable number" rowspan="4">1</td>
+              <td class="tdata changeable paymentDate">결제일</td>
+              <td class="tdata changeable changeable orderItemList">
+                발주품목
+              </td>
+              <td class="tdata changeable changeable quantity">수량</td>
+              <td class="tdata changeable changeable eachTotalPrice">
+                상품별 총 주문금액
+              </td>
+              <td class="tdata changeable changeable sendDate" rowspan="4">
+                발송기한
+              </td>
+            </tr>
+            <tr class="trow">
+              <th class="tdata">수기</th>
+              <th class="tdata changeable optionInfo">옵션정보</th>
+              <th class="tdata changeable deliveryType" colspan="2">
+                배송방법
+              </th>
+            </tr>
+            <tr class="trow">
+              <th class="tdata changeable receiverName">수취인명</th>
+              <th class="tdata changeable deliveryDestination">배송지</th>
+              <th class="tdata changeable receiverPhone" colspan="2">
+                수취인연락처1
+              </th>
+            </tr>
+            <tr class="trow multirow">
+              <th class="tdata changeable purchaserName">구매자명</th>
+              <th class="tdata changeable deliveryMsg">배송메세지</th>
+              <th class="tdata changeable purchaserPhone" colspan="2">
+                구매자연락처
+              </th>
+            </tr>
+            <!-- 여기까지가 하나의 큰 행 -->
+
+            <tr class="trow">
+              <td class="tdata changeable deliveryDate" rowspan="4">
+                <span>희망일</span>
+              </td>
+              <td class="tdata changeable orderSite" rowspan="4">주문사이트</td>
+
+              <td class="tdata changeable number" rowspan="4">2</td>
+              <td class="tdata changeable paymentDate">결제일</td>
+              <td class="tdata changeable changeable orderItemList">
+                발주품목
+              </td>
+              <td class="tdata changeable changeable quantity">수량</td>
+              <td class="tdata changeable changeable eachTotalPrice">
+                상품별 총 주문금액
+              </td>
+              <td class="tdata changeable changeable sendDate" rowspan="4">
+                발송기한
+              </td>
+            </tr>
+            <tr class="trow">
+              <th class="tdata">수기</th>
+              <th class="tdata changeable optionInfo">옵션정보</th>
+              <th class="tdata changeable deliveryType" colspan="2">
+                배송방법
+              </th>
+            </tr>
+            <tr class="trow">
+              <th class="tdata changeable receiverName">수취인명</th>
+              <th class="tdata changeable deliveryDestination">배송지</th>
+              <th class="tdata changeable receiverPhone" colspan="2">
+                수취인연락처1
+              </th>
+            </tr>
+            <tr class="trow multirow">
+              <th class="tdata changeable purchaserName">구매자명</th>
+              <th class="tdata changeable deliveryMsg">배송메세지</th>
+              <th class="tdata changeable purchaserPhone" colspan="2">
+                구매자연락처
+              </th>
+            </tr>
+          </tbody>
         </table>
       </section>
     </div>
 
     <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../static/js/smartstore/common.js"></script>
+    <script src="../../static/js/smartstore/tableUpdate_front.js"></script>
 
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
-    <script type="text/javascript" th:src="@{/js/smartstore/common.js}"></script>
+    <script
+      type="text/javascript"
+      th:src="@{/js/smartstore/common.js}"
+    ></script>
+    <script
+      type="text/javascript"
+      th:src="@{/js/smartstore/tableUpdate_front.js}"
+    ></script>
   </body>
 </html>
