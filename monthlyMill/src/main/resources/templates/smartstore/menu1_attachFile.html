@@ -19,7 +19,7 @@
           <li class="headerMenu"><a th:href="@{/smartStore/productList}">상품표</a></li>
         </ul>
         <div class="headerColumn-right">
-          <span class="header-userName">(사용자이름)</span>
+          <span th:if="${session.SESSIONNAME != null}" class="header-userName">[[${session.SESSIONNAME}]]</span>
           <button class="header-logoutBtn">로그아웃</button>
         </div>
       </div>

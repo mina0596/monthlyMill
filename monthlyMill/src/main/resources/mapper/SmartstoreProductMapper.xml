@@ -2,6 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="project.monthlyMill.smartstore.SmartstoreProductMapper">
+
+	<!-- ============================= 상품에 대한 정보 ============================ -->
 	<resultMap type="SmartStoreProduct"	id="SmartStoreProductResultMap">
 		<result property="idx"			column="idx"/>
 		<result property="pCode"		column="product_code"/>
@@ -34,6 +36,7 @@
 		<result property="modifyMId"		column="modify_m_id"/>
 	</resultMap>
 	
+	
 	<!-- ====== 모든 상품 조회 ====== -->
 	<select id="getAllProductInfo" resultMap="SmartStoreProductResultMap">
 		SELECT idx, product_code, product_name, wrapping_type, product_price, item_01, item_02, item_03, item_04, item_05, item_06, item_07, item_08, item_09, item_10, item_11, item_12, item_13, item_14, item_15, item_16, item_17, item_18, item_19, memo, reg_date, modify_date, reg_m_id, modify_m_id
@@ -58,6 +61,37 @@
 		#{item07}, #{item08}, #{item09}, #{item10}, #{item11}, #{item12}, #{item13}, #{item14},
 		#{item15}, #{item16}, #{item17}, #{item18}, #{item19},
 		#{memo}, NOW(), NOW(), '', '')
+	</insert>
+	
+	
+	
+	
+	<!-- ************************************************************************** -->
+	<!-- ================================== 회원에 대한 정보 ========================== -->
+	<resultMap type="SmartStoreMember" id="SmartStoreMemberResultMap">
+		<result property="idx" column="idx"/>
+		<result property="mId" column="m_id"/>
+		<result property="mPw" column="m_pw"/>
+		<result property="mName" column="m_name"/>
+		<result property="mDep" column="m_dep"/>
+		<result property="mPhone" column="m_phone"/>
+		<result property="mEmail" column="m_email"/>
+		<result property="regDate" column="reg_date"/>
+	</resultMap>
+	
+	<!-- 아이디로 회원정보 가져오기  -->
+	<select id="getMemberInfoById" parameterType="String" resultMap="SmartStoreMemberResultMap">
+		SELECT idx, m_id, m_pw, m_name, m_dep, m_phone, reg_date, m_email
+		FROM smartstore_member_info
+		WHERE m_id = #{inputId}
+	</select>
+	
+	
+	<!-- 회원가입 -->
+	<insert id="addMember" parameterType="map">
+		INSERT INTO smartstore_member_info
+			(idx, m_id, m_pw, m_name, m_dep, m_phone, reg_date, m_email)
+		VALUES (NULL, #{inputId}, #{encodedPw}, #{inputName}, #{inputDept}, #{inputPhone}, CURDATE(), #{inputEmail})
 	</insert>
 	
 	

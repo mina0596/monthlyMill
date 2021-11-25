@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -33,7 +33,7 @@
             <th><span class="text required">아이디</span></th>
             <td>
               <input type="hidden" name="memberCate" value="2" />
-              <input type="text" name="inputId" required />
+              <input type="text" name="inputId" class="inputId" required />
               <input
                 type="hidden"
                 name="idDupCheck"
@@ -112,8 +112,13 @@
         </tbody>
       </table>
         <div class="loginBox_row buttonBox">
-          <button class="btn emp joinBtn">회원가입</button>
+          <button class="btn emp joinCompleteBtn">회원가입</button>
           <button class="cancelBtn">취소</button>
         </div>
+        <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../static/js/smartstore/login.js"></script>
+    
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/smartstore/login.js}"></script>
   </body>
 </html>

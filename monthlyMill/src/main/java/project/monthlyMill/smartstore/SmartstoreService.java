@@ -5,11 +5,15 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import project.monthlyMill.dto.SmartStoreMember;
 import project.monthlyMill.dto.SmartStoreOrder;
 import project.monthlyMill.dto.SmartStoreProduct;
 
@@ -22,14 +26,59 @@ public class SmartstoreService {
 	@Autowired
 	SmartstoreProductMapper pMapper;
 	
+	@Autowired
+	PasswordEncoder pwEncoder;
 	
 	private static final Logger log = LoggerFactory.getLogger(SmartstoreService.class);
-
+	
+	
+	// =========================== 회원가입 =====================
+	
+	// 회원가입시 아이디 중복 확인
+	public boolean idDupCheck(String inputId) {
+		SmartStoreMember idCheck = pMapper.getMemberInfoById(inputId);
+		if(idCheck != null) {
+			// 아이디 사용중
+			return false;
+		}else {
+			// 아이디 사용 가능
+			return true;
+		}
+	}
+	
+	// 회원가입 완료
+	public void addMember(HashMap<String, String> memberInfo) {
+		memberInfo.put("encodedPw", pwEncoder.encode(memberInfo.get("inputPw")));
+		pMapper.addMember(memberInfo);
+	}
+	// =========================== 로그인 =====================
+	public boolean loginCheck(HashMap<String, String> loginInfo, HttpSession session) {
+		SmartStoreMember memberInfo = pMapper.getMemberInfoById(loginInfo.get("loginId"));
+		if(pwEncoder.matches(loginInfo.get("loginPw"), memberInfo.getMPw())) {
+			session.setAttribute("SESSIONID", loginInfo.get("loginId"));
+			session.setAttribute("SESSIONNAME", memberInfo.getMName());
+			session.setAttribute("SESSIONDEPT", memberInfo.getMDep());
+			session.setAttribute("SESSIONPHONE", memberInfo.getMPhone());
+			session.setAttribute("SESSIONEMAIL", memberInfo.getMEmail());
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	// =========================== 주문 =====================
 	
 	// 모든 주문 조회
 	public List<SmartStoreOrder> getAllOrderInfo(){
 		return oMapper.getAllOrderInfo();
 	}
+
+	
+	
+	
+	
+	// =========================== 품목 =====================
+	
 	
 	// 품목코드 생성
 	public String getNewPcode() {
