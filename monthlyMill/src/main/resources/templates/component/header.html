@@ -12,7 +12,7 @@
         <a
           th:if="${session.SID != null}"
           class="gnb_util__join"
-          th:href="@{/customer/order/orderList}"
+          href="#"
           ><span>[[${session.SNAME}]]님 환영합니다</span></a
         >
       </li>
@@ -33,13 +33,13 @@
         >
       </li>
       <li>
-        <a th:href="@{/customer/cart/cartList}"><span>my찜</span></a>
+        <a th:href="@{/customer/myPage/wishList}"><span>my찜</span></a>
       </li>
       <li>
         <a th:href="@{/customer/cart/cartList}"><span>장바구니</span></a>
       </li>
       <li>
-        <a th:href="@{/customer/cart/cartList}"><span>주문/배송</span></a>
+        <a th:href="@{/customer/order/orderList}"><span>주문/배송</span></a>
       </li>
     </ul>
   </div>

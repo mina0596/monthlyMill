@@ -20,9 +20,21 @@ public class CustomerController {
 		return "/customer/loading";
 	}
 	
-	@GetMapping("/orderList")
-	public String getOrderList() {
-		return "/customer/orderList";
+	// 쿠폰조회
+	@GetMapping("/myPage/couponList")
+	public String getCouponList() {
+		return "/customer/myCouponList";
 	}
 	
+	// my찜
+	@GetMapping("/myPage/wishList")
+	public String getWishList() {
+		return "/customer/myWishList";
+	}
+	
+	// 회원정보
+	@GetMapping("/myPage/basicInfo")
+	public String getBasicInfo() {
+		return "/customer/mypage_userInfo_read";
+	}
 }	
