@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project.monthlyMill.customer.service.CSMapper">
+
+	<resultMap type="CustomerService" 		id="customerServiceResultMap">
+		<result property="idx"				column="idx"/>
+		<result property="csNum"				column="cs_num"/>
+		<result property="csCate"				column="cs_cate"/>
+		<result property="csTitle"				column="cs_title"/>
+		<result property="csContent"		column="cs_content"/>
+		<result property="filePath"		column="file_path"/>
+		<result property="fileName"			column="file_name"/>
+		<result property="fileSize"		column="file_size"/>
+		<result property="csPublic"			column="cs_public"/>
+		<result property="regMId"				column="reg_m_id"/>
+		<result property="regDate"		column="reg_date"/>
+		<result property="respondCheck"			column="respond_check"/>
+		<result property="respondMethod"			column="respond_method"/>
+		<result property="respondMId"			column="respond_m_id"/>
+		<result property="respondDate"				column="respond_date"/>
+		<association property="member" javaType="Member">
+			<id property="memberId" column="member_id"></id>
+			<result property="memberName" column="member_name"></result>
+		</association>
+	</resultMap>
+	<!-- ****************** 문의글 리스트 ************************* -->
+	<!--  CS 문의글 목록 가져오기  -->
+	<select id="getAllCS" resultMap="customerServiceResultMap">
+		SELECT
+			csb.*,
+			mInfo.member_name
+		FROM 
+			customer_service_board AS csb
+			INNER join
+			member_basic_info AS mInfo
+			on
+			csb.reg_m_id = mInfo.member_id
+			ORDER by
+			csb.reg_date DESC ;
+	</select>
+	
+	
+	<!-- ****************** 문의글 작성 ************************* -->
+	<!-- CS 문의글 등록 -->
+	<insert id="addCS" parameterType="CustomerService">
+		INSERT INTO customer_service_board
+			(idx, cs_num, cs_cate, cs_title, cs_content, file_path, file_name, file_size, cs_public, reg_m_id, reg_date, respond_check, respond_method, respond_m_id, respond_date)
+		VALUES (NULL, #{csNum}, #{csCate}, #{csTitle}, #{csContent}, '', '', 0, #{csPublic}, #{regMId}, NOW(), 'N', '-', '-', NULL)
+	</insert>
+	
+	<!-- CS 개수 카운트  -->
+	<select id="getCSCount" resultType="int">
+		SELECT 
+			COUNT(*)+1
+		FROM
+			customer_service_board AS cs;
+	</select>
+	
+	
+	
+	<!-- ****************** 문의글 클릭하여 내용보기 ************************* -->
+	<select id="getCsPostByCsNum" parameterType="String" resultMap="customerServiceResultMap">
+		SELECT 
+			csb.*,
+			mInfo.member_name
+		FROM 
+			customer_service_board AS csb
+			INNER join
+			member_basic_info AS mInfo
+			on
+			csb.reg_m_id = mInfo.member_id
+		WHERE cs_num = #{csNum};
+	</select>
+	
+	
+	
+	
+	
+	
+</mapper>

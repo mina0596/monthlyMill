@@ -19,19 +19,21 @@
         <h3 class="h3_title">고객센터</h3>
         <div class="post-titleBox">
           <div class="post-titleInfo">
-            <span class="post-category">카테고리명</span>
+            <span class="post-category" th:text="${csInfo.csCate}">카테고리명</span>
             <!-- 비공개 게시글인경우 제목에 postPrivate 클래스 포함 -->
-            <span class="post-title postPrivate">제목</span>
+            <span class="post-title postPrivate" th:text="${csInfo.csTitle}">제목</span>
+            <input type="hidden" class="detail-privateCheck" th:value="${csInfo.csPublic}">
           </div>
           <div class="post-subInfo">
-            <span class="post-writer">작성자명</span>
-            <span class="post-date">2021-00-00</span>
+            <span class="post-writer" th:text="${csInfo.member.memberName}">작성자명</span>
+            <span class="post-date" th:text="${csInfo.regDate}">2021-00-00</span>
           </div>
         </div>
 
         <div class="post-body">
-          <img sre="" class="post-img" alt="첨부 이미지" />
-          <p class="post-text">
+          <input type="hidden" class="detail-attachedFile" th:value="${csInfo.filePath}">
+          <img src="" class="post-img" alt="첨부 이미지" />
+          <p class="post-text" th:text="${csInfo.csContent}">
             글 내용 Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Fugiat excepturi quis eum perferendis ut consequuntur iste ea
             laborum corporis reiciendis placeat tenetur, tempore laudantium
@@ -66,5 +68,6 @@
 
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
+    <script type="text/javascript" th:src="@{/js/customer/customer_service.js}"></script>
   </body>
 </html>

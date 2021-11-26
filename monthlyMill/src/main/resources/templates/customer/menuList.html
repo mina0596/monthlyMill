@@ -43,10 +43,10 @@
 
           <ul class="itemListBox">
             <!-- 메뉴 아이템 -->
-            <li class="menuItem">
+            <li class="menuItem" th:each="l : ${menuList}">
               <div class="menuItem-imgBox">
                 <img
-                  src="../../static/img/main_intro1_백설기.jpg"
+                  th:src="${l.thumbPath}"
                   alt="사진"
                   class="menuItem-img"
                 />
@@ -55,12 +55,13 @@
                 </div>
             </div>
             <div class="menuItem-nameBox">
-                <span class="menuItem-name">상품이름</span>
+                <span class="menuItem-name" th:text="${l.pName}">상품이름</span>
                 <span class="wishNumber">300</span>
             </div>
-              <span class="item-price price_number">10000</span>
+              <span class="item-price price_number" th:text="${l.pPrice}">10000</span>
             </li>
-
+            
+			<!-- 
             <li class="menuItem">
               <div class="menuItem-imgBox">
                 <img
@@ -79,6 +80,7 @@
               <span class="item-price price_number">10000</span>
             </li>
             
+			 -->
 
             
         </div>
