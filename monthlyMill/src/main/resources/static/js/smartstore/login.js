@@ -26,7 +26,7 @@ $(function(){
 			data : JSON.stringify(params),
 			dataType : "text",
 			success : function(result){
-				if(result == 'true'){
+				if(result){
 					location.href = "/smartStore/main";
 				}else{
 					alert('비밀번호를 확인후 다시 로그인하여 주시기 바랍니다.');
@@ -37,14 +37,7 @@ $(function(){
 		
 	})
 	
-	// ====== 로그아웃 ======
-	$('.header-logoutBtn').click(function(){
-		/*
-		$.ajax({
-			url : "/smartStore/"
-		})
-		*/
-	})
+	
 	
 	// =======================================회원가입 화면 ============================
 	

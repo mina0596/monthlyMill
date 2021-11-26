@@ -6,4 +6,9 @@ $(function(){
 	$('.inputLineBtn').click(function(){
 		location.href="/smartStore/addOrder/manually";
 	})
+	
+	// ====== 로그아웃 ======
+	$('.header-logoutBtn').click(function(){
+		location.href = "/smartStore/logout";
+	})
 })

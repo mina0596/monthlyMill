@@ -35,9 +35,10 @@ public class SmartstoreController {
 	
 	// 스마트스토어 메인페이지
 	@GetMapping("/main")
-	public String mainPage(Model model) {
+	public String mainPage(Model model, HttpSession session) {
 		List<SmartStoreOrder> allOrderInfo = ssService.getAllOrderInfo();
 		model.addAttribute("allOrderInfo", allOrderInfo);
+		log.info("세션에 로그인정보 확인 :{}", session.getAttribute("SESSIONID"));
 		return "/smartstore/menu1_attachFile";
 	}
 	
@@ -87,6 +88,14 @@ public class SmartstoreController {
 		log.info("로그인 성공 확인 :{}", ssService.loginCheck(loginInfo, session));
 		return ssService.loginCheck(loginInfo, session);
 	}
+	// 로그아웃 후 로그인 화면으로 이동
+	@GetMapping("/logout")
+	public String loggingOut(HttpSession session) {
+		session.invalidate();
+		log.info("로그인 세션 종료");
+		return "redirect:/smartStore/login";
+	}
+	
 	
 	// ============================================
 	// ==================== 주문 =================
