@@ -1,0 +1,201 @@
+<!-- 여기에 생산일지 -->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>스마트스토어 엑셀관리</title>
+    <link rel="stylesheet" href="../../static/css/screens/smartstore.css" />
+    <link rel="stylesheet" th:href="@{/css/screens/smartstore.css}" />
+  </head>
+  <body>
+    <!-- 상단 공통메뉴 -->
+    <header class="header" data-page-number="3"></header>
+
+    <div class="wrapper">
+      <section class="topSection">
+        <h1 class="pageTitle">생산일지</h1>
+        <div class="top-box">
+          <div class="top-box-column">
+            <button class="printBtn">출력하기</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 날짜표시 -->
+      <div class="tableDateBox">
+        <button class="prevDateBtn"><</button>
+        <span class="tableDate">2021-11-12</span>
+        <button class="nextDateBtn">></button>
+      </div>
+
+      <!-- 해당하는 날짜의 생산일지 테이블 -->
+      <section class="tableSection">
+        <table class="table">
+          <thead class="theadFix">
+            <!-- 테이블 헤드 고정해두기 -->
+            <th class="thead modify">수정</th>
+            <th class="thead number">번호</th>
+            <th class="thead paymentState">결제</th>
+            <th class="thead receiverName">수취인</th>
+            <th class="thead productFinishTime">생산완료</th>
+            <th class="thead reservation">예약</th>
+            <th class="thead deliveryStyle">배송형태</th>
+            <th class="thead classifyName">구분명</th>
+            <th class="thead quantity">수량</th>
+            <th class="thead packingMaterial">포장재</th>
+
+            <th class="thead type-duteop">두텁</th>
+            <th class="thead type-redbeen">팥</th>
+            <th class="thead type-hogo">호고</th>
+            <th class="thead type-nutrition">영양</th>
+            <th class="thead type-sasong">사송</th>
+            <th class="thead type-samsong">삼송</th>
+            <th class="thead type-isong">이송</th>
+            <th class="thead type-pyeshong">폐송</th>
+            <th class="thead type-osong">오송</th>
+            <th class="thead type-ssuk">쑥갠</th>
+            <th class="thead type-jaseol">자설</th>
+            <th class="thead type-danseol">단설</th>
+            <th class="thead type-bacseol">백설</th>
+            <th class="thead type-bac">百</th>
+            <th class="thead type-dol">첫돌</th>
+            <th class="thead type-hangwa">한과</th>
+            <th class="thead type-susu">수수</th>
+            <th class="thead type-cake">케익</th>
+            <th class="thead type-etc">기타</th>
+
+            <th class="thead sendDate">비고</th>
+          </thead>
+
+          <tbody class="tbody">
+            <td class="tdata modify">
+              <!-- 버튼 누르면 해당 행 수정가능상태로 변경 -->
+              <button class="modifyRowBt">수정</button>
+            </td>
+            <td class="tdata number">1</td>
+            <td class="tdata changeable-select-paymentState paymentState">
+                <!--
+                <select name="" id="">
+                    <option value=""></option>
+                    <option value="complete">완료</option>
+                    <option value="quickCOD">퀵비착불</option>
+                    <option value="quickPaymentConfirm">퀵비결제확인</option>
+                    <option value="incomplete">미완료</option>
+                </select> -->
+            </td>
+            <!-- menu2 테이블에 수취인~배송형태 컬럼항목 연동 -->
+            <td class="tdata receiverName">수취인</td>
+            <td class="tdata productFinishTime">생산완료</td>
+            <td class="tdata reservation">예약</td>
+            <td class="tdata deliveryStyle">배송형태</td>
+            <td class="tdata changeable-select-classifyName classifyName">
+                답례1-3호
+            </td>
+            
+            <!-- 수정가능파트 -->
+            <td class="tdata quantity changeable-number">
+              1
+            </td>
+            
+            <!-- 상품표 연동 -->
+            <td class="tdata packingMaterial">포장재</th>
+
+            <!-- 상품표연동+수정가능파트 -->
+            <td class="tdata changeable-number type-duteop">두텁</th>
+            <td class="tdata changeable-number type-redbeen">팥</th>
+            <td class="tdata changeable-number type-hogo">호고</th>
+            <td class="tdata changeable-number type-nutrition">영양</th>
+            <td class="tdata changeable-number type-sasong">사송</th>
+            <td class="tdata changeable-number type-samsong">삼송</th>
+            <td class="tdata changeable-number type-isong">이송</th>
+            <td class="tdata changeable-number type-pyeshong">폐송</th>
+            <td class="tdata changeable-number type-osong">오송</th>
+            <td class="tdata changeable-number type-ssuk">쑥갠</th>
+            <td class="tdata changeable-number type-jaseol">자설</th>
+            <td class="tdata changeable-number type-danseol">단설</th>
+            <td class="tdata changeable-number type-bacseol">백설</th>
+            <td class="tdata changeable-number type-bac">百</th>
+            <td class="tdata changeable-number type-dol">첫돌</th>
+            <td class="tdata changeable-number type-hangwa">한과</th>
+            <td class="tdata changeable-number type-susu">수수</th>
+            <td class="tdata changeable-number type-cake">케익</th>
+            <td class="tdata changeable-number type-etc">기타</th>
+
+            <td class="tdata note changeable-text">
+              <input type="text" placeholder="비고 입력">
+            </td>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 품목별 합계 테이블 -->
+      <section class="tableSection">
+        <table class="table ">
+          <thead>
+            <th class="thead type">품목</th>
+            <th class="thead type-duteop">두텁</th>
+            <th class="thead type-redbeen">팥</th>
+            <th class="thead type-hogo">호고</th>
+            <th class="thead type-nutrition">영양</th>
+            <th class="thead type-sasong">사송</th>
+            <th class="thead type-samsong">삼송</th>
+            <th class="thead type-isong">이송</th>
+            <th class="thead type-pyeshong">폐송</th>
+            <th class="thead type-osong">오송</th>
+            <th class="thead type-ssuk">쑥갠</th>
+            <th class="thead type-jaseol">자설</th>
+            <th class="thead type-danseol">단설</th>
+            <th class="thead type-bacseol">백설</th>
+            <th class="thead type-bac">百</th>
+            <th class="thead type-dol">첫돌</th>
+            <th class="thead type-hangwa">한과</th>
+            <th class="thead type-susu">수수</th>
+            <th class="thead type-cake">케익</th>
+            <th class="thead type-etc">기타</th>
+          </thead>
+          <!-- 여기에 상단 표 두텁~기타 개수 합계 계산해서 표시됨 -->
+          <tbody class="tbody">
+            <th class="thead type">품목별 합계</th>
+            <td class="tdata type-duteop">두텁</th>
+            <td class="tdata type-redbeen">팥</th>
+            <td class="tdata type-hogo">호고</th>
+            <td class="tdata type-nutrition">영양</th>
+            <td class="tdata type-sasong">사송</th>
+            <td class="tdata type-samsong">삼송</th>
+            <td class="tdata type-isong">이송</th>
+            <td class="tdata type-pyeshong">폐송</th>
+            <td class="tdata type-osong">오송</th>
+            <td class="tdata type-ssuk">쑥갠</th>
+            <td class="tdata type-jaseol">자설</th>
+            <td class="tdata type-danseol">단설</th>
+            <td class="tdata type-bacseol">백설</th>
+            <td class="tdata type-bac">百</th>
+            <td class="tdata type-dol">첫돌</th>
+            <td class="tdata type-hangwa">한과</th>
+            <td class="tdata type-susu">수수</th>
+            <td class="tdata type-cake">케익</th>
+            <td class="tdata type-etc">기타</th>
+          </tbody>
+        </table>
+      </section>
+
+
+    </div>
+
+    <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../static/js/smartstore/common.js"></script>
+    <script src="../../static/js/smartstore/tableUpdate_front.js"></script>
+
+    <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
+    <script
+      type="text/javascript"
+      th:src="@{/js/smartstore/common.js}"
+    ></script>
+    <script
+      type="text/javascript"
+      th:src="@{/js/smartstore/tableUpdate_front.js}"
+    ></script>
+  </body>
+</html>

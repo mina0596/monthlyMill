@@ -17,8 +17,16 @@ button {
   background-color: #fff;
 }
 button.emp-color {
-  background-color: rgb(72, 138, 33);
+  background-color: #00bf72;
   color: #fff;
+}
+.textBtn {
+  border: none;
+  background: none;
+}
+.textBtn:active {
+  color: #008793;
+  background: none;
 }
 
 /* 헤더 */
@@ -73,10 +81,17 @@ button.emp-color {
   font-weight: 700;
 }
 .top-box {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 1em;
 }
 
 /*테이블*/
+table,
+th,
+td {
+  border-collapse: collapse;
+}
 .table {
   table-layout: fixed;
   border: 2px solid #000;
@@ -84,12 +99,17 @@ button.emp-color {
 .thead {
   background-color: var(--column-color);
   font-weight: 700;
-  border-bottom: 1px solid #000;
+  border: 1px solid #000;
+
   padding: 0.25em 0;
+  vertical-align: middle;
 }
 .trow {
   padding: 0.25em 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.multirow {
+  border-bottom: 1px solid #000;
 }
 .thead,
 .tdata {
@@ -98,7 +118,10 @@ button.emp-color {
   /* text-overflow: ellipsis; */
   line-height: 150%;
   padding-left: 0.25em;
-  border-right: 1px solid rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+.tdata {
+  border: 1px solid rgba(0, 0, 0, 0.3);
 }
 /*내용 가림없이 전체보이기*/
 .tdata.expand {
@@ -167,9 +190,7 @@ button.emp-color {
   line-height: 150%;
   padding-right: 0.5em;
 }
-.manualInput {
-  /* width: 100%; */
-}
+
 .manualInput-half {
   width: 50%;
 }
@@ -182,4 +203,66 @@ button.emp-color {
 .manualCancelBtn {
   width: 8em;
   margin: 0 1em;
+}
+
+/*메뉴2*/
+/*검색창*/
+.top-searchBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.top-searchBtnBox {
+  display: flex;
+  justify-content: right;
+}
+.searchTextInput {
+  width: 20em;
+}
+
+/*============스마트스토어 로그인, 회원가입 ===============*/
+.loginbg {
+  background: #008793;
+  background-image: linear-gradient(
+    to right top,
+    #051937,
+    #004d7a,
+    #008793,
+    #00bf72,
+    #a8eb12
+  );
+  height: 100vh;
+}
+.loginBox {
+  margin: 20vh auto 0;
+  padding: 2em 2em;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 1em;
+  box-shadow: 0 0.25em 1em rgba(0, 0, 0, 0.3);
+}
+.loginBox .logo {
+  margin-bottom: 1em;
+}
+.loginBox_row {
+  margin: 0.75em 0.5em;
+  width: 100%;
+  text-align: center;
+}
+.loginBox_row .loginInput {
+  display: block;
+  margin: 0 auto;
+  width: 70%;
+}
+.loginBox_row.buttonBox {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+.buttonBox > button {
+  width: 100px;
+  margin-right: 0.5em;
 }
