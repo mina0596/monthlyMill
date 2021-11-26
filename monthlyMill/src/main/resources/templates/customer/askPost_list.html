@@ -35,6 +35,7 @@
         </div>
         <table class="board-table">
           <thead>
+           <tr>
             <th class="board-ask-num"><span>번호</span></th>
             <th class="board-ask-type"><span>문의유형</span></th>
             <th class="board-ask-title">
@@ -42,36 +43,33 @@
             </th>
             <th class="board-ask-date"><span>작성일</span></th>
             <th class="board-ask-writer"><span>작성자</span></th>
+           </tr>
           </thead>
           <tbody>
             <!-- 게시글 한 개 -->
-            <tr class="board-row">
-              <td class="board-ask-num"><span>3</span></td>
-              <td class="board-ask-type"><span>배송</span></td>
+            <tr class="board-row" th:each="l : ${csList}">
+              <td class="board-ask-num"><span th:text="${l.idx}"></span></td>
+              <td class="board-ask-type" th:text="${l.csCate}"><span>배송</span></td>
               <td class="board-ask-title">
+              	<input type="hidden" class="post-privateCheck" th:value="${l.csPublic}">
                 <!-- 각 게시글로 이동하는 링크 -->
-                <a href="#"
-                  ><span
-                    >긴제목 Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit. Similique ipsa, eos esse dolore impedit rerum nostrum
-                    molestias facilis magni, laudantium ut culpa blanditiis non
-                    et minima! Illo odit similique suscipit.</span
-                  ></a
-                >
+                <a th:href="'/customer/service/read?csNum=' + ${l.csNum}"><span th:text="${l.csTitle}"></span></a>
                 <!-- 답글 없는 경우 클래스에 hidden 포함 -->
                 <span class="board-ask-replyNumber hidden">0</span>
+                <!-- 답글 달린 경우 클래스에서 hidden 제외 -->
+                <!--  <span class="board-ask-replyNumber">1</span> -->
               </td>
-              <td class="board-ask-date"><span>2021-11-01</span></td>
-              <td class="board-ask-writer"><span>홍길동</span></td>
+              <td class="board-ask-date"><span th:text="${l.regDate}">2021-11-01</span></td>
+              <td class="board-ask-writer"><span th:text="${l.member.memberName}">홍길동</span></td>
             </tr>
-
+			<!-- 
             <tr class="board-row">
               <td class="board-ask-num"><span>2</span></td>
               <td class="board-ask-type"><span>교환/반품</span></td>
-              <!-- 비공개 게시글인경우 글제목 td에 postPrivate 클래스 포함 -->
+              비공개 게시글인경우 글제목 td에 postPrivate 클래스 포함
               <td class="board-ask-title postPrivate">
                 <a href="#">교환문의</a>
-                <!-- 답글 달린 경우 클래스에서 hidden 제외 -->
+                답글 달린 경우 클래스에서 hidden 제외
                 <span class="board-ask-replyNumber">1</span>
               </td>
               <td class="board-ask-date"><span>2021-11-01</span></td>
@@ -86,7 +84,8 @@
               </td>
               <td class="board-ask-date"><span>2021-11-01</span></td>
               <td class="board-ask-writer"><span>홍길동</span></td>
-            </tr>
+            </tr> -->
+			
           </tbody>
         </table>
 
@@ -105,5 +104,6 @@
     <script src="../../static/js/layout_front.js"></script>
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/layout_front.js}"></script>
+    <script type="text/javascript" th:src="@{/js/customer/customer_service.js}"></script>
   </body>
 </html>

@@ -49,4 +49,8 @@ public class CommonController {
 	public String makerAside() {
 		return "/component/makerAside";
 	}
+	
+	// ***************** 이벤트 & 공지 *******************
+	
+	
 }
