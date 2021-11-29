@@ -28,8 +28,9 @@ public class LoginInterceptor implements HandlerInterceptor{
 		String smartStoreSesssionId = (String) session.getAttribute("SESSIONID");
 		
 		// smartStore에서는 login.html 에만 들어갈 수 있게 걸어두기
-		String smartStoreUri = "/smartStore/login";
-		//ArrayList<String> exceptUri = new ArrayList<>(Arrays.asList(smartStoreUri));
+		String[] smartStoreUri = {"/smartStore/login", "/smartStore/join/idDupCheck"
+								 , "/smartStore/join", "/smartStore/join/getMemberInfo"};
+		ArrayList<String> exceptUri = new ArrayList<>(Arrays.asList(smartStoreUri));
 		
 		// 주소값 확인
 		String curUriAddr = request.getRequestURI();
@@ -42,7 +43,7 @@ public class LoginInterceptor implements HandlerInterceptor{
 			log.info("URI 값 확인 :{}", curUriAddr);
 			log.info("발동하는지 확인");
 			
-			if(!smartStoreUri.equals(curUriAddr)) {
+			if(!exceptUri.contains(curUriAddr)) {
 				accessCheck = false;
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out;

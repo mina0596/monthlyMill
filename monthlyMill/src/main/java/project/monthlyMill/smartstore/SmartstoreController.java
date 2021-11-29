@@ -109,14 +109,15 @@ public class SmartstoreController {
 	 
 	// 통합 주문 페이지
 	@GetMapping("/orderList")
-	public String getDataTable() {
+	public String getDataTable(Model model) {
+		model.addAttribute("orderList", ssService.getAllOrderInfo());
 		return "/smartstore/menu2_dataGatherTable";
 	}
 	
 	// 생산일지 페이지 이동
 	@GetMapping("/productionPlan")
 	public String getOrderList() { 
-		return "/smartstore/menu3_productTable";
+		return "/smartstore/menu3_productJournal";
 	}
 	
 	// ============================================

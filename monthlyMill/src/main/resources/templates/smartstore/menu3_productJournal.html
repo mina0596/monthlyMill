@@ -35,6 +35,7 @@
         <table class="table">
           <thead class="theadFix">
             <!-- 테이블 헤드 고정해두기 -->
+            <tr>
             <th class="thead modify">수정</th>
             <th class="thead number">번호</th>
             <th class="thead paymentState">결제</th>
@@ -67,9 +68,11 @@
             <th class="thead type-etc">기타</th>
 
             <th class="thead sendDate">비고</th>
+            </tr>
           </thead>
 
           <tbody class="tbody">
+           <tr>
             <td class="tdata modify">
               <!-- 버튼 누르면 해당 행 수정가능상태로 변경 -->
               <button class="modifyRowBt">수정</button>
@@ -100,32 +103,33 @@
             </td>
             
             <!-- 상품표 연동 -->
-            <td class="tdata packingMaterial">포장재</th>
+            <td class="tdata packingMaterial">포장재</td>
 
             <!-- 상품표연동+수정가능파트 -->
-            <td class="tdata changeable-number type-duteop">두텁</th>
-            <td class="tdata changeable-number type-redbeen">팥</th>
-            <td class="tdata changeable-number type-hogo">호고</th>
-            <td class="tdata changeable-number type-nutrition">영양</th>
-            <td class="tdata changeable-number type-sasong">사송</th>
-            <td class="tdata changeable-number type-samsong">삼송</th>
-            <td class="tdata changeable-number type-isong">이송</th>
-            <td class="tdata changeable-number type-pyeshong">폐송</th>
-            <td class="tdata changeable-number type-osong">오송</th>
-            <td class="tdata changeable-number type-ssuk">쑥갠</th>
-            <td class="tdata changeable-number type-jaseol">자설</th>
-            <td class="tdata changeable-number type-danseol">단설</th>
-            <td class="tdata changeable-number type-bacseol">백설</th>
-            <td class="tdata changeable-number type-bac">百</th>
-            <td class="tdata changeable-number type-dol">첫돌</th>
-            <td class="tdata changeable-number type-hangwa">한과</th>
-            <td class="tdata changeable-number type-susu">수수</th>
-            <td class="tdata changeable-number type-cake">케익</th>
-            <td class="tdata changeable-number type-etc">기타</th>
+            <td class="tdata changeable-number type-duteop">두텁</td>
+            <td class="tdata changeable-number type-redbeen">팥</td>
+            <td class="tdata changeable-number type-hogo">호고</td>
+            <td class="tdata changeable-number type-nutrition">영양</td>
+            <td class="tdata changeable-number type-sasong">사송</td>
+            <td class="tdata changeable-number type-samsong">삼송</td>
+            <td class="tdata changeable-number type-isong">이송</td>
+            <td class="tdata changeable-number type-pyeshong">폐송</td>
+            <td class="tdata changeable-number type-osong">오송</td>
+            <td class="tdata changeable-number type-ssuk">쑥갠</td>
+            <td class="tdata changeable-number type-jaseol">자설</td>
+            <td class="tdata changeable-number type-danseol">단설</td>
+            <td class="tdata changeable-number type-bacseol">백설</td>
+            <td class="tdata changeable-number type-bac">百</td>
+            <td class="tdata changeable-number type-dol">첫돌</td>
+            <td class="tdata changeable-number type-hangwa">한과</td>
+            <td class="tdata changeable-number type-susu">수수</td>
+            <td class="tdata changeable-number type-cake">케익</td>
+            <td class="tdata changeable-number type-etc">기타</td>
 
             <td class="tdata note changeable-text">
               <input type="text" placeholder="비고 입력">
             </td>
+           </tr>
           </tbody>
         </table>
       </section>
@@ -134,6 +138,7 @@
       <section class="tableSection">
         <table class="table ">
           <thead>
+           <tr>
             <th class="thead type">품목</th>
             <th class="thead type-duteop">두텁</th>
             <th class="thead type-redbeen">팥</th>
@@ -154,29 +159,32 @@
             <th class="thead type-susu">수수</th>
             <th class="thead type-cake">케익</th>
             <th class="thead type-etc">기타</th>
+           </tr>
           </thead>
           <!-- 여기에 상단 표 두텁~기타 개수 합계 계산해서 표시됨 -->
           <tbody class="tbody">
-            <th class="thead type">품목별 합계</th>
-            <td class="tdata type-duteop">두텁</th>
-            <td class="tdata type-redbeen">팥</th>
-            <td class="tdata type-hogo">호고</th>
-            <td class="tdata type-nutrition">영양</th>
-            <td class="tdata type-sasong">사송</th>
-            <td class="tdata type-samsong">삼송</th>
-            <td class="tdata type-isong">이송</th>
-            <td class="tdata type-pyeshong">폐송</th>
-            <td class="tdata type-osong">오송</th>
-            <td class="tdata type-ssuk">쑥갠</th>
-            <td class="tdata type-jaseol">자설</th>
-            <td class="tdata type-danseol">단설</th>
-            <td class="tdata type-bacseol">백설</th>
-            <td class="tdata type-bac">百</th>
-            <td class="tdata type-dol">첫돌</th>
-            <td class="tdata type-hangwa">한과</th>
-            <td class="tdata type-susu">수수</th>
-            <td class="tdata type-cake">케익</th>
-            <td class="tdata type-etc">기타</th>
+           <tr>
+            <td class="tdead type">품목별 합계</td>
+            <td class="tdata type-duteop">두텁</td>
+            <td class="tdata type-redbeen">팥</td>
+            <td class="tdata type-hogo">호고</td>
+            <td class="tdata type-nutrition">영양</td>
+            <td class="tdata type-sasong">사송</td>
+            <td class="tdata type-samsong">삼송</td>
+            <td class="tdata type-isong">이송</td>
+            <td class="tdata type-pyeshong">폐송</td>
+            <td class="tdata type-osong">오송</td>
+            <td class="tdata type-ssuk">쑥갠</td>
+            <td class="tdata type-jaseol">자설</td>
+            <td class="tdata type-danseol">단설</td>
+            <td class="tdata type-bacseol">백설</td>
+            <td class="tdata type-bac">百</td>
+            <td class="tdata type-dol">첫돌</td>
+            <td class="tdata type-hangwa">한과</td>
+            <td class="tdata type-susu">수수</td>
+            <td class="tdata type-cake">케익</td>
+            <td class="tdata type-etc">기타</td>
+           </tr>
           </tbody>
         </table>
       </section>

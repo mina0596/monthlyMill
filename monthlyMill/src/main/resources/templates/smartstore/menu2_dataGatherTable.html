@@ -80,59 +80,59 @@
           </thead>
           <tbody>
             <!-- 여기부터 -->
-            <tr class="trow">
-              <td class="tdata changeable-text deliveryDate" rowspan="4">
+            <tr class="trow" th:each=" l,n : ${orderList}">
+              <td class="tdata changeable-text deliveryDate" rowspan="4" th:text="${l.expDeliveryDate}">
                 희망일
               </td>
-              <td class="tdata changeable-text orderSite" rowspan="4">
+              <td class="tdata changeable-text orderSite" rowspan="4" th:text="${l.orderType}">
                 주문사이트
                 <!-- N스토어 시트에서 가져온건 N스토어로 표시 -->
                 <!-- N예약 시트에서 가져온건 N예약으로 표시 -->
                 <!-- 수기입력 한건 매장주문으로 표시 -->
               </td>
 
-              <td class="tdata number" rowspan="4">1</td>
-              <td class="tdata changeable-date paymentDate">결제일</td>
-              <td class="tdata changeable-text orderItemList">발주품목</td>
-              <td class="tdata quantity">수량</td>
-              <td class="tdata changeable-text eachTotalPrice">
+              <td class="tdata number" rowspan="4" th:text="${n.index+1}">1</td>
+              <td class="tdata changeable-date paymentDate" th:text="${l.paidDate}">결제일</td>
+              <td class="tdata changeable-text orderItemList" th:text="${l.detailedProduct}">발주품목</td>
+              <td class="tdata quantity" th:text="${l.orderQuantity}">수량</td>
+              <td class="tdata changeable-text eachTotalPrice" th:text="${l.totOrderAmount}">
                 상품별 총 주문금액
               </td>
-              <td class="tdata changeable-date sendDate" rowspan="4">
+              <td class="tdata changeable-date sendDate" rowspan="4" th:text="${l.shippingDate}">
                 발송기한
               </td>
               <td
                 class="tdata changeable-text noprint productFinishTime"
-                rowspan="4"
+                rowspan="4" th:text="${l.expDeliveryDate}"
               >
                 생산완료
               </td>
-              <td class="tdata noprint registerTime" rowspan="4">예약시간</td>
+              <td class="tdata noprint registerTime" rowspan="4" th:text="${l.expDeliveryDate}">예약시간</td>
               <td
                 class="tdata changeable-text noprint deliveryStyle"
-                rowspan="4"
+                rowspan="4" th:text="${l.shippingMethod}"
               >
                 배송형태
               </td>
             </tr>
-            <tr class="trow">
+            <tr class="trow" th:each=" l : ${orderList}">
               <td class="tdata">수기</td>
-              <td class="tdata changeable-text optionInfo">옵션정보</td>
-              <td class="tdata changeable-text deliveryType" colspan="2">
+              <td class="tdata changeable-text optionInfo" th:text="${l.option}">옵션정보</td>
+              <td class="tdata changeable-text deliveryType" colspan="2" th:text="${l.shippingMethod}">
                 배송방법
               </td>
             </tr>
-            <tr class="trow">
-              <td class="tdata changeable-text receiverName">수취인</td>
-              <td class="tdata changeable-text deliveryDestination">배송지</td>
-              <td class="tdata changeable-text receiverPhone" colspan="2">
+            <tr class="trow" th:each=" l : ${orderList}">
+              <td class="tdata changeable-text receiverName" th:text="${l.receiverName}">수취인</td>
+              <td class="tdata changeable-text deliveryDestination" th:text="${l.shippingAddr}">배송지</td>
+              <td class="tdata changeable-text receiverPhone" colspan="2" th:text="${l.receiverPhone}">
                 수취인연락처
               </td>
             </tr>
-            <tr class="trow multirow">
-              <td class="tdata purchaserName">구매자명</td>
-              <td class="tdata changeable-text deliveryMsg">배송메세지</td>
-              <td class="tdata purchaserPhone" colspan="2">구매자연락처</td>
+            <tr class="trow multirow" th:each=" l : ${orderList}">
+              <td class="tdata purchaserName" th:text="${l.ordererName}">구매자명</td>
+              <td class="tdata changeable-text deliveryMsg" th:text="${l.delieveryMsg}">배송메세지</td>
+              <td class="tdata purchaserPhone" colspan="2" th:text="${l.orderderPhone}">구매자연락처</td>
             </tr>
             <!-- 여기까지가 하나의 큰 행 -->
           </tbody>
