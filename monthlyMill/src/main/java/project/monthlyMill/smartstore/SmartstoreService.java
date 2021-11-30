@@ -32,7 +32,10 @@ public class SmartstoreService {
 	private static final Logger log = LoggerFactory.getLogger(SmartstoreService.class);
 	
 	
+	
+	// *****************************************************
 	// =========================== 회원가입 =====================
+	// *****************************************************
 	
 	// 회원가입시 아이디 중복 확인
 	public boolean idDupCheck(String inputId) {
@@ -51,7 +54,15 @@ public class SmartstoreService {
 		memberInfo.put("encodedPw", pwEncoder.encode(memberInfo.get("inputPw")));
 		pMapper.addMember(memberInfo);
 	}
+	
+	
+	
+	
+	
+	// *****************************************************
 	// =========================== 로그인 =====================
+	// *****************************************************
+
 	public boolean loginCheck(HashMap<String, String> loginInfo, HttpSession session) {
 		SmartStoreMember memberInfo = pMapper.getMemberInfoById(loginInfo.get("loginId"));
 		if(pwEncoder.matches(loginInfo.get("loginPw"), memberInfo.getMPw())) {
@@ -66,18 +77,51 @@ public class SmartstoreService {
 		}
 	}
 	
+	
+	
+	
+	
+	
+	// *****************************************************
 	// =========================== 주문 =====================
+	// *****************************************************
+
 	
 	// 모든 주문 조회
 	public List<SmartStoreOrder> getAllOrderInfo(){
 		return oMapper.getAllOrderInfo();
 	}
 
+	// 주문코드 생성
+	public String getNewOrderNum() {
+		Date date = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		String nowDate = format.format(date);
+		String newOrderNum = nowDate + oMapper.getOrderSequence();
+		return newOrderNum;
+	}
+	
+	// 새로운 주문 등록
+	public void addNewOrder(SmartStoreOrder newOrderInfo) {
+		oMapper.addOrder(newOrderInfo);
+	}
+	
+	// 생산일지 정보 가져오기
+	public List<HashMap<String, Object>> getProductionInfo(String expDate){
+		return oMapper.getProductionInfo(expDate);
+	}
+	
+	// 생산일지에서 날짜별 생산해야할 각각의 품목 수
+	public HashMap<String, Integer> getItemsTotal(String expDate){
+		return oMapper.getItemsTotal(expDate);
+	}
 	
 	
 	
 	
+	// *****************************************************
 	// =========================== 품목 =====================
+	// *****************************************************
 	
 	
 	// 품목코드 생성
@@ -152,5 +196,14 @@ public class SmartstoreService {
 		} catch (Exception e) {
 			return "fail";
 		}
+		
 	}
+	
+	
+	// 검색조건으로 검색결과 상품정보 가져오기
+	public List<SmartStoreProduct> getSearchProductInfo(HashMap<String, String> searchWords){
+		return pMapper.getSearchProductInfo(searchWords);
+	}
+	
+	
 }

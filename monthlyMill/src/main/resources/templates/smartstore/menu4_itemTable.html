@@ -16,14 +16,20 @@
       <section class="topSection">
         <h1 class="pageTitle">발주품목별 생산구성표(상품표)</h1>
         <div class="top-box">
-          <select name="" class="searchKey">
+         <form th:action="@{/smartStore/productList}" method="get">
+          <select name="searchKey" class="searchKey">
             <option value="">검색조건</option>
             <option value="구분명">구분명</option>
-            <option value="포장재">구분명</option>
+            <option value="포장재">포장재</option>
             <option value="비고">비고</option>
           </select>
-          <input type="text" placeholder="검색어 입력" />
-          <button class="searchBtn">검색</button>
+          <input type="text" name="searchValue" placeholder="검색어 입력" />
+          <button type="submit">검색</button>
+         </form>
+        </div>
+        <!-- 위치를 맨오른쪽으로 수정해주세요....ㅜㅜ -->
+        <div class="top-box">
+          <button class="addProductBtn">상품 구성 추가</button>
         </div>
       </section>
       <section class="tableSection">
@@ -63,6 +69,7 @@
           </thead>
           <tbody class="tbody">
             <!-- 내용 클릭 시 수정되게, 스크롤 -->
+            <!-- 테이블 헤드가 고정되거나, 데이터개수에 따라 페이지가 되게 설정 -->
             <tr th:each="l : ${pList}">
 	            <td class="tdata classifyCode" th:text="${l.pCode}"></td>
 	            <td class="tdata classifyName" th:text="${l.pName}"></td>
@@ -122,5 +129,6 @@
 
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/smartstore/common.js}"></script>
+    <script type="text/javascript" th:src="@{/js/smartstore/product.js}"></script>
   </body>
 </html>

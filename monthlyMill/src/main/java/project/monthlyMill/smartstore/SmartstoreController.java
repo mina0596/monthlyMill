@@ -1,5 +1,7 @@
 package project.monthlyMill.smartstore;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -98,14 +100,29 @@ public class SmartstoreController {
 	
 	
 	// ============================================
-	// ==================== 주문 =================
+	// ==================== 주문 ===================
 	// ============================================
 	
 	// 수기로 주문 입력 페이지
 	@GetMapping("/addOrder/manually")
-	public String getManualLine() {
+	public String getManualLine(Model model) {
+		model.addAttribute("newOrderCode", ssService.getNewOrderNum());
 		return "/smartstore/menu1_addManualLine";
 	}
+	
+	// 주문 등록 처리
+	@PostMapping("/addOrder/manually")
+	@ResponseBody
+	public boolean addNewOrder(@RequestBody SmartStoreOrder orderInfo) {
+		try {
+			ssService.addNewOrder(orderInfo);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
+	
 	 
 	// 통합 주문 페이지
 	@GetMapping("/orderList")
@@ -116,18 +133,25 @@ public class SmartstoreController {
 	
 	// 생산일지 페이지 이동
 	@GetMapping("/productionPlan")
-	public String getOrderList() { 
+	public String getOrderList(Model model) {
+		Date date = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		String nowDate = format.format(date);
+		model.addAttribute("infoList", ssService.getProductionInfo(nowDate));
+		model.addAttribute("itemTotal", ssService.getItemsTotal(nowDate));
 		return "/smartstore/menu3_productJournal";
 	}
 	
+	
 	// ============================================
-	// ==================== 상품 =================
+	// ==================== 상품 ===================
 	// ============================================
 	
 	// 상품 등록 페이지 이동
 	@GetMapping("/addProduct")
 	public String addProduct(Model model) {
 		model.addAttribute("pCode", ssService.getNewPcode());
+		
 		return "/smartstore/menu4_addItem";
 	}
 	
@@ -142,8 +166,18 @@ public class SmartstoreController {
 	
 	// 상품표 리스트
 	@GetMapping("/productList")
-	public String getProductList(Model model) {
-		model.addAttribute("pList", ssService.getAllProductInfo());
+	public String getProductList(Model model
+								,@RequestParam(name = "searchKey", required = false) String searchKey
+								,@RequestParam(name = "searchValue", required = false) String searchValue) {
+		
+		log.info("============검색어 받아오는지확인================");
+		log.info("검색조건 :{}", searchKey);
+		log.info("검색어 :{}", searchValue);
+		HashMap<String, String> paramMap = new HashMap<String, String>();
+		paramMap.put("searchValue", searchValue);
+		paramMap.put("searchKey", searchKey);
+		ssService.getSearchProductInfo(paramMap);
+		model.addAttribute("pList", ssService.getSearchProductInfo(paramMap));
 		
 		return "/smartstore/menu4_itemTable";
 	}

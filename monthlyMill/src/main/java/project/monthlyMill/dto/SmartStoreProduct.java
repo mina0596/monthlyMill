@@ -33,6 +33,7 @@ public class SmartStoreProduct {
 	private String modifyDate;
 	private String regMId;
 	private String modifyMId;
+	private char originalCheck;
 	
 
 

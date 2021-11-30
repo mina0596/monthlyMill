@@ -36,4 +36,7 @@ public interface SmartstoreProductMapper {
 	
 	// 새로운 상품 등록하기
 	public void addNewProduct(SmartStoreProduct pInfo);
+	
+	// 검색조건으로 검색결과 상품정보 가져오기
+	public List<SmartStoreProduct> getSearchProductInfo(HashMap<String, String> searchWords);
 }

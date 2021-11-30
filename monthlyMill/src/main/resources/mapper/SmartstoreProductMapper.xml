@@ -34,13 +34,35 @@
 		<result property="modifyDate"		column="modify_date"/>
 		<result property="regMId"		column="reg_m_id"/>
 		<result property="modifyMId"		column="modify_m_id"/>
+		<result property="originalCheck"		column="original_check"/>
 	</resultMap>
 	
 	
 	<!-- ====== 모든 상품 조회 ====== -->
 	<select id="getAllProductInfo" resultMap="SmartStoreProductResultMap">
-		SELECT idx, product_code, product_name, wrapping_type, product_price, item_01, item_02, item_03, item_04, item_05, item_06, item_07, item_08, item_09, item_10, item_11, item_12, item_13, item_14, item_15, item_16, item_17, item_18, item_19, memo, reg_date, modify_date, reg_m_id, modify_m_id
+		SELECT idx, product_code, product_name, wrapping_type, product_price, item_01, item_02, item_03, item_04, item_05, item_06, item_07, item_08, item_09, 
+		item_10, item_11, item_12, item_13, item_14, item_15, item_16, item_17, item_18, item_19, memo, reg_date, modify_date, reg_m_id, modify_m_id, original_check
 		FROM smartstore_product_info
+		WHERE original_check = 'Y';
+	</select>
+	
+	<select id="getSearchProductInfo" parameterType="map" resultMap="SmartStoreProductResultMap">
+		SELECT
+			*
+		FROM
+			smartstore_product_info AS p
+			WHERE p.original_check = 'Y' 
+			<trim prefix="AND">
+				<if test="searchKey == '구분명'">
+					p.product_name LIKE CONCAT ('%', #{searchValue}, '%');
+				</if>
+				<if test="searchKey == '포장재'">
+					p.wrapping_type LIKE CONCAT ('%', #{searchValue}, '%');
+				</if>
+				<if test="searchKey == '비고'">
+					p.memo LIKE CONCAT ('%', #{searchValue}, '%');
+				</if>
+			</trim>
 	</select>
 	
 	<!-- ====== 상품코드 시퀀스 가져오기 ======= -->
@@ -56,11 +78,11 @@
 	<!-- ====== 상품 등록하기 ====== -->
 	<insert id="addNewProduct" parameterType="SmartStoreProduct">
 		INSERT INTO smartstore_product_info
-		(idx, product_code, product_name, wrapping_type, product_price, item_01, item_02, item_03, item_04, item_05, item_06, item_07, item_08, item_09, item_10, item_11, item_12, item_13, item_14, item_15, item_16, item_17, item_18, item_19, memo, reg_date, modify_date, reg_m_id, modify_m_id)
+		(idx, product_code, product_name, wrapping_type, product_price, item_01, item_02, item_03, item_04, item_05, item_06, item_07, item_08, item_09, item_10, item_11, item_12, item_13, item_14, item_15, item_16, item_17, item_18, item_19, memo, reg_date, modify_date, reg_m_id, modify_m_id, original_check)
 		VALUES (NULL, #{pCode}, #{pName}, #{wrappingType}, #{pPrice}, #{item01}, #{item02}, #{item03}, #{item04}, #{item05}, #{item06}, 
 		#{item07}, #{item08}, #{item09}, #{item10}, #{item11}, #{item12}, #{item13}, #{item14},
 		#{item15}, #{item16}, #{item17}, #{item18}, #{item19},
-		#{memo}, NOW(), NOW(), '', '')
+		#{memo}, NOW(), NOW(), '', '', 'Y')
 	</insert>
 	
 	

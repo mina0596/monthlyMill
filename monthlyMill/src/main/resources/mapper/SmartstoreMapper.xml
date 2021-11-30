@@ -4,6 +4,7 @@
 <mapper namespace="project.monthlyMill.smartstore.SmartstoreOrderMapper">
 	<resultMap type="SmartStoreOrder"	id="SmartStoreOrderResultMap">
 		<result property="idx"			column="idx"/>
+		<result property="orderNum"			column="order_num"/>
 		<result property="shippingDate"		column="shipping_date"/>
 		<result property="paidDate"			column="paid_date"/>
 		<result property="shippingMethod"			column="shipping_method"/>
@@ -12,23 +13,105 @@
 		<result property="receiverName"		column="receiver_name"/>
 		<result property="receiverPhone"		column="receiver_phone"/>
 		<result property="productName"		column="product_name"/>
+		<result property="productCode"		column="product_code"/>
 		<result property="detailedProduct"		column="detailed_product"/>
 		<result property="orderQuantity"		column="order_quantity"/>
 		<result property="totOrderAmount"		column="total_order_amount"/>
 		<result property="option"		column="option_info"/>
+		<result property="shippingFee"		column="shipping_fee"/>
 		<result property="shippingAddr"		column="shipping_addr"/>
 		<result property="delieveryMsg"		column="delivery_msg"/>
 		<result property="expDeliveryDate"		column="exp_delivery_date"/>
 		<result property="regDate"		column="reg_date"/>
 		<result property="regMId"		column="reg_m_id"/>
 		<result property="orderType"		column="order_type"/>
+		<result property="productionComp"		column="production_complete"/>
+		<result property="shippingPayCheck"		column="shipping_pay_check"/>
+		<result property="memo"		column="memo"/>
 	</resultMap>
-	
 	<!-- ====== 모든 주문 조회 ====== -->
 	<select id="getAllOrderInfo" resultMap="SmartStoreOrderResultMap">
-		SELECT idx, shipping_date, paid_date, shipping_method, orderer_name, orderer_phone, receiver_name, receiver_phone, product_name, detailed_product, order_quantity, total_order_amount, option_info, shipping_addr, delivery_msg, exp_delivery_date, reg_date, reg_m_id, order_type
+		SELECT idx, order_num, shipping_date, paid_date, shipping_method, orderer_name, orderer_phone, receiver_name, receiver_phone, product_name, product_code, detailed_product, order_quantity, total_order_amount, option_info, 
+		shipping_fee, shipping_addr, delivery_msg, exp_delivery_date, reg_date, reg_m_id, order_type, 
+		production_complete, shipping_pay_check, memo
 		FROM smartstore_order_info
 	</select>
 	
+	
+	<!-- ====== 주문 등록 ====== -->
+	<insert id="addOrder" parameterType="SmartStoreOrder">
+		INSERT INTO smartstore_order_info
+		(idx, order_num, shipping_date, paid_date, shipping_method, orderer_name, orderer_phone, receiver_name, receiver_phone, product_name, product_code, detailed_product, order_quantity, total_order_amount, option_info, shipping_fee, shipping_addr, delivery_msg, exp_delivery_date, reg_date, reg_m_id, order_type, production_complete, shipping_pay_check, memo)
+		VALUES (NULL, '', NOW(), NOW(), '', '', '', '', '', '', '', 0, 0, '', 0, '', '', '', NOW(), '', '', '', '', '')
+	</insert>
+	
+	
+	
+	<!-- ====== 주문번호 가져오기 ====== -->
+	<select id="getOrderSequence" resultType="String">
+		SELECT 
+			if(COUNT(0)=0, '001', LPAD(cast(substring(MAX(o.order_num), 9, 11) as decimal)+1,3,0))
+		FROM 
+			smartstore_order_info AS o
+		WHERE 
+			DATE_format(o.reg_date, '%Y-%m-%d') = CURDATE();
+	</select>
+	
+	
+	<!--  생산일지 내용 가져오기 -->
+	<select id="getProductionInfo" parameterType="String" resultType="map">
+		SELECT
+			o.order_num AS orderNum,
+			o.paid_date AS paidDate,
+			o.receiver_name AS receiverName,
+			o.production_complete AS productionComp,
+			o.shipping_pay_check AS shippingPayCheck,
+			o.product_name AS productName,
+			o.product_code AS productCode,
+			o.order_quantity AS orderQuantity,
+			o.exp_delivery_date AS expDeliveryDate,
+			o.memo AS memo,
+			p.wrapping_type AS wrappingType,
+			p.item_01 AS item01, p.item_02 AS item02, p.item_03 AS item03, p.item_04 AS item04,
+			p.item_05 AS item05, p.item_06 AS item06, p.item_07 AS item07, p.item_08 AS item08,
+			p.item_09 AS item09, p.item_10 AS item10, p.item_11 AS item11, p.item_12 AS item12,
+			p.item_13 AS item13, p.item_14 AS item14, p.item_15 AS item15, p.item_16 AS item16,
+			p.item_17 AS item17, p.item_18 AS item18, p.item_19 AS item19
+		FROM
+			smartstore_order_info AS o
+			INNER join
+			smartstore_product_info AS p
+			on o.product_code = p.product_code
+			WHERE exp_delivery_date LIKE CONCAT ('%', #{expDate}, '%');
+	</select>
+	
+	
+	<!-- 생산일지에서 날짜별 생산해야할 각각의 품목 수 -->
+	<select id="getItemsTotal" parameterType="String" resultType="map">
+		SELECT
+			sum(sub.item01) AS item01total, sum(sub.item02) AS item02total,
+			sum(sub.item03) AS item03total, sum(sub.item04) AS item04total,
+			sum(sub.item05) AS item05total, sum(sub.item06) AS item06total,
+			sum(sub.item07) AS item07total, sum(sub.item08) AS item08total,
+			sum(sub.item09) AS item09total, sum(sub.item10) AS item10total,
+			sum(sub.item11) AS item11total, sum(sub.item12) AS item12total,
+			sum(sub.item13) AS item13total, sum(sub.item14) AS item14total,
+			sum(sub.item15) AS item15total, sum(sub.item16) AS item16total,
+			sum(sub.item17) AS item17total, sum(sub.item18) AS item18total,
+			sum(sub.item19) AS item19total
+		from
+			(SELECT
+				p.item_01 AS item01, p.item_02 AS item02, p.item_03 AS item03, p.item_04 AS item04,
+				p.item_05 AS item05, p.item_06 AS item06, p.item_07 AS item07, p.item_08 AS item08,
+				p.item_09 AS item09, p.item_10 AS item10, p.item_11 AS item11, p.item_12 AS item12,
+				p.item_13 AS item13, p.item_14 AS item14, p.item_15 AS item15, p.item_16 AS item16,
+				p.item_17 AS item17, p.item_18 AS item18, p.item_19 AS item19
+			FROM
+				smartstore_order_info AS o
+				INNER join
+				smartstore_product_info AS p
+				on o.product_code = p.product_code
+				WHERE exp_delivery_date LIKE CONCAT ('%', #{expDate}, '%')) AS sub;
+	</select>
 	
 </mapper>
