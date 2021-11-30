@@ -42,8 +42,6 @@
 - cancelOrderList: 나의 주문정보-취소반품조회
 - cancelOrder: 주문취소 신청
 
-고객 이용 화면(새로 추가된 화면)
-
 - askPost_read: 문의글 읽기
 - askPost_write: 문의글 쓰기
 - findId: 아이디 찾기
