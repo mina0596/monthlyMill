@@ -160,7 +160,7 @@ td {
   max-width: 7em;
 }
 
-/*입력창*/
+/* 수기 등록 입력창 */
 .manual {
   margin: 0 auto;
   padding: 2em;
@@ -182,6 +182,7 @@ td {
   margin: 1.5em 0;
 }
 .manualRow {
+  margin-bottom: 0.25em;
   display: grid;
   grid-template-columns: 10em auto;
 }
@@ -190,12 +191,48 @@ td {
   line-height: 150%;
   padding-right: 0.5em;
 }
-
 .manualInput-half {
   width: 50%;
 }
+.manualInput-unitBox {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1em;
+}
+.manualInputColumn {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.manualListItem {
+  min-width: 430px;
+  margin-bottom: 0.5em;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.5em;
+}
+.manualListTitle {
+  margin-bottom: 0.5em;
+  padding: 0.25em;
+  text-align: center;
+  font-weight: 700;
+  background-color: var(--menu-color);
+}
+.manualList {
+  display: grid;
+  grid-template-columns: 10em auto;
+  margin: 0.25em 1em;
+}
+.manualInput.eachTotalPrice-input {
+  text-align: right;
+}
+
+.manualListBtnBox {
+  display: flex;
+  justify-content: flex-end;
+}
 .manualBtnBox {
-  margin-top: 1em;
+  margin-top: 2em;
   display: flex;
   justify-content: center;
 }

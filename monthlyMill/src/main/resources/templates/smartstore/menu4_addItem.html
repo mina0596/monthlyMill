@@ -15,6 +15,7 @@
     <section class="manualWrapper">
       <div class="manual">
         <div class="manualTitle">
+          <!-- 제목변경: 상품표 제품 수기등록 -->
           <h3>발주품목별 생산구성 등록</h3>
         </div>
       <section class="tableSection">
@@ -39,7 +40,7 @@
                 <select type="text" class="manualInput packingMaterial-input" >
                   <option value="-">-</option>
                   <option value="접이식">접이식</option>
-                  <option value="접이소">접이소</option>                  
+                  <option value="접이소">접이소</option>
                   <option value="접이중">접이중</option>
                   <option value="접이대">접이대</option>
                   <option value="싸바리">싸바리</option>
@@ -62,33 +63,36 @@
             <tr class="manualRow">  
               <th class="manualTh tteokType">떡 종류</th>
               <td>
-                <div class="">
-                <select type="text" class="manualInput tteokType-input " >
-                  <option value="item01">두텁</option>
-                  <option value="item02">팥</option>
-                  <option value="item03">호고</option>
-                  <option value="item04">영양</option>
-                  <option value="item05">사송</option>
-                  <option value="item06">삼송</option>
-                  <option value="item07">이송</option>
-                  <option value="item08">폐송</option>
-                  <option value="item09">오송</option>
-                  <option value="item10">쑥갠</option>
-                  <option value="item11">자설</option>
-                  <option value="item12">단설</option>
-                  <option value="item13">백설</option>
-                  <option value="item14">百</option>
-                  <option value="item15">첫돌</option>
-                  <option value="item16">한과</option>
-                  <option value="item17">수수</option>
-                  <option value="item18">케익</option>
-                  <option value="item19">기타</option>
-                </select>
-
-                  <input type="number" class="manualInput quantity">
-                  <label for="">개</label>
-                  <!-- 추가되게 해주세요 -->
-                  <button class="button addTteokTypeBtn">추가</button>
+                <div class="manualInputColumn">
+                <ul class="tteockTypeInputList">
+                  <li>
+                    <select type="text" class="manualInput tteokType-input " >
+                      <option value="item01">두텁</option>
+                      <option value="item02">팥</option>
+                      <option value="item03">호고</option>
+                      <option value="item04">영양</option>
+                      <option value="item05">사송</option>
+                      <option value="item06">삼송</option>
+                      <option value="item07">이송</option>
+                      <option value="item08">폐송</option>
+                      <option value="item09">오송</option>
+                      <option value="item10">쑥갠</option>
+                      <option value="item11">자설</option>
+                      <option value="item12">단설</option>
+                      <option value="item13">백설</option>
+                      <option value="item14">百</option>
+                      <option value="item15">첫돌</option>
+                      <option value="item16">한과</option>
+                      <option value="item17">수수</option>
+                      <option value="item18">케익</option>
+                      <option value="item19">기타</option>
+                    </select>
+    
+                      <input type="number" class="manualInput quantity">
+                      <label for="">개</label>
+                  </li>
+                </ul>
+                  <button class="button addTteokTypeBtn">+종류추가</button>
                 </div>
               </td>
             </tr>
@@ -111,9 +115,11 @@
 
     <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../static/js/smartstore/common.js"></script>
+    <script src="../../static/js/smartstore/addItem_front.js"></script>
 
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/smartstore/common.js}"></script>
     <script type="text/javascript" th:src="@{/js/smartstore/product.js}"></script>
+    <script type="text/javascript" th:src="@{/js/smartstore/addItem_front.js}"></script>
   </body>
 </html>
