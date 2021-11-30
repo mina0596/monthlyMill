@@ -33,21 +33,27 @@ $(document).on("keyup", ".receiverPhone-input", function(){
 	this.value = autoHypenPhone(this.value);
 });
 
+
+
+	
+
+
 //주문종류 선택 시: 희망일 시간표시 변경
-document.querySelector(".orderType-input").addEventListener("change", function(){
+$(document).on("change", ".orderType-input", function(){
+  const thisListBox = this.parentNode.parentNode;
   if(this.value==="N스토어"){
-    if(document.querySelector(".deliveryDateTime-input").classList.contains("hidden")){
-      document.querySelector(".deliveryDatePart-input").classList.remove("hidden");
+    if(thisListBox.querySelector(".deliveryDateTime-input").classList.contains("hidden")){
+      thisListBox.querySelector(".deliveryDatePart-input").classList.remove("hidden");
     }
-    if(!document.querySelector(".deliveryDateTime-input").classList.contains("hidden")){
-      document.querySelector(".deliveryDateTime-input").classList.add("hidden");
+    if(!thisListBox.querySelector(".deliveryDateTime-input").classList.contains("hidden")){
+      thisListBox.querySelector(".deliveryDateTime-input").classList.add("hidden");
     }
   }else{
-    if(document.querySelector(".deliveryDateTime-input").classList.contains("hidden")){
-      document.querySelector(".deliveryDateTime-input").classList.remove("hidden");
+    if(thisListBox.querySelector(".deliveryDateTime-input").classList.contains("hidden")){
+      thisListBox.querySelector(".deliveryDateTime-input").classList.remove("hidden");
     }
-    if(!document.querySelector(".deliveryDateTime-input").classList.contains("hidden")){
-      document.querySelector(".deliveryDatePart-input").classList.add("hidden");
+    if(!thisListBox.querySelector(".deliveryDateTime-input").classList.contains("hidden")){
+      thisListBox.querySelector(".deliveryDatePart-input").classList.add("hidden");
     }
   }
 });
@@ -133,22 +139,27 @@ document.querySelector(".addManualListItemBoxBtn").addEventListener("click", fun
                 </div>
               </li>
               <li class="manualList">
-                <span class="manualTh">희망일</span>
-                <div>
-                  <input type="date" class="manualInput deliveryDate-input" />
-                  <select class="manualInput deliveryDate2-input">
-                    <option value="1부">1부</option>
-                    <option value="2부">2부</option>
-                  </select>
-                </div>
-              </li>
-              <li class="manualList">
                 <span class="manualTh">주문종류</span>
                 <select class="manualInput orderType-input">
                   <option value="N스토어">N스토어</option>
                   <option value="N예약">N예약</option>
                   <option value="매장주문">매장주문</option>
                 </select>
+              </li>
+              <li class="manualList">
+                <span class="manualTh">희망일</span>
+                <div>
+                  <input type="date" class="manualInput deliveryDate-input" />
+                  <select class="manualInput deliveryDatePart-input">
+                    <option value="1부">1부</option>
+                    <option value="2부">2부</option>
+                  </select>
+                  <input
+                    type="time"
+                    class="manualInput deliveryDateTime-input hidden"
+                    step="1800"
+                  />
+                </div>
               </li>
             `;
             document.querySelector(".manualListItemBox").appendChild(manualListItem);
