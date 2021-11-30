@@ -203,13 +203,14 @@ input[type="radio"]:checked + label.btn.square {
 .hidden {
   display: none !important;
 }
-/* 텍스트 */
+
+/* === 텍스트 === */
 .h1_title {
   margin-bottom: 0.75em;
 }
 .h3_title {
   padding-left: 0.5em;
-  padding-bottom: 0.5em;
+  padding: 0.5em;
   font-size: 14pt;
   /* letter-spacing: -1px; */
   font-weight: 700;
@@ -297,11 +298,10 @@ input[type="radio"]:checked + label.btn.square {
   color: #fff;
 }
 
-/*표기 요소*/
+/* === 표기 요소 === */
 .price_number::after {
   content: "원";
 }
-
 .item_number::after {
   content: "개";
 }
@@ -317,6 +317,12 @@ input[type="radio"]:checked + label.btn.square {
 .perGram_number::after {
   content: "g";
 }
+.point_number::after {
+  content: " P";
+}
+.penalty_number::after {
+  content: " 점";
+}
 
 /*기타*/
 .hash,
@@ -324,6 +330,7 @@ input[type="radio"]:checked + label.btn.square {
   margin: 0.15em;
 }
 .hash::before,
+.hashtext::before,
 .checkHash label::before {
   content: "#";
 }
@@ -342,6 +349,9 @@ input[type="radio"]:checked + label.btn.square {
   border-radius: 0.25em;
   transition: transform 0.2s ease-in;
   transform: scale(1);
+}
+.classifyArrow::after {
+  content: ">";
 }
 
 /* hover이벤트는 모바일에서 제외 */
@@ -374,6 +384,9 @@ input.small {
 }
 input.inputLong {
   width: 100%;
+}
+.input-short {
+  width: 3em;
 }
 
 .cutLine {
