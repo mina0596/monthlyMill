@@ -85,7 +85,14 @@
 		#{memo}, NOW(), NOW(), '', '', 'Y')
 	</insert>
 	
-	
+	<!-- 등록된 상품명/상품코드들 가져오기 -->
+	<select id="getAllProductName" resultType="map">
+		SELECT 
+			p.product_name as pName,
+			p.product_code as pCode
+		FROM 
+			smartstore_product_info AS p
+	</select>
 	
 	
 	<!-- ************************************************************************** -->

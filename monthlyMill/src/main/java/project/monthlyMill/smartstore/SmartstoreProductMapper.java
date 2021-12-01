@@ -39,4 +39,7 @@ public interface SmartstoreProductMapper {
 	
 	// 검색조건으로 검색결과 상품정보 가져오기
 	public List<SmartStoreProduct> getSearchProductInfo(HashMap<String, String> searchWords);
+	
+	// 등록된 상품명/상품코드들 가져오기
+	public List<HashMap<String, String>> getAllProductName();
 }

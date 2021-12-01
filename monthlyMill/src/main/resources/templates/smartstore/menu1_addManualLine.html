@@ -23,6 +23,7 @@
               <tr class="manualRow">
                 <th class="manualTh">발송기한</th>
                 <td>
+                  <input type="hidden" class="manualInput orderCode-input" th:value="${newOrderCode}"/>
                   <input type="date" class="manualInput sendDate-input" />
                 </td>
               </tr>
@@ -30,17 +31,17 @@
                 <th class="manualTh">결제일</th>
                 <td>
                   <input type="date" class="manualInput paymentDate-input" />
-                  <input type="time" class="manualInput paymentDate-input" />
+                  <input type="time" class="manualInput paymentTime-input" />
                 </td>
               </tr>
               <tr class="manualRow">
                 <th class="manualTh">배송방법</th>
                 <td>
                   <select class="manualInput deliveryType-input">
-                    <option value="visitReceipt">방문수령</option>
-                    <option value="directDelivery">직접전달</option>
-                    <option value="quickService">퀵서비스</option>
-                    <option value="parcel">택배,등기,소포</option>
+                    <option value="방문수령">방문수령</option>
+                    <option value="직접전달">직접전달</option>
+                    <option value="퀵서비스">퀵서비스</option>
+                    <option value="택배,등기,소포">택배,등기,소포</option>
                   </select>
                 </td>
               </tr>
@@ -85,8 +86,7 @@
                 <li class="manualList">
                   <span class="manualTh">발주품목</span>
                   <select class="manualInput orderItemList-input">
-                    <option value="">백일상</option>
-                    <option value="">등록된 품목</option>
+                    <option th:each="l : ${pNameList}" th:value="${l.pCode}" th:text="${l.pName}"></option>
                   </select>
                 </li>
 
@@ -103,9 +103,19 @@
                 <!-- 이건 자동계산되서 뜨게 -->
                 <li class="manualList">
                   <span class="manualTh">상품별 총 주문금액</span>
+                  <div class="manualInput-unitBox">
+                    <input
+                      type="number"
+                      class="manualInput eachTotalPrice-input price_number"
+                      min="0"
+                    /><span> 원</span>
+                  </div>
+                  <!-- 계산이 자동으로 되게 할 것인지 / 입력하게할것인지 -->
+                  <!-- 
                   <span class="manualInput eachTotalPrice-input price_number"
                     >0</span
                   >
+                   -->
                 </li>
                 <li class="manualList">
                   <span class="manualTh">옵션정보</span>
@@ -170,7 +180,6 @@
         </div>
       </section>
     </div>
-
     <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../static/js/smartstore/common.js"></script>
     <script src="../../static/js/smartstore/order.js"></script>

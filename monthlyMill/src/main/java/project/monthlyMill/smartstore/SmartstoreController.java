@@ -107,19 +107,17 @@ public class SmartstoreController {
 	@GetMapping("/addOrder/manually")
 	public String getManualLine(Model model) {
 		model.addAttribute("newOrderCode", ssService.getNewOrderNum());
+		model.addAttribute("pNameList", ssService.getAllProductName());
 		return "/smartstore/menu1_addManualLine";
 	}
 	
 	// 주문 등록 처리
 	@PostMapping("/addOrder/manually")
 	@ResponseBody
-	public boolean addNewOrder(@RequestBody SmartStoreOrder orderInfo) {
-		try {
-			ssService.addNewOrder(orderInfo);
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
+	public boolean addNewOrder(@RequestBody HashMap<String, Object> orderInfo, HttpSession session) {
+		log.info("새로 등록하는 주문정보 들어오는 값 확인해보자 :{}", orderInfo);
+		ssService.addNewOrder(orderInfo, session);
+		return false;
 	}
 	
 	

@@ -102,8 +102,43 @@ public class SmartstoreService {
 	}
 	
 	// 새로운 주문 등록
-	public void addNewOrder(SmartStoreOrder newOrderInfo) {
-		oMapper.addOrder(newOrderInfo);
+	public void addNewOrder(HashMap<String, Object> newOrderInfo, HttpSession session) {
+		
+		SmartStoreOrder orderInfo = new SmartStoreOrder();
+		
+		// 1. 상품이 여러개인지 한개인지 확인
+		int orderedProductNum = Integer.parseInt(newOrderInfo.get("orderedProductNum").toString());
+		
+		// 상품에 관계없이 들어가야하는 정보 
+		orderInfo.setOrderNum(newOrderInfo.get("orderInfo").toString());
+		orderInfo.setShippingDate(newOrderInfo.get("shippingDate").toString());
+		orderInfo.setPaidDate(newOrderInfo.get("paidDate").toString());
+		orderInfo.setShippingMethod(newOrderInfo.get("shippingMethod").toString());
+		orderInfo.setOrdererName(newOrderInfo.get("ordererName").toString());
+		orderInfo.setOrderderPhone(newOrderInfo.get("orderderPhone").toString());
+		orderInfo.setRegMId(session.getAttribute("SESSIONID").toString());
+		
+		// 2. 상품이 한개라면,
+		if(orderedProductNum == 1) {
+			orderInfo.setReceiverName(newOrderInfo.get("receiverName").toString());
+			orderInfo.setReceiverPhone(newOrderInfo.get("receiverPhone").toString());
+			orderInfo.setProductName(newOrderInfo.get("productName").toString());
+			orderInfo.setProductCode(newOrderInfo.get("productCode").toString());
+			orderInfo.setDetailedProduct(newOrderInfo.get("detailedProduct").toString());
+			orderInfo.setOrderQuantity(Integer.parseInt(newOrderInfo.get("orderQuantity").toString()));
+			orderInfo.setTotOrderAmount(Integer.parseInt(newOrderInfo.get("totOrderAmount").toString()));
+			orderInfo.setOption(newOrderInfo.get("option").toString());
+			orderInfo.setShippingAddr(newOrderInfo.get("shippingAddr").toString());
+			orderInfo.setDelieveryMsg(newOrderInfo.get("delieveryMsg").toString());
+			orderInfo.setShippingFee(Integer.parseInt(newOrderInfo.get("shippingFee").toString()));
+			orderInfo.setOrderType(newOrderInfo.get("orderType").toString());
+			orderInfo.setExpDeliveryDate(newOrderInfo.get("expDeliveryDate").toString());
+		}else {
+			for(int i=0; i < orderedProductNum; i++) {
+				
+			}
+		}
+		oMapper.addOrder(orderInfo);
 	}
 	
 	// 생산일지 정보 가져오기
@@ -205,5 +240,8 @@ public class SmartstoreService {
 		return pMapper.getSearchProductInfo(searchWords);
 	}
 	
-	
+	// 등록된 상품명들 가져오기
+	public List<HashMap<String, String>> getAllProductName(){
+		return pMapper.getAllProductName();
+	}
 }
