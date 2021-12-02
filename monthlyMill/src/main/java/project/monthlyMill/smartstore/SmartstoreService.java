@@ -1,6 +1,7 @@
 package project.monthlyMill.smartstore;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -103,14 +104,13 @@ public class SmartstoreService {
 	
 	// 새로운 주문 등록
 	public void addNewOrder(HashMap<String, Object> newOrderInfo, HttpSession session) {
-		
 		SmartStoreOrder orderInfo = new SmartStoreOrder();
 		
 		// 1. 상품이 여러개인지 한개인지 확인
 		int orderedProductNum = Integer.parseInt(newOrderInfo.get("orderedProductNum").toString());
 		
 		// 상품에 관계없이 들어가야하는 정보 
-		orderInfo.setOrderNum(newOrderInfo.get("orderInfo").toString());
+		orderInfo.setOrderNum(newOrderInfo.get("orderNum").toString());
 		orderInfo.setShippingDate(newOrderInfo.get("shippingDate").toString());
 		orderInfo.setPaidDate(newOrderInfo.get("paidDate").toString());
 		orderInfo.setShippingMethod(newOrderInfo.get("shippingMethod").toString());
@@ -133,12 +133,41 @@ public class SmartstoreService {
 			orderInfo.setShippingFee(Integer.parseInt(newOrderInfo.get("shippingFee").toString()));
 			orderInfo.setOrderType(newOrderInfo.get("orderType").toString());
 			orderInfo.setExpDeliveryDate(newOrderInfo.get("expDeliveryDate").toString());
+			oMapper.addOrder(orderInfo);
+			
+		// 3. 상품이 여러개라면,
 		}else {
+			List<String> receiverName = (List<String>) newOrderInfo.get("receiverName");
+			List<String> receiverPhone = (List<String>) newOrderInfo.get("receiverPhone");
+			List<String> productName = (List<String>) newOrderInfo.get("productName");
+			List<String> productCode = (List<String>) newOrderInfo.get("productCode");
+			List<String> detailedProduct = (List<String>) newOrderInfo.get("detailedProduct");
+			List<String> orderQuantity = (List<String>) newOrderInfo.get("orderQuantity");
+			List<String> totOrderAmount = (List<String>) newOrderInfo.get("totOrderAmount");
+			List<String> option = (List<String>) newOrderInfo.get("option");
+			List<String> shippingAddr = (List<String>) newOrderInfo.get("shippingAddr");
+			List<String> delieveryMsg = (List<String>) newOrderInfo.get("delieveryMsg");
+			List<String> shippingFee = (List<String>) newOrderInfo.get("shippingFee");
+			List<String> orderType = (List<String>) newOrderInfo.get("orderType");
+			List<String> expDeliveryDate = (List<String>) newOrderInfo.get("expDeliveryDate");
+			
 			for(int i=0; i < orderedProductNum; i++) {
-				
+				orderInfo.setReceiverName(receiverName.get(i));
+				orderInfo.setReceiverPhone(receiverPhone.get(i));
+				orderInfo.setProductName(productName.get(i));
+				orderInfo.setProductCode(productCode.get(i));
+				orderInfo.setDetailedProduct(detailedProduct.get(i));
+				orderInfo.setOrderQuantity(Integer.parseInt(orderQuantity.get(i)));
+				orderInfo.setTotOrderAmount(Integer.parseInt(totOrderAmount.get(i)));
+				orderInfo.setOption(option.get(i));
+				orderInfo.setShippingAddr(shippingAddr.get(i));
+				orderInfo.setDelieveryMsg(delieveryMsg.get(i));
+				orderInfo.setShippingFee(Integer.parseInt(shippingFee.get(i)));
+				orderInfo.setOrderType(orderType.get(i));
+				orderInfo.setExpDeliveryDate(expDeliveryDate.get(i));
+				oMapper.addOrder(orderInfo);
 			}
 		}
-		oMapper.addOrder(orderInfo);
 	}
 	
 	// 생산일지 정보 가져오기

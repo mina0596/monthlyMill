@@ -41,8 +41,13 @@
 	<!-- ====== 주문 등록 ====== -->
 	<insert id="addOrder" parameterType="SmartStoreOrder">
 		INSERT INTO smartstore_order_info
-		(idx, order_num, shipping_date, paid_date, shipping_method, orderer_name, orderer_phone, receiver_name, receiver_phone, product_name, product_code, detailed_product, order_quantity, total_order_amount, option_info, shipping_fee, shipping_addr, delivery_msg, exp_delivery_date, reg_date, reg_m_id, order_type, production_complete, shipping_pay_check, memo)
-		VALUES (NULL, '', NOW(), NOW(), '', '', '', '', '', '', '', 0, 0, '', 0, '', '', '', NOW(), '', '', '', '', '')
+			(idx, order_num, shipping_date, paid_date, shipping_method, orderer_name, orderer_phone, receiver_name, receiver_phone, product_name, 
+			product_code, detailed_product, order_quantity, total_order_amount, option_info, shipping_fee, shipping_addr, delivery_msg, exp_delivery_date, reg_date, 
+			reg_m_id, order_type, production_complete, shipping_pay_check, memo)
+		VALUES 
+			(NULL, #{orderNum}, #{shippingDate}, #{paidDate}, #{shippingMethod}, #{ordererName}, #{orderderPhone}, #{receiverName}, #{receiverPhone}, #{productName},
+			#{productCode}, #{detailedProduct}, #{orderQuantity}, #{totOrderAmount}, #{option}, #{shippingFee}, #{shippingAddr}, #{delieveryMsg}, #{expDeliveryDate}, NOW(), 
+			#{regMId}, #{orderType}, NULL, NULL, NULL)
 	</insert>
 	
 	
