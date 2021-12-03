@@ -60,15 +60,22 @@ $(document).on("change", ".orderType-input", function(){
 
 
 /* 상품 추가 버튼 클릭 이벤트 */
+//이부분 기존 element에서 가져올수있도록 변경
 let ManualListnumber = document.querySelectorAll(".addManualListItemBoxBtn").length+1;
 
 document.querySelector(".addManualListItemBoxBtn").addEventListener("click", function(){
     const manualListItem = document.createElement("ul");
     manualListItem.className = "manualListItem";
+    //발주품목은 화면내에서 가져오기
+
     manualListItem.innerHTML = `
               <h5 class="manualListTitle">
-                <span>상품</span>
-                <span class="manualList-number">${ManualListnumber}</span>
+                <div></div>
+                <div>
+                  <span>상품</span>
+                  <span class="manualList-number">${ManualListnumber}</span>
+                </div>
+                <button class="deleteManualListItemBoxBtn">상품 삭제</button>
               </h5>
               <li class="manualList">
                 <span class="manualTh">수취인명</span>
@@ -90,8 +97,7 @@ document.querySelector(".addManualListItemBoxBtn").addEventListener("click", fun
               <li class="manualList">
                 <span class="manualTh">발주품목</span>
                 <select class="manualInput orderItemList-input">
-                  <option value="">백일상</option>
-                  <option value="">등록된 품목</option>
+                  ${document.querySelector(".orderItemList-input").innerHTML}
                 </select>
               </li>
 
@@ -165,4 +171,10 @@ document.querySelector(".addManualListItemBoxBtn").addEventListener("click", fun
             document.querySelector(".manualListItemBox").appendChild(manualListItem);
             
             ManualListnumber++;
+});
+
+/* 상품 삭제 버튼 클릭 이벤트 */
+$(document).on("click", ".deleteManualListItemBoxBtn", function(){
+  const thisItem = this.parentNode.parentNode;
+  thisItem.remove();
 });

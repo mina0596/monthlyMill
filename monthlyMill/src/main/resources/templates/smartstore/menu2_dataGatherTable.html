@@ -10,7 +10,28 @@
   </head>
   <body>
     <!-- 상단 공통메뉴 -->
-    <header class="header" data-page-number="2"></header>
+    <header class="header" data-page-number="2">
+      <div class="headerWrap">
+        <ul class="headerColumn-left">
+          <li class="headerMenu"><a href="">시트등록</a></li>
+          <li class="headerMenu">
+            <a th:href="@{/smartStore/orderList}">데이터 조회/수정</a>
+          </li>
+          <li class="headerMenu">
+            <a th:href="@{/smartStore/productionPlan}">생산일지</a>
+          </li>
+          <li class="headerMenu">
+            <a th:href="@{/smartStore/productList}">상품표</a>
+          </li>
+        </ul>
+        <div class="headerColumn-right">
+          <span th:if="${session.SESSIONNAME != null}" class="header-userName"
+            >[[${session.SESSIONNAME}]]</span
+          >
+          <button class="header-logoutBtn">로그아웃</button>
+        </div>
+      </div>
+    </header>
 
     <div class="wrapper">
       <section class="topSection">
@@ -44,18 +65,18 @@
         <table class="table">
           <thead class="theadFix">
             <tr>
+              <!-- 생산완료, 배송형태는 데이터에 없고 무조건 수기입력하는 부분 -->
               <th class="thead deliveryDate" rowspan="4">희망일</th>
               <th class="thead orderSite" rowspan="4">주문사이트</th>
-
               <th class="thead number" rowspan="4">번호</th>
-              <th class="thead paymentDate">결제일</th>
+              <th class="thead content" rowspan="4">주문내용</th>
+
+              <!--  <th class="thead paymentDate">결제일</th>
               <th class="thead orderItemList">발주품목</th>
               <th class="thead quantity">수량</th>
               <th class="thead eachTotalPrice">상품별 총 주문금액</th>
               <th class="thead sendDate" rowspan="4">발송기한</th>
 
-              <!-- 생산완료, 배송형태는 데이터에 없고 무조건 수기입력하는 부분 -->
-              <!-- 예약시간은 '옵션정보'에서 뒤에서 11글자 잘라서 자동표시  -->
               <th class="thead noprint productFinishTime" rowspan="4">
                 생산완료
               </th>
@@ -76,65 +97,232 @@
               <th class="thead purchaserName">구매자명</th>
               <th class="thead deliveryMsg">배송메세지</th>
               <th class="thead purchaserPhone" colspan="2">구매자연락처</th>
+            </tr> -->
             </tr>
           </thead>
+
           <tbody>
-            <!-- 여기부터 -->
-            <tr class="trow" th:each=" l,n : ${orderList}">
-              <td class="tdata changeable-text deliveryDate" rowspan="4" th:text="${l.expDeliveryDate}">
+            <!-- <tr class="trow" th:each=" l,n : ${orderList}">
+              <td
+                class="tdata changeable-text deliveryDate"
+                rowspan="4"
+                th:text="${l.expDeliveryDate}"
+              >
                 희망일
               </td>
-              <td class="tdata changeable-text orderSite" rowspan="4" th:text="${l.orderType}">
+              <td
+                class="tdata changeable-text orderSite"
+                rowspan="4"
+                th:text="${l.orderType}"
+              >
                 주문사이트
-                <!-- N스토어 시트에서 가져온건 N스토어로 표시 -->
-                <!-- N예약 시트에서 가져온건 N예약으로 표시 -->
-                <!-- 수기입력 한건 매장주문으로 표시 -->
+
               </td>
 
               <td class="tdata number" rowspan="4" th:text="${n.index+1}">1</td>
-              <td class="tdata changeable-date paymentDate" th:text="${l.paidDate}">결제일</td>
-              <td class="tdata changeable-text orderItemList" th:text="${l.detailedProduct}">발주품목</td>
+              <td
+                class="tdata changeable-date paymentDate"
+                th:text="${l.paidDate}"
+              >
+                결제일
+              </td>
+              <td
+                class="tdata changeable-text orderItemList"
+                th:text="${l.detailedProduct}"
+              >
+                발주품목
+              </td>
               <td class="tdata quantity" th:text="${l.orderQuantity}">수량</td>
-              <td class="tdata changeable-text eachTotalPrice" th:text="${l.totOrderAmount}">
+              <td
+                class="tdata changeable-text eachTotalPrice"
+                th:text="${l.totOrderAmount}"
+              >
                 상품별 총 주문금액
               </td>
-              <td class="tdata changeable-date sendDate" rowspan="4" th:text="${l.shippingDate}">
+              <td
+                class="tdata changeable-date sendDate"
+                rowspan="4"
+                th:text="${l.shippingDate}"
+              >
                 발송기한
               </td>
               <td
                 class="tdata changeable-text noprint productFinishTime"
-                rowspan="4" th:text="${l.expDeliveryDate}"
+                rowspan="4"
+                th:text="${l.expDeliveryDate}"
               >
                 생산완료
               </td>
-              <td class="tdata noprint registerTime" rowspan="4" th:text="${l.expDeliveryDate}">예약시간</td>
+              <td
+                class="tdata noprint registerTime"
+                rowspan="4"
+                th:text="${l.expDeliveryDate}"
+              >
+                예약시간
+              </td>
               <td
                 class="tdata changeable-text noprint deliveryStyle"
-                rowspan="4" th:text="${l.shippingMethod}"
+                rowspan="4"
+                th:text="${l.shippingMethod}"
               >
                 배송형태
               </td>
             </tr>
             <tr class="trow" th:each=" l : ${orderList}">
               <td class="tdata">수기</td>
-              <td class="tdata changeable-text optionInfo" th:text="${l.option}">옵션정보</td>
-              <td class="tdata changeable-text deliveryType" colspan="2" th:text="${l.shippingMethod}">
+              <td
+                class="tdata changeable-text optionInfo"
+                th:text="${l.option}"
+              >
+                옵션정보
+              </td>
+              <td
+                class="tdata changeable-text deliveryType"
+                colspan="2"
+                th:text="${l.shippingMethod}"
+              >
                 배송방법
               </td>
             </tr>
             <tr class="trow" th:each=" l : ${orderList}">
-              <td class="tdata changeable-text receiverName" th:text="${l.receiverName}">수취인</td>
-              <td class="tdata changeable-text deliveryDestination" th:text="${l.shippingAddr}">배송지</td>
-              <td class="tdata changeable-text receiverPhone" colspan="2" th:text="${l.receiverPhone}">
+              <td
+                class="tdata changeable-text receiverName"
+                th:text="${l.receiverName}"
+              >
+                수취인
+              </td>
+              <td
+                class="tdata changeable-text deliveryDestination"
+                th:text="${l.shippingAddr}"
+              >
+                배송지
+              </td>
+              <td
+                class="tdata changeable-text receiverPhone"
+                colspan="2"
+                th:text="${l.receiverPhone}"
+              >
                 수취인연락처
               </td>
             </tr>
             <tr class="trow multirow" th:each=" l : ${orderList}">
-              <td class="tdata purchaserName" th:text="${l.ordererName}">구매자명</td>
-              <td class="tdata changeable-text deliveryMsg" th:text="${l.delieveryMsg}">배송메세지</td>
-              <td class="tdata purchaserPhone" colspan="2" th:text="${l.orderderPhone}">구매자연락처</td>
+              <td class="tdata purchaserName" th:text="${l.ordererName}">
+                구매자명
+              </td>
+              <td
+                class="tdata changeable-text deliveryMsg"
+                th:text="${l.delieveryMsg}"
+              >
+                배송메세지
+              </td>
+              <td
+                class="tdata purchaserPhone"
+                colspan="2"
+                th:text="${l.orderderPhone}"
+              >
+                구매자연락처
+              </td>
+            </tr> -->
+
+            <tr class="trow">
+              <td class="tdata deliveryDate changeable-text">11월 12일</td>
+              <td class="tdata orderSite changeable-text">N스토어</td>
+              <td class="tdata number">1</td>
+              <td class="tdata tdata-itembox">
+                <ul class="tdata-column">
+                  <div class="tdata-column-2">
+                    <li class="tdata-column-list">
+                      <span>결제일</span>
+                      <span class="paymentDate changeable-date"
+                        >2021-11-11</span
+                      >
+                    </li>
+                    <li class="tdata-column-list">
+                      <span>발송기한</span>
+                      <span class="productFinishTime changeable-date"
+                        >2021-11-11</span
+                      >
+                    </li>
+                  </div>
+                  <div class="tdata-column-2">
+                    <li class="tdata-column-list">
+                      <span>구매자</span>
+                      <div>
+                        <span class="purchaserName changeable-text">
+                          홍길동</span
+                        >
+                        <span class="purchaserPhone changeable-text"
+                          >(010-1111-2222)</span
+                        >
+                      </div>
+                    </li>
+                    <li class="tdata-column-list">
+                      <span>수취인</span>
+                      <div>
+                        <span class="receiverName changeable-text">김철수</span>
+                        <span class="receiverPhone changeable-text"
+                          >(010-1111-2222)</span
+                        >
+                      </div>
+                    </li>
+                  </div>
+                  <li class="tdata-column-list">
+                    <span>발주품목</span>
+                    <span class="orderItemList changeable-text"
+                      >발주품목이름</span
+                    >
+                  </li>
+                  <li class="tdata-column-list">
+                    <span>수량</span>
+                    <span class="quantity changeable-number">2</span>
+                  </li>
+                  <li class="tdata-column-list">
+                    <span>옵션정보</span>
+                    <span class="optionInfo changeable-text">옵션내용</span>
+                  </li>
+                  <li class="tdata-column-list">
+                    <span>주문금액</span>
+                    <span class="eachTotalPrice price_number changeable-price"
+                      >50,000</span
+                    >
+                  </li>
+                  <div class="tdata-column-2">
+                    <li class="tdata-column-list">
+                      <span>배송방법</span>
+                      <span class="deliveryType changeable-text">퀵</span>
+                    </li>
+                    <li class="tdata-column-list">
+                      <span>배송비</span>
+                      <span class="deliveryPrice changeable-price price_number"
+                        >3000</span
+                      >
+                    </li>
+                  </div>
+                  <li class="tdata-column-list">
+                    <span>배송지</span>
+                    <p class="deliveryDestination changeable-text">
+                      서울특별시 서초구 신반포로23길 30 (잠원동, 반원상가)
+                      우리은행 잠원동 지점
+                    </p>
+                  </li>
+                  <li class="tdata-column-list">
+                    <span>메세지</span>
+                    <p class="deliveryMsg changeable-text">
+                      (첫돌)퀵배송받을꺼고요~
+                      아기가자고있어서밑에현관비번(#2361)
+                      1302호문앞에놓아주시고가면됩니다
+                    </p>
+                  </li>
+                  <li class="tdata-column-list">
+                    <span>배송시간</span>
+                    <span class="deliveryTime changeable-text"
+                      >1부인지 2부인지 시간정보 입력</span
+                    >
+                  </li>
+                </ul>
+              </td>
             </tr>
-            <!-- 여기까지가 하나의 큰 행 -->
+            <!-- 여기까지해서 한줄 -->
           </tbody>
         </table>
       </section>
