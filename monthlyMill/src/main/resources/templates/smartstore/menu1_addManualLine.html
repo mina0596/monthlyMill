@@ -10,7 +10,28 @@
   </head>
   <body>
     <!-- 상단 공통메뉴 -->
-    <header class="header" data-page-number="1"></header>
+    <header class="header" data-page-number="1">
+      <div class="headerWrap">
+        <ul class="headerColumn-left">
+          <li class="headerMenu"><a href="">시트등록</a></li>
+          <li class="headerMenu">
+            <a th:href="@{/smartStore/orderList}">데이터 조회/수정</a>
+          </li>
+          <li class="headerMenu">
+            <a th:href="@{/smartStore/productionPlan}">생산일지</a>
+          </li>
+          <li class="headerMenu">
+            <a th:href="@{/smartStore/productList}">상품표</a>
+          </li>
+        </ul>
+        <div class="headerColumn-right">
+          <span th:if="${session.SESSIONNAME != null}" class="header-userName"
+            >[[${session.SESSIONNAME}]]</span
+          >
+          <button class="header-logoutBtn">로그아웃</button>
+        </div>
+      </div>
+    </header>
 
     <div class="wrapper">
       <section class="manualWrapper">
@@ -23,7 +44,11 @@
               <tr class="manualRow">
                 <th class="manualTh">발송기한</th>
                 <td>
-                  <input type="hidden" class="manualInput orderCode-input" th:value="${newOrderCode}"/>
+                  <input
+                    type="hidden"
+                    class="manualInput orderCode-input"
+                    th:value="${newOrderCode}"
+                  />
                   <input type="date" class="manualInput sendDate-input" />
                 </td>
               </tr>
@@ -54,7 +79,11 @@
               <tr class="manualRow">
                 <th class="manualTh">구매자연락처</th>
                 <td>
-                  <input type="text" class="manualInput purchaserPhone-input" />
+                  <input
+                    type="text"
+                    class="manualInput purchaserPhone-input"
+                    placeholder="전화번호입력"
+                  />
                 </td>
               </tr>
             </table>
@@ -63,8 +92,12 @@
             <div class="manualListItemBox">
               <ul class="manualListItem">
                 <h5 class="manualListTitle">
-                  <span>상품</span>
-                  <span class="manualList-number">1</span>
+                  <div></div>
+                  <div>
+                    <span>상품</span>
+                    <span class="manualList-number">1</span>
+                  </div>
+                  <div></div>
                 </h5>
                 <li class="manualList">
                   <span class="manualTh">수취인명</span>
@@ -86,7 +119,11 @@
                 <li class="manualList">
                   <span class="manualTh">발주품목</span>
                   <select class="manualInput orderItemList-input">
-                    <option th:each="l : ${pNameList}" th:value="${l.pCode}" th:text="${l.pName}"></option>
+                    <option
+                      th:each="l : ${pNameList}"
+                      th:value="${l.pCode}"
+                      th:text="${l.pName}"
+                    ></option>
                   </select>
                 </li>
 

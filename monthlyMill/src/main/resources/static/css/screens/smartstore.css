@@ -29,7 +29,7 @@ button.emp-color {
   background: none;
 }
 
-/* 헤더 */
+/* ============== 헤더 ============== */
 .header {
   width: 100%;
   position: fixed;
@@ -50,12 +50,21 @@ button.emp-color {
 
 .headerMenu,
 .header-userName {
-  padding: 1em 2em;
+  padding: 1em 1.5em 0.75em;
   cursor: default;
+}
+.headerMenu {
 }
 .headerMenu:hover {
   color: #fff;
   background-color: var(--menuEmp-color);
+}
+header[data-page-number="1"] .headerMenu:nth-child(1),
+header[data-page-number="2"] .headerMenu:nth-child(2),
+header[data-page-number="3"] .headerMenu:nth-child(3),
+header[data-page-number="4"] .headerMenu:nth-child(4) {
+  background-color: #fff;
+  font-weight: 700;
 }
 .header-userName::after {
   content: " 님";
@@ -68,7 +77,7 @@ button.emp-color {
   padding: 0.5em 1em;
 }
 
-/* 본문 */
+/* ============== 본문 ============== */
 .wrapper {
   width: 100%;
   height: 100%;
@@ -86,7 +95,7 @@ button.emp-color {
   margin-bottom: 1em;
 }
 
-/*테이블*/
+/* ============== 테이블 ============== */
 table,
 th,
 td {
@@ -141,7 +150,7 @@ td {
   overflow-y: scroll;
 }
 
-/*메뉴1 본문*/
+/* ==============메뉴1 본문 ==============*/
 .sendDate,
 .paymentDate,
 .deliveryType,
@@ -160,7 +169,7 @@ td {
   max-width: 7em;
 }
 
-/* 수기 등록 입력창 */
+/* ============== 수기 등록 입력창 ============== */
 .manual {
   margin: 0 auto;
   padding: 2em;
@@ -207,11 +216,16 @@ td {
 
 .manualListItem {
   min-width: 430px;
+  max-width: 800px;
   margin-bottom: 0.5em;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.5em;
 }
 .manualListTitle {
+  display: grid;
+  grid-template-columns: 6em auto 6em;
+  align-items: center;
+
   margin-bottom: 0.5em;
   padding: 0.25em;
   text-align: center;
@@ -230,6 +244,8 @@ td {
 .manualListBtnBox {
   display: flex;
   justify-content: flex-end;
+  min-width: 430px;
+  max-width: 800px;
 }
 .manualBtnBox {
   margin-top: 2em;
@@ -242,7 +258,7 @@ td {
   margin: 0 1em;
 }
 
-/*메뉴2*/
+/* ============== 메뉴2 ==============*/
 /*검색창*/
 .top-searchBox {
   display: flex;
@@ -256,6 +272,68 @@ td {
 .searchTextInput {
   width: 20em;
 }
+
+/* 장바구니 형식 테이블 */
+.tdata-itembox {
+  display: grid;
+  grid-template-columns: auto;
+  border: none;
+}
+.tdata-column {
+  white-space: normal;
+}
+.tdata-column-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.tdata-column-list {
+  display: grid;
+  grid-template-columns: 5em auto;
+  text-align: left;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.3);
+}
+.tdata-column-2 > .tdata-column-list:last-child {
+  padding-left: 0.25em;
+  border-left: 1px dotted rgba(0, 0, 0, 0.3);
+}
+.tdata-column-list > span:first-child {
+  font-weight: 700;
+}
+.tdata-itembox .sendDate,
+.tdata-itembox .paymentDate,
+.tdata-itembox .deliveryType,
+.tdata-itembox .purchaserName,
+.tdata-itembox .purchaserPhone,
+.tdata-itembox .receiverName,
+.tdata-itembox .receiverPhone,
+.tdata-itembox .itemName,
+.tdata-itembox .orderItemList,
+.tdata-itembox .quantity,
+.tdata-itembox .eachTotalPrice,
+.tdata-itembox .optionInfo,
+.tdata-itembox .deliveryDestination,
+.tdata-itembox .deliveryMsg,
+.tdata-itembox .deliveryDate {
+  max-width: none;
+}
+/* .editCellBtnbox {
+  display: flex;
+  justify-content: center;
+}
+.editCellBtn {
+  margin-top: 0.5em;
+  border-radius: 0;
+  padding: 0.25em 1em;
+} */
+.tdata-itembox .deliveryMsg {
+  color: rgb(42, 42, 196);
+}
+/* .changeable-number,
+ .changeable-price,
+.changeable-date,
+.changeable-text {
+  background-color: #a8eb12;
+} */
 
 /*============스마트스토어 로그인, 회원가입 ===============*/
 .loginbg {
