@@ -210,45 +210,48 @@ public class SmartstoreService {
 		newProductInfo.setPName(params.get("pName").toString());
 		newProductInfo.setWrappingType(params.get("wrappingType").toString());
 		newProductInfo.setPPrice(Integer.parseInt(params.get("pPrice").toString()));
-		String itemName = params.get("itemName").toString();
-		if(itemName.equals("item01")) {
-			newProductInfo.setItem01(Integer.parseInt(params.get("itemQuantity").toString()));
-		}else if(itemName.equals("item02")) {
-			newProductInfo.setItem02(Integer.parseInt(params.get("itemQuantity").toString()));
-		}else if(itemName.equals("item03")) {
-			newProductInfo.setItem03(Integer.parseInt(params.get("itemQuantity").toString()));
-		}else if(itemName.equals("item04")) {
-			newProductInfo.setItem04(Integer.parseInt(params.get("itemQuantity").toString()));
-		}else if(itemName.equals("item05")) {
-			newProductInfo.setItem05(Integer.parseInt(params.get("itemQuantity").toString()));
-		}else if(itemName.equals("item06")) {
-			newProductInfo.setItem06(Integer.parseInt(params.get("itemQuantity").toString()));
-		}else if(itemName.equals("item07")) {
-			newProductInfo.setItem07(Integer.parseInt(params.get("itemQuantity").toString()));
-		}else if(itemName.equals("item08")) {
-			newProductInfo.setItem08(Integer.parseInt(params.get("itemQuantity").toString()));
-		}else if(itemName.equals("item09")) {
-			newProductInfo.setItem09(Integer.parseInt(params.get("itemQuantity").toString()));
-		}else if(itemName.equals("item10")) {
-			newProductInfo.setItem10(Integer.parseInt(params.get("itemQuantity").toString()));
-		}else if(itemName.equals("item11")) {
-			newProductInfo.setItem11(Integer.parseInt(params.get("itemQuantity").toString()));
-		}else if(itemName.equals("item12")) {
-			newProductInfo.setItem12(Integer.parseInt(params.get("itemQuantity").toString()));
-		}else if(itemName.equals("item13")) {
-			newProductInfo.setItem13(Integer.parseInt(params.get("itemQuantity").toString()));
-		}else if(itemName.equals("item14")) {
-			newProductInfo.setItem14(Integer.parseInt(params.get("itemQuantity").toString()));
-		}else if(itemName.equals("item15")) {
-			newProductInfo.setItem15(Integer.parseInt(params.get("itemQuantity").toString()));
-		}else if(itemName.equals("item16")) {
-			newProductInfo.setItem16(Integer.parseInt(params.get("itemQuantity").toString()));
-		}else if(itemName.equals("item17")) {
-			newProductInfo.setItem17(Integer.parseInt(params.get("itemQuantity").toString()));
-		}else if(itemName.equals("item18")) {
-			newProductInfo.setItem18(Integer.parseInt(params.get("itemQuantity").toString()));
-		}else {
-			newProductInfo.setItem19(Integer.parseInt(params.get("itemQuantity").toString()));
+		List<String> itemName = (List<String>) params.get("itemName");
+		List<String> itemQuantity = (List<String>) params.get("itemQuantity");
+		for(int i=0; i < itemName.size(); i++) {
+			if(itemName.get(i).equals("item01")) {
+				newProductInfo.setItem01(Integer.parseInt(itemQuantity.get(i)));
+			}else if(itemName.get(i).equals("item02")) {
+				newProductInfo.setItem02(Integer.parseInt(itemQuantity.get(i)));
+			}else if(itemName.get(i).equals("item03")) {
+				newProductInfo.setItem03(Integer.parseInt(itemQuantity.get(i)));
+			}else if(itemName.get(i).equals("item04")) {
+				newProductInfo.setItem04(Integer.parseInt(itemQuantity.get(i)));
+			}else if(itemName.get(i).equals("item05")) {
+				newProductInfo.setItem05(Integer.parseInt(itemQuantity.get(i)));
+			}else if(itemName.get(i).equals("item06")) {
+				newProductInfo.setItem06(Integer.parseInt(itemQuantity.get(i)));
+			}else if(itemName.get(i).equals("item07")) {
+				newProductInfo.setItem07(Integer.parseInt(itemQuantity.get(i)));
+			}else if(itemName.get(i).equals("item08")) {
+				newProductInfo.setItem08(Integer.parseInt(itemQuantity.get(i)));
+			}else if(itemName.get(i).equals("item09")) {
+				newProductInfo.setItem09(Integer.parseInt(itemQuantity.get(i)));
+			}else if(itemName.get(i).equals("item10")) {
+				newProductInfo.setItem10(Integer.parseInt(itemQuantity.get(i)));
+			}else if(itemName.get(i).equals("item11")) {
+				newProductInfo.setItem11(Integer.parseInt(itemQuantity.get(i)));
+			}else if(itemName.get(i).equals("item12")) {
+				newProductInfo.setItem12(Integer.parseInt(itemQuantity.get(i)));
+			}else if(itemName.get(i).equals("item13")) {
+				newProductInfo.setItem13(Integer.parseInt(itemQuantity.get(i)));
+			}else if(itemName.get(i).equals("item14")) {
+				newProductInfo.setItem14(Integer.parseInt(itemQuantity.get(i)));
+			}else if(itemName.get(i).equals("item15")) {
+				newProductInfo.setItem15(Integer.parseInt(itemQuantity.get(i)));
+			}else if(itemName.get(i).equals("item16")) {
+				newProductInfo.setItem16(Integer.parseInt(itemQuantity.get(i)));
+			}else if(itemName.get(i).equals("item17")) {
+				newProductInfo.setItem17(Integer.parseInt(itemQuantity.get(i)));
+			}else if(itemName.get(i).equals("item18")) {
+				newProductInfo.setItem18(Integer.parseInt(itemQuantity.get(i)));
+			}else {
+				newProductInfo.setItem19(Integer.parseInt(itemQuantity.get(i)));
+			}
 		}
 		newProductInfo.setMemo(params.get("memo").toString());
 		

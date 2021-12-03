@@ -20,7 +20,7 @@ $(document).ready(function(){
 
 	//배송방법 퀵이면 시간선택 보이게
 	$(".reservationDeliveryType").on("change", function(){
-		if(this.value=="quick"){
+		if(this.value=="퀵"){
 			$(".reservation-quickTimeSet").removeClass("hidden");
 		}else{
 			$(".reservation-quickTimeSet").addClass("hidden");

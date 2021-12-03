@@ -80,6 +80,8 @@ public class PaymentController {
 			Shipment shipInfo = new Shipment();
 			orderInfo.setMemberId(String.valueOf(session.getAttribute("SID").toString()));
 			orderInfo.setTotalDiscountAmount(Integer.parseInt(params.get("discountAmount").toString()));
+			shipInfo.setShippingMethod(params.get("shippingMethod").toString());
+			shipInfo.setExpDelDate(params.get("expDeliveryDate").toString());
 			shipInfo.setReceiverAddr(String.valueOf(params.get("receiverAddr")));
 			shipInfo.setReceiverName(String.valueOf(params.get("receiverName")));
 			shipInfo.setReceiverPhoneNum(String.valueOf(params.get("receiverPhone")));

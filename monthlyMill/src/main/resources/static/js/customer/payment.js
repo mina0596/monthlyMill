@@ -83,7 +83,9 @@ $(function(){
 	// *********************** 결제하기 버튼 이벤트 *****************
 	$('.paymentBtn').click(function(){
 		var submitCheck = true;
+		var expDeliveryDate = '';
 		// 이용약관 동의 받기
+		/*
 		var checkNum = 0;
 		var agreementNum = $('input[class="checkRequired checkbox"]').length;
 		$('.agreement_column').each(function(){
@@ -91,12 +93,9 @@ $(function(){
 				checkNum += 1;
 			}
 		})
-		
+		*/
 		// **************** 유효성 검사 **************
-		if(agreementNum > checkNum){
-			alert('서비스 이용약관에 동의해주세요.');
-			submitCheck = false;
-		}else if($('.inputOrdererName').val() == '' || $('.inputOrdererName').val() == undefined){
+		if($('.inputOrdererName').val() == '' || $('.inputOrdererName').val() == undefined){
 			alert('주문자 이름을 입력해주세요.');
 			$('.inputOrdererName').focus();
 			submitCheck = false;
@@ -120,9 +119,22 @@ $(function(){
 			alert('받는분 주소를 입력해주세요.');
 			$('.inputReceiverAdress').focus();
 			submitCheck = false;
+		}else if($('.reservationDate').val() == '' || $('.reservationDate').val() == undefined){
+			alert('예약날짜를 선택해주세요.');
+			submitCheck = false;			
+		}else if($('.reservationDeliveryType').val() == '퀵'){
+			if($('.reservationTime').val() == '' || $('.reservationTime').val() == undefined){
+				alert('퀵 시간을 선택해주세요.');
+				submitCheck = false;
+			}else{
+				expDeliveryDate =  $('.reservationDate').val() + $('.reservationTime').val();
+			}
+		}else if($('.reservationDeliveryType').val() == '택배'){
+			expDeliveryDate =  $('.reservationDate').val();
 		}else{
 			submitCheck = true;
 		}
+		
 		
 		var cartNum = [];
 		$('.result_cart_num').each(function(){
@@ -142,7 +154,9 @@ $(function(){
 			"receiptType" : $('select[class="receiptApplyType"]').val(),
 			"receiptNumType" : $('select[class="receiptNumberType"]').val(),
 			"receiptNum" : $('.inputReceiptApplicantPhoneNum').val(),
-			"cartNum": cartNum
+			"cartNum": cartNum,
+			"expDeliveryDate" : expDeliveryDate,
+			"shippingMethod" : $('.reservationDeliveryType').val(),
 		}
 		
 		if(submitCheck){
