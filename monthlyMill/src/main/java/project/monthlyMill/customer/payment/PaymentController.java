@@ -65,36 +65,7 @@ public class PaymentController {
 		return memberInfoMap;
 	}
 	
-	// 3. 주문에 대한 정보 ajax로 데려오기
-	@PostMapping("/getOrderInfo")
-	@ResponseBody
-	public String getOrderInfo(@RequestBody HashMap<String, Object> params, HttpSession session) {
-			log.info("**************************************");
-			log.info("**************************************");
-			log.info("화면에서 받아오는 주문 정보 확인하기 :{}", params);
-			log.info("**************************************");
-			log.info("**************************************");
-			List<String> cartList = (List<String>) params.get("cartNum");
-			
-			Order orderInfo = new Order();
-			Shipment shipInfo = new Shipment();
-			orderInfo.setMemberId(String.valueOf(session.getAttribute("SID").toString()));
-			orderInfo.setTotalDiscountAmount(Integer.parseInt(params.get("discountAmount").toString()));
-			shipInfo.setReceiverAddr(String.valueOf(params.get("receiverAddr")));
-			shipInfo.setReceiverName(String.valueOf(params.get("receiverName")));
-			shipInfo.setReceiverPhoneNum(String.valueOf(params.get("receiverPhone")));
-			shipInfo.setReceiverPostalCode(String.valueOf(params.get("receiverPostalCode")));
-			shipInfo.setReceiverDetailAddr(String.valueOf(params.get("receiverDetailAddr")));
-			orderInfo.setOrderNum(orderService.selectOrderNum((session.getAttribute("SID").toString())));
-			orderInfo.setMPaidShippingFee(Integer.parseInt(params.get("shippingFee").toString()));
-			for(int i=0; i<cartList.size(); i++) {
-				Cart cartInfo = cartService.getCartInfoByCartNum(Integer.parseInt(cartList.get(i)));
-				orderInfo.setPCount(cartInfo.getPAmount());
-				orderInfo.setPCode(cartInfo.getPCode());
-				orderService.addOrder(orderInfo, shipInfo);
-			}
-		return "success";
-	}
+	
 	
 	// 4. 결제하기 버튼 누르면 화면 이동
 	@PostMapping("/paymentInfo")

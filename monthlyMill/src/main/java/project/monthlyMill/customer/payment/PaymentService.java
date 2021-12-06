@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import project.monthlyMill.customer.shoppingCart.CartMapper;
+import project.monthlyMill.dto.Shipment;
 
 @Service
 public class PaymentService {
@@ -33,5 +34,6 @@ public class PaymentService {
 			return totalPrice;
 		}
 	}
+	
 	
 }

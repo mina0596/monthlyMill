@@ -99,5 +99,8 @@ public class OrderService {
 			return totalPrice;
 		}
 	}
-	
+	// 주문 최종 확인시 update
+	public void confirmOrder(String orderNum) {
+		orderMapper.confirmOrder(orderNum);
+	}
 }

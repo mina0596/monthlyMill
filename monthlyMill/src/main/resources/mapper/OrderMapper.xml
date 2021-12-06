@@ -39,13 +39,24 @@
 				oi.order_reg_date = CURDATE();
 	</select>
 	
+	
+	<!-- 주문매칭 신청했을때 주문 등록
+		 신청했을때는 'cancel_check' 컬럼이 'N' 로 들어가있고, 완전히 매칭 확인까지 했을 경우에만 'Y'로 update 된다.
+	  -->
 	<insert id="addOrder" parameterType="Order">
 		INSERT INTO order_info
 			(idx, order_num, member_id, product_code, product_count, matching_check, matched_maker_id, matching_num, refund_check, order_date, total_product_price, shipping_method, actual_shipping_fee, m_paid_shipping_fee,
 			 discount_check, total_discounted_amount, discount_method, coupon_num, payment_check, payment_amount, payment_date, order_modify_date, order_reg_date, cancel_check, memo)
-		VALUES (NULL, #{orderNum}, #{memberId}, #{pCode}, #{pCount}, 'N', NULL, NOW(), NOW(), 'N', NULL, NULL, 'N', CURDATE(), #{totalPrice}, '택배', NULL, #{shippingFee}, 
-			'N', #{discountAmount}, NULL, NULL, 'N', NULL, NULL, CURDATE(), CURDATE(), 'N', NULL)
+		VALUES (NULL, #{orderNum}, #{memberId}, #{pCode}, #{pCount}, 'N', NULL, NOW(), NOW(), 'N', NULL, NULL, 'N', CURDATE(), #{totalPrice}, #{shippingMethod}, NULL, #{shippingFee}, 
+			'N', #{discountAmount}, NULL, NULL, 'N', NULL, NULL, CURDATE(), CURDATE(), 'Y', NULL)
 	</insert>
+	
+	<update id="confirmOrder" parameterType="String">
+		UPDATE order_info AS oi
+		SET
+			oi.cancel_check='N'
+		WHERE oi.order_num = #{orderNum}
+	</update>
 	
 	
 	<!--  입금확인되면 update됨 -->
@@ -167,9 +178,30 @@
 	
 	
 	<!-- **********************************배송에 대한 정보 ******************************* -->
+	<resultMap type="Shipment"	id="shipmentResultMap">
+		<result property="idx"					column="idx"/>
+		<result property="orderNum"				column="order_num"/>
+		<result property="shippingMethod"				column="shipping_method"/>
+		<result property="shippingFee"				column="shipping_fee"/>
+		<result property="receiverName"				column="receiver_name"/>
+		<result property="receiverPhoneNum"				column="receiver_phone"/>
+		<result property="receiverHomeNum"			column="receiver_home"/>
+		<result property="receiverPostalCode"			column="receiver_postal_code"/>
+		<result property="receiverAddr"			column="receiver_addr"/>
+		<result property="receiverDetailAddr"	column="receiver_detail_addr"/>
+		<result property="expDelDate"		column="expected_delivery_date"/>
+		<result property="filedDate"	column="shipping_filed_date"/>
+		<result property="shippedDate"		column="shipped_date"/>
+	</resultMap>
+	
+	
+	<!-- 매칭신청시 배송정보 등록 -->
 	<insert id="addOrderShipInfo" parameterType="Shipment">
 		INSERT INTO shipping_info
 			(idx, order_num, shipping_method, shipping_fee, receiver_name, receiver_phone, receiver_home, receiver_postal_code, receiver_addr, receiver_detail_addr, expected_delivery_date, shipping_filed_date, shipped_date)
 		VALUES (NULL, #{orderNum}, #{shippingMethod}, #{shippingFee}, #{receiverName}, #{receiverPhoneNum}, #{receiverHomeNum}, #{receiverPostalCode}, #{receiverAddr}, #{receiverDetailAddr}, #{expDelDate}, NULL, NULL)
 	</insert>
+	
+	
+	
 </mapper>

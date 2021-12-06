@@ -117,7 +117,7 @@ public class SmartstoreController {
 	public boolean addNewOrder(@RequestBody HashMap<String, Object> orderInfo, HttpSession session) {
 		log.info("새로 등록하는 주문정보 들어오는 값 확인해보자 :{}", orderInfo);
 		ssService.addNewOrder(orderInfo, session);
-		return false;
+		return true;
 	}
 	
 	

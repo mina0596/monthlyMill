@@ -27,13 +27,22 @@ $(function(){
 	
 	// ====== 품목 등록 완료 버튼 ======
 	$('.addNewProductBtn').click(function(){
+		var itemName = [];
+		var itemQuantity = [];
+		$('.tteokType-input').each(function(){
+			itemName.push($(this).val());
+		})
+		$('.quantity').each(function(){
+			itemQuantity.push($(this).val());
+		})
+		
 		var params = {
 			pCode : $('.classifyCode-input').val(),
 			pName : $('.classifyName-input').val(),
 			wrappingType : $('.packingMaterial-input').val(),
 			pPrice : $('.price-input').val(),
-			itemName : $('.tteokType-input').val(),
-			itemQuantity : $('.quantity').val(),
+			itemName : itemName,
+			itemQuantity : itemQuantity,
 			memo : $('.note-input').val()
 		}
 		
