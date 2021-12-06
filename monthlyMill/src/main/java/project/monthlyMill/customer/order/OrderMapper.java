@@ -43,4 +43,7 @@ public interface OrderMapper {
 	
 	// 11. 주문시 배송정보 저장하기
 	public void addOrderShipInfo(Shipment shipInfo);
+	
+	// 12. 주문 최종 확인시 update
+	public void confirmOrder(String orderNum);
 }

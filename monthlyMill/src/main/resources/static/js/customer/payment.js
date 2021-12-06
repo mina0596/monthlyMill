@@ -161,7 +161,7 @@ $(function(){
 		
 		if(submitCheck){
 			$.ajax({
-				url: "/customer/payment/getOrderInfo",
+				url: "/customer/order/getOrderInfo",
 				method: "POST",
 				data: JSON.stringify(params),
 				contentType: 'application/json',
