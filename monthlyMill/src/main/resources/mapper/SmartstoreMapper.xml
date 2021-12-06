@@ -35,6 +35,7 @@
 		shipping_fee, shipping_addr, delivery_msg, exp_delivery_date, reg_date, reg_m_id, order_type, 
 		production_complete, shipping_pay_check, memo
 		FROM smartstore_order_info
+		ORDER BY DATE_FORMAT(LEFT(exp_delivery_date, 10), '%Y-%m-%d') DESC
 	</select>
 	
 	

@@ -113,9 +113,13 @@ document.querySelector(".addManualListItemBoxBtn").addEventListener("click", fun
               </li>
               <li class="manualList">
                 <span class="manualTh">상품별 총 주문금액</span>
-                <span class="manualInput eachTotalPrice-input price_number"
-                  >0</span
-                >
+                <div class="manualInput-unitBox">
+                 <input
+                  type="number"
+                  class="manualInput eachTotalPrice-input price_number"
+                  min="0"
+                 /><span> 원</span>
+               </div>
               </li>
               <li class="manualList">
                 <span class="manualTh">옵션정보</span>

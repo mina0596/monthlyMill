@@ -286,4 +286,27 @@ $(function(){
 	$('.manualCancelBtn').click(function(){
 		location.href = "/smartStore/main";
 	})
+	
+	
+	
+	
+	// *******************************************************************
+	// ********************** 일별 주문 상세내역 화면 *****************************
+	// *******************************************************************
+	
+	// 희망 배송시간만 가져오기
+	$(document).ready(function(){
+		var expDelTime = $('.deliveryTime');
+		expDelTime.each(function(){
+			$(this).text($(this).text().substring(11));
+		})
+	})
+	
+	// 희망 배송날짜만 가져오기
+	$(document).ready(function(){
+		var expDelDate = $('.deliveryDate');
+		expDelDate.each(function(){
+			$(this).text($(this).text().substring(0, 10));
+		})
+	})
 })
