@@ -43,20 +43,25 @@
           <div class="top-box-column">
             <div class="top-searchBox">
               <div class="searchBox">
-                <select name="" class="categorySelect">
+                <form action="">
+                <select name="searchKey" class="searchKey">
                   <option value="">검색조건</option>
-                  <option value="">구분명</option>
+                  <option value="구분명">구분명</option>
+                  <option value="포장재">포장재</option>
+                  <option value="비고">비고</option>
                 </select>
                 <input
                   type="text"
                   class="searchTextInput"
+                  name="searchValue"
                   placeholder="검색어 입력"
                 />
               </div>
             </div>
             <div class="top-searchBtnBox">
-              <button class="textBtn addSearchBtn">+검색조건추가</button>
-              <button class="searchBtn">검색</button>
+              <button type="button" class="textBtn addSearchBtn">+검색조건추가</button>
+              <button class="submit">검색</button>
+            </form>
             </div>
           </div>
         </div>
