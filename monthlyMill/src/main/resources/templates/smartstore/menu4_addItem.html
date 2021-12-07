@@ -10,107 +10,131 @@
   </head>
   <body>
     <!-- 상단 공통메뉴 -->
-    <header class="header" data-page-number="3"></header>
-
-    <section class="manualWrapper">
-      <div class="manual">
-        <div class="manualTitle">
-          <!-- 제목변경: 상품표 제품 수기등록 -->
-          <h3>발주품목별 생산구성 등록</h3>
+    <header class="header" data-page-number="3">
+      <div class="headerWrap">
+        <ul class="headerColumn-left">
+          <li class="headerMenu">
+            <a th:href="@{/smartStore/main}">시트등록</a>
+          </li>
+          <li class="headerMenu">
+            <a th:href="@{/smartStore/orderList}">데이터 조회/수정</a>
+          </li>
+          <li class="headerMenu">
+            <a th:href="@{/smartStore/productionPlan}">생산일지</a>
+          </li>
+          <li class="headerMenu">
+            <a th:href="@{/smartStore/productList}">상품표</a>
+          </li>
+        </ul>
+        <div class="headerColumn-right">
+          <span th:if="${session.SESSIONNAME != null}" class="header-userName"
+            >[[${session.SESSIONNAME}]]</span
+          >
+          <button class="header-logoutBtn">로그아웃</button>
         </div>
-      <section class="tableSection">
-        <div class="manualBody">
-          <table class="manualTable">
-            <tbody>
-            <tr class="manualRow">  
-              <th class="manualTh classifyCode">구분코드</th>
-              <td>
-                <input type="text" class="manualInput classifyCode-input" readonly="readonly" th:value="${pCode}" />
-              </td>
-            </tr>
-            <tr class="manualRow">  
-              <th class="manualTh classifyName">구분명</th>
-              <td>
-                <input type="text" class="manualInput classifyName-input" />
-              </td>
-            </tr>
-            <tr class="manualRow">  
-              <th class="manualTh packingMaterial">포장재</th>
-              <td>
-                <select type="text" class="manualInput packingMaterial-input" >
-                  <option value="-">-</option>
-                  <option value="접이식">접이식</option>
-                  <option value="접이소">접이소</option>
-                  <option value="접이중">접이중</option>
-                  <option value="접이대">접이대</option>
-                  <option value="싸바리">싸바리</option>
-                  <option value="이바지">이바지</option>
-                  <option value="답례1호">답례1호</option>
-                  <option value="답례2호">답례2호</option>
-                  <option value="답례3호">답례3호</option>
-                  <option value="답례4호">답례4호</option>
-                  <option value="폐백음식">폐백음식</option>
-                </select>
-              </td>
-            </tr>
-            <tr class="manualRow">  
-              <th class="manualTh price">금액</th>
-              <td>
-                <input type="number" min="0" step="10" class="price-input" />
-                <label for="">원</label>
-              </td>
-            </tr>
-            <tr class="manualRow">  
-              <th class="manualTh tteokType">떡 종류</th>
-              <td>
-                <div class="manualInputColumn">
-                <ul class="tteockTypeInputList">
-                  <li>
-                    <select type="text" class="manualInput tteokType-input " >
-                      <option value="item01">두텁</option>
-                      <option value="item02">팥</option>
-                      <option value="item03">호고</option>
-                      <option value="item04">영양</option>
-                      <option value="item05">사송</option>
-                      <option value="item06">삼송</option>
-                      <option value="item07">이송</option>
-                      <option value="item08">폐송</option>
-                      <option value="item09">오송</option>
-                      <option value="item10">쑥갠</option>
-                      <option value="item11">자설</option>
-                      <option value="item12">단설</option>
-                      <option value="item13">백설</option>
-                      <option value="item14">百</option>
-                      <option value="item15">첫돌</option>
-                      <option value="item16">한과</option>
-                      <option value="item17">수수</option>
-                      <option value="item18">케익</option>
-                      <option value="item19">기타</option>
-                    </select>
-    
-                      <input type="number" class="manualInput quantity">
-                      <label for="">개</label>
-                  </li>
-                </ul>
-                  <button class="button addTteokTypeBtn">+종류추가</button>
-                </div>
-              </td>
-            </tr>
-            <tr class="manualRow">  
-              <th class="manualTh note">비고</th>
-              <td>
-                <input type="text" class="manualInput note-input" />
-              </td>
-            </tr>
-          </tbody>
-        </table>
       </div>
-      <div class="manualBtnBox">
-        <button class="addNewProductBtn btn emp">등록</button>
-        <button class="manualCancelBtn">취소</button>
+    </header>
+
+    <div class="wrapper">
+      <section class="manualWrapper">
+        <div class="manual">
+          <div class="manualTitle">
+            <h3>상품표 제품 수기등록</h3>
+          </div>
+        <section class="tableSection">
+          <div class="manualBody">
+            <table class="manualTable">
+              <tbody>
+              <tr class="manualRow">  
+                <th class="manualTh classifyCode">구분코드</th>
+                <td>
+                  <input type="text" class="manualInput classifyCode-input" readonly="readonly" th:value="${pCode}" />
+                </td>
+              </tr>
+              <tr class="manualRow">  
+                <th class="manualTh classifyName">구분명</th>
+                <td>
+                  <input type="text" class="manualInput classifyName-input" />
+                </td>
+              </tr>
+              <tr class="manualRow">  
+                <th class="manualTh packingMaterial">포장재</th>
+                <td>
+                  <select type="text" class="manualInput packingMaterial-input" >
+                    <option value="-">-</option>
+                    <option value="접이식">접이식</option>
+                    <option value="접이소">접이소</option>
+                    <option value="접이중">접이중</option>
+                    <option value="접이대">접이대</option>
+                    <option value="싸바리">싸바리</option>
+                    <option value="이바지">이바지</option>
+                    <option value="답례1호">답례1호</option>
+                    <option value="답례2호">답례2호</option>
+                    <option value="답례3호">답례3호</option>
+                    <option value="답례4호">답례4호</option>
+                    <option value="폐백음식">폐백음식</option>
+                  </select>
+                </td>
+              </tr>
+              <tr class="manualRow">  
+                <th class="manualTh price">금액</th>
+                <td>
+                  <input type="number" min="0" step="10" class="price-input" />
+                  <label for="">원</label>
+                </td>
+              </tr>
+              <tr class="manualRow">  
+                <th class="manualTh tteokType">떡 종류</th>
+                <td>
+                  <div class="manualInputColumn">
+                  <ul class="tteockTypeInputList">
+                    <li>
+                      <select type="text" class="manualInput tteokType-input " >
+                        <option value="item01">두텁</option>
+                        <option value="item02">팥</option>
+                        <option value="item03">호고</option>
+                        <option value="item04">영양</option>
+                        <option value="item05">사송</option>
+                        <option value="item06">삼송</option>
+                        <option value="item07">이송</option>
+                        <option value="item08">폐송</option>
+                        <option value="item09">오송</option>
+                        <option value="item10">쑥갠</option>
+                        <option value="item11">자설</option>
+                        <option value="item12">단설</option>
+                        <option value="item13">백설</option>
+                        <option value="item14">百</option>
+                        <option value="item15">첫돌</option>
+                        <option value="item16">한과</option>
+                        <option value="item17">수수</option>
+                        <option value="item18">케익</option>
+                        <option value="item19">기타</option>
+                      </select>
+      
+                        <input type="number" class="manualInput quantity">
+                        <label for="">개</label>
+                    </li>
+                  </ul>
+                    <button class="button addTteokTypeBtn">+종류추가</button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="manualRow">  
+                <th class="manualTh note">비고</th>
+                <td>
+                  <input type="text" class="manualInput note-input" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="manualBtnBox">
+          <button class="addNewProductBtn btn emp">등록</button>
+          <button class="manualCancelBtn">취소</button>
+        </div>
       </div>
+    </section>
     </div>
-  </section>
     </div>
 
     <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>

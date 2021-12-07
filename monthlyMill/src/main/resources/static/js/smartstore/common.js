@@ -52,6 +52,30 @@ $(function(){
 	
 })
 
+/* 검색관련 */
+//검색 조건 추가
+$(document).on("click", ".addSearchBtn", function(){
+    const searchBox = document.createElement("div");
+    searchBox.className="searchBox";
+    
+    searchBox.innerHTML = `
+    <button type="button" class="deleteSearchBtn">-삭제</button>
+    <select name="searchKey" class="searchKey">
+        <option value="">검색조건</option>
+        <option value="구분명">구분명</option>
+        <option value="포장재">포장재</option>
+        <option value="비고">비고</option>
+    </select>
+    <input type="text" class="searchTextInput" name="searchValue" placeholder="검색어 입력"
+        />`;
+
+    document.querySelector(".top-searchBox").append(searchBox); 
+ });
+
+//검색 조건 삭제
+$(document).on("click", ".deleteSearchBtn", function(){
+    this.parentNode.remove();
+});
 
 
 

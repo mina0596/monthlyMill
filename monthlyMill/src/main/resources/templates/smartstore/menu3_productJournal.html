@@ -11,7 +11,30 @@
   </head>
   <body>
     <!-- 상단 공통메뉴 -->
-    <header class="header" data-page-number="3"></header>
+    <header class="header" data-page-number="3">
+      <div class="headerWrap">
+        <ul class="headerColumn-left">
+          <li class="headerMenu">
+            <a th:href="@{/smartStore/main}">시트등록</a>
+          </li>
+          <li class="headerMenu">
+            <a th:href="@{/smartStore/orderList}">데이터 조회/수정</a>
+          </li>
+          <li class="headerMenu">
+            <a th:href="@{/smartStore/productionPlan}">생산일지</a>
+          </li>
+          <li class="headerMenu">
+            <a th:href="@{/smartStore/productList}">상품표</a>
+          </li>
+        </ul>
+        <div class="headerColumn-right">
+          <span th:if="${session.SESSIONNAME != null}" class="header-userName"
+            >[[${session.SESSIONNAME}]]</span
+          >
+          <button class="header-logoutBtn">로그아웃</button>
+        </div>
+      </div>
+    </header>
 
     <div class="wrapper">
       <section class="topSection">
@@ -26,180 +49,373 @@
       <!-- 날짜표시 -->
       <div class="tableDateBox">
         <button class="prevDateBtn"><</button>
-        <span class="tableDate">2021-11-12</span>
+        <span class="tableDate">2021-11-01</span>
         <button class="nextDateBtn">></button>
       </div>
 
       <!-- 해당하는 날짜의 생산일지 테이블 -->
-      <section class="tableSection">
+      <section class="tableSection productJournal">
         <table class="table">
           <thead class="theadFix">
             <!-- 테이블 헤드 고정해두기 -->
             <tr>
-            <th class="thead modify">수정</th>
-            <th class="thead number">번호</th>
-            <th class="thead paymentState">결제</th>
-            <th class="thead receiverName">수취인</th>
-            <th class="thead productFinishTime">생산완료</th>
-            <th class="thead reservation">예약</th>
-            <th class="thead deliveryStyle">배송형태</th>
-            <th class="thead classifyName">구분명</th>
-            <th class="thead quantity">수량</th>
-            <th class="thead packingMaterial">포장재</th>
+              <th class="thead modify">수정</th>
+              <th class="thead number">번호</th>
+              <th class="thead paymentState">결제</th>
+              <th class="thead receiverName">수취인</th>
+              <th class="thead productFinishTime">생산완료</th>
+              <th class="thead reservation">예약</th>
+              <th class="thead deliveryStyle">배송형태</th>
+              <th class="thead classifyName">구분명</th>
+              <th class="thead quantity">수량</th>
+              <th class="thead packingMaterial">포장재</th>
 
-            <th class="thead type-duteop">두텁</th>
-            <th class="thead type-redbeen">팥</th>
-            <th class="thead type-hogo">호고</th>
-            <th class="thead type-nutrition">영양</th>
-            <th class="thead type-sasong">사송</th>
-            <th class="thead type-samsong">삼송</th>
-            <th class="thead type-isong">이송</th>
-            <th class="thead type-pyeshong">폐송</th>
-            <th class="thead type-osong">오송</th>
-            <th class="thead type-ssuk">쑥갠</th>
-            <th class="thead type-jaseol">자설</th>
-            <th class="thead type-danseol">단설</th>
-            <th class="thead type-bacseol">백설</th>
-            <th class="thead type-bac">百</th>
-            <th class="thead type-dol">첫돌</th>
-            <th class="thead type-hangwa">한과</th>
-            <th class="thead type-susu">수수</th>
-            <th class="thead type-cake">케익</th>
-            <th class="thead type-etc">기타</th>
+              <th class="thead type-duteop">두텁</th>
+              <th class="thead type-redbeen">팥</th>
+              <th class="thead type-hogo">호고</th>
+              <th class="thead type-nutrition">영양</th>
+              <th class="thead type-sasong">사송</th>
+              <th class="thead type-samsong">삼송</th>
+              <th class="thead type-isong">이송</th>
+              <th class="thead type-pyeshong">폐송</th>
+              <th class="thead type-osong">오송</th>
+              <th class="thead type-ssuk">쑥갠</th>
+              <th class="thead type-jaseol">자설</th>
+              <th class="thead type-danseol">단설</th>
+              <th class="thead type-bacseol">백설</th>
+              <th class="thead type-bac">百</th>
+              <th class="thead type-dol">첫돌</th>
+              <th class="thead type-hangwa">한과</th>
+              <th class="thead type-susu">수수</th>
+              <th class="thead type-cake">케익</th>
+              <th class="thead type-etc">기타</th>
 
-            <th class="thead sendDate">비고</th>
+              <th class="thead sendDate">비고</th>
             </tr>
           </thead>
 
           <tbody class="tbody">
-           <tr th:if="${#lists.size(infoList) > 0}" th:each="l,n : ${infoList}">
-           
-            <td class="tdata modify">
-              <!-- 버튼 누르면 해당 행 수정가능상태로 변경 -->
-              <button class="modifyRowBt">수정</button>
-            </td>
-            <td class="tdata number" th:text="${n.index+1}">1</td>
-            <td class="tdata changeable-select-paymentState paymentState">
-                <!--
-                <select name="" id="">
-                    <option value=""></option>
-                    <option value="complete">완료</option>
-                    <option value="quickCOD">퀵비착불</option>
-                    <option value="quickPaymentConfirm">퀵비결제확인</option>
-                    <option value="incomplete">미완료</option>
-                </select> -->
-            </td>
-            <!-- menu2 테이블에 수취인~배송형태 컬럼항목 연동 -->
-            <td class="tdata receiverName" th:text="${l.receiverName}">수취인</td>
-            <td class="tdata productFinishTime">생산완료</td>
-            <td class="tdata reservation">예약</td>
-            <td class="tdata deliveryStyle">배송형태</td>
-            <td class="tdata changeable-select-classifyName classifyName" th:text="${l.productName}">
+            <tr
+              th:if="${#lists.size(infoList) > 0}"
+              th:each="l,n : ${infoList}"
+            >
+              <td class="tdata modify">
+                <!-- 버튼 누르면 해당 행 수정가능상태로 변경 -->
+                <button class="modifyRowBt">수정</button>
+              </td>
+              <td class="tdata number" th:text="${n.index+1}">1</td>
+              <td class="tdata changeable-text">완료</td>
+              <!-- menu2 테이블에 수취인~배송형태 컬럼항목 연동 -->
+              <td
+                class="tdata receiverName changeable-text"
+                th:text="${l.receiverName}"
+              >
+                수취인
+              </td>
+              <td class="tdata productFinishTime changeable-text">생산완료</td>
+              <td class="tdata reservation changeable-text">예약</td>
+              <td class="tdata deliveryStyle changeable-text">배송형태</td>
+              <td
+                class="tdata changeable-select-classifyName classifyName"
+                th:text="${l.productName}"
+              >
                 답례1-3호
-            </td>
-            
-            <!-- 수정가능파트 -->
-            <td class="tdata quantity changeable-number">
-              1
-            </td>
-            
-            <!-- 상품표 연동 -->
-            <td class="tdata packingMaterial" th:text="${l.wrappingType}">포장재</td>
+              </td>
 
-            <!-- 상품표연동+수정가능파트 -->
-            <td class="tdata changeable-number type-duteop" th:text="${l.item01}">두텁</td>
-            <td class="tdata changeable-number type-redbeen" th:text="${l.item02}">팥</td>
-            <td class="tdata changeable-number type-hogo" th:text="${l.item03}">호고</td>
-            <td class="tdata changeable-number type-nutrition" th:text="${l.item04}">영양</td>
-            <td class="tdata changeable-number type-sasong" th:text="${l.item05}">사송</td>
-            <td class="tdata changeable-number type-samsong" th:text="${l.item06}">삼송</td>
-            <td class="tdata changeable-number type-isong" th:text="${l.item07}">이송</td>
-            <td class="tdata changeable-number type-pyeshong" th:text="${l.item08}">폐송</td>
-            <td class="tdata changeable-number type-osong" th:text="${l.item09}">오송</td>
-            <td class="tdata changeable-number type-ssuk" th:text="${l.item10}">쑥갠</td>
-            <td class="tdata changeable-number type-jaseol" th:text="${l.item11}">자설</td>
-            <td class="tdata changeable-number type-danseol" th:text="${l.item12}">단설</td>
-            <td class="tdata changeable-number type-bacseol" th:text="${l.item13}">백설</td>
-            <td class="tdata changeable-number type-bac" th:text="${l.item14}">百</td>
-            <td class="tdata changeable-number type-dol" th:text="${l.item15}">첫돌</td>
-            <td class="tdata changeable-number type-hangwa" th:text="${l.item16}">한과</td>
-            <td class="tdata changeable-number type-susu" th:text="${l.item17}">수수</td>
-            <td class="tdata changeable-number type-cake" th:text="${l.item18}">케익</td>
-            <td class="tdata changeable-number type-etc" th:text="${l.item19}">기타</td>
+              <td class="tdata quantity changeable-number">1</td>
 
-            <td class="tdata note changeable-text">
-              <input type="text" placeholder="비고 입력">
-            </td>
-           </tr>
+              <!-- 상품표 연동 -->
+              <td class="tdata packingMaterial" th:text="${l.wrappingType}">
+                포장재
+              </td>
+
+              <!-- 상품표연동+수정가능파트 -->
+              <td
+                class="tdata changeable-number type-duteop"
+                th:text="${l.item01}"
+              >
+                두텁
+              </td>
+              <td
+                class="tdata changeable-number type-redbeen"
+                th:text="${l.item02}"
+              >
+                팥
+              </td>
+              <td
+                class="tdata changeable-number type-hogo"
+                th:text="${l.item03}"
+              >
+                호고
+              </td>
+              <td
+                class="tdata changeable-number type-nutrition"
+                th:text="${l.item04}"
+              >
+                영양
+              </td>
+              <td
+                class="tdata changeable-number type-sasong"
+                th:text="${l.item05}"
+              >
+                사송
+              </td>
+              <td
+                class="tdata changeable-number type-samsong"
+                th:text="${l.item06}"
+              >
+                삼송
+              </td>
+              <td
+                class="tdata changeable-number type-isong"
+                th:text="${l.item07}"
+              >
+                이송
+              </td>
+              <td
+                class="tdata changeable-number type-pyeshong"
+                th:text="${l.item08}"
+              >
+                폐송
+              </td>
+              <td
+                class="tdata changeable-number type-osong"
+                th:text="${l.item09}"
+              >
+                오송
+              </td>
+              <td
+                class="tdata changeable-number type-ssuk"
+                th:text="${l.item10}"
+              >
+                쑥갠
+              </td>
+              <td
+                class="tdata changeable-number type-jaseol"
+                th:text="${l.item11}"
+              >
+                자설
+              </td>
+              <td
+                class="tdata changeable-number type-danseol"
+                th:text="${l.item12}"
+              >
+                단설
+              </td>
+              <td
+                class="tdata changeable-number type-bacseol"
+                th:text="${l.item13}"
+              >
+                백설
+              </td>
+              <td
+                class="tdata changeable-number type-bac"
+                th:text="${l.item14}"
+              >
+                百
+              </td>
+              <td
+                class="tdata changeable-number type-dol"
+                th:text="${l.item15}"
+              >
+                첫돌
+              </td>
+              <td
+                class="tdata changeable-number type-hangwa"
+                th:text="${l.item16}"
+              >
+                한과
+              </td>
+              <td
+                class="tdata changeable-number type-susu"
+                th:text="${l.item17}"
+              >
+                수수
+              </td>
+              <td
+                class="tdata changeable-number type-cake"
+                th:text="${l.item18}"
+              >
+                케익
+              </td>
+              <td
+                class="tdata changeable-number type-etc"
+                th:text="${l.item19}"
+              >
+                기타
+              </td>
+
+              <td class="tdata note changeable-text"></td>
+            </tr>
           </tbody>
-          <tbody th:unless="${#lists.size(infoList) > 0}" style="text-align: center;">
-          	<td colspan="20" th:text="${'생산할 품목이 없습니다.'}"></td>
+          <tbody
+            th:unless="${#lists.size(infoList) > 0}"
+            style="text-align: center"
+          >
+            <td colspan="20" th:text="${'생산할 품목이 없습니다.'}"></td>
           </tbody>
         </table>
       </section>
 
       <!-- 품목별 합계 테이블 -->
       <section class="tableSection">
-        <table class="table ">
+        <table class="table">
           <thead>
-           <tr>
-            <th class="thead type">품목</th>
-            <th class="thead type-duteop">두텁</th>
-            <th class="thead type-redbeen">팥</th>
-            <th class="thead type-hogo">호고</th>
-            <th class="thead type-nutrition">영양</th>
-            <th class="thead type-sasong">사송</th>
-            <th class="thead type-samsong">삼송</th>
-            <th class="thead type-isong">이송</th>
-            <th class="thead type-pyeshong">폐송</th>
-            <th class="thead type-osong">오송</th>
-            <th class="thead type-ssuk">쑥갠</th>
-            <th class="thead type-jaseol">자설</th>
-            <th class="thead type-danseol">단설</th>
-            <th class="thead type-bacseol">백설</th>
-            <th class="thead type-bac">百</th>
-            <th class="thead type-dol">첫돌</th>
-            <th class="thead type-hangwa">한과</th>
-            <th class="thead type-susu">수수</th>
-            <th class="thead type-cake">케익</th>
-            <th class="thead type-etc">기타</th>
-           </tr>
+            <tr>
+              <th class="thead type">품목</th>
+              <th class="thead type-duteop">두텁</th>
+              <th class="thead type-redbeen">팥</th>
+              <th class="thead type-hogo">호고</th>
+              <th class="thead type-nutrition">영양</th>
+              <th class="thead type-sasong">사송</th>
+              <th class="thead type-samsong">삼송</th>
+              <th class="thead type-isong">이송</th>
+              <th class="thead type-pyeshong">폐송</th>
+              <th class="thead type-osong">오송</th>
+              <th class="thead type-ssuk">쑥갠</th>
+              <th class="thead type-jaseol">자설</th>
+              <th class="thead type-danseol">단설</th>
+              <th class="thead type-bacseol">백설</th>
+              <th class="thead type-bac">百</th>
+              <th class="thead type-dol">첫돌</th>
+              <th class="thead type-hangwa">한과</th>
+              <th class="thead type-susu">수수</th>
+              <th class="thead type-cake">케익</th>
+              <th class="thead type-etc">기타</th>
+            </tr>
           </thead>
           <!-- 여기에 상단 표 두텁~기타 개수 합계 계산해서 표시됨 -->
           <tbody class="tbody">
-           <tr th:if="${itemTotal != null}">
-            <td class="tdead type" >품목별 합계</td>
-            <td class="tdata totalAmount-duteop" th:text="${itemTotal.item01total}">두텁</td>
-            <td class="tdata totalAmount-redbeen" th:text="${itemTotal.item02total}">팥</td>
-            <td class="tdata totalAmount-hogo" th:text="${itemTotal.item03total}">호고</td>
-            <td class="tdata totalAmount-nutrition" th:text="${itemTotal.item04total}">영양</td>
-            <td class="tdata totalAmount-sasong" th:text="${itemTotal.item05total}">사송</td>
-            <td class="tdata totalAmount-samsong" th:text="${itemTotal.item06total}">삼송</td>
-            <td class="tdata totalAmount-isong" th:text="${itemTotal.item07total}">이송</td>
-            <td class="tdata totalAmount-pyeshong" th:text="${itemTotal.item08total}">폐송</td>
-            <td class="tdata totalAmount-osong" th:text="${itemTotal.item09total}">오송</td>
-            <td class="tdata totalAmount-ssuk" th:text="${itemTotal.item10total}">쑥갠</td>
-            <td class="tdata totalAmount-jaseol" th:text="${itemTotal.item11total}">자설</td>
-            <td class="tdata totalAmount-danseol" th:text="${itemTotal.item12total}">단설</td>
-            <td class="tdata totalAmount-bacseol" th:text="${itemTotal.item13total}">백설</td>
-            <td class="tdata totalAmount-bac" th:text="${itemTotal.item14total}">百</td>
-            <td class="tdata totalAmount-dol" th:text="${itemTotal.item15total}">첫돌</td>
-            <td class="tdata totalAmount-hangwa" th:text="${itemTotal.item16total}">한과</td>
-            <td class="tdata totalAmount-susu" th:text="${itemTotal.item17total}">수수</td>
-            <td class="tdata totalAmount-cake" th:text="${itemTotal.item18total}">케익</td>
-            <td class="tdata totalAmount-etc" th:text="${itemTotal.item19total}">기타</td>
-           </tr>
-           <tr th:unless="${itemTotal != null}" th:text="${'생산할 품목이 없습니다.'}"></tr>
+            <tr th:if="${itemTotal != null}">
+              <td class="tdead type">품목별 합계</td>
+              <td
+                class="tdata totalAmount-duteop"
+                th:text="${itemTotal.item01total}"
+              >
+                두텁
+              </td>
+              <td
+                class="tdata totalAmount-redbeen"
+                th:text="${itemTotal.item02total}"
+              >
+                팥
+              </td>
+              <td
+                class="tdata totalAmount-hogo"
+                th:text="${itemTotal.item03total}"
+              >
+                호고
+              </td>
+              <td
+                class="tdata totalAmount-nutrition"
+                th:text="${itemTotal.item04total}"
+              >
+                영양
+              </td>
+              <td
+                class="tdata totalAmount-sasong"
+                th:text="${itemTotal.item05total}"
+              >
+                사송
+              </td>
+              <td
+                class="tdata totalAmount-samsong"
+                th:text="${itemTotal.item06total}"
+              >
+                삼송
+              </td>
+              <td
+                class="tdata totalAmount-isong"
+                th:text="${itemTotal.item07total}"
+              >
+                이송
+              </td>
+              <td
+                class="tdata totalAmount-pyeshong"
+                th:text="${itemTotal.item08total}"
+              >
+                폐송
+              </td>
+              <td
+                class="tdata totalAmount-osong"
+                th:text="${itemTotal.item09total}"
+              >
+                오송
+              </td>
+              <td
+                class="tdata totalAmount-ssuk"
+                th:text="${itemTotal.item10total}"
+              >
+                쑥갠
+              </td>
+              <td
+                class="tdata totalAmount-jaseol"
+                th:text="${itemTotal.item11total}"
+              >
+                자설
+              </td>
+              <td
+                class="tdata totalAmount-danseol"
+                th:text="${itemTotal.item12total}"
+              >
+                단설
+              </td>
+              <td
+                class="tdata totalAmount-bacseol"
+                th:text="${itemTotal.item13total}"
+              >
+                백설
+              </td>
+              <td
+                class="tdata totalAmount-bac"
+                th:text="${itemTotal.item14total}"
+              >
+                百
+              </td>
+              <td
+                class="tdata totalAmount-dol"
+                th:text="${itemTotal.item15total}"
+              >
+                첫돌
+              </td>
+              <td
+                class="tdata totalAmount-hangwa"
+                th:text="${itemTotal.item16total}"
+              >
+                한과
+              </td>
+              <td
+                class="tdata totalAmount-susu"
+                th:text="${itemTotal.item17total}"
+              >
+                수수
+              </td>
+              <td
+                class="tdata totalAmount-cake"
+                th:text="${itemTotal.item18total}"
+              >
+                케익
+              </td>
+              <td
+                class="tdata totalAmount-etc"
+                th:text="${itemTotal.item19total}"
+              >
+                기타
+              </td>
+            </tr>
+            <tr
+              th:unless="${itemTotal != null}"
+              th:text="${'생산할 품목이 없습니다.'}"
+            ></tr>
           </tbody>
         </table>
       </section>
-
-
     </div>
 
     <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../static/js/smartstore/common.js"></script>
     <script src="../../static/js/smartstore/tableUpdate_front.js"></script>
+    <script src="../../static/js/smartstore/productJournal_front.js"></script>
 
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script
@@ -213,6 +429,10 @@
     <script
       type="text/javascript"
       th:src="@{/js/smartstore/tableUpdate_front.js}"
+    ></script>
+    <script
+      type="text/javascript"
+      th:src="@{/js/smartstore/productJournal_front.js}"
     ></script>
   </body>
 </html>

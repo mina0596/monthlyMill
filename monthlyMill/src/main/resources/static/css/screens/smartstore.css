@@ -94,8 +94,19 @@ header[data-page-number="4"] .headerMenu:nth-child(4) {
   justify-content: space-between;
   margin-bottom: 1em;
 }
+.top-box.right {
+  justify-content: flex-end;
+}
+.deleteSearchBtn {
+  padding: 0.25em 0.5em;
+}
 
 /* ============== 테이블 ============== */
+.tableSection {
+  /* height: 75vh; */
+  overflow: auto;
+}
+
 table,
 th,
 td {
@@ -104,6 +115,10 @@ td {
 .table {
   table-layout: fixed;
   border: 2px solid #000;
+}
+.thead {
+  position: sticky;
+  top: 0px;
 }
 .thead {
   background-color: var(--column-color);
@@ -127,6 +142,7 @@ td {
   /* text-overflow: ellipsis; */
   line-height: 150%;
   padding-left: 0.25em;
+  padding-right: 0.25em;
   text-align: center;
 }
 .tdata {
@@ -334,7 +350,18 @@ td {
 .changeable-text {
   background-color: #a8eb12;
 } */
+/*============ 메뉴3. 생산일지 ===============*/
+.tableDate {
+  text-align: center;
+}
 
+.changeable-input-number {
+  min-width: none;
+  width: 3em;
+}
+.productJournal .receiverName {
+  max-width: fit-content;
+}
 /*============스마트스토어 로그인, 회원가입 ===============*/
 .loginbg {
   background: #008793;
