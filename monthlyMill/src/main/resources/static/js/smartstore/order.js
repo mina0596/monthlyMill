@@ -10,6 +10,11 @@ $(function(){
 	// ********************** 수기 주문 등록 화면 *****************************
 	// *******************************************************************
 	
+	// 필수입력 : 주문경로, 희망일, 수취인명, 수취인연락처, 발주품목, 옵션정보, 배송지, 배송메세지
+	// 매장주문의 경우 필수입력칸 아닌 경우는 미입력 예정
+	
+	
+	
 	// ====== 등록 버튼 ======
 	$('.manualEnterBtn').click(function(){
 		
@@ -49,14 +54,20 @@ $(function(){
 			
 			// 상품명 (마케팅용)
 			$('.itemName-input').each(function(){
-				if($(this).val() == '' || $(this).val() == undefined){
-					alert('상품명을 입력해주세요.');
-					submitFlag = false;
-					return submitFlag;
-				}else{
-					productName.push($(this).val());
-					submitFlag = true;
-					return submitFlag;
+				
+				var orderType = $(this).parent().parent().find('orderType-input').val();
+				console.log(orderType + 'aklsdfhgakl;dsgl');
+				// 매장주문일 경우에는 미입력도 가능
+				if(orderType != '매장주문'){
+					if($(this).val() == '' || $(this).val() == undefined){
+						alert('상품명을 입력해주세요.');
+						submitFlag = false;
+						return submitFlag;
+					}else{
+						productName.push($(this).val());
+						submitFlag = true;
+						return submitFlag;
+					}
 				}
 			});
 			
@@ -68,7 +79,8 @@ $(function(){
 			
 			// 상품 수량
 			$('.quantity-input').each(function(){
-				if($(this).val() == '' || $(this).val() == undefined){
+				var orderType = $(this).parent().parent().find('orderType-input').val();
+				if($(this).val() == '' || $(this).val() == undefined && orderType != '매장주문'){
 					alert('상품수량을 입력해주세요.');
 					submitFlag = false;
 					return submitFlag;
@@ -77,11 +89,12 @@ $(function(){
 					submitFlag = true;
 					return submitFlag;
 				}
-				});
+			});
 			
 			// 상품별 주문금액
 			$('.eachTotalPrice-input').each(function(){
-				if($(this).val() == '' || $(this).val() == undefined){
+				var orderType = $(this).parent().parent().find('orderType-input').val();
+				if($(this).val() == '' || $(this).val() == undefined && orderType != '매장주문'){
 					alert('상품별 주문금액을 입력해주세요.');
 					submitFlag = false;
 					return submitFlag;
@@ -113,7 +126,8 @@ $(function(){
 			
 			// 배송비
 			$('.deliveryCharge-input').each(function(){
-				if($(this).val() == '' || $(this).val() == undefined){
+				var orderType = $(this).parent().parent().find('orderType-input').val();
+				if($(this).val() == '' || $(this).val() == undefined && orderType != '매장주문'){
 					alert('배송비를 입력해주세요.');
 					submitFlag = false;
 					return submitFlag;
@@ -146,6 +160,8 @@ $(function(){
 				}
 			});
 			console.log(expDeliveryDate);
+			
+			
 		// 상품이 하나인 경우
 		}else{
 			if($('.receiverName-input').val() == '' || $('.receiverName-input').val() == undefined){
