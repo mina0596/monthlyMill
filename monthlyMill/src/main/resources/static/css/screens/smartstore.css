@@ -118,7 +118,9 @@ td {
 }
 .thead {
   position: sticky;
+  width: inherit;
   top: 0px;
+  z-index: 5;
 }
 .thead {
   background-color: var(--column-color);
@@ -139,11 +141,25 @@ td {
 .tdata {
   overflow: hidden;
   white-space: nowrap;
-  /* text-overflow: ellipsis; */
   line-height: 150%;
   padding-left: 0.25em;
   padding-right: 0.25em;
   text-align: center;
+}
+
+.theadFix {
+  position: sticky;
+}
+.theadFix .resizeLine {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5px;
+  height: 100%;
+  cursor: col-resize;
+}
+.resizeLine.resizeLine:hover {
+  border-right: 2px solid #000;
 }
 .tdata {
   border: 1px solid rgba(0, 0, 0, 0.3);
@@ -215,6 +231,12 @@ td {
   text-align: left;
   line-height: 150%;
   padding-right: 0.5em;
+}
+.manualTh.required::after {
+  content: "*";
+  color: var(--btn-emp-color);
+  font-size: 0.75em;
+  vertical-align: super;
 }
 .manualInput-half {
   width: 50%;
