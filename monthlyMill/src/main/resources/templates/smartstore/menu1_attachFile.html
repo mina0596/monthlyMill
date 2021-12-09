@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>스마트스토어 엑셀관리</title>
-    <!-- <link rel="stylesheet" href="../../static/css/screens/smartstore.css" /> -->
+    <link rel="stylesheet" href="../../static/css/screens/smartstore.css" />
     <link rel="stylesheet" th:href="@{/css/screens/smartstore.css}" />
   </head>
   <body>
@@ -13,13 +13,21 @@
     <header class="header" data-page-number="1">
       <div class="headerWrap">
         <ul class="headerColumn-left">
-          <li class="headerMenu"><a href="">시트등록</a></li>
-          <li class="headerMenu"><a th:href="@{/smartStore/orderList}">데이터 조회/수정</a></li>
-          <li class="headerMenu"><a th:href="@{/smartStore/productionPlan}">생산일지</a></li>
-          <li class="headerMenu"><a th:href="@{/smartStore/productList}">상품표</a></li>
+          <li class="headerMenu"><a href="@{/smartStore/main}">시트등록</a></li>
+          <li class="headerMenu">
+            <a th:href="@{/smartStore/orderList}">데이터 조회/수정</a>
+          </li>
+          <li class="headerMenu">
+            <a th:href="@{/smartStore/productionPlan}">생산일지</a>
+          </li>
+          <li class="headerMenu">
+            <a th:href="@{/smartStore/productList}">상품표</a>
+          </li>
         </ul>
         <div class="headerColumn-right">
-          <span th:if="${session.SESSIONNAME != null}" class="header-userName">[[${session.SESSIONNAME}]]</span>
+          <span th:if="${session.SESSIONNAME != null}" class="header-userName"
+            >[[${session.SESSIONNAME}]]</span
+          >
           <button class="header-logoutBtn">로그아웃</button>
         </div>
       </div>
@@ -32,13 +40,15 @@
         <h1 class="pageTitle">파일등록</h1>
 
         <div class="top-box">
-          <button type="file" class="attchExcelBtn">엑셀파일등록</button>
-          <select class="categorySelect">
-            <option value="N 스토어">N 스토어</option>
-            <option value="N 예약">N 예약</option>
-            <option value="전화예약">전화예약</option>
-          </select>
-          <button class="attchCategoryBtn">파일등록</button>
+          <!-- <div>
+            <button type="file" class="attchExcelBtn">엑셀파일등록</button>
+            <select class="categorySelect">
+              <option value="N 스토어">N 스토어</option>
+              <option value="N 예약">N 예약</option>
+              <option value="전화예약">전화예약</option>
+            </select>
+            <button class="attchCategoryBtn">선택파일등록</button>
+          </div> -->
           <button class="inputLineBtn">수기등록</button>
         </div>
       </section>
@@ -67,83 +77,83 @@
           <tbody class="tbody">
             <tr class="trow" th:each="l : ${allOrderInfo}">
               <td class="tdata sendDate">
-                <span title="${l.shippingDate}" th:text="${l.shippingDate}"></span>
+                <span
+                  title="${l.shippingDate}"
+                  th:text="${l.shippingDate}"
+                ></span>
               </td>
               <td class="tdata paymentDate">
                 <span title="${l.paidDate}" th:text="${l.paidDate}"></span>
               </td>
               <td class="tdata deliveryType">
-                <span title="${l.shippingMethod}" th:text="${l.shippingMethod}"></span>
+                <span
+                  title="${l.shippingMethod}"
+                  th:text="${l.shippingMethod}"
+                ></span>
               </td>
               <td class="tdata purchaserName">
-                <span title="${l.ordererName}" th:text="${l.ordererName}"></span>
+                <span
+                  title="${l.ordererName}"
+                  th:text="${l.ordererName}"
+                ></span>
               </td>
               <td class="tdata purchaserPhone">
-                <span title="${l.orderderPhone}" th:text="${l.orderderPhone}"></span>
+                <span
+                  title="${l.orderderPhone}"
+                  th:text="${l.orderderPhone}"
+                ></span>
               </td>
-              <td
-                class="tdata receiverName"
-                th:title="${l.receiverName}"
-              >
-                <span th:text="${l.receiverName}">
-                  
-                </span>
+              <td class="tdata receiverName" th:title="${l.receiverName}">
+                <span th:text="${l.receiverName}"> </span>
               </td>
               <td class="tdata receiverPhone">
                 <span
                   th:title="${l.receiverPhone}"
-                th:text="${l.receiverPhone}"
+                  th:text="${l.receiverPhone}"
                 >
-             
                 </span>
               </td>
               <td class="tdata itemName">
-                <span
-                  th:title="${l.productName}"
-                  th:text="${l.productName}"
-                >
-                 
+                <span th:title="${l.productName}" th:text="${l.productName}">
                 </span>
               </td>
               <td class="tdata orderItemList">
-                <span th:title="${l.detailedProduct}"
-                th:text="${l.detailedProduct}">
+                <span
+                  th:title="${l.detailedProduct}"
+                  th:text="${l.detailedProduct}"
+                >
                 </span>
               </td>
               <td class="tdata quantity">
-                <span th:title="${l.orderQuantity}"
-                th:text="${l.orderQuantity}">
-                  
+                <span
+                  th:title="${l.orderQuantity}"
+                  th:text="${l.orderQuantity}"
+                >
                 </span>
               </td>
               <td class="tdata eachTotalPrice">
-                <span th:title="${l.totOrderAmount}"
-                th:text="${l.totOrderAmount}">
+                <span
+                  th:title="${l.totOrderAmount}"
+                  th:text="${l.totOrderAmount}"
+                >
                 </span>
               </td>
               <td class="tdata optionInfo">
-                <span
-                  th:title="${l.option}"
-                  th:text="${l.option}"
-                >
-                </span>
+                <span th:title="${l.option}" th:text="${l.option}"> </span>
               </td>
               <td class="tdata deliveryDestination">
-                <span
-                 th:title="${l.shippingAddr}"
-                 th:text="${l.shippingAddr}"
-                >
+                <span th:title="${l.shippingAddr}" th:text="${l.shippingAddr}">
                 </span>
               </td>
               <td class="tdata deliveryMsg">
-                <span
-                  th:title="${l.delieveryMsg}"
-                  th:text="${l.delieveryMsg}"
-                >
+                <span th:title="${l.delieveryMsg}" th:text="${l.delieveryMsg}">
                 </span>
               </td>
               <td class="tdata deliveryDate">
-                <span th:title="${l.expDeliveryDate}" th:text="${l.expDeliveryDate}"></span>
+                <span
+                  th:title="${l.expDeliveryDate}"
+                  th:text="${l.expDeliveryDate}"
+                ></span>
               </td>
             </tr>
           </tbody>
@@ -153,8 +163,16 @@
 
     <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../static/js/smartstore/common.js"></script>
+    <script src="../../static/js/smartstore/attachFile_front.js"></script>
 
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
-    <script type="text/javascript" th:src="@{/js/smartstore/common.js}"></script>
+    <script
+      type="text/javascript"
+      th:src="@{/js/smartstore/common.js}"
+    ></script>
+    <script
+      type="text/javascript"
+      th:src="@{/js/smartstore/attachFile_front.js}"
+    ></script>
   </body>
 </html>

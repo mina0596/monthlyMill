@@ -13,7 +13,7 @@
     <header class="header" data-page-number="1">
       <div class="headerWrap">
         <ul class="headerColumn-left">
-          <li class="headerMenu"><a href="">시트등록</a></li>
+          <li class="headerMenu"><a href="@{/smartStore/main}">시트등록</a></li>
           <li class="headerMenu">
             <a th:href="@{/smartStore/orderList}">데이터 조회/수정</a>
           </li>
@@ -100,16 +100,48 @@
                   <div></div>
                 </h5>
                 <li class="manualList">
-                  <span class="manualTh">수취인명</span>
-                  <input type="text" class="manualInput receiverName-input" />
+                  <span class="manualTh required">주문경로</span>
+                  <select class="manualInput orderType-input">
+                    <option value="매장주문">매장주문</option>
+                    <option value="N스토어">N스토어</option>
+                    <option value="N예약">N예약</option>
+                  </select>
                 </li>
                 <li class="manualList">
-                  <span class="manualTh">수취인연락처</span>
+                  <span class="manualTh required">희망일</span>
+                  <div>
+                    <input
+                      type="date"
+                      class="manualInput deliveryDate-input"
+                      required
+                    />
+                    <select class="manualInput deliveryDatePart-input">
+                      <option value="1부">1부</option>
+                      <option value="2부">2부</option>
+                    </select>
+                    <input
+                      type="time"
+                      class="manualInput deliveryDateTime-input hidden"
+                      step="1800"
+                    />
+                  </div>
+                </li>
+                <li class="manualList">
+                  <span class="manualTh required">수취인명</span>
+                  <input
+                    type="text"
+                    class="manualInput receiverName-input"
+                    required
+                  />
+                </li>
+                <li class="manualList">
+                  <span class="manualTh required">수취인연락처</span>
                   <input
                     type="text"
                     class="manualInput receiverPhone-input"
                     placeholder="전화번호입력"
                     maxlength="13"
+                    required
                   />
                 </li>
                 <li class="manualList">
@@ -117,7 +149,7 @@
                   <input type="text" class="manualInput itemName-input" />
                 </li>
                 <li class="manualList">
-                  <span class="manualTh">발주품목</span>
+                  <span class="manualTh required">발주품목</span>
                   <select class="manualInput orderItemList-input">
                     <option
                       th:each="l : ${pNameList}"
@@ -137,7 +169,6 @@
                     /><span> 개</span>
                   </div>
                 </li>
-                <!-- 이건 자동계산되서 뜨게 -->
                 <li class="manualList">
                   <span class="manualTh">상품별 총 주문금액</span>
                   <div class="manualInput-unitBox">
@@ -147,27 +178,30 @@
                       min="0"
                     /><span> 원</span>
                   </div>
-                  <!-- 계산이 자동으로 되게 할 것인지 / 입력하게할것인지 -->
-                  <!-- 
-                  <span class="manualInput eachTotalPrice-input price_number"
-                    >0</span
-                  >
-                   -->
                 </li>
                 <li class="manualList">
-                  <span class="manualTh">옵션정보</span>
-                  <input type="text" class="manualInput optionInfo-input" />
-                </li>
-                <li class="manualList">
-                  <span class="manualTh">배송지</span>
+                  <span class="manualTh required">옵션정보</span>
                   <input
                     type="text"
-                    class="manualInput deliveryDestination-input"
+                    class="manualInput optionInfo-input"
+                    required
                   />
                 </li>
                 <li class="manualList">
-                  <span class="manualTh">배송메세지</span>
-                  <input type="text" class="manualInput deliveryMsg-input" />
+                  <span class="manualTh required">배송지</span>
+                  <input
+                    type="text"
+                    class="manualInput deliveryDestination-input"
+                    required
+                  />
+                </li>
+                <li class="manualList">
+                  <span class="manualTh required">배송메세지</span>
+                  <input
+                    type="text"
+                    class="manualInput deliveryMsg-input"
+                    required
+                  />
                 </li>
                 <li class="manualList">
                   <span class="manualTh">배송비</span>
@@ -179,29 +213,6 @@
                       min="0"
                     />
                     <span>원</span>
-                  </div>
-                </li>
-                <li class="manualList">
-                  <span class="manualTh">주문종류</span>
-                  <select class="manualInput orderType-input">
-                    <option value="N스토어">N스토어</option>
-                    <option value="N예약">N예약</option>
-                    <option value="매장주문">매장주문</option>
-                  </select>
-                </li>
-                <li class="manualList">
-                  <span class="manualTh">희망일</span>
-                  <div>
-                    <input type="date" class="manualInput deliveryDate-input" />
-                    <select class="manualInput deliveryDatePart-input">
-                      <option value="1부">1부</option>
-                      <option value="2부">2부</option>
-                    </select>
-                    <input
-                      type="time"
-                      class="manualInput deliveryDateTime-input hidden"
-                      step="1800"
-                    />
                   </div>
                 </li>
               </ul>
