@@ -1,6 +1,7 @@
 package project.monthlyMill.smartstore;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -137,8 +138,33 @@ public class SmartstoreController {
 		String nowDate = format.format(date);
 		model.addAttribute("infoList", ssService.getProductionInfo(nowDate));
 		model.addAttribute("itemTotal", ssService.getItemsTotal(nowDate));
+		model.addAttribute("currentDate", nowDate);
 		return "/smartstore/menu3_productJournal";
 	}
+	
+	// 생산일지 날짜 변환시 날짜별로 생산일지 정보 가져오기
+	@PostMapping("/getProductionInfoByDate")
+	@ResponseBody
+	public List<HashMap<String, Object>> sendPruductionInfo(@RequestParam(name = "productionDate", required = false) String productionDate){
+		log.info("생산일지 날짜 이동시에 날짜 텍스트 : {}", productionDate);
+		List<HashMap<String, Object>> result = new ArrayList<HashMap<String,Object>>();
+		result = ssService.getProductionInfo(productionDate);
+		// result.add(ssService.getItemsTotal(productionDate));
+		return result;
+	}
+	
+	
+	// 생산일지 날짜 변환시 날짜별로 통합 품목수 가져오기
+	@PostMapping("/getTotalItemByDate")
+	@ResponseBody
+	public HashMap<String, Integer> sendItemInfo(@RequestParam(name = "productionDate", required = false) String productionDate){
+		log.info("생산일지 날짜 이동시에 날짜 텍스트 : {}", productionDate);
+		HashMap<String, Integer> result = new HashMap<String, Integer>();
+		result = ssService.getItemsTotal(productionDate);
+		return result;
+	}
+	
+	
 	
 	
 	// ============================================

@@ -49,7 +49,7 @@
       <!-- 날짜표시 -->
       <div class="tableDateBox">
         <button class="prevDateBtn"><</button>
-        <span class="tableDate">2021-11-01</span>
+        <span class="tableDate" th:text="${currentDate}">2021-11-01</span>
         <button class="nextDateBtn">></button>
       </div>
 
@@ -94,17 +94,18 @@
             </tr>
           </thead>
 
-          <tbody class="tbody">
+          <tbody class="tbody" id="productionInfoTbody">
             <tr
               th:if="${#lists.size(infoList) > 0}"
               th:each="l,n : ${infoList}"
+              class = "removeTr"
             >
               <td class="tdata modify">
                 <!-- 버튼 누르면 해당 행 수정가능상태로 변경 -->
                 <button class="modifyRowBt">수정</button>
               </td>
               <td class="tdata number" th:text="${n.index+1}">1</td>
-              <td class="tdata changeable-text">완료</td>
+              <td class="tdata changeable-text" th:text="${l.shippingPayCheck}">완료</td>
               <!-- menu2 테이블에 수취인~배송형태 컬럼항목 연동 -->
               <td
                 class="tdata receiverName changeable-text"
@@ -112,9 +113,9 @@
               >
                 수취인
               </td>
-              <td class="tdata productFinishTime changeable-text">생산완료</td>
-              <td class="tdata reservation changeable-text">예약</td>
-              <td class="tdata deliveryStyle changeable-text">배송형태</td>
+              <td class="tdata productFinishTime changeable-text" th:text="${l.productionComp}">생산완료</td>
+              <td class="tdata reservation changeable-text" th:text="${l.expDeliveryDate}">예약</td>
+              <td class="tdata deliveryStyle changeable-text" th:text="${l.shippingAddr}">배송형태</td>
               <td
                 class="tdata changeable-select-classifyName classifyName"
                 th:text="${l.productName}"
@@ -122,7 +123,7 @@
                 답례1-3호
               </td>
 
-              <td class="tdata quantity changeable-number">1</td>
+              <td class="tdata quantity changeable-number" th:text="${l.orderQuantity}">1</td>
 
               <!-- 상품표 연동 -->
               <td class="tdata packingMaterial" th:text="${l.wrappingType}">
@@ -245,15 +246,13 @@
                 기타
               </td>
 
-              <td class="tdata note changeable-text"></td>
+              <td class="tdata note changeable-text" th:text="${l.memo}"></td>
             </tr>
-          </tbody>
-          <tbody
-            th:unless="${#lists.size(infoList) > 0}"
-            style="text-align: center"
-          >
-            <td colspan="20" th:text="${'생산할 품목이 없습니다.'}"></td>
-          </tbody>
+            </tbody>
+            <!-- 결과값이 없을 경우  -->
+	          <tbody class="noProductionTbody"  th:unless="${#lists.size(infoList) < 0}" style="text-align: center;">
+	            <td colspan="25" th:text="${'생산할 품목이 없습니다.'}"></td>
+          	  </tbody>
         </table>
       </section>
 
@@ -285,8 +284,8 @@
             </tr>
           </thead>
           <!-- 여기에 상단 표 두텁~기타 개수 합계 계산해서 표시됨 -->
-          <tbody class="tbody">
-            <tr th:if="${itemTotal != null}">
+          <tbody class="tbody" id="totalItemTbody">
+            <tr th:if="${itemTotal != null}" class="removeItemTotalTr">
               <td class="tdead type">품목별 합계</td>
               <td
                 class="tdata totalAmount-duteop"
@@ -403,11 +402,10 @@
                 기타
               </td>
             </tr>
-            <tr
-              th:unless="${itemTotal != null}"
-              th:text="${'생산할 품목이 없습니다.'}"
-            ></tr>
-          </tbody>
+            </tbody>
+            <tbody class="noItemTbody"  th:unless="${itemTotal != null}" style="text-align: center;">
+            	<td colspan="18" th:text="${'생산할 품목이 없습니다.'}"></td>
+       	  	</tbody>
         </table>
       </section>
     </div>
