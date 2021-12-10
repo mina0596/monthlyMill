@@ -48,9 +48,9 @@
 
       <!-- 날짜표시 -->
       <div class="tableDateBox">
-        <button class="prevDateBtn"><</button>
-        <span class="tableDate" th:text="${currentDate}">2021-11-01</span>
-        <button class="nextDateBtn">></button>
+        <button class="prevDateBtn" type="button"><</button>
+        <input type="date" class="tableDate" th:value="${currentDate}" />
+        <button class="nextDateBtn" type="button">></button>
       </div>
 
       <!-- 해당하는 날짜의 생산일지 테이블 -->
@@ -98,14 +98,16 @@
             <tr
               th:if="${#lists.size(infoList) > 0}"
               th:each="l,n : ${infoList}"
-              class = "removeTr"
+              class="removeTr"
             >
               <td class="tdata modify">
                 <!-- 버튼 누르면 해당 행 수정가능상태로 변경 -->
                 <button class="modifyRowBt">수정</button>
               </td>
               <td class="tdata number" th:text="${n.index+1}">1</td>
-              <td class="tdata changeable-text" th:text="${l.shippingPayCheck}">완료</td>
+              <td class="tdata changeable-text" th:text="${l.shippingPayCheck}">
+                완료
+              </td>
               <!-- menu2 테이블에 수취인~배송형태 컬럼항목 연동 -->
               <td
                 class="tdata receiverName changeable-text"
@@ -113,20 +115,43 @@
               >
                 수취인
               </td>
-              <td class="tdata productFinishTime changeable-text" th:text="${l.productionComp}">생산완료</td>
-              <td class="tdata reservation changeable-text" th:text="${l.expDeliveryDate}">예약</td>
-              <td class="tdata deliveryStyle changeable-text" th:text="${l.shippingAddr}">배송형태</td>
               <td
-                class="tdata changeable-select-classifyName classifyName"
+                class="tdata productFinishTime changeable-text"
+                th:text="${l.productionComp}"
+              >
+                생산완료
+              </td>
+              <td
+                class="tdata reservation changeable-text"
+                th:text="${l.expDeliveryDate}"
+              >
+                예약
+              </td>
+              <td
+                class="tdata deliveryStyle changeable-text"
+                th:text="${l.shippingAddr}"
+              >
+                배송형태
+              </td>
+              <td
+                class="tdata changeable-text classifyName"
                 th:text="${l.productName}"
               >
                 답례1-3호
               </td>
 
-              <td class="tdata quantity changeable-number" th:text="${l.orderQuantity}">1</td>
+              <td
+                class="tdata quantity changeable-number"
+                th:text="${l.orderQuantity}"
+              >
+                1
+              </td>
 
               <!-- 상품표 연동 -->
-              <td class="tdata packingMaterial" th:text="${l.wrappingType}">
+              <td
+                class="tdata changeable-text packingMaterial"
+                th:text="${l.wrappingType}"
+              >
                 포장재
               </td>
 
@@ -248,11 +273,15 @@
 
               <td class="tdata note changeable-text" th:text="${l.memo}"></td>
             </tr>
-            </tbody>
-            <!-- 결과값이 없을 경우  -->
-	          <tbody class="noProductionTbody"  th:unless="${#lists.size(infoList) < 0}" style="text-align: center;">
-	            <td colspan="25" th:text="${'생산할 품목이 없습니다.'}"></td>
-          	  </tbody>
+          </tbody>
+          <!-- 결과값이 없을 경우  -->
+          <tbody
+            class="noProductionTbody"
+            th:unless="${#lists.size(infoList) < 0}"
+            style="text-align: center"
+          >
+            <td colspan="25" th:text="${'생산할 품목이 없습니다.'}"></td>
+          </tbody>
         </table>
       </section>
 
@@ -402,18 +431,23 @@
                 기타
               </td>
             </tr>
-            </tbody>
-            <tbody class="noItemTbody"  th:unless="${itemTotal != null}" style="text-align: center;">
-            	<td colspan="18" th:text="${'생산할 품목이 없습니다.'}"></td>
-       	  	</tbody>
+          </tbody>
+          <tbody
+            class="noItemTbody"
+            th:unless="${itemTotal != null}"
+            style="text-align: center"
+          >
+            <td colspan="18" th:text="${'생산할 품목이 없습니다.'}"></td>
+          </tbody>
         </table>
       </section>
     </div>
 
     <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../static/js/smartstore/common.js"></script>
+    <script src="../../static/js/smartstore/production.js"></script>
     <script src="../../static/js/smartstore/tableUpdate_front.js"></script>
-    <script src="../../static/js/smartstore/productJournal_front.js"></script>
+    <script src="../../static/js/smartstore/dateManage_front.js"></script>
 
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script
@@ -430,7 +464,7 @@
     ></script>
     <script
       type="text/javascript"
-      th:src="@{/js/smartstore/productJournal_front.js}"
+      th:src="@{/js/smartstore/dateManage_front.js}"
     ></script>
   </body>
 </html>
