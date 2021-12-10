@@ -104,7 +104,7 @@ header[data-page-number="4"] .headerMenu:nth-child(4) {
 /* ============== 테이블 ============== */
 .tableSection {
   /* height: 75vh; */
-  overflow: auto;
+  /* overflow: auto; */
 }
 
 table,
@@ -149,6 +149,9 @@ td {
 
 .theadFix {
   position: sticky;
+  top: 57px;
+}
+.theadFix.fixed {
 }
 .theadFix .resizeLine {
   position: absolute;

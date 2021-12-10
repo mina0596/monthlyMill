@@ -7,7 +7,6 @@ $(document).on("click", ".tdata", function(){
 /*============= */
 
 
-
 //리사이즈 드래그 기능추가
 document.querySelectorAll(".thead").forEach((head)=>{
     const div = createTableResizeDiv();
