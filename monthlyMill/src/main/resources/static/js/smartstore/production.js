@@ -118,6 +118,16 @@ $(function(){
 		sendProductionDate(productionDate);
 	})
 	
+	// 수정된 데이터가져오기	
+	$('.tdata changeable-number').change(function(){
+		console.log($(this));
+	})
+	
+	
+	// 수정완료 눌렀을때
+	$('.modifyRowBt modifying').click(function(){
+	})
+	
 })
 
 
