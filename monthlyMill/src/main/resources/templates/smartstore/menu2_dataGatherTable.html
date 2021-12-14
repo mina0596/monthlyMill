@@ -115,7 +115,7 @@
             </tr>
           </thead>
 
-          <tbody>
+          <tbody id="orderTBody">
             <!-- <tr class="trow" th:each=" l,n : ${orderList}">
               <td
                 class="tdata changeable-text deliveryDate"
@@ -238,7 +238,7 @@
               </td>
             </tr> -->
 
-            <tr class="trow" th:if="${#lists.size(orderList) > 0}" th:each="l, n : ${orderList}" id="orderTBody">
+            <tr class="trow removeTr"   th:if="${#lists.size(orderList) > 0}" th:each="l, n : ${orderList}" >
               <td class="tdata deliveryDate changeable-text" th:text="${l.expDeliveryDate}">11월 12일</td>
               <td class="tdata orderSite changeable-text" th:text="${l.orderType}">N스토어</td>
               <td class="tdata number" th:text="${n.index+1}">1</td>
