@@ -93,6 +93,11 @@ public class SmartstoreService {
 		return oMapper.getAllOrderInfo();
 	}
 
+	// 날짜별로 주문 정보 가져오기
+	public List<SmartStoreOrder> getOrderInfoByDate(String expDate){
+		return oMapper.getOrderInfoByDate(expDate);
+	}
+	
 	// 주문코드 생성
 	public String getNewOrderNum() {
 		Date date = new Date();

@@ -238,7 +238,7 @@
               </td>
             </tr> -->
 
-            <tr class="trow" th:each="l, n : ${orderList}" >
+            <tr class="trow" th:if="${#lists.size(orderList) > 0}" th:each="l, n : ${orderList}" id="orderTBody">
               <td class="tdata deliveryDate changeable-text" th:text="${l.expDeliveryDate}">11월 12일</td>
               <td class="tdata orderSite changeable-text" th:text="${l.orderType}">N스토어</td>
               <td class="tdata number" th:text="${n.index+1}">1</td>
@@ -338,6 +338,9 @@
               </td>
             </tr>
             <!-- 여기까지해서 한줄 -->
+          </tbody>
+          <tbody th:unless="${#lists.size(orderList) > 0}" style="text-align: center;" id="noOrderTbody">
+          	<td colspan="20" th:text="${currentDate} + ' 에 해당하는 주문이 없습니다.'"></td>
           </tbody>
         </table>
       </section>

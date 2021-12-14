@@ -310,6 +310,154 @@ $(function(){
 	// ********************** 일별 주문 상세내역 화면 *****************************
 	// *******************************************************************
 	
+	function getOrderInfoByDeliveryDate(expDeliveryDate){
+		$.ajax({
+			url : "/smartStore/getOrderInfoByDeliveryDate",
+			data : {expDeliveryDate : expDeliveryDate},
+			method : "post",
+			dataType : "json",
+			success : function(data){
+				console.log(data);
+				var html = '';
+				$('#orderTBody').remove();
+				$('#noOrderTbody').remove();
+				html = `
+				<tr class="trow" id="orderTBody">
+              <td class="tdata deliveryDate changeable-text" th:text="${l.expDeliveryDate}">11월 12일</td>
+              <td class="tdata orderSite changeable-text" th:text="${l.orderType}">N스토어</td>
+              <td class="tdata number" th:text="${n.index+1}">1</td>
+              <td class="tdata tdata-itembox">
+                <ul class="tdata-column">
+                  <div class="tdata-column-2">
+                    <li class="tdata-column-list">
+                      <span>결제일</span>
+                      <span class="paymentDate changeable-date"
+                        th:text="${l.paidDate}">2021-11-11</span
+                      >
+                    </li>
+                    <li class="tdata-column-list">
+                      <span>발송기한</span>
+                      <span class="productFinishTime changeable-date"
+                        th:text="${l.shippingDate}">2021-11-11</span
+                      >
+                    </li>
+                  </div>
+                  <div class="tdata-column-2">
+                    <li class="tdata-column-list">
+                      <span>구매자</span>
+                      <div>
+                        <span class="purchaserName changeable-text"
+                         th:text="${l.ordererName}">
+                          홍길동</span
+                        >
+                        <span class="purchaserPhone changeable-text"
+                          th:text="'(' + ${l.orderderPhone} + ')'">(010-1111-2222)</span
+                        >
+                      </div>
+                    </li>
+                    <li class="tdata-column-list">
+                      <span>수취인</span>
+                      <div>
+                        <span class="receiverName changeable-text" th:text="${l.receiverName}">김철수</span>
+                        <span class="receiverPhone changeable-text"
+                          th:text="'(' + ${l.receiverPhone} + ')'">(010-1111-2222)</span
+                        >
+                      </div>
+                    </li>
+                  </div>
+                  <li class="tdata-column-list">
+                    <span>발주품목</span>
+                    <span class="orderItemList changeable-text"
+                      th:text="${l.productName}">발주품목이름</span
+                    >
+                  </li>
+                  <li class="tdata-column-list">
+                    <span>수량</span>
+                    <span class="quantity changeable-number" th:text="${l.orderQuantity}">2</span>
+                  </li>
+                  <li class="tdata-column-list">
+                    <span>옵션정보</span>
+                    <span class="optionInfo changeable-text" th:text="${l.option}">옵션내용</span>
+                  </li>
+                  <li class="tdata-column-list">
+                    <span>주문금액</span>
+                    <span class="eachTotalPrice price_number changeable-price"
+                      th:text="${l.totOrderAmount}">50,000</span
+                    >
+                  </li>
+                  <div class="tdata-column-2">
+                    <li class="tdata-column-list">
+                      <span>배송방법</span>
+                      <span class="deliveryType changeable-text" th:text="${l.shippingMethod}">퀵</span>
+                    </li>
+                    <li class="tdata-column-list">
+                      <span>배송비</span>
+                      <span class="deliveryPrice changeable-price price_number"
+                        th:text="${l.shippingFee}">3000</span
+                      >
+                    </li>
+                  </div>
+                  <li class="tdata-column-list">
+                    <span>배송지</span>
+                    <p class="deliveryDestination changeable-text" th:text="${l.shippingAddr}">
+                      서울특별시 서초구 신반포로23길 30 (잠원동, 반원상가)
+                      우리은행 잠원동 지점
+                    </p>
+                  </li>
+                  <li class="tdata-column-list">
+                    <span>메세지</span>
+                    <p class="deliveryMsg changeable-text" th:text="${l.delieveryMsg}">
+                      (첫돌)퀵배송받을꺼고요~
+                      아기가자고있어서밑에현관비번(#2361)
+                      1302호문앞에놓아주시고가면됩니다
+                    </p>
+                  </li>
+                  <li class="tdata-column-list">
+                    <span>배송시간</span>
+                    <span class="deliveryTime changeable-text"
+                      th:text="${l.expDeliveryDate}">1부인지 2부인지 시간정보 입력</span
+                    >
+                  </li>
+                </ul>
+              </td>
+            </tr>
+				
+				
+				
+				`
+			}
+		})
+	}
+	
+	
+	$('.prevDateBtn').click(function(){
+		var expDeliveryDate = $('.tableDate').val();
+		console.log(expDeliveryDate);
+		getOrderInfoByDeliveryDate(expDeliveryDate);
+	})
+	
+	$('.nextDateBtn').click(function(){
+		var expDeliveryDate = $('.tableDate').val();
+		console.log(expDeliveryDate);
+		getOrderInfoByDeliveryDate(expDeliveryDate);
+	})
+	
+	
+	/*
+	$(document).on('click', '.prevDateBtn', function(){
+		var expDeliveryDate = $('.tableDate').val();
+		console.log(expDeliveryDate);
+		getOrderInfoByDeliveryDate(expDeliveryDate);
+	})
+	
+	$(document).on('click', '.nextDateBtn', function(){
+		var expDeliveryDate = $('.tableDate').val();
+		console.log(expDeliveryDate);
+		getOrderInfoByDeliveryDate(expDeliveryDate);
+	})
+		
+	*/
+	
 	// 희망 배송시간만 가져오기
 	$(document).ready(function(){
 		var expDelTime = $('.deliveryTime');

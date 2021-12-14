@@ -19,9 +19,14 @@ public interface SmartstoreOrderMapper {
 	// 주문번호 가져오기
 	public String getOrderSequence();
 	
+	// 날짜별로 주문 정보 가져오기
+	public List<SmartStoreOrder> getOrderInfoByDate(String expDate);
+	
 	// 생산일지 정보 가져오기
 	public List<HashMap<String, Object>> getProductionInfo(String expDate);
 	
 	// 생산일지에서 날짜별 생산해야할 각각의 품목 수
 	public HashMap<String, Integer> getItemsTotal(String expDate);
+	
+	// 
 }

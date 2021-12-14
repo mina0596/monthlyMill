@@ -29,6 +29,7 @@
 		<result property="shippingPayCheck"		column="shipping_pay_check"/>
 		<result property="memo"		column="memo"/>
 	</resultMap>
+	
 	<!-- ====== 모든 주문 조회 ====== -->
 	<select id="getAllOrderInfo" resultMap="SmartStoreOrderResultMap">
 		SELECT idx, order_num, shipping_date, paid_date, shipping_method, orderer_name, orderer_phone, receiver_name, receiver_phone, product_name, product_code, detailed_product, order_quantity, total_order_amount, option_info, 
@@ -36,6 +37,16 @@
 		production_complete, shipping_pay_check, memo
 		FROM smartstore_order_info
 		ORDER BY DATE_FORMAT(LEFT(exp_delivery_date, 10), '%Y-%m-%d') DESC
+	</select>
+	
+	
+	<!-- ====== 날짜별로 주문 조회 ====== -->
+	<select id="getOrderInfoByDate" resultMap="SmartStoreOrderResultMap" parameterType="String">
+		SELECT idx, order_num, shipping_date, paid_date, shipping_method, orderer_name, orderer_phone, receiver_name, receiver_phone, product_name, product_code, detailed_product, order_quantity, total_order_amount, option_info, 
+		shipping_fee, shipping_addr, delivery_msg, exp_delivery_date, reg_date, reg_m_id, order_type, 
+		production_complete, shipping_pay_check, memo
+		FROM smartstore_order_info
+		WHERE exp_delivery_date LIKE CONCAT ('%', #{expDate}, '%');
 	</select>
 	
 	

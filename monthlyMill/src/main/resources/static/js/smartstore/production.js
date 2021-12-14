@@ -90,10 +90,10 @@ function sendProductionDate(productionDate){
 				console.log('????');
 				$('.removeTr').remove();
 				/* 왜 글씨가 가운데 정렬이 안될까요......?*/
-				html += '<tbody class="noProductionTbody" style="text-align: center;"><td colspan="25" style="text-align: center;"> 생산할 품목이 없습니다. </td></tbody>';
+				html += '<tbody class="noProductionTbody" style="text-align: center"><td colspan="25"> 생산할 품목이 없습니다. </td></tbody>';
 				
 				$('.removeItemTotalTr').remove();
-				totHtml += '<tbody class="noItemTbody" style="text-align: center;"><td colspan="18" style="text-align: center;"> 생산할 품목이 없습니다. </td></tbody>';
+				totHtml += '<tbody class="noItemTbody" style="text-align: center"><td colspan="18"> 생산할 품목이 없습니다. </td></tbody>';
 				
 			}
 			
@@ -106,30 +106,55 @@ function sendProductionDate(productionDate){
 
 
 /* ************************* 실 화면에서 사용되는 함수  *********************/
-$(function(){
+
+$(document).ready(function(){
 	
-	$('.prevDateBtn').click(function(){
-		var productionDate = $('.tableDate').text();
+	
+	$(document).on('click', '.prevDateBtn', function(){
+		var productionDate = $('.tableDate').val();
+		var tableBody = $('.noProductionTbody');
+		tableBody.css("text-align", "center");
 		sendProductionDate(productionDate);
 	})
 	
-	$('.nextDateBtn').click(function(){
-		var productionDate = $('.tableDate').text();
+	$(document).on('click', '.nextDateBtn', function(){
+		var tableBody = $('.noProductionTbody');
+		tableBody.css("text-align", "center");
+		var productionDate = $('.tableDate').val();
 		sendProductionDate(productionDate);
 	})
 	
-	// 수정된 데이터가져오기	
-	$('.tdata changeable-number').change(function(){
+	// 수정전의 데이터 담을 배열
+	var orgData = [];
+	
+	// 수정후의 데이터 담을 배열
+	var modData = [];
+	
+	// 수정버튼 클릭시 수정된 데이터가져오기	
+	$(document).on('click', '.modifyRowBt', function(){
+		orgData = [];
+		// 수정하기전 데이터
+		arr = $(this).parent().parent().children('.tdata').find('input');
 		console.log($(this));
+		arr.each(function(){
+			orgData.push($(this).val());
+		})
+		console.log(orgData);
 	})
 	
 	
 	// 수정완료 눌렀을때
-	$('.modifyRowBt modifying').click(function(){
+	$(document).on('click', '.modifyRowBt modifying', function(){
+		modData = [];
+		arr = $(this).parent().parent().children('.tdata').find('input');
+		// 수정 후의 데이터 가져오기
+		arr.each(function(){
+			modData.push($(this).val());
+		});
+		console.log(modData);
+		
 	})
-	
 })
 
-
-
-
+	
+8

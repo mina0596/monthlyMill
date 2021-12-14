@@ -126,8 +126,19 @@ public class SmartstoreController {
 	// 통합 주문 페이지
 	@GetMapping("/orderList")
 	public String getDataTable(Model model) {
-		model.addAttribute("orderList", ssService.getAllOrderInfo());
+		Date date = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		String nowDate = format.format(date);
+		model.addAttribute("orderList", ssService.getOrderInfoByDate(nowDate));
+		model.addAttribute("currentDate", nowDate);
 		return "/smartstore/menu2_dataGatherTable";
+	}
+	
+	// 날짜별로 주문 정보 가져오기
+	@PostMapping("/getOrderInfoByDeliveryDate")
+	@ResponseBody
+	public List<SmartStoreOrder> getOrderInfoByDate(@RequestParam(name =  "expDeliveryDate", required = false) String expDate){
+		return ssService.getOrderInfoByDate(expDate);
 	}
 	
 	// 생산일지 페이지 이동
