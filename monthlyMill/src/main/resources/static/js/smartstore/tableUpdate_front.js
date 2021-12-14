@@ -1,9 +1,8 @@
-//수정 버튼 클릭 시 input박스로 변경
-if(document.querySelectorAll(".modifyRowBt").length>0){
-    document.querySelectorAll(".modifyRowBt").forEach((btn)=>{
-        btn.addEventListener("click", addChangeable);
-    })
-}
+$(function(){
+    //수정 버튼 클릭 시 input박스로 변경
+    if($(".modifyRowBt").length>0){
+        $(document).on("click", ".modifyRowBt", addChangeable);
+    }
 
 function addChangeable(e){
     const thisRow = this.parentNode.parentNode;
@@ -30,7 +29,27 @@ function addChangeable(e){
             const cellvalue = cell.innerHTML;
             cell.innerHTML=`<input type="date" class="changeable-input-date" value="${cellvalue}">`;
         });
-       
+    
+
+    }else{
+        this.innerHTML = "수정";
+
+        thisRow.querySelectorAll(".changeable-number").forEach((cell)=>{
+            const cellvalue = cell.querySelector(".changeable-input-number").value;
+            cell.innerHTML=`${cellvalue}`;
+        });
+        thisRow.querySelectorAll(".changeable-text").forEach((cell)=>{
+            const cellvalue = cell.querySelector(".changeable-input-text").value;
+            cell.innerHTML=`${cellvalue}`;
+        });
+    }
+    // console.log(e);
+    console.log("수정");
+}
+
+
+})
+
 
         /*thisRow.querySelectorAll(".changeable-select-classifyName").forEach((cell)=>{
             const cellvalue = cell.innerHTML;
@@ -51,19 +70,3 @@ function addChangeable(e){
             </select>`;
             cell.querySelector(".changeable-input-select-paymentState").value=cellvalue;
         });*/
-
-    }else{
-        this.innerHTML = "수정";
-
-        thisRow.querySelectorAll(".changeable-number").forEach((cell)=>{
-            const cellvalue = cell.querySelector(".changeable-input-number").value;
-            cell.innerHTML=`${cellvalue}`;
-        });
-        thisRow.querySelectorAll(".changeable-text").forEach((cell)=>{
-            const cellvalue = cell.querySelector(".changeable-input-text").value;
-            cell.innerHTML=`${cellvalue}`;
-        });
-    }
-    console.log(e);
-}
-
