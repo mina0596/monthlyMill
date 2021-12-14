@@ -9,6 +9,7 @@ document.querySelector(".prevDateBtn").addEventListener("click", function(){
 
     tableDate.value = 
     `${prevDate.getFullYear()}-${prevDate.getMonth()+1}-${("0"+prevDate.getDate()).slice(-2)}`;
+    makeEditBtnFunc();
 });
 //다음날로
 document.querySelector(".nextDateBtn").addEventListener("click", function(){
@@ -17,35 +18,59 @@ document.querySelector(".nextDateBtn").addEventListener("click", function(){
     const nextDate = new Date(nowDate.setDate(nowDate.getDate() + 1));
 
     tableDate.value = `${nextDate.getFullYear()}-${nextDate.getMonth()+1}-${("0"+nextDate.getDate()).slice(-2)}`;
+    makeEditBtnFunc();
 });
 
-//날짜 클릭 시 날짜변경 가능한 input박스로 변경
-/*document.querySelector(".tableDate").addEventListener("click", clickDate);
-
-function clickDate(){
-    const tableDate = document.querySelector(".tableDate");
-    const inputTableDate = document.createElement("input");
-    inputTableDate.type = "date";
-    inputTableDate.className = "inputTableDate";
-    inputTableDate.value = tableDate.innerHTML.toString();
-
-    tableDate.innerHTML = "";
-    tableDate.append(inputTableDate);
-    document.querySelector(".tableDate").removeEventListener("click", clickDate);
-    document.querySelector("body").addEventListener("click", clickDateOutside);
-}
-//input박스를 다시 일반 텍스트로 변경
-function clickDateOutside(e){
-    if(document.querySelectorAll(".inputTableDate").length>0){
-        const target = e.target;
-        const tableDate = document.querySelector(".tableDate");
-        const inputTableDate = document.querySelector(".inputTableDate");
-    
-        //영역 밖을 클릭한 경우
-        if(target !== tableDate && target !== inputTableDate){
-            tableDate.innerHTML = inputTableDate.value;
-            document.querySelector("body").removeEventListener("click", clickDateOutside);
-            document.querySelector(".tableDate").addEventListener("click", clickDate);
-        }
+//수정 버튼 클릭 시 input박스로 변경
+function makeEditBtnFunc(){
+    if(document.querySelectorAll(".modifyRowBt").length>0){
+        document.querySelectorAll(".modifyRowBt").forEach((btn)=>{
+            btn.addEventListener("click", addChangeable);
+        });
+        console.log("test");
     }
-}*/
+    console.log("end");
+}
+
+function addChangeable(e){
+    const thisRow = this.parentNode.parentNode;
+    this.classList.toggle("modifying");
+
+    //현재 document에서 다시 읽어옴
+
+    if(this.classList.contains("modifying")){
+        this.innerHTML = "완료";
+        
+        thisRow.querySelectorAll(".changeable-number").forEach((cell)=>{
+            const cellvalue = parseInt(cell.innerHTML);
+            cell.innerHTML=`<input type="number" class="changeable-input-number" value="${cellvalue}" min="0">`;
+        });
+        thisRow.querySelectorAll(".changeable-text").forEach((cell)=>{
+            const cellvalue = cell.innerHTML;
+            cell.innerHTML=`<input type="text" class="changeable-input-text" value="${cellvalue}">`;
+        });
+        thisRow.querySelectorAll(".changeable-price").forEach((cell)=>{
+            const cellvalue = parseInt(cell.innerHTML);
+            cell.innerHTML=`<input type="number" class="changeable-input-price" value="${cellvalue}" min="0" step="10">`;
+        });
+        thisRow.querySelectorAll(".changeable-date").forEach((cell)=>{
+            const cellvalue = cell.innerHTML;
+            cell.innerHTML=`<input type="date" class="changeable-input-date" value="${cellvalue}">`;
+        });
+       
+
+    }else{
+        this.innerHTML = "수정";
+
+        thisRow.querySelectorAll(".changeable-number").forEach((cell)=>{
+            const cellvalue = cell.querySelector(".changeable-input-number").value;
+            cell.innerHTML=`${cellvalue}`;
+        });
+        thisRow.querySelectorAll(".changeable-text").forEach((cell)=>{
+            const cellvalue = cell.querySelector(".changeable-input-text").value;
+            cell.innerHTML=`${cellvalue}`;
+        });
+    }
+    console.log(e);
+}
+

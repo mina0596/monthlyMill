@@ -9,6 +9,8 @@ function addChangeable(e){
     const thisRow = this.parentNode.parentNode;
     this.classList.toggle("modifying");
 
+    //현재 document에서 다시 읽어옴
+
     if(this.classList.contains("modifying")){
         this.innerHTML = "완료";
         
@@ -19,6 +21,14 @@ function addChangeable(e){
         thisRow.querySelectorAll(".changeable-text").forEach((cell)=>{
             const cellvalue = cell.innerHTML;
             cell.innerHTML=`<input type="text" class="changeable-input-text" value="${cellvalue}">`;
+        });
+        thisRow.querySelectorAll(".changeable-price").forEach((cell)=>{
+            const cellvalue = parseInt(cell.innerHTML);
+            cell.innerHTML=`<input type="number" class="changeable-input-price" value="${cellvalue}" min="0" step="10">`;
+        });
+        thisRow.querySelectorAll(".changeable-date").forEach((cell)=>{
+            const cellvalue = cell.innerHTML;
+            cell.innerHTML=`<input type="date" class="changeable-input-date" value="${cellvalue}">`;
         });
        
 
