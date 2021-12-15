@@ -322,7 +322,7 @@
                   </li>
                   <li class="tdata-column-list">
                     <span>메세지</span>
-                    <p class="deliveryMsg changeable-text" th:text="${l.delieveryMsg}">
+                    <p class="deliveryMsg changeable-text" th:text="${l.deliveryMsg}">
                       (첫돌)퀵배송받을꺼고요~
                       아기가자고있어서밑에현관비번(#2361)
                       1302호문앞에놓아주시고가면됩니다
@@ -340,7 +340,7 @@
             <!-- 여기까지해서 한줄 -->
           </tbody>
           <tbody th:unless="${#lists.size(orderList) > 0}" style="text-align: center;" id="noOrderTbody">
-          	<td colspan="20" th:text="${currentDate} + ' 에 해당하는 주문이 없습니다.'"></td>
+          	<td colspan="20" th:text="${'선택된 날짜에 해당하는 주문이 없습니다.'}"></td>
           </tbody>
         </table>
       </section>

@@ -21,7 +21,7 @@ public class SmartStoreOrder {
 	private String option;
 	private int shippingFee;
 	private String shippingAddr;
-	private String delieveryMsg;
+	private String deliveryMsg;
 	private String expDeliveryDate;
 	private String regDate;
 	private String regMId;

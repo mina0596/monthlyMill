@@ -175,7 +175,13 @@ public class SmartstoreController {
 		return result;
 	}
 	
-	
+	// 생산일지에서 주문 + 생산 수정 처리
+	@PostMapping("/updateOrderInfo")
+	@ResponseBody
+	public boolean updateOrderInfo(@RequestBody List<HashMap<String, Object>> modifyingInfo) {
+		log.info("수정된 사항 받아오는거 확인 :{}", modifyingInfo);
+		return true;
+	}
 	
 	
 	// ============================================

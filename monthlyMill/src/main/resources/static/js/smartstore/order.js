@@ -325,7 +325,7 @@ $(function(){
 					for(var i=0; i<data.length; i++){
 						html = `
 							<tr class="trow removeTr" id="orderTBody">
-			              <td class="tdata deliveryDate changeable-text">${data[i].expDeliveryDate}</td>
+			              <td class="tdata deliveryDate changeable-text">${data[i].expDeliveryDate.substring(0, 10)}</td>
 			              <td class="tdata orderSite changeable-text">${data[i].orderType}</td>
 			              <td class="tdata number">${i+1}</td>
 			              <td class="tdata tdata-itembox">
@@ -406,13 +406,13 @@ $(function(){
 			                  <li class="tdata-column-list">
 			                    <span>메세지</span>
 			                    <p class="deliveryMsg changeable-text">
-			                      ${data[i].delieveryMsg}
+			                      ${data[i].deliveryMsg}
 			                    </p>
 			                  </li>
 			                  <li class="tdata-column-list">
 			                    <span>배송시간</span>
 			                    <span class="deliveryTime changeable-text"
-			                     >${data[i].expDeliveryDate}</span
+			                     >${data[i].expDeliveryDate.substring(11)}</span
 			                    >
 			                  </li>
 			                </ul>
@@ -421,52 +421,65 @@ $(function(){
 						
 					}
 				}else{
-					
+					$('.removeTr').remove();
+					html += `<tbody style="text-align: center;" id="noOrderTbody">
+					          	<td colspan="20">선택된 날짜에 해당하는 주문이 없습니다.</td>
+					          </tbody>`
 				}
 				$('#orderTBody').append(html);
+				/*
+				// 희망 배송시간만 가져오기
+				$(document).ready(function(){
+					var expDelTime = $('.deliveryTime');
+					console.log(expDelTime);
+					expDelTime.each(function(){
+						$(this).text($(this).text().substring(11));
+					})
+				})
+				
+				// 희망 배송날짜만 가져오기
+				$(document).ready(function(){
+					var expDelDate = $('.deliveryDate');
+					expDelDate.each(function(){
+						$(this).text($(this).text().substring(0, 10));
+					})
+				})
+				*/
 			}
 		})
 	}
 	
 	
-	$('.prevDateBtn').click(function(){
+	// 달력에서 직접 날짜 선택
+	$('.tableDate').change(function(){
+		var expDeliveryDate = $(this).val();
+		getOrderInfoByDeliveryDate(expDeliveryDate);
+	})
+	
+	// 다음날,전날 버튼 눌러 날짜 이동시
+	$('.prevDateBtn, .nextDateBtn').click(function(){
 		var expDeliveryDate = $('.tableDate').val();
 		console.log(expDeliveryDate);
 		getOrderInfoByDeliveryDate(expDeliveryDate);
 	})
 	
+	/*
 	$('.nextDateBtn').click(function(){
 		var expDeliveryDate = $('.tableDate').val();
 		console.log(expDeliveryDate);
 		getOrderInfoByDeliveryDate(expDeliveryDate);
 	})
 	
-	
-	/*
-	$(document).on('click', '.prevDateBtn', function(){
-		var expDeliveryDate = $('.tableDate').val();
-		console.log(expDeliveryDate);
-		getOrderInfoByDeliveryDate(expDeliveryDate);
-	})
-	
-	$(document).on('click', '.nextDateBtn', function(){
-		var expDeliveryDate = $('.tableDate').val();
-		console.log(expDeliveryDate);
-		getOrderInfoByDeliveryDate(expDeliveryDate);
-	})
-		
 	*/
 	
 	// 희망 배송시간만 가져오기
 	$(document).ready(function(){
 		var expDelTime = $('.deliveryTime');
+		console.log(expDelTime);
 		expDelTime.each(function(){
 			$(this).text($(this).text().substring(11));
 		})
-	})
-	
 	// 희망 배송날짜만 가져오기
-	$(document).ready(function(){
 		var expDelDate = $('.deliveryDate');
 		expDelDate.each(function(){
 			$(this).text($(this).text().substring(0, 10));

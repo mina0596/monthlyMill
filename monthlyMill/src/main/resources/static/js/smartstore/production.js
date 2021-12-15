@@ -22,37 +22,37 @@ function sendProductionDate(productionDate){
 			$('.noItemTbody').remove();
 			if(data.length > 0){
 				for(var i=0; i < data.length; i++){
-					html += '<tr class="removeTr">';
+					html += '<tr class="removeTr" id=' + data[i].orderNum + "," + data[i].orderIdx + '>';
 					html += '<td class="tdata modify"><button class="modifyRowBt">'+ '수정' + '</button></td>';
-					html += '<td class="tdata number">' + i+1 + '</td>';
-					html += '<td class="tdata changeable-text">' + data[i].shippingPayCheck + '</td>';
-					html += '<td class="tdata receiverName changeable-text">' + data[i].receiverName + '</td>';
-					html += '<td class="tdata productFinishTime changeable-text">' + data[i].productionComp + '</td>';
-					html += '<td class="tdata reservation changeable-text">' + data[i].expDeliveryDate + '</td>';
-					html += '<td class="tdata deliveryStyle changeable-text">' + data[i].shippingAddr + '</td>';
-					html += '<td class="tdata changeable-select-classifyName classifyName">' + data[i].productName + '</td>';
-					html += '<td class="tdata quantity changeable-number">' + data[i].orderQuantity + '</td>';
-					html += '<td class="tdata packingMaterial">' + data[i].wrappingType + '</td>';
-					html += '<td class="tdata changeable-number type-duteop">' + data[i].item01 + '</td>';
-					html += '<td class="tdata changeable-number type-redbeen">' + data[i].item02 + '</td>';
-					html += '<td class="tdata changeable-number type-hogo">' + data[i].item03 + '</td>';
-					html += '<td class="tdata changeable-number type-nutrition">' + data[i].item04 + '</td>';
-					html += '<td class="tdata changeable-number type-sasong">' + data[i].item05 + '</td>';
-					html += '<td class="tdata changeable-number type-samsong">' + data[i].item06 + '</td>';
-					html += '<td class="tdata changeable-number type-isong">' + data[i].item07 + '</td>';
-					html += '<td class="tdata changeable-number type-pyeshong">' + data[i].item08 + '</td>';
-					html += '<td class="tdata changeable-number type-osong">' + data[i].item09 + '</td>';
-					html += '<td class="tdata changeable-number type-ssuk">' + data[i].item10 + '</td>';
-					html += '<td class="tdata changeable-number type-jaseol">' + data[i].item11 + '</td>';
-					html += '<td class="tdata changeable-number type-danseol">' + data[i].item12 + '</td>';
-					html += '<td class="tdata changeable-number type-bacseol">' + data[i].item13 + '</td>';
-					html += '<td class="tdata changeable-number type-bac">' + data[i].item14 + '</td>';
-					html += '<td class="tdata changeable-number type-dol">' + data[i].item15 + '</td>';
-					html += '<td class="tdata changeable-number type-hangwa">' + data[i].item16 + '</td>';
-					html += '<td class="tdata changeable-number type-susu">' + data[i].item17 + '</td>';
-					html += '<td class="tdata changeable-number type-cake">' + data[i].item18 + '</td>';
-					html += '<td class="tdata changeable-number type-etc">' + data[i].item19 + '</td>';
-					html += '<td class="tdata note changeable-text">' + data[i].memo + '</td></tr>';
+					html += '<td class="tdata number">' + (i+1) + '</td>';
+					html += '<td class="tdata changeable-text shippingPayCheck" id="shippingPayCheck">' + data[i].shippingPayCheck + '</td>';
+					html += '<td class="tdata receiverName changeable-text" id="receiverName">' + data[i].receiverName + '</td>';
+					html += '<td class="tdata productFinishTime changeable-text" id="productionComp">' + data[i].productionComp + '</td>';
+					html += '<td class="tdata reservation changeable-text" id="expDeliveryDate">' + data[i].expDeliveryDate + '</td>';
+					html += '<td class="tdata deliveryStyle changeable-text" id="shippingAddr">' + data[i].shippingAddr + '</td>';
+					html += '<td class="tdata changeable-select-classifyName classifyName" id="productName">' + data[i].productName + '</td>';
+					html += '<td class="tdata quantity changeable-number" id="orderQuantity">' + data[i].orderQuantity + '</td>';
+					html += '<td class="tdata packingMaterial" id="wrappingType">' + data[i].wrappingType + '</td>';
+					html += '<td class="tdata changeable-number type-duteop" id="item01">' + data[i].item01 + '</td>';
+					html += '<td class="tdata changeable-number type-redbeen" id="item02">' + data[i].item02 + '</td>';
+					html += '<td class="tdata changeable-number type-hogo" id="item03">' + data[i].item03 + '</td>';
+					html += '<td class="tdata changeable-number type-nutrition" id="item04">' + data[i].item04 + '</td>';
+					html += '<td class="tdata changeable-number type-sasong" id="item05">' + data[i].item05 + '</td>';
+					html += '<td class="tdata changeable-number type-samsong" id="item06">' + data[i].item06 + '</td>';
+					html += '<td class="tdata changeable-number type-isong" id="item07">' + data[i].item07 + '</td>';
+					html += '<td class="tdata changeable-number type-pyeshong" id="item08">' + data[i].item08 + '</td>';
+					html += '<td class="tdata changeable-number type-osong" id="item09">' + data[i].item09 + '</td>';
+					html += '<td class="tdata changeable-number type-ssuk" id="item10">' + data[i].item10 + '</td>';
+					html += '<td class="tdata changeable-number type-jaseol" id="item11">' + data[i].item11 + '</td>';
+					html += '<td class="tdata changeable-number type-danseol" id="item12">' + data[i].item12 + '</td>';
+					html += '<td class="tdata changeable-number type-bacseol" id="item13">' + data[i].item13 + '</td>';
+					html += '<td class="tdata changeable-number type-bac" id="item14">' + data[i].item14 + '</td>';
+					html += '<td class="tdata changeable-number type-dol" id="item15">' + data[i].item15 + '</td>';
+					html += '<td class="tdata changeable-number type-hangwa" id="item16">' + data[i].item16 + '</td>';
+					html += '<td class="tdata changeable-number type-susu" id="item17">' + data[i].item17 + '</td>';
+					html += '<td class="tdata changeable-number type-cake" id="item18">' + data[i].item18 + '</td>';
+					html += '<td class="tdata changeable-number type-etc" id="item19">' + data[i].item19 + '</td>';
+					html += '<td class="tdata note changeable-text" id="memo">' + data[i].memo + '</td></tr>';
 					
 					itemNum[0] += data[i].item01;					itemNum[1] += data[i].item02;
 					itemNum[2] += data[i].item03;					itemNum[3] += data[i].item04;
@@ -134,30 +134,78 @@ $(document).ready(function(){
 	// 수정후의 데이터 담을 배열
 	var modData = [];
 	
-	// 수정버튼 클릭시 수정된 데이터가져오기	
+	// 변경된 데이터 정보 담을 map
+	var modifyingInfo = {};
+	
+	// 수정버튼 클릭시 수정되기 전 데이터가져오기	
 	$(document).on('click', '.modifyRowBt', function(){
 		orgData = [];
 		// 수정하기전 데이터
-		arr = $(this).parent().parent().children('.tdata').find('input');
-		console.log($(this));
+		arr = [];
+		arr = $(this).parent().parent().children();
+		console.log(arr);
+		
+		var dataNum = 0; 		// 수정이 불가능한 텍스트는 제외시키기위한 변수
 		arr.each(function(){
-			orgData.push($(this).val());
+			dataNum = dataNum + 1 ;
+			console.log(orgData.length);
+			if(orgData.length == 0){
+				if(dataNum > 2){
+				orgData.push($(this).text());
+				}	
+			}else{
+				orgData.push($(this).val());
+				console.log('llll');
+			}
+			
 		})
 		console.log(orgData);
 	})
 	
 	
 	// 수정완료 눌렀을때
-	$(document).on('click', '.modifyRowBt modifying', function(){
+	$(document).on('click', '.modifying', function(){
 		modData = [];
-		arr = $(this).parent().parent().children('.tdata').find('input');
+		arr = [];
+		
+		// 왜... 여기는 input 으로 찾아지는걸까?
+		arr = $(this).parent().parent().children().find('input');
+		console.log(orgData);
 		// 수정 후의 데이터 가져오기
-		arr.each(function(){
-			modData.push($(this).val());
+		var dataNum = 0;
+		arr.each(function(index){
+			dataNum = dataNum + 1 ;
+			if(dataNum > 2){
+				//modData.push($(this).val());
+				if(orgData[index] != $(this).val()){
+					modifyingInfo.orderIdx = $(this).parent().parent('tr').attr('id');
+					modifyingInfo.columnName = $(this).parent().attr('id');
+					modifyingInfo.modifiedContent = $(this).val();
+				}
+			}
+			
 		});
 		console.log(modData);
+		console.log(modifyingInfo);
+		
+		
+		// update 하는 쿼리 실행
+		$.ajax({
+			url : "/smartStore/updateOrderInfo",
+			method : "post",
+			data : JSON.stringify(modifyingInfo),
+			dataType : "text",
+			traditional : true,
+			contentType : "application/json",
+			success : function(data){
+				console.log(data);
+			}
+			
+		})
 		
 	})
+	
+	
 })
 
 	
