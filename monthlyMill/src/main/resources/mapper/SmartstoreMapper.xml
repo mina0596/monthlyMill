@@ -85,7 +85,7 @@
 			(NULL, #{orderIdx}, #{orderNum}, #{shippingDate}, #{paidDate}, #{shippingMethod}, 
 			#{ordererName}, #{ordererPhone}, #{receiverName}, #{receiverPhone}, #{productName}, 
 			#{productCode}, #{detailedProduct}, #{orderQuantity}, #{totOrderAmount}, #{option}, #{shippingFee}, #{shippingAddr}, #{deliveryMsg}, #{expDeliveryDate}, #{orderType}, 
-			#{productionComp}, #{shippingPayCheck}, #{memo}, #{modifiedDate}, #{modMId});
+			#{productionComp}, #{shippingPayCheck}, #{memo}, NOW(), #{modMId});
 	
 	</insert>
 	

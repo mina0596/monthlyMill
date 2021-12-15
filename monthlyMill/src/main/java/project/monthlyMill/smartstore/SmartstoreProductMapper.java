@@ -42,4 +42,7 @@ public interface SmartstoreProductMapper {
 	
 	// 등록된 상품명/상품코드들 가져오기
 	public List<HashMap<String, String>> getAllProductName();
+	
+	// 생산일지에서 상품에 대한 정보 변경시
+	public void updateProductionInfo(HashMap<String, Object> updateProductionInfo);
 }

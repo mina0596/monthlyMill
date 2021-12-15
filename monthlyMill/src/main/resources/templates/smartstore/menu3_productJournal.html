@@ -31,6 +31,7 @@
           <span th:if="${session.SESSIONNAME != null}" class="header-userName"
             >[[${session.SESSIONNAME}]]</span
           >
+          <input type="hidden" th:value="${session.SESSIONID}" class="sessionId">
           <button class="header-logoutBtn">로그아웃</button>
         </div>
       </div>
@@ -141,7 +142,7 @@
               <td
                 class="tdata changeable-text classifyName"
                 th:text="${l.productName}"
-                id="productName"
+                th:id="${l.productCode}"
               >
                 답례1-3호
               </td>
@@ -304,7 +305,7 @@
           <!-- 결과값이 없을 경우  -->
           <tbody
             class="noProductionTbody"
-            th:unless="${#lists.size(infoList) < 0}"
+            th:unless="${#lists.size(infoList) > 0}"
             style="text-align: center"
           >
             <td colspan="25" th:text="${'생산할 품목이 없습니다.'}"></td>
