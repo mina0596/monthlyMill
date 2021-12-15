@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -185,9 +186,34 @@ public class SmartstoreService {
 		return oMapper.getItemsTotal(expDate);
 	}
 	
+	// 주문정보를 수정시
+	public void updateOrderInfo(HashMap<String, Object> updateInfo) {
+		
+		// 주문에 대한 사항인지 상품에 대한 사항인지 파악하기
+		
+		if(updateInfo.containsKey("pName")) {
+			
+			// 1. 주문 + 상품 모두 수정
+			if(updateInfo.containsKey("productName")) {
+				oMapper.updateOrderInfo(updateInfo);
+				pMapper.updateProductionInfo(updateInfo);
+				
+			// 2. 주문만 수정
+			}else {
+				oMapper.updateOrderInfo(updateInfo);
+			}
+			
+		// 3. 상품만 수정
+		}else {
+			pMapper.updateProductionInfo(updateInfo);
+		}
+
+	}
 	
-	
-	
+	// 생산일지에서 상품에 대한 정보 변경시
+	public void updateProductionInfo(HashMap<String, Object> updateProductionInfo) {
+		pMapper.updateProductionInfo(updateProductionInfo);
+	}
 	// *****************************************************
 	// =========================== 품목 =====================
 	// *****************************************************
@@ -281,4 +307,6 @@ public class SmartstoreService {
 	public List<HashMap<String, String>> getAllProductName(){
 		return pMapper.getAllProductName();
 	}
+	
+	
 }

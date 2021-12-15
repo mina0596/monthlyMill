@@ -30,7 +30,7 @@ function sendProductionDate(productionDate){
 					html += '<td class="tdata productFinishTime changeable-text" id="productionComp">' + data[i].productionComp + '</td>';
 					html += '<td class="tdata reservation changeable-text" id="expDeliveryDate">' + data[i].expDeliveryDate + '</td>';
 					html += '<td class="tdata deliveryStyle changeable-text" id="shippingAddr">' + data[i].shippingAddr + '</td>';
-					html += '<td class="tdata changeable-select-classifyName classifyName" id="productName">' + data[i].productName + '</td>';
+					html += '<td class="tdata changeable-select-classifyName classifyName" id="' + data[i].productCode + '">' + data[i].productName + '</td>';
 					html += '<td class="tdata quantity changeable-number" id="orderQuantity">' + data[i].orderQuantity + '</td>';
 					html += '<td class="tdata packingMaterial" id="wrappingType">' + data[i].wrappingType + '</td>';
 					html += '<td class="tdata changeable-number type-duteop" id="item01">' + data[i].item01 + '</td>';
@@ -87,7 +87,6 @@ function sendProductionDate(productionDate){
 				totHtml += '<td tresult totalAmount-cake">' + itemNum[17] + '</td>';
 				totHtml += '<td tresult totalAmount-etc">' + itemNum[18] + '</td></tr>';
 			}else{
-				console.log('????');
 				$('.removeTr').remove();
 				/* 왜 글씨가 가운데 정렬이 안될까요......?*/
 				html += '<tbody class="noProductionTbody" style="text-align: center"><td colspan="25"> 생산할 품목이 없습니다. </td></tbody>';
@@ -115,7 +114,6 @@ $(document).ready(function(){
 		var tableBody = $('.noProductionTbody');
 		tableBody.css("text-align", "center");
 		sendProductionDate(productionDate);
-		console.log("production test");
 
 	})
 	
@@ -137,29 +135,24 @@ $(document).ready(function(){
 	// 변경된 데이터 정보 담을 map
 	var modifyingInfo = {};
 	
+	var modifiedCheck = true;
+	var modifiedProductCheck = true;
 	// 수정버튼 클릭시 수정되기 전 데이터가져오기	
 	$(document).on('click', '.modifyRowBt', function(){
+		console.log('버튼확인');
 		orgData = [];
 		// 수정하기전 데이터
 		arr = [];
 		arr = $(this).parent().parent().children();
-		console.log(arr);
 		
 		var dataNum = 0; 		// 수정이 불가능한 텍스트는 제외시키기위한 변수
 		arr.each(function(){
 			dataNum = dataNum + 1 ;
-			console.log(orgData.length);
-			if(orgData.length == 0){
-				if(dataNum > 2){
-				orgData.push($(this).text());
-				}	
-			}else{
-				orgData.push($(this).val());
-				console.log('llll');
-			}
+			if(dataNum > 2){
+			orgData.push($(this).text());
+			}	
 			
 		})
-		console.log(orgData);
 	})
 	
 	
@@ -167,42 +160,114 @@ $(document).ready(function(){
 	$(document).on('click', '.modifying', function(){
 		modData = [];
 		arr = [];
-		
+		var modifiedOrderIdx = $(this).parent().parent('tr').attr('id').split(',');
 		// 왜... 여기는 input 으로 찾아지는걸까?
 		arr = $(this).parent().parent().children().find('input');
-		console.log(orgData);
 		// 수정 후의 데이터 가져오기
-		var dataNum = 0;
 		arr.each(function(index){
-			dataNum = dataNum + 1 ;
-			if(dataNum > 2){
-				//modData.push($(this).val());
-				if(orgData[index] != $(this).val()){
-					modifyingInfo.orderIdx = $(this).parent().parent('tr').attr('id');
-					modifyingInfo.columnName = $(this).parent().attr('id');
-					modifyingInfo.modifiedContent = $(this).val();
-				}
+			modData.push($(this).val());
+			/*
+			======== 실패한거 =======
+			if(orgData[index] != $(this).val()){
+				console.log('alerdkgaj');
+				console.log('aksdgag');
+				modifyingInfo.orderIdx = $(this).parent().parent('tr').attr('id');
+				modifyingInfo.columnName = $(this).parent().attr('id');
+				modifyingInfo.modifiedContent = $(this).val();
 			}
-			
+			*/
 		});
+		modData.push($(this).parent().parent('tr').find('.classifyName').attr('id'));
 		console.log(modData);
-		console.log(modifyingInfo);
 		
-		
-		// update 하는 쿼리 실행
-		$.ajax({
-			url : "/smartStore/updateOrderInfo",
-			method : "post",
-			data : JSON.stringify(modifyingInfo),
-			dataType : "text",
-			traditional : true,
-			contentType : "application/json",
-			success : function(data){
-				console.log(data);
+		// 주문에 대한 정보가 다를 경우임
+		for(var i=0; i < 7; i++){
+			if(modData[i] == orgData[i]){
+				modifiedCheck = true;
+				console.log('srfgrg');
+			}else{
+				modifiedCheck = false;
 			}
-			
-		})
+		}
+		console.log(modifiedCheck);
+		// 상품에 대한 정보가 다를 경우임
+		for(var j=7; j < modData.length; j++){
+			if(modData[j] == orgData[j]){
+				modifiedProductCheck = true;
+			}else{
+				modifiedProductCheck = false;
+			}
+		}
+		console.log(modifiedProductCheck);
 		
+		
+		// modifyingInfo 에 주문 정보 넣기
+		if(modifiedCheck){
+			modifyingInfo.orderIdx = modifiedOrderIdx[1];
+			modifyingInfo.orderNum = modifiedOrderIdx[0];
+			modifyingInfo.shippingPayCheck = modData[0];
+			modifyingInfo.receiverName = modData[1];
+			modifyingInfo.productionComp = modData[2];
+			modifyingInfo.expDeliveryDate = modData[3];
+			modifyingInfo.shippingMethod = modData[4];
+			modifyingInfo.productName = modData[5];
+			modifyingInfo.orderQuantity = modData[6];
+			modifyingInfo.modMId = $('.sessionId').val();
+			
+			if(modifiedProductCheck){
+				modifyingInfo.pName = modData[5];
+				modifyingInfo.wrappingType = modData[7];
+				modifyingInfo.orgProductCode = modData[28];
+				modifyingInfo.item01 = modData[8]; 			modifyingInfo.item02 = modData[9];
+				modifyingInfo.item01 = modData[10];			modifyingInfo.item04 = modData[11];
+				modifyingInfo.item01 = modData[12];			modifyingInfo.item06 = modData[13];
+				modifyingInfo.item01 = modData[14];			modifyingInfo.item08 = modData[15];
+				modifyingInfo.item01 = modData[16];			modifyingInfo.item10 = modData[17];
+				modifyingInfo.item01 = modData[18];			modifyingInfo.item12 = modData[19];
+				modifyingInfo.item01 = modData[20];			modifyingInfo.item14 = modData[21];
+				modifyingInfo.item01 = modData[22];			modifyingInfo.item16 = modData[23];
+				modifyingInfo.item01 = modData[24];			modifyingInfo.item18 = modData[25];
+				modifyingInfo.item19 = modData[26];			modifyingInfo.memo = modData[27];
+			}
+		}else if(!modifiedCheck){
+			if(modifiedProductCheck){
+				modifyingInfo.orderIdx = modifiedOrderIdx[1];
+				modifyingInfo.orderNum = modifiedOrderIdx[0];
+				
+				modifyingInfo.pName = modData[5];
+				modifyingInfo.wrappingType = modData[7];
+				modifyingInfo.orgProductCode = modData[28];
+				modifyingInfo.item01 = modData[8]; 			modifyingInfo.item02 = modData[9];
+				modifyingInfo.item01 = modData[10];			modifyingInfo.item04 = modData[11];
+				modifyingInfo.item01 = modData[12];			modifyingInfo.item06 = modData[13];
+				modifyingInfo.item01 = modData[14];			modifyingInfo.item08 = modData[15];
+				modifyingInfo.item01 = modData[16];			modifyingInfo.item10 = modData[17];
+				modifyingInfo.item01 = modData[18];			modifyingInfo.item12 = modData[19];
+				modifyingInfo.item01 = modData[20];			modifyingInfo.item14 = modData[21];
+				modifyingInfo.item01 = modData[22];			modifyingInfo.item16 = modData[23];
+				modifyingInfo.item01 = modData[24];			modifyingInfo.item18 = modData[25];
+				modifyingInfo.item19 = modData[26];			modifyingInfo.memo = modData[27];
+			}
+		}
+		
+		
+		// 수정사항이 있을 시에만 ajax 발생
+		if(modifiedCheck || modifiedProductCheck){
+			console.log(modifyingInfo);
+			// update 하는 쿼리 실행
+			$.ajax({
+				url : "/smartStore/updateOrderInfo",
+				method : "post",
+				data : JSON.stringify(modifyingInfo),
+				dataType : "text",
+				traditional : true,
+				contentType : "application/json",
+				success : function(data){
+					console.log(data);
+				}
+				
+			})
+		}
 	})
 	
 	
