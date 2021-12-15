@@ -134,7 +134,7 @@ public class SmartstoreService {
 			orderInfo.setTotOrderAmount(Integer.parseInt(newOrderInfo.get("totOrderAmount").toString()));
 			orderInfo.setOption(newOrderInfo.get("option").toString());
 			orderInfo.setShippingAddr(newOrderInfo.get("shippingAddr").toString());
-			orderInfo.setDelieveryMsg(newOrderInfo.get("delieveryMsg").toString());
+			orderInfo.setDeliveryMsg(newOrderInfo.get("deliveryMsg").toString());
 			orderInfo.setShippingFee(Integer.parseInt(newOrderInfo.get("shippingFee").toString()));
 			orderInfo.setOrderType(newOrderInfo.get("orderType").toString());
 			orderInfo.setExpDeliveryDate(newOrderInfo.get("expDeliveryDate").toString());
@@ -151,7 +151,7 @@ public class SmartstoreService {
 			List<String> totOrderAmount = (List<String>) newOrderInfo.get("totOrderAmount");
 			List<String> option = (List<String>) newOrderInfo.get("option");
 			List<String> shippingAddr = (List<String>) newOrderInfo.get("shippingAddr");
-			List<String> delieveryMsg = (List<String>) newOrderInfo.get("delieveryMsg");
+			List<String> deliveryMsg = (List<String>) newOrderInfo.get("deliveryMsg");
 			List<String> shippingFee = (List<String>) newOrderInfo.get("shippingFee");
 			List<String> orderType = (List<String>) newOrderInfo.get("orderType");
 			List<String> expDeliveryDate = (List<String>) newOrderInfo.get("expDeliveryDate");
@@ -166,7 +166,7 @@ public class SmartstoreService {
 				orderInfo.setTotOrderAmount(Integer.parseInt(totOrderAmount.get(i)));
 				orderInfo.setOption(option.get(i));
 				orderInfo.setShippingAddr(shippingAddr.get(i));
-				orderInfo.setDelieveryMsg(delieveryMsg.get(i));
+				orderInfo.setDeliveryMsg(deliveryMsg.get(i));
 				orderInfo.setShippingFee(Integer.parseInt(shippingFee.get(i)));
 				orderInfo.setOrderType(orderType.get(i));
 				orderInfo.setExpDeliveryDate(expDeliveryDate.get(i));

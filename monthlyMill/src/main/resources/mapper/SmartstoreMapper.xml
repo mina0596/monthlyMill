@@ -20,7 +20,7 @@
 		<result property="option"		column="option_info"/>
 		<result property="shippingFee"		column="shipping_fee"/>
 		<result property="shippingAddr"		column="shipping_addr"/>
-		<result property="delieveryMsg"		column="delivery_msg"/>
+		<result property="deliveryMsg"		column="delivery_msg"/>
 		<result property="expDeliveryDate"		column="exp_delivery_date"/>
 		<result property="regDate"		column="reg_date"/>
 		<result property="regMId"		column="reg_m_id"/>
@@ -58,7 +58,7 @@
 			reg_m_id, order_type, production_complete, shipping_pay_check, memo)
 		VALUES 
 			(NULL, #{orderNum}, #{shippingDate}, #{paidDate}, #{shippingMethod}, #{ordererName}, #{orderderPhone}, #{receiverName}, #{receiverPhone}, #{productName},
-			#{productCode}, #{detailedProduct}, #{orderQuantity}, #{totOrderAmount}, #{option}, #{shippingFee}, #{shippingAddr}, #{delieveryMsg}, #{expDeliveryDate}, NOW(), 
+			#{productCode}, #{detailedProduct}, #{orderQuantity}, #{totOrderAmount}, #{option}, #{shippingFee}, #{shippingAddr}, #{deliveryMsg}, #{expDeliveryDate}, NOW(), 
 			#{regMId}, #{orderType}, NULL, NULL, NULL)
 	</insert>
 	
@@ -74,10 +74,27 @@
 			DATE_format(o.reg_date, '%Y-%m-%d') = CURDATE();
 	</select>
 	
+	<!-- 주문에 대한 정보 수정 -->
+	<insert id="updateOrderInfo" parameterType="map">
+		INSERT INTO smartstore_modify_order
+			(idx, order_idx, order_num, shipping_date, paid_date, shipping_method, 
+			orderer_name, orderer_phone, receiver_name, receiver_phone, product_name, 
+			product_code, detailed_product, order_quantity, tot_order_amount, option_info, shipping_fee, shipping_addr, delivery_msg, exp_delivery_date, order_type, 
+			production_complete, shipping_pay_check, memo, modified_date, modified_m_id)
+		VALUES 
+			(NULL, #{orderIdx}, #{orderNum}, #{shippingDate}, #{paidDate}, #{shippingMethod}, 
+			#{ordererName}, #{ordererPhone}, #{receiverName}, #{receiverPhone}, #{productName}, 
+			#{productCode}, #{detailedProduct}, #{orderQuantity}, #{totOrderAmount}, #{option}, #{shippingFee}, #{shippingAddr}, #{deliveryMsg}, #{expDeliveryDate}, #{orderType}, 
+			#{productionComp}, #{shippingPayCheck}, #{memo}, #{modifiedDate}, #{modMId});
+	
+	</insert>
+	
+	
 	
 	<!--  생산일지 내용 가져오기 -->
 	<select id="getProductionInfo" parameterType="String" resultType="map">
 		SELECT
+			o.idx AS orderIdx,
 			o.order_num AS orderNum,
 			o.paid_date AS paidDate,
 			o.receiver_name AS receiverName,
