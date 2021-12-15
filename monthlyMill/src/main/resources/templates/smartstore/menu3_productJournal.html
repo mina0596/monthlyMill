@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>스마트스토어 엑셀관리</title>
-    <link rel="stylesheet" href="../../static/css/screens/smartstore.css" />
+    <!-- <link rel="stylesheet" href="../../static/css/screens/smartstore.css" /> -->
     <link rel="stylesheet" th:href="@{/css/screens/smartstore.css}" />
   </head>
   <body>
@@ -470,13 +470,13 @@
         </table>
       </section>
     </div>
-
+<!-- 
     <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../static/js/smartstore/common.js"></script>
     <script src="../../static/js/smartstore/production.js"></script>
     <script src="../../static/js/smartstore/tableUpdate_front.js"></script>
     <script src="../../static/js/smartstore/dateManage_front.js"></script>
-
+ -->
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script
       type="text/javascript"
@@ -484,11 +484,11 @@
     ></script>
     <script
       type="text/javascript"
-      th:src="@{/js/smartstore/production.js}"
+      th:src="@{/js/smartstore/tableUpdate_front.js}"
     ></script>
     <script
       type="text/javascript"
-      th:src="@{/js/smartstore/tableUpdate_front.js}"
+      th:src="@{/js/smartstore/production.js}"
     ></script>
     <script
       type="text/javascript"
