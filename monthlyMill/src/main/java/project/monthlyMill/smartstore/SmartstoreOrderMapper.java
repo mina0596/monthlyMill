@@ -28,5 +28,6 @@ public interface SmartstoreOrderMapper {
 	// 생산일지에서 날짜별 생산해야할 각각의 품목 수
 	public HashMap<String, Integer> getItemsTotal(String expDate);
 	
-	// 
+	// 주문정보를 수정시
+	public void updateOrderInfo(HashMap<String, Object> updateOrderInfo);
 }
