@@ -417,6 +417,10 @@ $(function(){
 			                  </li>
 			                </ul>
 			              </td>
+						  <td class="tdata modify">
+			                <!-- 버튼 누르면 해당 행 수정가능상태로 변경 -->
+			                <button class="modifyRowBt">수정</button>
+			              </td>
 			            </tr>`
 						
 					}
