@@ -189,12 +189,15 @@ public class SmartstoreService {
 	// 주문정보를 수정시
 	public void updateOrderInfo(HashMap<String, Object> updateInfo) {
 		
+		String newPCode = getNewPcode();
+		int pPrice = pMapper.getProductInfoByPcode(updateInfo.get("orgProductCode").toString()).getPPrice();
 		// 주문에 대한 사항인지 상품에 대한 사항인지 파악하기
-		
 		if(updateInfo.containsKey("pName")) {
 			
 			// 1. 주문 + 상품 모두 수정
 			if(updateInfo.containsKey("productName")) {
+				updateInfo.put("pCode", newPCode);
+				updateInfo.put("pPrice", pPrice);
 				oMapper.updateOrderInfo(updateInfo);
 				pMapper.updateProductionInfo(updateInfo);
 				
@@ -205,6 +208,8 @@ public class SmartstoreService {
 			
 		// 3. 상품만 수정
 		}else {
+			updateInfo.put("pCode", newPCode);
+			updateInfo.put("pPrice", pPrice);
 			pMapper.updateProductionInfo(updateInfo);
 		}
 

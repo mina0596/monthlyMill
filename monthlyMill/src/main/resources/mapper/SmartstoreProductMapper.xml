@@ -110,6 +110,14 @@
 			smartstore_product_info AS p
 	</select>
 	
+	<select id="getProductInfoByPcode" parameterType="String" resultMap="SmartStoreProductResultMap">
+		SELECT
+			p.*
+		FROM
+			smartstore_product_info AS p
+		WHERE 
+			p.product_code = #{pCode}
+	</select>
 	
 	<!-- ************************************************************************** -->
 	<!-- ================================== 회원에 대한 정보 ========================== -->

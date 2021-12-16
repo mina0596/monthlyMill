@@ -45,4 +45,7 @@ public interface SmartstoreProductMapper {
 	
 	// 생산일지에서 상품에 대한 정보 변경시
 	public void updateProductionInfo(HashMap<String, Object> updateProductionInfo);
+	
+	// 상품코드로 상품정보 가져오기
+	public SmartStoreProduct getProductInfoByPcode(String pCode);
 }
