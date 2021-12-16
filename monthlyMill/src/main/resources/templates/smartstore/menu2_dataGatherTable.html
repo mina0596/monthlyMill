@@ -78,6 +78,8 @@
       <!-- !!!여기에 발주품목 select박스 값 넣어주기!!! -->
       <select class="selectOptions-orderItemList hidden">
 		<option th:each="l : ${allProductName}" th:value="${l.pName}" th:text="${l.pCode}"> </option>
+    <!-- <option value="백일상-百">p20211124_0001</option>
+    <option value="백일상-꽃수">p20211130_0001</option> -->
       </select>
 
       <section class="tableSection">
@@ -273,7 +275,7 @@
                           홍길동</span
                         >
                         <span class="purchaserPhone changeable-text"
-                          th:text="'(' + ${l.orderderPhone} + ')'">(010-1111-2222)</span
+                          th:text="${l.orderderPhone}">010-1111-2222</span
                         >
                       </div>
                     </li>
@@ -282,15 +284,15 @@
                       <div>
                         <span class="receiverName changeable-text" th:text="${l.receiverName}">김철수</span>
                         <span class="receiverPhone changeable-text"
-                          th:text="'(' + ${l.receiverPhone} + ')'">(010-1111-2222)</span
+                          th:text="${l.receiverPhone}">010-1111-2222</span
                         >
                       </div>
                     </li>
                   </div>
                   <li class="tdata-column-list">
                     <span>발주품목</span>
-                    <span class="orderItemList changeable-text"
-                      th:text="${l.productName}">발주품목이름</span
+                    <span class="orderItemList changeable-select-orderItemList"
+                      th:text="${l.productName}">백일상-百</span
                     >
                   </li>
                   <li class="tdata-column-list">

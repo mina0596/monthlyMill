@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>스마트스토어 엑셀관리</title>
-    <!-- <link rel="stylesheet" href="../../static/css/screens/smartstore.css" /> -->
+    <link rel="stylesheet" href="../../static/css/screens/smartstore.css" />
     <link rel="stylesheet" th:href="@{/css/screens/smartstore.css}" />
   </head>
   <body>
@@ -31,7 +31,11 @@
           <span th:if="${session.SESSIONNAME != null}" class="header-userName"
             >[[${session.SESSIONNAME}]]</span
           >
-          <input type="hidden" th:value="${session.SESSIONID}" class="sessionId">
+          <input
+            type="hidden"
+            th:value="${session.SESSIONID}"
+            class="sessionId"
+          />
           <button class="header-logoutBtn">로그아웃</button>
         </div>
       </div>
@@ -55,13 +59,23 @@
       </div>
 
       <!-- !!!여기에 구분명 select박스 값 넣어주기!!! -->
-      <select class="selectOptions-packingMaterial hidden">
-      	<option th:each="l : ${allProductName}" th:value="${l.pName}" th:text="${l.pCode}"> </option>
+      <select class="selectOptions-classifyName hidden">
+        <option
+          th:each="l : ${allProductName}"
+          th:value="${l.pName}"
+          th:text="${l.pCode}"
+        ></option>
+        <!-- <option value="백일상-百">p20211124_0001</option>
+        <option value="백일상-꽃수">p20211130_0001</option> -->
       </select>
 
       <!-- !!!여기에 포장재 select박스 값 넣어주기!!! -->
-      <select class="selectOptions-classifyName hidden" >
-		<option th:each="l : ${allWrappingType}" th:value="${l.wrappingType}"> - </option>
+      <select class="selectOptions-packingMaterial hidden">
+        <option th:each="l : ${allWrappingType}" th:value="${l.wrappingType}">
+          -
+        </option>
+        <!-- <option value="접이식">-</option>
+        <option value="접이소">-</option> -->
       </select>
 
       <!-- 해당하는 날짜의 생산일지 테이블 -->
@@ -117,7 +131,11 @@
                 <button class="modifyRowBt">수정</button>
               </td>
               <td class="tdata number" th:text="${n.index+1}">1</td>
-              <td class="tdata changeable-text shippingPayCheck" th:text="${l.shippingPayCheck}" id="shippingPayCheck">
+              <td
+                class="tdata changeable-text shippingPayCheck"
+                th:text="${l.shippingPayCheck}"
+                id="shippingPayCheck"
+              >
                 완료
               </td>
               <!-- menu2 테이블에 수취인~배송형태 컬럼항목 연동 -->
@@ -150,7 +168,7 @@
                 배송형태
               </td>
               <td
-                class="tdata changeable-text classifyName"
+                class="tdata changeable-select-classifyName classifyName"
                 th:text="${l.productName}"
                 th:id="${l.productCode}"
               >
@@ -167,7 +185,7 @@
 
               <!-- 상품표 연동 -->
               <td
-                class="tdata changeable-text packingMaterial"
+                class="tdata changeable-select-packingMaterial packingMaterial"
                 th:text="${l.wrappingType}"
                 id="wrappingType"
               >
@@ -309,7 +327,11 @@
                 기타
               </td>
 
-              <td class="tdata note changeable-text" th:text="${l.memo}" id="memo"></td>
+              <td
+                class="tdata note changeable-text"
+                th:text="${l.memo}"
+                id="memo"
+              ></td>
             </tr>
           </tbody>
           <!-- 결과값이 없을 경우  -->
@@ -480,13 +502,13 @@
         </table>
       </section>
     </div>
-<!-- 
+
     <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../static/js/smartstore/common.js"></script>
     <script src="../../static/js/smartstore/production.js"></script>
     <script src="../../static/js/smartstore/tableUpdate_front.js"></script>
     <script src="../../static/js/smartstore/dateManage_front.js"></script>
- -->
+
     <script th:src="@{/js/jquery/jquery-3.6.0.min.js}"></script>
     <script
       type="text/javascript"
