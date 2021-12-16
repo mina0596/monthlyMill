@@ -1,8 +1,6 @@
 $(function(){
     //수정 버튼 클릭 시 input박스로 변경
-    if($(".modifyRowBt").length>0){
         $(document).on("click", ".modifyRowBt", addChangeable);
-    }
 
     function addChangeable(e){
         const thisRow = this.parentNode.parentNode;

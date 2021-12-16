@@ -30,4 +30,7 @@ public interface SmartstoreOrderMapper {
 	
 	// 주문정보를 수정시
 	public void updateOrderInfo(HashMap<String, Object> updateOrderInfo);
+	
+	// 주문테이블의 idx로 주문정보 가져오기
+	public SmartStoreOrder getOrderInfoByIdx(int orderIdx);
 }

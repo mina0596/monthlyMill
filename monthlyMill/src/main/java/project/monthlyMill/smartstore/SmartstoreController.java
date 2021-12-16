@@ -180,6 +180,7 @@ public class SmartstoreController {
 	@ResponseBody
 	public boolean updateOrderInfo(@RequestBody HashMap<String, Object> modifyingInfo) {
 		log.info("수정된 사항 받아오는거 확인 :{}", modifyingInfo);
+		ssService.updateOrderInfo(modifyingInfo);
 		return true;
 	}
 	

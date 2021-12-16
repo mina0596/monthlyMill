@@ -139,29 +139,24 @@ $(document).ready(function(){
 	var modifiedProductCheck = true;
 	// 수정버튼 클릭시 수정되기 전 데이터가져오기	
 	$(document).on('click', '.modifyRowBt', function(){
-		console.log('버튼확인');
-		orgData = [];
 		// 수정하기전 데이터
-		arr = [];
 		arr = $(this).parent().parent().children();
-		
-		var dataNum = 0; 		// 수정이 불가능한 텍스트는 제외시키기위한 변수
-		arr.each(function(){
-			dataNum = dataNum + 1 ;
-			if(dataNum > 2){
-			orgData.push($(this).text());
+		arr.each(function(index){
+			var orgVal = $(this).children().val();
+			if(index > 1){
+				console.log('lasdg');
+				orgData.push(orgVal);
 			}	
 			
 		})
+		console.log(orgData);	
 	})
-	
 	
 	// 수정완료 눌렀을때
 	$(document).on('click', '.modifying', function(){
 		modData = [];
 		arr = [];
 		var modifiedOrderIdx = $(this).parent().parent('tr').attr('id').split(',');
-		// 왜... 여기는 input 으로 찾아지는걸까?
 		arr = $(this).parent().parent().children().find('input');
 		// 수정 후의 데이터 가져오기
 		arr.each(function(index){
@@ -183,26 +178,29 @@ $(document).ready(function(){
 		// 주문에 대한 정보가 다를 경우임
 		for(var i=0; i < 7; i++){
 			if(modData[i] == orgData[i]){
-				modifiedCheck = true;
-				console.log('srfgrg');
-			}else{
 				modifiedCheck = false;
-			}
-		}
-		console.log(modifiedCheck);
-		// 상품에 대한 정보가 다를 경우임
-		for(var j=7; j < modData.length; j++){
-			if(modData[j] == orgData[j]){
-				modifiedProductCheck = true;
 			}else{
-				modifiedProductCheck = false;
+				modifiedCheck = true;
 			}
 		}
-		console.log(modifiedProductCheck);
+		console.log('주문변화했나?  '+ modifiedCheck);
+		
+		// 상품에 대한 정보가 다를 경우임
+		for(var j=7; j < modData.length-1; j++){
+			if(modData[j] == orgData[j]){
+				modifiedProductCheck = false;
+			}else{
+				modifiedProductCheck = true;
+			}
+		}
+		console.log('상품변화했나?  '+ modifiedProductCheck);
 		
 		
 		// modifyingInfo 에 주문 정보 넣기
+		
+		
 		if(modifiedCheck){
+			// 2. 주문만 수정
 			modifyingInfo.orderIdx = modifiedOrderIdx[1];
 			modifyingInfo.orderNum = modifiedOrderIdx[0];
 			modifyingInfo.shippingPayCheck = modData[0];
@@ -210,14 +208,15 @@ $(document).ready(function(){
 			modifyingInfo.productionComp = modData[2];
 			modifyingInfo.expDeliveryDate = modData[3];
 			modifyingInfo.shippingMethod = modData[4];
+			modifyingInfo.orgProductCode = modData[28];
 			modifyingInfo.productName = modData[5];
 			modifyingInfo.orderQuantity = modData[6];
 			modifyingInfo.modMId = $('.sessionId').val();
 			
+			// 1. 주문 + 상품 모두 수정
 			if(modifiedProductCheck){
 				modifyingInfo.pName = modData[5];
 				modifyingInfo.wrappingType = modData[7];
-				modifyingInfo.orgProductCode = modData[28];
 				modifyingInfo.item01 = modData[8]; 			modifyingInfo.item02 = modData[9];
 				modifyingInfo.item01 = modData[10];			modifyingInfo.item04 = modData[11];
 				modifyingInfo.item01 = modData[12];			modifyingInfo.item06 = modData[13];
@@ -229,6 +228,8 @@ $(document).ready(function(){
 				modifyingInfo.item01 = modData[24];			modifyingInfo.item18 = modData[25];
 				modifyingInfo.item19 = modData[26];			modifyingInfo.memo = modData[27];
 			}
+			
+		// 3. 상품만 수정
 		}else if(!modifiedCheck){
 			if(modifiedProductCheck){
 				modifyingInfo.orderIdx = modifiedOrderIdx[1];
@@ -250,7 +251,7 @@ $(document).ready(function(){
 			}
 		}
 		
-		
+		console.log(modifyingInfo);
 		// 수정사항이 있을 시에만 ajax 발생
 		if(modifiedCheck || modifiedProductCheck){
 			console.log(modifyingInfo);
