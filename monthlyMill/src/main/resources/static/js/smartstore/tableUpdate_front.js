@@ -49,6 +49,51 @@ $(function(){
                     <option value="택배,등기,소포" ${cellvalue == "택배,등기,소포" ? "selected" : ""}>택배,등기,소포</option>
                 </select>`;
             });
+
+            //변동하는 셀렉트 박스 
+            thisRow.querySelectorAll(".changeable-select-orderItemList").forEach((cell)=>{
+                const cellvalue = cell.innerHTML;
+                let selectBoxInner = `<select class="changeable-input-select-orderItemList">`;
+
+                //html collection to array
+                const optionArray = Array.from(document.querySelector(".selectOptions-orderItemList").children);
+
+                //옵션값 가져오기(id포함)
+                optionArray.forEach((item)=>{
+                    selectBoxInner += `<option label="${item.value}" value="${item.value},${item.innerHTML}" ${cellvalue == item.value ? "selected" : ""}>${item.value}</option>`;
+                });
+                selectBoxInner += `</select>`;
+                cell.innerHTML=selectBoxInner; 
+            });
+            thisRow.querySelectorAll(".changeable-select-classifyName").forEach((cell)=>{
+                const cellvalue = cell.innerHTML;
+                let selectBoxInner = `<select class="changeable-input-select-classifyName">`;
+
+                //html collection to array
+                const optionArray = Array.from(document.querySelector(".selectOptions-classifyName").children);
+
+                //옵션값 가져오기(id포함)
+                optionArray.forEach((item)=>{
+                    selectBoxInner += `<option label="${item.value}" value="${item.value},${item.innerHTML}" ${cellvalue == item.value ? "selected" : ""}>${item.value}</option>`;
+                });
+                selectBoxInner += `</select>`;
+                cell.innerHTML=selectBoxInner; 
+            });
+            //포장재
+            thisRow.querySelectorAll(".changeable-select-packingMaterial").forEach((cell)=>{
+                const cellvalue = cell.innerHTML;
+                let selectBoxInner = `<select class="changeable-input-select-packingMaterial">`;
+
+                //html collection to array
+                const optionArray = Array.from(document.querySelector(".selectOptions-packingMaterial").children);
+
+                //옵션값 가져오기
+                optionArray.forEach((item)=>{
+                    selectBoxInner += `<option label="${item.value}" value="${item.value}" ${cellvalue == item.value ? "selected" : ""}>${item.value}</option>`;
+                });
+                selectBoxInner += `</select>`;
+                cell.innerHTML=selectBoxInner; 
+            });
             
             //이벤트 여부 확인?
             $(document).on("click", ".modifying", addChangeable);
@@ -86,6 +131,23 @@ $(function(){
                 cell.innerHTML=`${cellvalue}`;
             });
 
+            thisRow.querySelectorAll(".changeable-select-orderItemList").forEach((cell)=>{
+                const cellvalue = cell.querySelector(".changeable-input-select-orderItemList").value;
+
+                cell.innerHTML= `${cellvalue.split(",")[0]}`;
+                cell.id= `${cellvalue.split(",")[1]}`;
+            });
+            thisRow.querySelectorAll(".changeable-select-classifyName").forEach((cell)=>{
+                const cellvalue = cell.querySelector(".changeable-input-select-classifyName").value;
+                cell.innerHTML= `${cellvalue.split(",")[0]}`;
+                cell.id= `${cellvalue.split(",")[1]}`;
+            });
+
+            thisRow.querySelectorAll(".changeable-select-packingMaterial").forEach((cell)=>{
+                const cellvalue = cell.querySelector(".changeable-input-select-packingMaterial").value;
+                cell.innerHTML= `${cellvalue}`;
+            });
+
 
             $(document).off("click", ".modifying", addChangeable);
 
@@ -95,23 +157,3 @@ $(function(){
 
 })
 
-
-        /*thisRow.querySelectorAll(".changeable-select-classifyName").forEach((cell)=>{
-            const cellvalue = cell.innerHTML;
-            cell.innerHTML=`<select class="changeable-input-select-paymentState">
-                <option value="">상품표에서 리스트 가져오기?</option>
-            </select>`;
-            cell.querySelector(".changeable-input-select-paymentState").value=cellvalue;
-        });*/
-
-        /*thisRow.querySelectorAll(".changeable-select-paymentState").forEach((cell)=>{
-            const cellvalue = cell.innerHTML;
-            cell.innerHTML=`<select class="changeable-input-select-paymentState">
-                <option value=""></option>
-                <option value="완료">완료</option>
-                <option value="퀵비착불">퀵비착불</option>
-                <option value="퀵비결제확인">퀵비결제확인</option>
-                <option value="미완료">미완료</option>
-            </select>`;
-            cell.querySelector(".changeable-input-select-paymentState").value=cellvalue;
-        });*/

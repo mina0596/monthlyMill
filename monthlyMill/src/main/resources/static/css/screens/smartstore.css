@@ -357,24 +357,19 @@ td {
 .tdata-itembox .deliveryDate {
   max-width: none;
 }
-/* .editCellBtnbox {
-  display: flex;
-  justify-content: center;
-}
-.editCellBtn {
-  margin-top: 0.5em;
-  border-radius: 0;
-  padding: 0.25em 1em;
-} */
+
 .tdata-itembox .deliveryMsg {
   color: rgb(42, 42, 196);
 }
-/* .changeable-number,
- .changeable-price,
-.changeable-date,
-.changeable-text {
-  background-color: #a8eb12;
-} */
+
+.purchaserPhone::before,
+.receiverPhone::before {
+  content: "(";
+}
+.purchaserPhone::after,
+.receiverPhone::after {
+  content: ")";
+}
 /*============ 메뉴3. 생산일지 ===============*/
 .tableDate {
   text-align: center;
