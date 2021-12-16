@@ -74,6 +74,11 @@
         <input type="date" class="tableDate" th:value="${currentDate}" />
         <button class="nextDateBtn" type="button">></button>
       </div>
+      
+      <!-- !!!여기에 발주품목 select박스 값 넣어주기!!! -->
+      <select class="selectOptions-orderItemList hidden">
+
+      </select>
 
       <section class="tableSection">
         <table class="table">
@@ -84,6 +89,7 @@
               <th class="thead orderSite" rowspan="4">주문사이트</th>
               <th class="thead number" rowspan="4">번호</th>
               <th class="thead content" rowspan="4">주문내용</th>
+              <th class="thead modify" rowspan="4">수정</th>
 
               <!--  <th class="thead paymentDate">결제일</th>
               <th class="thead orderItemList">발주품목</th>
@@ -240,7 +246,7 @@
 
             <tr class="trow removeTr"   th:if="${#lists.size(orderList) > 0}" th:each="l, n : ${orderList}" >
               <td class="tdata deliveryDate changeable-text" th:text="${l.expDeliveryDate}">11월 12일</td>
-              <td class="tdata orderSite changeable-text" th:text="${l.orderType}">N스토어</td>
+              <td class="tdata orderSite changeable-select-siteType" th:text="${l.orderType}">매장주문</td>
               <td class="tdata number" th:text="${n.index+1}">1</td>
               <td class="tdata tdata-itembox">
                 <ul class="tdata-column">
@@ -304,7 +310,7 @@
                   <div class="tdata-column-2">
                     <li class="tdata-column-list">
                       <span>배송방법</span>
-                      <span class="deliveryType changeable-text" th:text="${l.shippingMethod}">퀵</span>
+                      <span class="deliveryType changeable-select-deliveryType" th:text="${l.shippingMethod}">퀵서비스</span>
                     </li>
                     <li class="tdata-column-list">
                       <span>배송비</span>
@@ -335,6 +341,10 @@
                     >
                   </li>
                 </ul>
+              </td>
+              <td class="tdata modify">
+                <!-- 버튼 누르면 해당 행 수정가능상태로 변경 -->
+                <button class="modifyRowBt">수정</button>
               </td>
             </tr>
             <!-- 여기까지해서 한줄 -->
