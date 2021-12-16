@@ -77,7 +77,7 @@
       
       <!-- !!!여기에 발주품목 select박스 값 넣어주기!!! -->
       <select class="selectOptions-orderItemList hidden">
-
+		<option th:each="l : ${allProductName}" th:value="${l.pName}" th:text="${l.pCode}"> </option>
       </select>
 
       <section class="tableSection">

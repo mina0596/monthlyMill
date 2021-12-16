@@ -313,5 +313,13 @@ public class SmartstoreService {
 		return pMapper.getAllProductName();
 	}
 	
+	// 모든 포장재 종류 가져오기
+	public List<HashMap<String, String>> getAllWrappingType(){
+		return pMapper.getAllWrappingType();
+	}
 	
+	// 모든 상품 구분명 가져오기
+	public List<HashMap<String, String>> getAllPName(){
+		return pMapper.getAllPName();
+	}
 }

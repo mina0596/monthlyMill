@@ -55,10 +55,14 @@
       </div>
 
       <!-- !!!여기에 구분명 select박스 값 넣어주기!!! -->
-      <select class="selectOptions-classifyName hidden">
+      <select class="selectOptions-packingMaterial hidden">
+      	<option th:each="l : ${allProductName}" th:value="${l.pName}" th:text="${l.pCode}"> </option>
+      </select>
 
       <!-- !!!여기에 포장재 select박스 값 넣어주기!!! -->
-      <select class="selectOptions-packingMaterial hidden">
+      <select class="selectOptions-classifyName hidden" >
+		<option th:each="l : ${allWrappingType}" th:value="${l.wrappingType}"> - </option>
+      </select>
 
       <!-- 해당하는 날짜의 생산일지 테이블 -->
       <section class="tableSection productJournal">

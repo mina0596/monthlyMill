@@ -46,6 +46,25 @@
 		WHERE original_check = 'Y';
 	</select>
 	
+	
+	<!-- 모든 포장재 종류 가져오기  -->
+	<select id="getAllWrappingType" resultType="map">
+		SELECT
+			DISTINCT(p.wrapping_type) AS wrappingType
+		FROM
+			smartstore_product_info AS p
+	</select>
+	
+	<!-- 모든 상품 구분명 가져오기 -->
+	<select id="getAllPName" resultType="map">
+		SELECT
+			DISTINCT(p.product_name) AS pName,
+			p.product_code AS pCode
+		FROM
+			smartstore_product_info AS p
+			WHERE p.original_check = 'Y'
+	</select>
+	
 	<select id="getSearchProductInfo" parameterType="map" resultMap="SmartStoreProductResultMap">
 		SELECT
 			*

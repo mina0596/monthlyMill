@@ -131,6 +131,7 @@ public class SmartstoreController {
 		String nowDate = format.format(date);
 		model.addAttribute("orderList", ssService.getOrderInfoByDate(nowDate));
 		model.addAttribute("currentDate", nowDate);
+		model.addAttribute("allProductName", ssService.getAllPName());
 		return "/smartstore/menu2_dataGatherTable";
 	}
 	
@@ -150,6 +151,8 @@ public class SmartstoreController {
 		model.addAttribute("infoList", ssService.getProductionInfo(nowDate));
 		model.addAttribute("itemTotal", ssService.getItemsTotal(nowDate));
 		model.addAttribute("currentDate", nowDate);
+		model.addAttribute("allWrappingType", ssService.getAllWrappingType());
+		model.addAttribute("allProductName", ssService.getAllPName());
 		return "/smartstore/menu3_productJournal";
 	}
 	

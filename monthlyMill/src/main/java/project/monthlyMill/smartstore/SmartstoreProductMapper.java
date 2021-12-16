@@ -48,4 +48,10 @@ public interface SmartstoreProductMapper {
 	
 	// 상품코드로 상품정보 가져오기
 	public SmartStoreProduct getProductInfoByPcode(String pCode);
+	
+	// 모든 포장재 종류 가져오기
+	public List<HashMap<String, String>> getAllWrappingType();
+	
+	// 모든 상품 구분명 가져오기
+	public List<HashMap<String, String>> getAllPName();
 }
