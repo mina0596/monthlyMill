@@ -28,6 +28,7 @@
 		<result property="productionComp"		column="production_complete"/>
 		<result property="shippingPayCheck"		column="shipping_pay_check"/>
 		<result property="memo"		column="memo"/>
+		<result property="modifiedCheck"		column="modified_check"/>
 	</resultMap>
 	
 	<!-- ====== 모든 주문 조회 ====== -->
@@ -35,22 +36,51 @@
 		SELECT 
 			idx, order_num, shipping_date, paid_date, shipping_method, orderer_name, orderer_phone, receiver_name, receiver_phone, product_name, product_code, detailed_product, order_quantity, total_order_amount, option_info, 
 			shipping_fee, shipping_addr, delivery_msg, exp_delivery_date, reg_date, reg_m_id, order_type, 
-			production_complete, shipping_pay_check, memo
+			production_complete, shipping_pay_check, memo, modified_check
 		FROM 
 			smartstore_order_info
 		ORDER BY DATE_FORMAT(LEFT(exp_delivery_date, 10), '%Y-%m-%d') DESC
 	</select>
 	
+	<!-- 수정테이블에 있는 주문테이블idx 번호 가져오기  -->
+	<select id="getModifiedOrderIdx" resultType="integer">
+		SELECT 
+			modOrder.order_idx AS orderIdx
+		FROM 
+			smartstore_modify_order AS modOrder
+	</select>
 	
 	<!-- ====== 날짜별로 주문 조회 ====== -->
-	<select id="getOrderInfoByDate" resultMap="SmartStoreOrderResultMap" parameterType="String">
-		SELECT 
-			idx, order_num, shipping_date, paid_date, shipping_method, orderer_name, orderer_phone, receiver_name, receiver_phone, product_name, product_code, detailed_product, order_quantity, total_order_amount, option_info, 
-			shipping_fee, shipping_addr, delivery_msg, exp_delivery_date, reg_date, reg_m_id, order_type, 
-			production_complete, shipping_pay_check, memo
-		FROM 
-			smartstore_order_info
-		WHERE exp_delivery_date LIKE CONCAT ('%', #{expDate}, '%');
+	<select id="getOrderInfoByDate" resultType="map" parameterType="String">
+		SELECT
+			sub.*
+		from
+			(SELECT
+				m.order_idx AS orderIdx, m.order_num AS orderNum, m.shipping_date AS shippingDate,
+				m.paid_date AS paidDate, m.shipping_method AS shippingMethod, m.orderer_name AS ordererName,
+				m.orderer_phone AS orderderPhone, m.receiver_name AS receiverName, m.receiver_phone AS receiverPhone,
+				m.product_name AS productName, m.product_code AS productCode, m.detailed_product AS detailedProduct,
+				m.order_quantity AS orderQuantity, m.tot_order_amount AS totOrderAmount, m.option_info AS 'option',
+				m.shipping_fee AS shippingFee, m.shipping_addr AS shippingAddr, m.delivery_msg AS deliveryMsg,
+				m.exp_delivery_date AS expDeliveryDate, m.order_type AS orderType, m.production_complete AS productionComp,
+				m.shipping_pay_check AS shippingPayCheck, m.memo AS memo
+			FROM
+				smartstore_modify_order AS m
+			UNION
+			SELECT 
+				o.idx AS orderIdx, o.order_num AS orderNum, o.shipping_date AS shippingDate,
+				o.paid_date AS paidDate, o.shipping_method AS shippingMethod, o.orderer_name AS ordererName,
+				o.orderer_phone AS orderderPhone, o.receiver_name AS receiverName, o.receiver_phone AS receiverPhone,
+				o.product_name AS productName, o.product_code AS productCode, o.detailed_product AS detailedProduct,
+				o.order_quantity AS orderQuantity, o.total_order_amount AS totOrderAmount, o.option_info AS 'option',
+				o.shipping_fee AS shippingFee, o.shipping_addr AS shippingAddr, o.delivery_msg AS deliveryMsg,
+				o.exp_delivery_date AS expDeliveryDate, o.order_type AS orderType, o.production_complete AS productionComp,
+				o.shipping_pay_check AS shippingPayCheck, o.memo AS memo
+			FROM 
+				smartstore_order_info AS o
+			WHERE 
+				o.modified_check = 'N') AS sub
+		WHERE sub.expDeliveryDate LIKE CONCAT ('%', '2021-12-15', '%');
 	</select>
 	
 	
@@ -59,11 +89,11 @@
 		INSERT INTO smartstore_order_info
 			(idx, order_num, shipping_date, paid_date, shipping_method, orderer_name, orderer_phone, receiver_name, receiver_phone, product_name, 
 			product_code, detailed_product, order_quantity, total_order_amount, option_info, shipping_fee, shipping_addr, delivery_msg, exp_delivery_date, reg_date, 
-			reg_m_id, order_type, production_complete, shipping_pay_check, memo)
+			reg_m_id, order_type, production_complete, shipping_pay_check, memo, modified_check)
 		VALUES 
 			(NULL, #{orderNum}, #{shippingDate}, #{paidDate}, #{shippingMethod}, #{ordererName}, #{orderderPhone}, #{receiverName}, #{receiverPhone}, #{productName},
 			#{productCode}, #{detailedProduct}, #{orderQuantity}, #{totOrderAmount}, #{option}, #{shippingFee}, #{shippingAddr}, #{deliveryMsg}, #{expDeliveryDate}, NOW(), 
-			#{regMId}, #{orderType}, NULL, NULL, NULL)
+			#{regMId}, #{orderType}, NULL, NULL, NULL, 'N')
 	</insert>
 	
 	

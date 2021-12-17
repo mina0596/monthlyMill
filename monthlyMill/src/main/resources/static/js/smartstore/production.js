@@ -32,7 +32,7 @@ function sendProductionDate(productionDate){
 					html += '<td class="tdata deliveryStyle changeable-text" id="shippingAddr">' + data[i].shippingAddr + '</td>';
 					html += '<td class="tdata changeable-select-classifyName classifyName" id="' + data[i].productCode + '">' + data[i].productName + '</td>';
 					html += '<td class="tdata quantity changeable-number" id="orderQuantity">' + data[i].orderQuantity + '</td>';
-					html += '<td class="tdata packingMaterial" id="wrappingType">' + data[i].wrappingType + '</td>';
+					html += '<td class="tdata changeable-select-packingMaterial" id="wrappingType">' + data[i].wrappingType + '</td>';
 					html += '<td class="tdata changeable-number type-duteop" id="item01">' + data[i].item01 + '</td>';
 					html += '<td class="tdata changeable-number type-redbeen" id="item02">' + data[i].item02 + '</td>';
 					html += '<td class="tdata changeable-number type-hogo" id="item03">' + data[i].item03 + '</td>';
@@ -135,19 +135,19 @@ $(document).ready(function(){
 	// 변경된 데이터 정보 담을 map
 	var modifyingInfo = {};
 	
+	// 변경되었으면 true
 	var modifiedCheck = true;
 	var modifiedProductCheck = true;
 	// 수정버튼 클릭시 수정되기 전 데이터가져오기	
 	$(document).on('click', '.modifyRowBt', function(){
 		// 수정하기전 데이터
+		orgData = [];
 		arr = $(this).parent().parent().children();
 		arr.each(function(index){
 			var orgVal = $(this).children().val();
 			if(index > 1){
-				console.log('lasdg');
 				orgData.push(orgVal);
-			}	
-			
+			}
 		})
 		console.log(orgData);	
 	})
@@ -157,43 +157,36 @@ $(document).ready(function(){
 		modData = [];
 		arr = [];
 		var modifiedOrderIdx = $(this).parent().parent('tr').attr('id').split(',');
-		arr = $(this).parent().parent().children().find('input');
+		arr = $(this).parent().parent().children().find('input, select');
 		// 수정 후의 데이터 가져오기
 		arr.each(function(index){
 			modData.push($(this).val());
-			/*
-			======== 실패한거 =======
-			if(orgData[index] != $(this).val()){
-				console.log('alerdkgaj');
-				console.log('aksdgag');
-				modifyingInfo.orderIdx = $(this).parent().parent('tr').attr('id');
-				modifyingInfo.columnName = $(this).parent().attr('id');
-				modifyingInfo.modifiedContent = $(this).val();
-			}
-			*/
 		});
-		modData.push($(this).parent().parent('tr').find('.classifyName').attr('id'));
 		console.log(modData);
 		
 		// 주문에 대한 정보가 다를 경우임
 		for(var i=0; i < 7; i++){
 			if(modData[i] == orgData[i]){
 				modifiedCheck = false;
-			}else{
+			}else if(modData[i] != orgData[i]){
 				modifiedCheck = true;
+				break;
 			}
 		}
 		console.log('주문변화했나?  '+ modifiedCheck);
 		
 		// 상품에 대한 정보가 다를 경우임
-		for(var j=7; j < modData.length-1; j++){
+		for(var j=7; j < modData.length; j++){
+			console.log('원래 값: ' + orgData[j] + '/변경된 값: ' + modData[j]);
 			if(modData[j] == orgData[j]){
 				modifiedProductCheck = false;
-			}else{
+			}else if(modData[j] != orgData[j]){
 				modifiedProductCheck = true;
+				break;
 			}
 		}
 		console.log('상품변화했나?  '+ modifiedProductCheck);
+		var modifiedProductInfo = modData[5].split(',');
 		
 		
 		// modifyingInfo 에 주문 정보 넣기
@@ -208,24 +201,24 @@ $(document).ready(function(){
 			modifyingInfo.productionComp = modData[2];
 			modifyingInfo.expDeliveryDate = modData[3];
 			modifyingInfo.shippingMethod = modData[4];
-			modifyingInfo.orgProductCode = modData[28];
-			modifyingInfo.productName = modData[5];
+			modifyingInfo.productCode = modifiedProductInfo[1];
+			modifyingInfo.detailedProduct = modifiedProductInfo[0];
 			modifyingInfo.orderQuantity = modData[6];
 			modifyingInfo.modMId = $('.sessionId').val();
 			
 			// 1. 주문 + 상품 모두 수정
 			if(modifiedProductCheck){
-				modifyingInfo.pName = modData[5];
+				modifyingInfo.pName = modifiedProductInfo[0];
 				modifyingInfo.wrappingType = modData[7];
 				modifyingInfo.item01 = modData[8]; 			modifyingInfo.item02 = modData[9];
-				modifyingInfo.item01 = modData[10];			modifyingInfo.item04 = modData[11];
-				modifyingInfo.item01 = modData[12];			modifyingInfo.item06 = modData[13];
-				modifyingInfo.item01 = modData[14];			modifyingInfo.item08 = modData[15];
-				modifyingInfo.item01 = modData[16];			modifyingInfo.item10 = modData[17];
-				modifyingInfo.item01 = modData[18];			modifyingInfo.item12 = modData[19];
-				modifyingInfo.item01 = modData[20];			modifyingInfo.item14 = modData[21];
-				modifyingInfo.item01 = modData[22];			modifyingInfo.item16 = modData[23];
-				modifyingInfo.item01 = modData[24];			modifyingInfo.item18 = modData[25];
+				modifyingInfo.item03 = modData[10];			modifyingInfo.item04 = modData[11];
+				modifyingInfo.item05 = modData[12];			modifyingInfo.item06 = modData[13];
+				modifyingInfo.item07 = modData[14];			modifyingInfo.item08 = modData[15];
+				modifyingInfo.item09 = modData[16];			modifyingInfo.item10 = modData[17];
+				modifyingInfo.item11 = modData[18];			modifyingInfo.item12 = modData[19];
+				modifyingInfo.item13 = modData[20];			modifyingInfo.item14 = modData[21];
+				modifyingInfo.item15 = modData[22];			modifyingInfo.item16 = modData[23];
+				modifyingInfo.item17 = modData[24];			modifyingInfo.item18 = modData[25];
 				modifyingInfo.item19 = modData[26];			modifyingInfo.memo = modData[27];
 			}
 			
@@ -234,20 +227,22 @@ $(document).ready(function(){
 			if(modifiedProductCheck){
 				modifyingInfo.orderIdx = modifiedOrderIdx[1];
 				modifyingInfo.orderNum = modifiedOrderIdx[0];
+				modifyingInfo.modMId = $('.sessionId').val();
 				
-				modifyingInfo.pName = modData[5];
+				modifyingInfo.pName = modifiedProductInfo[0];
 				modifyingInfo.wrappingType = modData[7];
-				modifyingInfo.orgProductCode = modData[28];
+				modifyingInfo.orgProductCode = modifiedProductInfo[1];
 				modifyingInfo.item01 = modData[8]; 			modifyingInfo.item02 = modData[9];
-				modifyingInfo.item01 = modData[10];			modifyingInfo.item04 = modData[11];
-				modifyingInfo.item01 = modData[12];			modifyingInfo.item06 = modData[13];
-				modifyingInfo.item01 = modData[14];			modifyingInfo.item08 = modData[15];
-				modifyingInfo.item01 = modData[16];			modifyingInfo.item10 = modData[17];
-				modifyingInfo.item01 = modData[18];			modifyingInfo.item12 = modData[19];
-				modifyingInfo.item01 = modData[20];			modifyingInfo.item14 = modData[21];
-				modifyingInfo.item01 = modData[22];			modifyingInfo.item16 = modData[23];
-				modifyingInfo.item01 = modData[24];			modifyingInfo.item18 = modData[25];
+				modifyingInfo.item03 = modData[10];			modifyingInfo.item04 = modData[11];
+				modifyingInfo.item05 = modData[12];			modifyingInfo.item06 = modData[13];
+				modifyingInfo.item07 = modData[14];			modifyingInfo.item08 = modData[15];
+				modifyingInfo.item09 = modData[16];			modifyingInfo.item10 = modData[17];
+				modifyingInfo.item11 = modData[18];			modifyingInfo.item12 = modData[19];
+				modifyingInfo.item13 = modData[20];			modifyingInfo.item14 = modData[21];
+				modifyingInfo.item15 = modData[22];			modifyingInfo.item16 = modData[23];
+				modifyingInfo.item17 = modData[24];			modifyingInfo.item18 = modData[25];
 				modifyingInfo.item19 = modData[26];			modifyingInfo.memo = modData[27];
+				
 			}
 		}
 		

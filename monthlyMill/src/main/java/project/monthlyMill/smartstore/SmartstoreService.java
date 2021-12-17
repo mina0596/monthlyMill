@@ -190,19 +190,71 @@ public class SmartstoreService {
 	public void updateOrderInfo(HashMap<String, Object> updateInfo) {
 		
 		String newPCode = getNewPcode();
-		int pPrice = pMapper.getProductInfoByPcode(updateInfo.get("orgProductCode").toString()).getPPrice();
+		int pPrice = pMapper.getProductInfoByPcode(updateInfo.get("productCode").toString()).getPPrice();
+		
+		// idx 로 order정보 가져오기
+		SmartStoreOrder orderInfoByIdx = oMapper.getOrderInfoByIdx(Integer.parseInt(updateInfo.get("orderIdx").toString()));
+		
+		
+		String shippingDate = orderInfoByIdx.getShippingDate();
+		String paidDate = orderInfoByIdx.getPaidDate();
+		String ordererName = orderInfoByIdx.getOrdererName();
+		String ordererPhone = orderInfoByIdx.getOrderderPhone();
+		String receiverPhone = orderInfoByIdx.getReceiverPhone();
+		String option = orderInfoByIdx.getOption();
+		int shippingFee = orderInfoByIdx.getShippingFee();
+		String shippingAddr = orderInfoByIdx.getShippingAddr();
+		String deliveryMsg = orderInfoByIdx.getDeliveryMsg();
+		String orderType = orderInfoByIdx.getOrderType();
+		String memo = orderInfoByIdx.getMemo();
+		String productName = orderInfoByIdx.getProductName();
+		
+		
+		int totOrderAmount = pPrice * Integer.parseInt(updateInfo.get("orderQuantity").toString());
 		// 주문에 대한 사항인지 상품에 대한 사항인지 파악하기
-		if(updateInfo.containsKey("pName")) {
+		if(updateInfo.containsKey("shippingPayCheck")) {
 			
 			// 1. 주문 + 상품 모두 수정
-			if(updateInfo.containsKey("productName")) {
+			if(updateInfo.containsKey("item01")) {
 				updateInfo.put("pCode", newPCode);
 				updateInfo.put("pPrice", pPrice);
+				
+				
+				
+				updateInfo.put("shippingDate", shippingDate);
+				updateInfo.put("paidDate", paidDate);
+				updateInfo.put("ordererName", ordererName);
+				updateInfo.put("ordererPhone", ordererPhone);
+				updateInfo.put("receiverPhone", receiverPhone);
+				updateInfo.put("totOrderAmount", totOrderAmount);
+				updateInfo.put("option", option);
+				updateInfo.put("shippingFee", shippingFee);
+				updateInfo.put("shippingAddr", shippingAddr);
+				updateInfo.put("deliveryMsg", deliveryMsg);
+				updateInfo.put("orderType", orderType);
+				updateInfo.put("productName", productName);
+				updateInfo.put("memo", memo);
+				updateInfo.put("modifiedCheck", 'Y');
+				
+				
 				oMapper.updateOrderInfo(updateInfo);
 				pMapper.updateProductionInfo(updateInfo);
 				
 			// 2. 주문만 수정
 			}else {
+				updateInfo.put("shippingDate", shippingDate);
+				updateInfo.put("paidDate", paidDate);
+				updateInfo.put("ordererName", ordererName);
+				updateInfo.put("ordererPhone", ordererPhone);
+				updateInfo.put("receiverPhone", receiverPhone);
+				updateInfo.put("totOrderAmount", totOrderAmount);
+				updateInfo.put("option", option);
+				updateInfo.put("shippingFee", shippingFee);
+				updateInfo.put("shippingAddr", shippingAddr);
+				updateInfo.put("deliveryMsg", deliveryMsg);
+				updateInfo.put("orderType", orderType);
+				updateInfo.put("productName", productName);
+				updateInfo.put("memo", memo);
 				oMapper.updateOrderInfo(updateInfo);
 			}
 			
