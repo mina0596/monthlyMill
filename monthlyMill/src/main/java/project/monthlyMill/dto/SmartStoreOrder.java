@@ -29,5 +29,6 @@ public class SmartStoreOrder {
 	private String productionComp;
 	private String shippingPayCheck;
 	private String memo;
+	private char modifiedCheck;
 	
 }

@@ -325,8 +325,8 @@ $(function(){
 					for(var i=0; i<data.length; i++){
 						html = `
 							<tr class="trow removeTr" id="orderTBody">
-			              <td class="tdata deliveryDate changeable-text">${data[i].expDeliveryDate.substring(0, 10)}</td>
-			              <td class="tdata orderSite changeable-text">${data[i].orderType}</td>
+			              <td class="tdata deliveryDate changeable-date">${data[i].expDeliveryDate.substring(0, 10)}</td>
+			              <td class="tdata orderSite changeable-select-siteType">${data[i].orderType}</td>
 			              <td class="tdata number">${i+1}</td>
 			              <td class="tdata tdata-itembox">
 			                <ul class="tdata-column">
@@ -352,7 +352,7 @@ $(function(){
 			                          ${data[i].ordererName}</span
 			                        >
 			                        <span class="purchaserPhone changeable-text"
-			                          >${'(' + data[i].orderderPhone + ')'}</span
+			                          >${data[i].orderderPhone}</span
 			                        >
 			                      </div>
 			                    </li>
@@ -361,13 +361,13 @@ $(function(){
 			                      <div>
 			                        <span class="receiverName changeable-text">${data[i].receiverName}</span>
 			                        <span class="receiverPhone changeable-text"
-			                          >${'(' + data[i].receiverPhone + ')'}</span			                        >
+			                          >${data[i].receiverPhone}</span			                        >
 			                      </div>
 			                    </li>
 			                  </div>
 			                  <li class="tdata-column-list">
 			                    <span>발주품목</span>
-			                    <span class="orderItemList changeable-text"
+			                    <span class="orderItemList changeable-select-orderItemList"
 			                     >${data[i].productName}</span
 			                    >
 			                  </li>
@@ -388,7 +388,7 @@ $(function(){
 			                  <div class="tdata-column-2">
 			                    <li class="tdata-column-list">
 			                      <span>배송방법</span>
-			                      <span class="deliveryType changeable-text">${data[i].shippingMethod}</span>
+			                      <span class="deliveryType changeable-select-deliveryType">${data[i].shippingMethod}</span>
 			                    </li>
 			                    <li class="tdata-column-list">
 			                      <span>배송비</span>
@@ -488,5 +488,22 @@ $(function(){
 		expDelDate.each(function(){
 			$(this).text($(this).text().substring(0, 10));
 		})
+	})
+	
+	// ======================================================
+	// ================ 수정버튼에 대한 로직 ======================
+	// ======================================================
+	
+	$(document).on('click', '.modifyRowBt', function(){
+		// 수정하기전 데이터
+		orgData = [];
+		arr = $(this).parent().parent().children();
+		arr.each(function(index){
+			var orgVal = $(this).children().val();
+			if(index > 1){
+				orgData.push(orgVal);
+			}
+		})
+		console.log(orgData);	
 	})
 })
