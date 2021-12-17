@@ -125,7 +125,7 @@
 
           <tbody id="orderTBody">
             <tr class="trow removeTr"   th:if="${#lists.size(orderList) > 0}" th:each="l, n : ${orderList}" th:id="${l.orderNum + ',' + l.orderIdx}">
-              <td class="tdata deliveryDate changeable-text" th:text="${l.expDeliveryDate}">11월 12일</td>
+              <td class="tdata deliveryDate changeable-date" th:text="${l.expDeliveryDate}">2021-11-12</td>
               <td class="tdata orderSite changeable-select-siteType" th:text="${l.orderType}">매장주문</td>
               <td class="tdata number" th:text="${n.index+1}">1</td>
               <td class="tdata tdata-itembox">

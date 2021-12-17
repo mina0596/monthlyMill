@@ -340,6 +340,7 @@ td {
 .tdata-column-list > span:first-child {
   font-weight: 700;
 }
+.deliveryDate.changeable-date,
 .tdata-itembox .sendDate,
 .tdata-itembox .paymentDate,
 .tdata-itembox .deliveryType,
