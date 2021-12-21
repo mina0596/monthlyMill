@@ -26,7 +26,7 @@
           </li>
         </ul>
         <div class="headerColumn-right">
-          <span th:if="${session.SESSIONNAME != null}" class="header-userName"
+          <span th:if="${session.SESSIONNAME != null}" class="header-userName" th:id=${session.SESSIONID}
             >[[${session.SESSIONNAME}]]</span
           >
           <button class="header-logoutBtn">로그아웃</button>

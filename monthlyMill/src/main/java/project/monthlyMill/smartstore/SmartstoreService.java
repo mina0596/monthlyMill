@@ -187,7 +187,7 @@ public class SmartstoreService {
 	}
 	
 	// 주문정보를 수정시
-	public void updateOrderInfo(HashMap<String, Object> updateInfo) {
+	public void updateProductionInfo(HashMap<String, Object> updateInfo) {
 		
 		String newPCode = getNewPcode();
 		int pPrice = pMapper.getProductInfoByPcode(updateInfo.get("productCode").toString()).getPPrice();
@@ -267,9 +267,16 @@ public class SmartstoreService {
 
 	}
 	
-	// 생산일지에서 상품에 대한 정보 변경시
-	public void updateProductionInfo(HashMap<String, Object> updateProductionInfo) {
-		pMapper.updateProductionInfo(updateProductionInfo);
+	// 일별 주문 상세 내역 화면에서 주문에 대한 정보 변경시
+	public void updateOrderInfo(HashMap<String, Object> updateProductionInfo) {
+		int orderIdx = Integer.parseInt(updateProductionInfo.get("orderIdx").toString());
+		char modifiedCheck = oMapper.getOrderInfoByIdx(orderIdx).getModifiedCheck();
+		if(modifiedCheck == 'N') {
+			oMapper.updateOrderInfo(updateProductionInfo);
+			oMapper.updateModifiedCheck(orderIdx);
+		}else if(modifiedCheck == 'Y') {
+			oMapper.updateOrderMultiple(updateProductionInfo);
+		}
 	}
 	// *****************************************************
 	// =========================== 품목 =====================

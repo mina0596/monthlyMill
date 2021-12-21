@@ -102,6 +102,14 @@ function sendProductionDate(productionDate){
 	})
 }
 
+/*
+$(document).ready(function(){
+	var expDelDate = $('#expDeliveryDate').text();
+	expDelDate.split(' ');
+	$('#expDeliveryDate').text(expDelDate[1]);
+	console.log(expDelDate);
+})
+*/
 
 
 /* ************************* 실 화면에서 사용되는 함수  *********************/
@@ -252,7 +260,7 @@ $(document).ready(function(){
 			console.log(modifyingInfo);
 			// update 하는 쿼리 실행
 			$.ajax({
-				url : "/smartStore/updateOrderInfo",
+				url : "/smartStore/production/updateOrderInfo",
 				method : "post",
 				data : JSON.stringify(modifyingInfo),
 				dataType : "text",

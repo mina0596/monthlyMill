@@ -324,7 +324,7 @@ $(function(){
 				if(data.length > 0){
 					for(var i=0; i<data.length; i++){
 						html = `
-							<tr class="trow removeTr" id="orderTBody">
+						<tr class="trow removeTr" id='${data[i].orderNum},${data[i].orderIdx}'>
 			              <td class="tdata deliveryDate changeable-date">${data[i].expDeliveryDate.substring(0, 10)}</td>
 			              <td class="tdata orderSite changeable-select-siteType">${data[i].orderType}</td>
 			              <td class="tdata number">${i+1}</td>
@@ -348,9 +348,8 @@ $(function(){
 			                    <li class="tdata-column-list">
 			                      <span>구매자</span>
 			                      <div>
-			                        <span class="purchaserName changeable-text">
-			                          ${data[i].ordererName}</span
-			                        >
+			                        <span class="purchaserName changeable-text"
+			                          >${data[i].ordererName}</span>
 			                        <span class="purchaserPhone changeable-text"
 			                          >${data[i].orderderPhone}</span
 			                        >
@@ -361,7 +360,7 @@ $(function(){
 			                      <div>
 			                        <span class="receiverName changeable-text">${data[i].receiverName}</span>
 			                        <span class="receiverPhone changeable-text"
-			                          >${data[i].receiverPhone}</span			                        >
+			                          >${data[i].receiverPhone}</span>
 			                      </div>
 			                    </li>
 			                  </div>
@@ -399,15 +398,13 @@ $(function(){
 			                  </div>
 			                  <li class="tdata-column-list">
 			                    <span>배송지</span>
-			                    <p class="deliveryDestination changeable-text">
-			                      ${data[i].shippingAddr}
-			                    </p>
+			                    <p class="deliveryDestination changeable-text"
+			                      >${data[i].shippingAddr}</p>
 			                  </li>
 			                  <li class="tdata-column-list">
 			                    <span>메세지</span>
-			                    <p class="deliveryMsg changeable-text">
-			                      ${data[i].deliveryMsg}
-			                    </p>
+			                    <p class="deliveryMsg changeable-text"
+			                      >${data[i].deliveryMsg}</p>
 			                  </li>
 			                  <li class="tdata-column-list">
 			                    <span>배송시간</span>
@@ -493,17 +490,86 @@ $(function(){
 	// ======================================================
 	// ================ 수정버튼에 대한 로직 ======================
 	// ======================================================
+	var orgData = [];
+	var modData = [];
+	
 	
 	$(document).on('click', '.modifyRowBt', function(){
 		// 수정하기전 데이터
 		orgData = [];
-		arr = $(this).parent().parent().children();
-		arr.each(function(index){
-			var orgVal = $(this).children().val();
-			if(index > 1){
-				orgData.push(orgVal);
-			}
+		arr = $(this).parent().parent('tr').find('input, select');
+		orgData.push($(this).parent().parent('tr').attr('id'));
+		arr.each(function(){
+			var orgVal = $(this).val();
+			console.log(orgVal);
+			orgData.push(orgVal);
 		})
 		console.log(orgData);	
+	})
+	
+	$(document).on('click', '.modifying', function(){
+		modData = [];
+		console.log($(this).parent().parent('tr').find('input, select'));
+		arr = $(this).parent().parent('tr').find('input, select');
+		modData.push($(this).parent().parent('tr').attr('id'));
+		arr.each(function(){
+			modData.push($(this).val());
+		});
+		console.log(modData);
+		
+		// 수정된사항이 있으면 true 아니면 false
+		var modifyCheck = false;
+		for(var i=0; i<modData.length; i++){
+			if(orgData[i] != modData[i]){
+				modifyCheck = true;
+				break;
+			}
+		};
+		
+		console.log(modifyCheck);
+		
+		if(modifyCheck){
+			var idxOrderNum = modData[0].split(',');
+			console.log(idxOrderNum);
+			var orderProductInfo = modData[9].split(',');
+			var params = {
+				orderIdx : idxOrderNum[1],
+				orderNum : idxOrderNum[0],
+				expDeliveryDate : modData[1] + modData[17],
+				orderType : modData[2],
+				paidDate : modData[3],
+				shippingDate : modData[4],
+				ordererName : modData[5],
+				ordererPhone : modData[6],
+				receiverName : modData[7],
+				receiverPhone : modData[8],
+				detailedProduct : orderProductInfo[0],
+				productCode : orderProductInfo[1],
+				orderQuantity : modData[10],
+				option : modData[11],
+				totOrderAmount : modData[12],
+				shippingMethod : modData[13],
+				shippingFee : modData[14],
+				shippingAddr : modData[15],
+				deliveryMsg : modData[16],
+				modMId : $('.header-userName').attr('id')
+			};
+			
+			$.ajax({
+				url : "/smartStore/order/updateOrder",
+				method : "post",
+				data : JSON.stringify(params),
+				dataType : "text",
+				traditional : true,
+				contentType : "application/json",
+				success : function(data){
+					console.log(data);
+					
+					
+				}
+			})
+			
+			
+		};
 	})
 })

@@ -57,7 +57,7 @@
 		from
 			(SELECT
 				m.order_idx AS orderIdx, m.order_num AS orderNum, m.shipping_date AS shippingDate,
-				m.paid_date AS paidDate, m.shipping_method AS shippingMethod, m.orderer_name AS ordererName,
+				DATE_FORMAT(m.paid_date, '%Y-%m-%d') AS paidDate, m.shipping_method AS shippingMethod, m.orderer_name AS ordererName,
 				m.orderer_phone AS orderderPhone, m.receiver_name AS receiverName, m.receiver_phone AS receiverPhone,
 				m.product_name AS productName, m.product_code AS productCode, m.detailed_product AS detailedProduct,
 				m.order_quantity AS orderQuantity, m.tot_order_amount AS totOrderAmount, m.option_info AS 'option',
@@ -69,7 +69,7 @@
 			UNION
 			SELECT 
 				o.idx AS orderIdx, o.order_num AS orderNum, o.shipping_date AS shippingDate,
-				o.paid_date AS paidDate, o.shipping_method AS shippingMethod, o.orderer_name AS ordererName,
+				DATE_FORMAT(o.paid_date, '%Y-%m-%d') AS paidDate, o.shipping_method AS shippingMethod, o.orderer_name AS ordererName,
 				o.orderer_phone AS orderderPhone, o.receiver_name AS receiverName, o.receiver_phone AS receiverPhone,
 				o.product_name AS productName, o.product_code AS productCode, o.detailed_product AS detailedProduct,
 				o.order_quantity AS orderQuantity, o.total_order_amount AS totOrderAmount, o.option_info AS 'option',
@@ -80,7 +80,7 @@
 				smartstore_order_info AS o
 			WHERE 
 				o.modified_check = 'N') AS sub
-		WHERE sub.expDeliveryDate LIKE CONCAT ('%', '2021-12-15', '%');
+		WHERE sub.expDeliveryDate LIKE CONCAT ('%', #{expDate}, '%');
 	</select>
 	
 	
@@ -108,7 +108,10 @@
 			DATE_format(o.reg_date, '%Y-%m-%d') = CURDATE();
 	</select>
 	
+	<!-- ============= 주문 처음 수정했을 때 =============== -->
+	<!-- ************************************************** -->
 	<!-- 주문에 대한 정보 수정 -->
+	<!-- ************************************************** -->
 	<insert id="updateOrderInfo" parameterType="map">
 		INSERT INTO smartstore_modify_order
 			(idx, order_idx, order_num, shipping_date, paid_date, shipping_method, 
@@ -117,11 +120,52 @@
 			production_complete, shipping_pay_check, memo, modified_date, modified_m_id)
 		VALUES 
 			(NULL, #{orderIdx}, #{orderNum}, #{shippingDate}, #{paidDate}, #{shippingMethod}, 
-			#{ordererName}, #{ordererPhone}, #{receiverName}, #{receiverPhone}, #{productName}, 
+			#{ordererName}, #{ordererPhone}, #{receiverName}, #{receiverPhone}, (SELECT o.product_name FROM smartstore_order_info AS o WHERE o.idx = #{orderIdx}), 
 			#{productCode}, #{detailedProduct}, #{orderQuantity}, #{totOrderAmount}, #{option}, #{shippingFee}, #{shippingAddr}, #{deliveryMsg}, #{expDeliveryDate}, #{orderType}, 
-			#{productionComp}, #{shippingPayCheck}, #{memo}, NOW(), #{modMId});
-	
+			(SELECT o.production_complete FROM smartstore_order_info AS o WHERE o.idx = #{orderIdx}), (SELECT o.shipping_pay_check FROM smartstore_order_info AS o WHERE o.idx = #{orderIdx}), (SELECT o.memo FROM smartstore_order_info AS o WHERE o.idx = #{orderIdx}), NOW(), #{modMId});
 	</insert>
+	
+	<!-- 주문수정되면 원본 주문 테이블에 modifyCheck 바꿔주기 -->
+	<update id="updateModifiedCheck" parameterType="Integer">
+		UPDATE
+			o.modified_check = 'Y'
+		FROM
+			smartstore_order_info AS o
+			WHERE o.idx = #{orderIdx}
+	</update>
+	
+	
+	
+	
+	<!-- ============= 주문 수정은 처음이 아닐때 =============== -->
+	<!-- ************************************************** -->
+	<!-- 주문에 대한 정보 수정 -->
+	<!-- ************************************************** -->
+	<update id="updateOrderMultiple" parameterType="map">
+		UPDATE smartstore_modify_order
+		SET
+			shipping_date=#{shippingDate},
+			paid_date=#{paidDate},
+			shipping_method=#{shippingMethod},
+			orderer_name=#{ordererName},
+			orderer_phone=#{ordererPhone},
+			receiver_name=#{receiverName},
+			receiver_phone=#{receiverPhone},
+			product_code=#{productCode},
+			detailed_product=#{detailedProduct},
+			order_quantity=#{orderQuantity},
+			tot_order_amount=#{totOrderAmount},
+			option_info=#{option},
+			shipping_fee=#{shippingFee},
+			shipping_addr=#{shippingAddr},
+			delivery_msg=#{deliveryMsg},
+			exp_delivery_date=#{expDeliveryDate},
+			order_type=#{orderType},
+			modified_date=NOW(),
+			modified_m_id=#{modMId}
+		WHERE order_idx=#{orderIdx}
+	</update>
+	
 	
 	
 	

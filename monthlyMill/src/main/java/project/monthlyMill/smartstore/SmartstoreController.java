@@ -121,8 +121,6 @@ public class SmartstoreController {
 		return true;
 	}
 	
-	
-	 
 	// 통합 주문 페이지
 	@GetMapping("/orderList")
 	public String getDataTable(Model model) {
@@ -140,6 +138,16 @@ public class SmartstoreController {
 	@ResponseBody
 	public List<SmartStoreOrder> getOrderInfoByDate(@RequestParam(name =  "expDeliveryDate", required = false) String expDate){
 		return ssService.getOrderInfoByDate(expDate);
+	}
+	
+	
+	// 일별 주문 상세내역 화면에서 주문 수정
+	@PostMapping("/order/updateOrder")
+	@ResponseBody
+	public boolean updateOrderInfo(@RequestBody HashMap<String, Object> params) {
+		log.info("일별 주문 상세내역 화면에서 주문 수정 내용 확인: {}", params);
+		ssService.updateOrderInfo(params);
+		return true;
 	}
 	
 	// 생산일지 페이지 이동
@@ -179,11 +187,11 @@ public class SmartstoreController {
 	}
 	
 	// 생산일지에서 주문 + 생산 수정 처리
-	@PostMapping("/updateOrderInfo")
+	@PostMapping("/production/updateOrderInfo")
 	@ResponseBody
-	public boolean updateOrderInfo(@RequestBody HashMap<String, Object> modifyingInfo) {
+	public boolean updateProductionInfo(@RequestBody HashMap<String, Object> modifyingInfo) {
 		log.info("수정된 사항 받아오는거 확인 :{}", modifyingInfo);
-		ssService.updateOrderInfo(modifyingInfo);
+		ssService.updateProductionInfo(modifyingInfo);
 		return true;
 	}
 	

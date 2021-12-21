@@ -33,4 +33,10 @@ public interface SmartstoreOrderMapper {
 	
 	// 주문테이블의 idx로 주문정보 가져오기
 	public SmartStoreOrder getOrderInfoByIdx(int orderIdx);
+	
+	// 주문수정되면 원본 주문 테이블에 modifyCheck 바꿔주기
+	public void updateModifiedCheck(int orderIdx);
+	
+	// 주문정보 두번이상 바꿨을 경우
+	public void updateOrderMultiple(HashMap<String, Object> updateInfo);
 }
